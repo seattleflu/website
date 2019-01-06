@@ -3,6 +3,7 @@ import styled, { keyframes, ThemeProvider } from 'styled-components'
 import { GlobalStyle, theme } from "../theme/globalStyle";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { Splash } from "./Splash";
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -44,7 +45,7 @@ class App extends Component {
         <>
           <GlobalStyle/>
           <Header/>
-          <div>content</div>
+          <Splash/>
           <Footer/>
         </>
       </ThemeProvider>
