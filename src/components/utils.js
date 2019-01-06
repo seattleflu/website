@@ -111,3 +111,73 @@ export const InternalLink = styled(Link)`
 export const ExternalLink = styled.a`
   ${baseLink}
 `;
+
+
+/* https://www.w3.org/Style/Examples/007/color-bullets.en.html */
+const ListContainer = styled.ol`
+  list-style: none;
+  counter-reset: li;
+`
+const ListItem = styled.li`
+  margin: 2em auto;
+  top: 0;
+  counter-increment: li;
+  color: ${props => props.theme.accent500};
+  font-weight: 600;
+  font-size: 18px;
+  &:before {
+    content: counter(li);
+    display: inline-block;
+    width: 1em;
+    margin-left: -1.5em;
+    margin-right: 0.5em;
+    text-align: right;
+    direction: rtl
+  }
+
+`
+const ListItemContent = styled.p`
+  /* padding-left: 2em; */
+  color: ${props => props.theme.neutral900};
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+`
+
+export const Ordered = (props) => {
+  return (
+    <ListContainer {...props}>
+      {props.items.map((item) => (
+        <ListItem {...props} key={item.header}>
+          <span>{item[0]}</span>
+          <ListItemContent>{item[1]}</ListItemContent>
+        </ListItem>
+      ))}
+    </ListContainer>
+  )
+}
+
+export const Quote = (props) => {
+  const QuoteContainer = styled.div`
+    background-color: ${props => props.theme.neutral200};
+    color: ${props => props.theme.neutral900};
+    padding: 3em;
+    font-style: italic;
+    @media (max-width: 735px) {
+      padding: 1em;
+    }
+  `
+  const Who = styled.div`
+    font-weight: 400;
+    text-align: right;
+    font-style: normal;
+  `
+  return (
+    <QuoteContainer>
+      {props.children}
+      <Who>
+        {props.who}
+      </Who>
+    </QuoteContainer>
+  )
+}
