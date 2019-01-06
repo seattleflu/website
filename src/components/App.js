@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import styled, { keyframes, ThemeProvider } from 'styled-components'
-import logo from './logo.svg';
-import { GlobalStyle, theme } from "./theme/globalStyle";
+import { GlobalStyle, theme } from "../theme/globalStyle";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 const AppWrapper = styled.div`
   text-align: center;
 `
 const AppHeader = styled.div`
-  background-color: ${props => props.theme.backgroundDark};
+  background-color: ${props => props.theme.primary900};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -33,23 +34,18 @@ const AppLink = styled.a`
   color: #61dafb;
 `;
 
+
+
+
 class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyle/>
-          <AppWrapper>
-            <AppHeader>
-              <AppLogo src={logo} alt="logo" />
-              <p>
-                Edit <code>src/App.js</code> and save to reload.
-              </p>
-              <AppLink href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                Learn React
-              </AppLink>
-            </AppHeader>
-          </AppWrapper>
+          <Header/>
+          <div>content</div>
+          <Footer/>
         </>
       </ThemeProvider>
     );
@@ -57,3 +53,15 @@ class App extends Component {
 }
 
 export default App;
+
+{/* <AppWrapper>
+<AppHeader>
+  <AppLogo src={logo} alt="logo" />
+  <p>
+    Edit <code>src/App.js</code> and save to reload.
+  </p>
+  <AppLink href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+    Learn React
+  </AppLink>
+</AppHeader>
+</AppWrapper> */}
