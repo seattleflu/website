@@ -69,9 +69,12 @@ export const FeatureBlock = (props) => {
     <BlockContainer>
       <Title>{props.title}</Title>
       <CenteredParagraph>{props.children}</CenteredParagraph>
-      <Button href={props.href}>
-        {props.buttonTitle ? props.buttonTitle : "find out more"}
-      </Button>
+      {
+        props.buttonTitle ?
+        <Button href={props.href}>
+          {props.buttonTitle}
+        </Button> : ""
+      }
     </BlockContainer>
   )
 }

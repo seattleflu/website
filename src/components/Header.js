@@ -24,13 +24,16 @@ const Spacer = styled.div`
   flex-grow: 10;
 `
 
+// Temporarily remove nav. I expect navigating to /faq and /kiosks via links within
+// the splash page and returning to splash via the logo link at top left
+// <Spacer/>
+// <utils.InternalLink to="/Flu101">Flu101</utils.InternalLink>
+// <utils.InternalLink to="/FAQ">FAQ</utils.InternalLink>
+
 export const Header = () => (
   <Container>
     <utils.InternalLink to="/">
       <Logo src={logo} alt="logo" />
     </utils.InternalLink>
-    <Spacer/>
-    <utils.InternalLink to="/Flu101">Flu101</utils.InternalLink>
-    <utils.InternalLink to="/FAQ">FAQ</utils.InternalLink>
   </Container>
 )
