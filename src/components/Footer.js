@@ -70,36 +70,34 @@ const Logo = styled.img`
   }
 `
 
+// Temporarily removing links from footer
+// <Flex>
+//   <Column>
+//     <ColumnHeader>Internal Links</ColumnHeader>
+//     <BlockLinkInternal to="/">Home</BlockLinkInternal>
+//     <BlockLinkInternal to="/FAQ">FAQ</BlockLinkInternal>
+//     <BlockLinkInternal to="/Flu101">Influenza 101</BlockLinkInternal>
+//   </Column>
+//   <Column>
+//   <ColumnHeader>External Links</ColumnHeader>
+//     <BlockLinkExternal href="https://nextstrain.org">Nextstrain</BlockLinkExternal>
+//   </Column>
+// </Flex>
 
 export const Footer = () => (
   <Container>
     <Flex>
-      <Column>
-        <ColumnHeader>Internal Links</ColumnHeader>
-        <BlockLinkInternal to="/">Home</BlockLinkInternal>
-        <BlockLinkInternal to="/FAQ">FAQ</BlockLinkInternal>
-        <BlockLinkInternal to="/Flu101">Influenza 101</BlockLinkInternal>
-      </Column>
-      <Column>
-      <ColumnHeader>External Links</ColumnHeader>
-        <BlockLinkExternal href="https://nextstrain.org">Nextstrain</BlockLinkExternal>
-      </Column>
-      <Column>
-        <ColumnHeader>Another Column</ColumnHeader>
-      </Column>
-    </Flex>
-    <Flex>
-      <Logo src={logoFH} alt="Fred Hutch"/>
-      <Logo src={logoUWMed} alt="UW Medicine"/>
-      <Logo src={logoSC} alt="Seattle Children's"/>
       <Logo src={logoBBI} alt="BBI"/>
+      <Logo src={logoUWMed} alt="UW Medicine"/>
+      <Logo src={logoFH} alt="Fred Hutch"/>
+      <Logo src={logoSC} alt="Seattle Children's"/>
     </Flex>
     <Center>
       <span>Site design: </span>
       <utils.ExternalLink href="https://twitter.com/hamesjadfield">James Hadfield</utils.ExternalLink>
     </Center>
     <Center>
-      Copyright © 2018-2019 ???
+      © 2018-2019 Brotman Baty Institute
     </Center>
   </Container>
 )
