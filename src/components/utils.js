@@ -44,7 +44,12 @@ export const FeatureBlock = (props) => {
     margin: 0 2em;
     flex: 1 0 20%;
   `
-  const Button = styled.button`
+  const LinkContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  `
+  const LinkButton = styled(Link)`
     border: 1px solid ${props => props.theme.neutral200};
     background-color: inherit;
     color: ${props => props.theme.neutral200};
@@ -54,9 +59,8 @@ export const FeatureBlock = (props) => {
     transition: background .3s, color .3s;
     font-weight: 800;
     font-size: 14px;
-    display: block;
-    margin: 2em auto;
     cursor: pointer;
+    text-decoration: none;
     &:hover {
       background-color: ${props => props.theme.accent500};
       color: ${props => props.theme.neutral100};
@@ -71,9 +75,12 @@ export const FeatureBlock = (props) => {
       <CenteredParagraph>{props.children}</CenteredParagraph>
       {
         props.buttonTitle ?
-        <Button href={props.href}>
-          {props.buttonTitle}
-        </Button> : ""
+        <LinkContainer>
+          <LinkButton to={props.href}>
+            {props.buttonTitle}
+          </LinkButton>
+        </LinkContainer>
+        : ""
       }
     </BlockContainer>
   )
@@ -129,7 +136,7 @@ const ListItem = styled.li`
   font-weight: 600;
   font-size: 18px;
   &:before {
-    content: counter(li);
+    content: "."counter(li);
     display: inline-block;
     width: 1em;
     margin-left: -1.5em;

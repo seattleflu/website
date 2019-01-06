@@ -30,7 +30,6 @@ export const Splash = () => (
       <utils.FeatureContainer>
         <utils.FeatureBlock
           title="Flu 101"
-          href="flu-101"
         >
           {`
             Today, up to 80,000 people in the United States die from the flu each year, and more than double that number get sick and suffer.
@@ -47,7 +46,7 @@ export const Splash = () => (
       <utils.FeatureContainer>
         <utils.FeatureBlock
           title="You can help us"
-          href="kiosks"
+          href="/kiosks"
           buttonTitle="Find a Kiosk"
         >
           {`
@@ -64,7 +63,7 @@ export const Splash = () => (
       <utils.FeatureContainer>
         <utils.FeatureBlock
           title="Smarter. Faster. Wellness."
-          href="faq"
+          href="/faq"
           buttonTitle="Questions?"
         >
           {`
