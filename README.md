@@ -1,21 +1,25 @@
 # Seattle Flu Study
 
+### Install
 ```bash
+git clone https://github.com/seattleflu/site.git
+cd site
 npm install
+```
+
+### Develop
+```bash
 npm run start
 ```
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-
-## Other helpful commands:
-```bash
-npm run test
-```
-
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
+### Build
 ```bash
 npm run build
+npm run server
 ```
-Builds the app for production to the `build` folder.
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+
+### Tests
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
