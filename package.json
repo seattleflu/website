@@ -1,7 +1,16 @@
 {
-  "name": "website",
+  "name": "seattle-flu-study-website",
   "version": "0.1.0",
-  "private": true,
+  "description": "website for the seattle flu study",
+  "private": false,
+  "author": "James Hadfield and Trevor Bedford",
+  "license": "AGPL-3.0-only",
+  "repository": "github:seattleflu/website",
+  "homepage": "https://seattleflu.org",
+  "engines": {
+    "node": "10.8.x",
+    "npm": "6.4.x"
+  },
   "dependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
