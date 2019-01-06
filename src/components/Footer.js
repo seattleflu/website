@@ -4,6 +4,7 @@ import logoBBI from '../img/BBILogoGrey.png';
 import logoUWMed from '../img/UWMedLogoGrey.png';
 import logoSC from '../img/SeattleChildrensLogoGrey.png';
 import logoFH from '../img/FredHutchLogoGrey.png';
+import * as utils from "./utils";
 
 const Container = styled.div`
   background-color: ${props => props.theme.primary900};
@@ -44,7 +45,12 @@ const Link = styled.a`
     color: ${props => props.theme.accent500};
   }
 `
-const BlockLink = styled(Link)`
+const BlockLinkInternal = styled(utils.InternalLink)`
+  display: block;
+  padding-top: 3px;
+  padding-bottom: 3px;
+`
+const BlockLinkExternal = styled(utils.ExternalLink)`
   display: block;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -69,22 +75,17 @@ export const Footer = () => (
   <Container>
     <Flex>
       <Column>
-        <ColumnHeader>Contact</ColumnHeader>
-        <BlockLink href="blah">Blah</BlockLink>
-        <BlockLink href="blah">Blah</BlockLink>
-        <BlockLink href="blah">Blah</BlockLink>
+        <ColumnHeader>Internal Links</ColumnHeader>
+        <BlockLinkInternal to="/">Home</BlockLinkInternal>
+        <BlockLinkInternal to="/FAQ">FAQ</BlockLinkInternal>
+        <BlockLinkInternal to="/Flu101">Influenza 101</BlockLinkInternal>
       </Column>
       <Column>
-        <ColumnHeader>Contact</ColumnHeader>
-        <BlockLink href="blah">Blah</BlockLink>
-        <BlockLink href="blah">Blah</BlockLink>
-        <BlockLink href="blah">Blah</BlockLink>
+      <ColumnHeader>External Links</ColumnHeader>
+        <BlockLinkExternal href="https://nextstrain.org">Nextstrain</BlockLinkExternal>
       </Column>
       <Column>
-        <ColumnHeader>Contact</ColumnHeader>
-        <BlockLink href="blah">Blah</BlockLink>
-        <BlockLink href="blah">Blah</BlockLink>
-        <BlockLink href="blah">Blah</BlockLink>
+        <ColumnHeader>Another Column</ColumnHeader>
       </Column>
     </Flex>
     <Flex>
@@ -95,7 +96,7 @@ export const Footer = () => (
     </Flex>
     <Center>
       <span>Site design: </span>
-      <Link href="https://twitter.com/hamesjadfield">James Hadfield</Link>
+      <utils.ExternalLink href="https://twitter.com/hamesjadfield">James Hadfield</utils.ExternalLink>
     </Center>
     <Center>
       Copyright © 2018-2019 ???

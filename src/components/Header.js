@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import logo from '../img/logo.svg';
+import * as utils from "./utils";
 
 const Container = styled.div`
   background-color: ${props => props.theme.primary900};
@@ -15,24 +16,21 @@ const Container = styled.div`
   color: ${props => props.theme.primary500};
 `
 
-const Link = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  &:hover {
-    color: ${props => props.theme.accent500};
-  }
-`
 const Logo = styled.img`
   height: 100%;
   max-width: 70vw;
 `
-
+const Spacer = styled.div`
+  flex-grow: 10;
+`
 
 export const Header = () => (
   <Container>
-    <Logo src={logo} alt="logo" />
-    <span/>
-    <Link>FAQ</Link>
+    <utils.InternalLink to="/">
+      <Logo src={logo} alt="logo" />
+    </utils.InternalLink>
+    <Spacer/>
+    <utils.InternalLink to="/Flu101">Flu101</utils.InternalLink>
+    <utils.InternalLink to="/FAQ">FAQ</utils.InternalLink>
   </Container>
 )

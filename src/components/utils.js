@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { Link } from "react-router-dom";
 
 export const OuterContainer = styled.div`
   max-width: 1080px;
@@ -94,3 +95,19 @@ export const H3 = styled(BaseHeader)`
 export const Bold = styled.span`
   font-weight: 600;
 `
+
+const baseLink = css`
+  cursor: pointer;
+  text-decoration: none;
+  flex-grow: 1;
+  color: ${props => props.theme.primary500};
+  &:hover {
+    color: ${props => props.theme.accent500};
+  }
+`
+export const InternalLink = styled(Link)`
+  ${baseLink}
+`;
+export const ExternalLink = styled.a`
+  ${baseLink}
+`;
