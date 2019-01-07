@@ -87,13 +87,16 @@ export const HeroBlock = (props) => {
 const BaseHeader = styled.div`
   font-weight: 600;
   text-align: ${props => props.left ? "left" : "center"};
-  color: ${props => props.theme.neutral600};
+  color: ${props => props.theme.neutral700};
   padding-top: 10px;
   padding-bottom: 5px;
 `
 export const H1 = styled(BaseHeader)`
   font-weight: 800;
   font-size: 56px;
+  @media (max-width: 500px) {
+    font-size: 40px;
+  }
 `
 export const H2 = styled(BaseHeader)`
   font-size: 32px;
@@ -107,7 +110,6 @@ export const Bold = styled.span`
 
 /* Feature Block */
 const FeatureContainer = styled.div`
-  border-radius: 6px;
   color: ${props => props.theme.white};
   background-color: ${props => props.theme.primary500};
   padding: 1em 2em;

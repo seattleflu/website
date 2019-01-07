@@ -17,13 +17,11 @@ class App extends Component {
           <ThemeProvider theme={theme}>
             <>
               <GlobalStyle/>
-              <PageContainer>
                 <Header/>
                 <Route exact path="/" component={Splash}/>
                 <Route path="/faq" component={FAQ}/>
                 <Route path="/kiosks" component={Kiosks}/>
                 <Footer/>
-              </PageContainer>
             </>
           </ThemeProvider>
         </ScrollToTop>

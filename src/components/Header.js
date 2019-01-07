@@ -12,7 +12,7 @@ const Container = styled.div`
   }
   background-color: #fff;
   margin: auto;
-  min-height: 10vh;
+  height: 120px;
   padding: 0px;
   display: flex;
   flex-direction: row;
