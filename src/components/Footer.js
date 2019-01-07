@@ -7,7 +7,7 @@ import logoFH from '../img/FredHutchLogoGrey.png';
 import * as utils from "./utils";
 
 const Container = styled.div`
-  background-color: ${props => props.theme.primary300};
+  background-color: ${props => props.theme.primary200};
   min-height: 10vh;
   width: 100vw;
   font-size: 15px;

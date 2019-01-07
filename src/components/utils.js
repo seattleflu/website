@@ -86,7 +86,7 @@ export const HeroBlock = (props) => {
 const BaseHeader = styled.div`
   font-weight: 600;
   text-align: ${props => props.left ? "left" : "center"};
-  color: ${props => props.theme.neutral900};
+  color: ${props => props.theme.neutral600};
   padding-top: 10px;
   padding-bottom: 5px;
 `
@@ -225,7 +225,7 @@ const ListItem = styled.li`
   margin: 2em auto;
   top: 0;
   counter-increment: li;
-  color: ${props => props.theme.primary500};
+  color: ${props => props.theme.primary600};
   font-weight: 600;
   font-size: 18px;
   &:before {
@@ -241,7 +241,7 @@ const ListItem = styled.li`
 `
 const ListItemContent = styled.p`
   /* padding-left: 2em; */
-  color: ${props => props.theme.neutral900};
+  color: ${props => props.theme.neutral600};
   font-weight: 300;
   font-size: 16px;
   line-height: 24px;
