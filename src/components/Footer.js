@@ -37,13 +37,9 @@ const ColumnHeader = styled.div`
   color: ${props => props.theme.neutral300}
   font-weight: 600;
 `
-const Link = styled.a`
+const LogoLink = styled.a`
   cursor: pointer;
-  text-decoration: none;
-  color: ${props => props.theme.primary500};
-  &:hover {
-    color: ${props => props.theme.accent500};
-  }
+  margin: auto;
 `
 const BlockLinkInternal = styled(utils.InternalLink)`
   display: block;
@@ -87,14 +83,24 @@ const Logo = styled.img`
 export const Footer = () => (
   <Container>
     <Flex>
-      <Logo src={logoBBI} alt="BBI"/>
-      <Logo src={logoUWMed} alt="UW Medicine"/>
-      <Logo src={logoFH} alt="Fred Hutch"/>
-      <Logo src={logoSC} alt="Seattle Children's"/>
+      <LogoLink href="https://brotmanbaty.org">
+        <Logo src={logoBBI} alt="BBI"/>
+      </LogoLink>
+      <LogoLink href="https://www.uwmedicine.org/">
+        <Logo src={logoUWMed} alt="UW Medicine"/>
+      </LogoLink>
+      <LogoLink href="https://www.fredhutch.org/en.html">
+        <Logo src={logoFH} alt="Fred Hutch"/>
+      </LogoLink>
+      <LogoLink href="https://www.seattlechildrens.org/">
+        <Logo src={logoSC} alt="Seattle Children's"/>
+      </LogoLink>
     </Flex>
     <Center>
       <span>Site design: </span>
       <utils.ExternalLink href="https://twitter.com/hamesjadfield">James Hadfield</utils.ExternalLink>
+      <span>{" & "}</span>
+      <utils.ExternalLink href="https://bedford.io/team/trevor-bedford/">Trevor Bedford</utils.ExternalLink>
     </Center>
     <Center>
       © 2018-2019 Brotman Baty Institute

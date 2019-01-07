@@ -201,7 +201,6 @@ export const Feature = (props) => {
 const baseLink = css`
   cursor: pointer;
   text-decoration: none;
-  flex-grow: 1;
   color: ${props => props.theme.primary500};
   &:hover {
     color: ${props => props.theme.accent500};
