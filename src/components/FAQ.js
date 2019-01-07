@@ -19,7 +19,7 @@ const faqItems = [
     "Is there any reason that I shouldn't participate?",
     (<>
       <ul>
-        <li>{"Please do not enroll if you are NOT feeling 2 or more flu symptoms."}</li>
+        <li>{"Please do not enroll if you are NOT feeling 2 or more cold or flu-like symptoms."}</li>
         <li>{"Please don't enroll if you are seriously ill."}</li>
       </ul>
     </>)
@@ -31,14 +31,14 @@ const faqItems = [
       <br/>
       <ol>
         <li>{"You'll answer some questions about your health and where you live (geography matters because we are mapping where the flu is.)"}</li>
-        <li>{"We'll take a swab from the front of your nose to collect the exact germs that you have."}</li>
+        <li>{"We'll take a swab from your nose to collect the exact germs that you have."}</li>
         <li>{"You're done! Collect your $10 gift card and be on your way."}</li>
       </ol>
     </>)
   ],
   [
     "Can you tell me more about the nose swab? Is it painful?",
-    "It takes 5-10 seconds and it might tickle a bit. We take the nose swab from the front of the nose with a soft cotton-like Q-tip."
+    "It takes 5-10 seconds and it might tickle a bit. We take the nose swab from the front of your nose with a soft cotton-like Q-tip."
   ],
   [
     "What data are you gathering from my nose swab?",
@@ -54,11 +54,11 @@ const faqItems = [
   ],
   [
     "What will happen to my sample after the study?",
-    "We will keep it frozen in case we need to repeat the experiment to figure out what germs are in the sample."
+    "We will keep it frozen in case we need to repeat the experiment to figure out what germs are in your sample."
   ],
   [
     "Could participating in this study affect my insurance in any way?",
-    "No, because the swab will not be linked to your personal information."
+    "No, because the swab from your nose will not be linked to your personal information."
   ],
   [
     "Will I be tracked after the study? ",
@@ -91,7 +91,7 @@ const faqItems = [
         <li>{"Fatigue (tiredness)"}</li>
         <li>{"Some people may have vomiting and diarrhea, though this is more common in children than adults."}</li>
       </ul>
-      <i>{"*It's important to note that not everyone with flu will have a fever."}</i>
+      <i>{"*Note: not everyone with flu will have a fever."}</i>
     </>)
   ],
   [
