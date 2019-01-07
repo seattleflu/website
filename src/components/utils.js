@@ -45,7 +45,7 @@ export const HeroContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  color: ${props => props.theme.neutral600};
+  color: ${props => props.theme.neutral700};
   background-color: #fff;
   padding: 0px;
   margin: 2em auto;
@@ -60,7 +60,7 @@ export const HeroBlock = (props) => {
     margin: 0 2em;
   `
   const Title = styled(H1)`
-    color: ${props => props.theme.neutral600};
+    color: ${props => props.theme.neutral700};
     margin: 10px 0px 10px 0px;
     @media (max-width: 500px) {
       font-size: 40px;
@@ -108,7 +108,7 @@ export const Bold = styled.span`
 /* Feature Block */
 const FeatureContainer = styled.div`
   border-radius: 6px;
-  color: ${props => props.theme.neutral100};
+  color: ${props => props.theme.white};
   background-color: ${props => props.theme.primary500};
   padding: 1em 2em;
   margin: 4em auto;
@@ -135,12 +135,12 @@ const FeatureButton = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   &:hover {
-    background-color: ${props => props.theme.accent500};
-    color: ${props => props.theme.neutral100};
+    background-color: ${props => props.theme.primary300};
+    color: ${props => props.theme.white};
   }
 `
 const FeatureTitle = styled(H2)`
-  color: ${props => props.theme.neutral100};
+  color: ${props => props.theme.white};
   text-align: center;
 `
 const FeatureFlexContainer = styled.div`
@@ -227,7 +227,7 @@ const ListItem = styled.li`
   margin: 2em auto;
   top: 0;
   counter-increment: li;
-  color: ${props => props.theme.primary600};
+  color: ${props => props.theme.primary500};
   font-weight: 600;
   font-size: 18px;
   &:before {
