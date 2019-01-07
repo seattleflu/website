@@ -55,11 +55,13 @@ const BlockLinkExternal = styled(utils.ExternalLink)`
 const Center = styled.div`
   text-align: center;
   color: ${props => props.theme.neutral200};
+  padding-left: 5px;
+  padding-right: 5px;
 `
 const Logo = styled.img`
   margin: auto;
-  min-width: 200px;
-  max-width: 200px;
+  min-width: 210px;
+  max-width: 210px;
   display: block;
   @media (max-width: 735px) {
     max-width: 100px;
@@ -97,6 +99,12 @@ export const Footer = () => (
         <Logo src={logoSC} alt="Seattle Children's"/>
       </LogoLink>
     </Flex>
+    <Center>
+      For other questions or more information, please email: <utils.ExternalLink href="mailto:info@bbi.org">info@bbi.org</utils.ExternalLink>.
+      <span>{" "}</span>
+      For press inquiries, please email: <utils.ExternalLink href="mailto:BBI@feareygroup.com">BBI@feareygroup.com</utils.ExternalLink>.
+    </Center>
+    <br/>
     <Center>
       <span>Site design: </span>
       <utils.ExternalLink href="https://twitter.com/hamesjadfield">James Hadfield</utils.ExternalLink>
