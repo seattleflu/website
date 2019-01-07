@@ -14,6 +14,7 @@ const Container = styled.div`
   line-height: 24px;
   padding-bottom: 2em;
   padding-top: 2em;
+  flex-shrink: 0;
 `
 const Flex = styled.div`
   display: flex;

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -15,6 +15,13 @@ export const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   }
 `
+
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`
+
 export const theme = {
   neutral100: "#F7F7F7",
   neutral200: "#DCDEDF",

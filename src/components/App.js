@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { ThemeProvider } from 'styled-components'
 import ScrollToTop from "./ScrollToTop";
-import { GlobalStyle, theme } from "../theme/globalStyle";
+import { GlobalStyle, PageContainer, theme } from "../theme/globalStyle";
 import Header from "./Header";
 import { Footer } from "./Footer";
 import { Splash } from "./Splash";
@@ -18,12 +18,14 @@ class App extends Component {
           <ThemeProvider theme={theme}>
             <>
               <GlobalStyle/>
-              <Header/>
-              <Route exact path="/" component={Splash}/>
-              <Route path="/faq" component={FAQ}/>
-              <Route path="/flu101" component={Flu101}/>
-              <Route path="/kiosks" component={Kiosks}/>
-              <Footer/>
+              <PageContainer>
+                <Header/>
+                <Route exact path="/" component={Splash}/>
+                <Route path="/faq" component={FAQ}/>
+                <Route path="/flu101" component={Flu101}/>
+                <Route path="/kiosks" component={Kiosks}/>
+                <Footer/>
+              </PageContainer>
             </>
           </ThemeProvider>
         </ScrollToTop>

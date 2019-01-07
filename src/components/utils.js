@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export const OuterContainer = styled.div`
   max-width: 1080px;
   margin: 0px auto;
+  flex: 1 0 auto;
   @media (max-width: 735px) {
     max-width: 90vw;
   }
