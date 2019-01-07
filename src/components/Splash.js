@@ -14,23 +14,24 @@ export const Splash = () => (
         <>
           <div>
             <span>
-              <b>{"We're tracking the flu in Seattle. "}</b>
+              <utils.Bold>We're tracking the flu in Seattle. </utils.Bold>
             </span>
             <span>
-              {"Maybe you’ve seen Seattle Flu Study kiosks around Seattle. Or maybe you’re just curious for more information. \
-              You are in the right place. \
-              We’re reaching out to our Seattle community to help us track the spread of the flu. \
-              If you or someone you know are experiencing flu-like symptoms, we could really use your help!"}
+              Maybe you’ve seen Seattle Flu Study kiosks around Seattle. Or maybe you’re just
+              curious for more information. You are in the right place. We’re reaching out to our
+              Seattle community to help us track the spread of the flu. If you or someone you know
+              are experiencing flu-like symptoms, we could really use your help!
             </span>
           </div>
           <br/>
           <div>
             <span>
-              <b>{"Sore throat, stuffy nose and achey all over? We need"} <i>{"You"}</i>{". "}</b>
+              <utils.Bold>Sore throat, stuffy nose and achey all over? We need <i>You</i>. </utils.Bold>
             </span>
             <span>
-              {"All age groups (from infants to elderly) can help us with this study. \
-              Your participation could help us stop the spread of the flu, lead to personalized treatments, smarter prevention and a safer and healthier world."}
+              All age groups (from infants to elderly) can help us with this study. Your
+              participation could help us stop the spread of the flu, lead to personalized
+              treatments, smarter prevention and a safer and healthier world.
             </span>
           </div>
         </>

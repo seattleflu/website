@@ -67,11 +67,11 @@ export const HeroBlock = (props) => {
   `
   const Logo = styled.img`
     margin: auto;
-    min-width: 300px;
-    max-width: 300px;
+    min-width: 320px;
+    max-width: 320px;
     display: block;
     float: right;
-    padding: 0px 0px 0px 20px;
+    padding: 0px 0px 5px 10px;
   `
   return (
     <BlockContainer>
