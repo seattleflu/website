@@ -61,6 +61,9 @@ export const HeroBlock = (props) => {
   const Title = styled(H1)`
     color: ${props => props.theme.neutral600};
     margin: 10px 0px 10px 0px;
+    @media (max-width: 500px) {
+      font-size: 40px;
+    }
   `
   const Logo = styled.img`
     margin: auto;
