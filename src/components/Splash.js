@@ -1,32 +1,40 @@
 import React from 'react';
 import * as utils from './utils';
-
+import logo from '../img/logo.png';
 
 export const Splash = () => (
   <utils.OuterContainer>
     <utils.ContentContainer>
-      <utils.CenteredParagraph>
-        <utils.Bold>We're tracking the flu in Seattle.</utils.Bold>
-        {`
-          Maybe you’ve seen Seattle Flu Study kiosks around Seattle.
-          Or maybe you’re just curious for more information.
-          You are in the right place.
-          We’re reaching out to our Seattle community to help us track the spread of the flu.
-          If you or someone you know are experiencing flu-like symptoms, we could really use your help!
-        `}
-      </utils.CenteredParagraph>
-      <utils.CenteredParagraph>
-        <utils.Bold>Sore throat, stuffy nose and achey all over? We need <i>You</i>.</utils.Bold>
-        {`
-          All age groups (from infants to elderly) can help us with this study.
-        `}
-      </utils.CenteredParagraph>
-      <utils.CenteredParagraph>
-        <utils.Bold>We’re in this Together.</utils.Bold>
-        {`
-          Your participation could help us stop the spread of the flu, lead to personalized treatments, smarter prevention and a safer and healthier world.
-        `}
-      </utils.CenteredParagraph>
+      <utils.HeroContainer>
+        <utils.HeroBlock
+          title="Help us outsmart the flu"
+          image={logo}
+        >
+        <>
+          <div>
+            <span>
+              <b>{"We're tracking the flu in Seattle. "}</b>
+            </span>
+            <span>
+              {"Maybe you’ve seen Seattle Flu Study kiosks around Seattle. Or maybe you’re just curious for more information. \
+              You are in the right place. \
+              We’re reaching out to our Seattle community to help us track the spread of the flu. \
+              If you or someone you know are experiencing flu-like symptoms, we could really use your help!"}
+            </span>
+          </div>
+          <br/>
+          <div>
+            <span>
+              <b>{"Sore throat, stuffy nose and achey all over? We need"} <i>{"You"}</i>{". "}</b>
+            </span>
+            <span>
+              {"All age groups (from infants to elderly) can help us with this study. \
+              Your participation could help us stop the spread of the flu, lead to personalized treatments, smarter prevention and a safer and healthier world."}
+            </span>
+          </div>
+        </>
+        </utils.HeroBlock>
+      </utils.HeroContainer>
       <utils.FeatureContainer>
         <utils.FeatureBlock
           title="Flu 101"

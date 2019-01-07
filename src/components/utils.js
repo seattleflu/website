@@ -4,15 +4,14 @@ import { Link } from "react-router-dom";
 
 export const OuterContainer = styled.div`
   max-width: 1080px;
-  margin: 3em auto;
+  margin: 0px auto;
   @media (max-width: 735px) {
     max-width: 90vw;
   }
 `
 export const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 0px;
+  margin: 0px;
   color: ${props => props.theme.neutral800};
 `
 export const CenteredParagraph = styled.p`
@@ -26,6 +25,55 @@ export const CenteredParagraph = styled.p`
     max-width: 100%;
   }
 `
+export const LeftParagraph = styled.p`
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0px;
+  max-width: 80%;
+  @media (max-width: 735px) {
+    max-width: 100%;
+  }
+`
+export const HeroContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: ${props => props.theme.neutral600};
+  background-color: #fff;
+  padding: 2em 2em;
+  margin: 2em auto;
+  max-width: 1080px;
+  @media (max-width: 735px) {
+    flex-direction: column;
+    padding: 2em 0em;
+  }
+`
+export const HeroBlock = (props) => {
+  const BlockContainer = styled.div`
+    margin: 0 2em;
+  `
+  const Title = styled(H1)`
+    color: ${props => props.theme.neutral600};
+    margin: 10px 0px 10px 0px;
+  `
+  const Logo = styled.img`
+    margin: auto;
+    min-width: 300px;
+    max-width: 300px;
+    display: block;
+    float: right;
+    padding: 0px 0px 0px 20px;
+  `
+  return (
+    <BlockContainer>
+      <Logo src={props.image} alt="image"/>
+      <Title left>{props.title}</Title>
+      <LeftParagraph>{props.children}</LeftParagraph>
+    </BlockContainer>
+  )
+}
+
 export const FeatureContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -94,7 +142,7 @@ const BaseHeader = styled.div`
 `
 export const H1 = styled(BaseHeader)`
   font-weight: 800;
-  font-size: 36px;
+  font-size: 52px;
 `
 export const H2 = styled(BaseHeader)`
   font-size: 30px;
