@@ -39,7 +39,7 @@ const ColumnHeader = styled.div`
 `
 const LogoLink = styled.a`
   cursor: pointer;
-  margin: auto;
+  margin: auto 0;
 `
 const BlockLinkInternal = styled(utils.InternalLink)`
   display: block;

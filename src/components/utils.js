@@ -220,6 +220,7 @@ export const ExternalLink = styled.a`
 const ListContainer = styled.ol`
   list-style: none;
   counter-reset: li;
+  margin: 0 1em;
 `
 const ListItem = styled.li`
   margin: 2em auto;
