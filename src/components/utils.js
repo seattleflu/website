@@ -46,7 +46,7 @@ export const HeroContainer = styled.div`
   justify-content: space-around;
   color: ${props => props.theme.neutral600};
   background-color: #fff;
-  padding: 2em 2em;
+  padding: 0px;
   margin: 2em auto;
   max-width: 1080px;
   @media (max-width: 735px) {
@@ -92,7 +92,7 @@ const BaseHeader = styled.div`
 `
 export const H1 = styled(BaseHeader)`
   font-weight: 800;
-  font-size: 52px;
+  font-size: 56px;
 `
 export const H2 = styled(BaseHeader)`
   font-size: 30px;
@@ -108,7 +108,7 @@ export const Bold = styled.span`
 const FeatureContainer = styled.div`
   color: ${props => props.theme.neutral100};
   background-color: ${props => props.theme.primary600};
-  padding: 3em 3em;
+  padding: 1em 2em;
   margin: 4em auto;
   @media (max-width: 735px) {
     flex-direction: column;
@@ -154,14 +154,14 @@ const FeatureFlexContainer = styled.div`
   }
 `
 const FeatureMainText = styled.div`
-  flex: 7 7 70%;
+  flex: 8;
 `;
 const FeatureSpacer = styled.div`
-  flex: 1 1 10%;
+  flex: 1;
 `
 const FeatureSidebar = styled.div`
-  flex: 2 2 20%;
-  text-align: center;
+  flex: 3;
+  text-align: left;
   font-size: 0.9rem;
   @media (max-width: 735px) {
     margin-top: 2em;

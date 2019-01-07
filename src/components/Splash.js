@@ -37,22 +37,20 @@ export const Splash = () => (
         </utils.HeroBlock>
       </utils.HeroContainer>
 
-      
+
       <utils.Feature
-          title="You can help us"
-          buttonLink="/kiosks"
-          buttonText="Find a Kiosk"
+          title="Flu 101"
         >
-          {`
+          <div>
             Today, up to 80,000 people in the United States die from the flu each year, and more than double that number get sick and suffer.
             We know that the flu is spread from person to person, and we know that it causes outbreaks every year.
             What we don’t know is exactly how it spreads, and why certain flu strains are stronger and more dangerous than others.
             We’re on a mission to change that.
-
-            Only 10-20 percent of people who have flu-like symptoms actually have the flu virus.
-            This is important because anti-viral medications, like Tamiflu are only effective against the flu virus.
-            (pull these two sentences right)
-          `}
+          </div>
+          <div>
+            Only 10-20% of people who have flu-like symptoms actually have the flu virus.
+            This is important because anti-viral medications, like Tamiflu, are only effective against the flu virus.
+          </div>
         </utils.Feature>
 
         <utils.Feature
@@ -62,12 +60,10 @@ export const Splash = () => (
         >
           <div>
             <span>
-              {`
-                We've set up a number of kiosks around Seattle to gather samples from people 
-                who feel like they may have the flu. If you are feeling ill and see a kiosk, 
-                you can take 15 minutes to participate (we’ll work extra hard to distract you 
-                from feeling crummy).
-              `}
+              We've set up a number of kiosks around Seattle to gather samples from people
+              who feel like they may have the flu. If you are feeling ill and see a kiosk,
+              you can take 15 minutes to participate (we’ll work extra hard to distract you
+              from feeling crummy).
             </span>
             <ol type="a">
               <li>We’ll make sure that you have 2 or more flu-like symptoms (fever, cough, sore throat, runny or stuffy nose, muscle or body aches).</li>
@@ -75,9 +71,6 @@ export const Splash = () => (
               <li>We’ll take a swab from the front of your nose to collect the exact virus you have.</li>
               <li>You’re done! Enjoy your $10 Starbucks gift card for participating!</li>
             </ol>
-          </div>
-          <div>
-            SOME SIDE TEXT SOME SIDE TEXT SOME SIDE TEXT SOME SIDE TEXT SOME SIDE TEXT
           </div>
         </utils.Feature>
 
