@@ -108,9 +108,9 @@ export const Footer = () => (
     <br/>
     <Center>
       <span>Site design: </span>
-      <utils.ExternalLink href="https://twitter.com/hamesjadfield">James Hadfield</utils.ExternalLink>
+      <utils.ExternalSoftLink href="https://twitter.com/hamesjadfield">James Hadfield</utils.ExternalSoftLink>
       <span>{" & "}</span>
-      <utils.ExternalLink href="https://bedford.io/team/trevor-bedford/">Trevor Bedford</utils.ExternalLink>
+      <utils.ExternalSoftLink href="https://bedford.io/team/trevor-bedford/">Trevor Bedford</utils.ExternalSoftLink>
     </Center>
     <Center>
       © 2018-2019 Brotman Baty Institute

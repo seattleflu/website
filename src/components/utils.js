@@ -207,7 +207,7 @@ const baseLink = css`
   text-decoration: none;
   color: ${props => props.theme.accent500};
   &:hover {
-    color: ${props => props.theme.accent500};
+    color: ${props => props.theme.accent300};
   }
 `
 export const InternalLink = styled(Link)`
@@ -215,6 +215,21 @@ export const InternalLink = styled(Link)`
 `;
 export const ExternalLink = styled.a`
   ${baseLink}
+`;
+
+const softLink = css`
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: ${props => props.theme.accent300};
+  }
+`
+export const InternalSoftLink = styled(Link)`
+  ${softLink}
+`;
+export const ExternalSoftLink = styled.a`
+  ${softLink}
 `;
 
 
