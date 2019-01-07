@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import styled from 'styled-components'
 import { withRouter } from 'react-router-dom';
-import logo from '../img/horizontal-logo.png';
+import logo from '../img/logo.png';
 import * as utils from "./utils";
 
 const Container = styled.div`
@@ -22,10 +22,13 @@ const Container = styled.div`
   font-size: calc(10px + 2vmin);
   color: ${props => props.theme.primary500};
 `
+const LogoContainer = styled.div`
+  margin: auto;
+`
 
 const Logo = styled.img`
   height: 100%;
-  width: 280px;
+  width: 140px;
   padding: 0px 10px 0px 10px;
 `
 const Spacer = styled.div`
@@ -53,9 +56,11 @@ class Header extends React.Component  {
 
     return (
       <Container>
-        <utils.InternalLink to="/">
-          <Logo src={logo} alt="logo" />
-        </utils.InternalLink>
+        <LogoContainer>
+          <utils.InternalLink to="/">
+            <Logo src={logo} alt="logo" />
+          </utils.InternalLink>
+        </LogoContainer>
       </Container>
     )
   }

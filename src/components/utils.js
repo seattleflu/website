@@ -86,7 +86,7 @@ export const HeroBlock = (props) => {
 const BaseHeader = styled.div`
   font-weight: 600;
   text-align: ${props => props.left ? "left" : "center"};
-  color: ${props => props.theme.neutral900};
+  color: ${props => props.theme.neutral600};
   padding-top: 10px;
   padding-bottom: 5px;
 `
