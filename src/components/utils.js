@@ -95,7 +95,7 @@ export const H1 = styled(BaseHeader)`
   font-size: 56px;
 `
 export const H2 = styled(BaseHeader)`
-  font-size: 30px;
+  font-size: 32px;
 `
 export const H3 = styled(BaseHeader)`
   font-size: 24px;
@@ -106,8 +106,9 @@ export const Bold = styled.span`
 
 /* Feature Block */
 const FeatureContainer = styled.div`
+  border-radius: 6px;
   color: ${props => props.theme.neutral100};
-  background-color: ${props => props.theme.primary600};
+  background-color: ${props => props.theme.primary500};
   padding: 1em 2em;
   margin: 4em auto;
   @media (max-width: 735px) {
@@ -121,9 +122,9 @@ const FeatureButtonContainer = styled.div`
   justify-content: space-around;
 `
 const FeatureButton = styled(Link)`
-  border: 1px solid ${props => props.theme.neutral200};
+  border: 1px solid ${props => props.theme.neutral100};
   background-color: inherit;
-  color: ${props => props.theme.neutral200};
+  color: ${props => props.theme.neutral100};
   border-radius: 3px;
   padding: 10px;
   text-transform: uppercase;
@@ -138,7 +139,7 @@ const FeatureButton = styled(Link)`
   }
 `
 const FeatureTitle = styled(H2)`
-  color: ${props => props.theme.neutral200};
+  color: ${props => props.theme.neutral100};
   text-align: center;
 `
 const FeatureFlexContainer = styled.div`
@@ -163,6 +164,7 @@ const FeatureSidebar = styled.div`
   flex: 3;
   text-align: left;
   font-size: 0.9rem;
+  line-height: 22px;
   @media (max-width: 735px) {
     margin-top: 2em;
   }
@@ -201,7 +203,7 @@ export const Feature = (props) => {
 const baseLink = css`
   cursor: pointer;
   text-decoration: none;
-  color: ${props => props.theme.primary500};
+  color: ${props => props.theme.accent500};
   &:hover {
     color: ${props => props.theme.accent500};
   }
@@ -223,7 +225,7 @@ const ListItem = styled.li`
   margin: 2em auto;
   top: 0;
   counter-increment: li;
-  color: ${props => props.theme.accent500};
+  color: ${props => props.theme.primary600};
   font-weight: 600;
   font-size: 18px;
   &:before {
@@ -239,7 +241,7 @@ const ListItem = styled.li`
 `
 const ListItemContent = styled.p`
   /* padding-left: 2em; */
-  color: ${props => props.theme.neutral900};
+  color: ${props => props.theme.neutral600};
   font-weight: 300;
   font-size: 16px;
   line-height: 24px;

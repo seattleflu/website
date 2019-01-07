@@ -7,7 +7,7 @@ import logoFH from '../img/FredHutchLogoGrey.png';
 import * as utils from "./utils";
 
 const Container = styled.div`
-  background-color: ${props => props.theme.primary900};
+  background-color: ${props => props.theme.primary200};
   min-height: 10vh;
   width: 100vw;
   font-size: 15px;
@@ -53,7 +53,7 @@ const BlockLinkExternal = styled(utils.ExternalLink)`
 `
 const Center = styled.div`
   text-align: center;
-  color: ${props => props.theme.neutral400};
+  color: ${props => props.theme.neutral200};
 `
 const Logo = styled.img`
   margin: auto;
