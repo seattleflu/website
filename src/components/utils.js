@@ -21,10 +21,9 @@ export const ContentContainer = styled.div`
   color: ${props => props.theme.neutral800};
 `
 export const CenteredParagraph = styled.p`
-  font-weight: 300;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
-  line-height: 24px;
+  line-height: 1.4;
   margin: 1.5em auto;
   max-width: 80%;
   @media (max-width: 735px) {
@@ -32,9 +31,8 @@ export const CenteredParagraph = styled.p`
   }
 `
 export const LeftParagraph = styled.p`
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 1.4;
   margin: 0px;
   max-width: 80%;
   @media (max-width: 735px) {
@@ -85,14 +83,14 @@ export const HeroBlock = (props) => {
 
 
 const BaseHeader = styled.div`
-  font-weight: 600;
+  font-family: "Nunito";
+  font-weight: 700;
   text-align: ${props => props.left ? "left" : "center"};
   color: ${props => props.theme.neutral700};
   padding-top: 10px;
   padding-bottom: 5px;
 `
 export const H1 = styled(BaseHeader)`
-  font-weight: 800;
   font-size: 56px;
   @media (max-width: 500px) {
     font-size: 40px;
@@ -105,7 +103,7 @@ export const H3 = styled(BaseHeader)`
   font-size: 24px;
 `
 export const Bold = styled.span`
-  font-weight: 600;
+  font-weight: 700;
 `
 
 /* Feature Block */
@@ -114,6 +112,7 @@ const FeatureContainer = styled.div`
   background-color: ${props => props.theme.primary500};
   padding: 1em 2em;
   margin: 4em auto;
+  font-weight: 400;
   @media (max-width: 735px) {
     flex-direction: column;
     padding: 2em 2em;
@@ -230,7 +229,7 @@ const ListItem = styled.li`
   top: 0;
   counter-increment: li;
   color: ${props => props.theme.primary500};
-  font-weight: 600;
+  font-weight: 700;
   font-size: 18px;
   &:before {
     content: "."counter(li);
@@ -247,8 +246,8 @@ const ListItemContent = styled.p`
   /* padding-left: 2em; */
   color: ${props => props.theme.neutral600};
   font-weight: 300;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 1.4;
 `
 
 export const Ordered = (props) => {

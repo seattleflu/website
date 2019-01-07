@@ -10,8 +10,9 @@ const Container = styled.div`
   background-color: ${props => props.theme.neutral900};
   min-height: 10vh;
   width: 100vw;
-  font-size: 15px;
-  line-height: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
   padding-bottom: 2em;
   padding-top: 2em;
   flex-shrink: 0;
