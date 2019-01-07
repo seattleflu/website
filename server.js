@@ -4,7 +4,7 @@ const sslRedirect = require('heroku-ssl-redirect');
 
 const app = express();
 app.set('port', process.env.PORT || 5000);
-app.use(sslRedirect()); // redirect HTTP to HTTPS
+// app.use(sslRedirect()); // redirect HTTP to HTTPS
 app.use(require('express-naked-redirect')({reverse: true})); // redirect www.seattleflu.org to seattleflu.org
 app.use(express.static(path.join(__dirname, 'build')));
 app.use('/favicon.png', express.static(path.join(__dirname, "build", "favicon.png")));
