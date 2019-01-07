@@ -54,7 +54,7 @@ const faqItems = [
   ],
   [
     "What will happen to my sample after the study?",
-    "We will keep it in the freezer for future use."
+    "We will keep it frozen in case we need to repeat the experiment to figure out what germs are in the sample."
   ],
   [
     "Could participating in this study affect my insurance in any way?",
