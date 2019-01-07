@@ -69,8 +69,8 @@ export const Splash = () => (
             <ol type="a">
               <li>We’ll make sure that you have 2 or more flu-like symptoms (fever, cough, sore throat, runny or stuffy nose, muscle or body aches).</li>
               <li>You’ll answer some questions about your health and where you live (geography matters because we are mapping where the flu is).</li>
-              <li>We’ll take a swab from the front of your nose to collect the exact virus you have.</li>
-              <li>You’re done! Enjoy your $10 Starbucks gift card for participating!</li>
+              <li>We’ll take a swab from the front of your nose to collect the exact germs that you have.</li>
+              <li>You’re done! Enjoy your $10 gift card for participating!</li>
             </ol>
           </div>
         </utils.Feature>

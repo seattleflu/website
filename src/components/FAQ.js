@@ -31,8 +31,8 @@ const faqItems = [
       <br/>
       <ol>
         <li>{"You'll answer some questions about your health and where you live (geography matters because we are mapping where the flu is.)"}</li>
-        <li>{"We'll take a swab from the front of your nose to collect the exact flu virus you have."}</li>
-        <li>{"You're done! Collect your $10 Starbucks Gift Card and be on your way."}</li>
+        <li>{"We'll take a swab from the front of your nose to collect the exact germs that you have."}</li>
+        <li>{"You're done! Collect your $10 gift card and be on your way."}</li>
       </ol>
     </>)
   ],
@@ -62,7 +62,7 @@ const faqItems = [
   ],
   [
     "Will I be tracked after the study? ",
-    "No. We are not tracking you. We are tracking the virus that is making you sick."
+    "No. We are not tracking you. We are tracking the germs that are making you sick."
   ],
   [
     "Can I help to stop the spread of the flu? ",
