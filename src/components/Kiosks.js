@@ -18,17 +18,22 @@ const Flex = styled.div`
   }
 `
 
-const OL = styled.ol`
+const Ol = styled.ol`
   margin: 0 2em;
   color: ${props => props.theme.primary600}
   font-weight: 600;
-  line-height: 60px;
+  @media (max-width: 500px) {
+    margin: 2em auto 0;
+  }
+`
+const Li = styled.li`
+  padding-top: 40px;
+  padding-bottom: 5px;
   @media (max-width: 1000px) {
-    line-height: 40px;
+    padding-top: 20px;
   }
   @media (max-width: 500px) {
-    line-height: 22px;
-    margin: 2em auto 0;
+    padding-top: 5px;
   }
 `
 const ImgContainer = styled.div`
@@ -43,6 +48,11 @@ const Img = styled.img`
   width: 100%;
   height: auto;
 `
+const Times = styled.div`
+  color: ${props => props.theme.primary500}
+  font-weight: 400;
+  padding: 0;
+`
 
 
 export const Kiosks = () => (
@@ -53,15 +63,21 @@ export const Kiosks = () => (
         <ImgContainer>
           <Img src={kiosks} alt="kiosks"/>
         </ImgContainer>
-        <OL>
-          <li>University of Washington Hall Health</li>
-          <li>University of Washington Health Sciences</li>
-          <li>University of Washington Husky Union Building</li>
-          <li>Hutch Kids</li>
-          <li>DESC (3rd Ave/Yesler)</li>
-          <li>Pioneer Square Clinic</li>
-          <li>St. Martin's de Porres</li>
-        </OL>
+        <Ol>
+          <Li>University of Washington Hall Health</Li>
+          <Times>10am-3pm (Tues-Fri)</Times>
+          <Li>University of Washington Health Sciences</Li>
+          <Times>11am-1pm (Tues-Thur)</Times>
+          <Li>University of Washington Husky Union Building</Li>
+          <Times>10am-3pm (Tues-Fri)</Times>
+          <Li>Hutch Kids</Li>
+          <Li>DESC (3rd Ave/Yesler)</Li>
+          <Times>11am-2pm (Wed), 1pm-4pm (Thur)</Times>
+          <Li>Pioneer Square Clinic</Li>
+          <Times>8:30am-11:30am (Tues-Fri)</Times>
+          <Li>St. Martin's de Porres</Li>
+          <Times>7pm-9pm (Tues & Thur)</Times>
+        </Ol>
       </Flex>
     </utils.ContentContainer>
   </utils.OuterContainer>
