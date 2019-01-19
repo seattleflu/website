@@ -63,8 +63,7 @@ export const Splash = () => (
             <span>
               We've set up a number of kiosks around Seattle to gather samples from people
               who feel like they may have the flu. If you are feeling ill and see a kiosk,
-              you can take 15 minutes to participate (we’ll work extra hard to distract you
-              from feeling crummy).
+              you can take 15 minutes to participate.
             </span>
             <ol type="a">
               <li>We’ll make sure that you have 2 or more flu-like symptoms (fever, cough, sore throat, runny or stuffy nose, muscle or body aches).</li>

@@ -132,7 +132,7 @@ const FeatureButton = styled(Link)`
   text-transform: uppercase;
   transition: background .3s, color .3s;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   text-decoration: none;
   &:hover {
