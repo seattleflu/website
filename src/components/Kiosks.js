@@ -1,7 +1,11 @@
 import React from 'react';
+import PropTypes from "prop-types";
+import ReactMapboxGl, { Layer, Feature, Marker, Popup } from "react-mapbox-gl";
 import styled from 'styled-components'
+import { withRouter } from 'react-router-dom';
 import * as utils from './utils';
 import kiosks from '../img/seattle-map.jpg';
+import mapMarker from '../img/marker.png';
 
 const Flex = styled.div`
   display: flex;
@@ -54,31 +58,86 @@ const Times = styled.div`
   padding: 0;
 `
 
+const MapContainer = styled.div`
+  max-width: 1080px;
+  @media (max-width: 735px) {
+    max-width: 90vw;
+  }
+  background-color: #fff;
+  margin: auto;
+  height: 400px;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  color: ${props => props.theme.primary500};
+`
 
-export const Kiosks = () => (
-  <utils.OuterContainer>
-    <utils.ContentContainer>
-      <utils.H1>Kiosk locations</utils.H1>
-      <Flex>
-        <ImgContainer>
-          <Img src={kiosks} alt="kiosks"/>
-        </ImgContainer>
-        <Ol>
-          <Li>University of Washington Hall Health</Li>
-          <Times>10am-3pm (Tues-Fri)</Times>
-          <Li>University of Washington Health Sciences</Li>
-          <Times>11am-1pm (Tues-Thur)</Times>
-          <Li>University of Washington Husky Union Building</Li>
-          <Times>10am-3pm (Tues-Fri)</Times>
-          <Li>Hutch Kids</Li>
-          <Li>DESC (3rd Ave/Yesler)</Li>
-          <Times>11am-2pm (Wed), 1pm-4pm (Thur)</Times>
-          <Li>Pioneer Square Clinic</Li>
-          <Times>8:30am-11:30am (Tues-Fri)</Times>
-          <Li>St. Martin's de Porres</Li>
-          <Times>7pm-9pm (Tues & Thur)</Times>
-        </Ol>
-      </Flex>
-    </utils.ContentContainer>
-  </utils.OuterContainer>
-);
+const Map = ReactMapboxGl({
+  accessToken: "pk.eyJ1IjoidHJ2cmIiLCJhIjoiY2pyM3p4aTlmMWMwbjRibzlia3MyMjZhYiJ9.JCLCk3g-GiVOcKiNWGjOXA"
+});
+
+class Kiosks extends React.Component  {
+
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
+
+  state = {
+    viewport: {
+      width: "100%",
+      zoom: 12
+    }
+  };
+
+  render() {
+    return(
+      <utils.OuterContainer>
+        <utils.ContentContainer>
+          <utils.H1>Kiosk locations</utils.H1>
+          <MapContainer>
+            <Map
+              style="mapbox://styles/mapbox/streets-v9"
+              containerStyle={{height: "400px", width: "100vw"}}
+              center={[-122.3346527, 47.6061706]}
+              >
+              <Marker
+                coordinates={[-122.3346527, 47.6061706]}
+                anchor="bottom">
+                <img alt="marker" width="40px" height="auto" src={mapMarker}/>
+              </Marker>
+            </Map>
+          </MapContainer>
+          <Flex>
+            <ImgContainer>
+              <Img src={kiosks} alt="kiosks"/>
+            </ImgContainer>
+            <Ol>
+              <Li>University of Washington Hall Health</Li>
+              <Times>10am-3pm (Tues-Fri)</Times>
+              <Li>University of Washington Health Sciences</Li>
+              <Times>11am-1pm (Tues-Thur)</Times>
+              <Li>University of Washington Husky Union Building</Li>
+              <Times>10am-3pm (Tues-Fri)</Times>
+              <Li>Hutch Kids</Li>
+              <Li>DESC (3rd Ave/Yesler)</Li>
+              <Times>11am-2pm (Wed), 1pm-4pm (Thur)</Times>
+              <Li>Pioneer Square Clinic</Li>
+              <Times>8:30am-11:30am (Tues-Fri)</Times>
+              <Li>St. Martin's de Porres</Li>
+              <Times>7pm-9pm (Tues & Thur)</Times>
+            </Ol>
+          </Flex>
+        </utils.ContentContainer>
+      </utils.OuterContainer>
+    )
+  }
+
+}
+
+export default Kiosks = withRouter(Kiosks)

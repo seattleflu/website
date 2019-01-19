@@ -7,7 +7,7 @@ import Header from "./Header";
 import { Footer } from "./Footer";
 import { Splash } from "./Splash";
 import { FAQ } from "./FAQ";
-import { Kiosks } from "./Kiosks";
+import Kiosks from "./Kiosks";
 
 class App extends Component {
   render() {
