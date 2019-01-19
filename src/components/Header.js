@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from "prop-types";
 import styled from 'styled-components'
 import { withRouter } from 'react-router-dom';
-import logo from '../img/logo.png';
+import logo from '../img/logo-horizontal.png';
 import * as utils from "./utils";
 
-const Container = styled.div`
+const HeaderContainer = styled.div`
   max-width: 1080px;
   @media (max-width: 735px) {
     max-width: 90vw;
   }
   background-color: #fff;
   margin: auto;
-  height: 120px;
-  padding: 0px;
+  height: 60px;
+  padding-top: 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -24,22 +24,31 @@ const Container = styled.div`
 `
 const LogoContainer = styled.div`
   margin: auto;
+  overflow: hidden;
+  @media (max-width: 480px) {
+    width: 56px;
+  }
 `
 
 const Logo = styled.img`
-  height: auto;
-  width: 140px;
-  padding: 0px 10px 0px 10px;
+  height: 60px;
+  width: auto;
+  padding: 0px;
 `
 const Spacer = styled.div`
   flex-grow: 10;
 `
 
-// Temporarily remove nav. I expect navigating to /faq and /kiosks via links within
-// the splash page and returning to splash via the logo link at top left
-// <Spacer/>
-// <utils.InternalLink to="/Flu101">Flu101</utils.InternalLink>
-// <utils.InternalLink to="/FAQ">FAQ</utils.InternalLink>
+const LinkContainer = styled.div`
+  margin: 0em 1em 0em 1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 18px;
+  height: 30px;
+  line-height: 30px;
+  color: ${props => props.theme.neutral500};
+  border-bottom: 1px solid ${props => props.theme.neutral200};
+`
 
 class Header extends React.Component  {
 
@@ -52,16 +61,26 @@ class Header extends React.Component  {
   render() {
 
     const { match, location, history } = this.props;
-    if(location.pathname === '/') return null;
 
     return (
-      <Container>
-        <LogoContainer>
-          <utils.InternalLink to="/">
-            <Logo src={logo} alt="logo" />
-          </utils.InternalLink>
-        </LogoContainer>
-      </Container>
+      <HeaderContainer>
+          <LogoContainer>
+            <utils.InternalLink to="/">
+              <Logo src={logo} alt="logo" />
+            </utils.InternalLink>
+          </LogoContainer>
+        <Spacer/>
+        <LinkContainer>
+          {(location.pathname !== '/kiosks') ? (
+            <utils.InternalSoftLink to="/kiosks">Find a Kiosk</utils.InternalSoftLink>
+          ) : <utils.InternalLink to="/kiosks">Find a Kiosk</utils.InternalLink>}
+        </LinkContainer>
+        <LinkContainer>
+          {(location.pathname !== '/faq') ? (
+            <utils.InternalSoftLink to="/faq">FAQ</utils.InternalSoftLink>
+          ) : <utils.InternalLink to="/faq">FAQ</utils.InternalLink>}
+        </LinkContainer>
+      </HeaderContainer>
     )
   }
 
