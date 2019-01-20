@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import ReactMapboxGl, { Marker, ZoomControl } from "react-mapbox-gl";
+import isTouchDevice from "is-touch-device";
 import styled from 'styled-components'
 import { withRouter } from 'react-router-dom';
 import * as utils from './utils';
@@ -68,7 +69,8 @@ export const MapMarker = (props) => {
 const Map = ReactMapboxGl({
   accessToken: "pk.eyJ1IjoidHJ2cmIiLCJhIjoiY2pyM3p4aTlmMWMwbjRibzlia3MyMjZhYiJ9.JCLCk3g-GiVOcKiNWGjOXA",
   minZoom: 10.8,
-  scrollZoom: false
+  scrollZoom: false,
+  dragPan: isTouchDevice() ? false : true
 });
 
 const kiosksList = [

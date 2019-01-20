@@ -15,6 +15,7 @@
     "compression": "^1.7.3",
     "express-naked-redirect": "^0.1.2",
     "heroku-ssl-redirect": "0.0.4",
+    "is-touch-device": "^1.0.1",
     "mapbox-gl": "^0.52.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
