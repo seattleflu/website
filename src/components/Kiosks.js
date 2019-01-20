@@ -26,7 +26,7 @@ const MapContainer = styled.div`
   max-width: 1080px;
   width: 620px;
   @media (max-width: 520px) {
-    width: 400px;
+    width: 100%;
   }
   background-color: #fff;
   margin: auto;
@@ -164,7 +164,10 @@ class Kiosks extends React.Component  {
                 <ZoomControl zoomDiff={1.0}/>
               </Map>
             </MapContainer>
-            <utils.Ordered items={kiosksList}/>
+            <div>
+              <utils.Ordered items={kiosksList}/>
+              <i style={{marginLeft: "32px"}}>Updated for the week of Jan 21, 2019</i>
+            </div>
           </Flex>
         </utils.ContentContainer>
       </utils.OuterContainer>
