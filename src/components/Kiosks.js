@@ -73,15 +73,15 @@ const Map = ReactMapboxGl({
 
 const kiosksList = [
   [
-    "University of Washington Hall Health", // [-122.3040, 47.6561682]
+    "UW Hall Health Clinic", // [-122.3040, 47.6561682]
     "10am-3pm (Tues-Fri)"
   ],
   [
-    "University of Washington Health Sciences", // [-122.310719, 47.6511139]
+    "UW Health Sciences Building (Rotunda)", // [-122.310719, 47.6511139]
     "11am-1pm (Tues-Thur)"
   ],
   [
-    "University of Washington Husky Union Building", // [-122.30530, 47.6550]
+    "UW Husky Union Building (HUB)", // [-122.30530, 47.6550]
     "10am-3pm (Tues-Fri)"
   ],
   [
@@ -94,7 +94,7 @@ const kiosksList = [
   ],
   [
     "Pioneer Square Clinic", // [-122.330037, 47.600585]
-    "8:30am-11:30am (Tues-Fri)"
+    "9am-12pm (Tue), 8:30am-11:30am (Wed-Fri)"
   ],
   [
     "St. Martin's de Porres", // [-122.338581, 47.588670]
