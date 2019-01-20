@@ -28,31 +28,31 @@ const Flex = styled.div`
     margin: 0 3em 3em;
   }
 `
-const Column = styled.div`
-  flex: 1;
-  @media (max-width: 735px) {
-    margin-bottom: 1em
-  }
-`
-const ColumnHeader = styled.div`
-  margin: 0 0 10px;
-  color: ${props => props.theme.neutral300}
-  font-weight: 600;
-`
+// const Column = styled.div`
+//   flex: 1;
+//   @media (max-width: 735px) {
+//     margin-bottom: 1em
+//   }
+// `
+// const ColumnHeader = styled.div`
+//   margin: 0 0 10px;
+//   color: ${props => props.theme.neutral300}
+//   font-weight: 600;
+// `
 const LogoLink = styled.a`
   cursor: pointer;
   margin: auto 0;
 `
-const BlockLinkInternal = styled(utils.InternalLink)`
-  display: block;
-  padding-top: 3px;
-  padding-bottom: 3px;
-`
-const BlockLinkExternal = styled(utils.ExternalLink)`
-  display: block;
-  padding-top: 3px;
-  padding-bottom: 3px;
-`
+// const BlockLinkInternal = styled(utils.InternalLink)`
+//   display: block;
+//   padding-top: 3px;
+//   padding-bottom: 3px;
+// `
+// const BlockLinkExternal = styled(utils.ExternalLink)`
+//   display: block;
+//   padding-top: 3px;
+//   padding-bottom: 3px;
+// `
 const Center = styled.div`
   text-align: center;
   color: ${props => props.theme.neutral200};

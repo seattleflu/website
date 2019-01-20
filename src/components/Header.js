@@ -60,7 +60,7 @@ class Header extends React.Component  {
 
   render() {
 
-    const { match, location, history } = this.props;
+    const { location } = this.props;
 
     return (
       <HeaderContainer>

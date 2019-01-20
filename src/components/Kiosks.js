@@ -119,7 +119,7 @@ class Kiosks extends React.Component  {
           <Flex>
             <MapContainer>
               <Map
-                style="mapbox://styles/mapbox/streets-v9"
+                style="mapbox://styles/mapbox/streets-v9" // eslint-disable-line
                 containerStyle={{height: "100%", width: "100%"}}
                 center={[-122.306754, 47.654209]}
                 zoom={[14]}

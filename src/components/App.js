@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ThemeProvider } from 'styled-components'
 import ScrollToTop from "./ScrollToTop";
-import { GlobalStyle, PageContainer, theme } from "../theme/globalStyle";
+import { GlobalStyle, theme } from "../theme/globalStyle";
 import Header from "./Header";
 import { Footer } from "./Footer";
 import { Splash } from "./Splash";
