@@ -47,6 +47,7 @@ const MapMarkerContainer = styled.div`
   color: white;
   font-weight: 800;
   font-size: 16px;
+  cursor: pointer;
 `;
 
 const MapMarkerLabel = styled.div`
@@ -103,7 +104,32 @@ const kiosksList = [
   ]
 ]
 
+const kioskData = {
+  "1": {
+    coords: [-122.3040, 47.6561682],
+    name: "UW Hall Health Clinic",
+    hours: "10am-3pm (Tues-Fri)"
+  },
+  "2": {
+    coords: [-122.310719, 47.6511139],
+    name: "UW Health Sciences Building (Rotunda)",
+    hours: "11am-1pm (Tues-Thur)"
+  },
+  "3": {
+    coords: [-122.30530, 47.6550],
+    name: "UW Husky Union Building (HUB)",
+    hours: "10am-3pm (Tues-Fri)"
+  }
+}
+
 class Kiosks extends React.Component  {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      zoomToIndex: null
+    };
+  }
 
   static propTypes = {
     match: PropTypes.object.isRequired,
@@ -111,7 +137,29 @@ class Kiosks extends React.Component  {
     history: PropTypes.object.isRequired
   };
 
+  onClick(d) {
+    this.setState({zoomToIndex: d});
+  }
+
   render() {
+
+    const center = this.state.zoomToIndex
+      ? kioskData[this.state.zoomToIndex].coords : [-122.306754, 47.654209]
+    const zoom = this.state.zoomToIndex ? 15 : 14
+
+    const MarkerArray = Object.keys(kioskData).map((key) => {
+      return (
+        <Marker
+          key={key}
+          coordinates={kioskData[key].coords}
+          anchor="bottom"
+          onClick={() => this.onClick(key)}
+        >
+          <MapMarker label={key}/>
+        </Marker>
+      );
+    });
+
     return(
       <utils.OuterContainer>
         <utils.ContentContainer>
@@ -121,25 +169,11 @@ class Kiosks extends React.Component  {
               <Map
                 style="mapbox://styles/mapbox/streets-v9" // eslint-disable-line
                 containerStyle={{height: "100%", width: "100%"}}
-                center={[-122.306754, 47.654209]}
-                zoom={[14]}
+                center={center}
+                zoom={[zoom]}
                 maxBounds={[[-122.502289, 47.410749], [-122.186659, 47.761671]]}
                 >
-                <Marker
-                  coordinates={[-122.3040, 47.6561682]}
-                  anchor="bottom">
-                  <MapMarker label="1"/>
-                </Marker>
-                <Marker
-                  coordinates={[-122.310719, 47.6511139]}
-                  anchor="bottom">
-                  <MapMarker label="2"/>
-                </Marker>
-                <Marker
-                  coordinates={[-122.30530, 47.6550]}
-                  anchor="bottom">
-                  <MapMarker label="3"/>
-                </Marker>
+                {MarkerArray}
                 <ZoomControl zoomDiff={1.0}/>
               </Map>
             </MapContainer>
