@@ -30,7 +30,7 @@ const MapContainer = styled.div`
   }
   background-color: #fff;
   margin: auto;
-  height: 600px;
+  height: 550px;
   padding-top: 5px;
   display: flex;
   flex-direction: row;
@@ -73,6 +73,21 @@ const Map = ReactMapboxGl({
   dragPan: isTouchDevice() ? false : true
 });
 
+const TextContainer = styled.div`
+  max-width: 1080px;
+  width: 400px;
+  background-color: #fff;
+  margin: auto;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  font-size: 18px;
+`
+
 const kiosksList = [
   [
     "UW Hall Health Clinic", // [-122.3040, 47.6561682]
@@ -85,22 +100,6 @@ const kiosksList = [
   [
     "UW Husky Union Building (HUB)", // [-122.30530, 47.6550]
     "10am-3pm (Tues-Fri)"
-  ],
-  [
-    "Hutch Kids", // [-122.332087, 47.626242]
-    ""
-  ],
-  [
-    "DESC (3rd Ave/Yesler)", // [-122.331118, 47.602180]
-    "11am-2pm (Wed), 1pm-4pm (Thur)"
-  ],
-  [
-    "Pioneer Square Clinic", // [-122.330037, 47.600585]
-    "9am-12pm (Tue), 8:30am-11:30am (Wed-Fri)"
-  ],
-  [
-    "St. Martin's de Porres", // [-122.338581, 47.588670]
-    "7pm-9pm (Tues & Thur)"
   ]
 ]
 
@@ -122,8 +121,8 @@ class Kiosks extends React.Component  {
               <Map
                 style="mapbox://styles/mapbox/streets-v9"
                 containerStyle={{height: "100%", width: "100%"}}
-                center={[-122.331, 47.625]}
-                zoom={[11.8]}
+                center={[-122.306754, 47.654209]}
+                zoom={[14]}
                 maxBounds={[[-122.502289, 47.410749], [-122.186659, 47.761671]]}
                 >
                 <Marker
@@ -141,33 +140,17 @@ class Kiosks extends React.Component  {
                   anchor="bottom">
                   <MapMarker label="3"/>
                 </Marker>
-                <Marker
-                  coordinates={[-122.332087, 47.626242]}
-                  anchor="bottom">
-                  <MapMarker label="4"/>
-                </Marker>
-                <Marker
-                  coordinates={[-122.331118, 47.602180]}
-                  anchor="bottom">
-                  <MapMarker label="5"/>
-                </Marker>
-                <Marker
-                  coordinates={[-122.330037, 47.600585]}
-                  anchor="bottom">
-                  <MapMarker label="6"/>
-                </Marker>
-                <Marker
-                  coordinates={[-122.338581, 47.588670]}
-                  anchor="bottom">
-                  <MapMarker label="7"/>
-                </Marker>
                 <ZoomControl zoomDiff={1.0}/>
               </Map>
             </MapContainer>
-            <div>
+            <TextContainer>
               <utils.Ordered items={kiosksList}/>
-              <i style={{marginLeft: "32px"}}>Updated for the week of Jan 21, 2019</i>
-            </div>
+              <span style={{marginLeft: "32px"}}>
+                <i>Updated for the week of Jan 21, 2019. There are
+                additional enrollment locations at Hutch Kids, DESC, Pioneer Square
+                Clinic and St. Martin's de Porres.</i>
+              </span>
+            </TextContainer>
           </Flex>
         </utils.ContentContainer>
       </utils.OuterContainer>
