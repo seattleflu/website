@@ -240,7 +240,7 @@ const ListContainer = styled.ol`
   margin: 0 1em;
 `
 const ListItem = styled.li`
-  margin: 2em auto;
+  margin: 1.5em auto;
   top: 0;
   counter-increment: li;
   color: ${props => props.theme.primary500};
@@ -263,6 +263,7 @@ const ListItemContent = styled.p`
   font-weight: 300;
   font-size: 18px;
   line-height: 1.4;
+  margin: 0.5em auto;
 `
 
 export const Ordered = (props) => {

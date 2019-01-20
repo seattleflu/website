@@ -1,71 +1,35 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import ReactMapboxGl, { Layer, Feature, Marker, Popup } from "react-mapbox-gl";
+import ReactMapboxGl, { Marker, ZoomControl } from "react-mapbox-gl";
 import styled from 'styled-components'
 import { withRouter } from 'react-router-dom';
 import * as utils from './utils';
-import kiosks from '../img/seattle-map.jpg';
-import mapMarker from '../img/marker.png';
+import markerImage from '../img/marker.png';
 
 const Flex = styled.div`
   display: flex;
   justify-content: space-around;
-  margin: 2em auto 3em;
+  margin: 0em 1em 3em 1em;
   max-width: 1080px;
   @media (max-width: 1080px) {
-    max-width: 80vw;
+    max-width: 100vw;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 520px) {
     flex-direction: column;
     max-width: 100vw;
     margin: 1em 0 3em;
   }
 `
 
-const Ol = styled.ol`
-  margin: 0 2em;
-  color: ${props => props.theme.primary600}
-  font-weight: 600;
-  @media (max-width: 500px) {
-    margin: 2em auto 0;
-  }
-`
-const Li = styled.li`
-  padding-top: 40px;
-  padding-bottom: 5px;
-  @media (max-width: 1000px) {
-    padding-top: 20px;
-  }
-  @media (max-width: 500px) {
-    padding-top: 5px;
-  }
-`
-const ImgContainer = styled.div`
-  max-width: 40vw;
-  @media (max-width: 500px) {
-    width: 100vw;
-    max-width: 100vw;
-  }
-`
-const Img = styled.img`
-  display: block;
-  width: 100%;
-  height: auto;
-`
-const Times = styled.div`
-  color: ${props => props.theme.primary500}
-  font-weight: 400;
-  padding: 0;
-`
-
 const MapContainer = styled.div`
   max-width: 1080px;
-  @media (max-width: 735px) {
-    max-width: 90vw;
+  width: 620px;
+  @media (max-width: 520px) {
+    width: 400px;
   }
   background-color: #fff;
   margin: auto;
-  height: 400px;
+  height: 600px;
   padding-top: 5px;
   display: flex;
   flex-direction: row;
@@ -76,9 +40,67 @@ const MapContainer = styled.div`
   color: ${props => props.theme.primary500};
 `
 
+const MapMarkerContainer = styled.div`
+  position: relative;
+  text-align: center;
+  color: white;
+  font-weight: 800;
+  font-size: 16px;
+`;
+
+const MapMarkerLabel = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-bottom: 11px;
+`;
+
+export const MapMarker = (props) => {
+  return (
+    <MapMarkerContainer>
+      <img alt="marker" width="48px" height="auto" src={markerImage}/>
+      <MapMarkerLabel>{props.label}</MapMarkerLabel>
+    </MapMarkerContainer>
+  )
+}
+
 const Map = ReactMapboxGl({
-  accessToken: "pk.eyJ1IjoidHJ2cmIiLCJhIjoiY2pyM3p4aTlmMWMwbjRibzlia3MyMjZhYiJ9.JCLCk3g-GiVOcKiNWGjOXA"
+  accessToken: "pk.eyJ1IjoidHJ2cmIiLCJhIjoiY2pyM3p4aTlmMWMwbjRibzlia3MyMjZhYiJ9.JCLCk3g-GiVOcKiNWGjOXA",
+  minZoom: 10.8,
+  scrollZoom: false
 });
+
+const kiosksList = [
+  [
+    "University of Washington Hall Health", // [-122.3040, 47.6561682]
+    "10am-3pm (Tues-Fri)"
+  ],
+  [
+    "University of Washington Health Sciences", // [-122.310719, 47.6511139]
+    "11am-1pm (Tues-Thur)"
+  ],
+  [
+    "University of Washington Husky Union Building", // [-122.30530, 47.6550]
+    "10am-3pm (Tues-Fri)"
+  ],
+  [
+    "Hutch Kids", // [-122.332087, 47.626242]
+    ""
+  ],
+  [
+    "DESC (3rd Ave/Yesler)", // [-122.331118, 47.602180]
+    "11am-2pm (Wed), 1pm-4pm (Thur)"
+  ],
+  [
+    "Pioneer Square Clinic", // [-122.330037, 47.600585]
+    "8:30am-11:30am (Tues-Fri)"
+  ],
+  [
+    "St. Martin's de Porres", // [-122.338581, 47.588670]
+    "7pm-9pm (Tues & Thur)"
+  ]
+]
 
 class Kiosks extends React.Component  {
 
@@ -88,50 +110,59 @@ class Kiosks extends React.Component  {
     history: PropTypes.object.isRequired
   };
 
-  state = {
-    viewport: {
-      width: "100%",
-      zoom: 12
-    }
-  };
-
   render() {
     return(
       <utils.OuterContainer>
         <utils.ContentContainer>
           <utils.H1>Kiosk locations</utils.H1>
-          <MapContainer>
-            <Map
-              style="mapbox://styles/mapbox/streets-v9"
-              containerStyle={{height: "400px", width: "100vw"}}
-              center={[-122.3346527, 47.6061706]}
-              >
-              <Marker
-                coordinates={[-122.3346527, 47.6061706]}
-                anchor="bottom">
-                <img alt="marker" width="40px" height="auto" src={mapMarker}/>
-              </Marker>
-            </Map>
-          </MapContainer>
           <Flex>
-            <ImgContainer>
-              <Img src={kiosks} alt="kiosks"/>
-            </ImgContainer>
-            <Ol>
-              <Li>University of Washington Hall Health</Li>
-              <Times>10am-3pm (Tues-Fri)</Times>
-              <Li>University of Washington Health Sciences</Li>
-              <Times>11am-1pm (Tues-Thur)</Times>
-              <Li>University of Washington Husky Union Building</Li>
-              <Times>10am-3pm (Tues-Fri)</Times>
-              <Li>Hutch Kids</Li>
-              <Li>DESC (3rd Ave/Yesler)</Li>
-              <Times>11am-2pm (Wed), 1pm-4pm (Thur)</Times>
-              <Li>Pioneer Square Clinic</Li>
-              <Times>8:30am-11:30am (Tues-Fri)</Times>
-              <Li>St. Martin's de Porres</Li>
-              <Times>7pm-9pm (Tues & Thur)</Times>
-            </Ol>
+            <MapContainer>
+              <Map
+                style="mapbox://styles/mapbox/streets-v9"
+                containerStyle={{height: "100%", width: "100%"}}
+                center={[-122.331, 47.625]}
+                zoom={[11.8]}
+                maxBounds={[[-122.502289, 47.410749], [-122.186659, 47.761671]]}
+                >
+                <Marker
+                  coordinates={[-122.3040, 47.6561682]}
+                  anchor="bottom">
+                  <MapMarker label="1"/>
+                </Marker>
+                <Marker
+                  coordinates={[-122.310719, 47.6511139]}
+                  anchor="bottom">
+                  <MapMarker label="2"/>
+                </Marker>
+                <Marker
+                  coordinates={[-122.30530, 47.6550]}
+                  anchor="bottom">
+                  <MapMarker label="3"/>
+                </Marker>
+                <Marker
+                  coordinates={[-122.332087, 47.626242]}
+                  anchor="bottom">
+                  <MapMarker label="4"/>
+                </Marker>
+                <Marker
+                  coordinates={[-122.331118, 47.602180]}
+                  anchor="bottom">
+                  <MapMarker label="5"/>
+                </Marker>
+                <Marker
+                  coordinates={[-122.330037, 47.600585]}
+                  anchor="bottom">
+                  <MapMarker label="6"/>
+                </Marker>
+                <Marker
+                  coordinates={[-122.338581, 47.588670]}
+                  anchor="bottom">
+                  <MapMarker label="7"/>
+                </Marker>
+                <ZoomControl zoomDiff={1.0}/>
+              </Map>
+            </MapContainer>
+            <utils.Ordered items={kiosksList}/>
           </Flex>
         </utils.ContentContainer>
       </utils.OuterContainer>

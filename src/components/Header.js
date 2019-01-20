@@ -25,7 +25,7 @@ const HeaderContainer = styled.div`
 const LogoContainer = styled.div`
   margin: auto;
   overflow: hidden;
-  @media (max-width: 480px) {
+  @media (max-width: 520px) {
     width: 56px;
   }
 `
