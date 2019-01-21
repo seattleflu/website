@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { withRouter } from 'react-router-dom';
 import * as utils from './utils';
 import markerImage from '../img/marker.png';
+import googleMapsLogo from '../img/google-maps.png';
 
 const Flex = styled.div`
   display: flex;
@@ -93,17 +94,20 @@ const kioskData = {
   "1": {
     coords: [-122.3040, 47.6561682],
     name: "UW Hall Health Clinic",
-    hours: "10am-3pm (Tues-Fri)"
+    hours: "10am-3pm (Tues-Fri)",
+    gmaps: "https://goo.gl/maps/7dviXTJQtX72"
   },
   "2": {
     coords: [-122.310719, 47.6511139],
     name: "UW Health Sciences Building (Rotunda)",
-    hours: "11am-1pm (Tues-Thur)"
+    hours: "11am-1pm (Tues-Thur)",
+    gmaps: "https://goo.gl/maps/qT8dHRxJSgS2"
   },
   "3": {
     coords: [-122.30530, 47.6550],
     name: "UW Husky Union Building (HUB)",
-    hours: "10am-3pm (Tues-Fri)"
+    hours: "10am-3pm (Tues-Fri)",
+    gmaps: "https://goo.gl/maps/kF4Ub265yM32"
   }
 }
 
@@ -153,14 +157,27 @@ class Kiosks extends React.Component  {
       return (
         <utils.ListItem
           key={key}
-          onClick={() => this.onMarkerClick(key)}
-          style={{"cursor": "pointer"}}
         >
-          {kioskData[key].name}
+          <span
+            onClick={() => this.onMarkerClick(key)}
+            style={{"cursor": "pointer"}}
+          >
+            {kioskData[key].name}
+          </span>
           <utils.ListItemContent
             style={{"margin": "0.25em auto"}}
           >
             {kioskData[key].hours}
+            <br/>
+            <utils.ExternalLink target="_blank" href={kioskData[key].gmaps}>
+              <img
+                alt="marker"
+                width="80px"
+                height="auto"
+                src={googleMapsLogo}
+                style={{"marginLeft": "2px"}}
+              />
+            </utils.ExternalLink>
           </utils.ListItemContent>
         </utils.ListItem>
       );
