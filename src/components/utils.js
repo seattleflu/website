@@ -234,12 +234,12 @@ export const ExternalSoftLink = styled.a`
 
 
 /* https://www.w3.org/Style/Examples/007/color-bullets.en.html */
-const ListContainer = styled.ol`
+export const ListContainer = styled.ol`
   list-style: none;
   counter-reset: li;
   margin: 0 1em;
 `
-const ListItem = styled.li`
+export const ListItem = styled.li`
   margin: 1.75em auto;
   top: 0;
   counter-increment: li;
@@ -257,7 +257,7 @@ const ListItem = styled.li`
   }
 
 `
-const ListItemContent = styled.p`
+export const ListItemContent = styled.p`
   /* padding-left: 2em; */
   color: ${props => props.theme.neutral600};
   font-weight: 300;

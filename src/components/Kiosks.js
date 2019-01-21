@@ -89,21 +89,6 @@ const TextContainer = styled.div`
   font-size: 18px;
 `
 
-const kiosksList = [
-  [
-    "UW Hall Health Clinic", // [-122.3040, 47.6561682]
-    "10am-3pm (Tues-Fri)"
-  ],
-  [
-    "UW Health Sciences Building (Rotunda)", // [-122.310719, 47.6511139]
-    "11am-1pm (Tues-Thur)"
-  ],
-  [
-    "UW Husky Union Building (HUB)", // [-122.30530, 47.6550]
-    "10am-3pm (Tues-Fri)"
-  ]
-]
-
 const kioskData = {
   "1": {
     coords: [-122.3040, 47.6561682],
@@ -137,15 +122,19 @@ class Kiosks extends React.Component  {
     history: PropTypes.object.isRequired
   };
 
-  onClick(d) {
+  onMarkerClick(d) {
     this.setState({zoomToIndex: d});
+  }
+
+  onMapMove(d) {
+    this.setState({zoomToIndex: null});
   }
 
   render() {
 
     const center = this.state.zoomToIndex
       ? kioskData[this.state.zoomToIndex].coords : [-122.306754, 47.654209]
-    const zoom = this.state.zoomToIndex ? 15 : 14
+    const zoom = this.state.zoomToIndex ? 16 : 14
 
     const MarkerArray = Object.keys(kioskData).map((key) => {
       return (
@@ -153,10 +142,27 @@ class Kiosks extends React.Component  {
           key={key}
           coordinates={kioskData[key].coords}
           anchor="bottom"
-          onClick={() => this.onClick(key)}
+          onClick={() => this.onMarkerClick(key)}
         >
           <MapMarker label={key}/>
         </Marker>
+      );
+    });
+
+    const TextArray = Object.keys(kioskData).map((key) => {
+      return (
+        <utils.ListItem
+          key={key}
+          onClick={() => this.onMarkerClick(key)}
+          style={{"cursor": "pointer"}}
+        >
+          {kioskData[key].name}
+          <utils.ListItemContent
+            style={{"margin": "0.25em auto"}}
+          >
+            {kioskData[key].hours}
+          </utils.ListItemContent>
+        </utils.ListItem>
       );
     });
 
@@ -172,14 +178,17 @@ class Kiosks extends React.Component  {
                 center={center}
                 zoom={[zoom]}
                 maxBounds={[[-122.502289, 47.410749], [-122.186659, 47.761671]]}
+                onDragEnd={() => this.onMapMove()}
                 >
                 {MarkerArray}
                 <ZoomControl zoomDiff={1.0}/>
               </Map>
             </MapContainer>
             <TextContainer>
-              <utils.Ordered items={kiosksList}/>
-              <span style={{marginLeft: "32px"}}>
+              <utils.ListContainer>
+                {TextArray}
+              </utils.ListContainer>
+              <span style={{marginLeft: "32px", marginRight: "10px"}}>
                 <i>Updated for the week of Jan 21, 2019. There are
                 additional enrollment locations at Hutch Kids, DESC, Pioneer Square
                 Clinic and St. Martin's de Porres.</i>
