@@ -24,6 +24,9 @@ export const GlobalStyle = createGlobalStyle`
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   }
+  p {
+    margin: 0.5em auto;
+  }
 `
 
 export const PageContainer = styled.div`

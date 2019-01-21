@@ -43,7 +43,7 @@ export const Splash = () => (
           title="Flu 101"
         >
           <div>
-            Today, up to 80,000 people in the United States die from the flu each year, and more than double that number get sick and suffer.
+            Today, up to 80,000 people in the United States die from the flu each year, and more than 30 million people get sick and suffer.
             We know that the flu is spread from person to person, and we know that it causes outbreaks every year.
             What we don’t know is exactly how it spreads, and why certain flu strains are stronger and more dangerous than others.
             We’re on a mission to change that.

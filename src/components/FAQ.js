@@ -5,24 +5,36 @@ import * as utils from './utils';
 const faqItems = [
   [
     "What is the Seattle Flu Study?",
-    "We're mapping the spread of the flu in Seattle"
+    "We're mapping the spread of the flu in Seattle. Today, up to 80,000 people in the United States die from the flu each year, and more than 30 million people get sick and suffer. We know that the flu is spread from person to person, and we know that it causes outbreaks every year. What we don't know is how it spreads, and why certain flu strains are stronger and more dangerous than others. The Seattle Flu Study is on a mission to change that."
   ],
   [
     "How do I participate?",
-    "You may see kiosks around town. If you are feeling ill with cold or flu-like symptoms, you can participate."
+    (<>
+    {"You can find a kiosk "}
+    <utils.InternalLink to="/kiosks">here</utils.InternalLink>
+    {"."}
+    <p/>
+    {"If you are feeling ill with two or more cold or flu-like symptoms, you can participate. These symptoms include:"}
+    <ul>
+      <li>{"Fever* or feeling feverish/chills"}</li>
+      <li>{"Cough"}</li>
+      <li>{"Sore throat"}</li>
+      <li>{"Runny or stuffy nose"}</li>
+      <li>{"Muscle or body aches"}</li>
+      <li>{"Headaches"}</li>
+      <li>{"Fatigue (tiredness)"}</li>
+      <li>{"Some people may have vomiting and diarrhea, though this is more common in children than adults."}</li>
+    </ul>
+    <i>{"*Note: not everyone with flu will have a fever."}</i>
+    </>)
   ],
   [
     "Who should participate in the study?",
-    "Everyone (infants to the elderly) who is sick with a cold or the flu. If you are experiencing cold/flu-like symptoms you could help our study and our ability to understand and fight the flu."
+    "Anyone (including infants and the elderly) who is sick with a cold or the flu. If you are experiencing cold/flu-like symptoms you could help our study and our ability to understand and fight the flu."
   ],
   [
     "Is there any reason that I shouldn't participate?",
-    (<>
-      <ul>
-        <li>{"Please do not enroll if you are NOT feeling 2 or more cold or flu-like symptoms."}</li>
-        <li>{"Please don't enroll if you are seriously ill."}</li>
-      </ul>
-    </>)
+    "Please do not enroll if you don’t have at least two symptoms of a cold or flu."
   ],
   [
     "What is the process and how long does it take?",
@@ -31,7 +43,7 @@ const faqItems = [
       <br/>
       <ol>
         <li>{"You'll answer some questions about your health and where you live (geography matters because we are mapping where the flu is.)"}</li>
-        <li>{"We'll take a swab from your nose to collect the exact germs that you have."}</li>
+        <li>{"We'll take a swab from your nose."}</li>
         <li>{"You're done! Collect your $10 gift card and be on your way."}</li>
       </ol>
     </>)
@@ -46,23 +58,27 @@ const faqItems = [
   ],
   [
     "Will I get personalized results after participating in the study?",
-    "Not yet, but we plan on doing that in the future. Stay tuned."
+    "No, but in the future we hope to make a map of the flu in Seattle available."
   ],
   [
     "Will my results be anonymous?",
-    "We are collecting your personal information to understand who gets the flu and to map where the flu exists. Your exact information will not be saved or tracked."
+    "We will record your name for the purposes of obtaining your consent to participate the study, and your address in order to map how the flu spreads. No identifiable data will ever be made publicly available. All links between your limited personal data and swab results will be destroyed at the end of the overall study."
   ],
   [
     "What will happen to my sample after the study?",
-    "We will keep it frozen in case we need to repeat the experiment to figure out what germs are in your sample."
+    "We will keep it frozen in case we need to repeat the experiment to figure out what germs are in your sample. At the end of the study, all links between your personal data and the swab data will be deleted."
   ],
   [
     "Could participating in this study affect my insurance in any way?",
-    "No, because the swab from your nose will not be linked to your personal information."
+    "No, because all of the information we collect will be confidential."
   ],
   [
-    "Will I be tracked after the study? ",
-    "No. We are not tracking you. We are tracking the germs that are making you sick."
+    "Will I be tracked after the study?",
+    "No. At the end of the study, all links between your personal data and swab data will be deleted."
+  ],
+  [
+    "Can I get a flu shot from the Seattle Flu Study?",
+    "No, but thank you for asking! We are gathering data to track and study the flu. We are NOT administering the flu vaccine."
   ],
   [
     "Can I help to stop the spread of the flu? ",
@@ -75,33 +91,7 @@ const faqItems = [
         <li>{"Stay home when you are sick"}</li>
       </ul>
     </>)
-  ],
-  [
-    "What are the symptoms of the flu? ",
-    (<>
-      <span>{"(If you are feeling 2 or more of these symptoms you could help our study.)"}</span>
-      <br/>
-      <ul>
-        <li>{"Fever* or feeling feverish/chills"}</li>
-        <li>{"Cough"}</li>
-        <li>{"Sore throat"}</li>
-        <li>{"Runny or stuffy nose"}</li>
-        <li>{"Muscle or body aches"}</li>
-        <li>{"Headaches"}</li>
-        <li>{"Fatigue (tiredness)"}</li>
-        <li>{"Some people may have vomiting and diarrhea, though this is more common in children than adults."}</li>
-      </ul>
-      <i>{"*Note: not everyone with flu will have a fever."}</i>
-    </>)
-  ],
-  [
-    "Why does this study matter?",
-    "Today, up to 80,000 people in the United States die from the flu each year, and more than double that number get sick and suffer. We know that the flu is spread from person to person, and we know that it causes outbreaks every year. What we don't know is how it spreads, and why certain flu strains are stronger and more dangerous than others. The Seattle Flu Study is on a mission to change that."
-  ],
-  [
-    "Can I get a flu shot from the Seattle Flu Study?",
-    "No, and thank you for asking! We are gathering data to track and study the flu. We are NOT administering the flu vaccine."
-  ]
+  ]  
 ]
 
 
