@@ -104,7 +104,7 @@ const kioskData = {
   "2": {
     coords: [-122.310719, 47.6511139],
     name: "UW Health Sciences Building (Rotunda)",
-    hours: "11am-1pm (Mon-Fri)",
+    hours: "11am-1pm (Mon-Thur)",
     gmaps: "https://goo.gl/maps/qT8dHRxJSgS2"
   },
   "3": {
