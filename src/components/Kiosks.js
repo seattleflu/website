@@ -90,24 +90,34 @@ const TextContainer = styled.div`
   font-size: 18px;
 `
 
+const defaultMapPosition = {
+  center: [-122.306754, 47.635],
+  zoom: 12
+};
 const kioskData = {
   "1": {
     coords: [-122.3040, 47.6561682],
     name: "UW Hall Health Clinic",
-    hours: "10am-3pm (Tues-Fri)",
+    hours: "10am-3pm (Mon-Thur)",
     gmaps: "https://goo.gl/maps/7dviXTJQtX72"
   },
   "2": {
     coords: [-122.310719, 47.6511139],
     name: "UW Health Sciences Building (Rotunda)",
-    hours: "11am-1pm (Tues-Thur)",
+    hours: "11am-1pm (Mon-Fri)",
     gmaps: "https://goo.gl/maps/qT8dHRxJSgS2"
   },
   "3": {
     coords: [-122.30530, 47.6550],
     name: "UW Husky Union Building (HUB)",
-    hours: "10am-3pm (Tues-Fri)",
+    hours: "10am-3pm (Mon-Fri)",
     gmaps: "https://goo.gl/maps/kF4Ub265yM32"
+  },
+  "4": {
+    coords: [-122.3234, 47.6041],
+    name: "Harborview Medical Center (Main Entrance)",
+    hours: "11am-1pm (Mon), 10am-1pm (Tues-Fri)",
+    gmaps: "https://goo.gl/maps/e1UHKgf3L5s"
   }
 }
 
@@ -136,9 +146,12 @@ class Kiosks extends React.Component  {
 
   render() {
 
-    const center = this.state.zoomToIndex
-      ? kioskData[this.state.zoomToIndex].coords : [-122.306754, 47.654209]
-    const zoom = this.state.zoomToIndex ? 16 : 14
+    const center = this.state.zoomToIndex ?
+      kioskData[this.state.zoomToIndex].coords :
+        defaultMapPosition.center;
+    const zoom = this.state.zoomToIndex ?
+      16 :
+        defaultMapPosition.zoom
 
     const MarkerArray = Object.keys(kioskData).map((key) => {
       return (
@@ -206,7 +219,7 @@ class Kiosks extends React.Component  {
                 {TextArray}
               </utils.ListContainer>
               <span style={{marginLeft: "32px", marginRight: "10px"}}>
-                <i>Updated for the week of Jan 21, 2019. There are
+                <i>Updated for the week of Jan 28, 2019. There are
                 additional enrollment locations at Hutch Kids, DESC, Pioneer Square
                 Clinic and St. Martin's de Porres.</i>
               </span>
