@@ -7,6 +7,9 @@ import { withRouter } from 'react-router-dom';
 import * as utils from './utils';
 import markerImage from '../img/marker.png';
 import googleMapsLogo from '../img/google-maps.png';
+import kiosk1 from '../img/kiosk-1.jpg';
+import kiosk2 from '../img/kiosk-2.jpg';
+import kiosk3 from '../img/kiosk-3.jpg';
 
 const Flex = styled.div`
   display: flex;
@@ -16,17 +19,38 @@ const Flex = styled.div`
   @media (max-width: 1080px) {
     max-width: 100vw;
   }
-  @media (max-width: 520px) {
+  @media (max-width: 720px) {
     flex-direction: column;
     max-width: 100vw;
     margin: 1em 0 3em;
   }
 `
 
+const ImageFlex = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 0em 1em 3em 1em;
+  max-width: 1080px;
+  @media (max-width: 1080px) {
+    flex-direction: column;
+    max-width: 100vw;
+    margin: 1em 0 3em;
+  }
+`
+
+const Image = styled.img`
+  max-width: 333px;
+  max-height: 222px;
+  width: auto;
+  height: auto;
+  margin: auto;
+  padding: 9px;
+`
+
 const MapContainer = styled.div`
   max-width: 1080px;
   width: 620px;
-  @media (max-width: 520px) {
+  @media (max-width: 720px) {
     width: 100%;
   }
   background-color: #fff;
@@ -225,6 +249,11 @@ class Kiosks extends React.Component  {
               </span>
             </TextContainer>
           </Flex>
+          <ImageFlex>
+            <Image alt="Kiosk 1" src={kiosk1}/>
+            <Image alt="Kiosk 2" src={kiosk2}/>
+            <Image alt="Kiosk 3" src={kiosk3}/>
+          </ImageFlex>
         </utils.ContentContainer>
       </utils.OuterContainer>
     )
