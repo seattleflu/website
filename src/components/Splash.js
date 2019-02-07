@@ -26,7 +26,7 @@ export const Splash = () => (
           <br/>
           <div>
             <span>
-              <utils.Bold>Sore throat, stuffy nose and achey all over? We need <i>You</i>. </utils.Bold>
+              <utils.Bold>Sore throat, stuffy nose and achy all over? We need <i>You</i>. </utils.Bold>
             </span>
             <span>
               All age groups (from infants to elderly) can help us with this study. Your
