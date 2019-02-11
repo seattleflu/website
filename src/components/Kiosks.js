@@ -250,7 +250,7 @@ class Kiosks extends React.Component  {
                 {TextArray}
               </utils.ListContainer>
               <span style={{marginLeft: "32px", marginRight: "10px"}}>
-                <i>Updated for the week of Jan 28, 2019. There are
+                <i>Updated for the week of Feb 11, 2019. There are
                 additional enrollment locations at Hutch Kids, DESC, Pioneer Square
                 Clinic and St. Martin's de Porres.</i>
               </span>
