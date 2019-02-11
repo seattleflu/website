@@ -142,10 +142,10 @@ const kioskData = {
     gmaps: "https://goo.gl/maps/kF4Ub265yM32"
   },
   "4": {
-    coords: [-122.3234, 47.6041],
+    coords: [-122.3247, 47.6035],
     name: "Harborview Medical Center (Main Entrance)",
     hours: "10am-2pm (Tue-Fri)",
-    gmaps: "https://goo.gl/maps/e1UHKgf3L5s"
+    gmaps: "https://goo.gl/maps/FnoB15R6maz"
   }
 }
 
