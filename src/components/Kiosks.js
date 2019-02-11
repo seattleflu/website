@@ -113,7 +113,11 @@ const TextContainer = styled.div`
   font-size: calc(10px + 2vmin);
   font-size: 18px;
 `
-
+const CenteredIntro = styled.h3`
+  max-width: 1080px;
+  text-align: center;
+  color: ${props => props.theme.warning500};
+`
 const defaultMapPosition = {
   center: [-122.306754, 47.635],
   zoom: 12
@@ -224,6 +228,9 @@ class Kiosks extends React.Component  {
       <utils.OuterContainer>
         <utils.ContentContainer>
           <utils.H1>Kiosk locations</utils.H1>
+          <CenteredIntro>
+            Please note: Locations and times are subject to snow conditions!
+          </CenteredIntro>
           <Flex>
             <MapContainer>
               <Map
