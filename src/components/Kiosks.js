@@ -122,25 +122,25 @@ const kioskData = {
   "1": {
     coords: [-122.3040, 47.6561682],
     name: "UW Hall Health Clinic",
-    hours: "10am-3pm (Mon-Thur)",
+    hours: "10am-3pm (Tue-Fri)",
     gmaps: "https://goo.gl/maps/7dviXTJQtX72"
   },
   "2": {
     coords: [-122.310719, 47.6511139],
     name: "UW Health Sciences Building (Rotunda)",
-    hours: "11am-1pm (Mon-Thur)",
+    hours: "11am-1pm (Tue-Thur)",
     gmaps: "https://goo.gl/maps/qT8dHRxJSgS2"
   },
   "3": {
     coords: [-122.30530, 47.6550],
     name: "UW Husky Union Building (HUB)",
-    hours: "10am-3pm (Mon-Fri)",
+    hours: "10am-3pm (Tue-Fri)",
     gmaps: "https://goo.gl/maps/kF4Ub265yM32"
   },
   "4": {
     coords: [-122.3234, 47.6041],
     name: "Harborview Medical Center (Main Entrance)",
-    hours: "11am-1pm (Mon), 10am-1pm (Tues-Fri)",
+    hours: "10am-2pm (Mon-Fri)",
     gmaps: "https://goo.gl/maps/e1UHKgf3L5s"
   }
 }
