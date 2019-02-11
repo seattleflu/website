@@ -49,13 +49,16 @@ const Image = styled.img`
 
 const MapContainer = styled.div`
   max-width: 1080px;
-  width: 620px;
+  width: 600px;
   @media (max-width: 720px) {
     width: 100%;
   }
+  @media (max-width: 1080px) {
+    width: 400px;
+  }
   background-color: #fff;
   margin: auto;
-  height: 550px;
+  height: 670px;
   padding-top: 5px;
   display: flex;
   flex-direction: row;
@@ -92,13 +95,6 @@ export const MapMarker = (props) => {
   )
 }
 
-const Map = ReactMapboxGl({
-  accessToken: "pk.eyJ1IjoidHJ2cmIiLCJhIjoiY2pyM3p4aTlmMWMwbjRibzlia3MyMjZhYiJ9.JCLCk3g-GiVOcKiNWGjOXA",
-  minZoom: 10.8,
-  scrollZoom: false,
-  dragPan: isTouchDevice() ? false : true
-});
-
 const TextContainer = styled.div`
   max-width: 1080px;
   width: 400px;
@@ -118,10 +114,14 @@ const CenteredIntro = styled.h3`
   text-align: center;
   color: ${props => props.theme.warning500};
 `
-const defaultMapPosition = {
-  center: [-122.306754, 47.635],
-  zoom: 12
-};
+
+const mapDefaults = {
+  center: [-122.306754, 47.560],
+  maxBounds: [[-122.7, 47.3], [-122.0, 47.8]],
+  zoomOverall: 10.4,
+  zoomPin: 16,
+  minZoom: 10
+}
 const kioskData = {
   "1": {
     coords: [-122.3040, 47.6561682],
@@ -146,8 +146,22 @@ const kioskData = {
     name: "Harborview Medical Center (Main Entrance)",
     hours: "10am-2pm (Tue-Fri)",
     gmaps: "https://goo.gl/maps/FnoB15R6maz"
+  },
+  "5": {
+    coords: [-122.305, 47.444],
+    name: "SeaTac Airport (International Arrivals)",
+    hours: "9:30am-3:30pm weekdays",
+    gmaps: "https://goo.gl/maps/f3nmyVQWjok",
+    zoom: 11
   }
 }
+
+const Map = ReactMapboxGl({
+  accessToken: "pk.eyJ1IjoidHJ2cmIiLCJhIjoiY2pyM3p4aTlmMWMwbjRibzlia3MyMjZhYiJ9.JCLCk3g-GiVOcKiNWGjOXA",
+  minZoom: mapDefaults.minZoom,
+  scrollZoom: false,
+  dragPan: isTouchDevice() ? false : true
+});
 
 class Kiosks extends React.Component  {
 
@@ -174,14 +188,18 @@ class Kiosks extends React.Component  {
 
   render() {
 
-    const center = this.state.zoomToIndex ?
-      kioskData[this.state.zoomToIndex].coords :
-        defaultMapPosition.center;
-    const zoom = this.state.zoomToIndex ?
-      16 :
-        defaultMapPosition.zoom
+    let center, zoom;
+    if (this.state.zoomToIndex) {
+      /* map focused on one pin */
+      center = kioskData[this.state.zoomToIndex].coords;
+      zoom = kioskData[this.state.zoomToIndex].zoom || mapDefaults.zoomPin;
+    } else {
+      /* "overall" view */
+      zoom = mapDefaults.zoomOverall;
+      center = mapDefaults.center;
+    }
 
-    const MarkerArray = Object.keys(kioskData).map((key) => {
+    const MarkerArray = Object.keys(kioskData).reverse().map((key) => {
       return (
         <Marker
           key={key}
@@ -238,7 +256,7 @@ class Kiosks extends React.Component  {
                 containerStyle={{height: "100%", width: "100%"}}
                 center={center}
                 zoom={[zoom]}
-                maxBounds={[[-122.502289, 47.410749], [-122.186659, 47.761671]]}
+                maxBounds={mapDefaults.maxBounds}
                 onDragEnd={() => this.onMapMove()}
                 >
                 {MarkerArray}
@@ -252,7 +270,7 @@ class Kiosks extends React.Component  {
               <span style={{marginLeft: "32px", marginRight: "10px"}}>
                 <i>Updated for the week of Feb 11, 2019. There are
                 additional enrollment locations at Hutch Kids, DESC, Pioneer Square
-                Clinic and St. Martin's de Porres.</i>
+                Clinic, St. Martin's de Porres and Costco Headquarters.</i>
               </span>
             </TextContainer>
           </Flex>
