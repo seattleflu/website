@@ -144,7 +144,7 @@ const kioskData = {
   "4": {
     coords: [-122.3234, 47.6041],
     name: "Harborview Medical Center (Main Entrance)",
-    hours: "10am-2pm (Mon-Fri)",
+    hours: "10am-2pm (Tue-Fri)",
     gmaps: "https://goo.gl/maps/e1UHKgf3L5s"
   }
 }
@@ -229,7 +229,7 @@ class Kiosks extends React.Component  {
         <utils.ContentContainer>
           <utils.H1>Kiosk locations</utils.H1>
           <CenteredIntro>
-            Please note: Locations and times are subject to snow conditions!
+            All kiosks will be closed Monday Feb 11 due to snow! We will provide updates for the rest of the week shortly.
           </CenteredIntro>
           <Flex>
             <MapContainer>
