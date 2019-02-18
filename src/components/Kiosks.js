@@ -246,9 +246,6 @@ class Kiosks extends React.Component  {
       <utils.OuterContainer>
         <utils.ContentContainer>
           <utils.H1>Kiosk locations</utils.H1>
-          <CenteredIntro>
-            All kiosks will be closed Monday Feb 11 due to snow! We will provide updates for the rest of the week shortly.
-          </CenteredIntro>
           <Flex>
             <MapContainer>
               <Map
@@ -268,7 +265,7 @@ class Kiosks extends React.Component  {
                 {TextArray}
               </utils.ListContainer>
               <span style={{marginLeft: "32px", marginRight: "10px"}}>
-                <i>Updated for the week of Feb 11, 2019. There are
+                <i>Updated for the week of Feb 18, 2019. There are
                 additional enrollment locations at Hutch Kids, DESC, Pioneer Square
                 Clinic, St. Martin's de Porres and Costco Headquarters.</i>
               </span>
