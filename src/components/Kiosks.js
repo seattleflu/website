@@ -266,7 +266,8 @@ class Kiosks extends React.Component  {
               </utils.ListContainer>
               <span style={{marginLeft: "32px", marginRight: "10px"}}>
                 <i>Updated for the week of Feb 18, 2019. There are
-                additional enrollment locations at Hutch Kids, DESC, Pioneer Square
+                additional enrollment locations at Hutch Kids, West Campus
+                Childcare Center, SeaMar Clinic, DESC, Pioneer Square
                 Clinic, St. Martin's de Porres and Costco Headquarters.</i>
               </span>
             </TextContainer>
