@@ -240,7 +240,7 @@ export const ListContainer = styled.ol`
   margin: 0 1em;
 `
 export const ListItem = styled.li`
-  margin: 1.75em auto;
+  margin: 1.5em auto;
   top: 0;
   counter-increment: li;
   color: ${props => props.theme.primary500};
