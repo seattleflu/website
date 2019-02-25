@@ -126,31 +126,31 @@ const kioskData = {
   "1": {
     coords: [-122.3040, 47.6561682],
     name: "UW Hall Health Clinic",
-    hours: "10am-3pm (Tue-Fri)",
+    hours: "10am-3pm (Mon-Fri)",
     gmaps: "https://goo.gl/maps/7dviXTJQtX72"
   },
   "2": {
     coords: [-122.310719, 47.6511139],
     name: "UW Health Sciences Building (Rotunda)",
-    hours: "11am-1pm (Tue-Thur)",
+    hours: "11am-1pm (Mon-Thur)",
     gmaps: "https://goo.gl/maps/qT8dHRxJSgS2"
   },
   "3": {
     coords: [-122.30530, 47.6550],
     name: "UW Husky Union Building (HUB)",
-    hours: "10am-3pm (Tue-Fri)",
+    hours: "10am-3pm (Mon-Fri)",
     gmaps: "https://goo.gl/maps/kF4Ub265yM32"
   },
   "4": {
     coords: [-122.3247, 47.6035],
     name: "Harborview Medical Center (Main Entrance)",
-    hours: "10am-2pm (Tue-Fri)",
+    hours: "10am-2pm (Mon-Fri)",
     gmaps: "https://goo.gl/maps/FnoB15R6maz"
   },
   "5": {
     coords: [-122.305, 47.444],
     name: "SeaTac Airport (International Arrivals)",
-    hours: "9:30am-3:30pm weekdays",
+    hours: "9am-3pm (Mon-Fri)",
     gmaps: "https://goo.gl/maps/f3nmyVQWjok",
     zoom: 11
   }
@@ -265,7 +265,7 @@ class Kiosks extends React.Component  {
                 {TextArray}
               </utils.ListContainer>
               <span style={{marginLeft: "32px", marginRight: "10px"}}>
-                <i>Updated for the week of Feb 18, 2019. There are
+                <i>Updated for the week of Feb 25, 2019. There are
                 additional enrollment locations at Hutch Kids, West Campus
                 Childcare Center, SeaMar Clinic, DESC, Pioneer Square
                 Clinic, St. Martin's de Porres and Costco Headquarters.</i>
