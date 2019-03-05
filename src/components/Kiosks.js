@@ -150,7 +150,7 @@ const kioskData = {
   "5": {
     coords: [-122.305, 47.444],
     name: "SeaTac Airport (International Arrivals)",
-    hours: "9am-3pm (Mon-Fri)",
+    hours: "10am-3pm (Mon, Thur, Fri)",
     gmaps: "https://goo.gl/maps/f3nmyVQWjok",
     zoom: 11
   }
@@ -265,7 +265,7 @@ class Kiosks extends React.Component  {
                 {TextArray}
               </utils.ListContainer>
               <span style={{marginLeft: "32px", marginRight: "10px"}}>
-                <i>Updated for the week of Feb 25, 2019. There are
+                <i>Updated for the week of March 4th, 2019. There are
                 additional enrollment locations at Hutch Kids, West Campus
                 Childcare Center, SeaMar Clinic, DESC, Pioneer Square
                 Clinic, St. Martin's de Porres and Costco Headquarters.</i>
