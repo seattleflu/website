@@ -64,11 +64,11 @@ class Header extends React.Component  {
 
     return (
       <HeaderContainer>
-          <LogoContainer>
-            <utils.InternalLink to="/">
-              <Logo src={logo} alt="logo" />
-            </utils.InternalLink>
-          </LogoContainer>
+        <LogoContainer>
+          <utils.InternalLink to="/">
+            <Logo src={logo} alt="logo" />
+          </utils.InternalLink>
+        </LogoContainer>
         <Spacer/>
         <LinkContainer>
           {(location.pathname !== '/kiosks') ? (

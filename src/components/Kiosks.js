@@ -109,11 +109,12 @@ const TextContainer = styled.div`
   font-size: calc(10px + 2vmin);
   font-size: 18px;
 `
-const CenteredIntro = styled.h3`
-  max-width: 1080px;
-  text-align: center;
-  color: ${props => props.theme.warning500};
-`
+
+// const CenteredIntro = styled.h3`
+//   max-width: 1080px;
+//   text-align: center;
+//   color: ${props => props.theme.warning500};
+// `
 
 const mapDefaults = {
   center: [-122.306754, 47.560],

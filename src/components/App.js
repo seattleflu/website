@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ThemeProvider } from 'styled-components'
 import ScrollToTop from "./ScrollToTop";
 import { GlobalStyle, theme } from "../theme/globalStyle";
+import FluAtHomeBanner from "./FluAtHomeBanner";
 import Header from "./Header";
 import { Footer } from "./Footer";
 import { Splash } from "./Splash";
@@ -17,6 +18,7 @@ class App extends Component {
           <ThemeProvider theme={theme}>
             <>
               <GlobalStyle/>
+                <FluAtHomeBanner/>
                 <Header/>
                 <Route exact path="/" component={Splash}/>
                 <Route path="/faq" component={FAQ}/>
