@@ -143,12 +143,18 @@ const kioskData = {
     gmaps: "https://goo.gl/maps/kF4Ub265yM32"
   },
   "4": {
+    coords: [-122.329567, 47.628358],
+    name: "Fred Hutch (Weintraub Building)",
+    hours: "11am-2pm (Mon, Wed, Thur)",
+    gmaps: "https://goo.gl/maps/2t5qqNVrorG2"
+  },
+  "5": {
     coords: [-122.3247, 47.6035],
     name: "Harborview Medical Center (Main Entrance)",
     hours: "10am-2pm (Mon-Fri)",
     gmaps: "https://goo.gl/maps/FnoB15R6maz"
   },
-  "5": {
+  "6": {
     coords: [-122.305, 47.444],
     name: "SeaTac Airport (International Arrivals)",
     hours: "10am-3pm (Mon, Thur, Fri)",
