@@ -20,35 +20,33 @@ const InnerContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: 15px;
   font-weight: 700;
   color: #fff;
 `
 
 const TextContainer = styled.p`
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 6px;
+  margin-right: 6px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   text-align: center;
 `
 
 const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-self: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 6px;
+  margin-right: 6px;
+  white-space: nowrap;
 `
 
 const Button = styled.a`
   background-color: #fff;
   color: #7065AB;
-  border-radius: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
   margin-top: 4px;
@@ -81,7 +79,7 @@ class FluAtHomeBanner extends React.Component  {
           <TextContainer>
             Are you home sick? Is it tough to get out to a kiosk? Connect with our Flu@Home Research Study to take the test at home.
           </TextContainer>
-          <ButtonContainer style={{"marginRight": "10px"}}>
+          <ButtonContainer>
             <Button href="https://fluathome.org/">Learn More</Button>
           </ButtonContainer>
         </InnerContainer>
