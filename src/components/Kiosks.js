@@ -145,7 +145,7 @@ const kioskData = {
   "4": {
     coords: [-122.329567, 47.628358],
     name: "Fred Hutch (Weintraub Building)",
-    hours: "11am-2pm (Mon, Wed, Thur)",
+    hours: "11am-2pm (Mon-Wed)",
     gmaps: "https://goo.gl/maps/2t5qqNVrorG2"
   },
   "5": {
@@ -279,7 +279,7 @@ class Kiosks extends React.Component  {
                 {TextArray}
               </utils.ListContainer>
               <span style={{marginLeft: "32px", marginRight: "10px"}}>
-                <i>Updated for the week of March 11th, 2019. There are
+                <i>Updated for the week of March 18th, 2019. There are
                 additional enrollment locations at Hutch Kids, West Campus
                 Childcare Center, SeaMar Clinic, DESC, Pioneer Square
                 Clinic, St. Martin's de Porres and Costco Headquarters.</i>
