@@ -127,7 +127,7 @@ const kioskData = {
   "1": {
     coords: [-122.3040, 47.6561682],
     name: "UW Hall Health Clinic",
-    hours: "10am-3pm (Mon-Fri)",
+    hours: "10am-3pm (Mon, Tue, Thur, Fri)",
     gmaps: "https://goo.gl/maps/7dviXTJQtX72"
   },
   "2": {
@@ -151,20 +151,20 @@ const kioskData = {
   "5": {
     coords: [-122.3247, 47.6035],
     name: "Harborview Medical Center (Main Entrance)",
-    hours: "10am-2pm (Mon-Fri)",
+    hours: "10am-2pm (Tue, Wed, Fri)",
     gmaps: "https://goo.gl/maps/FnoB15R6maz"
   },
   "6": {
     coords: [-122.305, 47.452],
     name: "SeaTac Airport (Domestic Arrivals, Baggage Claim 1 and Baggage Claim 15)",
-    hours: "10am-3pm (Tue, Thur, Fri)",
+    hours: "10am-3pm (Mon, Thur, Fri)",
     gmaps: "https://goo.gl/maps/f3nmyVQWjok",
     zoom: 12
   },
   "7": {
     coords: [-122.305, 47.440],
     name: "SeaTac Airport (International Arrivals)",
-    hours: "10am-3pm (Mon, Thur, Fri)",
+    hours: "10am-3pm (Tue, Fri)",
     gmaps: "https://goo.gl/maps/f3nmyVQWjok",
     zoom: 12
   }
