@@ -80,7 +80,7 @@ class FluAtHomeBanner extends React.Component  {
             Are you home sick? Is it tough to get out to a kiosk? Connect with our Flu@Home Research Study to take the test at home.
           </TextContainer>
           <ButtonContainer>
-            <Button href="https://fluathome.org/">Learn More</Button>
+            <Button href="https://fluathome.org/sfs?utm_source=seattleflu.org&utm_medium=referral&utm_campaign=Banner_LearnMore">Learn More</Button>
           </ButtonContainer>
         </InnerContainer>
       </OuterContainer>
