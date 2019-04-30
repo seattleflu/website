@@ -18,7 +18,6 @@ class App extends Component {
           <ThemeProvider theme={theme}>
             <>
               <GlobalStyle/>
-                <FluAtHomeBanner/>
                 <Header/>
                 <Route exact path="/" component={Splash}/>
                 <Route path="/faq" component={FAQ}/>
