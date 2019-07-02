@@ -7,6 +7,7 @@ import Header from "./Header";
 import { Footer } from "./Footer";
 import { Splash } from "./Splash";
 import { FAQ } from "./FAQ";
+import CurrentConditions from "./CurrentConditions";
 import Kiosks from "./Kiosks";
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
               <GlobalStyle/>
                 <Header/>
                 <Route exact path="/" component={Splash}/>
+                <Route path="/current" component={CurrentConditions}/>
                 <Route path="/faq" component={FAQ}/>
                 <Route path="/kiosks" component={Kiosks}/>
                 <Footer/>
