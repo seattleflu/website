@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import styled from 'styled-components'
 import { withRouter } from 'react-router-dom';
 import logo from '../img/logo-horizontal.png';
@@ -50,18 +49,20 @@ const LinkContainer = styled.div`
   border-bottom: 1px solid ${props => props.theme.neutral200};
 `
 
-class Header extends React.Component  {
+const HeaderLink = withRouter(props => {
+  const { location, to, children } = props;
+  return (
+    <LinkContainer>
+      {(location.pathname !== to)
+        ? <utils.InternalSoftLink to={to}>{children}</utils.InternalSoftLink>
+        : <utils.InternalLink to={to}>{children}</utils.InternalLink>}
+    </LinkContainer>
+  )
+});
 
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
 
+export default class Header extends React.Component {
   render() {
-
-    const { location } = this.props;
-
     return (
       <HeaderContainer>
         <LogoContainer>
@@ -70,20 +71,9 @@ class Header extends React.Component  {
           </utils.InternalLink>
         </LogoContainer>
         <Spacer/>
-        <LinkContainer>
-          {(location.pathname !== '/kiosks') ? (
-            <utils.InternalSoftLink to="/kiosks">Find a Kiosk</utils.InternalSoftLink>
-          ) : <utils.InternalLink to="/kiosks">Find a Kiosk</utils.InternalLink>}
-        </LinkContainer>
-        <LinkContainer>
-          {(location.pathname !== '/faq') ? (
-            <utils.InternalSoftLink to="/faq">FAQ</utils.InternalSoftLink>
-          ) : <utils.InternalLink to="/faq">FAQ</utils.InternalLink>}
-        </LinkContainer>
+        <HeaderLink to="/kiosks">Find a Kiosk</HeaderLink>
+        <HeaderLink to="/faq">FAQ</HeaderLink>
       </HeaderContainer>
     )
   }
-
 }
-
-export default Header = withRouter(Header)
