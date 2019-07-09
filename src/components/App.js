@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ThemeProvider } from 'styled-components'
 import ScrollToTop from "./ScrollToTop";
 import { GlobalStyle, theme } from "../theme/globalStyle";
-import FluAtHomeBanner from "./FluAtHomeBanner";
 import Header from "./Header";
 import { Footer } from "./Footer";
 import { Splash } from "./Splash";
