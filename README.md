@@ -1,8 +1,8 @@
-##Seattle Flu Study app
+## Seattle Flu Study app
 
-####run app
+#### run app
 
-###app stack
+### app stack
 * Node.js
 * Express.js
 * EJS
