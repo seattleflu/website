@@ -2,6 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Feature } from '../utils';
+import { notReceived,
+         processing,
+         completeNegative,
+         completePositiveFlu,
+         completePositiveMultiple,
+         completeSequenced,
+         wrongBarcode } from './mock-data.js';
+
 
 const Form = styled.form`
     display: flex;
@@ -48,6 +56,29 @@ export default class BarcodeSearchForm extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         // TODO: Make GET request to ID3C with barcode
+        switch(this.state.value) {
+            case "none":
+                this.props.submitResult(notReceived);
+                break;
+            case "processing":
+                this.props.submitResult(processing);
+                break;
+            case "negative":
+                this.props.submitResult(completeNegative);
+                break;
+            case "flu":
+                this.props.submitResult(completePositiveFlu);
+                break;
+            case "multiple":
+                this.props.submitResult(completePositiveMultiple);
+                break;
+            case "sequenced":
+                this.props.submitResult(completeSequenced);
+                break;
+            default:
+                this.props.submitResult(wrongBarcode);
+        }
+
     }
 
     render() {

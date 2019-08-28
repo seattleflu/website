@@ -9,8 +9,7 @@ export default class ReturnOfResults extends React.Component {
         this.state = {
             barcode: '',
             status: '',
-            results: [],
-            sequenced: ''
+            results: []
         };
     }
 
