@@ -4,6 +4,7 @@ import { H1, OuterContainer, ContentContainer } from './utils';
 import BarcodeSearchForm from './ParticipantResults/BarcodeSearchForm';
 import SampleNotReceived from './ParticipantResults/SampleNotReceived';
 import SampleProcessing from './ParticipantResults/SampleProcessing';
+import UnknownBarcode from './ParticipantResults/UnknownBarcode';
 
 export default class ReturnOfResults extends React.Component {
     constructor(props) {
@@ -22,19 +23,28 @@ export default class ReturnOfResults extends React.Component {
     }
 
     render(){
+        const sampleStatus = this.state.status;
+        let display;
+
+        switch(sampleStatus) {
+            case 'notReceived':
+                display = <SampleNotReceived/>;
+                break;
+            case 'processing':
+                display = <SampleProcessing />;
+                break;
+            case 'unknownBarcode':
+                display = <div><UnknownBarcode /><BarcodeSearchForm submitResult={this.setResult}/></div>;
+                break;
+            default:
+                display = <BarcodeSearchForm submitResult={this.setResult}/>;
+        }
+
         return (
             <OuterContainer>
                 <ContentContainer>
                     <H1>Return of Results</H1>
-                    { this.state.barcode === '' &&
-                        <BarcodeSearchForm submitResult={this.setResult}/>
-                    }
-                    { this.state.status === 'notReceived' &&
-                        <SampleNotReceived/>
-                    }
-                    { this.state.status === 'processing' &&
-                        <SampleProcessing />
-                    }
+                    {display}
                 </ContentContainer>
             </OuterContainer>
         )
