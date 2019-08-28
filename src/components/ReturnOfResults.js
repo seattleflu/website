@@ -2,7 +2,8 @@ import React from 'react';
 
 import { H1, OuterContainer, ContentContainer } from './utils';
 import BarcodeSearchForm from './ParticipantResults/BarcodeSearchForm';
-import SampleNotReceived from "./ParticipantResults/SampleNotReceived";
+import SampleNotReceived from './ParticipantResults/SampleNotReceived';
+import SampleProcessing from './ParticipantResults/SampleProcessing';
 
 export default class ReturnOfResults extends React.Component {
     constructor(props) {
@@ -30,6 +31,9 @@ export default class ReturnOfResults extends React.Component {
                     }
                     { this.state.status === 'notReceived' &&
                         <SampleNotReceived/>
+                    }
+                    { this.state.status === 'processing' &&
+                        <SampleProcessing />
                     }
                 </ContentContainer>
             </OuterContainer>
