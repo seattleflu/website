@@ -5,6 +5,7 @@ import BarcodeSearchForm from './ParticipantResults/BarcodeSearchForm';
 import SampleNotReceived from './ParticipantResults/SampleNotReceived';
 import SampleProcessing from './ParticipantResults/SampleProcessing';
 import UnknownBarcode from './ParticipantResults/UnknownBarcode';
+import Results from './ParticipantResults/Results';
 
 export default class ReturnOfResults extends React.Component {
     constructor(props) {
@@ -35,6 +36,9 @@ export default class ReturnOfResults extends React.Component {
                 break;
             case 'unknownBarcode':
                 display = <div><UnknownBarcode /><BarcodeSearchForm submitResult={this.setResult}/></div>;
+                break;
+            case 'complete':
+                display = <Results results={ this.state.results }/>;
                 break;
             default:
                 display = <BarcodeSearchForm submitResult={this.setResult}/>;

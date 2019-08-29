@@ -303,3 +303,12 @@ export const Quote = (props) => {
     </QuoteContainer>
   )
 }
+
+export const UnorderedList = styled.ul`
+    margin: auto;
+    width: fit-content;
+    font-size: 20px;
+    @media (max-width: 768px) {
+        width: 75%;
+    }
+`
