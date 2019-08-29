@@ -19,19 +19,19 @@ export const completeNegative = {
 export const completePositiveFlu= {
     "barcode": "34567890",
     "status": "complete",
-    "results": ["Flu"]
+    "results": ["flu"]
 };
 
 export const completePositiveMultiple= {
     "barcode": "34567890",
     "status": "complete",
-    "results": ["Flu", "RSV"]
+    "results": ["flu", "rsv", "coronavirus", "enterovirus"]
 };
 
 export const completeSequenced = {
     "barcode": "34567890",
     "status": "completeSequenced",
-    "results": ["Flu", "RSV"]
+    "results": ["flu", "rsv"]
 }
 
 export const wrongBarcode = {

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Feature, H3 } from '../utils';
 import NegativeResult from './NegativeResult';
+import PositiveResult from './PositiveResult';
 
 const P = styled(H3)`
     color: inherit;
@@ -18,6 +19,9 @@ export default function Results(props) {
     let display;
     if(results.length === 0) {
         display = <NegativeResult />
+    }
+    else {
+        display = <PositiveResult results={results} />
     }
     return (
         <div>
