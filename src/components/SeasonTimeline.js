@@ -1,5 +1,6 @@
 import React from 'react';
 import { DateTime } from 'luxon';
+import _ from 'lodash';
 import { CenteredParagraph } from './utils';
 
 const Seasonality = {
@@ -10,24 +11,24 @@ const Seasonality = {
 
 export default class SeasonTimeline extends React.Component {
   render() {
-    // XXX TODO: This may want to be dynamically sourced from a data file
-    // somewhere that we can update easily as the season progresses.
-    //
-    const months = [
-      {month: "2018-07", seasonality: Seasonality.OFF_SEASON},
-      {month: "2018-08", seasonality: Seasonality.OFF_SEASON},
-      {month: "2018-09", seasonality: Seasonality.SHOULDER_SEASON},
-      {month: "2018-10", seasonality: Seasonality.PEAK_SEASON},
-      {month: "2018-11", seasonality: Seasonality.PEAK_SEASON},
-      {month: "2018-12", seasonality: Seasonality.PEAK_SEASON},
-      {month: "2019-01", seasonality: Seasonality.PEAK_SEASON},
-      {month: "2019-02", seasonality: Seasonality.PEAK_SEASON},
-      {month: "2019-03", seasonality: Seasonality.PEAK_SEASON},
-      {month: "2019-04", seasonality: Seasonality.PEAK_SEASON},
-      {month: "2019-05", seasonality: Seasonality.SHOULDER_SEASON},
-      {month: "2019-06", seasonality: Seasonality.OFF_SEASON},
-      {month: "2019-07", seasonality: Seasonality.OFF_SEASON}
+    let months = [
+      {month: 7, seasonality: Seasonality.OFF_SEASON},
+      {month: 8, seasonality: Seasonality.OFF_SEASON},
+      {month: 9, seasonality: Seasonality.SHOULDER_SEASON},
+      {month: 10, seasonality: Seasonality.PEAK_SEASON},
+      {month: 11, seasonality: Seasonality.PEAK_SEASON},
+      {month: 12, seasonality: Seasonality.PEAK_SEASON},
+      {month: 1, seasonality: Seasonality.PEAK_SEASON},
+      {month: 2, seasonality: Seasonality.PEAK_SEASON},
+      {month: 3, seasonality: Seasonality.PEAK_SEASON},
+      {month: 4, seasonality: Seasonality.PEAK_SEASON},
+      {month: 5, seasonality: Seasonality.SHOULDER_SEASON},
+      {month: 6, seasonality: Seasonality.OFF_SEASON},
+      {month: 7, seasonality: Seasonality.OFF_SEASON}
     ];
+
+    const yearMonths = generateYearMonths();
+    months.forEach((m, i) => m["yearMonth"] = yearMonths[i]);
 
     // XXX TODO: These styles definitely want attention.
     //
@@ -43,10 +44,7 @@ export default class SeasonTimeline extends React.Component {
       }
     };
 
-    // XXX FIXME: Fixing 2019-02 for now for demonstration purposes.  This
-    // should use the actual current month when we're done prototyping.
-    //
-    const currentMonth = "2019-02"; // DateTime.local().toISO().substr(0, 7);
+    const currentMonth = this.props.currentMonth;
     const currentMonthIndex = months.findIndex(m => m.month === currentMonth);
 
     const [width, height, margin] = [800, 60, 5];
@@ -60,7 +58,7 @@ export default class SeasonTimeline extends React.Component {
 
           <g transform={`translate(${margin}, ${margin})`}>
             {months.map((m, i) =>
-              <g key={m.month} transform={`translate(${i * monthWidth}, 0)`}>
+              <g key={m.yearMonth} transform={`translate(${i * monthWidth}, 0)`}>
                 <rect width={monthWidth}
                       height={height}
                       {...rectAttrs[m.seasonality]} />
@@ -70,7 +68,7 @@ export default class SeasonTimeline extends React.Component {
                       x={monthWidth / 2}
                       y="50%"
                       dy="-3px">
-                  {DateTime.fromISO(m.month).monthShort}
+                  {DateTime.fromISO(m.yearMonth).monthShort}
                 </text>
               </g>
             )}
@@ -86,4 +84,26 @@ export default class SeasonTimeline extends React.Component {
       </CenteredParagraph>
     );
   }
+}
+
+
+/**
+ * This helper function is primarily used for generating unique keys when there
+ * are repeating months in an object.
+ *
+ * @return {Array} An array of strings in "YYYY-MM" format starting with the
+ *  July of the season start year to July of the season end year.
+ */
+function generateYearMonths() {
+  const today = DateTime.local();
+  const startMonth = 7; // Timeline starts with the July before the current season
+
+  const start = DateTime.fromObject({
+    year: today.year - (today.month < startMonth ? 1 : 0),
+    month: startMonth
+  });
+
+  return _.range(13)
+          .map(i => start.plus({ months: i }))
+          .map(m => m.toFormat("yyyy-MM"));
 }
