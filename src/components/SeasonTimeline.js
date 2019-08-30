@@ -30,8 +30,6 @@ export default class SeasonTimeline extends React.Component {
     const yearMonths = generateYearMonths();
     months.forEach((m, i) => m["yearMonth"] = yearMonths[i]);
 
-    // XXX TODO: These styles definitely want attention.
-    //
     const rectAttrs = {
       [Seasonality.OFF_SEASON]: {
         fill: "hsl(214, 17%, 75%)"
@@ -47,8 +45,9 @@ export default class SeasonTimeline extends React.Component {
     const currentMonth = this.props.currentMonth;
     const currentMonthIndex = months.findIndex(m => m.month === currentMonth);
 
-    const [width, height, margin] = [800, 60, 5];
+    const [width, height, margin] = [800, 70, 5];
     const monthWidth = Math.floor(1/months.length * width);
+    const monthHeight = 70;
 
     return (
       <CenteredParagraph>
@@ -56,30 +55,41 @@ export default class SeasonTimeline extends React.Component {
              width="100%"
              height={height + margin * 2}>
 
-          <g transform={`translate(${margin}, ${margin})`}>
+          <g transform={`translate(${margin}, ${height - monthHeight})`}>
             {months.map((m, i) =>
-              <g key={m.yearMonth} transform={`translate(${i * monthWidth}, 0)`}>
-                <rect width={monthWidth}
-                      height={height}
-                      {...rectAttrs[m.seasonality]} />
+            <g key={m.yearMonth}
+               transform={`translate(${i * monthWidth}, 0)`}>
+                <polygon points={`0, 0
+                                ${monthWidth},0
+                                ${monthWidth * 1.25}, ${monthHeight / 2}
+                                ${monthWidth}, ${monthHeight}
+                                0, ${monthHeight}
+                                ${monthWidth * 0.25}, ${monthHeight / 2}`}
+                      {...rectAttrs[m.seasonality]}
+                      stroke="white" />
 
                 <text textAnchor="middle"
                       dominantBaseline="middle"
-                      x={monthWidth / 2}
-                      y="50%"
+                      x={monthWidth * 0.65}
+                      y={monthHeight / 2 + 5}
                       dy="-3px">
                   {DateTime.fromISO(m.yearMonth).monthShort}
                 </text>
               </g>
             )}
-            <rect x={monthWidth * currentMonthIndex}
-                  y="0"
-                  width={monthWidth}
-                  height={height}
-                  stroke="yellow"
-                  strokeWidth="2"
-                  fill="transparent" />
+            <polygon transform={`translate(${monthWidth * currentMonthIndex})`}
+                    className="current-month"
+                    points={`0,0
+                            ${monthWidth}, 0
+                            ${monthWidth * 1.25}, ${monthHeight / 2}
+                            ${monthWidth}, ${height}
+                            0, ${height}
+                            ${monthWidth * 0.25}, ${monthHeight / 2}`}
+                    strokeWidth="4"
+                    stroke="yellow"
+                    fill="transparent" />
           </g>
+
         </svg>
       </CenteredParagraph>
     );
