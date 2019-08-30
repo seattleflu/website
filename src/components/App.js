@@ -11,6 +11,7 @@ import CurrentConditions from "./CurrentConditions";
 import Kiosks from "./Kiosks";
 import ReturnOfResults from './ReturnOfResults';
 import FindBarcode from './FindBarcode';
+import ResultsFAQ from './ResultsFAQ';
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
                 <Route path="/results" component={ReturnOfResults}/>
                 <Route path="/kiosks" component={Kiosks}/>
                 <Route path="/find-barcode" component={FindBarcode}/>
+                <Route path="/results-faq" component={ResultsFAQ}/>
                 <Footer/>
             </>
           </ThemeProvider>

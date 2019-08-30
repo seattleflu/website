@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Feature, H3, Bold } from '../utils';
+import { Feature, H3, InternalLink } from '../utils';
 import NegativeResult from './NegativeResult';
 import PositiveResult from './PositiveResult';
 
@@ -20,10 +20,10 @@ export default function Results(props) {
 
     return (
         <div>
-            <Feature>
+            <Feature title="This is a research test and should not be used as a substitute for a
+                    visit to your health care provider.">
                 <P>
-                    This is a research test and should not be used as a substitute for a
-                    visit to your health care provider.
+                    Learn more about how the research test works <InternalLink to="/results-faq" target="_blank">here</InternalLink>.
                 </P>
             </Feature>
             {display}
