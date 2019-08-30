@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { LargerParagraph, Feature, UnorderedList, Bold } from '../../utils';
+import { ResultsMoreInfo } from '../ResultsMoreInfo';
 
 const contactHealthCare = [
     "You are older (>65) and experiencing severe symptoms",
@@ -49,6 +50,7 @@ export default function Enterovirus(props) {
                     {preventEnterovirusDisplay}
                 </UnorderedList>
             </Feature>
+            <ResultsMoreInfo pathogen="non-polio-enterovirus" />
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Bold, LargerParagraph, EvenTwoColumnFeature } from '../../utils';
+import { ResultsMoreInfo } from '../ResultsMoreInfo';
 
 const highRiskConditions = [
     "Asthma or chronic lung disease",
@@ -73,6 +74,8 @@ export default function Flu(props) {
                 medical problems, antivirals may need to be started even if it has been longer than
                 2 days after symptoms began.
             </LargerParagraph>
+            <br/>
+            <ResultsMoreInfo pathogen="flu" />
         </div>
     )
 }

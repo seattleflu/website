@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { LargerParagraph, Bold, EvenTwoColumnFeature, Feature, UnorderedList } from '../../utils';
+import { ResultsMoreInfo } from '../ResultsMoreInfo';
 
 const preventRSV = [
     "Wash your hands often",
@@ -68,6 +69,7 @@ export default function RSV(props) {
                     {highRiskChildrenDisplay}
                 </ul>
             </EvenTwoColumnFeature>
+            <ResultsMoreInfo pathogen="rsv"/>
         </div>
     )
 }

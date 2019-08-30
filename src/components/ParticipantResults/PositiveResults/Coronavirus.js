@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { LargerParagraph, CenteredParagraph, Feature, UnorderedList, Bold } from '../../utils';
+import { ResultsMoreInfo } from '../ResultsMoreInfo';
 
 const contactHealthCare = [
     "You are older (>65) and experiencing severe symptoms",
@@ -61,6 +62,7 @@ export default function Coronavirus(props) {
             <CenteredParagraph>
                 *This research test detects human coronavirus only, and not MERS or SARS coronaviruses.
             </CenteredParagraph>
+            <ResultsMoreInfo pathogen="coronavirus" />
         </div>
     )
 }

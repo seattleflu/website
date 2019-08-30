@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { H3, CenteredParagraph, Feature, UnorderedList } from '../utils';
+import { ResultsMoreInfo } from './ResultsMoreInfo';
 
 const P = styled(CenteredParagraph)`
     font-size: 20px;
@@ -41,6 +42,7 @@ export default function NegativeResult(props) {
                     {howToAvoidFlu}
                 </UnorderedList>
             </Feature>
+            <ResultsMoreInfo pathogen="flu"/>
         </div>
     )
 }
