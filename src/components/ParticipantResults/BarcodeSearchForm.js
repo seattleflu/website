@@ -83,7 +83,9 @@ export default class BarcodeSearchForm extends React.Component {
 
     render() {
         return (
-            <Feature title = "Please input your barcode">
+            <Feature title = "Please input your barcode"
+                buttonLink="/find-barcode"
+                buttonText="Where do I find my barcode?">
                 <Form onSubmit={this.handleSubmit}>
                     <Input required type="text" value={this.state.value} onChange={this.handleChange} />
                     <SubmitButton type="submit">Submit</SubmitButton>
