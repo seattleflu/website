@@ -1,6 +1,7 @@
 import React from 'react';
 import { DateTime } from 'luxon';
 import _ from 'lodash';
+import styled, { keyframes } from 'styled-components';
 import { CenteredParagraph } from './utils';
 
 const Seasonality = {
@@ -49,6 +50,21 @@ export default class SeasonTimeline extends React.Component {
     const monthWidth = Math.floor(1/months.length * width);
     const monthHeight = 70;
 
+    const rotateDash = keyframes`
+      from {
+        stroke-dashoffset: 280;
+      }
+      to {
+        stroke-dashoffset: 75;
+    `
+
+    const RotateDash = styled.g`
+      display: inline-block;
+      width: 100%;
+      height: ${height}
+      animation: ${rotateDash} 9s linear infinite;
+    `
+
     return (
       <CenteredParagraph>
         <svg viewBox={`0 0 ${width + margin * 2} ${height + margin * 2}`}
@@ -77,19 +93,21 @@ export default class SeasonTimeline extends React.Component {
                 </text>
               </g>
             )}
-            <polygon transform={`translate(${monthWidth * currentMonthIndex})`}
-                    className="current-month"
-                    points={`0,0
-                            ${monthWidth}, 0
-                            ${monthWidth * 1.25}, ${monthHeight / 2}
-                            ${monthWidth}, ${height}
-                            0, ${height}
-                            ${monthWidth * 0.25}, ${monthHeight / 2}`}
-                    strokeWidth="4"
-                    stroke="yellow"
-                    fill="transparent" />
+            <RotateDash>
+              <polygon transform={`translate(${currentMonthIndex * monthWidth}, 0)`}
+                      points={`0, 0
+                              ${monthWidth}, 0
+                              ${monthWidth * 1.25}, ${monthHeight / 2}
+                              ${monthWidth}, ${monthHeight}
+                              0, ${monthHeight}
+                              ${monthWidth * 0.25}, ${monthHeight / 2}`}
+                      strokeWidth="4"
+                      stroke="yellow"
+                      fill="transparent"
+                      strokeLinecap="round"
+                      strokeDasharray="4 6" />
+            </RotateDash>
           </g>
-
         </svg>
       </CenteredParagraph>
     );
