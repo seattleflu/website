@@ -13,7 +13,8 @@ export default class ReturnOfResults extends React.Component {
         this.state = {
             barcode: '',
             status: '',
-            results: []
+            results: [],
+            sequenced: false
         };
     }
 
@@ -35,10 +36,10 @@ export default class ReturnOfResults extends React.Component {
                 display = <SampleProcessing />;
                 break;
             case 'unknownBarcode':
-                display = <div><UnknownBarcode /><BarcodeSearchForm submitResult={this.setResult}/></div>;
+                display = <div><UnknownBarcode /><BarcodeSearchForm submitResult={ this.setResult }/></div>;
                 break;
             case 'complete':
-                display = <Results results={ this.state.results }/>;
+                display = <Results results={ this.state.results } sequenced={ this.state.sequenced } barcode={ this.state.barcode } />;
                 break;
             default:
                 display = <BarcodeSearchForm submitResult={this.setResult}/>;

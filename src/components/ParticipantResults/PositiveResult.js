@@ -5,13 +5,6 @@ import styled from 'styled-components';
 import { H3 } from '../utils';
 import * as positiveResults from './PositiveResults';
 
-const resultsMap = {
-    "flu": <positiveResults.Flu/>,
-    "rsv": <positiveResults.RSV/>,
-    "coronavirus": <positiveResults.Coronavirus/>,
-    "enterovirus": <positiveResults.Enterovirus/>
-}
-
 const STabs = styled(Tabs)`
     width: 100%;
 `
@@ -59,6 +52,13 @@ const STabPanel = styled(TabPanel)`
 STabPanel.tabsRole = 'TabPanel';
 
 export default function PositiveResult(props) {
+    const resultsMap = {
+        "flu": <positiveResults.Flu sequenced={props.sequenced} barcode={props.barcode}/>,
+        "rsv": <positiveResults.RSV/>,
+        "coronavirus": <positiveResults.Coronavirus/>,
+        "enterovirus": <positiveResults.Enterovirus/>
+    };
+
     const results = props.results.filter(result => resultsMap[result]);
 
     const resultTabs = results.map((result) =>

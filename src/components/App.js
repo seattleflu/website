@@ -12,6 +12,7 @@ import Kiosks from "./Kiosks";
 import ReturnOfResults from './ReturnOfResults';
 import FindBarcode from './FindBarcode';
 import ResultsFAQ from './ResultsFAQ';
+import FluSequence from './FluSequence';
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
                 <Route path="/kiosks" component={Kiosks}/>
                 <Route path="/find-barcode" component={FindBarcode}/>
                 <Route path="/results-faq" component={ResultsFAQ}/>
+                <Route path="/flu/:barcode?" component={FluSequence}/>
                 <Footer/>
             </>
           </ThemeProvider>

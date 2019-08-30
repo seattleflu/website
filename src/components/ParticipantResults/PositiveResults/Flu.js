@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Bold, LargerParagraph, EvenTwoColumnFeature } from '../../utils';
+import { Bold, LargerParagraph, EvenTwoColumnFeature, InternalLink } from '../../utils';
 import { ResultsMoreInfo } from '../ResultsMoreInfo';
 
 const highRiskConditions = [
@@ -25,6 +25,8 @@ const highRiskGroups = [
     "People who live in nursing homes or long-term care facilities"
 ]
 
+
+
 export default function Flu(props) {
 
     const highRiskConditionsDisplay = highRiskConditions.map((risk, index) =>
@@ -35,11 +37,23 @@ export default function Flu(props) {
         <li key={index}>{risk}</li>
     );
 
+    const fluSequenceLink = (
+        <InternalLink to={{
+            pathname: `/flu`,
+            state: {
+                barcode: props.barcode,
+                sequenced: props.sequenced
+            }}}>
+            here
+        </InternalLink>
+    );
+
     return(
         <div>
             <LargerParagraph>
                 Your research test is positive for <Bold>influenza (flu)</Bold>,
                 a virus that causes a respiratory infection that can be spread from person to person.
+                (Learn more about <i>your</i> flu {fluSequenceLink})
             </LargerParagraph>
             <LargerParagraph>
                 Most people with the flu do not need medical care or antiviral drugs.

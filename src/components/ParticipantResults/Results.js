@@ -15,7 +15,7 @@ export default function Results(props) {
         display = <NegativeResult />
     }
     else {
-        display = <PositiveResult results={results} />
+        display = <PositiveResult results={results} sequenced={props.sequenced} barcode={props.barcode}/>
     }
 
     return (
