@@ -2,8 +2,8 @@
 
 ### Install
 ```bash
-git clone https://github.com/seattleflu/site.git
-cd site
+git clone https://github.com/seattleflu/website.git
+cd website
 npm install
 ```
 
