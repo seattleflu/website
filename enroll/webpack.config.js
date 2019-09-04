@@ -1,9 +1,13 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
 module.exports = {
+  entry: './src/index.js',
+  // output: {
+  //   path: path.resolve(__dirname, '../public'),
+  //   publicPath: '/public',
+  //   filename: 'enroll-bundle.js'
+  // },
   output: {
-    path: path.resolve(__dirname, '../public'),
-    publicPath: '/public',
     filename: 'enroll-bundle.js'
   },
   module: {
