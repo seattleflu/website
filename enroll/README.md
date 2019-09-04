@@ -1,1 +1,1 @@
-react enroll app
+React App for seattle flu
