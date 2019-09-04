@@ -7,11 +7,11 @@ router.get('/', function (req, res, next) {
 })
 
 router.get('/map', function (req, res, next) {
-  res.render('science', { title: 'Science page map' })
+  res.render('map', { title: 'Science page map' })
 })
 
 router.get('/tree', function (req, res, next) {
-  res.render('science', { title: 'Science page tree' })
+  res.render('tree', { title: 'Science page tree' })
 })
 
 module.exports = router
