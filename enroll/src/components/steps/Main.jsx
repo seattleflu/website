@@ -38,6 +38,7 @@ const Main = props => {
       {question >= 0 ? (
         <Input
           text='What is your Zip Code'
+          description=""
           label='zip_code'
           type='text'
           id='zipcode'
@@ -48,6 +49,7 @@ const Main = props => {
       {question >= 1 ? (
         <Input
           text='How old are you'
+          description=""
           label='age'
           type='text'
           id='zipcode'

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import Select from '../presentational/Select.jsx'
+import Switch from '../presentational/Switch.jsx'
 
 const FlowOne = props => {
   const [question, setQuestion] = useState(0)
@@ -8,10 +9,16 @@ const FlowOne = props => {
   const [whoValue, setWhoValue] = useState('')
 
   const [havePhone, setHavePhoneValue] = useState('')
+  const [over12, setOver12Value] = useState('')
   const [moreThanThree, setMoreThanThreeValue] = useState('')
-  const [under18, setUnder18Value] = useState('')
   const [conditions, setConditionsValue] = useState('')
   const [pills, setPillsValue] = useState('')
+
+  // 1 setMoreThanThreeValue
+  // 2 setHavePhoneValue
+  // 3 setOver12Value
+  // 4 setConditionsValue
+  // 5 setPillsValue
 
   useEffect(() => {})
 
@@ -25,25 +32,30 @@ const FlowOne = props => {
       }
     }
     if (question == 1) {
-      if (whoValue != 'none') {
+      if (whoValue == 'myself') {
         props.handleNext(2)
+      } else if (whoValue == 'over18') {
+        props.handleNext(3)
+      } else if (whoValue == 'under18') {
+        props.handleNext(4)
       } else {
-        props.handleNextError()
+        // props.handleNextError()
       }
     }
     if (question == 6) {
       if (pills == 'yes') {
-        props.handleNext(0)
+        props.handleNext(2)
       } else {
         props.handleNextError()
       }
     }
   }
 
-  function handleSymptopmsChange (event) {
+  function handleSymptomsChange (event) {
+    event.preventDefault()
     setHaveFluValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(question + 1)
+      setQuestion(1)
     } else if (event.target.value == 'no') {
       setQuestion(2)
     }
@@ -53,37 +65,63 @@ const FlowOne = props => {
     setQuestion(1)
     if (event.target.value != 'none') {
       setQuestion(1)
+    } else {
+      props.handleNext(5)
     }
   }
 
-  function handleHavePhoneChange (event) {
-    setHavePhoneValue(event.target.value)
-    if (event.target.value == 'yes') {
-      setQuestion(question + 1)
-    }
-  }
   function handleMoreThanThreeChange (event) {
     setMoreThanThreeValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
+    } else {
+      setQuestion(2)
+
+      setHavePhoneValue('')
+      setOver12Value('')
+      setConditionsValue('')
+      setPillsValue('')
     }
   }
-  function handleUnder18Change (event) {
-    setUnder18Value(event.target.value)
+  function handleHavePhoneChange (event) {
+    setHavePhoneValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
+    } else {
+      setQuestion(3)
+
+      setOver12Value('')
+      setConditionsValue('')
+      setPillsValue('')
     }
   }
+  function handleOver12Change (event) {
+    setOver12Value(event.target.value)
+    if (event.target.value == 'yes') {
+      setQuestion(question + 1)
+    } else {
+      setQuestion(4)
+
+      setConditionsValue('')
+      setPillsValue('')
+    }
+  }
+
   function handleConditionsChange (event) {
     setConditionsValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
+    } else {
+      setQuestion(5)
+      setPillsValue('')
     }
   }
   function handlePillsChange (event) {
     setPillsValue(event.target.value)
     if (event.target.value == 'yes') {
       // setQuestion(question + 1)
+    } else {
+      setQuestion(6)
     }
   }
 
@@ -95,26 +133,27 @@ const FlowOne = props => {
   const who = [
     { value: 'none', label: '' },
     { value: 'myself', label: 'Myself' },
-    { value: 'other', label: 'Someone else in my household over 18' }
+    { value: 'over18', label: 'Someone in my household over 18' },
+    { value: 'under18', label: 'My child or legal ward under 18' }
   ]
 
   return (
     <div>
       {question >= 0 ? (
-        <Select
+        <Switch
           text='Do you or anyone in your household currently have flu symptoms? Flue symptoms include:'
+          description='Fever, Headaches, Cough, Diarrhea, Sore throat, Nausea or vomiting, Runny or stuffy nose, Rash, Increased fatigue (tiredness), Muscle or body aches, Increased trouble with breathing, Ear pain or ear discharge'
           label='symptoms'
           type='select'
-          id='symptoms'
+          id='symptomsTest'
           value={haveFluValue}
-          options={options}
-          handleChange={handleSymptopmsChange}
+          handleChange={handleSymptomsChange}
         />
       ) : null}
-
       {question == 1 ? (
         <Select
           text='Who are you filling this survey out for?'
+          description=''
           label='whoFor'
           type='select'
           id='whoFor'
@@ -123,10 +162,22 @@ const FlowOne = props => {
           handleChange={handleWhoChange}
         />
       ) : null}
-
       {question >= 2 ? (
         <Select
+          text='Are there at least 3 people in your household including 1 child?'
+          description=''
+          label='moreThanThree'
+          type='select'
+          id='moreThanThree'
+          value={moreThanThree}
+          options={options}
+          handleChange={handleMoreThanThreeChange}
+        />
+      ) : null}
+      {question >= 3 ? (
+        <Select
           text='Does someone in your house have a smartphone?'
+          description=''
           label='havePhone'
           type='select'
           id='smartphone'
@@ -136,31 +187,23 @@ const FlowOne = props => {
         />
       ) : null}
 
-      {question >= 3 ? (
-        <Select
-          text='Are there at least 3 people in your household?'
-          label='moreThanThree'
-          type='select'
-          id='moreThanThree'
-          value={moreThanThree}
-          options={options}
-          handleChange={handleMoreThanThreeChange}
-        />
-      ) : null}
       {question >= 4 ? (
         <Select
-          text='Is at least one of these individuals under 18?'
-          label='under18'
+          text='Are at least 2 people in your house over 12 years old and do not have any of the following conditions?'
+          description=''
+          label='over12'
           type='select'
-          id='under18'
-          value={under18}
+          id='over12'
+          value={over12}
           options={options}
-          handleChange={handleUnder18Change}
+          handleChange={handleOver12Change}
         />
       ) : null}
+
       {question >= 5 ? (
         <Select
           text='Are there at least 2 other people in the household who DO NOT have any of the following Conditions:'
+          description=''
           label='conditions'
           type='select'
           id='conditions'
@@ -172,6 +215,7 @@ const FlowOne = props => {
       {question >= 6 ? (
         <Select
           text='Are those 2 people willing and able to swallow Baloxavir pills?'
+          description=''
           label='pills'
           type='select'
           id='pills'
@@ -180,6 +224,7 @@ const FlowOne = props => {
           handleChange={handlePillsChange}
         />
       ) : null}
+
       <button
         className='btn btn-primary float-right'
         type='submit'

@@ -24,9 +24,11 @@ const FlowThree = props => {
 
   return (
     <div>
+      <h3>OVER 18 FLOW</h3>
       {question >= 0 ? (
         <Select
           text='Do you or anyone in your household currently have flu symptopms?'
+          description=''
           label='symptoms'
           type='select'
           id='symptoms'
@@ -38,6 +40,7 @@ const FlowThree = props => {
       {question >= 1 ? (
         <Select
           text='Does someone in your house have a smartphone?'
+          description=''
           label='havePhone'
           type='text'
           id='zipcode'
@@ -50,6 +53,7 @@ const FlowThree = props => {
       {question >= 2 ? (
         <Select
           text='Are there at least 3 people in your household?'
+          description=''
           label='moreThanThree'
           type='text'
           id='zipcode'
@@ -61,6 +65,7 @@ const FlowThree = props => {
       {question >= 3 ? (
         <Select
           text='Is at least one of these individuals under 18?'
+          description=''
           label='under18'
           type='text'
           id='zipcode'
@@ -72,6 +77,7 @@ const FlowThree = props => {
       {question >= 4 ? (
         <Select
           text='Are there at least 2 other people in the household who DO NOT have any of the following Conditions:'
+          description=''
           label='conditions'
           type='text'
           id='zipcode'
@@ -83,6 +89,7 @@ const FlowThree = props => {
       {question >= 5 ? (
         <Select
           text='Are those 2 people willing and able to swallow Baloxavir pills?'
+          description=''
           label='pills'
           type='text'
           id='zipcode'

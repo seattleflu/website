@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import Input from './components/presentational/Input.jsx'
 import Main from './components/steps/Main.jsx'
 import FlowOne from './components/steps/FlowOne.jsx'
-import FlowTwoA from './components/steps/FlowTwoA.jsx'
-import FlowTwoB from './components/steps/FlowTwoB.jsx'
+import FlowTwo from './components/steps/FlowTwo.jsx'
 import FlowThree from './components/steps/FlowThree.jsx'
+import FlowFour from './components/steps/FlowFour.jsx'
 import Error from './components/steps/Error.jsx'
 
 const App = () => {
@@ -43,21 +43,23 @@ const App = () => {
           />
         ) : null}
         {currentStep == 2 ? (
-          <FlowTwoA
+          <FlowTwo
             handleNext={handleNext}
             handleNextError={handleNextError}
             currentStep={currentStep}
           />
         ) : null}
+
         {currentStep == 3 ? (
-          <FlowTwoB
+          <FlowThree
             handleNext={handleNext}
             handleNextError={handleNextError}
             currentStep={currentStep}
           />
         ) : null}
+
         {currentStep == 4 ? (
-          <FlowThree
+          <FlowFour
             handleNext={handleNext}
             handleNextError={handleNextError}
             currentStep={currentStep}

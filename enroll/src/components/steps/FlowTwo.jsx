@@ -82,10 +82,12 @@ const FlowTwoA = props => {
 
   return (
     <div>
+      <h3>MYSELF FLOW</h3>
       <p>{symptomsList}</p>
       {question >= 0 ? (
         <Select
           text='How Long have you had symptoms?'
+          description=''
           label='symptoms'
           type='select'
           id='symptoms'
@@ -222,6 +224,7 @@ const FlowTwoA = props => {
       {question >= 2 ? (
         <Select
           text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
+          description=''
           label='connected'
           type='select'
           id='connected'
@@ -233,6 +236,7 @@ const FlowTwoA = props => {
       {question >= 3 ? (
         <Select
           text='Do you have any of the following conditions:'
+          description=''
           label='conditions'
           type='select'
           id='conditions'

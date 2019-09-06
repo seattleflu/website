@@ -1,8 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-const Select = ({ label, text, type, id, value, options, handleChange }) => (
+const Select = ({
+  label,
+  text,
+  type,
+  id,
+  value,
+  options,
+  description,
+  handleChange
+}) => (
   <div className='form-group'>
     <label htmlFor={label}>{text}</label>
+    <p className='inputDescription'>{description}</p>
     <select
       type={type}
       className='form-control'
