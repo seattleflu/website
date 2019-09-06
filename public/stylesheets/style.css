@@ -49,6 +49,9 @@ footer #main-footer {
   display: flex;
   justify-content: space-between;
 }
+#footer-logos img {
+  max-height: 40px;
+}
 #footer-menu:before {
   content: ""; /* This is necessary for the pseudo element to work. */ 
   display: block; /* This will put the pseudo element on its own line. */
