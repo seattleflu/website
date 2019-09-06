@@ -9,7 +9,7 @@ const Error = props => {
       <h2>Bounce Page</h2>
       <button
         className='btn btn-primary float-right'
-        type='button'
+        type='submit'
         onClick={props.handleNext}
       >
         Next

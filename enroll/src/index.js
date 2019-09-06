@@ -13,19 +13,20 @@ const App = () => {
 
   useEffect(() => {})
 
-  function handleNext (event) {
-    if (currentStep == 5) {
-      setCurrentStep(0)
-    } else {
-      setCurrentStep(currentStep + 1)
-    }
+  function handleNext (value) {
+    setCurrentStep(value)
+    // if (currentStep == 5) {
+    //   setCurrentStep(0)
+    // } else {
+    //   setCurrentStep(currentStep + 1)
+    // }
   }
   function handleNextError (event) {
     setCurrentStep(5)
   }
 
   return (
-    <div>
+    <div className='enrollment'>
       <form id='enroll-form'>
         {currentStep == 0 ? (
           <Main

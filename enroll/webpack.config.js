@@ -8,7 +8,7 @@ module.exports = {
   //   filename: 'enroll-bundle.js'
   // },
   output: {
-    filename: 'enroll-bundle.js'
+    filename: 'js/enroll-bundle.js'
   },
   module: {
     rules: [

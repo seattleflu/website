@@ -9,6 +9,7 @@ const Main = props => {
   useEffect(() => {})
 
   function handleChange (event) {
+    event.preventDefault()
     if (question == 0) {
       if (zipValue == '98107') {
         setQuestion(question + 1)
@@ -19,7 +20,7 @@ const Main = props => {
 
     if (question == 1) {
       if (ageValue >= 18) {
-        props.handleNext()
+        props.handleNext(1)
       } else {
         props.handleNextError()
       }
@@ -56,7 +57,7 @@ const Main = props => {
       ) : null}
       <button
         className='btn btn-primary float-right'
-        type='button'
+        type='submit'
         onClick={handleChange}
       >
         Next
