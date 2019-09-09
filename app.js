@@ -10,6 +10,7 @@ var scienceRouter = require('./routes/science')
 var currentRouter = require('./routes/current')
 var enrollRouter = require('./routes/enroll')
 var resultsRouter = require('./routes/results')
+var thankyouRouter = require('./routes/thankyou')
 
 var app = express()
 
@@ -33,6 +34,8 @@ app.use('/current', currentRouter)
 app.use('/faq', faqRouter)
 app.use('/enroll', enrollRouter)
 app.use('/results', resultsRouter)
+app.use('/thank-you', thankyouRouter)
+app.use('/thank-you/:thankyouid', thankyouRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

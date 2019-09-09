@@ -26,7 +26,9 @@ const FlowOne = props => {
     event.preventDefault()
     if (question == 0) {
       if (haveFluValue == 'yes') {
-        setQuestion(question + 1)
+        setQuestion(1)
+      } else if (haveFluValue == 'no') {
+        setQuestion(2)
       } else {
         props.handleNextError()
       }
@@ -42,6 +44,35 @@ const FlowOne = props => {
         // props.handleNextError()
       }
     }
+    if (question == 2) {
+      if (moreThanThree == 'yes') {
+        setQuestion(3)
+      } else {
+        props.handleNextError()
+      }
+    }
+    if (question == 3) {
+      if (havePhone == 'yes') {
+        setQuestion(4)
+      } else {
+        props.handleNextError()
+      }
+    }
+    if (question == 4) {
+      if (over12 == 'yes') {
+        setQuestion(5)
+      } else {
+        props.handleNextError()
+      }
+    }
+    if (question == 5) {
+      if (conditions == 'yes') {
+        setQuestion(6)
+      } else {
+        props.handleNextError()
+      }
+    }
+
     if (question == 6) {
       if (pills == 'yes') {
         props.handleNext(2)
@@ -56,8 +87,20 @@ const FlowOne = props => {
     setHaveFluValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(1)
+      setMoreThanThreeValue('')
+      setWhoValue('')
+      setHavePhoneValue('')
+      setOver12Value('')
+      setConditionsValue('')
+      setPillsValue('')
     } else if (event.target.value == 'no') {
       setQuestion(2)
+      setMoreThanThreeValue('')
+      setWhoValue('')
+      setHavePhoneValue('')
+      setOver12Value('')
+      setConditionsValue('')
+      setPillsValue('')
     }
   }
   function handleWhoChange (event) {
