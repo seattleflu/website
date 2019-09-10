@@ -22,7 +22,7 @@ const Main = props => {
       if (ageValue >= 18) {
         props.handleNext(1)
       } else {
-        props.handleNextError()
+        props.handleNextError(1)
       }
     }
   }
@@ -38,7 +38,7 @@ const Main = props => {
       {question >= 0 ? (
         <Input
           text='What is your Zip Code'
-          description=""
+          description=''
           label='zip_code'
           type='text'
           id='zipcode'
@@ -49,7 +49,7 @@ const Main = props => {
       {question >= 1 ? (
         <Input
           text='How old are you'
-          description=""
+          description=''
           label='age'
           type='text'
           id='zipcode'

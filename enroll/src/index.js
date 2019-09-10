@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
+import { useRoutes, useRedirect } from 'hookrouter'
 import Input from './components/presentational/Input.jsx'
 import Main from './components/steps/Main.jsx'
 import FlowOne from './components/steps/FlowOne.jsx'
@@ -21,8 +22,9 @@ const App = () => {
     //   setCurrentStep(currentStep + 1)
     // }
   }
-  function handleNextError (event) {
+  function handleNextError (url) {
     setCurrentStep(5)
+    window.open('/thank-you/' + url)
   }
 
   return (

@@ -9,14 +9,14 @@ const FlowOne = props => {
   const [whoValue, setWhoValue] = useState('')
 
   const [havePhone, setHavePhoneValue] = useState('')
-  const [over12, setOver12Value] = useState('')
+  const [under18, setunder18Value] = useState('')
   const [moreThanThree, setMoreThanThreeValue] = useState('')
   const [conditions, setConditionsValue] = useState('')
   const [pills, setPillsValue] = useState('')
 
   // 1 setMoreThanThreeValue
   // 2 setHavePhoneValue
-  // 3 setOver12Value
+  // 3 setunder18Value
   // 4 setConditionsValue
   // 5 setPillsValue
 
@@ -59,7 +59,7 @@ const FlowOne = props => {
       }
     }
     if (question == 4) {
-      if (over12 == 'yes') {
+      if (under18 == 'yes') {
         setQuestion(5)
       } else {
         props.handleNextError()
@@ -75,7 +75,8 @@ const FlowOne = props => {
 
     if (question == 6) {
       if (pills == 'yes') {
-        props.handleNext(2)
+        // props.handleNext(2)
+        props.handleNextError(2)
       } else {
         props.handleNextError()
       }
@@ -90,7 +91,7 @@ const FlowOne = props => {
       setMoreThanThreeValue('')
       setWhoValue('')
       setHavePhoneValue('')
-      setOver12Value('')
+      setunder18Value('')
       setConditionsValue('')
       setPillsValue('')
     } else if (event.target.value == 'no') {
@@ -98,7 +99,7 @@ const FlowOne = props => {
       setMoreThanThreeValue('')
       setWhoValue('')
       setHavePhoneValue('')
-      setOver12Value('')
+      setunder18Value('')
       setConditionsValue('')
       setPillsValue('')
     }
@@ -119,9 +120,7 @@ const FlowOne = props => {
       setQuestion(question + 1)
     } else {
       setQuestion(2)
-
-      setHavePhoneValue('')
-      setOver12Value('')
+      setunder18Value('')
       setConditionsValue('')
       setPillsValue('')
     }
@@ -131,20 +130,19 @@ const FlowOne = props => {
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
     } else {
-      setQuestion(3)
-
-      setOver12Value('')
+      setQuestion(2)
+      setMoreThanThreeValue('')
+      setunder18Value('')
       setConditionsValue('')
       setPillsValue('')
     }
   }
-  function handleOver12Change (event) {
-    setOver12Value(event.target.value)
+  function handleunder18Change (event) {
+    setunder18Value(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
     } else {
       setQuestion(4)
-
       setConditionsValue('')
       setPillsValue('')
     }
@@ -207,18 +205,6 @@ const FlowOne = props => {
       ) : null}
       {question >= 2 ? (
         <Select
-          text='Are there at least 3 people in your household including 1 child?'
-          description=''
-          label='moreThanThree'
-          type='select'
-          id='moreThanThree'
-          value={moreThanThree}
-          options={options}
-          handleChange={handleMoreThanThreeChange}
-        />
-      ) : null}
-      {question >= 3 ? (
-        <Select
           text='Does someone in your house have a smartphone?'
           description=''
           label='havePhone'
@@ -229,23 +215,35 @@ const FlowOne = props => {
           handleChange={handleHavePhoneChange}
         />
       ) : null}
+      {question >= 3 ? (
+        <Select
+          text='Are there at least 3 people in your household?'
+          description=''
+          label='moreThanThree'
+          type='select'
+          id='moreThanThree'
+          value={moreThanThree}
+          options={options}
+          handleChange={handleMoreThanThreeChange}
+        />
+      ) : null}
 
       {question >= 4 ? (
         <Select
-          text='Are at least 2 people in your house over 12 years old and do not have any of the following conditions?'
+          text='Is at least one of these individules under 18?'
           description=''
-          label='over12'
+          label='under18'
           type='select'
-          id='over12'
-          value={over12}
+          id='under18'
+          value={under18}
           options={options}
-          handleChange={handleOver12Change}
+          handleChange={handleunder18Change}
         />
       ) : null}
 
       {question >= 5 ? (
         <Select
-          text='Are there at least 2 other people in the household who DO NOT have any of the following Conditions:'
+          text='Are there at least 2 other people in the household who do not have any of the following conditions'
           description=''
           label='conditions'
           type='select'
