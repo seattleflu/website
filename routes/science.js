@@ -3,15 +3,15 @@ var router = express.Router()
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('science', { title: 'Science page' })
+  res.render('science', { title: 'Science page', header: 'light' })
 })
 
 router.get('/map', function (req, res, next) {
-  res.render('map', { title: 'Science page map' })
+  res.render('map', { title: 'Science page map', header: 'light' })
 })
 
 router.get('/tree', function (req, res, next) {
-  res.render('tree', { title: 'Science page tree' })
+  res.render('tree', { title: 'Science page tree', header: 'light' })
 })
 
 module.exports = router

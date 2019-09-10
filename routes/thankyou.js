@@ -28,7 +28,7 @@ router.use((req, res, next) => {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('thankyou', { title: 'Thank You', thankyouData: req.thankyouData })
+  res.render('thankyou', { title: 'Thank You', thankyouData: req.thankyouData, header: 'light' })
 })
 
 module.exports = router

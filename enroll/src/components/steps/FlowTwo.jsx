@@ -9,6 +9,8 @@ const FlowTwoA = props => {
   const [conditionsValue, setConditionsValue] = useState('')
   const [symptomsList, setSymptopmsList] = useState([])
 
+  const [deviceValue, setDeviceValue] = useState('')
+
   useEffect(() => {})
 
   function handleDuration (event) {
@@ -21,20 +23,28 @@ const FlowTwoA = props => {
     setConditionsValue(event.target.value)
   }
 
+  function handleDeviceValue (event) {
+    setDeviceValue(event.target.value)
+  }
+
   function handleNext (event) {
     event.preventDefault()
     if (question == 0) {
-      if (howlongValue == 'moreThan7') {
-        props.handleNextError()
-      } else {
+      if (howlongValue == 'lessThan72') {
         setQuestion(question + 1)
+      } else if(howlongValue == 'moreThanandlessthan'){
+        setQuestion(7)
+      }else{
+props.handleNextError()
       }
     }
     if (question == 1) {
       if (symptomsList.length <= 2) {
         props.handleNextError()
+      } else if (symptomsList.length <= 3) {
+        setQuestion(2)
       } else {
-        setQuestion(question + 1)
+        setQuestion(4)
       }
     }
 
@@ -49,8 +59,15 @@ const FlowTwoA = props => {
       if (conditionsValue == 'no') {
         props.handleNextError()
       } else {
-        props.handleNext(3)
-        // setQuestion(question + 1)
+        // props.handleNext(3)
+        setQuestion(question + 1)
+      }
+    }
+    if (question == 4) {
+      if (deviceValue == 'no') {
+        props.handleNextError()
+      } else {
+        setQuestion(question + 1)
       }
     }
   }
@@ -99,6 +116,7 @@ const FlowTwoA = props => {
 
       {question >= 1 ? (
         <div>
+          <p>Which of the following symptoms do you currently have?</p>
           <input
             type='checkbox'
             name='test1'
@@ -221,7 +239,8 @@ const FlowTwoA = props => {
           <br />
         </div>
       ) : null}
-      {question >= 2 ? (
+
+      {question >= 2 && question < 4 ? (
         <Select
           text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
           description=''
@@ -233,7 +252,203 @@ const FlowTwoA = props => {
           handleChange={handleconnected}
         />
       ) : null}
-      {question >= 3 ? (
+      {question >= 3 && question < 4 ? (
+        <Select
+          text='Do you have any of the following conditions:'
+          description=''
+          label='conditions'
+          type='select'
+          id='conditions'
+          value={conditionsValue}
+          options={optionsYesNo}
+          handleChange={handleConditions}
+        />
+      ) : null}
+
+      {question >= 4 ? (
+        <Select
+          text='Do you have regular access to an iOS or Android device?'
+          description=''
+          label='device'
+          type='select'
+          id='device'
+          value={deviceValue}
+          options={optionsYesNo}
+          handleChange={handleDeviceValue}
+        />
+      ) : null}
+
+      {question >= 5 ? (
+        <Select
+          text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
+          description=''
+          label='connected'
+          type='select'
+          id='connected'
+          value={connectedValue}
+          options={optionsYesNo}
+          handleChange={handleconnected}
+        />
+      ) : null}
+      {question >= 6 ? (
+        <Select
+          text='Do you have any of the following conditions:'
+          description=''
+          label='conditions'
+          type='select'
+          id='conditions'
+          value={conditionsValue}
+          options={optionsYesNo}
+          handleChange={handleConditions}
+        />
+      ) : null}
+
+
+
+
+
+
+      {question >= 7 ? (
+        <div>
+          <p>Which of the following symptoms do you currently have? option2 </p>
+          <input
+            type='checkbox'
+            name='test1'
+            value='Feeling Feverish'
+            onChange={addSymptom}
+          />
+          Feeling Feverish
+          <br />
+          <input
+            type='checkbox'
+            name='test2'
+            value='Nausea or vomiting'
+            onChange={addSymptom}
+          />
+          Nausea or vomiting
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Increased trouble with breathing'
+            onChange={addSymptom}
+          />
+          Increased trouble with breathing
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Headaches'
+            onChange={addSymptom}
+          />
+          Headaches
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Runny or stuffy nose or sneezing'
+            onChange={addSymptom}
+          />
+          Runny or stuffy nose or sneezing
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Ear pain or ear discharge'
+            onChange={addSymptom}
+          />
+          Ear pain or ear discharge
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Cough'
+            onChange={addSymptom}
+          />
+          Cough
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Rash'
+            onChange={addSymptom}
+          />
+          Rash
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Chills or sweats'
+            onChange={addSymptom}
+          />
+          Chills or sweats
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Diarrhea'
+            onChange={addSymptom}
+          />
+          Diarrhea
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Increased Fatigue(tiredness)'
+            onChange={addSymptom}
+          />
+          Increased Fatigue(tiredness)
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Feeling dizzy'
+            onChange={addSymptom}
+          />
+          Feeling dizzy
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Sore throat'
+            onChange={addSymptom}
+          />
+          Sore throat
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='Muscle or body aches'
+            onChange={addSymptom}
+          />
+          Muscle or body aches
+          <br />
+          <input
+            type='checkbox'
+            name='test3'
+            value='None of the above'
+            onChange={addSymptom}
+          />
+          None of the above
+          <br />
+        </div>
+      ) : null}
+
+      {question >= 8 ? (
+        <Select
+          text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
+          description=''
+          label='connected'
+          type='select'
+          id='connected'
+          value={connectedValue}
+          options={optionsYesNo}
+          handleChange={handleconnected}
+        />
+      ) : null}
+
+
+      {question >= 9 ? (
         <Select
           text='Do you have any of the following conditions:'
           description=''
