@@ -19,6 +19,17 @@ export default class ReturnOfResults extends React.Component {
     }
 
     setResult = (newResults) => {
+        // Convert ID3C lineages to generic pathogen names used in the rest of the app
+        newResults["results"] = newResults["results"].map(lineage => {
+            if(lineage.includes('Influenza')){
+                    return 'flu'
+            }
+            if(lineage.includes('RSV')){
+                    return 'rsv'
+            }
+            return lineage
+        });
+
         this.setState(newResults, () => {
             console.log(this.state)
         });
