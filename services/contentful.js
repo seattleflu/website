@@ -1,5 +1,5 @@
 var contentful = require('contentful')
-var config = require('../config.js')[process.env.NODE_ENV || 'production']
+var config = require('../config.json')[process.env.NODE_ENV || 'production']
 
 var client = contentful.createClient({
   accessToken: config.accessToken,

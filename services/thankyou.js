@@ -1,8 +1,9 @@
 var client = require('./contentful').client
-async function getHubPage (url) {
+
+async function getThankyou (url) {
   try {
     const result = await client.getEntries({
-      content_type: 'categories',
+      content_type: 'thankYouReferPages',
       'fields.url': url,
       include: 10
     })
@@ -13,5 +14,5 @@ async function getHubPage (url) {
 }
 
 module.exports = {
-  getHubPage
+  getThankyou
 }
