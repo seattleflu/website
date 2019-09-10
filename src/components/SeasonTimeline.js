@@ -108,8 +108,17 @@ export default class SeasonTimeline extends React.Component {
       <CenteredParagraph>
         <svg viewBox={`0 0 ${width + margin * 2} ${height + margin * 2}`}
              width="100%"
-             height={height + margin * 2}>
-
+             height={height + margin * 2}
+             role="img"
+             aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID">
+          <title id="fluSeasonTimelineID">Flu Season Timeline</title>
+          <desc id="fluSeasonTimelineDescID">
+            A timeline detailing the progression of a flu season from July of
+            the season start year to July of the season end year.
+            June, July, and August are considered off-season months.
+            September and May are shoulder months that may or may not have flu.
+            October through April is considered peak flu season.
+          </desc>
           <g transform={`translate(${margin}, ${height - monthHeight})`}>
             {months.map((m, i) =>
             <g key={m.yearMonth}
