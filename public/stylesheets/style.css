@@ -110,7 +110,7 @@ header .navbar-nav li, .mobile-nav li {
   font-weight: 700;
   font-size: 14px;
 }
-.header .navbar-nav li {
+header .navbar-nav li {
   display: inline-block;
   margin: auto 0 auto 40px;
 }
