@@ -10,6 +10,7 @@ var config = {
   accessToken: required_env('CONTENTFUL_ACCESS_TOKEN'),
   space: required_env('CONTENTFUL_SPACE'),
   host: process.env.CONTENTFUL_HOST,
+  insecure: false,
 };
 
 var client = contentful.createClient(config);
