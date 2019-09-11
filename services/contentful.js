@@ -1,10 +1,17 @@
 var contentful = require('contentful')
-var config = require('../config.json')[process.env.NODE_ENV || 'production']
 
-var client = contentful.createClient({
-  accessToken: config.accessToken,
-  space: config.space,
-  host: config.host
-})
+function required_env(name) {
+  if (!process.env[name])
+    throw new Error(`The required environment variable ${name} is not set.`);
+  return process.env[name];
+}
+
+var config = {
+  accessToken: required_env('CONTENTFUL_ACCESS_TOKEN'),
+  space: required_env('CONTENTFUL_SPACE'),
+  host: process.env.CONTENTFUL_HOST,
+};
+
+var client = contentful.createClient(config);
 
 exports.client = client
