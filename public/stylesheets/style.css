@@ -79,3 +79,121 @@ footer #copyright-bar {
   font-size: 12px;
   margin-bottom: 0;
 }
+
+/*** HEADER ***/
+header.light {
+  background-color: #fff;
+  border-bottom: 2px solid #eaecf0;
+}
+header.dark {
+  background-color: #0A5CA8;
+}
+header .logo {
+  margin: auto 0;
+}
+header .logo img {
+  max-height: 40px;
+}
+header.light .custom-toggler .navbar-toggler-icon {
+  background-image: url("/images/nav_hamburger_dark.svg");
+}
+header.dark .custom-toggler .navbar-toggler-icon {
+  background-image: url("/images/nav_hamburger_light.svg");
+}
+.custom-toggler.navbar-toggler {
+  border: none;
+} 
+header .navbar-nav {
+  margin: 25px 0 25px auto;
+}
+header .navbar-nav li, .mobile-nav li {
+  font-weight: 700;
+  font-size: 14px;
+}
+header .navbar-nav li {
+  display: inline-block;
+  margin: auto 0 auto 40px;
+}
+header.light .navbar-nav li, .mobile-nav li {
+  color: #4A515F;
+}
+header.dark .navbar-nav li {
+  color: #ffffff;
+}
+header .nav-item button, .mobile-nav ul button {
+  margin-left: 40px;
+  color: #fff;
+  padding: 7px 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 25px;
+}
+.mobile-nav ul button {
+  margin-left: 0;
+}
+header button:focus, .mobile-nav button:focus {
+  outline: none;
+}
+header.light .nav-item button, .mobile-nav ul button {
+  background-color: #1BAB4C;
+  border: 2px solid #1BAB4C;
+}
+header.dark .nav-item button {
+  background-color: transparent;
+  border: 2px solid #fff;
+}
+.mobile-nav {
+  background-color: #fff;
+  width: 70%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  height: 100%;
+}
+.navbar-collapse {
+  padding: 60px 0 60px 60px;
+  height: 100%;
+}
+.mobile-nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+.mobile-nav li {
+  margin-bottom: 40px;
+}
+.mobile-nav .navbar-toggler {
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  background: 0 0;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+.mobile-nav .navbar-close-icon {
+  background-image: url("/images/nav_close.svg");
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background-size: 100% 100%;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+@media (min-width:768px) and (max-width:1199px) {
+  header .navbar-nav li, header .nav-item button {
+    margin: auto 0 auto 20px;
+  }
+}
+@media (max-width:767px) {
+  .navbar-nav {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none;
+  }
+}

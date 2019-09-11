@@ -5,9 +5,71 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" >
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="">
+    <link rel="icon" type="image/png" sizes="32x32" href="">
+    <link rel="icon" type="image/png" sizes="16x16" href="">
+    <link rel="manifest" href="">
+    <link rel="mask-icon" href="" color="#0d1d47">
+    <link rel="shortcut icon" href="">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="">
+    <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:title" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="" />
+    <meta itemprop="name" content=""/>
+    <meta itemprop="url" content=""/>
+    <meta name="twitter:title" content=""/>
+    <meta name="twitter:url" content=""/>
+    <meta name="twitter:card" content=""/>
+    <meta name="description" content="" />
+  
   </head>
    <body>
-   <header class="<%= header %>">
-   <p>header</p>
+   <header class="<%= header %> navbar navbar-expand-md navbar-dark">
+            <% if(header === 'light') {%>
+              <a href="/" class="logo"><img src="/images/logo_placeholder_color.png"></a>
+            <%}%>
+            <% if(header === 'dark') {%>
+              <a href="/" class="logo"><img src="/images/logo_placeholder_white.png"></a>
+            <%}%>
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">FAQ</li>
+              <li class="nav-item">Find a Kiosk</li>
+              <li class="nav-item">Flu Status</li>
+              <li class="nav-item">Science</li>
+              <li class="nav-item">Your Results</li>
+              <a href="" class="nav-item"><button>Join the Study</button></a>
+            </ul>    
    </header>
+      <div class="mobile-nav collapse navbar-collapse" id="headerNav">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-close-icon"></span>
+          </button>
+
+          <ul>
+              <li class="nav-item">FAQ</li>
+              <li class="nav-item">Find a Kiosk</li>
+              <li class="nav-item">Flu Status</li>
+              <li class="nav-item">Science</li>
+              <li class="nav-item">Your Results</li>
+              <a href="" class="nav-item"><button>Join the Study</button></a>
+            </ul>   
+      </div>
       
