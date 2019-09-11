@@ -15,9 +15,37 @@ const FlowTwoA = props => {
 
   function handleDuration (event) {
     setHowlongValue(event.target.value)
+    if (question != 0) {
+      setQuestion(0)
+    }
+    if (event.target.value == 'lessThan72') {
+      setQuestion(1)
+      console.log(event.target.value)
+    } else if (event.target.value == 'moreThanandlessthan') {
+      setQuestion(7)
+      console.log(event.target.value)
+    } else {
+      props.handleNextError(1)
+    }
   }
-  function handleconnected (event) {
+
+  function handleconnectedOne (event) {
     setconnectedValue(event.target.value)
+    if (event.target.value == 'yes') {
+      setQuestion(question + 1)
+    } else {
+      setConditionsValue('')
+      setQuestion(2)
+    }
+  }
+  function handleconnectedTwo (event) {
+    setconnectedValue(event.target.value)
+    if (event.target.value == 'yes') {
+      setQuestion(question + 1)
+    } else {
+      setConditionsValue('')
+      setQuestion(5)
+    }
   }
   function handleConditions (event) {
     setConditionsValue(event.target.value)
@@ -25,6 +53,11 @@ const FlowTwoA = props => {
 
   function handleDeviceValue (event) {
     setDeviceValue(event.target.value)
+    if (event.target.value == 'yes') {
+      // props.handleNextError(2)
+    } else {
+      setQuestion(question + 1)
+    }
   }
 
   function handleNext (event) {
@@ -32,53 +65,148 @@ const FlowTwoA = props => {
     if (question == 0) {
       if (howlongValue == 'lessThan72') {
         setQuestion(question + 1)
-      } else if(howlongValue == 'moreThanandlessthan'){
-        setQuestion(7)
-      }else{
-props.handleNextError()
+      } else if (howlongValue == 'moreThanandlessthan') {
+        setQuestion()
+      } else {
+        props.handleNextError()
       }
     }
     if (question == 1) {
-      if (symptomsList.length <= 2) {
-        props.handleNextError()
-      } else if (symptomsList.length <= 3) {
-        setQuestion(2)
-      } else {
+      if (symptomsList.length < 2) {
+        props.handleNextError(1)
+      } else if (symptomsList.length >= 2 && symptomsList.includes('Cough')) {
         setQuestion(4)
+      } else {
+        setQuestion(2)
       }
     }
 
     if (question == 2) {
       if (connectedValue == 'no') {
-        props.handleNextError()
+        props.handleNextError(1)
       } else {
-        setQuestion(question + 1)
+        setQuestion(2)
       }
     }
     if (question == 3) {
       if (conditionsValue == 'no') {
-        props.handleNextError()
+        props.handleNextError(1)
       } else {
         // props.handleNext(3)
-        setQuestion(question + 1)
+        props.handleNextError(2)
       }
     }
     if (question == 4) {
       if (deviceValue == 'no') {
-        props.handleNextError()
+        setQuestion(question + 1)
+      } else {
+        props.handleNextError(2)
+      }
+    }
+    if (question == 5) {
+      if (deviceValue == 'no') {
+        props.handleNextError(1)
       } else {
         setQuestion(question + 1)
       }
     }
+    if (question == 6) {
+      if (conditionsValue == 'no') {
+        props.handleNextError(1)
+      } else {
+        // setQuestion(question + 1)
+        props.handleNextError(2)
+      }
+    }
+    if (question == 7) {
+      if (symptomsList.length < 2) {
+        props.handleNextError(1)
+      } else {
+        setQuestion(8)
+      }
+    }
+    if (question == 8) {
+      if (deviceValue == 'no') {
+        props.handleNextError(1)
+      } else {
+        setQuestion(question + 1)
+      }
+    }
+    if (question == 9) {
+      if (deviceValue == 'no') {
+        props.handleNextError(1)
+      } else {
+        props.handleNextError()
+      }
+    }
   }
-  function addSymptom (event) {
+
+  function addSymptomRemove (event) {
+    setSymptopmsList([event.target.value])
+    document.querySelectorAll('input[type=checkbox]').forEach(el => {
+      if (el.value == event.target.value) {
+      } else {
+        el.checked = false
+      }
+    })
+  }
+  function addSymptomOne (event) {
+    if (question != 1) {
+      setQuestion(1)
+      setconnectedValue('')
+      setConditionsValue('')
+    }
     const array = [...symptomsList]
+
     var index = array.indexOf(event.target.value)
+    var noneOfTheAbove = array.indexOf('None of the above')
+    console.log(array.indexOf('None of the above'))
+
+    if (noneOfTheAbove == 0) {
+      array.splice(array[noneOfTheAbove], 1)
+      document.querySelectorAll('input[type=checkbox]').forEach(el => {
+        if (el.value == 'None of the above') {
+          el.checked = false
+        } else {
+        }
+      })
+    }
+
     if (index != -1) {
       array.splice(index, 1)
       setSymptopmsList(array)
     } else {
       setSymptopmsList([...symptomsList, event.target.value])
+      console.log(symptomsList)
+    }
+  }
+
+  function addSymptomTwo (event) {
+    if (question != 7) {
+      setQuestion(7)
+    }
+    const array = [...symptomsList]
+
+    var index = array.indexOf(event.target.value)
+    var noneOfTheAbove = array.indexOf('None of the above')
+    console.log(array.indexOf('None of the above'))
+
+    if (noneOfTheAbove == 0) {
+      array.splice(array[noneOfTheAbove], 1)
+      document.querySelectorAll('input[type=checkbox]').forEach(el => {
+        if (el.value == 'None of the above') {
+          el.checked = false
+        } else {
+        }
+      })
+    }
+
+    if (index != -1) {
+      array.splice(index, 1)
+      setSymptopmsList(array)
+    } else {
+      setSymptopmsList([array, event.target.value])
+      console.log(symptomsList)
     }
   }
 
@@ -114,14 +242,14 @@ props.handleNextError()
         />
       ) : null}
 
-      {question >= 1 ? (
+      {question >= 1 && question < 7 ? (
         <div>
           <p>Which of the following symptoms do you currently have?</p>
           <input
             type='checkbox'
             name='test1'
             value='Feeling Feverish'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Feeling Feverish
           <br />
@@ -129,7 +257,7 @@ props.handleNextError()
             type='checkbox'
             name='test2'
             value='Nausea or vomiting'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Nausea or vomiting
           <br />
@@ -137,7 +265,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Increased trouble with breathing'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Increased trouble with breathing
           <br />
@@ -145,7 +273,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Headaches'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Headaches
           <br />
@@ -153,7 +281,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Runny or stuffy nose or sneezing'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Runny or stuffy nose or sneezing
           <br />
@@ -161,7 +289,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Ear pain or ear discharge'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Ear pain or ear discharge
           <br />
@@ -169,7 +297,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Cough'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Cough
           <br />
@@ -177,7 +305,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Rash'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Rash
           <br />
@@ -185,7 +313,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Chills or sweats'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Chills or sweats
           <br />
@@ -193,7 +321,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Diarrhea'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Diarrhea
           <br />
@@ -201,7 +329,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Increased Fatigue(tiredness)'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Increased Fatigue(tiredness)
           <br />
@@ -209,7 +337,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Feeling dizzy'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Feeling dizzy
           <br />
@@ -217,7 +345,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Sore throat'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Sore throat
           <br />
@@ -225,7 +353,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Muscle or body aches'
-            onChange={addSymptom}
+            onChange={addSymptomOne}
           />
           Muscle or body aches
           <br />
@@ -233,7 +361,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='None of the above'
-            onChange={addSymptom}
+            onChange={addSymptomRemove}
           />
           None of the above
           <br />
@@ -249,7 +377,7 @@ props.handleNextError()
           id='connected'
           value={connectedValue}
           options={optionsYesNo}
-          handleChange={handleconnected}
+          handleChange={handleconnectedOne}
         />
       ) : null}
       {question >= 3 && question < 4 ? (
@@ -265,7 +393,7 @@ props.handleNextError()
         />
       ) : null}
 
-      {question >= 4 ? (
+      {question >= 4 && question < 7 ? (
         <Select
           text='Do you have regular access to an iOS or Android device?'
           description=''
@@ -278,7 +406,7 @@ props.handleNextError()
         />
       ) : null}
 
-      {question >= 5 ? (
+      {question >= 5 && question < 7 ? (
         <Select
           text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
           description=''
@@ -287,10 +415,10 @@ props.handleNextError()
           id='connected'
           value={connectedValue}
           options={optionsYesNo}
-          handleChange={handleconnected}
+          handleChange={handleconnectedTwo}
         />
       ) : null}
-      {question >= 6 ? (
+      {question >= 6 && question < 7 ? (
         <Select
           text='Do you have any of the following conditions:'
           description=''
@@ -303,11 +431,6 @@ props.handleNextError()
         />
       ) : null}
 
-
-
-
-
-
       {question >= 7 ? (
         <div>
           <p>Which of the following symptoms do you currently have? option2 </p>
@@ -315,7 +438,7 @@ props.handleNextError()
             type='checkbox'
             name='test1'
             value='Feeling Feverish'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Feeling Feverish
           <br />
@@ -323,7 +446,7 @@ props.handleNextError()
             type='checkbox'
             name='test2'
             value='Nausea or vomiting'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Nausea or vomiting
           <br />
@@ -331,7 +454,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Increased trouble with breathing'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Increased trouble with breathing
           <br />
@@ -339,7 +462,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Headaches'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Headaches
           <br />
@@ -347,7 +470,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Runny or stuffy nose or sneezing'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Runny or stuffy nose or sneezing
           <br />
@@ -355,7 +478,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Ear pain or ear discharge'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Ear pain or ear discharge
           <br />
@@ -363,7 +486,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Cough'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Cough
           <br />
@@ -371,7 +494,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Rash'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Rash
           <br />
@@ -379,7 +502,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Chills or sweats'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Chills or sweats
           <br />
@@ -387,7 +510,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Diarrhea'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Diarrhea
           <br />
@@ -395,7 +518,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Increased Fatigue(tiredness)'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Increased Fatigue(tiredness)
           <br />
@@ -403,7 +526,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Feeling dizzy'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Feeling dizzy
           <br />
@@ -411,7 +534,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Sore throat'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Sore throat
           <br />
@@ -419,7 +542,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='Muscle or body aches'
-            onChange={addSymptom}
+            onChange={addSymptomTwo}
           />
           Muscle or body aches
           <br />
@@ -427,7 +550,7 @@ props.handleNextError()
             type='checkbox'
             name='test3'
             value='None of the above'
-            onChange={addSymptom}
+            onChange={addSymptomRemove}
           />
           None of the above
           <br />
@@ -446,7 +569,6 @@ props.handleNextError()
           handleChange={handleconnected}
         />
       ) : null}
-
 
       {question >= 9 ? (
         <Select
