@@ -30,21 +30,21 @@ const App = () => {
   return (
     <div className='enrollment'>
       <form id='enroll-form'>
-        {currentStep == 2 ? (
+        {currentStep == 0 ? (
           <Main
             handleNext={handleNext}
             handleNextError={handleNextError}
             currentStep={currentStep}
           />
         ) : null}
-        {currentStep == 2 ? (
+        {currentStep == 1 ? (
           <FlowOne
             handleNext={handleNext}
             handleNextError={handleNextError}
             currentStep={currentStep}
           />
         ) : null}
-        {currentStep == 0 ? (
+        {currentStep == 2 ? (
           <FlowTwo
             handleNext={handleNext}
             handleNextError={handleNextError}

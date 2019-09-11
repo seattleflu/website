@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import Select from '../presentational/Select.jsx'
 
-const FlowTwoA = props => {
+const FlowTwo = props => {
   const [question, setQuestion] = useState(0)
   const [howlongValue, setHowlongValue] = useState('')
   const [connectedValue, setconnectedValue] = useState('')
@@ -47,6 +47,15 @@ const FlowTwoA = props => {
       setQuestion(5)
     }
   }
+  function handleconnectedThree (event) {
+    setconnectedValue(event.target.value)
+    if (event.target.value == 'yes') {
+      setQuestion(question + 1)
+    } else {
+      setConditionsValue('')
+      setQuestion(8)
+    }
+  }
   function handleConditions (event) {
     setConditionsValue(event.target.value)
   }
@@ -54,7 +63,7 @@ const FlowTwoA = props => {
   function handleDeviceValue (event) {
     setDeviceValue(event.target.value)
     if (event.target.value == 'yes') {
-      // props.handleNextError(2)
+      setQuestion(4)
     } else {
       setQuestion(question + 1)
     }
@@ -118,6 +127,7 @@ const FlowTwoA = props => {
         props.handleNextError(2)
       }
     }
+
     if (question == 7) {
       if (symptomsList.length < 2) {
         props.handleNextError(1)
@@ -126,17 +136,17 @@ const FlowTwoA = props => {
       }
     }
     if (question == 8) {
-      if (deviceValue == 'no') {
+      if (connectedValue == 'no') {
         props.handleNextError(1)
       } else {
         setQuestion(question + 1)
       }
     }
     if (question == 9) {
-      if (deviceValue == 'no') {
+      if (conditionsValue == 'no') {
         props.handleNextError(1)
       } else {
-        props.handleNextError()
+        props.handleNextError(2)
       }
     }
   }
@@ -184,6 +194,8 @@ const FlowTwoA = props => {
   function addSymptomTwo (event) {
     if (question != 7) {
       setQuestion(7)
+      setconnectedValue('')
+      setConditionsValue('')
     }
     const array = [...symptomsList]
 
@@ -566,7 +578,7 @@ const FlowTwoA = props => {
           id='connected'
           value={connectedValue}
           options={optionsYesNo}
-          handleChange={handleconnected}
+          handleChange={handleconnectedThree}
         />
       ) : null}
 
@@ -593,4 +605,4 @@ const FlowTwoA = props => {
     </div>
   )
 }
-export default FlowTwoA
+export default FlowTwo
