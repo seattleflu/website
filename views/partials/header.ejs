@@ -37,27 +37,29 @@
     <meta name="description" content="" />
   
   </head>
-   <body>
-   <header class="<%= header %> navbar navbar-expand-md navbar-dark">
-            <% if(header === 'light') {%>
-              <a href="/" class="logo"><img src="/images/logo_placeholder_color.png"></a>
-            <%}%>
-            <% if(header === 'dark') {%>
-              <a href="/" class="logo"><img src="/images/logo_placeholder_white.png"></a>
-            <%}%>
-            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <body>
+      <header class="<%= header %> navbar navbar-expand-md navbar-dark">
+        <div class="container">
+          <% if(header === 'light') {%>
+            <a href="/" class="logo"><img src="/images/logo_placeholder_color.png"></a>
+          <%}%>
+          <% if(header === 'dark') {%>
+            <a href="/" class="logo"><img src="/images/logo_placeholder_white.png"></a>
+          <%}%>
+          <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
 
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">FAQ</li>
-              <li class="nav-item">Find a Kiosk</li>
-              <li class="nav-item">Flu Status</li>
-              <li class="nav-item">Science</li>
-              <li class="nav-item">Your Results</li>
-              <a href="" class="nav-item"><button>Join the Study</button></a>
-            </ul>    
-   </header>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">FAQ</li>
+            <li class="nav-item">Find a Kiosk</li>
+            <li class="nav-item">Flu Status</li>
+            <li class="nav-item">Science</li>
+            <li class="nav-item">Your Results</li>
+            <a href="" class="nav-item"><button>Join the Study</button></a>
+          </ul>    
+        </div>
+      </header>
       <div class="mobile-nav collapse navbar-collapse" id="headerNav">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-close-icon"></span>
@@ -72,4 +74,5 @@
               <a href="" class="nav-item"><button>Join the Study</button></a>
             </ul>   
       </div>
+      <div class="overlay"></div>
       
