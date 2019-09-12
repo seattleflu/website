@@ -54,7 +54,7 @@ app.use(function (err, req, res, next) {
   res.status(404).render('404', { title: '404', header: 'light' })
   // render the error page
   res.status(err.status || 500)
-  res.render('error', { title: 'Page Not Found' })
+  res.render('error', { title: 'Page Not Found', header: 'light' })
 })
 
 module.exports = app
