@@ -81,6 +81,25 @@ footer #copyright-bar {
 }
 
 /*** HEADER ***/
+.overlay {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  top: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.show + .overlay {
+  visibility: visible;
+  opacity: 1;
+}
+.collapsing {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+  visibility: hidden;
+}
 header.light {
   background-color: #fff;
   border-bottom: 2px solid #eaecf0;
@@ -148,7 +167,7 @@ header.dark .nav-item button {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
   height: 100%;
 }
 .navbar-collapse {
@@ -194,6 +213,9 @@ header.dark .nav-item button {
 }
 @media (min-width: 768px) {
   .mobile-nav {
+    display: none;
+  }
+  .overlay {
     display: none;
   }
 }
