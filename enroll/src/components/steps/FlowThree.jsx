@@ -243,7 +243,7 @@ const FlowThree = props => {
       <p>{symptomsList}</p>
       {question >= 0 ? (
         <Select
-          text='How Long has this person had symptoms for?'
+          text={props.question15}
           description=''
           label='symptoms'
           type='select'
@@ -256,7 +256,7 @@ const FlowThree = props => {
 
       {question >= 1 && question < 7 ? (
         <div>
-          <p>Which of the following symptoms does this person currenty have?</p>
+          <p>{props.question18}</p>
           <input
             type='checkbox'
             name='test1'
@@ -382,7 +382,7 @@ const FlowThree = props => {
 
       {question >= 2 && question < 4 ? (
         <Select
-          text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
+          text={props.question12}
           description=''
           label='connected'
           type='select'
@@ -394,7 +394,7 @@ const FlowThree = props => {
       ) : null}
       {question >= 3 && question < 4 ? (
         <Select
-          text='Does the person have any of the following conditions:'
+          text={props.question17}
           description=''
           label='conditions'
           type='select'
@@ -407,7 +407,7 @@ const FlowThree = props => {
 
       {question >= 4 && question < 7 ? (
         <Select
-          text='Do you have regular access to an iOS or Android device?'
+          text={props.question16}
           description=''
           label='device'
           type='select'
@@ -420,7 +420,7 @@ const FlowThree = props => {
 
       {question >= 5 && question < 7 ? (
         <Select
-          text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
+          text={props.question12}
           description=''
           label='connected'
           type='select'
@@ -432,7 +432,7 @@ const FlowThree = props => {
       ) : null}
       {question >= 6 && question < 7 ? (
         <Select
-          text='Does the person have any of the following conditions:'
+          text={props.question17}
           description=''
           label='conditions'
           type='select'
@@ -445,7 +445,7 @@ const FlowThree = props => {
 
       {question >= 7 ? (
         <div>
-          <p>Which of the following symptoms does this person currently have? flow 2 </p>
+          <p>{props.question15}</p>
           <input
             type='checkbox'
             name='test1'
@@ -571,7 +571,7 @@ const FlowThree = props => {
 
       {question >= 8 ? (
         <Select
-          text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
+          text={props.question12}
           description=''
           label='connected'
           type='select'
@@ -584,7 +584,7 @@ const FlowThree = props => {
 
       {question >= 9 ? (
         <Select
-          text='Does this person have any of the following conditions:'
+          text={props.question17}
           description=''
           label='conditions'
           type='select'

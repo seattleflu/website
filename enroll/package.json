@@ -22,6 +22,8 @@
     "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "contentful": "^7.9.1",
     "express": "^4.17.1",
     "hookrouter": "^1.2.3",
     "react": "^16.9.0",

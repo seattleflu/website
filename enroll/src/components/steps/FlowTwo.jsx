@@ -243,7 +243,7 @@ const FlowTwo = props => {
       <p>{symptomsList}</p>
       {question >= 0 ? (
         <Select
-          text='How Long have you had symptoms?'
+          text={props.question10}
           description=''
           label='symptoms'
           type='select'
@@ -256,7 +256,7 @@ const FlowTwo = props => {
 
       {question >= 1 && question < 7 ? (
         <div>
-          <p>Which of the following symptoms do you currently have?</p>
+          <p>{props.question11}</p>
           <input
             type='checkbox'
             name='test1'
@@ -382,7 +382,7 @@ const FlowTwo = props => {
 
       {question >= 2 && question < 4 ? (
         <Select
-          text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
+          text={props.question12}
           description=''
           label='connected'
           type='select'
@@ -394,7 +394,7 @@ const FlowTwo = props => {
       ) : null}
       {question >= 3 && question < 4 ? (
         <Select
-          text='Do you have any of the following conditions:'
+          text={props.question13}
           description=''
           label='conditions'
           type='select'
@@ -407,7 +407,7 @@ const FlowTwo = props => {
 
       {question >= 4 && question < 7 ? (
         <Select
-          text='Do you have regular access to an iOS or Android device?'
+          text={props.question16}
           description=''
           label='device'
           type='select'
@@ -420,7 +420,7 @@ const FlowTwo = props => {
 
       {question >= 5 && question < 7 ? (
         <Select
-          text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
+          text={props.question12}
           description=''
           label='connected'
           type='select'
@@ -432,7 +432,7 @@ const FlowTwo = props => {
       ) : null}
       {question >= 6 && question < 7 ? (
         <Select
-          text='Do you have any of the following conditions:'
+          text={props.question13}
           description=''
           label='conditions'
           type='select'
@@ -445,7 +445,7 @@ const FlowTwo = props => {
 
       {question >= 7 ? (
         <div>
-          <p>Which of the following symptoms do you currently have? option2 </p>
+          <p>{props.question11}</p>
           <input
             type='checkbox'
             name='test1'
@@ -571,7 +571,7 @@ const FlowTwo = props => {
 
       {question >= 8 ? (
         <Select
-          text='Do you have regular access to an internet-enabled device, such as laptop or computer?'
+          text={props.question12}
           description=''
           label='connected'
           type='select'
@@ -584,7 +584,7 @@ const FlowTwo = props => {
 
       {question >= 9 ? (
         <Select
-          text='Do you have any of the following conditions:'
+          text={props.question13}
           description=''
           label='conditions'
           type='select'

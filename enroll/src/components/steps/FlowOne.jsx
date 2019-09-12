@@ -182,7 +182,7 @@ const FlowOne = props => {
     <div>
       {question >= 0 ? (
         <Switch
-          text='Do you or anyone in your household currently have flu symptoms? Flue symptoms include:'
+          text={props.question3}
           description='Fever, Headaches, Cough, Diarrhea, Sore throat, Nausea or vomiting, Runny or stuffy nose, Rash, Increased fatigue (tiredness), Muscle or body aches, Increased trouble with breathing, Ear pain or ear discharge'
           label='symptoms'
           type='select'
@@ -193,7 +193,7 @@ const FlowOne = props => {
       ) : null}
       {question == 1 ? (
         <Select
-          text='Who are you filling this survey out for?'
+          text={props.question9}
           description=''
           label='whoFor'
           type='select'
@@ -205,7 +205,7 @@ const FlowOne = props => {
       ) : null}
       {question >= 2 ? (
         <Select
-          text='Does someone in your house have a smartphone?'
+          text={props.question4}
           description=''
           label='havePhone'
           type='select'
@@ -217,7 +217,7 @@ const FlowOne = props => {
       ) : null}
       {question >= 3 ? (
         <Select
-          text='Are there at least 3 people in your household?'
+          text={props.question5}
           description=''
           label='moreThanThree'
           type='select'
@@ -230,7 +230,7 @@ const FlowOne = props => {
 
       {question >= 4 ? (
         <Select
-          text='Is at least one of these individules under 18?'
+          text={props.question6}
           description=''
           label='under18'
           type='select'
@@ -243,7 +243,7 @@ const FlowOne = props => {
 
       {question >= 5 ? (
         <Select
-          text='Are there at least 2 other people in the household who do not have any of the following conditions'
+          text={props.question7}
           description=''
           label='conditions'
           type='select'
@@ -255,7 +255,7 @@ const FlowOne = props => {
       ) : null}
       {question >= 6 ? (
         <Select
-          text='Are those 2 people willing and able to swallow Baloxavir pills?'
+          text={props.question8}
           description=''
           label='pills'
           type='select'

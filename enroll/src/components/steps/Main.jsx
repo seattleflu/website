@@ -14,7 +14,7 @@ const Main = props => {
       if (zipValue == '98107') {
         setQuestion(question + 1)
       } else {
-        props.handleNextError()
+        props.handleNextError(1)
       }
     }
 
@@ -37,7 +37,7 @@ const Main = props => {
     <div>
       {question >= 0 ? (
         <Input
-          text='What is your Zip Code'
+          text={props.question1}
           description=''
           label='zip_code'
           type='text'
@@ -48,7 +48,7 @@ const Main = props => {
       ) : null}
       {question >= 1 ? (
         <Input
-          text='How old are you'
+          text={props.question2}
           description=''
           label='age'
           type='text'
