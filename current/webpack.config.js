@@ -21,7 +21,9 @@ module.exports = {
             loader: 'html-loader'
           }
         ]
-      }
+      },
+      { test: /\.css$/, use: 'css-loader' },
+      { test: /\.svg$/, use: 'svg-url-loader' },
     ]
   },
   plugins: [
