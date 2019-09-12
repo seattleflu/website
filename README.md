@@ -78,6 +78,68 @@ These applications can be developed in isolation from the main application (i.e.
         Then, run webpack with `npm run build`.
         The bundled React application now lives at `dist/`.
 
+    * **Adding CSS files**
+
+        There are two primary ways to add CSS to your React app.
+
+        1. **Import CSS from the bundled files.**
+
+            In this option, create a CSS file in `./dist/css` named after your app, for example:
+
+                cd my-component/dist
+                mkdir css
+                touch css/my-component.css
+                cd ..
+
+            Then, **outside** of the `dist/` directory, add the following code to `index.html` to include a link to the newly created CSS file.
+
+            ```html
+                <link rel="stylesheet" type="text/css" href="/dist/css/my-component.css">
+            ```
+
+            Finally, you must provide the main website `app.js` the path to your new, static CSS file by adding the following line to `app.js`:
+
+            ```js
+                app.use(express.static(path.join(__dirname, 'my-component/dist/css')))
+            ```
+
+        2. **Import CSS in your React app (JSX) file.**
+
+            This option requires some Webpack configuration.
+            It is particularly useful if you are importing CSS file from external modules.
+
+            Import the desired CSS file into your React app as normal.
+            Then, run:
+
+                npm install --save-dev css-loader
+
+            Next, add the following code to `./webpack.config.js` under `module.rules`:
+
+            ```js
+                  { test: /\.css$/, use: 'css-loader' },
+            ```
+
+    * **Adding other files (.svg, .png, etc.)**
+        By default, `babel-loader` and `html-loader` are already included in the Webpcak config file.
+        If you need additional file loaders, search for Webpack file loaders such as [file-loader](https://webpack.js.org/loaders/file-loader/) or [svg-url-loader](https://www.npmjs.com/package/svg-url-loader) to see if they fit your needs.
+        Install them following the example above titled "Import CSS in your React app (JSX) file".
+
+    * **Babel troubleshooting**
+
+        If your app is throwing an error in the console saying...
+        *  `Add @babel/plugin-proposal-class-properties to the 'plugins' section of your Babel config...`, run:
+
+                npm install --save-dev @babel/plugin-proposal-class-properties
+
+            Now add the following line to `./.babelrc`:
+
+                "plugins": ["@babel/plugin-proposal-class-properties"],
+
+        * `ReferenceError: regeneratorRuntime is not defined`, then add the following line to the top of the culprit React (JSX) file:
+
+            ```js
+                import "babel-polyfill";
+            ```
 
 #### Adding new React applications
 
