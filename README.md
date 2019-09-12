@@ -6,8 +6,16 @@ This is the website for [seattleflu.org](https://seattleflu.org).
   - [Season two / 2019–20](#season-two--2019%e2%80%9320)
     - [Starting the server](#starting-the-server)
     - [Development](#development)
-      - [Structure](#structure)
-      - [Adding new React applications](#adding-new-react-applications)
+      - [Main application](#main-application)
+      - [Routes](#routes)
+      - [Views](#views)
+      - [React applications](#react-applications)
+        - [Starting the server](#starting-the-server-1)
+        - [Building JavaScript bundles](#building-javascript-bundles)
+        - [Adding CSS files](#adding-css-files)
+        - [Adding other files (.svg, .png, etc.)](#adding-other-files-svg-png-etc)
+        - [Babel troubleshooting](#babel-troubleshooting)
+        - [Adding new React applications](#adding-new-react-applications)
   - [Season one / 2018–19](#season-one--2018%e2%80%9319)
 
 ## Season two / 2019–20
@@ -29,119 +37,125 @@ The development server is now running at http://localhost:8080
 
 The Seattle Flu Website is built using [Embedded Javascript Templates](https://ejs.co) and [Express](https://expressjs.com).
 
-
-#### Structure
-
 The main application is the Seattle Flu Study website.
 It comprises multiple React applications that are added via routes and views.
 These applications can be developed in isolation from the main application (i.e. website) by starting the server within each application's top-level directory.
 
-* **Main application**
 
-    The code for the `express` server lives at [app.js](./app.js).
-    `app.js` starts the app, sets up the engine, mounts middleware to the declared routers, loads static files from provided paths, and declares error handling.
+#### Main application
 
-* **Routes**
+The code for the `express` server lives at [app.js](./app.js).
+`app.js` starts the app, sets up the engine, mounts middleware to the declared routers, loads static files from provided paths, and declares error handling.
 
-    Routers live at `routes/`.
-    They perform minimal work, declaring `GET` endpoints at the paths provided by the middleware.
-    Routers also pass context to `this` for `ejs` to render in its templates, e.g. `title`.
 
-* **Views**
+#### Routes
 
-    Views live at `views/` as `.ejs` files.
-    These files are only loaded in the main application.
-    Views that require JavaScript need two things:
-    1. A `div` with an `id` that the JavaScript file will use to manipulate the DOM.
-    2. A `script` tag of type `text/javascript` that loads the desired JavaScript bundle from the top-level directory.
-        >Recall: Available static files (like JavaScript bundles) are declared by adding their paths in `app.js`.
+Routers live at `routes/`.
+They perform minimal work, declaring `GET` endpoints at the paths provided by the middleware.
+Routers also pass context to `this` for `ejs` to render in its templates, e.g. `title`.
 
-* **React applications**
 
-    Smaller React applications live within this repository.
-    They are named after the web page they represent (e.g. `enroll`).
-    They consist of an `index.html` file under `src/` which is only visible to the React application.
+#### Views
 
-    >Recall: The main application instead renders a view of the React application from a bundled JavaScript file.
+Views live at `views/` as `.ejs` files.
+These files are only loaded in the main application.
+Views that require JavaScript need two things:
+1. A `div` with an `id` that the JavaScript file will use to manipulate the DOM.
+2. A `script` tag of type `text/javascript` that loads the desired JavaScript bundle from the top-level directory.
+    >Recall: Available static files (like JavaScript bundles) are declared by adding their paths in `app.js`.
 
-    * **Starting the server**
 
-        Make sure the dependencies are installed by running `npm run install`.
+#### React applications
 
-        Then, start the server with `npm run start`.
-        The development server is now running at http://localhost:8080
+Smaller React applications live within this repository.
+They are named after the web page they represent (e.g. `enroll`).
+They consist of an `index.html` file under `src/` which is only visible to the React application.
 
-    * **Building JavaScript bundles**
+>Recall: The main application instead renders a view of the React application from a bundled JavaScript file.
 
-        Make sure the dependencies are installed by running `npm run install`.
+##### Starting the server
 
-        Then, run webpack with `npm run build`.
-        The bundled React application now lives at `dist/`.
+Make sure the dependencies are installed by running `npm run install`.
 
-    * **Adding CSS files**
+Then, start the server with `npm run start`.
+The development server is now running at http://localhost:8080
 
-        There are two primary ways to add CSS to your React app.
 
-        1. **Import CSS from the bundled files.**
+##### Building JavaScript bundles
 
-            In this option, create a CSS file in `./dist/css` named after your app, for example:
+Make sure the dependencies are installed by running `npm run install`.
 
-                cd my-component/dist
-                mkdir css
-                touch css/my-component.css
-                cd ..
+Then, run webpack with `npm run build`.
+The bundled React application now lives at `dist/`.
 
-            Then, **outside** of the `dist/` directory, add the following code to `index.html` to include a link to the newly created CSS file.
 
-            ```html
-                <link rel="stylesheet" type="text/css" href="/dist/css/my-component.css">
-            ```
+##### Adding CSS files
 
-            Finally, you must provide the main website `app.js` the path to your new, static CSS file by adding the following line to `app.js`:
+There are two primary ways to add CSS to your React app.
 
-            ```js
-                app.use(express.static(path.join(__dirname, 'my-component/dist/css')))
-            ```
+1. **Import CSS from the bundled files.**
 
-        2. **Import CSS in your React app (JSX) file.**
+    In this option, create a CSS file in `./dist/css` named after your app, for example:
 
-            This option requires some Webpack configuration.
-            It is particularly useful if you are importing CSS file from external modules.
+        cd my-component/dist
+        mkdir css
+        touch css/my-component.css
+        cd ..
 
-            Import the desired CSS file into your React app as normal.
-            Then, run:
+    Then, **outside** of the `dist/` directory, add the following code to `index.html` to include a link to the newly created CSS file.
 
-                npm install --save-dev css-loader
+    ```html
+        <link rel="stylesheet" type="text/css" href="/dist/css/my-component.css">
+    ```
 
-            Next, add the following code to `./webpack.config.js` under `module.rules`:
+    Finally, you must provide the main website `app.js` the path to your new, static CSS file by adding the following line to `app.js`:
 
-            ```js
-                  { test: /\.css$/, use: 'css-loader' },
-            ```
+    ```js
+        app.use(express.static(path.join(__dirname, 'my-component/dist/css')))
+    ```
 
-    * **Adding other files (.svg, .png, etc.)**
-        By default, `babel-loader` and `html-loader` are already included in the Webpcak config file.
-        If you need additional file loaders, search for Webpack file loaders such as [file-loader](https://webpack.js.org/loaders/file-loader/) or [svg-url-loader](https://www.npmjs.com/package/svg-url-loader) to see if they fit your needs.
-        Install them following the example above titled "Import CSS in your React app (JSX) file".
+2. **Import CSS in your React app (JSX) file.**
 
-    * **Babel troubleshooting**
+    This option requires some Webpack configuration.
+    It is particularly useful if you are importing CSS file from external modules.
 
-        If your app is throwing an error in the console saying...
-        *  `Add @babel/plugin-proposal-class-properties to the 'plugins' section of your Babel config...`, run:
+    Import the desired CSS file into your React app as normal.
+    Then, run:
 
-                npm install --save-dev @babel/plugin-proposal-class-properties
+        npm install --save-dev css-loader
 
-            Now add the following line to `./.babelrc`:
+    Next, add the following code to `./webpack.config.js` under `module.rules`:
 
-                "plugins": ["@babel/plugin-proposal-class-properties"],
+    ```js
+            { test: /\.css$/, use: 'css-loader' },
+    ```
 
-        * `ReferenceError: regeneratorRuntime is not defined`, then add the following line to the top of the culprit React (JSX) file:
 
-            ```js
-                import "babel-polyfill";
-            ```
+##### Adding other files (.svg, .png, etc.)
 
-#### Adding new React applications
+By default, `babel-loader` and `html-loader` are already included in the Webpcak config file.
+If you need additional file loaders, search for Webpack file loaders such as [file-loader](https://webpack.js.org/loaders/file-loader/) or [svg-url-loader](https://www.npmjs.com/package/svg-url-loader) to see if they fit your needs.
+Install them following example #2 in [Adding CSS files](#adding-css-files).
+
+
+##### Babel troubleshooting
+
+If your app is throwing an error in the console saying...
+*  `Add @babel/plugin-proposal-class-properties to the 'plugins' section of your Babel config...`, run:
+
+        npm install --save-dev @babel/plugin-proposal-class-properties
+
+    Now add the following line to `./.babelrc`:
+
+        "plugins": ["@babel/plugin-proposal-class-properties"],
+
+* `ReferenceError: regeneratorRuntime is not defined`, then add the following line to the top of the culprit React (JSX) file:
+
+    ```js
+        import "babel-polyfill";
+    ```
+
+##### Adding new React applications
 
 Adding new React applications to the main website is a fairly involved process with many moving pieces. However, this guide should help you through, step-by-step!
 1. At the top level of this repo, copy `template-react-app/` and name your desired webpage.
