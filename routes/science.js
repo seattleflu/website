@@ -3,7 +3,7 @@ var router = express.Router()
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('science', { title: 'Science page', header: 'light' })
+  res.render('science', { title: 'Science', header: 'light' })
 })
 
 router.get('/map', function (req, res, next) {
