@@ -1,6 +1,9 @@
 /* CUSTOM STYLES FOR THE EROLL REACT APP ONLY */
 
-
+.enrollWapper{
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
 
 .inputDescription{
     font-size: 10px;
