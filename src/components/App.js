@@ -9,6 +9,10 @@ import { Splash } from "./Splash";
 import { FAQ } from "./FAQ";
 import CurrentConditions from "./CurrentConditions";
 import Kiosks from "./Kiosks";
+import ReturnOfResults from './ReturnOfResults';
+import FindBarcode from './FindBarcode';
+import ResultsFAQ from './ResultsFAQ';
+import FluSequence from './FluSequence';
 
 class App extends Component {
   render() {
@@ -22,7 +26,11 @@ class App extends Component {
                 <Route exact path="/" component={Splash}/>
                 <Route path="/current" component={CurrentConditions}/>
                 <Route path="/faq" component={FAQ}/>
+                <Route path="/results" component={ReturnOfResults}/>
                 <Route path="/kiosks" component={Kiosks}/>
+                <Route path="/find-barcode" component={FindBarcode}/>
+                <Route path="/results-faq" component={ResultsFAQ}/>
+                <Route path="/flu/:barcode?" component={FluSequence}/>
                 <Footer/>
             </>
           </ThemeProvider>
