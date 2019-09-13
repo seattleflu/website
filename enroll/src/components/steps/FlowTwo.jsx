@@ -395,7 +395,7 @@ const FlowTwo = props => {
       {question >= 3 && question < 4 ? (
         <Select
           text={props.question13}
-          description=''
+          description={props.conditions}
           label='conditions'
           type='select'
           id='conditions'
@@ -433,7 +433,7 @@ const FlowTwo = props => {
       {question >= 6 && question < 7 ? (
         <Select
           text={props.question13}
-          description=''
+          description={props.conditions}
           label='conditions'
           type='select'
           id='conditions'
@@ -585,7 +585,7 @@ const FlowTwo = props => {
       {question >= 9 ? (
         <Select
           text={props.question13}
-          description=''
+          description={props.conditions}
           label='conditions'
           type='select'
           id='conditions'

@@ -14,7 +14,7 @@ const Main = props => {
       if (zipValue == '98107') {
         setQuestion(question + 1)
       } else {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage1)
       }
     }
 
@@ -22,7 +22,7 @@ const Main = props => {
       if (ageValue >= 18) {
         props.handleNext(1)
       } else {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage2)
       }
     }
   }

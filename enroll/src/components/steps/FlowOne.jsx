@@ -48,7 +48,7 @@ const FlowOne = props => {
       if (moreThanThree == 'yes') {
         setQuestion(3)
       } else {
-        props.handleNextError()
+        props.handleNextError(1)
       }
     }
     if (question == 3) {
@@ -183,7 +183,7 @@ const FlowOne = props => {
       {question >= 0 ? (
         <Switch
           text={props.question3}
-          description='Fever, Headaches, Cough, Diarrhea, Sore throat, Nausea or vomiting, Runny or stuffy nose, Rash, Increased fatigue (tiredness), Muscle or body aches, Increased trouble with breathing, Ear pain or ear discharge'
+          description={props.conditions}
           label='symptoms'
           type='select'
           id='symptomsTest'
@@ -244,7 +244,7 @@ const FlowOne = props => {
       {question >= 5 ? (
         <Select
           text={props.question7}
-          description=''
+          description={props.conditions}
           label='conditions'
           type='select'
           id='conditions'
