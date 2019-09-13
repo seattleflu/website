@@ -1,16 +1,29 @@
 <% include ./partials/header  {header: header} %>
-<div class="container">
-          <div class="row">
-              <div class="col-12">
-                <h1><%= title %></h1>
-                <p><%= thankyouData.fields.name %></p>
-                <p><%= thankyouData.fields.subheader %></p>
-                <p><%= thankyouData.fields.dscription %></p>
-                <p><%= thankyouData.fields.closing %></p>
-                <a href="<%= thankyouData.fields.buttonLink %>"><%= thankyouData.fields.buttonLabel %></a>
-                
-            </div>
-            </div>
-            </div>
+<div class="thank-you container">
+  <div class="row">
+    <div class="col-lg-4 col-xs-12">
+      <h2><%= title %>!</h2>
+      <h3>You are not currently eligible to join the study.</h3>
+      <p><%= thankyouData.fields.dscription %></p>
+      <a href="<%= thankyouData.fields.buttonLink %>" class="cta"><%= thankyouData.fields.buttonLabel %></a>    
+    </div>
+    <div class="col-lg-8 col-xs-12">
+      <h4>If you begin to have flu-like symptoms later in the year, we would love to have you come back and take the eligibility survey again.</h4>
+      <p>To stay in touch, input your email here:</p>
+      <form id="ty-subscribe">
+        <input type="text" id="email" name="Email" placeholder="Email Address">
+        <input type="submit" value="Submit">
+      </form>
+      <h4>Additionally, you can help us get the word out about the flu study!</h4>
+      <p>Click the links below to share with your networks:</p>
+      <div class="ty-social">
+        <a href=""><img src="/images/twitter_logo.svg"></a>
+        <a href=""><img src="/images/facebook_logo.svg"></a>
+        <a href=""><img src="/images/linkedin_logo.svg"></a>
+        <a href=""><img src="/images/email_logo.svg"></a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% include ./partials/footer  %>
