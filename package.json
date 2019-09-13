@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "lint": "eslint",
-    "dev": "NODE_ENV=production nodemon -e js,ejs ./bin/www"
+    "dev": "NODE_ENV=production nodemon -e js,ejs ./bin/www",
+    "build": "./bin/build"
   },
   "dependencies": {
     "circular-json": "^0.5.9",
@@ -18,5 +19,9 @@
     "morgan": "~1.9.0",
     "nodemon": "^1.19.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "cacheDirectories": [
+    "node_modules",
+    "enroll/node_modules"
+  ]
 }
