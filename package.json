@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "lint": "eslint",
-    "dev": "NODE_ENV=production nodemon -e js,ejs ./bin/www"
+    "dev": "NODE_ENV=production nodemon -e js,ejs ./bin/www",
+    "build": "./bin/build"
   },
   "dependencies": {
     "circular-json": "^0.5.9",
