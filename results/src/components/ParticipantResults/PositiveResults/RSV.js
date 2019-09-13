@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LargerParagraph, Bold, EvenTwoColumnFeature, Feature, UnorderedList } from '../../utils';
+import { LargerParagraph, Bold, EvenTwoColumnFeature, Feature, UnorderedList } from '../../styledComponents';
 import { ResultsMoreInfo } from '../ResultsMoreInfo';
 
 const preventRSV = [

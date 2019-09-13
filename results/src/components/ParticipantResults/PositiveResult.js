@@ -1,54 +1,11 @@
 import React from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import styled from 'styled-components';
 
-import { H3 } from '../utils';
+import { H3, STabs, STabList, STab, STabPanel  } from '../styledComponents';
 import * as positiveResults from './PositiveResults';
 
-const STabs = styled(Tabs)`
-    width: 100%;
-`
-const STabList = styled(TabList)`
-  list-style-type: none;
-  padding: .25em;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-`
+// Set up tabsRole for react-tabs
 STabList.tabsRole = 'TabList';
-
-const STab = styled(Tab)`
-  border: 1px solid transparent;
-  border-bottom: none;
-  border-radius: 4px 4px 0px 0px;
-  padding: 1em;
-  user-select: none;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: 800;
-  text-transform: uppercase;
-
-  &.is-selected {
-    border-color: ${props => props.theme.primary300};
-    border-bottom: 1px solid white;
-  }
-  @media (max-width: 735px) {
-      padding: 0.5em;
-  }
-`
 STab.tabsRole = 'Tab';
-
-const STabPanel = styled(TabPanel)`
-  display: none;
-  min-height: 40vh;
-  border-top: 1px solid ${props => props.theme.primary300};
-  padding: 2em .5em;
-  margin-top: -5px;
-
-  &.is-selected {
-    display: block;
-  }
-`;
 STabPanel.tabsRole = 'TabPanel';
 
 export default function PositiveResult(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { H1, OuterContainer, ContentContainer } from './utils';
+import { H1, OuterContainer, ContentContainer } from './styledComponents';
 import BarcodeSearchForm from './ParticipantResults/BarcodeSearchForm';
 import SampleNotReceived from './ParticipantResults/SampleNotReceived';
 import SampleProcessing from './ParticipantResults/SampleProcessing';

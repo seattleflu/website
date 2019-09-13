@@ -1,14 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-import { Feature, H3 } from '../utils';
-
-const P = styled(H3)`
-    color: inherit;
-`
-const Br = styled.br`
-    line-height: 3;
-`
+import { Feature, FeatureH3, Br, UnorderedList } from '../styledComponents';
 
 export default function SampleProcessing(props) {
     return (

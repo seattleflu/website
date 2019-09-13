@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Bold, LargerParagraph, EvenTwoColumnFeature, InternalLink } from '../../utils';
+import { Bold, LargerParagraph, EvenTwoColumnFeature, Link } from '../../styledComponents';
 import { ResultsMoreInfo } from '../ResultsMoreInfo';
 
 const highRiskConditions = [
@@ -38,14 +38,9 @@ export default function Flu(props) {
     );
 
     const fluSequenceLink = (
-        <InternalLink to={{
-            pathname: `/flu`,
-            state: {
-                barcode: props.barcode,
-                sequenced: props.sequenced
-            }}}>
+        <Link href="/link">
             here
-        </InternalLink>
+        </Link>
     );
 
     return(

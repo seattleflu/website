@@ -1,15 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { H3, CenteredParagraph, Feature, UnorderedList } from '../utils';
+import { H3, LargerParagraph, Feature, UnorderedList } from '../styledComponents';
 import { ResultsMoreInfo } from './ResultsMoreInfo';
 
-const P = styled(CenteredParagraph)`
-    font-size: 20px;
-    @media (max-width: 735px) {
-        max-width: 90%;
-    }
-`
 const avoidFlu = [
     "Get your flu shot every year",
     "Wash your hands often",
@@ -26,7 +19,7 @@ export default function NegativeResult(props) {
     return (
         <div>
             <H3>Your research test is <b>NEGATIVE</b>.</H3>
-            <P>
+            <LargerParagraph>
                 There are lots of viruses that can cause symptoms,
                 and we don’t have a test that will detect all of them.
                 No test is perfect, and there is a small chance that you
@@ -36,7 +29,7 @@ export default function NegativeResult(props) {
                 with other people. If you have other health problems or are
                 very sick or are worried about your illness, you should contact
                 your health care provider.
-            </P>
+            </LargerParagraph>
             <Feature title="How to help avoid getting the flu:">
                 <UnorderedList>
                     {howToAvoidFlu}

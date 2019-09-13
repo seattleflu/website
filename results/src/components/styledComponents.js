@@ -1,5 +1,39 @@
 import React from 'react';
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
+const theme = {
+  white: "#FFFFFF",
+  black: "#000000",
+  neutral100: "#EDEFEF",
+  neutral200: "#C9CED0",
+  neutral300: "#A6AEB0",
+  neutral400: "#828D91",
+  neutral500: "#707D81",
+  neutral600: "#626D71",
+  neutral700: "#464E51",
+  neutral800: "#2A2F30",
+  neutral900: "#0E1010",
+  primary100: "#C2DEEA",
+  primary200: "#ADD3E3",
+  primary300: "#92C4DA",
+  primary400: "#6EB0CE",
+  primary500: "#3D95BD",
+  primary600: "#2E708E",
+  primary700: "#23546B",
+  primary800: "#1A3F50",
+  primary900: "#142F3C",
+  accent100: "#FDE3B4",
+  accent200: "#FCDA9B",
+  accent300: "#FBCE7A",
+  accent400: "#F9BE4D",
+  accent500: "#F7A812",
+  accent600: "#B97E0E",
+  accent700: "#8B5F0A",
+  accent800: "#684708",
+  accent900: "#4E3506",
+  warning500: "#D81C1C",
+}
 
 export const OuterContainer = styled.div`
   max-width: 1080px;
@@ -17,7 +51,7 @@ export const OuterContainer = styled.div`
 export const ContentContainer = styled.div`
   padding: 0px;
   margin: 0px;
-  color: ${props => props.theme.neutral800};
+  color: ${theme.neutral800};
 `
 export const CenteredParagraph = styled.p`
   font-size: 18px;
@@ -38,12 +72,15 @@ export const LargerParagraph = styled.p`
     max-width: 95%;
   }
 `
+export const Br = styled.br`
+  line-height: 3;
+`
 
 const BaseHeader = styled.div`
   font-family: "Nunito";
   font-weight: 700;
   text-align: ${props => props.left ? "left" : "center"};
-  color: ${props => props.theme.neutral700};
+  color: ${theme.neutral700};
   padding-top: 10px;
   padding-bottom: 5px;
 `
@@ -65,8 +102,8 @@ export const Bold = styled.span`
 
 /* Feature Block */
 export const FeatureContainer = styled.div`
-  color: ${props => props.theme.white};
-  background-color: ${props => props.theme.primary500};
+  color: ${theme.white};
+  background-color: ${theme.primary500};
   padding: 1em 2em;
   margin: 4em auto;
   font-weight: 400;
@@ -81,9 +118,9 @@ const FeatureButtonContainer = styled.div`
   justify-content: space-around;
 `
 const FeatureButton = styled.a`
-  border: 1px solid ${props => props.theme.neutral100};
+  border: 1px solid ${theme.neutral100};
   background-color: inherit;
-  color: ${props => props.theme.neutral100};
+  color: ${theme.neutral100};
   border-radius: 3px;
   padding: 10px;
   text-transform: uppercase;
@@ -93,12 +130,12 @@ const FeatureButton = styled.a`
   cursor: pointer;
   text-decoration: none;
   &:hover {
-    background-color: ${props => props.theme.primary300};
-    color: ${props => props.theme.white};
+    background-color: ${theme.primary300};
+    color: ${theme.white};
   }
 `
 const FeatureTitle = styled(H2)`
-  color: ${props => props.theme.white};
+  color: ${theme.white};
   text-align: center;
 `
 const FeatureFlexContainer = styled.div`
@@ -132,6 +169,10 @@ const FeatureSidebar = styled.div`
 const FeatureSection = styled.section`
     flex: 5;
     margin-left: 2em;
+`
+
+export const FeatureH3 = styled(H3)`
+  color: inherit;
 `
 
 export const Feature = (props) => {
@@ -181,20 +222,14 @@ export const EvenTwoColumnFeature = (props) => {
 }
 
 
-const baseLink = css`
+export const Link = styled.a`
   cursor: pointer;
   text-decoration: none;
-  color: ${props => props.theme.accent500};
+  color: ${theme.accent500};
   &:hover {
-    color: ${props => props.theme.accent300};
+    color: ${theme.accent300};
   }
 `
-export const InternalLink = styled.a`
-  ${baseLink}
-`;
-export const ExternalLink = styled.a`
-  ${baseLink}
-`;
 
 export const UnorderedList = styled.ul`
     margin: auto;
@@ -203,4 +238,86 @@ export const UnorderedList = styled.ul`
     @media (max-width: 768px) {
         width: 75%;
     }
+`
+export const Form = styled.form`
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+`
+export const Input = styled.input`
+    width: 80%;
+    padding: 10px;
+    font-size: 1.2em;
+    &:focus {
+        outline: none;
+        border: 2px solid ${theme.accent500}
+    }
+`
+export const SubmitButton = styled.button`
+    width: 20%;
+    border: 1px solid ${theme.neutral100};
+    background-color: inherit;
+    color: ${theme.neutral100};
+    border-radius: 3px;
+    padding: 5px;
+    margin: 0px 15px;
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    &:hover {
+        background-color: ${theme.primary300};
+        color: ${theme.white};
+    }
+`
+
+export const STabs = styled(Tabs)`
+    width: 100%;
+`
+export const STabList = styled(TabList)`
+  list-style-type: none;
+  padding: .25em;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+`
+export const STab = styled(Tab)`
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 4px 4px 0px 0px;
+  padding: 1em;
+  user-select: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+
+  &.is-selected {
+    border-color: ${theme.primary300};
+    border-bottom: 1px solid white;
+  }
+  @media (max-width: 735px) {
+      padding: 0.5em;
+  }
+`
+export const STabPanel = styled(TabPanel)`
+  display: none;
+  min-height: 40vh;
+  border-top: 1px solid ${theme.primary300};
+  padding: 2em .5em;
+  margin-top: -5px;
+
+  &.is-selected {
+    display: block;
+  }
+`
+export const MoreInfo = styled.div`
+  margin: 1em;
+  padding-bottom: 1.5em;
+  font-size: 16px;
+  text-align: center;
+`
+export const Banner = styled.div`
+  background-color: #F7A812;
+  padding: 1em;
 `

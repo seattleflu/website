@@ -1,13 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { Feature, H3, InternalLink } from '../utils';
+import { Feature, FeatureH3, Link } from '../styledComponents';
 import NegativeResult from './NegativeResult';
 import PositiveResult from './PositiveResult';
 
-const P = styled(H3)`
-    color: inherit;
-`
 export default function Results(props) {
     const results = props.results;
     let display;
@@ -22,9 +18,9 @@ export default function Results(props) {
         <div>
             <Feature title="This is a research test and should not be used as a substitute for a
                     visit to your health care provider.">
-                <P>
-                    Learn more about how the research test works <InternalLink to="/results-faq" target="_blank">here</InternalLink>.
-                </P>
+                <FeatureH3>
+                    Learn more about how the research test works <Link href="/results-faq" target="_blank">here</Link>.
+                </FeatureH3>
             </Feature>
             {display}
         </div>

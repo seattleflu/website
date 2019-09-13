@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LargerParagraph, Feature, UnorderedList, Bold } from '../../utils';
+import { LargerParagraph, Feature, UnorderedList, Bold } from '../../styledComponents';
 import { ResultsMoreInfo } from '../ResultsMoreInfo';
 
 const contactHealthCare = [
