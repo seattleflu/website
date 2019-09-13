@@ -1,7 +1,8 @@
+/*** FONT STYLING ***/
 body {
   font-family: "Roboto Condensed", Arial, sans-serif;
 }
-h1, h2 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #0a5ca8;
 }
@@ -29,10 +30,25 @@ p {
   font-size: 16px;
   line-height: 24px;
 }
-a {
-  color: #00B7FF;
+a, a:hover {
+  color: #1BAB4C;
+}
+.cta {
+  font-weight: 700;
+  font-size: 20px;
+}
+.cta:after {
+  background-image: url("/images/cta_arrow.svg");
+  background-size: 24px 15px;
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+  width: 24px;
+  height: 15px;
+  content: "";
 }
 
+/*** GLOBAL STYLES ***/
 .align-center {
   text-align: center;
 }
@@ -41,7 +57,32 @@ a {
   text-align: right;
 }
 
-footer #main-footer {
+
+/*** FORM ELEMENTS ***/
+input[type=text], textarea {
+  border: 2px solid #0A5CA8;
+  border-radius: 5px;
+  padding: 14px 15px;
+  outline: none;
+}
+input[type=submit] {
+  text-transform: uppercase;
+  background-color: #0A5CA8;
+  border-radius: 25px;
+  padding: 9.5px 37px;
+  border: none;
+  color: #fff;
+  outline: none;
+  font-weight: 700;
+}
+
+
+/*** FOOTER ***/
+footer #footer-top {
+  background-color: #EAECF0;
+  padding: 30px 0;
+}
+footer #footer-bottom {
   background-color: #4A515F;
   padding: 30px 0;
 }
@@ -52,23 +93,13 @@ footer #main-footer {
 #footer-logos img {
   max-height: 40px;
 }
-#footer-menu:before {
-  content: ""; /* This is necessary for the pseudo element to work. */ 
-  display: block; /* This will put the pseudo element on its own line. */
-  margin: 0 auto; /* This will center the border. */
-  width: calc(100% - 30px);
-  border-top: 1px solid #979797;
-  margin-bottom: 30px;
-}
-#footer-menu { 
-  padding-top: 30px;
-}
 #footer-menu span {
   margin-left: 40px;
 }
 #footer-menu a {
   font-weight: 700;
   color: #ffffff;
+  font-size: 14px;
 }
 footer #copyright-bar {
   background-color: #2D3139;
@@ -79,6 +110,7 @@ footer #copyright-bar {
   font-size: 12px;
   margin-bottom: 0;
 }
+
 
 /*** HEADER ***/
 .overlay {
@@ -219,3 +251,40 @@ header.dark .nav-item button {
     display: none;
   }
 }
+
+
+/*** THANK YOU PAGES ***/
+.thank-you {
+  padding: 75px 0;
+}
+.thank-you h3 {
+  color: #4A515F;
+  margin-top: 22px;
+  margin-bottom: 30px;
+  padding-right: 30px;
+}
+.thank-you h4 {
+  margin-bottom: 30px;
+}
+#ty-subscribe {
+  margin-bottom: 75px;
+}
+#ty-subscribe input[type=text] {
+  width: 60%;
+  margin-right: 30px;
+  margin-top: 12px;
+}
+#ty-subscribe input[type=submit] {
+  margin-top: 12px;
+}
+.ty-social a {
+  margin-right: 15px;
+}
+@media (max-width: 767px) {
+.thank-you .col-xs-12:first-child {
+    margin-bottom: 75px;
+  }
+  .thank-you .col-xs-12 {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
