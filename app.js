@@ -22,6 +22,9 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'science/dist/js')))
+app.use(express.static(path.join(__dirname, 'current/dist/js')))
+app.use(express.static(path.join(__dirname, 'results/dist/js')))
 app.use(express.static(path.join(__dirname, 'enroll/dist/js')))
 app.use(express.static(path.join(__dirname, 'enroll/dist/css')))
 app.use(express.static(path.join(__dirname, 'public')))
@@ -54,7 +57,7 @@ app.use(function (err, req, res, next) {
   res.status(404).render('404', { title: '404', header: 'light' })
   // render the error page
   res.status(err.status || 500)
-  res.render('error', { title: 'Page Not Found' })
+  res.render('error', { title: 'Page Not Found', header: 'light' })
 })
 
 module.exports = app
