@@ -30,7 +30,7 @@ const FlowOne = props => {
       } else if (haveFluValue == 'no') {
         setQuestion(2)
       } else {
-        props.handleNextError()
+        // props.handleNextError()
       }
     }
     if (question == 1) {
@@ -48,28 +48,28 @@ const FlowOne = props => {
       if (moreThanThree == 'yes') {
         setQuestion(3)
       } else {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage4)
       }
     }
     if (question == 3) {
       if (havePhone == 'yes') {
         setQuestion(4)
       } else {
-        props.handleNextError()
+        props.handleNextError(props.bouncePage5)
       }
     }
     if (question == 4) {
       if (under18 == 'yes') {
         setQuestion(5)
       } else {
-        props.handleNextError()
+        props.handleNextError(props.bouncePage6)
       }
     }
     if (question == 5) {
       if (conditions == 'yes') {
         setQuestion(6)
       } else {
-        props.handleNextError()
+        props.handleNextError(props.fluStudyPage7)
       }
     }
 
@@ -78,7 +78,7 @@ const FlowOne = props => {
         // props.handleNext(2)
         props.handleNextError(2)
       } else {
-        props.handleNextError()
+        props.handleNextError(props.bouncepage8)
       }
     }
   }
