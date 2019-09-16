@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import Markdown from 'react-markdown';
+import ScienceMap from './components/ScienceMap';
 
 const contentful = require('../../services/science');
 
@@ -45,6 +46,8 @@ class App extends React.Component {
 
         <h2>Publications</h2>
         <Markdown source={this.state.publications} />
+
+        <ScienceMap />
       </div>
     )
   }
