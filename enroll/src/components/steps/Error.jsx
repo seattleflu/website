@@ -6,7 +6,7 @@ const Error = props => {
   const [name, setName] = useState('')
   const [headline, setHeadline] = useState('')
   const [description, setDescription] = useState('')
-  const [urlConsent, setUurlConsent] = useState('')
+  const [urlConsent, setUrlConsent] = useState('')
   
   
   useEffect(() => {
@@ -16,7 +16,7 @@ const Error = props => {
       setName(studyData[0].fields.studyName)
       setHeadline(studyData[0].fields.headline)
       setDescription(studyData[0].fields.description)
-      setUurlConsent(studyData[0].fields.consent)
+      setUrlConsent(studyData[0].fields.urlConsent)
     })
   }, [])
 
@@ -26,7 +26,7 @@ const Error = props => {
       <p>Name: {name}</p>
       <p>Headline: {headline}</p>
       <p>description: {description}</p>
-      <p><a href={urlConsent} >Url Concent</a></p>
+      <a href="{urlConsent}" >{urlConsent}</a>
       
     </div>
   )
