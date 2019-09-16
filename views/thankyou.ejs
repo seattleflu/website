@@ -1,11 +1,11 @@
 <% include ./partials/header  {header: header} %>
-<div class="thank-you container">
+<div class="thank-you secondary container">
   <div class="row">
     <div class="col-lg-4 col-xs-12">
       <h2><%= thankyouData.fields.headline %></h2>
-      <h3>You are not currently eligible to join the study.</h3>
+      <h3><%= thankyouData.fields.subheader %></h3>
       <p><%= thankyouData.fields.dscription %></p>
-      <a href="<%= thankyouData.fields.buttonLink %>" class="cta"><%= thankyouData.fields.buttonLabel %></a>    
+      <h4><a href="<%= thankyouData.fields.buttonLink %>" class="cta"><%= thankyouData.fields.buttonLabel %></a></h4>
     </div>
     <div class="col-lg-8 col-xs-12">
       <h4>If you begin to have flu-like symptoms later in the year, we would love to have you come back and take the eligibility survey again.</h4>
@@ -17,10 +17,10 @@
       <h4>Additionally, you can help us get the word out about the flu study!</h4>
       <p>Click the links below to share with your networks:</p>
       <div class="ty-social">
-        <a class="twitter custom share" id="twitter-url" title="Twitter Share" href="https://twitter.com/share?url=https://seattleflu.com"><img src="/images/twitter_logo.svg"></a>
-        <a class="facebook custom share" id="facebook-url" title="Facebook Share" href="https://www.facebook.com/sharer.php?u=https://seattleflu.com"><img src="/images/facebook_logo.svg"></a>
-        <a class="linkedin custom share" id="linkedin-url" title="Linkedin Share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://seattleflu.com"><img src="/images/linkedin_logo.svg"></a>
-        <a class="email custom " id="email-url" title="Email Share" href="mailto:?subject=SeattleFlu.com&body=Test Copy"><img src="/images/email_logo.svg"></a>
+        <a class="twitter custom share" id="twitter-url" title="Twitter Share" href="https://twitter.com/share?url=https://seattleflu.org"><img src="/images/twitter_logo.svg"></a>
+        <a class="facebook custom share" id="facebook-url" title="Facebook Share" href="https://www.facebook.com/sharer.php?u=https://seattleflu.org"><img src="/images/facebook_logo.svg"></a>
+        <a class="linkedin custom share" id="linkedin-url" title="Linkedin Share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://seattleflu.org"><img src="/images/linkedin_logo.svg"></a>
+        <a class="email custom " id="email-url" title="Email Share" href="mailto:?subject=SeattleFlu.org&body=Test Copy"><img src="/images/email_logo.svg"></a>
                                 
       </div>
     </div>
