@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import Markdown from 'react-markdown';
+import ScienceMap from './components/ScienceMap';
 
 const contentful = require('../../services/science');
 
@@ -45,6 +46,15 @@ class App extends React.Component {
 
         <h2>Publications</h2>
         <Markdown source={this.state.publications} />
+
+        <h2>Flu Sampling Status</h2>
+        <p>
+        The map below shows features of our samples so far this season.
+        Hold the left mouse button to drag and pan the map.
+        Hold the right mouse button to rotate and pitch the map.
+        Use the mouse wheel to zoom in and out.
+        </p>
+        <ScienceMap />
       </div>
     )
   }
