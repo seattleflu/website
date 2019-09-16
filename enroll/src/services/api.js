@@ -29,3 +29,13 @@ export const getWebSiteSettings = function getData (url) {
       .catch(err => console.error(err))
   )
 }
+
+export const getStudy = function getData (url) {
+  return (
+    client
+      .getEntries({ content_type: 'studies', 'fields.studyName': 'Swab & Send Study' })
+      .then(response => response.items)
+      // eslint-disable-next-line no-console
+      .catch(err => console.error(err))
+  )
+}

@@ -11,7 +11,8 @@ import Error from './components/steps/Error.jsx'
 import {
   getThankyou,
   getEnrollmentQuestions,
-  getWebSiteSettings
+  getWebSiteSettings,
+  getStudy
 } from './services/api'
 
 const App = () => {
@@ -91,6 +92,10 @@ const App = () => {
   const [zipCodes, setZipCodes] = useState('')
 
   const [conditions, setConditions] = useState('')
+  
+  const [studyName, setStudyName] = useState('')
+  // const [conditions, setConditions] = useState('')
+  // const [conditions, setConditions] = useState('')
 
   useEffect(() => {
     getThankyou(1).then(thankyouData => {
@@ -109,7 +114,7 @@ const App = () => {
               setBouncePage1(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage1(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage1(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion1(question.fields.question)
             break
@@ -118,7 +123,7 @@ const App = () => {
               setBouncePage2(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage2(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage2(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion2(question.fields.question)
             break
@@ -127,7 +132,7 @@ const App = () => {
               setBouncePage3(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage3(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage3(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion3(question.fields.question)
             break
@@ -136,7 +141,7 @@ const App = () => {
               setBouncePage4(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage4(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage4(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion4(question.fields.question)
             break
@@ -145,7 +150,7 @@ const App = () => {
               setBouncePage5(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage5(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage5(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion5(question.fields.question)
             break
@@ -154,7 +159,7 @@ const App = () => {
               setBouncePage6(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage6(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage6(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion6(question.fields.question)
             break
@@ -163,7 +168,7 @@ const App = () => {
               setBouncePage7(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage7(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage7(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion7(question.fields.question)
             break
@@ -172,7 +177,7 @@ const App = () => {
               setBouncePage8(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage8(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage8(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion8(question.fields.question)
             break
@@ -181,7 +186,7 @@ const App = () => {
               setBouncePage9(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage9(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage9(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion9(question.fields.question)
             break
@@ -190,7 +195,7 @@ const App = () => {
               setBouncePage10(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage10(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage10(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion10(question.fields.question)
             break
@@ -199,7 +204,7 @@ const App = () => {
               setBouncePage11(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage11(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage11(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion11(question.fields.question)
             break
@@ -208,7 +213,7 @@ const App = () => {
               setBouncePage12(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage12(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage12(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion12(question.fields.question)
             break
@@ -216,8 +221,8 @@ const App = () => {
             if (question.fields.bouncePage.fields.url) {
               setBouncePage13(question.fields.bouncePage.fields.url)
             }
-            if (question.fields.fluStudyPage.fields.urlConsent) {
-              setFluStudyPage13(question.fields.fluStudyPage.fields.urlConsent)
+            if (question.fields.fluStudyPage.fields.studyName) {
+              setFluStudyPage13(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion13(question.fields.question)
             setConditions(question.fields.addInformation)
@@ -227,7 +232,7 @@ const App = () => {
               setBouncePage14(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage14(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage14(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion14(question.fields.question)
             break
@@ -236,7 +241,7 @@ const App = () => {
               setBouncePage15(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage15(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage15(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion15(question.fields.question)
             break
@@ -245,7 +250,7 @@ const App = () => {
               setBouncePage16(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage16(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage16(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion16(question.fields.question)
             break
@@ -254,7 +259,7 @@ const App = () => {
               setBouncePage17(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage17(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage17(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion17(question.fields.question)
             break
@@ -263,7 +268,7 @@ const App = () => {
               setBouncePage18(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-              setFluStudyPage18(question.fields.fluStudyPage.fields.urlConsent)
+              setFluStudyPage18(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion18(question.fields.question)
             break
@@ -284,11 +289,12 @@ const App = () => {
   }
   function handleNextError (url) {
     // setCurrentStep(5)
-    if (url.includes('http')) {
-      window.location.replace(url)
-    } else {
       window.location.replace('/thank-you/' + url)
-    }
+  }
+  function handleStudy(url) {
+      setStudyName(url)
+      setCurrentStep(5)
+      
   }
 
   return (
@@ -298,6 +304,7 @@ const App = () => {
           <Main
             handleNext={handleNext}
             handleNextError={handleNextError}
+            handleStudy={handleStudy}
             currentStep={currentStep}
             question1={question1}
             bouncePage1={bouncePage1}
@@ -311,6 +318,7 @@ const App = () => {
           <FlowOne
             handleNext={handleNext}
             handleNextError={handleNextError}
+            handleStudy={handleStudy}
             currentStep={currentStep}
             question3={question3}
             bouncePage3={bouncePage3}
@@ -341,6 +349,7 @@ const App = () => {
           <FlowTwo
             handleNext={handleNext}
             handleNextError={handleNextError}
+            handleStudy={handleStudy}
             currentStep={currentStep}
             question9={question9}
             bouncePage9={bouncePage9}
@@ -371,6 +380,7 @@ const App = () => {
           <FlowThree
             handleNext={handleNext}
             handleNextError={handleNextError}
+            handleStudy={handleStudy}
             currentStep={currentStep}
             question15={question15}
             bouncePage15={bouncePage15}
@@ -395,6 +405,7 @@ const App = () => {
           <FlowFour
             handleNext={handleNext}
             handleNextError={handleNextError}
+            handleStudy={handleStudy}
             currentStep={currentStep}
             question15={question15}
             bouncePage15={bouncePage15}
@@ -419,6 +430,7 @@ const App = () => {
           handleNext={handleNext}
           handleNextError={handleNextError}
           currentStep={currentStep}
+          studyName={studyName}
         />
       ) : null}
     </div>

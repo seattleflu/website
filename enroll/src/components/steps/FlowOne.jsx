@@ -69,16 +69,17 @@ const FlowOne = props => {
       if (conditions == 'yes') {
         setQuestion(6)
       } else {
-        props.handleNextError(props.fluStudyPage7)
+        //props.handleNextError(props.fluStudyPage7)
+        props.handleStudy(props.fluStudyPage7)
       }
     }
 
     if (question == 6) {
-      if (pills == 'yes') {
+      if (pills == 'no') {
         // props.handleNext(2)
-        props.handleNextError(2)
-      } else {
         props.handleNextError(props.bouncepage8)
+      } else {
+        props.handleStudy(props.fluStudyPage8)
       }
     }
   }

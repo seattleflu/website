@@ -77,12 +77,12 @@ const FlowFour = props => {
       } else if (howlongValue == 'moreThanandlessthan') {
         setQuestion()
       } else {
-        props.handleNextError()
+        props.handleNextError(props.bouncePage10)
       }
     }
     if (question == 1) {
       if (symptomsList.length < 2) {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage15)
       } else if (symptomsList.length >= 2 && symptomsList.includes('Cough')) {
         setQuestion(4)
       } else {
@@ -92,61 +92,64 @@ const FlowFour = props => {
 
     if (question == 2) {
       if (connectedValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage12)
       } else {
         setQuestion(2)
       }
     }
     if (question == 3) {
       if (conditionsValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage17)
       } else {
         // props.handleNext(3)
-        props.handleNextError(2)
+        //props.handleNextError(props.fluStudyPage17)
+        props.handleStudy(props.fluStudyPage17)
       }
     }
     if (question == 4) {
       if (deviceValue == 'no') {
         setQuestion(question + 1)
       } else {
-        props.handleNextError(2)
+        props.handleNextError(props.bouncePage12)
       }
     }
     if (question == 5) {
       if (deviceValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage12)
       } else {
         setQuestion(question + 1)
       }
     }
     if (question == 6) {
       if (conditionsValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouneePage17)
       } else {
         // setQuestion(question + 1)
-        props.handleNextError(2)
+        //props.handleNextError(props.fluStudyPage17)
+        props.handleStudy(props.fluStudyPage17)
       }
     }
 
     if (question == 7) {
       if (symptomsList.length < 2) {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage15)
       } else {
         setQuestion(8)
       }
     }
     if (question == 8) {
       if (connectedValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage12)
       } else {
         setQuestion(question + 1)
       }
     }
     if (question == 9) {
       if (conditionsValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouneePage17)
       } else {
-        props.handleNextError(2)
+        //props.handleNextError(props.fluStudyPage17)
+        props.handleStudy(props.fluStudyPage17)
       }
     }
   }

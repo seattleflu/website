@@ -25,7 +25,7 @@ const FlowTwo = props => {
       setQuestion(7)
       console.log(event.target.value)
     } else {
-      props.handleNextError(1)
+      props.handleNextError(props.bouncepage10)
     }
   }
 
@@ -77,12 +77,12 @@ const FlowTwo = props => {
       } else if (howlongValue == 'moreThanandlessthan') {
         setQuestion()
       } else {
-        props.handleNextError()
+        props.handleNextError(props.bouncepage10)
       }
     }
     if (question == 1) {
       if (symptomsList.length < 2) {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncepage11)
       } else if (symptomsList.length >= 2 && symptomsList.includes('Cough')) {
         setQuestion(4)
       } else {
@@ -92,61 +92,64 @@ const FlowTwo = props => {
 
     if (question == 2) {
       if (connectedValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage12)
       } else {
         setQuestion(2)
       }
     }
     if (question == 3) {
       if (conditionsValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage13)
       } else {
         // props.handleNext(3)
-        props.handleNextError(2)
+        //props.handleNextError(props.fluStudyPage13)
+        props.handleStudy(props.fluStudyPage13)
       }
     }
     if (question == 4) {
       if (deviceValue == 'no') {
         setQuestion(question + 1)
       } else {
-        props.handleNextError(2)
+        props.handleNextError(props.bouncePage16)
       }
     }
     if (question == 5) {
       if (deviceValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage16)
       } else {
         setQuestion(question + 1)
       }
     }
     if (question == 6) {
       if (conditionsValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage13)
       } else {
         // setQuestion(question + 1)
-        props.handleNextError(2)
+        //props.handleNextError(props.fluStudyPage13)
+        props.handleStudy(props.fluStudyPage13)
       }
     }
 
     if (question == 7) {
       if (symptomsList.length < 2) {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage1)
       } else {
         setQuestion(8)
       }
     }
     if (question == 8) {
       if (connectedValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage12)
       } else {
         setQuestion(question + 1)
       }
     }
     if (question == 9) {
       if (conditionsValue == 'no') {
-        props.handleNextError(1)
+        props.handleNextError(props.bouncePage3)
       } else {
-        props.handleNextError(2)
+        //props.handleNextError(props.fluStudyPage3)
+        props.handleStudy(props.fluStudyPage3)
       }
     }
   }
