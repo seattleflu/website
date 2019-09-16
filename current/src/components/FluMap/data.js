@@ -1,5 +1,35 @@
 import { fromJS as immutable } from "immutable";
 
+
+const fetchModellingData = async (pathogen='[all]') => {
+  // const response = await fetch(`/getModelResults/${pathogen}`);
+  // const data = await response.json();
+  // return data;
+  const body = {
+    model_type: "inla_latent",
+    observed: ["encountered_week", "residence_neighborhood_district_name"],
+    pathogen: [pathogen],
+    spatial_domain: "seattle_geojson_neighborhood_district_name"
+  };
+
+  const config = {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    //json: true,
+    //credentials: 'omit', // no cookies!
+    body: JSON.stringify(body)
+  };
+
+  const response = await fetch('http://40.112.165.255/v1/query', config);
+  const data = await response.json();
+  console.log(data);
+  return data;
+};
+
+fetchModellingData();
+
 // XXX TODO: For prototyping, these GeoJSONs are sourced from our
 // seattleflu/seattle-geojson repository.  I'm ~80% sure they should ultimately
 // come from static files generated out of ID3C, with real data embedded in
@@ -15,7 +45,7 @@ const tractUrl        = `${baseUrl}/2016_seattle_censusTracts.geojson`;
 // land area of the shape.  It needs to be replaced by a real data selection
 // from the GeoJSON properties, or sourced from externally-joined data!
 //   -trs, 8 July 2019
-//
+// TODO
 const extrusionHeight = ["*", 1000000000, ["/", 1, ["get", "ALAND"]]];
 const extrusionStyle = {
   // See the Mapbox Style Specification for details on data expressions.
