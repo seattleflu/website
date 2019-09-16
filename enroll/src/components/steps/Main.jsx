@@ -58,7 +58,7 @@ const Main = props => {
         />
       ) : null}
       <button
-        className='btn btn-primary float-right'
+        className='btn btn-primary float-right next'
         type='submit'
         onClick={handleChange}
       >

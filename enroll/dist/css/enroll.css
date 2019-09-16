@@ -27,3 +27,14 @@
     display: inline-block;
     margin: 5px;
 }
+
+.next{
+    text-transform: uppercase;
+    background-color: #1BAB4C;
+    border-radius: 25px;
+    padding: 9.5px 37px;
+    border: none;
+    color: #fff;
+    outline: none;
+    font-weight: 700;
+}
