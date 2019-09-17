@@ -38,7 +38,14 @@ const heatStyle = {
 
 // The FluMap component loads the data for each layer at render time and adds
 // it to the map as it arrives.
-export const dataLayers = immutable([
+
+/**
+ *
+ * @param {*} valueToExclude
+ *
+ * @returns {Immutable.Array}
+ */
+export const dataLayers = () => immutable([
   {
     id: "neighborhood-heat",
     type: "heatmap",
@@ -47,6 +54,6 @@ export const dataLayers = immutable([
       data: "./src/components/ScienceMap/samples.geojson"
     },
     paint: heatStyle,
-    maxzoom: 15
+    maxzoom: 15,
   }
 ]);

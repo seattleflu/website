@@ -1,4 +1,4 @@
-import { fromJS as immutable, List } from "immutable";
+import { fromJS as immutable, List, Map } from "immutable";
 import MAP_STYLE from "./mapbox-dark-v10.json";
 
 
@@ -37,4 +37,22 @@ export const mergeMapStyle = (mapStyle, newStyle, beforeLayerId = "waterway-labe
       ...newStyle.get("layers"),
       ...layers.skipUntil(l => l.get("id") === beforeLayerId)
     ]))
+;
+
+
+export const addFilterToMapStyle = (mapStyle, index, filter) => {
+  console.log(mapStyle.getIn(["layers", index]).toJS());
+
+  if (mapStyle.getIn(["layers", index, "filter"])) {
+    return mapStyle
+      .updateIn(["layers", index, "filter"], filters =>
+      filters.push(filter))
+
+  } else {
+    return mapStyle
+    .updateIn(["layers", index, "filter"], filters =>
+      List(["all", filter])
+      )
+    }
+  }
 ;

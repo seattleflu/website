@@ -1,0 +1,11 @@
+
+#filter-group label:first-child {
+    border-bottom: 3px solid white;
+    padding-bottom: 5px;
+}
+
+#filter-group input[type=checkbox] {
+    cursor: pointer;
+    padding-right: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+}
