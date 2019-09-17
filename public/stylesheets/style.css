@@ -79,13 +79,6 @@ a, a:hover {
  }
 button {
   outline: none !important;
-  background-color: #1BAB4C;
-  border: 2px solid #1BAB4C;
-  color: #fff;
-  padding: 7px 15px;
-  text-transform: uppercase;
-  font-weight: 700;
-  border-radius: 25px;
 }
 
 
@@ -229,9 +222,18 @@ header.dark .nav-item a {
 }
 header .nav-item button, .mobile-nav ul button {
   margin-left: 40px;
+  color: #fff;
+  padding: 7px 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 25px;
 }
 .mobile-nav ul button {
   margin-left: 0;
+}
+header.light .nav-item button {
+  background-color: #1BAB4C;
+  border: 2px solid #1BAB4C;
 }
 header.dark .nav-item button {
   background-color: transparent;
@@ -328,6 +330,15 @@ h3 {
   height: 100%;
   margin-top: auto;
   margin-bottom: auto;
+}
+.study-callout button {
+  color: #fff;
+  padding: 7px 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 25px;
+  background-color: #1BAB4C;
+  border: 2px solid #1BAB4C;
 }
 @media (max-width: 1199px) {
   .study-callout {
