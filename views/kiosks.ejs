@@ -1,11 +1,75 @@
 
 <% include ./partials/header  {header: header} %>
-<div class="container">
+<div class="container secondary kiosk">
           <div class="row">
-              <div class="col-12">
-                <h1><%= title %></h1>
+              <div class="col-lg-6 col-sm-12">
+                <h2>Find a Kiosk</h2>
+                <iframe class="mobile-map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d86067.14358600826!2d-122.33922336159368!3d47.61450130917816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1568744555507!5m2!1sen!2sus" width="100%" height="600px" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                <h3>Kiosk Locations</h3>
+                <div class="kiosk-list">
+                  <div class="kiosk-item">
+                    <img src="/images/map_icon.svg">
+                    <div class="wrapper">
+                      <h5>UW Hall Health Clinic</h5>
+                      <p>11am-1pm (Mon-Thur)</p>
+                    </div>
+                  </div>
+                  <div class="kiosk-item">
+                    <img src="/images/map_icon.svg">
+                    <div class="wrapper">
+                      <h5>UW Health Sciences Building (Rotunda)</h5>
+                      <p>11am-1pm (Mon-Thur)</p>
+                    </div>
+                  </div>
+                  <div class="kiosk-item">
+                    <img src="/images/map_icon.svg">
+                    <div class="wrapper">
+                      <h5>UW Husky Union Building (HUB)</h5>
+                      <p>11am-1pm (Mon-Fri)</p>
+                    </div>
+                  </div>
+                  <div class="kiosk-item">
+                    <img src="/images/map_icon.svg">
+                    <div class="wrapper">
+                      <h5>Fred Hutch (Weintraub Building)</h5>
+                      <p>11am-2pm (Mon-Wed)</p>
+                    </div>
+                  </div>
+                  <div class="kiosk-item">
+                    <img src="/images/map_icon.svg">
+                    <div class="wrapper">
+                      <h5>Harborview Medical Center (Main Entrance)</h5>
+                      <p>10am-2pm (Tue, Wed, Fri)</p>
+                    </div>
+                  </div>
+                  <div class="kiosk-item">
+                    <img src="/images/map_icon.svg">
+                    <div class="wrapper">
+                      <h5>SeaTac Airport (Domestic Arrivals, Baggage Claim 1 and Baggage Claim 15)</h5>
+                      <p>10am-3pm (Mon, Thur, Fri)</p>
+                    </div>
+                  </div>
+                  <div class="kiosk-item">
+                    <img src="/images/map_icon.svg">
+                    <div class="wrapper">
+                      <h5>SeaTac Airport (International Arrivals)</h5>
+                      <p>10am-3pm (Tue, Fri)</p>
+                    </div>
+                  </div>                  
+                </div>
+                <div class="kiosk-text">
+                  <p><strong>Updated for the week of March 18th, 2019.</strong></p>
+                  <p>There are additional enrollment locations at Hutch Kids, West Campus Childcare Center, SeaMar Clinic, DESC, Pioneer Square Clinic, St. Martin's de Porres, and Costco Headquarters.</p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 kiosk-map">
+                <iframe class="desktop-map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d86067.14358600826!2d-122.33922336159368!3d47.61450130917816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1568744555507!5m2!1sen!2sus" width="100%" height="600px" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                <div class="study-callout">
+                  <h3>Help us track the flu in Seattle. We need you.</h3>
+                  <a href="/enroll"><button>Join the Study</button></a>
+                </div>
+              </div>
             </div>
-            </div>
-            </div>
+          </div>
 
 <% include ./partials/footer  %>

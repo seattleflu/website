@@ -77,6 +77,16 @@ a, a:hover {
 .align-right {
   text-align: right;
 }
+button {
+  outline: none !important;
+  background-color: #1BAB4C;
+  border: 2px solid #1BAB4C;
+  color: #fff;
+  padding: 7px 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 25px;
+}
 
 
 /*** FORM ELEMENTS ***/
@@ -219,21 +229,9 @@ header.dark .nav-item a {
 }
 header .nav-item button, .mobile-nav ul button {
   margin-left: 40px;
-  color: #fff;
-  padding: 7px 15px;
-  text-transform: uppercase;
-  font-weight: 700;
-  border-radius: 25px;
 }
 .mobile-nav ul button {
   margin-left: 0;
-}
-header button:focus, .mobile-nav button:focus {
-  outline: none;
-}
-header.light .nav-item button, .mobile-nav ul button {
-  background-color: #1BAB4C;
-  border: 2px solid #1BAB4C;
 }
 header.dark .nav-item button {
   background-color: transparent;
@@ -313,6 +311,33 @@ h3 {
 .secondary input[type=text], .secondary input[type=submit] {
   margin-top: 12px;
 }
+.study-callout {
+  background-image: url(/images/BG_Blue_sm.png);
+  background-size: cover;
+  padding: 30px;
+  text-align: center;
+  display: flex;
+}
+.study-callout h3 {
+  margin: 0;
+  color: #fff;
+  text-align: left;
+}
+.study-callout a {
+  flex-basis: 45%;
+  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+@media (max-width: 1199px) {
+  .study-callout {
+    display: block;
+  }
+  .study-callout h3 {
+    padding-bottom: 20px;
+    padding-right: 0;
+  }
+}
 
 
 /*** FAQ PAGE ***/
@@ -391,3 +416,65 @@ h3 {
 .thank-you .col-xs-12:first-child {
     margin-bottom: 75px;
   }
+}
+
+/*** FIND A KIOSK PAGE ***/
+.kiosk-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.kiosk-item {
+  flex-basis: 50%;
+  margin-bottom: 20px;
+  display: flex;
+}
+.kiosk-item:nth-child(2n - 1) {
+  padding-right: 7.5px;
+}
+.kiosk-item:nth-child(2n) {
+  padding-left: 7.5px;
+}
+.kiosk-item img {
+  margin-right: 15px;
+  margin-bottom: auto;
+  margin-top: -8px;
+}
+.kiosk-item:before {
+  content: '1';
+  font-size: 20px;
+  color: #fff;
+  position: absolute;
+  font-weight: 700;
+  margin-left: 9.5px;
+  margin-top: -6px;
+}
+.kiosk iframe {
+  margin-bottom: 75px;
+}
+@media (max-width: 767px) {
+  .kiosk-list {
+    display: block;
+  }
+  .kiosk-item {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+@media (max-width: 991px) {
+  .desktop-map {
+    display: none;
+  }
+  .kiosk iframe {
+    margin-bottom: 50px;
+    margin-top: 30px;
+  }
+  .kiosk .study-callout {
+    margin-top: 50px;
+  }
+}
+@media (min-width: 992px) {
+  .mobile-map {
+    display: none;
+  }
+}
