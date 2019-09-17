@@ -367,6 +367,7 @@ h3 {
 }
 #faq-accordion button {
   padding: 0;
+  text-transform: initial;
 }
 #faq-accordion .btn {
   white-space: normal;
