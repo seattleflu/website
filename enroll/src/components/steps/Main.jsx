@@ -34,7 +34,7 @@ const Main = props => {
   }
 
   return (
-    <div>
+    <div className='col-8'>
       {question >= 0 ? (
         <Input
           text={props.question1}
@@ -58,7 +58,7 @@ const Main = props => {
         />
       ) : null}
       <button
-        className='btn btn-primary float-right next'
+        className='btn btn-primary float-left next'
         type='submit'
         onClick={handleChange}
       >

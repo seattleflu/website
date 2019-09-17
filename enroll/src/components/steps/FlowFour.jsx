@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import Select from '../presentational/Select.jsx'
+import Switch from '../presentational/Switch.jsx'
 
 const FlowFour = props => {
   const [question, setQuestion] = useState(0)
@@ -25,11 +26,12 @@ const FlowFour = props => {
       setQuestion(7)
       console.log(event.target.value)
     } else {
-      props.handleNextError(1)
+      // props.handleNextError(1)
     }
   }
 
   function handleconnectedOne (event) {
+    event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -39,6 +41,7 @@ const FlowFour = props => {
     }
   }
   function handleconnectedTwo (event) {
+    event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -48,6 +51,7 @@ const FlowFour = props => {
     }
   }
   function handleconnectedThree (event) {
+    event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -57,10 +61,12 @@ const FlowFour = props => {
     }
   }
   function handleConditions (event) {
+    event.preventDefault()
     setConditionsValue(event.target.value)
   }
 
   function handleDeviceValue (event) {
+    event.preventDefault()
     setDeviceValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(4)
@@ -83,7 +89,10 @@ const FlowFour = props => {
     if (question == 1) {
       if (symptomsList.length < 2) {
         props.handleNextError(props.bouncePage15)
-      } else if (symptomsList.length >= 2 && symptomsList.includes('Cough')) {
+      } else if (
+        symptomsList.length >= 3 &&
+        symptomsList.includes('Chills or sweats')
+      ) {
         setQuestion(4)
       } else {
         setQuestion(2)
@@ -102,7 +111,7 @@ const FlowFour = props => {
         props.handleNextError(props.bouncePage17)
       } else {
         // props.handleNext(3)
-        //props.handleNextError(props.fluStudyPage17)
+        // props.handleNextError(props.fluStudyPage17)
         props.handleStudy(props.fluStudyPage17)
       }
     }
@@ -125,7 +134,7 @@ const FlowFour = props => {
         props.handleNextError(props.bouneePage17)
       } else {
         // setQuestion(question + 1)
-        //props.handleNextError(props.fluStudyPage17)
+        // props.handleNextError(props.fluStudyPage17)
         props.handleStudy(props.fluStudyPage17)
       }
     }
@@ -148,7 +157,7 @@ const FlowFour = props => {
       if (conditionsValue == 'no') {
         props.handleNextError(props.bouneePage17)
       } else {
-        //props.handleNextError(props.fluStudyPage17)
+        // props.handleNextError(props.fluStudyPage17)
         props.handleStudy(props.fluStudyPage17)
       }
     }
@@ -241,9 +250,8 @@ const FlowFour = props => {
   ]
 
   return (
-    <div>
-      <h3>over 18</h3>
-      <p>{symptomsList}</p>
+    <div className='col-8'>
+      <h3>under 18</h3>
       {question >= 0 ? (
         <Select
           text={props.question15}
@@ -258,133 +266,167 @@ const FlowFour = props => {
       ) : null}
 
       {question >= 1 && question < 7 ? (
-        <div>
-          <p>{props.question18}</p>
-          <input
-            type='checkbox'
-            name='test1'
-            value='Feeling Feverish'
-            onChange={addSymptomOne}
-          />
-          Feeling Feverish
-          <br />
-          <input
-            type='checkbox'
-            name='test2'
-            value='Nausea or vomiting'
-            onChange={addSymptomOne}
-          />
-          Nausea or vomiting
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Increased trouble with breathing'
-            onChange={addSymptomOne}
-          />
-          Increased trouble with breathing
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Headaches'
-            onChange={addSymptomOne}
-          />
-          Headaches
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Runny or stuffy nose or sneezing'
-            onChange={addSymptomOne}
-          />
-          Runny or stuffy nose or sneezing
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Ear pain or ear discharge'
-            onChange={addSymptomOne}
-          />
-          Ear pain or ear discharge
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Cough'
-            onChange={addSymptomOne}
-          />
-          Cough
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Rash'
-            onChange={addSymptomOne}
-          />
-          Rash
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Chills or sweats'
-            onChange={addSymptomOne}
-          />
-          Chills or sweats
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Diarrhea'
-            onChange={addSymptomOne}
-          />
-          Diarrhea
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Increased Fatigue(tiredness)'
-            onChange={addSymptomOne}
-          />
-          Increased Fatigue(tiredness)
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Feeling dizzy'
-            onChange={addSymptomOne}
-          />
-          Feeling dizzy
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Sore throat'
-            onChange={addSymptomOne}
-          />
-          Sore throat
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Muscle or body aches'
-            onChange={addSymptomOne}
-          />
-          Muscle or body aches
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='None of the above'
-            onChange={addSymptomRemove}
-          />
-          None of the above
-          <br />
+        <div classname='col-12 selectSymptoms'>
+          <div className='row'>
+            <div className='col-12'>
+              <p>{props.question18}</p>
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test1'
+                value='Feeling Feverish'
+                onChange={addSymptomOne}
+              />
+              Feeling Feverish
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test2'
+                value='Nausea or vomiting'
+                onChange={addSymptomOne}
+              />
+              Nausea or vomiting
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Increased trouble with breathing'
+                onChange={addSymptomOne}
+              />
+              Increased trouble with breathing
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Headaches'
+                onChange={addSymptomOne}
+              />
+              Headaches
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Runny or stuffy nose or sneezing'
+                onChange={addSymptomOne}
+              />
+              Runny or stuffy nose or sneezing
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Ear pain or ear discharge'
+                onChange={addSymptomOne}
+              />
+              Ear pain or ear discharge
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Cough'
+                onChange={addSymptomOne}
+              />
+              Cough
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Rash'
+                onChange={addSymptomOne}
+              />
+              Rash
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Chills or sweats'
+                onChange={addSymptomOne}
+              />
+              Chills or sweats
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Diarrhea'
+                onChange={addSymptomOne}
+              />
+              Diarrhea
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Increased Fatigue(tiredness)'
+                onChange={addSymptomOne}
+              />
+              Increased Fatigue(tiredness)
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Feeling dizzy'
+                onChange={addSymptomOne}
+              />
+              Feeling dizzy
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Sore throat'
+                onChange={addSymptomOne}
+              />
+              Sore throat
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Muscle or body aches'
+                onChange={addSymptomOne}
+              />
+              Muscle or body aches
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='None of the above'
+                onChange={addSymptomRemove}
+              />
+              None of the above
+              <br />
+            </div>
+          </div>
         </div>
       ) : null}
 
       {question >= 2 && question < 4 ? (
-        <Select
+        <Switch
           text={props.question12}
           description=''
           label='connected'
@@ -396,7 +438,7 @@ const FlowFour = props => {
         />
       ) : null}
       {question >= 3 && question < 4 ? (
-        <Select
+        <Switch
           text={props.question17}
           description=''
           label='conditions'
@@ -409,7 +451,7 @@ const FlowFour = props => {
       ) : null}
 
       {question >= 4 && question < 7 ? (
-        <Select
+        <Switch
           text={props.question16}
           description=''
           label='device'
@@ -422,7 +464,7 @@ const FlowFour = props => {
       ) : null}
 
       {question >= 5 && question < 7 ? (
-        <Select
+        <Switch
           text={props.question12}
           description=''
           label='connected'
@@ -434,7 +476,7 @@ const FlowFour = props => {
         />
       ) : null}
       {question >= 6 && question < 7 ? (
-        <Select
+        <Switch
           text={props.question17}
           description=''
           label='conditions'
@@ -447,133 +489,167 @@ const FlowFour = props => {
       ) : null}
 
       {question >= 7 ? (
-        <div>
-          <p>{props.question15}</p>
-          <input
-            type='checkbox'
-            name='test1'
-            value='Feeling Feverish'
-            onChange={addSymptomTwo}
-          />
-          Feeling Feverish
-          <br />
-          <input
-            type='checkbox'
-            name='test2'
-            value='Nausea or vomiting'
-            onChange={addSymptomTwo}
-          />
-          Nausea or vomiting
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Increased trouble with breathing'
-            onChange={addSymptomTwo}
-          />
-          Increased trouble with breathing
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Headaches'
-            onChange={addSymptomTwo}
-          />
-          Headaches
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Runny or stuffy nose or sneezing'
-            onChange={addSymptomTwo}
-          />
-          Runny or stuffy nose or sneezing
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Ear pain or ear discharge'
-            onChange={addSymptomTwo}
-          />
-          Ear pain or ear discharge
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Cough'
-            onChange={addSymptomTwo}
-          />
-          Cough
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Rash'
-            onChange={addSymptomTwo}
-          />
-          Rash
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Chills or sweats'
-            onChange={addSymptomTwo}
-          />
-          Chills or sweats
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Diarrhea'
-            onChange={addSymptomTwo}
-          />
-          Diarrhea
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Increased Fatigue(tiredness)'
-            onChange={addSymptomTwo}
-          />
-          Increased Fatigue(tiredness)
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Feeling dizzy'
-            onChange={addSymptomTwo}
-          />
-          Feeling dizzy
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Sore throat'
-            onChange={addSymptomTwo}
-          />
-          Sore throat
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='Muscle or body aches'
-            onChange={addSymptomTwo}
-          />
-          Muscle or body aches
-          <br />
-          <input
-            type='checkbox'
-            name='test3'
-            value='None of the above'
-            onChange={addSymptomRemove}
-          />
-          None of the above
-          <br />
+        <div classname='col-12 selectSymptoms'>
+          <div className='row'>
+            <div className='col-12'>
+              <p>{props.question15}</p>
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test1'
+                value='Feeling Feverish'
+                onChange={addSymptomTwo}
+              />
+              Feeling Feverish
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test2'
+                value='Nausea or vomiting'
+                onChange={addSymptomTwo}
+              />
+              Nausea or vomiting
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Increased trouble with breathing'
+                onChange={addSymptomTwo}
+              />
+              Increased trouble with breathing
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Headaches'
+                onChange={addSymptomTwo}
+              />
+              Headaches
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Runny or stuffy nose or sneezing'
+                onChange={addSymptomTwo}
+              />
+              Runny or stuffy nose or sneezing
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Ear pain or ear discharge'
+                onChange={addSymptomTwo}
+              />
+              Ear pain or ear discharge
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Cough'
+                onChange={addSymptomTwo}
+              />
+              Cough
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Rash'
+                onChange={addSymptomTwo}
+              />
+              Rash
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Chills or sweats'
+                onChange={addSymptomTwo}
+              />
+              Chills or sweats
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Diarrhea'
+                onChange={addSymptomTwo}
+              />
+              Diarrhea
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Increased Fatigue(tiredness)'
+                onChange={addSymptomTwo}
+              />
+              Increased Fatigue(tiredness)
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Feeling dizzy'
+                onChange={addSymptomTwo}
+              />
+              Feeling dizzy
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Sore throat'
+                onChange={addSymptomTwo}
+              />
+              Sore throat
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='Muscle or body aches'
+                onChange={addSymptomTwo}
+              />
+              Muscle or body aches
+              <br />
+            </div>
+            <div className='symptom col-4'>
+              <input
+                type='checkbox'
+                name='test3'
+                value='None of the above'
+                onChange={addSymptomRemove}
+              />
+              None of the above
+              <br />
+            </div>
+          </div>
         </div>
       ) : null}
 
       {question >= 8 ? (
-        <Select
+        <Switch
           text={props.question12}
           description=''
           label='connected'
@@ -586,7 +662,7 @@ const FlowFour = props => {
       ) : null}
 
       {question >= 9 ? (
-        <Select
+        <Switch
           text={props.question17}
           description=''
           label='conditions'
@@ -599,7 +675,7 @@ const FlowFour = props => {
       ) : null}
 
       <button
-        className='btn btn-primary float-right next'
+        className='btn btn-primary float-left next'
         type='submit'
         onClick={handleNext}
       >

@@ -7,12 +7,10 @@ const Error = props => {
   const [headline, setHeadline] = useState('')
   const [description, setDescription] = useState('')
   const [urlConsent, setUrlConsent] = useState('')
-  
-  
-  useEffect(() => {
 
+  useEffect(() => {
     getStudy(props.studyName).then(studyData => {
-      console.log("test data: " + JSON.stringify(studyData[0].fields.studyName))
+      console.log('test data: ' + JSON.stringify(studyData[0].fields.studyName))
       setName(studyData[0].fields.studyName)
       setHeadline(studyData[0].fields.headline)
       setDescription(studyData[0].fields.description)
@@ -22,12 +20,11 @@ const Error = props => {
 
   return (
     <div>
-      <h2>Bounce Page</h2>
+      <h2>Study Page</h2>
       <p>Name: {name}</p>
       <p>Headline: {headline}</p>
       <p>description: {description}</p>
-      <a href="{urlConsent}" >{urlConsent}</a>
-      
+      <a href='{urlConsent}'>{urlConsent}</a>
     </div>
   )
 }

@@ -8,27 +8,88 @@
 .inputDescription{
     font-size: 10px;
 }
-
-.switch{
+.buttonWrapper{
+    border:2px solid#0A5CA8;
+    display: inline-block;
+    border-radius: 5px;
+    float: right;
+}
+.buttonWrapper.switch{
     padding: 10px;
     background-color:grey;
     display: inline-block;
     margin: 5px;
+    height: 50px;
+    width: 82px;
 }
-.switchYes{
-    padding: 10px;
+.buttonWrapper.switchYes{
+    border-top: 0px solid #0A5CA8;	
+    border-bottom: 0px solid #0A5CA8;	
+    border-left: 0px solid #0A5CA8;	
+    /* border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; */
+    height: 50px;
+    width: 82px;
+    background-color:#EAECF0;
+}
+.buttonWrapper.switchYesActive{
     background-color:green;
-    display: inline-block;
-    margin: 5px;
 }
 .switchNo{
-    padding: 10px;
+    border-top: 0px solid #0A5CA8;
+    border-bottom: 0px solid #0A5CA8;
+    border-right: 0px solid #0A5CA8;	
+    /* border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px; */
+    height: 50px;
+    width: 82px;
+    background-color:#EAECF0;
+}
+.switchNoActive{
     background-color:red;
+}
+.form-group{
+    margin-top: 20px;
+    margin-bottom:20px;
+}
+.form-group select.hidden{
+    display: none;
+}
+
+.form-group label{
+    color: #000000;	
+    font-family: "Roboto Condensed";	
+    font-size: 16px;	
+    
+}
+.form-group input{
+    box-sizing: border-box;	
+    height: 50px;	
+    width: 165px;	
+    border: 2px solid #0A5CA8;	
+    border-radius: 5px;
+}
+.selectSymptoms p{
+    font-family: "Roboto Condensed";	
+    font-size: 16px;
+}
+.symptom{
+    widows: 33%;
     display: inline-block;
-    margin: 5px;
+    padding-left: 10px;
+    padding-right:10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-family: "Roboto Condensed";	
+    font-size: 16px;
+}
+.symptom input{
+    margin-right: 10px;
 }
 
 .next{
+    margin-top: 40px;
     text-transform: uppercase;
     background-color: #1BAB4C;
     border-radius: 25px;

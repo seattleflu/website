@@ -92,7 +92,7 @@ const App = () => {
   const [zipCodes, setZipCodes] = useState('')
 
   const [conditions, setConditions] = useState('')
-  
+
   const [studyName, setStudyName] = useState('')
   // const [conditions, setConditions] = useState('')
   // const [conditions, setConditions] = useState('')
@@ -289,18 +289,17 @@ const App = () => {
   }
   function handleNextError (url) {
     // setCurrentStep(5)
-      window.location.replace('/thank-you/' + url)
+    window.location.replace('/thank-you/' + url)
   }
-  function handleStudy(url) {
-      setStudyName(url)
-      setCurrentStep(5)
-      
+  function handleStudy (url) {
+    setStudyName(url)
+    setCurrentStep(5)
   }
 
   return (
-    <div className='enrollment'>
-      <form id='enroll-form'>
-        {currentStep == 0 ? (
+    <div className='enrollment container'>
+      <form id='enroll-form row'>
+        {currentStep == 1 ? (
           <Main
             handleNext={handleNext}
             handleNextError={handleNextError}
@@ -341,7 +340,6 @@ const App = () => {
             question9={question9}
             bouncePage9={bouncePage9}
             fluStudyPage9={fluStudyPage9}
-
             conditions={conditions}
           />
         ) : null}
@@ -382,6 +380,9 @@ const App = () => {
             handleNextError={handleNextError}
             handleStudy={handleStudy}
             currentStep={currentStep}
+            question10={question10}
+            bouncePage10={bouncePage10}
+            fluStudyPage10={fluStudyPage10}
             question15={question15}
             bouncePage15={bouncePage15}
             fluStudyPage15={fluStudyPage15}
@@ -401,12 +402,15 @@ const App = () => {
           />
         ) : null}
 
-        {currentStep == 4 ? (
+        {currentStep == 0 ? (
           <FlowFour
             handleNext={handleNext}
             handleNextError={handleNextError}
             handleStudy={handleStudy}
             currentStep={currentStep}
+            question10={question10}
+            bouncePage10={bouncePage10}
+            fluStudyPage10={fluStudyPage10}
             question15={question15}
             bouncePage15={bouncePage15}
             fluStudyPage15={fluStudyPage15}
