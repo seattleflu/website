@@ -6,8 +6,21 @@ This is the website for [seattleflu.org](https://seattleflu.org).
   - [Season two / 2019–20](#season-two--2019%e2%80%9320)
     - [Starting the server](#starting-the-server)
     - [Development](#development)
-      - [Structure](#structure)
-      - [Adding new React applications](#adding-new-react-applications)
+      - [Main application](#main-application)
+      - [Routes](#routes)
+      - [Views](#views)
+      - [Services](#services)
+      - [Contentful CMS](#contentful-cms)
+        - [Content types](#content-types)
+        - [Environment variables](#environment-variables)
+        - [Contentful + React](#contentful--react)
+      - [React applications](#react-applications)
+        - [Starting the server](#starting-the-server-1)
+        - [Building JavaScript bundles](#building-javascript-bundles)
+        - [Adding CSS files](#adding-css-files)
+        - [Adding other files (.svg, .png, etc.)](#adding-other-files-svg-png-etc)
+        - [Babel troubleshooting](#babel-troubleshooting)
+        - [Adding new React applications](#adding-new-react-applications)
   - [Season one / 2018–19](#season-one--2018%e2%80%9319)
 
 ## Season two / 2019–20
@@ -29,57 +42,183 @@ The development server is now running at http://localhost:8080
 
 The Seattle Flu Website is built using [Embedded Javascript Templates](https://ejs.co) and [Express](https://expressjs.com).
 
-
-#### Structure
-
 The main application is the Seattle Flu Study website.
 It comprises multiple React applications that are added via routes and views.
 These applications can be developed in isolation from the main application (i.e. website) by starting the server within each application's top-level directory.
 
-* **Main application**
 
-    The code for the `express` server lives at [app.js](./app.js).
-    `app.js` starts the app, sets up the engine, mounts middleware to the declared routers, loads static files from provided paths, and declares error handling.
+#### Main application
 
-* **Routes**
-
-    Routers live at `routes/`.
-    They perform minimal work, declaring `GET` endpoints at the paths provided by the middleware.
-    Routers also pass context to `this` for `ejs` to render in its templates, e.g. `title`.
-
-* **Views**
-
-    Views live at `views/` as `.ejs` files.
-    These files are only loaded in the main application.
-    Views that require JavaScript need two things:
-    1. A `div` with an `id` that the JavaScript file will use to manipulate the DOM.
-    2. A `script` tag of type `text/javascript` that loads the desired JavaScript bundle from the top-level directory.
-        >Recall: Available static files (like JavaScript bundles) are declared by adding their paths in `app.js`.
-
-* **React applications**
-
-    Smaller React applications live within this repository.
-    They are named after the web page they represent (e.g. `enroll`).
-    They consist of an `index.html` file under `src/` which is only visible to the React application.
-
-    >Recall: The main application instead renders a view of the React application from a bundled JavaScript file.
-
-    * **Starting the server**
-
-        Make sure the dependencies are installed by running `npm run install`.
-
-        Then, start the server with `npm run start`.
-        The development server is now running at http://localhost:8080
-
-    * **Building JavaScript bundles**
-
-        Make sure the dependencies are installed by running `npm run install`.
-
-        Then, run webpack with `npm run build`.
-        The bundled React application now lives at `dist/`.
+The code for the `express` server lives at [app.js](./app.js).
+`app.js` starts the app, sets up the engine, mounts middleware to the declared routers, loads static files from provided paths, and declares error handling.
 
 
-#### Adding new React applications
+#### Routes
+
+Routers live at `routes/`.
+They perform minimal work, declaring `GET` endpoints at the paths provided by the middleware.
+Routers also pass context to `this` for `ejs` to render in its templates, e.g. `title`.
+
+
+#### Views
+
+Views live at `views/` as `.ejs` files.
+These files are only loaded in the main application.
+Views that require JavaScript need two things:
+1. A `div` with an `id` that the JavaScript file will use to manipulate the DOM.
+2. A `script` tag of type `text/javascript` that loads the desired JavaScript bundle from the top-level directory.
+    >Recall: Available static files (like JavaScript bundles) are declared by adding their paths in `app.js`.
+
+
+#### Services
+
+Middleware lives at `services/`.
+This is where we are currently defining methods for retrieving data from the Contentful SDK.
+These functions can be imported either by routers or within React apps.
+> See: [Contentful + React](#contentful--react)
+
+
+#### Contentful CMS
+
+We are currently using [Contentful](https://contentful.com) as our content management system (CMS).
+
+
+##### Content types
+
+When defining [content models](https://www.contentful.com/developers/docs/concepts/data-model/), we have had the best success rendering `Long text` or `Short text` fields.
+This requires converting the returned Markdown text to HTML using a library such as [react-markdown](https://github.com/rexxars/react-markdown).
+We do not recommend declaring fields as Rich Text because each field is stored with multiple nodes, making programmatic access more irregular and error-prone.
+
+
+##### Environment variables
+
+The following environment variables must be defined to run the website locally:
+* CONTENTFUL_ACCESS_TOKEN
+* CONTENTFUL_SPACE
+
+Once you have been invited to the Seattle Flu Study space on Contentful, these API keys are accessible under Settings → API Keys → website-dev.
+
+
+##### Contentful + React
+
+Browser-side code that uses the Contentful SDK needs a way to access the Contentful environment variables.
+To achieve this, we define our environmental variables with Webpack.
+Open up `webpack.config.js` within the directory of the React app that needs access to these variables. Require webpack with:
+```js
+    const webpack = require('webpack');
+```
+
+Next, still inside of `webpack.config.js`, define the Contentful environment variables:
+```js
+    const ENV = {
+        CONTENTFUL_ACCESS_TOKEN: JSON.stringify(process.env.CONTENTFUL_ACCESS_TOKEN),
+        CONTENTFUL_SPACE: JSON.stringify(process.env.CONTENTFUL_SPACE),
+    }
+```
+
+Then, add the following line to `plugins`:
+```js
+    plugins: [
+        new webpack.DefinePlugin({ 'process.env': ENV }),
+        ...
+  ]
+```
+
+The Contentful API keys will now be available as environment variables to the modified React app.
+
+
+#### React applications
+
+Smaller React applications live within this repository.
+They are named after the web page they represent (e.g. `enroll`).
+They consist of an `index.html` file under `src/` which is only visible to the React application.
+
+>Recall: The main application instead renders a view of the React application from a bundled JavaScript file.
+
+##### Starting the server
+
+Make sure the dependencies are installed by running `npm run install`.
+
+Then, start the server with `npm run start`.
+The development server is now running at http://localhost:8080
+
+
+##### Building JavaScript bundles
+
+Make sure the dependencies are installed by running `npm run install`.
+
+Then, run webpack with `npm run build`.
+The bundled React application now lives at `dist/`.
+
+
+##### Adding CSS files
+
+There are two primary ways to add CSS to your React app.
+
+1. **Import CSS from the bundled files.**
+
+    In this option, create a CSS file in `./dist/css` named after your app, for example:
+
+        cd my-component/dist
+        mkdir css
+        touch css/my-component.css
+        cd ..
+
+    Then, **outside** of the `dist/` directory, add the following code to `index.html` to include a link to the newly created CSS file.
+
+    ```html
+        <link rel="stylesheet" type="text/css" href="/dist/css/my-component.css">
+    ```
+
+    Finally, you must provide the main website `app.js` the path to your new, static CSS file by adding the following line to `app.js`:
+
+    ```js
+        app.use(express.static(path.join(__dirname, 'my-component/dist/css')))
+    ```
+
+2. **Import CSS in your React app (JSX) file.**
+
+    This option requires some Webpack configuration.
+    It is particularly useful if you are importing CSS file from external modules.
+
+    Import the desired CSS file into your React app as normal.
+    Then, run:
+
+        npm install --save-dev css-loader
+
+    Next, add the following code to `./webpack.config.js` under `module.rules`:
+
+    ```js
+            { test: /\.css$/, use: 'css-loader' },
+    ```
+
+
+##### Adding other files (.svg, .png, etc.)
+
+By default, `babel-loader` and `html-loader` are already included in the Webpcak config file.
+If you need additional file loaders, search for Webpack file loaders such as [file-loader](https://webpack.js.org/loaders/file-loader/) or [svg-url-loader](https://www.npmjs.com/package/svg-url-loader) to see if they fit your needs.
+Install them following example #2 in [Adding CSS files](#adding-css-files).
+
+
+##### Babel troubleshooting
+
+If your app is throwing an error in the console saying...
+*  `Add @babel/plugin-proposal-class-properties to the 'plugins' section of your Babel config...`, run:
+
+        npm install --save-dev @babel/plugin-proposal-class-properties
+
+    Now add the following line to `./.babelrc`:
+
+        "plugins": ["@babel/plugin-proposal-class-properties"],
+
+* `ReferenceError: regeneratorRuntime is not defined`, then add the following line to the top of the culprit React (JSX) file:
+
+    ```js
+        import "babel-polyfill";
+    ```
+
+
+##### Adding new React applications
 
 Adding new React applications to the main website is a fairly involved process with many moving pieces. However, this guide should help you through, step-by-step!
 1. At the top level of this repo, copy `template-react-app/` and name your desired webpage.
