@@ -69,7 +69,7 @@ const FlowOne = props => {
       if (conditions == 'yes') {
         setQuestion(6)
       } else {
-        //props.handleNextError(props.fluStudyPage7)
+        // props.handleNextError(props.fluStudyPage7)
         props.handleStudy(props.fluStudyPage7)
       }
     }
@@ -116,6 +116,7 @@ const FlowOne = props => {
   }
 
   function handleMoreThanThreeChange (event) {
+    event.preventDefault()
     setMoreThanThreeValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -127,6 +128,7 @@ const FlowOne = props => {
     }
   }
   function handleHavePhoneChange (event) {
+    event.preventDefault()
     setHavePhoneValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -139,6 +141,7 @@ const FlowOne = props => {
     }
   }
   function handleunder18Change (event) {
+    event.preventDefault()
     setunder18Value(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -150,6 +153,7 @@ const FlowOne = props => {
   }
 
   function handleConditionsChange (event) {
+    event.preventDefault()
     setConditionsValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -159,6 +163,7 @@ const FlowOne = props => {
     }
   }
   function handlePillsChange (event) {
+    event.preventDefault()
     setPillsValue(event.target.value)
     if (event.target.value == 'yes') {
       // setQuestion(question + 1)
@@ -180,7 +185,7 @@ const FlowOne = props => {
   ]
 
   return (
-    <div>
+    <div className='col-8'>
       {question >= 0 ? (
         <Switch
           text={props.question3}
@@ -205,7 +210,7 @@ const FlowOne = props => {
         />
       ) : null}
       {question >= 2 ? (
-        <Select
+        <Switch
           text={props.question4}
           description=''
           label='havePhone'
@@ -217,7 +222,7 @@ const FlowOne = props => {
         />
       ) : null}
       {question >= 3 ? (
-        <Select
+        <Switch
           text={props.question5}
           description=''
           label='moreThanThree'
@@ -230,7 +235,7 @@ const FlowOne = props => {
       ) : null}
 
       {question >= 4 ? (
-        <Select
+        <Switch
           text={props.question6}
           description=''
           label='under18'
@@ -243,7 +248,7 @@ const FlowOne = props => {
       ) : null}
 
       {question >= 5 ? (
-        <Select
+        <Switch
           text={props.question7}
           description={props.conditions}
           label='conditions'
@@ -255,7 +260,7 @@ const FlowOne = props => {
         />
       ) : null}
       {question >= 6 ? (
-        <Select
+        <Switch
           text={props.question8}
           description=''
           label='pills'
@@ -268,7 +273,7 @@ const FlowOne = props => {
       ) : null}
 
       <button
-        className='btn btn-primary float-right next'
+        className='btn btn-primary float-left next'
         type='submit'
         onClick={handleChange}
       >

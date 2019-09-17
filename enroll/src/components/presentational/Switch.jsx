@@ -8,12 +8,14 @@ const options = [
 ]
 
 const Input = ({ label, text, type, id, value, description, handleChange }) => (
-  <div className='form-group'>
-    <label htmlFor={label}>{text}</label>
-    <p className='inputDescription'>{description}</p>
+  <div className='form-group row'>
+    <div className='col-8'>
+      <label htmlFor={label}>{text}</label>
+      <p className='inputDescription'>{description}</p>
+    </div>
     <select
       type={type}
-      className='form-control'
+      className='form-control hidden'
       id={id}
       value={value}
       onChange={handleChange}
@@ -25,23 +27,26 @@ const Input = ({ label, text, type, id, value, description, handleChange }) => (
         </option>
       ))}
     </select>
-
-    <button
-      type='submit'
-      value='yes'
-      className={value == 'yes' ? 'switchYes' : 'switch'}
-      onClick={handleChange}
-    >
-      YES
-    </button>
-    <button
-      type='submit'
-      value='no'
-      className={value == 'no' ? 'switchNo' : 'switch'}
-      onClick={handleChange}
-    >
-      NO
-    </button>
+    <div className='col-4'>
+      <div className='buttonWrapper'>
+        <button
+          type='submit'
+          value='yes'
+          className={value == 'yes' ? 'switchYes switchYesActive' : 'switchYes'}
+          onClick={handleChange}
+        >
+          YES
+        </button>
+        <button
+          type='submit'
+          value='no'
+          className={value == 'no' ? 'switchNo switchNoActive' : 'switchNo'}
+          onClick={handleChange}
+        >
+          NO
+        </button>
+      </div>
+    </div>
   </div>
 )
 Input.propTypes = {
