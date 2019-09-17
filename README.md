@@ -186,7 +186,11 @@ If your app is throwing an error in the console saying...
 
         "plugins": ["@babel/plugin-proposal-class-properties"],
 
-* `ReferenceError: regeneratorRuntime is not defined`, then add the following line to the top of the culprit React (JSX) file:
+* `ReferenceError: regeneratorRuntime is not defined`, run:
+
+        npm install --save-dev babel-polyfill
+
+    Then add the following line to the top of the culprit React (JSX) file:
 
     ```js
         import "babel-polyfill";
