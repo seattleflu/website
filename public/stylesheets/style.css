@@ -464,6 +464,11 @@ h3 {
 .kiosk iframe {
   margin-bottom: 75px;
 }
+#map {
+  height: 600px;  /* The height is 400 pixels */
+  width: 100%;  /* The width is the width of the web page */
+  margin-bottom: 75px;
+ }
 @media (max-width: 767px) {
   .kiosk-list {
     display: block;
