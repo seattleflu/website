@@ -452,8 +452,8 @@ h3 {
   margin-bottom: auto;
   margin-top: -8px;
 }
-.kiosk-item:before {
-  content: '1';
+.kioskNumber {
+  /* content: '1'; */
   font-size: 20px;
   color: #fff;
   position: absolute;
