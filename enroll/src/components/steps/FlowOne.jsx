@@ -185,7 +185,7 @@ const FlowOne = props => {
   ]
 
   return (
-    <div className='col-8'>
+    <div className='col-12'>
       {question >= 0 ? (
         <Switch
           text={props.question3}

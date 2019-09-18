@@ -255,7 +255,7 @@ const FlowTwo = props => {
   ]
 
   return (
-    <div className='col-8'>
+    <div className='col-12'>
       <h3>MYSELF FLOW</h3>
       {question >= 0 ? (
         <Select

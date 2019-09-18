@@ -495,3 +495,10 @@ h3 {
     display: none;
   }
 }
+
+
+/*** ENROLL ***/
+.enroll {
+  background-color: #EAECF0;
+  border-bottom: 1px solid #4A515F;
+}

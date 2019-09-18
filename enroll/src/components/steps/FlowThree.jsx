@@ -250,7 +250,7 @@ const FlowThree = props => {
   ]
 
   return (
-    <div className='col-8'>
+    <div className='col-12'>
       <h3>over 18</h3>
       {question >= 0 ? (
         <Select
