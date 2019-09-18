@@ -28,7 +28,57 @@
                 </div>
               </div>
               <div class="col-lg-6 col-sm-12 kiosk-map">
-                <iframe class="desktop-map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d86067.14358600826!2d-122.33922336159368!3d47.61450130917816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1568744555507!5m2!1sen!2sus" width="100%" height="600px" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                <div id="map"></div>
+                <script>
+                
+                    function initMap() {
+                    var kiosksLocations = <%- JSON.stringify(kiosksData) %>;
+                    var locations = [];
+                    var locationId = 0;
+                    kiosksLocations.forEach((kiosks) => {
+                      locationId = locationId + 1;
+                      var kioskData = [kiosks.fields.locationName, kiosks.fields.location.lat, kiosks.fields.location.lon, kiosks.fields.details, locationId];
+                      locations.push(kioskData);
+                    })
+                    console.log(locations)
+                      
+                      
+                      var uluru = {lat: 47.603845, lng: -122.334532};
+                      var map = new google.maps.Map(
+                          document.getElementById('map'), {zoom: 10, center: uluru});
+                      
+                      var infowindow = new google.maps.InfoWindow();
+
+                      var marker, i;
+                      var iconBase = 'http://sfs.formdev.io/images/map_icon.svg';
+                      
+
+                      for (i = 0; i < locations.length; i++) {  
+                        var number = locations[i][4]
+                        marker = new google.maps.Marker({
+                          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                          map: map,
+                          icon: iconBase,
+                          title: 'test',
+                          label: {color: '#fff', fontSize: '20px', fontWeight: '700', text: number.toString()}
+                        });
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() {
+                          infowindow.setContent('<div id="content">'+
+                                          '<h3>' + locations[i][0] + '</h3>'+
+                                          '<p>' + locations[i][3] + '</p>' +
+                                          '<p>' + locations[i][4] + '</p>' +
+                                          '<a href="https://www.google.com/maps/dir/' + locations[i][1] + '+' + locations[i][2] + '/@' + locations[i][1] + ',' + locations[i][2] + ',15z" target="_blank">Click For Directions</a>'+
+                                          '</div>');
+                          infowindow.open(map, marker);
+                        }
+                      })(marker, i));
+                      }
+
+                      
+                        
+                    }
+                </script>
                 <div class="study-callout">
                   <h3>Help us track the flu in Seattle. We need you.</h3>
                   <a href="/enroll"><button>Join the Study</button></a>
@@ -36,5 +86,9 @@
               </div>
             </div>
           </div>
+          <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0HleARzOftDM3ACdiEpo_KIbWabTLf-Q&callback=initMap">
+    </script>
+          
 
 <% include ./partials/footer  %>
