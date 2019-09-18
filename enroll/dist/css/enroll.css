@@ -12,7 +12,7 @@
     background-color: #ffffff;
     outline: 30px solid #ffffff;
 }
-form .col-12 {
+form > .col-12 {
     padding-left: 0 !important;
 }
 .inputDescription{
@@ -83,18 +83,20 @@ form .col-12 {
     font-size: 16px;
 }
 .symptom{
-    widows: 33%;
-    display: inline-block;
+    widows: 33% !important;
+    display: inline-block !important;
     padding-left: 10px;
     padding-right:10px;
     display: flex;
     align-items: center;
     justify-content: left;
     font-family: "Roboto Condensed";	
-    font-size: 16px;
+    font-size: 14px;
+    vertical-align: middle;
 }
 .symptom input{
     margin-right: 10px;
+    vertical-align: middle;
 }
 
 .next{
