@@ -51,6 +51,7 @@ export const dataLayers = () => immutable([
       data: "./src/components/ScienceMap/samples.geojson"
     },
     paint: heatStyle,
-    maxzoom: 15
+    maxzoom: 15,
+    filter: ['all']
   }
 ]);

@@ -38,3 +38,42 @@ export const mergeMapStyle = (mapStyle, newStyle, beforeLayerId = "waterway-labe
       ...layers.skipUntil(l => l.get("id") === beforeLayerId)
     ]))
 ;
+
+/**
+ * Add a new data filter to the existing map style.
+ *
+ * @param {Immutable.Map} mapStyle Existing map style specification.
+ *
+ * @param {Number} index The numeric index of the target data layer among the
+ *   layers in `mapStyle`.
+ *
+ * @param {Array} filter The Mapbox filter expression to add to `mapStyle`.
+ *
+ * @returns {Immutable.Map} Map style specification.
+ */
+export const addFilterToMapStyle = (mapStyle, index, filter) =>
+  mapStyle
+    .updateIn(["layers", index, "filter"], filters =>
+      filters.push(filter))
+;
+
+/**
+ * Remove a data filter from the existing map style.
+ *
+ * @param {Immutable.Map} mapStyle Existing map style specification.
+ *
+ * @param {Number} index The numeric index of the target data layer among the
+ *   layers in `mapStyle`.
+ *
+ * @param {Array} filter The Mapbox filter expression to remove from `mapStyle`.
+ *
+ * @returns {Immutable.Map} Map style specification.
+ */
+export const removeFilterFromMapStyle = (mapStyle, index, filter) =>
+  mapStyle
+    .updateIn(["layers", index, "filter"], filters =>
+      filters
+        // Perform a string comparison of the arrays. This should always be safe
+        // due to the ordered nature of Mapbox's filter expressions.
+        .filter(x => JSON.stringify(x) !== JSON.stringify(filter)))
+;
