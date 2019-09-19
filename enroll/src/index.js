@@ -97,6 +97,9 @@ const App = () => {
   // const [conditions, setConditions] = useState('')
   // const [conditions, setConditions] = useState('')
 
+  const [homeZip, setHomeZip] = useState()
+  const [workZip, setWorkZip] = useState()
+
   useEffect(() => {
     getThankyou(1).then(thankyouData => {
       console.log(thankyouData)
@@ -104,6 +107,15 @@ const App = () => {
 
     getWebSiteSettings().then(settings => {
       console.log(settings[0].fields.validStudyZipCodes)
+      const work = settings[0].fields.validStudyWorkZipCodes
+      const home = settings[0].fields.validStudyHomeZipCodes
+      const workString = work.replace(' ', '')
+      const homeString = home.replace(' ', '')
+      const workArray = workString.split(',')
+      const homeArray = homeString.split(',')
+      setWorkZip(workArray)
+      setHomeZip(homeArray)
+
     })
 
     getEnrollmentQuestions().then(questions => {
@@ -311,6 +323,8 @@ const App = () => {
             question2={question2}
             bouncePage2={bouncePage2}
             fluStudyPage2={fluStudyPage2}
+            homeZip={homeZip}
+            workZip={workZip}
           />
         ) : null}
         {currentStep == 1 ? (

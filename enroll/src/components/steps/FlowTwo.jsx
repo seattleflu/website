@@ -290,7 +290,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test2'
-                  value='Nausea or vomiting'
+                  value='Headache'
                   onChange={addSymptomOne}
                 />
                 Nausea or vomiting
@@ -301,7 +301,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Increased trouble with breathing'
+                  value='Cough'
                   onChange={addSymptomOne}
                 />
                 Increased trouble with breathing</label>
@@ -311,7 +311,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Headaches'
+                  value='Chills or shivering'
                   onChange={addSymptomOne}
                 />
                 Headaches
@@ -321,7 +321,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Runny or stuffy nose or sneezing'
+                  value='Sweats'
                   onChange={addSymptomOne}
                 />
                 Runny or stuffy nose or sneezing
@@ -331,7 +331,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Ear pain or ear discharge'
+                  value='Sore throat or itchy/scratchy throat'
                   onChange={addSymptomOne}
                 />
                 Ear pain or ear discharge
@@ -341,7 +341,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Cough'
+                  value='Nausea or vomiting'
                   onChange={addSymptomOne}
                 />
                 Cough
@@ -351,7 +351,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Rash'
+                  value='Runny or stuffy nose'
                   onChange={addSymptomOne}
                 />
                 Rash
@@ -361,7 +361,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Chills or sweats'
+                  value='Feeling more tired than usual'
                   onChange={addSymptomOne}
                 />
                 Chills or sweats
@@ -371,7 +371,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Diarrhea'
+                  value='Muscle or body aches'
                   onChange={addSymptomOne}
                 />
                 Diarrhea
@@ -381,7 +381,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Increased Fatigue(tiredness)'
+                  value='Increased trouble with breathing'
                   onChange={addSymptomOne}
                 />
                 Increased Fatigue(tiredness)
@@ -391,7 +391,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Feeling dizzy'
+                  value='Diarrhea'
                   onChange={addSymptomOne}
                 />
                 Feeling dizzy
@@ -401,7 +401,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Sore throat'
+                  value='Ear pain/ear discharge'
                   onChange={addSymptomOne}
                 />
                 Sore throat
@@ -411,7 +411,7 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Muscle or body aches'
+                  value='Rash'
                   onChange={addSymptomOne}
                 />
                 Muscle or body aches
