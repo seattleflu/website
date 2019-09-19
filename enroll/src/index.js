@@ -115,7 +115,6 @@ const App = () => {
       const homeArray = homeString.split(',')
       setWorkZip(workArray)
       setHomeZip(homeArray)
-
     })
 
     getEnrollmentQuestions().then(questions => {
