@@ -89,6 +89,10 @@ const App = () => {
   const [bouncePage18, setBouncePage18] = useState('')
   const [fluStudyPage18, setFluStudyPage18] = useState('')
 
+  const [question19, setQuestion19] = useState('')
+  const [bouncePage19, setBouncePage19] = useState('')
+  const [fluStudyPage19, setFluStudyPage19] = useState('')
+
   const [zipCodes, setZipCodes] = useState('')
 
   const [conditions, setConditions] = useState('')
@@ -283,6 +287,15 @@ const App = () => {
             }
             setQuestion18(question.fields.question)
             break
+          case 19:
+            if (question.fields.bouncePage) {
+              setBouncePage19(question.fields.bouncePage.fields.url)
+            }
+            if (question.fields.fluStudyPage) {
+              setFluStudyPage19(question.fields.fluStudyPage.fields.studyName)
+            }
+            setQuestion19(question.fields.question)
+            break
           default:
           // console.log(question.fields.question)
         }
@@ -322,6 +335,9 @@ const App = () => {
             question2={question2}
             bouncePage2={bouncePage2}
             fluStudyPage2={fluStudyPage2}
+            question19={question19}
+            bouncePage19={bouncePage19}
+            fluStudyPage19={fluStudyPage19}
             homeZip={homeZip}
             workZip={workZip}
           />

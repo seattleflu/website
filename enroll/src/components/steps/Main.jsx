@@ -100,7 +100,7 @@ const Main = props => {
       ) : null}
       {question >= 1 ? (
         <Input
-          text={props.question1}
+          text={props.question19}
           description=''
           label='zip_code'
           type='text'

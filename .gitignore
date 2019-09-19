@@ -1,3 +1,4 @@
 node_modules
 config.json
 ./enroll/services/contentful-config.js
+enroll/services/contentful-config.js
