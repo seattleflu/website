@@ -20,6 +20,7 @@ This is the website for [seattleflu.org](https://seattleflu.org).
         - [Adding CSS files](#adding-css-files)
         - [Adding other files (.svg, .png, etc.)](#adding-other-files-svg-png-etc)
         - [Babel troubleshooting](#babel-troubleshooting)
+        - [React + Mapbox](#react--mapbox)
         - [Adding new React applications](#adding-new-react-applications)
   - [Season one / 2018–19](#season-one--2018%e2%80%9319)
 
@@ -195,6 +196,16 @@ If your app is throwing an error in the console saying...
     ```js
         import "babel-polyfill";
     ```
+
+##### React + Mapbox
+
+The website comprises two maps found at `/current` and at `/science/map`.
+We produce these maps within React using [react-map-gl SDK](https://uber.github.io/react-map-gl/#/), a wrapper for [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/api/).
+
+React state changes should always be handled through the `setState()` request (see the [React docs on setState()](https://reactjs.org/docs/react-component.html#setstate)).
+The `<MapboxGL>` component from `react-map-gl` is a fairly complicated object.
+Because we are only clients of that component, we cannot guarantee that changes to the map will always result in a state change that goes through `setState()`.
+Therefore, it is safest if we store the map styles as [immutable](https://immutable-js.github.io/immutable-js/docs/#/) objects.
 
 
 ##### Adding new React sub-applications
