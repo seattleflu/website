@@ -118,11 +118,21 @@ export default class ScienceMap extends React.Component {
       .get("layers")
       .findIndex(x => x.get('source') === "neighborhood-heat-source");
 
-    const filter = ["!=", "ageCategory", ageCategory];
+    const filtered = this.getState("mapStyle")
+      .getIn(["layers", targetLayerIndex, 'filter']);
 
-    this.newState(state =>
-      state.update("mapStyle", mapStyle =>
-        addFilterToMapStyle(mapStyle, targetLayerIndex, filter)));
+    console.log("filtered?");
+    if (filtered) {
+      this.newState(state =>
+        state.update("mapStyle", mapStyle =>
+          removeFilterFromMapStyle(mapSTyle, targetLayerIndex, XXX TODO )))
+
+    } else {
+      const filter = ["!=", "ageCategory", ageCategory];
+      this.newState(state =>
+        state.update("mapStyle", mapStyle =>
+          addFilterToMapStyle(mapStyle, targetLayerIndex, filter)));
+      }
 
     this.nextKeyframe();
   }
