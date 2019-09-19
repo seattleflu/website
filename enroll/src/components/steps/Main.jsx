@@ -68,6 +68,7 @@ const Main = props => {
 
   return (
     <div className='col-12'>
+      <h2>Screening Questionnaire</h2>
       {question >= 0 ? (
         <Input
           text={props.question1}
