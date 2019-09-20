@@ -2,11 +2,23 @@ var express = require('express')
 var router = express.Router()
 var kiosks = require('../services/kiosks')
 
+var page = require('../services/page')
+
+router.use((req, res, next) => {
+  page
+    .getPageData('kiosks')
+    .then(pageData => {
+      console.log('PAGE DATA: ' + JSON.stringify(pageData))
+      req.pageData = pageData.items
+      next()
+    })
+    .catch(console.error)
+})
+
 router.use((req, res, next) => {
   kiosks
     .getKiosks()
     .then(kiosksData => {
-      console.log('PAGE DATA: ' + JSON.stringify(kiosksData))
       req.kiosksData = kiosksData.items
       next()
     })
@@ -18,7 +30,8 @@ router.get('/', function (req, res, next) {
   res.render('kiosks', {
     title: 'Kiosks',
     header: 'light',
-    kiosksData: req.kiosksData
+    kiosksData: req.kiosksData,
+    pageData: req.pageData
   })
 })
 

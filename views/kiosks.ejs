@@ -1,5 +1,5 @@
 
-<% include ./partials/header  {header: header} %>
+<% include ./partials/header  {header: header, pageData: req.pageData} %>
 <div class="container secondary kiosk">
           <div class="row">
               <div class="col-lg-6 col-sm-12">
@@ -39,8 +39,6 @@
                       var kioskData = [kiosks.fields.locationName, kiosks.fields.location.lat, kiosks.fields.location.lon, kiosks.fields.details, locationId];
                       locations.push(kioskData);
                     })
-                    console.log(locations)
-                      
                       
                       var uluru = {lat: 47.603845, lng: -122.334532};
                       var map = new google.maps.Map(
