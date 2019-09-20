@@ -90,7 +90,7 @@ const FlowFour = props => {
       if (symptomsList.length < 2) {
         props.handleNextError(props.bouncePage11)
       } else if (
-        symptomsList.length <= 3 &&
+        symptomsList.length <= 6 &&
         symptomsList.includes('Chills or shivering') &&
         symptomsList.includes('Sweats') &&
         symptomsList.includes('Diarrhea') &&
