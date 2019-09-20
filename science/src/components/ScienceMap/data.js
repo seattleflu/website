@@ -42,16 +42,26 @@ const heatStyle = {
  *
  * @returns {Immutable.Array}
  */
-export const dataLayers = () => immutable([
-  {
-    id: "neighborhood-heat",
-    type: "heatmap",
-    source: {
-      type: "geojson",
-      data: "./src/components/ScienceMap/samples.geojson"
-    },
-    paint: heatStyle,
-    maxzoom: 15,
-    filter: ['all']
+export const dataLayers = () => {
+  let url = "/samples.geojson";
+  const http = new XMLHttpRequest();
+  http.open('HEAD', url, false);
+  http.send();
+
+  if (http.status === 404) {
+    url = "./src/components/ScienceMap" + url;
   }
-]);
+
+  return immutable([
+    {
+      id: "neighborhood-heat",
+      type: "heatmap",
+      source: {
+        type: "geojson",
+        data: url,
+      },
+      paint: heatStyle,
+      maxzoom: 15,
+      filter: ['all']
+    }
+  ])};

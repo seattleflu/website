@@ -99,6 +99,8 @@ The following environment variables must be defined to run the website locally:
 
 Once you have been invited to the Seattle Flu Study space on Contentful, these API keys are accessible under Settings → API Keys → website-dev.
 
+You may chose to store your environment variables in a `.env` file at the top-level directory or under `/services`. 
+
 
 ##### Contentful + React
 

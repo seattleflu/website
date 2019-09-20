@@ -19,7 +19,10 @@
     "morgan": "~1.9.0",
     "nodemon": "^1.19.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "dotenv": "^8.1.0",
+    "fs": "0.0.1-security"
+  },
   "cacheDirectories": [
     "node_modules",
     "enroll/node_modules"
