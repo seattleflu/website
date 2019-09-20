@@ -114,7 +114,7 @@ const FlowTwo = props => {
       }
     }
     if (question == 3) {
-      if (conditionsValue == 'no') {
+      if (conditionsValue == 'yes') {
         props.handleNextError(props.bouncePage13)
       } else {
         // props.handleNext(3)
