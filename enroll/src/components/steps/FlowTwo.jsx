@@ -394,36 +394,6 @@ const FlowTwo = props => {
                 <input
                   type='checkbox'
                   name='test3'
-                  value='Diarrhea'
-                  onChange={addSymptomOne}
-                />
-                Diarrhea
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Ear pain/ear discharge'
-                  onChange={addSymptomOne}
-                />
-                Ear pain/ear discharge
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Rash'
-                  onChange={addSymptomOne}
-                />
-                Rash
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
                   value='None of the above'
                   onChange={addSymptomRemove}
                 />
@@ -615,36 +585,6 @@ const FlowTwo = props => {
                   onChange={addSymptomTwo}
                 />
                 Increased trouble with breathing
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Diarrhea'
-                  onChange={addSymptomTwo}
-                />
-                Diarrhea
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Ear pain/ear discharge'
-                  onChange={addSymptomTwo}
-                />
-                Ear pain/ear discharge
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Rash'
-                  onChange={addSymptomTwo}
-                />
-                Rash
                 <br />
               </div>
               <div className='symptom col-4'>
