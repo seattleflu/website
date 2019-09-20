@@ -325,7 +325,7 @@ const App = () => {
   return (
     <div className='enrollment container'>
       <form id='enroll-form row'>
-        {currentStep == 2 ? (
+        {currentStep == 0 ? (
           <Main
             handleNext={handleNext}
             handleNextError={handleNextError}
@@ -344,7 +344,7 @@ const App = () => {
             workZip={workZip}
           />
         ) : null}
-        {currentStep == 0 ? (
+        {currentStep == 1 ? (
           <FlowOne
             handleNext={handleNext}
             handleNextError={handleNextError}
