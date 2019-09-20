@@ -76,7 +76,8 @@ export default class ScienceMap extends React.Component {
           viewState={this.getState("view").toJS()}
           onViewportChange={this.updateView.bind(this)}
           onTransitionEnd={this.onTransitionEnd.bind(this)}
-          mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
+          mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
+          >
 
           <div style={{position: "absolute", top: "1em", right: "1em"}}>
             <FullscreenControl/>
