@@ -90,12 +90,10 @@ const FlowFour = props => {
       if (symptomsList.length < 2) {
         props.handleNextError(props.bouncePage11)
       } else if (
-        symptomsList.length <= 6 &&
+        symptomsList.length <= 3 &&
         symptomsList.includes('Chills or shivering') &&
-        symptomsList.includes('Sweats') &&
-        symptomsList.includes('Diarrhea') &&
-        symptomsList.includes('Ear pain/ear discharge') &&
-        symptomsList.includes('Rash')
+        symptomsList.includes('Sweats')
+        
       ) {
         setQuestion(4)
       } else {

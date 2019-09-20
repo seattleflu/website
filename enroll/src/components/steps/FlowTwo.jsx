@@ -64,6 +64,7 @@ const FlowTwo = props => {
     event.preventDefault()
     setConditionsValue(event.target.value)
     if (event.target.value == 'yes') {
+      
       // props.handleStudy(props.fluStudyPage13)
     } else {
       // props.handleNextError(props.bouncepage13)
@@ -137,11 +138,11 @@ const FlowTwo = props => {
     }
     if (question == 6) {
       if (conditionsValue == 'no') {
-        props.handleNextError(props.bouncePage13)
-      } else {
-        // setQuestion(question + 1)
-        // props.handleNextError(props.fluStudyPage13)
         props.handleStudy(props.fluStudyPage13)
+      } else {
+        
+        props.handleNextError(props.bouncePage13)
+        
       }
     }
 
