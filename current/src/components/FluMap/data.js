@@ -28,8 +28,6 @@ const fetchModellingData = async (pathogen='[all]') => {
   return data;
 };
 
-fetchModellingData();
-
 // XXX TODO: For prototyping, these GeoJSONs are sourced from our
 // seattleflu/seattle-geojson repository.  I'm ~80% sure they should ultimately
 // come from static files generated out of ID3C, with real data embedded in

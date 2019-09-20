@@ -5,6 +5,9 @@ import { DateTime } from 'luxon';
 
 import { CenteredParagraph, H1, OuterContainer, ContentContainer } from './utils';
 import FluMap from './FluMap/';
+import Visitors from './LineChart';
+import Books from './Books';
+
 import SeasonTimeline from './SeasonTimeline';
 import fluStats from '../data/flu-by-week.json';
 
@@ -62,7 +65,18 @@ export default class CurrentConditions extends React.Component {
             Use the mouse wheel to zoom in and out.
           </P>
 
-          <FluMap/>
+          {/* <FluMap/> */}
+          {/* <div className="container">
+              <div className="row">
+                  <div className="col-xs-12" >
+                      <div className="top" id="top-line-chart">
+
+                      </div>
+                  </div>
+              </div>
+          </div> */}
+          {/* <Visitors /> */}
+          <Books />
         </ContentContainer>
       </OuterContainer>
     );
