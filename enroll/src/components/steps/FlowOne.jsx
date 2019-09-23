@@ -78,7 +78,7 @@ const FlowOne = props => {
       if (pills == 'no') {
         // props.handleNext(2)
         // props.handleNextError(props.bouncepage8)
-        props.handleStudy(props.fluStudyPage8)
+        props.handleStudy(props.bouncePage8)
       } else {
         console.log('YES: ' + props.fluStudyPage8)
         props.handleStudy(props.fluStudyPage8)
