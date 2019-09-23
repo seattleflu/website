@@ -251,7 +251,7 @@ const FlowThree = props => {
 
   return (
     <div className='col-12'>
-      <h3>over 18</h3>
+      <h2>Screening Questionnaire (Over 18)</h2>
       {question >= 0 ? (
         <Select
           text={props.question15}
