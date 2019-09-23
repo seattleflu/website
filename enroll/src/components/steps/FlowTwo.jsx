@@ -64,7 +64,6 @@ const FlowTwo = props => {
     event.preventDefault()
     setConditionsValue(event.target.value)
     if (event.target.value == 'yes') {
-      
       // props.handleStudy(props.fluStudyPage13)
     } else {
       // props.handleNextError(props.bouncepage13)
@@ -93,8 +92,10 @@ const FlowTwo = props => {
       }
     }
     if (question == 1) {
-      if (symptomsList.length < 2) {
-        props.handleNextError(props.bouncePage11)
+      if (symptomsList.length <= 2) {
+        props.handleNextError(props.bouncePage11) &&
+          (symptomsList.includes('Chills or shivering') ||
+            symptomsList.includes('Sweats'))
       } else if (
         symptomsList.length <= 3 &&
         symptomsList.includes('Chills or shivering') &&
@@ -140,9 +141,7 @@ const FlowTwo = props => {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage13)
       } else {
-        
         props.handleNextError(props.bouncePage13)
-        
       }
     }
 
