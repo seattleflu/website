@@ -288,15 +288,23 @@ const FlowTwo = props => {
             <div className='col-12'>
               <p>{props.question11}</p>
               <div className='symptom col-4'>
+<<<<<<< HEAD
+                <input
+=======
                 <label>
                   <input
+>>>>>>> e41238b7513f639f073d7891df254e99bc6a70ce
                     type='checkbox'
                     name='test1'
                     value='Feeling Feverish'
                     onChange={addSymptomOne}
                   />
+<<<<<<< HEAD
+                Feeling Feverish
+=======
                   Feeling Feverish
                 </label>
+>>>>>>> e41238b7513f639f073d7891df254e99bc6a70ce
                 <br />
               </div>
               <div className='symptom col-4'>
@@ -310,6 +318,35 @@ const FlowTwo = props => {
                 <br />
               </div>
               <div className='symptom col-4'>
+<<<<<<< HEAD
+                <input
+                  type='checkbox'
+                  name='test3'
+                  value='Increased trouble with breathing'
+                  onChange={addSymptomOne}
+                />
+                Increased trouble with breathing
+                <br />
+              </div>
+              <div className='symptom col-4'>
+                <input
+                  type='checkbox'
+                  name='test3'
+                  value='Headaches'
+                  onChange={addSymptomOne}
+                />
+                Headaches
+                <br />
+              </div>
+              <div className='symptom col-4'>
+                <input
+                  type='checkbox'
+                  name='test3'
+                  value='Runny or stuffy nose or sneezing'
+                  onChange={addSymptomOne}
+                />
+                Runny or stuffy nose or sneezing
+=======
                 <label>
                   <input
                     type='checkbox'
@@ -319,6 +356,7 @@ const FlowTwo = props => {
                   />
                   Cough
                 </label>
+>>>>>>> e41238b7513f639f073d7891df254e99bc6a70ce
                 <br />
               </div>
               <div className='symptom col-4'>

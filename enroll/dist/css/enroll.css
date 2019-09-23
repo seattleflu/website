@@ -85,14 +85,17 @@ form > .col-12 {
 .symptom{
     widows: 33% !important;
     display: inline-block !important;
-    padding-left: 10px;
-    padding-right:10px;
     display: flex;
     align-items: center;
     justify-content: left;
     font-family: "Roboto Condensed";	
     font-size: 14px;
     vertical-align: middle;
+    padding: 0;
+}
+.symptom:nth-child(3n) {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .symptom input{
     margin-right: 10px;
