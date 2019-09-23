@@ -3,8 +3,9 @@
 <div class="container secondary kiosk">
           <div class="row">
               <div class="col-lg-6 col-sm-12">
-                <h2>Find a Kiosk</h2>
-                <h3>Kiosk Locations</h3>
+                <h2><%= pageData[0].fields.name %></h2>
+                <h3><%= pageData[0].fields.subhead %></h3>
+                <div class="kioskContent"><%= pageData[0].fields.content %></div>
                 <div class="kiosk-list">
                 <% var value = 0; %>
                 <% kiosksData.forEach((kiosk) => { %>
@@ -22,8 +23,7 @@
                 <% }) %>              
                 </div>
                 <div class="kiosk-text">
-                  <p><strong>Updated for the week of March 18th, 2019.</strong></p>
-                  <p>There are additional enrollment locations at Hutch Kids, West Campus Childcare Center, SeaMar Clinic, DESC, Pioneer Square Clinic, St. Martin's de Porres, and Costco Headquarters.</p>
+                  <%= pageData[0].fields.content2 %>
                 </div>
               </div>
               <div class="col-lg-6 col-sm-12 kiosk-map">
