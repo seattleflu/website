@@ -369,6 +369,9 @@ const App = () => {
             question9={question9}
             bouncePage9={bouncePage9}
             fluStudyPage9={fluStudyPage9}
+            question13={question13}
+            bouncePage13={bouncePage13}
+            fluStudyPage13={fluStudyPage13}
             conditions={conditions}
           />
         ) : null}

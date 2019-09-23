@@ -173,10 +173,10 @@ const FlowTwo = props => {
     }
     if (question == 9) {
       if (conditionsValue == 'no') {
-        props.handleNextError(props.bouncePage3)
+        props.handleStudy(props.fluStudyPage13)
       } else {
         // props.handleNextError(props.fluStudyPage3)
-        props.handleStudy(props.fluStudyPage3)
+        props.handleNextError(props.bouncePage13)
       }
     }
   }

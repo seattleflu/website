@@ -92,13 +92,13 @@ const FlowFour = props => {
         (symptomsList.includes('Chills or shivering') ||
           symptomsList.includes('Sweats'))
       ) {
-        props.handleNextError(props.bouncePage11)
+        props.handleNextError(props.bouncePage18)
       } else if (
         symptomsList.length <= 3 &&
         symptomsList.includes('Chills or shivering') &&
         symptomsList.includes('Sweats')
       ) {
-        props.handleNextError(props.bouncePage11)
+        props.handleNextError(props.bouncePage18)
       } else {
         setQuestion(2)
       }
@@ -284,7 +284,7 @@ const FlowFour = props => {
         <div classname='col-12 selectSymptoms'>
           <div className='row'>
             <div className='col-12'>
-              <p>{props.question11}</p>
+              <p>{props.question18}</p>
               <div className='symptom col-4'>
                 <label>
                   <input
