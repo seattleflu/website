@@ -4,6 +4,11 @@ var kiosks = require('../services/kiosks')
 
 var page = require('../services/page')
 
+var md = require('markdown-it')({
+  html: true
+})
+var markdownItAttrs = require('markdown-it-attrs')
+
 router.use((req, res, next) => {
   page
     .getPageData('kiosks')
@@ -30,6 +35,7 @@ router.get('/', function (req, res, next) {
   res.render('kiosks', {
     title: 'Kiosks',
     header: 'light',
+    md: md,
     kiosksData: req.kiosksData,
     pageData: req.pageData
   })

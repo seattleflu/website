@@ -144,14 +144,22 @@ const FlowTwo = props => {
         props.handleNextError(props.bouncePage13)
       }
     }
-
     if (question == 7) {
-      if (symptomsList.length < 2) {
-        // props.handleNextError(props.bouncePage1)
-      } else {
+      if (symptomsList.length <= 2) {
+        props.handleNextError(props.bouncePage8) &&
+          (symptomsList.includes('Chills or shivering') ||
+            symptomsList.includes('Sweats'))
+      } else if (
+        symptomsList.length <= 3 &&
+        symptomsList.includes('Chills or shivering') &&
+        symptomsList.includes('Sweats')
+      ) {
         setQuestion(8)
+      } else {
+        props.handleStudy(props.bouncePage8)
       }
     }
+
     if (question == 8) {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)

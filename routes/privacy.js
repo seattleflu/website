@@ -2,6 +2,10 @@ var express = require('express')
 var router = express.Router()
 
 var page = require('../services/page')
+var md = require('markdown-it')({
+  html: true
+})
+var markdownItAttrs = require('markdown-it-attrs')
 
 router.use((req, res, next) => {
   page
@@ -19,6 +23,7 @@ router.get('/', function (req, res, next) {
   res.render('privacy', {
     title: 'privacy',
     header: 'light',
+    md: md,
     pageData: req.pageData
   })
 })

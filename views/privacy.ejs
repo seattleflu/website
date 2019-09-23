@@ -5,8 +5,9 @@
                 <h1><%= title %></h1>
                 <h3><%= pageData[0].fields.subhead %></h3>
                 <p><%= pageData[0].fields.content %></p>
-                <p><%= pageData[0].fields.content2 %></p>
-
+                <div><%- md.render(pageData[0].fields.content) %></div>
+                <div><%- md.render(pageData[0].fields.content2) %></div>
+                
             </div>
             </div>
             </div>
