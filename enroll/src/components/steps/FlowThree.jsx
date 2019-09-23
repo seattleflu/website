@@ -136,9 +136,10 @@ const FlowThree = props => {
     }
     if (question == 6) {
       if (conditionsValue == 'no') {
-        props.handleStudy(props.fluStudyPage17)
-      } else {
         props.handleNextError(props.bouneePage17)
+        
+      } else {
+        props.handleStudy(props.fluStudyPage17)
       }
     }
 

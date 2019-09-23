@@ -113,7 +113,6 @@ const FlowFour = props => {
     }
     if (question == 3) {
       if (conditionsValue == 'no') {
-        
         props.handleStudy(props.fluStudyPage17)
       } else {
         props.handleNextError(props.bouncePage17)
@@ -135,11 +134,9 @@ const FlowFour = props => {
     }
     if (question == 6) {
       if (conditionsValue == 'no') {
-        props.handleNextError(props.bouneePage17)
-      } else {
-        // setQuestion(question + 1)
-        // props.handleNextError(props.fluStudyPage17)
         props.handleStudy(props.fluStudyPage17)
+      } else {
+        props.handleNextError(props.bouneePage17)
       }
     }
 
