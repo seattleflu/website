@@ -145,18 +145,21 @@ const FlowTwo = props => {
       }
     }
     if (question == 7) {
-      if (symptomsList.length <= 2) {
-        props.handleNextError(props.bouncePage8) &&
-          (symptomsList.includes('Chills or shivering') ||
-            symptomsList.includes('Sweats'))
+      if (
+        symptomsList.length <= 2 &&
+        (symptomsList.includes('Chills or shivering') ||
+          symptomsList.includes('Sweats'))
+      ) {
+        props.handleNextError(props.bouncePage11)
       } else if (
         symptomsList.length <= 3 &&
         symptomsList.includes('Chills or shivering') &&
         symptomsList.includes('Sweats')
       ) {
-        setQuestion(8)
+        props.handleNextError(props.bouncePage11)
+        
       } else {
-        props.handleStudy(props.bouncePage8)
+        setQuestion(8)
       }
     }
 
