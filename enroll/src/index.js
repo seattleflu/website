@@ -189,11 +189,9 @@ const App = () => {
             break
           case 8:
             if (question.fields.bouncePage) {
-              
               setBouncePage8(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
-             
               setFluStudyPage8(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion8(question.fields.question)
@@ -325,7 +323,7 @@ const App = () => {
   return (
     <div className='enrollment container'>
       <form id='enroll-form row'>
-        {currentStep == 0 ? (
+        {currentStep == 1 ? (
           <Main
             handleNext={handleNext}
             handleNextError={handleNextError}
@@ -405,7 +403,7 @@ const App = () => {
           />
         ) : null}
 
-        {currentStep == 3 ? (
+        {currentStep == 0 ? (
           <FlowThree
             handleNext={handleNext}
             handleNextError={handleNextError}

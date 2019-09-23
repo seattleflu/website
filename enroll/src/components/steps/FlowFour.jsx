@@ -87,13 +87,16 @@ const FlowFour = props => {
       }
     }
     if (question == 1) {
-      if (symptomsList.length < 2) {
+      if (
+        symptomsList.length <= 2 &&
+        (symptomsList.includes('Chills or shivering') ||
+          symptomsList.includes('Sweats'))
+      ) {
         props.handleNextError(props.bouncePage11)
       } else if (
         symptomsList.length <= 3 &&
         symptomsList.includes('Chills or shivering') &&
         symptomsList.includes('Sweats')
-        
       ) {
         setQuestion(4)
       } else {
@@ -142,8 +145,19 @@ const FlowFour = props => {
     }
 
     if (question == 7) {
-      if (symptomsList.length < 2) {
-        props.handleNextError(props.bouncePage15)
+      if (
+        symptomsList.length <= 2 &&
+        (symptomsList.includes('Chills or shivering') ||
+          symptomsList.includes('Sweats'))
+      ) {
+        props.handleNextError(props.bouncePage11)
+      } else if (
+        symptomsList.length <= 3 &&
+        symptomsList.includes('Chills or shivering') &&
+        symptomsList.includes('Sweats')
+      ) {
+        props.handleNextError(props.bouncePage11)
+        
       } else {
         setQuestion(8)
       }

@@ -92,10 +92,10 @@ const FlowTwo = props => {
       }
     }
     if (question == 1) {
-      if (symptomsList.length <= 2) {
-        props.handleNextError(props.bouncePage11) &&
+      if (symptomsList.length <= 2 &&
           (symptomsList.includes('Chills or shivering') ||
-            symptomsList.includes('Sweats'))
+            symptomsList.includes('Sweats'))){
+              props.handleNextError(props.bouncePage11)
       } else if (
         symptomsList.length <= 3 &&
         symptomsList.includes('Chills or shivering') &&

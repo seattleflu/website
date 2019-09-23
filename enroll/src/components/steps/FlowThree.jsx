@@ -87,8 +87,12 @@ const FlowThree = props => {
       }
     }
     if (question == 1) {
-      if (symptomsList.length < 2) {
-        props.handleNextError(props.bouncePage11)
+      if (
+        symptomsList.length <= 2 &&
+        (symptomsList.includes('Chills or shivering') ||
+          symptomsList.includes('Sweats'))
+      ) {
+        props.handleNextError(props.bouncePage18)
       } else if (
         symptomsList.length <= 3 &&
         symptomsList.includes('Chills or shivering') &&
@@ -141,8 +145,18 @@ const FlowThree = props => {
     }
 
     if (question == 7) {
-      if (symptomsList.length < 2) {
-        props.handleNextError(props.bouncePage15)
+      if (
+        symptomsList.length <= 2 &&
+        (symptomsList.includes('Chills or shivering') ||
+          symptomsList.includes('Sweats'))
+      ) {
+        props.handleNextError(props.bouncePage11)
+      } else if (
+        symptomsList.length <= 3 &&
+        symptomsList.includes('Chills or shivering') &&
+        symptomsList.includes('Sweats')
+      ) {
+        props.handleNextError(props.bouncePage18)
       } else {
         setQuestion(8)
       }
@@ -156,7 +170,7 @@ const FlowThree = props => {
     }
     if (question == 9) {
       if (conditionsValue == 'no') {
-        props.handleNextError(props.bouncePage17)
+        props.handleNextError(props.bouneePage17)
       } else {
         // props.handleNextError(props.fluStudyPage17)
         props.handleStudy(props.fluStudyPage17)
@@ -252,7 +266,7 @@ const FlowThree = props => {
 
   return (
     <div className='col-12'>
-      <h2>Screening Questionnaire (Over 18)</h2>
+      <h2>Screening Questionnaire (Under 18)</h2>
       {question >= 0 ? (
         <Select
           text={props.question15}
@@ -270,7 +284,7 @@ const FlowThree = props => {
         <div classname='col-12 selectSymptoms'>
           <div className='row'>
             <div className='col-12'>
-              <p>{props.question11}</p>
+              <p>{props.question18}</p>
               <div className='symptom col-4'>
                 <label>
                   <input
@@ -385,15 +399,14 @@ const FlowThree = props => {
                 Increased trouble with breathing
                 <br />
               </div>
-
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
                   name='test3'
-                  value='None of the above'
-                  onChange={addSymptomRemove}
+                  value='Diarrhea'
+                  onChange={addSymptomOne}
                 />
-                None of the above
+                Diarrhea
                 <br />
               </div>
             </div>
@@ -416,7 +429,7 @@ const FlowThree = props => {
       {question >= 3 && question < 4 ? (
         <Switch
           text={props.question17}
-          description={props.conditions}
+          description=''
           label='conditions'
           type='select'
           id='conditions'
@@ -454,7 +467,7 @@ const FlowThree = props => {
       {question >= 6 && question < 7 ? (
         <Switch
           text={props.question17}
-          description={props.conditions}
+          description=''
           label='conditions'
           type='select'
           id='conditions'
@@ -468,7 +481,7 @@ const FlowThree = props => {
         <div classname='col-12 selectSymptoms'>
           <div className='row'>
             <div className='col-12'>
-              <p>{props.question11}</p>
+              <p>{props.question18}</p>
               <div className='symptom col-4'>
                 <label>
                   <input
@@ -583,15 +596,14 @@ const FlowThree = props => {
                 Increased trouble with breathing
                 <br />
               </div>
-
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
                   name='test3'
-                  value='None of the above'
-                  onChange={addSymptomRemove}
+                  value='Diarrhea'
+                  onChange={addSymptomTwo}
                 />
-                None of the above
+                Diarrhea
                 <br />
               </div>
             </div>
@@ -615,7 +627,7 @@ const FlowThree = props => {
       {question >= 9 ? (
         <Switch
           text={props.question17}
-          description={props.conditions}
+          description=''
           label='conditions'
           type='select'
           id='conditions'
