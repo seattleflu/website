@@ -98,7 +98,7 @@ const FlowFour = props => {
         symptomsList.includes('Chills or shivering') &&
         symptomsList.includes('Sweats')
       ) {
-        setQuestion(4)
+        props.handleNextError(props.bouncePage11)
       } else {
         setQuestion(2)
       }
@@ -157,7 +157,6 @@ const FlowFour = props => {
         symptomsList.includes('Sweats')
       ) {
         props.handleNextError(props.bouncePage11)
-        
       } else {
         setQuestion(8)
       }
@@ -255,7 +254,7 @@ const FlowFour = props => {
     { value: 'lessThan72', label: 'Less than 72 hours' },
     {
       value: 'moreThanandlessthan',
-      label: 'Less that 72 hours, but less than 7 days'
+      label: 'More that 72 hours, but less than 7 days'
     },
     { value: 'moreThan7', label: '7 Days or more' }
   ]

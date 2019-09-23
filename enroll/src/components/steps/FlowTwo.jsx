@@ -92,16 +92,18 @@ const FlowTwo = props => {
       }
     }
     if (question == 1) {
-      if (symptomsList.length <= 2 &&
-          (symptomsList.includes('Chills or shivering') ||
-            symptomsList.includes('Sweats'))){
-              props.handleNextError(props.bouncePage11)
+      if (
+        symptomsList.length <= 2 &&
+        (symptomsList.includes('Chills or shivering') ||
+          symptomsList.includes('Sweats'))
+      ) {
+        props.handleNextError(props.bouncePage11)
       } else if (
         symptomsList.length <= 3 &&
         symptomsList.includes('Chills or shivering') &&
         symptomsList.includes('Sweats')
       ) {
-        setQuestion(4)
+        props.handleNextError(props.bouncePage11)
       } else {
         setQuestion(2)
       }
@@ -157,7 +159,6 @@ const FlowTwo = props => {
         symptomsList.includes('Sweats')
       ) {
         props.handleNextError(props.bouncePage11)
-        
       } else {
         setQuestion(8)
       }
@@ -256,7 +257,7 @@ const FlowTwo = props => {
     { value: 'lessThan72', label: 'Less than 72 hours' },
     {
       value: 'moreThanandlessthan',
-      label: 'Less that 72 hours, but less than 7 days'
+      label: 'More that 72 hours, but less than 7 days'
     },
     { value: 'moreThan7', label: '7 Days or more' }
   ]
