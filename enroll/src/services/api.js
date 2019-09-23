@@ -33,7 +33,7 @@ export const getWebSiteSettings = function getData (url) {
 export const getStudy = function getData (url) {
   return (
     client
-      .getEntries({ content_type: 'studies', 'fields.studyName': 'Swab & Send Study' })
+      .getEntries({ content_type: 'studies', 'fields.studyName': url })
       .then(response => response.items)
       // eslint-disable-next-line no-console
       .catch(err => console.error(err))

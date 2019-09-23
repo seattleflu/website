@@ -1,8 +1,13 @@
-<% include ./partials/header  {header: header} %>
+<% include ./partials/header  {header: header, pageData: req.pageData} %>
 <div class="container">
           <div class="row">
               <div class="col-12">
                 <h1><%= title %></h1>
+                <h3><%= pageData[0].fields.subhead %></h3>
+                <p><%= pageData[0].fields.content %></p>
+                <div><%- md.render(pageData[0].fields.content) %></div>
+                <div><%- md.render(pageData[0].fields.content2) %></div>
+                
             </div>
             </div>
             </div>

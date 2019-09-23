@@ -89,6 +89,10 @@ const App = () => {
   const [bouncePage18, setBouncePage18] = useState('')
   const [fluStudyPage18, setFluStudyPage18] = useState('')
 
+  const [question19, setQuestion19] = useState('')
+  const [bouncePage19, setBouncePage19] = useState('')
+  const [fluStudyPage19, setFluStudyPage19] = useState('')
+
   const [zipCodes, setZipCodes] = useState('')
 
   const [conditions, setConditions] = useState('')
@@ -97,6 +101,9 @@ const App = () => {
   // const [conditions, setConditions] = useState('')
   // const [conditions, setConditions] = useState('')
 
+  const [homeZip, setHomeZip] = useState()
+  const [workZip, setWorkZip] = useState()
+
   useEffect(() => {
     getThankyou(1).then(thankyouData => {
       console.log(thankyouData)
@@ -104,6 +111,14 @@ const App = () => {
 
     getWebSiteSettings().then(settings => {
       console.log(settings[0].fields.validStudyZipCodes)
+      const work = settings[0].fields.validStudyWorkZipCodes
+      const home = settings[0].fields.validStudyHomeZipCodes
+      const workString = work.replace(' ', '')
+      const homeString = home.replace(' ', '')
+      const workArray = workString.split(',')
+      const homeArray = homeString.split(',')
+      setWorkZip(workArray)
+      setHomeZip(homeArray)
     })
 
     getEnrollmentQuestions().then(questions => {
@@ -174,9 +189,11 @@ const App = () => {
             break
           case 8:
             if (question.fields.bouncePage) {
+              
               setBouncePage8(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
+             
               setFluStudyPage8(question.fields.fluStudyPage.fields.studyName)
             }
             setQuestion8(question.fields.question)
@@ -272,6 +289,15 @@ const App = () => {
             }
             setQuestion18(question.fields.question)
             break
+          case 19:
+            if (question.fields.bouncePage) {
+              setBouncePage19(question.fields.bouncePage.fields.url)
+            }
+            if (question.fields.fluStudyPage) {
+              setFluStudyPage19(question.fields.fluStudyPage.fields.studyName)
+            }
+            setQuestion19(question.fields.question)
+            break
           default:
           // console.log(question.fields.question)
         }
@@ -311,6 +337,11 @@ const App = () => {
             question2={question2}
             bouncePage2={bouncePage2}
             fluStudyPage2={fluStudyPage2}
+            question19={question19}
+            bouncePage19={bouncePage19}
+            fluStudyPage19={fluStudyPage19}
+            homeZip={homeZip}
+            workZip={workZip}
           />
         ) : null}
         {currentStep == 1 ? (

@@ -10,6 +10,7 @@ const Error = props => {
 
   useEffect(() => {
     getStudy(props.studyName).then(studyData => {
+      console.log('STUDY NAME: ' + props.studyName)
       console.log('test data: ' + JSON.stringify(studyData[0].fields.studyName))
       setName(studyData[0].fields.studyName)
       setHeadline(studyData[0].fields.headline)

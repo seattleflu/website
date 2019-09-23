@@ -4,9 +4,16 @@ import Input from '../presentational/Input.jsx'
 const Main = props => {
   const [question, setQuestion] = useState(0)
   const [zipValue, setZipValue] = useState('')
+  const [zipWorkValue, setZipWorkValue] = useState('')
   const [ageValue, setAgeValue] = useState('')
+  const [homeZip, setHomeZip] = useState(props.homeZip)
+  const [workZip, setWorkZip] = useState(props.workZip)
 
-  useEffect(() => {})
+  useEffect(() => {
+    console.log('Home Zips: ' + props.homeZip)
+    // setHomeZip(props.homeZip)
+    // setWorkZip(props.workZip)
+  }, [])
   const zipCodes = [
     '98101',
     '98102',
@@ -44,14 +51,22 @@ const Main = props => {
   function handleChange (event) {
     event.preventDefault()
     if (question == 0) {
-      if (zipCodes.includes(zipValue)) {
+      if (props.homeZip.includes(zipValue)) {
         setQuestion(question + 1)
       } else {
         props.handleNextError(props.bouncePage1)
       }
     }
-
     if (question == 1) {
+      if (props.workZip.includes(zipWorkValue)) {
+        setQuestion(question + 1)
+      } else {
+        setQuestion(question + 1)
+        // props.handleNextError(props.bouncePage1)
+      }
+    }
+
+    if (question == 2) {
       if (ageValue >= 18) {
         props.handleNext(1)
       } else {
@@ -61,6 +76,9 @@ const Main = props => {
   }
   function handleZipChange (event) {
     setZipValue(event.target.value)
+  }
+  function handleZipWorkChange (event) {
+    setZipWorkValue(event.target.value)
   }
   function handleAgeChange (event) {
     setAgeValue(event.target.value)
@@ -75,12 +93,23 @@ const Main = props => {
           description=''
           label='zip_code'
           type='text'
-          id='zipcode'
+          id='zipcode-home'
           value={zipValue}
           handleChange={handleZipChange}
         />
       ) : null}
       {question >= 1 ? (
+        <Input
+          text={props.question19}
+          description=''
+          label='zip_code'
+          type='text'
+          id='zipcode-work'
+          value={zipWorkValue}
+          handleChange={handleZipWorkChange}
+        />
+      ) : null}
+      {question >= 2 ? (
         <Input
           text={props.question2}
           description=''
