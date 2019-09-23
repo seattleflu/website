@@ -113,11 +113,10 @@ const FlowFour = props => {
     }
     if (question == 3) {
       if (conditionsValue == 'no') {
-        props.handleNextError(props.bouncePage17)
-      } else {
-        // props.handleNext(3)
-        // props.handleNextError(props.fluStudyPage17)
+        
         props.handleStudy(props.fluStudyPage17)
+      } else {
+        props.handleNextError(props.bouncePage17)
       }
     }
     if (question == 4) {
