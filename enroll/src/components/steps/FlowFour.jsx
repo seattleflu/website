@@ -170,10 +170,9 @@ const FlowFour = props => {
     }
     if (question == 9) {
       if (conditionsValue == 'no') {
-        props.handleNextError(props.bouneePage17)
-      } else {
-        // props.handleNextError(props.fluStudyPage17)
         props.handleStudy(props.fluStudyPage17)
+      } else {
+        props.handleNextError(props.bouneePage17)
       }
     }
   }
