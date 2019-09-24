@@ -3,7 +3,7 @@ import React from "react";
 import MapboxGL, { FullscreenControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { dataLayers } from "./data";
+import { dataLayers, fetchModellingData, mergeGeojsonAndModeledData } from "./data";
 import { generateKeyframes } from "./keyframes";
 import { baseMapStyle, mergeMapStyle } from "./styles";
 
@@ -80,6 +80,12 @@ export default class FluMap extends React.Component {
 
     const response = await fetch(sourceUrl);
     const geojson = await response.json();
+
+    // Fetch IDM data.
+    const idmResponse = await fetchModellingData(layer.get("id"));
+    const idmJson = await idmResponse.json();
+
+    mergeGeojsonAndModeledData(geojson, idmJson, layer.get("id"));
 
     // Convert layer w/ source url to a source + layer style spec
     //
