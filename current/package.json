@@ -1,14 +1,8 @@
 {
-  "name": "sfs-ec",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "private": true,
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
@@ -18,14 +12,12 @@
     "babel-polyfill": "^6.26.0",
     "css-loader": "^3.2.0",
     "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
     "react-map-gl": "^5.0.10",
     "svg-url-loader": "^3.0.2",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-cli": "^3.3.8"
   },
   "dependencies": {
     "express": "^4.17.1",

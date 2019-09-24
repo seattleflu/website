@@ -1,5 +1,3 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -26,10 +24,5 @@ module.exports = {
       { test: /\.svg$/, use: 'svg-url-loader' },
     ]
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html'
-    })
-  ]
+  plugins: []
 }

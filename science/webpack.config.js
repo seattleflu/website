@@ -1,4 +1,3 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack');
 
 module.exports = {
@@ -26,9 +25,5 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html'
-    })
   ]
 }
