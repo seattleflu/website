@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname $0)/.."
+ls -1 */package.json | cut -d/ -f1 | grep -v template-react-app

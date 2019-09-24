@@ -1,17 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
-cd "$(dirname $0)/.."
+bin="$(dirname $0)"
+cd "$bin/.."
 
 BLUE="[1;94m"
 RESET="[0m"
 
 main() {
-    for subapp in $(subapps); do
-        if [[ $subapp == template-react-app ]]; then
-            continue
-        fi
-
+    for subapp in $("$bin"/ls-subapps); do
         echo "$BLUE==> Building $subapp$RESET"
 
         pushd $subapp
@@ -23,10 +20,6 @@ main() {
             npm run build
         popd
     done
-}
-
-subapps() {
-    ls -1 */package.json | cut -d/ -f1
 }
 
 main "$@"
