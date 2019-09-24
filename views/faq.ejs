@@ -1,12 +1,43 @@
 
-<% include ./partials/header  {header: header} %>
-<div class="container">
-          <div class="row">
-              <div class="col-12">
-                <h1><%= title %></h1>
-            </div>
-            </div>
-            </div>
+<% include ./partials/header  {header: header, pageData: req.pageData} %>
+<div class="faq secondary container">
+  <h2>FAQ</h2>
+  <div class="row">
+    <div class="col-lg-4 col-xs-12">
+      <h3>Stay in touch:</h3>
+      <p>If you begin to have flu-like symptoms later in the year, we would love to have you come back and take the eligibility survey again.</p>
+      <p>To stay in touch, input your email here:</p>
+      <form id="faq-subscribe">
+        <input type="text" id="email" name="Email" placeholder="Email Address">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
 
+
+    <div class="faq-questions col-lg-8 col-xs-12">
+      <div class="accordion" id="faq-accordion">
+        
+        
+        
+        <% faqData.forEach((faq) => { %>
+            
+            <div class="card">
+          <div class="faq-heading" id="<%= faq.fields.id %>">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= faq.fields.question %>" aria-expanded="false" aria-controls="collapse<%= faq.fields.question %>">
+                <h5><%= faq.fields.question %></h5>
+              </button>
+          </div>
+          <div id="collapse<%= faq.fields.question %>" class="collapse" aria-labelledby="<%= faq.fields.id %>" data-parent="#faq-accordion">
+            <div class="card-body">
+              <%= faq.fields.answer %>
+            </div>
+          </div>
+        </div>
+            
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
 <% include ./partials/footer  %>
 

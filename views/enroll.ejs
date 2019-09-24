@@ -1,16 +1,16 @@
 
-<% include ./partials/header {header: header} %>
- 
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-md-4 offset-md-1">
-              <h1><%= title %></h1>
+<% include ./partials/header {header: header, pageData: req.pageData} %>
+<div class="enroll container-full">
+    <div class="container enrollWapper">
+        <div class="row ">
+            <div class="col-md-8 offset-md-2">
                 <div id="eligibility">
                     <!-- form -->
                 </div>
             </div>
         </div>
     </div>
+</div>
 <script type="text/javascript" src="/enroll-bundle.js"></script>
 <link href="/enroll.css" type="text/css" rel="stylesheet">
 

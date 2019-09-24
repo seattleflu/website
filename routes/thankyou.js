@@ -2,6 +2,18 @@ var express = require('express')
 var router = express.Router()
 var thankyou = require('../services/thankyou')
 const JSON = require('circular-json')
+var page = require('../services/page')
+
+router.use((req, res, next) => {
+  page
+    .getPageData('thank-you')
+    .then(pageData => {
+      console.log('PAGE DATA: ' + JSON.stringify(pageData))
+      req.pageData = pageData.items
+      next()
+    })
+    .catch(console.error)
+})
 
 // router.use(function (req, res, next) {
 //   thankyou.getThankyou().then(function (thankyouData) {
@@ -28,7 +40,12 @@ router.use((req, res, next) => {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('thankyou', { title: 'Thank You', thankyouData: req.thankyouData, header: 'light' })
+  res.render('thankyou', {
+    title: 'Thank You',
+    thankyouData: req.thankyouData,
+    pageData: req.pageData,
+    header: 'light'
+  })
 })
 
 module.exports = router

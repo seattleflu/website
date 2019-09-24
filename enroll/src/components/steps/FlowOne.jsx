@@ -30,7 +30,7 @@ const FlowOne = props => {
       } else if (haveFluValue == 'no') {
         setQuestion(2)
       } else {
-        props.handleNextError()
+        // props.handleNextError()
       }
     }
     if (question == 1) {
@@ -48,37 +48,40 @@ const FlowOne = props => {
       if (moreThanThree == 'yes') {
         setQuestion(3)
       } else {
-        props.handleNextError()
+        props.handleNextError(props.bouncePage4)
       }
     }
     if (question == 3) {
       if (havePhone == 'yes') {
         setQuestion(4)
       } else {
-        props.handleNextError()
+        props.handleNextError(props.bouncePage5)
       }
     }
     if (question == 4) {
       if (under18 == 'yes') {
         setQuestion(5)
       } else {
-        props.handleNextError()
+        props.handleNextError(props.bouncePage6)
       }
     }
     if (question == 5) {
       if (conditions == 'yes') {
         setQuestion(6)
       } else {
-        props.handleNextError()
+        // props.handleNextError(props.fluStudyPage7)
+        props.handleStudy(props.fluStudyPage7)
       }
     }
 
     if (question == 6) {
-      if (pills == 'yes') {
+      if (pills == 'no') {
         // props.handleNext(2)
-        props.handleNextError(2)
+        // props.handleNextError(props.bouncepage8)
+        props.handleStudy(props.bouncePage8)
       } else {
-        props.handleNextError()
+        console.log('YES: ' + props.fluStudyPage8)
+        props.handleStudy(props.fluStudyPage8)
       }
     }
   }
@@ -115,6 +118,7 @@ const FlowOne = props => {
   }
 
   function handleMoreThanThreeChange (event) {
+    event.preventDefault()
     setMoreThanThreeValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -126,6 +130,7 @@ const FlowOne = props => {
     }
   }
   function handleHavePhoneChange (event) {
+    event.preventDefault()
     setHavePhoneValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -138,6 +143,7 @@ const FlowOne = props => {
     }
   }
   function handleunder18Change (event) {
+    event.preventDefault()
     setunder18Value(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -149,6 +155,7 @@ const FlowOne = props => {
   }
 
   function handleConditionsChange (event) {
+    event.preventDefault()
     setConditionsValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
@@ -158,6 +165,7 @@ const FlowOne = props => {
     }
   }
   function handlePillsChange (event) {
+    event.preventDefault()
     setPillsValue(event.target.value)
     if (event.target.value == 'yes') {
       // setQuestion(question + 1)
@@ -179,11 +187,12 @@ const FlowOne = props => {
   ]
 
   return (
-    <div>
+    <div className='col-12'>
+      <h2>Screening Questionnaire</h2>
       {question >= 0 ? (
         <Switch
-          text='Do you or anyone in your household currently have flu symptoms? Flue symptoms include:'
-          description='Fever, Headaches, Cough, Diarrhea, Sore throat, Nausea or vomiting, Runny or stuffy nose, Rash, Increased fatigue (tiredness), Muscle or body aches, Increased trouble with breathing, Ear pain or ear discharge'
+          text={props.question3}
+          description={props.conditions}
           label='symptoms'
           type='select'
           id='symptomsTest'
@@ -193,7 +202,7 @@ const FlowOne = props => {
       ) : null}
       {question == 1 ? (
         <Select
-          text='Who are you filling this survey out for?'
+          text={props.question9}
           description=''
           label='whoFor'
           type='select'
@@ -204,8 +213,8 @@ const FlowOne = props => {
         />
       ) : null}
       {question >= 2 ? (
-        <Select
-          text='Does someone in your house have a smartphone?'
+        <Switch
+          text={props.question4}
           description=''
           label='havePhone'
           type='select'
@@ -216,8 +225,8 @@ const FlowOne = props => {
         />
       ) : null}
       {question >= 3 ? (
-        <Select
-          text='Are there at least 3 people in your household?'
+        <Switch
+          text={props.question5}
           description=''
           label='moreThanThree'
           type='select'
@@ -229,8 +238,8 @@ const FlowOne = props => {
       ) : null}
 
       {question >= 4 ? (
-        <Select
-          text='Is at least one of these individules under 18?'
+        <Switch
+          text={props.question6}
           description=''
           label='under18'
           type='select'
@@ -242,9 +251,9 @@ const FlowOne = props => {
       ) : null}
 
       {question >= 5 ? (
-        <Select
-          text='Are there at least 2 other people in the household who do not have any of the following conditions'
-          description=''
+        <Switch
+          text={props.question7}
+          description={props.conditions}
           label='conditions'
           type='select'
           id='conditions'
@@ -254,8 +263,8 @@ const FlowOne = props => {
         />
       ) : null}
       {question >= 6 ? (
-        <Select
-          text='Are those 2 people willing and able to swallow Baloxavir pills?'
+        <Switch
+          text={props.question8}
           description=''
           label='pills'
           type='select'
@@ -267,7 +276,7 @@ const FlowOne = props => {
       ) : null}
 
       <button
-        className='btn btn-primary float-right'
+        className='btn btn-primary float-left next'
         type='submit'
         onClick={handleChange}
       >

@@ -10,12 +10,14 @@ const Select = ({
   description,
   handleChange
 }) => (
-  <div className='form-group'>
-    <label htmlFor={label}>{text}</label>
-    <p className='inputDescription'>{description}</p>
+  <div className='form-group row'>
+    <div className='col-8'>
+      <label htmlFor={label}>{text}</label>
+      <p className='inputDescription'>{description}</p>
+    </div>
     <select
       type={type}
-      className='form-control'
+      className='form-control col-4'
       id={id}
       value={value}
       onChange={handleChange}
