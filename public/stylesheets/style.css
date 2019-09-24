@@ -667,7 +667,8 @@ h1.number {
   margin-bottom: 75px;
 }
 .kioskContent{
-margin-bottom: 40px;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 #map {
   height: 600px;  /* The height is 400 pixels */
