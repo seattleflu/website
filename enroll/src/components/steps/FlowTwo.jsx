@@ -113,7 +113,7 @@ const FlowTwo = props => {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else {
-        setQuestion(2)
+        setQuestion(3)
       }
     }
     if (question == 3) {
@@ -192,14 +192,17 @@ const FlowTwo = props => {
   }
 
   function addSymptomOne (event) {
-    if (question != 1 && question < 7) {
+    if (question > 1 && question < 7) {
+      console.log("test")
       setQuestion(1)
       setconnectedValue('')
       setConditionsValue('')
-    } else {
+    } else if(question > 7){
       setQuestion(7)
       setconnectedValue('')
       setConditionsValue('')
+    }else{
+      setQuestion(1)
     }
     const array = [...symptomsList]
 
@@ -289,7 +292,7 @@ const FlowTwo = props => {
       ) : null}
 
       {question >= 1 && question < 7 ? (
-        <div classname='col-12 selectSymptoms'>
+        <div className='col-12 selectSymptoms'>
           <div className='row'>
             <div className='col-12'>
               <p>{props.question11}</p>
@@ -297,7 +300,7 @@ const FlowTwo = props => {
                 <label>
                   <input
                     type='checkbox'
-                    name='test1'
+                    name='FeelingFeverish1'
                     value='Feeling Feverish'
                     onChange={addSymptomOne}
                   />
@@ -308,7 +311,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test2'
+                  name='Headache1'
                   value='Headache'
                   onChange={addSymptomOne}
                 />
@@ -319,7 +322,7 @@ const FlowTwo = props => {
                 <label>
                   <input
                     type='checkbox'
-                    name='test3'
+                    name='Cough1'
                     value='Cough'
                     onChange={addSymptomOne}
                   />
@@ -330,7 +333,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='ChillsOrShivering1'
                   value='Chills or shivering'
                   onChange={addSymptomOne}
                 />
@@ -340,7 +343,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='Sweats'
                   value='Sweats'
                   onChange={addSymptomOne}
                 />
@@ -350,7 +353,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='SoreThroatOrItchyScratchyThroat1'
                   value='Sore throat or itchy/scratchy throat'
                   onChange={addSymptomOne}
                 />
@@ -360,7 +363,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='NauseaOrVomiting1'
                   value='Nausea or vomiting'
                   onChange={addSymptomOne}
                 />
@@ -370,7 +373,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='RunnyOrStuffyNose1'
                   value='Runny or stuffy nose'
                   onChange={addSymptomOne}
                 />
@@ -380,7 +383,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='FeelingMoreTiredThanUsual1'
                   value='Feeling more tired than usual'
                   onChange={addSymptomOne}
                 />
@@ -390,7 +393,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='MuscleOrBodyAches1'
                   value='Muscle or body aches'
                   onChange={addSymptomOne}
                 />
@@ -400,7 +403,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='IncreasedTroubleWithBreathing1'
                   value='Increased trouble with breathing'
                   onChange={addSymptomOne}
                 />
@@ -410,7 +413,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='NoneOfTheAbove1'
                   value='None of the above'
                   onChange={addSymptomRemove}
                 />
@@ -486,7 +489,7 @@ const FlowTwo = props => {
       ) : null}
 
       {question >= 7 ? (
-        <div classname='col-12 selectSymptoms'>
+        <div className='col-12 selectSymptoms'>
           <div className='row'>
             <div className='col-12'>
               <p>{props.question11}</p>

@@ -70,7 +70,7 @@ const FlowOne = props => {
       if (conditions == 'yes') {
         setQuestion(6)
       } else {
-        // props.handleNextError(props.fluStudyPage7)
+        console.log("test if clicked" + props.fluStudyPage7)
         props.handleStudy(props.fluStudyPage7)
       }
     }

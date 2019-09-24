@@ -25,7 +25,9 @@ const Error = props => {
       <p>Name: {name}</p>
       <p>Headline: {headline}</p>
       <p>description: {description}</p>
-      <a href='{urlConsent}'>{urlConsent}</a>
+      <a className='btn btn-primary float-left next' href={urlConsent}>
+        Start Consent
+      </a>
     </div>
   )
 }

@@ -179,11 +179,13 @@ const App = () => {
             setQuestion6(question.fields.question)
             break
           case 7:
+            // console.log("Study page: " + JSON.stringify(question.fields))
             if (question.fields.bouncePage) {
               setBouncePage7(question.fields.bouncePage.fields.url)
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage7(question.fields.fluStudyPage.fields.studyName)
+              
             }
             setQuestion7(question.fields.question)
             break
