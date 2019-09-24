@@ -12,8 +12,6 @@ const Error = props => {
 
   useEffect(() => {
     getStudy(props.studyName).then(studyData => {
-      console.log('STUDY NAME: ' + props.studyName)
-      console.log('test data: ' + JSON.stringify(studyData[0].fields.studyName))
       setName(studyData[0].fields.studyName)
       setHeadline(studyData[0].fields.headline)
       setDescription(studyData[0].fields.description)
@@ -24,8 +22,7 @@ const Error = props => {
 
   return (
     <div>
-      <h2>Study Page</h2>
-      <ReactMarkdown source={name} />
+      <h2><ReactMarkdown source={headline} /></h2>
       <ReactMarkdown source={headline} />
       <ReactMarkdown source={description} />
             <a className='btn btn-primary float-left next' href={urlConsent}>
