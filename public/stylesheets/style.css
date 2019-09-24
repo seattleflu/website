@@ -118,6 +118,8 @@ footer #footer-bottom {
 }
 #footer-logos img {
   max-height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 footer ul {
   margin-top: 40px;
@@ -429,13 +431,15 @@ button.green {
 h1.number {
   font-size: 72px;
   line-height: 72px;
-  margin: auto 30px;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 #help-right h4 {
   margin-bottom: 0;
 }
 .step {
   margin-bottom: 30px;
+  display: flex;
 }
 .step:first-child {
   margin-top: 52px;
@@ -444,7 +448,7 @@ h1.number {
   margin-bottom: 0;
 }
 #home-map {
-  margin-top: 75px;
+  margin-top: 45px;
   margin-bottom: 75px;
 }
 #map-left {
@@ -468,6 +472,64 @@ h1.number {
   margin-bottom: 0;
   margin-top: 48px;
 }
+@media (min-width: 992px) {
+  #help-right .cta {
+    display: none;
+  }
+  #flu101-right .cta {
+    display: none;
+  }
+}
+@media (max-width: 991px) {
+  .home-content {
+    margin-bottom: 50px;
+  }
+  h1.number {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+  #map-right {
+    height: 225px;
+  }
+  #help-left .cta {
+    display: none;
+  }
+  #help-left img {
+    margin-bottom: 30px;
+  }
+  .step:first-child {
+    margin-top: 0;
+  }
+  #home-map {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  #map-left {
+    padding: 50px 15px;
+  }
+  #flu101-left .cta {
+    display: none;
+  }
+  #flu101-left p {
+    margin-bottom: 0;
+  }
+  #flu101-right h3 {
+    margin-top: 30px;
+     margin-bottom: 30px;
+  }
+  .home-callout {
+    margin-top: 50px;
+    text-align: center;
+    padding: 30px;
+  }
+  .home-callout h3 {
+    display: block;
+    margin-bottom: 30px;
+  }
+  .home-callout a {
+    float: none;
+  }
+}
 @media (max-width: 767px) {
   .home-header {
     height: 750px;
@@ -478,6 +540,16 @@ h1.number {
   }
   .home-logos img {
     max-height: 30px;
+  }
+}
+@media (max-width: 440px) {
+  .home-logos img {
+    flex-basis: 35%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .home-header {
+    height: 800px;
   }
 }
 
