@@ -1,12 +1,8 @@
 {
-  "name": "sfs-ec",
-  "version": "1.0.0",
-  "description": "",
+  "private": true,
   "scripts": {
     "build": "webpack --mode production"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
