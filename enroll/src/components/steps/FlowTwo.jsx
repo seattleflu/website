@@ -190,9 +190,14 @@ const FlowTwo = props => {
       }
     })
   }
+
   function addSymptomOne (event) {
-    if (question != 1) {
+    if (question != 1 && question < 7) {
       setQuestion(1)
+      setconnectedValue('')
+      setConditionsValue('')
+    } else {
+      setQuestion(7)
       setconnectedValue('')
       setConditionsValue('')
     }
@@ -221,36 +226,36 @@ const FlowTwo = props => {
     }
   }
 
-  function addSymptomTwo (event) {
-    if (question != 7) {
-      setQuestion(7)
-      setconnectedValue('')
-      setConditionsValue('')
-    }
-    const array = [...symptomsList]
+  // function addSymptomTwo (event) {
+  //   if (question != 7) {
+  //     setQuestion(7)
+  //     setconnectedValue('')
+  //     setConditionsValue('')
+  //   }
+  //   const array = [...symptomsList]
 
-    var index = array.indexOf(event.target.value)
-    var noneOfTheAbove = array.indexOf('None of the above')
-    console.log(array.indexOf('None of the above'))
+  //   var index = array.indexOf(event.target.value)
+  //   var noneOfTheAbove = array.indexOf('None of the above')
+  //   console.log(array.indexOf('None of the above'))
 
-    if (noneOfTheAbove == 0) {
-      array.splice(array[noneOfTheAbove], 1)
-      document.querySelectorAll('input[type=checkbox]').forEach(el => {
-        if (el.value == 'None of the above') {
-          el.checked = false
-        } else {
-        }
-      })
-    }
+  //   if (noneOfTheAbove == 0) {
+  //     array.splice(array[noneOfTheAbove], 1)
+  //     document.querySelectorAll('input[type=checkbox]').forEach(el => {
+  //       if (el.value == 'None of the above') {
+  //         el.checked = false
+  //       } else {
+  //       }
+  //     })
+  //   }
 
-    if (index != -1) {
-      array.splice(index, 1)
-      setSymptopmsList(array)
-    } else {
-      setSymptopmsList([array, event.target.value])
-      console.log(symptomsList)
-    }
-  }
+  //   if (index != -1) {
+  //     array.splice(index, 1)
+  //     setSymptopmsList(array)
+  //   } else {
+  //     setSymptopmsList([...symptomsList, event.target.value])
+  //     console.log(symptomsList)
+  //   }
+  // }
 
   const options = [
     { value: 'none', label: '' },
@@ -491,7 +496,7 @@ const FlowTwo = props => {
                     type='checkbox'
                     name='test1'
                     value='Feeling Feverish'
-                    onChange={addSymptomTwo}
+                    onChange={addSymptomOne}
                   />
                   Feeling Feverish
                 </label>
@@ -502,7 +507,7 @@ const FlowTwo = props => {
                   type='checkbox'
                   name='test2'
                   value='Headache'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Headache
                 <br />
@@ -513,7 +518,7 @@ const FlowTwo = props => {
                     type='checkbox'
                     name='test3'
                     value='Cough'
-                    onChange={addSymptomTwo}
+                    onChange={addSymptomOne}
                   />
                   Cough
                 </label>
@@ -524,7 +529,7 @@ const FlowTwo = props => {
                   type='checkbox'
                   name='test3'
                   value='Chills or shivering'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Chills or shivering
                 <br />
@@ -534,7 +539,7 @@ const FlowTwo = props => {
                   type='checkbox'
                   name='test3'
                   value='Sweats'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Sweats
                 <br />
@@ -544,7 +549,7 @@ const FlowTwo = props => {
                   type='checkbox'
                   name='test3'
                   value='Sore throat or itchy/scratchy throat'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Sore throat or itchy/scratchy throat
                 <br />
@@ -554,7 +559,7 @@ const FlowTwo = props => {
                   type='checkbox'
                   name='test3'
                   value='Nausea or vomiting'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Nausea or vomiting
                 <br />
@@ -564,7 +569,7 @@ const FlowTwo = props => {
                   type='checkbox'
                   name='test3'
                   value='Runny or stuffy nose'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Runny or stuffy nose
                 <br />
@@ -574,7 +579,7 @@ const FlowTwo = props => {
                   type='checkbox'
                   name='test3'
                   value='Feeling more tired than usual'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Feeling more tired than usual
                 <br />
@@ -584,7 +589,7 @@ const FlowTwo = props => {
                   type='checkbox'
                   name='test3'
                   value='Muscle or body aches'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Muscle or body aches
                 <br />
@@ -594,7 +599,7 @@ const FlowTwo = props => {
                   type='checkbox'
                   name='test3'
                   value='Increased trouble with breathing'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Increased trouble with breathing
                 <br />

@@ -113,7 +113,6 @@ const FlowThree = props => {
     }
     if (question == 3) {
       if (conditionsValue == 'no') {
-        
         props.handleStudy(props.fluStudyPage17)
       } else {
         props.handleNextError(props.bouncePage17)
@@ -136,7 +135,6 @@ const FlowThree = props => {
     if (question == 6) {
       if (conditionsValue == 'no') {
         props.handleNextError(props.bouneePage17)
-        
       } else {
         props.handleStudy(props.fluStudyPage17)
       }
@@ -185,8 +183,12 @@ const FlowThree = props => {
     })
   }
   function addSymptomOne (event) {
-    if (question != 1) {
+    if (question != 1 && question < 7) {
       setQuestion(1)
+      setconnectedValue('')
+      setConditionsValue('')
+    } else {
+      setQuestion(7)
       setconnectedValue('')
       setConditionsValue('')
     }
@@ -215,36 +217,44 @@ const FlowThree = props => {
     }
   }
 
-  function addSymptomTwo (event) {
-    if (question != 7) {
-      setQuestion(7)
-      setconnectedValue('')
-      setConditionsValue('')
-    }
-    const array = [...symptomsList]
+  // function addSymptomTwo (event) {
+  //   if (question != 7) {
+  //     setQuestion(7)
+  //     setSymptopmsList([])
+  //     setconnectedValue('')
+  //     setConditionsValue('')
+  //   }
+  //   const array = [...symptomsList]
 
-    var index = array.indexOf(event.target.value)
-    var noneOfTheAbove = array.indexOf('None of the above')
-    console.log(array.indexOf('None of the above'))
+  //   var index = array.indexOf(event.target.value)
+  //   var noneOfTheAbove = array.indexOf('None of the above')
 
-    if (noneOfTheAbove == 0) {
-      array.splice(array[noneOfTheAbove], 1)
-      document.querySelectorAll('input[type=checkbox]').forEach(el => {
-        if (el.value == 'None of the above') {
-          el.checked = false
-        } else {
-        }
-      })
-    }
+  //   if (noneOfTheAbove == 0) {
+  //     array.splice(array[noneOfTheAbove], 1)
+  //     document.querySelectorAll('input[type=checkbox]').forEach(el => {
+  //       if (el.value == 'None of the above') {
+  //         el.checked = false
+  //       } else {
+  //       }
+  //     })
+  //   }
 
-    if (index != -1) {
-      array.splice(index, 1)
-      setSymptopmsList(array)
-    } else {
-      setSymptopmsList([array, event.target.value])
-      console.log(symptomsList)
-    }
-  }
+  //   if (index != -1) {
+  //     array.splice(index, 1)
+  //     setSymptopmsList(array)
+  //   } else {
+  //     setSymptopmsList([...symptomsList, event.target.value])
+  //     console.log(symptomsList)
+  //   }
+
+  //   if (index != -1) {
+  //     array.splice(index, 1)
+  //     setSymptopmsList(array)
+  //   } else {
+  //     setSymptopmsList([array, event.target.value])
+  //     console.log(symptomsList)
+  //   }
+  // }
 
   const options = [
     { value: 'none', label: '' },
@@ -485,7 +495,7 @@ const FlowThree = props => {
                     type='checkbox'
                     name='test1'
                     value='Feeling Feverish'
-                    onChange={addSymptomTwo}
+                    onChange={addSymptomOne}
                   />
                   Feeling Feverish
                 </label>
@@ -496,7 +506,7 @@ const FlowThree = props => {
                   type='checkbox'
                   name='test2'
                   value='Headache'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Headache
                 <br />
@@ -507,7 +517,7 @@ const FlowThree = props => {
                     type='checkbox'
                     name='test3'
                     value='Cough'
-                    onChange={addSymptomTwo}
+                    onChange={addSymptomOne}
                   />
                   Cough
                 </label>
@@ -518,7 +528,7 @@ const FlowThree = props => {
                   type='checkbox'
                   name='test3'
                   value='Chills or shivering'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Chills or shivering
                 <br />
@@ -528,7 +538,7 @@ const FlowThree = props => {
                   type='checkbox'
                   name='test3'
                   value='Sweats'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Sweats
                 <br />
@@ -538,7 +548,7 @@ const FlowThree = props => {
                   type='checkbox'
                   name='test3'
                   value='Sore throat or itchy/scratchy throat'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Sore throat or itchy/scratchy throat
                 <br />
@@ -548,7 +558,7 @@ const FlowThree = props => {
                   type='checkbox'
                   name='test3'
                   value='Nausea or vomiting'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Nausea or vomiting
                 <br />
@@ -558,7 +568,7 @@ const FlowThree = props => {
                   type='checkbox'
                   name='test3'
                   value='Runny or stuffy nose'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Runny or stuffy nose
                 <br />
@@ -568,7 +578,7 @@ const FlowThree = props => {
                   type='checkbox'
                   name='test3'
                   value='Feeling more tired than usual'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Feeling more tired than usual
                 <br />
@@ -578,7 +588,7 @@ const FlowThree = props => {
                   type='checkbox'
                   name='test3'
                   value='Muscle or body aches'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Muscle or body aches
                 <br />
@@ -588,7 +598,7 @@ const FlowThree = props => {
                   type='checkbox'
                   name='test3'
                   value='Increased trouble with breathing'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Increased trouble with breathing
                 <br />
@@ -598,7 +608,7 @@ const FlowThree = props => {
                   type='checkbox'
                   name='test3'
                   value='Diarrhea'
-                  onChange={addSymptomTwo}
+                  onChange={addSymptomOne}
                 />
                 Diarrhea
                 <br />

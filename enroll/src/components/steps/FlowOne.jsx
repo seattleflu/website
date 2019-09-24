@@ -44,18 +44,19 @@ const FlowOne = props => {
         // props.handleNextError()
       }
     }
+
     if (question == 2) {
-      if (moreThanThree == 'yes') {
-        setQuestion(3)
-      } else {
-        props.handleNextError(props.bouncePage4)
-      }
-    }
-    if (question == 3) {
       if (havePhone == 'yes') {
         setQuestion(4)
       } else {
         props.handleNextError(props.bouncePage5)
+      }
+    }
+    if (question == 3) {
+      if (moreThanThree == 'yes') {
+        setQuestion(3)
+      } else {
+        props.handleNextError(props.bouncePage4)
       }
     }
     if (question == 4) {
@@ -123,7 +124,7 @@ const FlowOne = props => {
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
     } else {
-      setQuestion(2)
+      setQuestion(3)
       setunder18Value('')
       setConditionsValue('')
       setPillsValue('')
