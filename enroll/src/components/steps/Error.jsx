@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { getStudy } from '../../services/api'
+const ReactMarkdown = require('react-markdown')
 
 const Error = props => {
   const [name, setName] = useState('')
   const [headline, setHeadline] = useState('')
   const [description, setDescription] = useState('')
   const [urlConsent, setUrlConsent] = useState('')
+  const [urlConsentText, setUrlConsentText] = useState('')
 
   useEffect(() => {
     getStudy(props.studyName).then(studyData => {
@@ -16,17 +18,18 @@ const Error = props => {
       setHeadline(studyData[0].fields.headline)
       setDescription(studyData[0].fields.description)
       setUrlConsent(studyData[0].fields.urlConsent)
+      setUrlConsentText(studyData[0].fields.urlButtonText)
     })
   }, [])
 
   return (
     <div>
       <h2>Study Page</h2>
-      <p>Name: {name}</p>
-      <p>Headline: {headline}</p>
-      <p>description: {description}</p>
-      <a className='btn btn-primary float-left next' href={urlConsent}>
-        Start Consent
+      <ReactMarkdown source={name} />
+      <ReactMarkdown source={headline} />
+      <ReactMarkdown source={description} />
+            <a className='btn btn-primary float-left next' href={urlConsent}>
+        {urlConsentText}
       </a>
     </div>
   )
