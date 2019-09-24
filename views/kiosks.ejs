@@ -4,8 +4,8 @@
           <div class="row">
               <div class="col-lg-6 col-sm-12">
                 <h2><%= pageData[0].fields.name %></h2>
-                <h3><%= pageData[0].fields.subhead %></h3>
                 <div class="kioskContent"><%- md.render(pageData[0].fields.content) %></div>
+                <h3><%= pageData[0].fields.subhead %></h3>
                 <div class="kiosk-list">
                 <% var value = 0; %>
                 <% kiosksData.forEach((kiosk) => { %>
