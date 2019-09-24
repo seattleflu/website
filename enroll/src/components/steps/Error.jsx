@@ -22,8 +22,7 @@ const Error = props => {
 
   return (
     <div>
-      <h2><ReactMarkdown source={headline} /></h2>
-      <ReactMarkdown source={headline} />
+      
       <ReactMarkdown source={description} />
             <a className='btn btn-primary float-left next' href={urlConsent}>
         {urlConsentText}
