@@ -92,39 +92,14 @@ We do not recommend declaring fields as Rich Text because each field is stored w
 
 ##### Environment variables
 
-The following environment variables must be defined to run the website locally:
-* CONTENTFUL_ACCESS_TOKEN
-* CONTENTFUL_SPACE
+The following environment variables may be defined during the build and/or at runtime to override the default hardcoded values:
+* `CONTENTFUL_ACCESS_TOKEN`
+* `CONTENTFUL_SPACE`
 
 Once you have been invited to the Seattle Flu Study space on Contentful, these API keys are accessible under Settings → API Keys → website-dev.
 
-
-##### Contentful + React
-
-Browser-side code that uses the Contentful SDK needs a way to access the Contentful environment variables.
-To achieve this, we define our environmental variables with Webpack.
-Open up `webpack.config.js` within the directory of the React app that needs access to these variables. Require webpack with:
-```js
-    const webpack = require('webpack');
-```
-
-Next, still inside of `webpack.config.js`, define the Contentful environment variables:
-```js
-    const ENV = {
-        CONTENTFUL_ACCESS_TOKEN: JSON.stringify(process.env.CONTENTFUL_ACCESS_TOKEN),
-        CONTENTFUL_SPACE: JSON.stringify(process.env.CONTENTFUL_SPACE),
-    }
-```
-
-Then, add the following line to `plugins`:
-```js
-    plugins: [
-        new webpack.DefinePlugin({ 'process.env': ENV }),
-        ...
-  ]
-```
-
-The Contentful API keys will now be available as environment variables to the modified React app.
+The access token and space id are not secrets as the Content Delivery API provided by Contentful is read-only and we do not have any non-public content.
+This assessment is backed up by [Contentful's official position](https://www.contentfulcommunity.com/t/should-i-keep-access-tokens-secret/457/3).
 
 
 #### React applications

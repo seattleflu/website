@@ -1,14 +1,8 @@
 var contentful = require('contentful')
 
-function required_env (name) {
-  if (!process.env[name]) { throw new Error(`The required environment variable ${name} is not set.`) }
-  return process.env[name]
-}
-
 var config = {
-  accessToken: required_env('CONTENTFUL_ACCESS_TOKEN'),
-  space: required_env('CONTENTFUL_SPACE'),
-  host: process.env.CONTENTFUL_HOST,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "35Wdx3MeKMga9hd4ZxFDHZa5V-bXhKc9f0u7_MRdA78",
+  space: process.env.CONTENTFUL_SPACE || "mw94neez9vid",
   insecure: false
 }
 
