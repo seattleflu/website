@@ -193,9 +193,9 @@ If your app is throwing an error in the console saying...
     ```
 
 
-##### Adding new React applications
+##### Adding new React sub-applications
 
-Adding new React applications to the main website is a fairly involved process with many moving pieces. However, this guide should help you through, step-by-step!
+Adding new React sub-applications to the main website is a fairly involved process with many moving pieces. However, this guide should help you through, step-by-step!
 1. At the top level of this repo, copy `template-react-app/` and name your desired webpage.
    For example, if we want our new page on the website to be named `my-component`, we run
 
@@ -213,20 +213,7 @@ Adding new React applications to the main website is a fairly involved process w
     Following our `my-component` example, we replace `template-bundle` in the filename with `my-component-bundle`.
     > Note: it's important to keep the `js/` prefix on your new bundle file name!
 
-3. Open up the `src/index.html` file.
-   Find the lines near the middle of the file that look like this:
-
-    ```html
-        <div id="target-dom-element">
-            <!-- React app inserts itself here -->
-        </div>
-    ```
-
-    This is the DOM element our React app will target.
-    You may rename the `div id` later to something more appropriate, but for now, we'll keep it as `target-dom-element`.
-
-4. Now you're ready to start writing your React components!
-   Open up `src/index.js`.
+3. Open up `src/index.js`.
    This is your main React component (currently named `App`).
    Feel free to import components from external files here and develop with React as normal.
 
@@ -236,59 +223,11 @@ Adding new React applications to the main website is a fairly involved process w
         const wrapper = document.getElementById('target-dom-element')
     ```
 
-    The argument passed to `document.getElementById()` must match an `id` in `src/index.html`, or the JavaScript will not load on the web page.
+    Replace the element id `target-dom-element` with the name of your component.
+    This id must match the id you use in the next step, or the JavaScript will not load on the web page.
 
-5. When you're ready to view your React app in action, run the following code inside your React app directory:
-
-        npm install
-        npm run start
-
-   Once you're satisfied with your app, create bundled JavaScript files using Webpack by running:
-
-        npm run build
-
-6. Make sure you're back at the top-level of the repo.
-   Create a new file under `routes/`, following the convention of naming the newly created file after the desired path to your new webpage.
-
-        cd ..
-        touch routes/my-component.js
-
-    Paste the following code into the newly created JavaScript file:
-
-    ```js
-        var express = require('express')
-        var router = express.Router()
-
-        router.get('/', function (req, res, next) {
-        res.render('my-component', { title: 'My Component Page' })
-        })
-
-        module.exports = router
-    ```
-
-    Now the `GET` endpoint is ready to serve the home page of our newly created React app.
-
-7. Next, open up `app.js` from the current directory.
-   At the top of the page, import your newly created router from step 6.
-
-    ```js
-        var myComponentRouter = require('./routes/my-component')
-    ```
-
-   Then add a path to the static, bundled JavaScript files.
-
-    ```js
-        app.use(express.static(path.join(__dirname, 'my-component/dist/js')))
-    ```
-
-   After that, add a new path to your new webpage with `app.use()`.
-
-    ```js
-        app.use('/my-component', myComponentRouter)
-    ```
-
-8. Almost there!
-   Now create a new file under `views/`, following the same naming convention we've employed so far.
+4. Move back to the top-level of the repo.
+   Create a new file under the `views/` directory, following the same naming convention we've employed so far.
 
         touch views/my-component.ejs
 
@@ -314,13 +253,55 @@ Adding new React applications to the main website is a fairly involved process w
     ```
 
     There are two parts working together in this code that load your React app.
-    1. The `div id`, `target-dom-element`, is the target DOM element specified by your React app's `app.js` file. This is the `div` where your app will render.
-    2. The `script` tag near the bottom of the file.
-       The `src` specifies which JavaScript bundle will be loaded among those declared in the main application `app.js`.
+    1. `<div id="target-dom-element">` is the target element expected by your React app's `src/index.js` file, which you adjusted in the previous step. This is the element in which your app will render.
+    2. The `<script>` tag near the bottom of the file specifies which JavaScript bundle will be loaded from your React app's `dist/js/` directory.
 
-9. You're done! From the top-level directory, run
+5. Create a new file under `routes/`, following the convention of naming the newly created file after the desired path to your new webpage.
 
-        npm run start
+        touch routes/my-component.js
+
+    Paste the following code into the newly created JavaScript file:
+
+    ```js
+        var express = require('express')
+        var router = express.Router()
+
+        router.get('/', function (req, res, next) {
+        res.render('my-component', { title: 'My Component Page' })
+        })
+
+        module.exports = router
+    ```
+
+    Now the `GET` endpoint is ready to serve the home page of our newly created React app.
+
+6. Next, open up `app.js` from the current directory.
+   At the top of the page, import your newly created router from step 5.
+
+    ```js
+        var myComponentRouter = require('./routes/my-component')
+    ```
+
+   Then add a path to the static, bundled JavaScript files.
+
+    ```js
+        app.use(express.static(path.join(__dirname, 'my-component/dist/js')))
+    ```
+
+   After that, add a new path to your new webpage with `app.use()`.
+
+    ```js
+        app.use('/my-component', myComponentRouter)
+    ```
+
+7. You're done! From the top-level directory, run
+
+        npm run build
+        npm start
+
+   and then open up <http://localhost:8080/my-component>.
+   You should see the placeholder React content render.
+   Now you're ready to build out the React subapp.
 
 
 ## Season one / 2018–19
