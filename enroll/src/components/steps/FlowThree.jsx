@@ -183,14 +183,17 @@ const FlowThree = props => {
     })
   }
   function addSymptomOne (event) {
-    if (question != 1 && question < 7) {
+    if (question > 1 && question < 7) {
+      console.log("test")
       setQuestion(1)
       setconnectedValue('')
       setConditionsValue('')
-    } else {
+    } else if(question > 7){
       setQuestion(7)
       setconnectedValue('')
       setConditionsValue('')
+    }else{
+      setQuestion(1)
     }
     const array = [...symptomsList]
 
@@ -288,7 +291,7 @@ const FlowThree = props => {
       ) : null}
 
       {question >= 1 && question < 7 ? (
-        <div classname='col-12 selectSymptoms'>
+        <div className='col-12 selectSymptoms'>
           <div className='row'>
             <div className='col-12'>
               <p>{props.question18}</p>
