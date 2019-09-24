@@ -148,7 +148,7 @@ const FlowThree = props => {
         (symptomsList.includes('Chills or shivering') ||
           symptomsList.includes('Sweats'))
       ) {
-        props.handleNextError(props.bouncePage11)
+        props.handleNextError(props.bouncePage18)
       } else if (
         symptomsList.length <= 3 &&
         symptomsList.includes('Chills or shivering') &&
