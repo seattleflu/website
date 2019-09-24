@@ -1,7 +1,2 @@
 node_modules
-config.json
-./enroll/services/contentful-config.js
-
-enroll/src/services/contentful-config.js
-
 .DS_Store

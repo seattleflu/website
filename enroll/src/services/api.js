@@ -1,4 +1,4 @@
-var client = require('./contentful-config').client
+var client = require('../../../services/contentful').client
 
 export const getThankyou = function getData (url) {
   return (
