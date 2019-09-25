@@ -5,9 +5,21 @@
  */
 
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = (env) => {
   const production = env === "production";
+
+  /* Enable hot reloading in development.  This works in tandem with the
+   * server-side middleware in app.js which rebuilds the bundles on the fly.
+   */
+  const devPlugins = production
+    ? []
+    : [new webpack.HotModuleReplacementPlugin()];
+
+  const devSource = production
+    ? []
+    : ["webpack-hot-middleware/client?reload=true"];
 
   /* These are all our React "subapps" which each have their own route/[name].js
    * and EJS template under views/[name].js.  They are transpiled by Babel and
@@ -17,10 +29,10 @@ module.exports = (env) => {
    * Each entrypoint gets it own bundle in dist/[name]-bundle.js.
    */
   const entrypoints = {
-    current: ['./current/src/index.js'],
-    enroll: ['./enroll/src/index.js'],
-    results: ['./results/src/index.js'],
-    science: ['./science/src/index.js'],
+    current: ['./current/src/index.js', ...devSource],
+    enroll: ['./enroll/src/index.js', ...devSource],
+    results: ['./results/src/index.js', ...devSource],
+    science: ['./science/src/index.js', ...devSource],
   };
 
   return {
@@ -84,6 +96,7 @@ module.exports = (env) => {
       ]
     },
     plugins: [
+      ...devPlugins,
     ]
   }
 };

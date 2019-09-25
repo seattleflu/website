@@ -14,7 +14,22 @@ var thankyouRouter = require('./routes/thankyou')
 var privacyRouter = require('./routes/privacy')
 var kiosksRouter = require('./routes/kiosks')
 
+const production = process.env.NODE_ENV === "production";
+
 var app = express()
+
+// Webpack hot reloading in development.  This works in tandem with the Webpack
+// development config.
+if (!production) {
+  const webpack = require("webpack");
+  const devMiddleware = require("webpack-dev-middleware");
+  const hotMiddleware = require("webpack-hot-middleware");
+  const config = require("./webpack.config");
+  const compiler = webpack(config("development"));
+
+  app.use('/dist', devMiddleware(compiler, {publicPath: "/"}));
+  app.use(hotMiddleware(compiler));
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
