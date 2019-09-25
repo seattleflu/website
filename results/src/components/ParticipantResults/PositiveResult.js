@@ -1,30 +1,32 @@
 import React from 'react';
 
-import { H3, STabs, STabList, STab, STabPanel  } from '../styledComponents';
 import * as positiveResults from './PositiveResults';
+import { H3, STabs, STabList, STab, STabPanel } from '../styledComponents';
 
 // Set up tabsRole for react-tabs
 STabList.tabsRole = 'TabList';
 STab.tabsRole = 'Tab';
 STabPanel.tabsRole = 'TabPanel';
 
+function matchResultComponent(result){
+    const resultComponents = {
+        "flu": <positiveResults.Flu content={result}/>,
+        "rsv": <positiveResults.RSV content={result}/>,
+        "coronavirus": <positiveResults.Coronavirus content={result}/>,
+        "enterovirus": <positiveResults.Enterovirus content={result}/>
+    }
+    return resultComponents[result.id]
+}
+
 export default function PositiveResult(props) {
-    const resultsMap = {
-        "flu": <positiveResults.Flu sequenced={props.sequenced} barcode={props.barcode}/>,
-        "rsv": <positiveResults.RSV/>,
-        "coronavirus": <positiveResults.Coronavirus/>,
-        "enterovirus": <positiveResults.Enterovirus/>
-    };
 
-    const results = props.results.filter(result => resultsMap[result]);
-
-    const resultTabs = results.map((result) =>
-        <STab key={result}>{result}</STab>
+    const resultTabs = props.results.map((result) =>
+        <STab key={result.id}>{result.id}</STab>
     );
 
-    const resultPanels = results.map((result) =>
-        <STabPanel key={result}>
-            {resultsMap[result]}
+    const resultPanels = props.results.map((result) =>
+        <STabPanel key={result.id}>
+            {matchResultComponent(result)}
         </STabPanel>
     );
 

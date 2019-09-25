@@ -195,7 +195,7 @@ export const Feature = (props) => {
       </FeatureFlexContainer>
       {(props.buttonText && props.buttonLink) ? (
         <FeatureButtonContainer>
-          <FeatureButton to={props.buttonLink}>
+          <FeatureButton href={props.buttonLink}>
             {props.buttonText}
           </FeatureButton>
         </FeatureButtonContainer>

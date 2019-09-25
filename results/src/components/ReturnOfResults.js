@@ -7,52 +7,68 @@ import SampleProcessing from './ParticipantResults/SampleProcessing';
 import UnknownBarcode from './ParticipantResults/UnknownBarcode';
 import Results from './ParticipantResults/Results';
 
+const contentful = require('../../../services/results');
+
 export default class ReturnOfResults extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            barcode: '',
-            status: '',
-            results: [],
-            sequenced: false
-        };
-    }
+  state = {
+    barcode: '',
+    status: '',
+    results: [],
+    sequenced: false,
+    content: null
+  };
 
-    setResult = (newResults) => {
-        // Convert ID3C lineages to generic pathogen names used in the rest of the app
-        if(newResults["results"]){
-            newResults["results"] = newResults["results"].map(lineage => {
-                if(lineage.includes('Influenza')){
-                        return 'flu'
-                }
-                if(lineage.includes('RSV')){
-                        return 'rsv'
-                }
-                return lineage
-            });
+  setResult = (newResults) => {
+    // Convert ID3C lineages to generic pathogen names used in the rest of the app
+    if(newResults["results"]){
+      newResults["results"] = newResults["results"].map(lineage => {
+        if(lineage.includes('Influenza')){
+          return 'flu'
         }
-
-        this.setState(newResults, () => {
-            console.log(this.state)
-        });
+        if(lineage.includes('RSV')){
+          return 'rsv'
+        }
+        return lineage
+      });
     }
+
+    this.getContentFromContentful('resultType', newResults['status'])
+    .then(content => {
+      newResults['content'] = content;
+      this.setState(newResults)
+    })
+    .catch(console.error)
+  }
+
+  getContentFromContentful(contentType, resultType) {
+    return(
+      contentful.getResults(contentType, resultType)
+      .then(content => {
+        return content.items[0].fields
+      })
+      .catch(console.error)
+    )
+  }
 
     render(){
-        const sampleStatus = this.state.status;
+        const {content, status, results, sequenced, barcode} = this.state;
         let display;
 
-        switch(sampleStatus) {
+        switch(status) {
             case 'notReceived':
-                display = <SampleNotReceived/>;
+                display = <SampleNotReceived content={content}/>;
                 break;
             case 'processing':
-                display = <SampleProcessing />;
+                display = <SampleProcessing content={content}/>;
                 break;
             case 'unknownBarcode':
-                display = <div><UnknownBarcode /><BarcodeSearchForm submitResult={ this.setResult }/></div>;
+                display = <div><UnknownBarcode content={content}/><BarcodeSearchForm submitResult={ this.setResult }/></div>;
                 break;
             case 'complete':
-                display = <Results results={ this.state.results } sequenced={ this.state.sequenced } barcode={ this.state.barcode } />;
+                display = (
+                  <Results results={results} sequenced={sequenced} barcode={barcode} content={content}
+                    getContent={this.getContentFromContentful}/>
+                )
                 break;
             default:
                 display = <BarcodeSearchForm submitResult={this.setResult}/>;
