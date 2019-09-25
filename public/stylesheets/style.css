@@ -678,6 +678,10 @@ h1.number {
   padding: 15px 15px 0 15px !important;
   max-width: 250px !important;
 }
+.gm-ui-hover-effect {
+  top: 0 !important;
+  right: 0 !important;
+}
 #map {
   height: 600px;  /* The height is 400 pixels */
   width: 100%;  /* The width is the width of the web page */
