@@ -405,7 +405,7 @@ button.green {
   height: 5vw;
   /* set height to pixels if you want angle to change with screen width */
 }
-.headerbutton:hover{
+.nav-item button:hover{
   cursor: pointer;
 }
 .home-logos {
