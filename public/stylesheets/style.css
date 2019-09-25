@@ -286,7 +286,7 @@ header.dark .nav-item button {
 }
 @media (min-width:768px) and (max-width:1199px) {
   header .navbar-nav li, header .nav-item button {
-    margin: 10.5px 0 10.5px 20px;
+    margin: 8.5px 0 8.5px 20px;
   }
 }
 @media (max-width:767px) {
