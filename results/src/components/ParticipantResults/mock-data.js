@@ -26,7 +26,16 @@ export const completePositiveFlu= {
 export const completePositiveMultiple= {
     "barcode": "34567890",
     "status": "complete",
-    "results": ["Influenza.A.H1N1", "RSV.A", "coronavirus", "enterovirus"],
+    "results": [
+        "Influenza.A.H1N1",
+        "RSV.A",
+        "coronavirus",
+        "enterovirus",
+        "rhinovirus",
+        "adenovirus",
+        "hmpv",
+        "parainfluenza"
+    ],
     "sequenced": false
 };
 

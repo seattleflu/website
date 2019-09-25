@@ -9,13 +9,8 @@ STab.tabsRole = 'Tab';
 STabPanel.tabsRole = 'TabPanel';
 
 function matchResultComponent(result){
-    const resultComponents = {
-        "flu": <positiveResults.Flu content={result}/>,
-        "rsv": <positiveResults.RSV content={result}/>,
-        "coronavirus": <positiveResults.Coronavirus content={result}/>,
-        "enterovirus": <positiveResults.Enterovirus content={result}/>
-    }
-    return resultComponents[result.id]
+    const ResultComponent = positiveResults[result.id];
+    return <ResultComponent content={result}/>
 }
 
 export default function PositiveResult(props) {
