@@ -13,6 +13,7 @@ const FlowOne = props => {
   const [moreThanThree, setMoreThanThreeValue] = useState('')
   const [conditions, setConditionsValue] = useState('')
   const [pills, setPillsValue] = useState('')
+  const [referrer, setReferrerValue] = useState('')
 
   // 1 setMoreThanThreeValue
   // 2 setHavePhoneValue
@@ -20,7 +21,12 @@ const FlowOne = props => {
   // 4 setConditionsValue
   // 5 setPillsValue
 
-  useEffect(() => {})
+  useEffect(() => {
+    setReferrerValue(props.referrerValue)
+    if(props.referrerValue == "schools"){
+      setQuestion(2)
+    }
+  }, [])
 
   function handleChange (event) {
     event.preventDefault()
@@ -60,7 +66,9 @@ const FlowOne = props => {
       }
     }
     if (question == 4) {
-      if (under18 == 'yes') {
+      if (under18 == 'yes' && referrer == "schools") {
+        props.handleStudy(props.fluStudyPage6)
+      }else if(under18 == 'yes' != "schools"){
         setQuestion(5)
       } else {
         props.handleNextError(props.bouncePage6)
@@ -146,9 +154,9 @@ const FlowOne = props => {
   function handleunder18Change (event) {
     event.preventDefault()
     setunder18Value(event.target.value)
-    if (event.target.value == 'yes') {
+    if (event.target.value == 'yes' && referrer != 'schools') {
       setQuestion(question + 1)
-    } else {
+    }else {
       setQuestion(4)
       setConditionsValue('')
       setPillsValue('')
@@ -190,7 +198,7 @@ const FlowOne = props => {
   return (
     <div className='col-12'>
       <h2>Screening Questionnaire</h2>
-      {question >= 0 ? (
+      {question >= 0 && referrer != 'schools' ? (
         <Switch
           text={props.question3}
           description={props.conditions}
@@ -201,7 +209,7 @@ const FlowOne = props => {
           handleChange={handleSymptomsChange}
         />
       ) : null}
-      {question == 1 ? (
+      {question == 1 && referrer != 'schools' ? (
         <Select
           text={props.question9}
           description=''
