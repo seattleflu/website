@@ -107,7 +107,7 @@ const App = () => {
 
   useEffect(() => {
     var referrer = document.referrer.split("/").pop();
-    setReferrer(referrerValue)
+    setReferrer(referrer)
     getThankyou(1).then(thankyouData => {
       console.log(thankyouData)
     }, [])
