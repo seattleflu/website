@@ -325,7 +325,7 @@ const App = () => {
   return (
     <div className='enrollment container'>
       <form id='enroll-form row'>
-        {currentStep == 0 ? (
+        {currentStep == 1 ? (
           <Main
             handleNext={handleNext}
             handleNextError={handleNextError}
@@ -463,7 +463,7 @@ const App = () => {
           />
         ) : null}
       </form>
-      {currentStep == 5 ? (
+      {currentStep == 0 ? (
         <Error
           handleNext={handleNext}
           handleNextError={handleNextError}

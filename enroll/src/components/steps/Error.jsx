@@ -11,7 +11,7 @@ const Error = props => {
   const [urlConsentText, setUrlConsentText] = useState('')
 
   useEffect(() => {
-    getStudy(props.studyName).then(studyData => {
+    getStudy("Swab & Send Study").then(studyData => {
       setName(studyData[0].fields.studyName)
       setHeadline(studyData[0].fields.headline)
       setDescription(studyData[0].fields.description)
@@ -22,7 +22,7 @@ const Error = props => {
 
   return (
     <div>
-      
+      <h1 className="studyHeader">{headline}</h1>
       <ReactMarkdown source={description} />
             <a className='btn btn-primary float-left next' href={urlConsent}>
         {urlConsentText}

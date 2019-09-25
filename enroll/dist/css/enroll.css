@@ -115,3 +115,17 @@ form > .col-12 {
     outline: none;
     font-weight: 700;
 }
+
+.studyHeader{
+    margin-bottom: 30px;
+}
+.enrollment h3{
+    color: #4A515F;
+   margin-top: 22px;
+   margin-bottom: 30px;
+}
+
+.enrollment p{
+    font-size: 16px;
+    line-height: 24px;
+}
