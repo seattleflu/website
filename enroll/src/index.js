@@ -105,9 +105,12 @@ const App = () => {
   const [workZip, setWorkZip] = useState()
 
   useEffect(() => {
+    var referrer = document.referrer;
+    console.log("referrer url",referrer);
+    console.log("last segment", referrer.split("/").pop())
     getThankyou(1).then(thankyouData => {
       console.log(thankyouData)
-    })
+    }, [])
 
     getWebSiteSettings().then(settings => {
       console.log(settings[0].fields.validStudyZipCodes)
