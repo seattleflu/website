@@ -561,6 +561,9 @@ h1.number {
 #thank-you{
   display:none;
 }
+#signup-error{
+  display: none;
+}
 #faq-subscribe input[type=text] {
   width: 100%;
 }
