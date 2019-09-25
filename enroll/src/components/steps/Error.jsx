@@ -11,7 +11,7 @@ const Error = props => {
   const [urlConsentText, setUrlConsentText] = useState('')
 
   useEffect(() => {
-    getStudy("Swab & Send Study").then(studyData => {
+    getStudy(props.studyName).then(studyData => {
       setName(studyData[0].fields.studyName)
       setHeadline(studyData[0].fields.headline)
       setDescription(studyData[0].fields.description)

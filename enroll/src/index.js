@@ -103,11 +103,11 @@ const App = () => {
 
   const [homeZip, setHomeZip] = useState()
   const [workZip, setWorkZip] = useState()
+  const [referrerValue, setReferrer] = useState('')
 
   useEffect(() => {
-    var referrer = document.referrer;
-    console.log("referrer url",referrer);
-    console.log("last segment", referrer.split("/").pop())
+    var referrer = document.referrer.split("/").pop();
+    setReferrer(referrerValue)
     getThankyou(1).then(thankyouData => {
       console.log(thankyouData)
     }, [])
@@ -349,6 +349,7 @@ const App = () => {
         ) : null}
         {currentStep == 1 ? (
           <FlowOne
+            referrerValue={referrerValue}
             handleNext={handleNext}
             handleNextError={handleNextError}
             handleStudy={handleStudy}
