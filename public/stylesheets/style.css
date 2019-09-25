@@ -50,6 +50,9 @@ a, a:hover {
   height: 15px;
   content: "";
 }
+.cta:hover:after {
+  margin-left: 15px;
+}
 @media (max-width: 767px) {
   h1 {
     font-size: 30px;
@@ -183,9 +186,11 @@ footer #copyright-bar {
 header.light {
   background-color: #fff;
   border-bottom: 2px solid #eaecf0;
+  z-index: 2;
 }
 header.dark {
   background-color: transparent;
+  z-index: 2;
 }
 header .logo {
   margin: auto 0;
@@ -202,9 +207,6 @@ header.dark .custom-toggler .navbar-toggler-icon {
 .custom-toggler.navbar-toggler {
   border: none;
 } 
-.navbar {
-  padding: 0 !important;
-}
 header .navbar-nav {
   margin: 25px 0 25px auto;
 }
@@ -235,6 +237,12 @@ header .nav-item button, .mobile-nav ul button {
   text-transform: uppercase;
   font-weight: 700;
   border-radius: 25px;
+}
+header .nav-item button:hover, .mobile-nav ul button:hover {
+  background-color: #1BAB4C !important;
+  box-shadow: 0 0 0 4px #1BAB4C;
+  border: 2px solid #1BAB4C !important;
+  text-decoration: underline;
 }
 .mobile-nav ul button {
   margin-left: 0;
@@ -333,6 +341,10 @@ button.green {
   background-color: #1BAB4C;
   border: 2px solid #1BAB4C;
 }
+button.green:hover {
+  box-shadow: 0 0 0 2px #1BAB4C;
+  text-decoration: underline;
+}
 
 
 /*** CALLOUTS ***/
@@ -345,8 +357,7 @@ button.green {
 }
 .study-callout {
   text-align: center;
-  padding: 30px;
-  display: flex;
+  padding: 50px 30px;
 }
 .home-callout {
   padding: 50px 75px;
@@ -360,7 +371,7 @@ button.green {
 .study-callout h3 {
   padding-right: 15px;
 }
-.home-callout h3 {
+.study-callout h3, .home-callout h3 {
   display: inline;
 }
 .study-callout a, .home-callout a {
@@ -368,19 +379,39 @@ button.green {
   margin-top: auto;
   margin-bottom: auto;
 }
-.study-callout a {
-  flex-basis: 55%;
-}
-.home-callout a {
+.study-callout a, .home-callout a {
   float: right;
 }
 @media (max-width: 1199px) {
   .study-callout {
     display: block;
+    text-align: center;
+    margin-top: 50px;
+  }
+  .study-callout {
+    padding: 30px 15px;
   }
   .study-callout h3 {
+    display: block;
     padding-bottom: 20px;
     padding-right: 0;
+  }
+  .study-callout a {
+    float: none;
+  }
+}
+@media (max-width: 991px) {
+  .home-callout {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+  }
+  .home-callout h3 {
+    display: block;
+    margin-bottom: 30px;
+  }
+  .home-callout a {
+    float: none;
   }
 }
 
@@ -392,7 +423,6 @@ button.green {
   background-image: url(/images/BG_Blue.png);
   background-size: cover;
   top: -108px;
-  z-index: -1;
 }
 .home-header h1 {
   color: #fff;
@@ -526,18 +556,6 @@ h1.number {
     margin-top: 30px;
      margin-bottom: 30px;
   }
-  .home-callout {
-    margin-top: 50px;
-    text-align: center;
-    padding: 30px;
-  }
-  .home-callout h3 {
-    display: block;
-    margin-bottom: 30px;
-  }
-  .home-callout a {
-    float: none;
-  }
 }
 @media (max-width: 767px) {
   .home-header {
@@ -648,21 +666,10 @@ h1.number {
 }
 
 /*** FIND A KIOSK PAGE ***/
-.kiosk-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
 .kiosk-item {
   flex-basis: 50%;
   margin-bottom: 20px;
   display: flex;
-}
-.kiosk-item:nth-child(2n - 1) {
-  padding-right: 7.5px;
-}
-.kiosk-item:nth-child(2n) {
-  padding-left: 7.5px;
 }
 .kiosk-item img {
   margin-right: 15px;
@@ -709,9 +716,6 @@ h1.number {
   }
 }
 @media (max-width: 991px) {
-  .desktop-map {
-    display: none;
-  }
   .kiosk iframe {
     margin-bottom: 50px;
     margin-top: 30px;
@@ -719,9 +723,12 @@ h1.number {
   .kiosk .study-callout {
     margin-top: 50px;
   }
+  .kiosk-list, .kiosk-text, .kiosk-sub {
+    display: none;
+  }
 }
 @media (min-width: 992px) {
-  .mobile-map {
+  .kiosk-list-mobile, .kiosk-text-mobile, .kiosk-sub-mobile {
     display: none;
   }
 }

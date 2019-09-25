@@ -2,10 +2,10 @@
 <% include ./partials/header  {header: header, pageData: req.pageData} %>
 <div class="container secondary kiosk">
           <div class="row">
-              <div class="col-lg-6 col-sm-12">
+              <div class="col-lg-4 col-sm-12">
                 <h2><%= pageData[0].fields.name %></h2>
                 <div class="kioskContent"><%- md.render(pageData[0].fields.content) %></div>
-                <h3><%= pageData[0].fields.subhead %></h3>
+                <h3 class="kiosk-sub"><%= pageData[0].fields.subhead %></h3>
                 <div class="kiosk-list">
                 <% var value = 0; %>
                 <% kiosksData.forEach((kiosk) => { %>
@@ -26,7 +26,7 @@
                   <%- md.render(pageData[0].fields.content2) %>
                 </div>
               </div>
-              <div class="col-lg-6 col-sm-12 kiosk-map">
+              <div class="col-lg-8 col-sm-12 kiosk-map">
                 <div id="map"></div>
                 <script>
                 
@@ -274,6 +274,26 @@
                         
                     }
                 </script>
+                <h3 class="kiosk-sub-mobile"><%= pageData[0].fields.subhead %></h3>
+                <div class="kiosk-list-mobile">
+                  <% var value = 0; %>
+                  <% kiosksData.forEach((kiosk) => { %>
+                    <%value = value + 1%>
+                     
+                    <div class="kiosk-item">
+                      <div class="kioskNumber"><%= value %></div>
+                      <img src="/images/map_icon.svg">
+                      <div class="kioskNumber"><%= value %></div>
+                      <div class="wrapper">
+                        <h5><%= kiosk.fields.locationName %></h5>
+                        <p><%= kiosk.fields.details %></p>
+                      </div>
+                    </div>
+                  <% }) %>              
+                  </div>
+                  <div class="kiosk-text-mobile">
+                    <%- md.render(pageData[0].fields.content2) %>
+                  </div>
                 <div class="study-callout">
                   <h3>Help us track the flu in Seattle. We need <i>you</i>.</h3>
                   <a href="/enroll"><button class="green">Join the Study</button></a>
