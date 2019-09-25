@@ -8,9 +8,10 @@
       <p>If you begin to have flu-like symptoms later in the year, we would love to have you come back and take the eligibility survey again.</p>
       <p>To stay in touch, input your email here:</p>
       <form id="faq-subscribe">
-        <input type="text" id="email" name="Email" placeholder="Email Address">
+        <input type="text" id="emailInput" name="Email" placeholder="Email Address">
         <input type="submit" value="Submit">
       </form>
+      <h4 id="thank-you">THANK YOU</h4>
     </div>
 
 
@@ -39,5 +40,39 @@
     </div>
   </div>
 </div>
+<script>
+            $(function () {
+                $('#faq-subscribe').submit(function (event) {
+                  event.preventDefault()
+                  var formData = {
+                    "email_address": $('#emailInput').val(),
+                    "first_name": $('#firstName').val(),
+                    "last_name": $('#lastName').val()
+                  }
+                  console.log(formData)
+                  // process the form
+                  $.ajax({
+                    type: 'POST', 
+                    url: 'https://api.fluathome.org', 
+                    data: formData, 
+                    dataType: 'json', 
+                    encode: true
+                  })
+                    .done(function (data) {
+                      console.log(data["statusCode"])
+                      if (data["statusCode"]){
+                        $("#thank-you").css("display", "block")
+                        $("#signup-form").css("display", "none")
+                        // $(location).attr('href', '/sfs-thank-you.html')
+                      }else{
+                        $("#thank-you").css("display", "none")
+                        $("#signup-form").css("display", "block")
+                        $("#signup-error").css("display", "block")
+                      }
+                    })
+                })
+              })
+              
+        </script>
 <% include ./partials/footer  %>
 

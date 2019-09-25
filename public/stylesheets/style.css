@@ -557,6 +557,9 @@ h1.number {
 }
 
 /*** FAQ PAGE ***/
+#thank-you{
+  display:none;
+}
 #faq-subscribe input[type=text] {
   width: 100%;
 }
