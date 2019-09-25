@@ -9,6 +9,11 @@ const Main = props => {
   const [homeZip, setHomeZip] = useState(props.homeZip)
   const [workZip, setWorkZip] = useState(props.workZip)
 
+  function initializeReactGA () {
+    //ReactGA.initialize('UA-60458805-1')
+    //ReactGA.pageview(' /enroll')
+  }
+
   useEffect(() => {
     console.log('Home Zips: ' + props.homeZip)
     // setHomeZip(props.homeZip)

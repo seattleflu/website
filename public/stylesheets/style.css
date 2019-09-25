@@ -405,6 +405,9 @@ button.green {
   height: 5vw;
   /* set height to pixels if you want angle to change with screen width */
 }
+.headerbutton:hover{
+  cursor: pointer;
+}
 .home-logos {
   margin-top: 165px;
   display: flex;
