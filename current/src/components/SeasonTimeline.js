@@ -108,7 +108,8 @@ export default class SeasonTimeline extends React.Component {
            width="100%"
            height={height + margin * 2}
            role="img"
-           aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID">
+           aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID"
+           style={{pointerEvents: "none"}}>
         <title id="fluSeasonTimelineID">Flu Season Timeline</title>
         <desc id="fluSeasonTimelineDescID">
           A timeline detailing the progression of a flu season from July of
