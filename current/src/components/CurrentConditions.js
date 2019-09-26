@@ -37,7 +37,7 @@ export default class CurrentConditions extends React.Component {
       <>
         <p>
           It’s {currentFullMonth} {currentYear}, which means
-          we’re <strong>{fluSeasonProgressText[currentMonth]}</strong> the {seasonStartYear}-
+          we’re <strong>{fluSeasonProgressText[currentMonth]}</strong> the {seasonStartYear}–
           {seasonStartYear + 1} flu season.
 
           This week we’re <strong>{fluCurrentStatusText}</strong>.
