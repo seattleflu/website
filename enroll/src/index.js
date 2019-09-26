@@ -286,7 +286,7 @@ const App = () => {
               setFluStudyPage17(question.fields.fluStudyPage.fields.studyName)
             }
             if(question.fields.addInformation){
-              setConditions17(question.fields.fluStudyPage)
+              setConditions17(question.fields.addInformation)
             }
             setQuestion17(question.fields.question)
             break

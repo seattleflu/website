@@ -57,7 +57,7 @@ const FlowThree = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(question + 1)
+      setQuestion(9)
     } else {
       setConditionsValue('')
       setQuestion(8)
@@ -113,7 +113,7 @@ const FlowThree = props => {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if(connectedValue == 'yes'){
-        setQuestion(2)
+        setQuestion(3)
       }else{
 
       }
@@ -178,7 +178,7 @@ const FlowThree = props => {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if (connectedValue == 'yes'){
-        setQuestion(question + 1)
+        setQuestion(9)
       }else{
 
       }
@@ -390,16 +390,16 @@ const FlowThree = props => {
               Increased trouble with breathing
               <br />
             </div>
-            <div className='symptom col-md-6 col-lg-4'>
-              <input
-                type='checkbox'
-                name='test3'
-                value='Diarrhea'
-                onChange={addSymptomOne}
-              />
-              Diarrhea
-              <br />
-            </div>
+            <div className='symptom col-4'>
+                <input
+                  type='checkbox'
+                  name='NoneOfTheAbove2'
+                  value='None of the above'
+                  onChange={addSymptomRemove}
+                />
+                None of the above
+                <br />
+              </div>
           </div>
         </div>
       ) : null}
@@ -581,20 +581,21 @@ const FlowThree = props => {
               Increased trouble with breathing
               <br />
             </div>
-            <div className='symptom col-md-6 col-lg-4'>
-              <input
-                type='checkbox'
-                name='test3'
-                value='Diarrhea'
-                onChange={addSymptomOne}
-              />
-              Diarrhea
-              <br />
-            </div>
+            <div className='symptom col-4'>
+                <input
+                  type='checkbox'
+                  name='NoneOfTheAbove2'
+                  value='None of the above'
+                  onChange={addSymptomRemove}
+                />
+                None of the above
+                <br />
+              </div>
           </div>
         </div>
       ) : null}
 
+      
       {question >= 8 ? (
         <Switch
           text={props.question12}

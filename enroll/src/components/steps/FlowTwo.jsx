@@ -190,7 +190,6 @@ const FlowTwo = props => {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage13)
       } else if(conditionsValue == 'yes'){
-        // props.handleNextError(props.fluStudyPage3)
         props.handleNextError(props.bouncePage13)
       }else{
 

@@ -6,17 +6,12 @@ const options = [
   { value: 'yes', label: 'yes' },
   { value: 'no', label: 'no' }
 ]
-const Description = ({description }) =>(
-  
- <p className='inputDescription'>{description}</p>
-
-)
 
 const Input = ({ label, text, type, id, value, description, handleChange }) => (
   <div className='form-group row'>
     <div className='col-lg-8 col-md-6 col-sm-12'>
       <label htmlFor={label}>{text}</label>
-      {description != ''? <Description description={description}/> : null}
+      <p className='inputDescription'>{description}</p>
     </div>
     <select
       type={type}
