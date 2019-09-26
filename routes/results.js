@@ -3,6 +3,7 @@ var router = express.Router()
 
 var page = require('../services/page')
 var barcodeFaq = require('../services/barcodeFaq')
+var resultsFaq = require('../services/resultsFaq')
 
 router.use((req, res, next) => {
   page
@@ -25,6 +26,16 @@ router.use((req, res, next) => {
     .catch(console.error)
 })
 
+router.use((req, res, next) => {
+  resultsFaq
+    .getResultsFaq()
+    .then(resultsFaq => {
+      req.resultsFaq = resultsFaq.items
+      next()
+    })
+    .catch(console.error)
+})
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('results', {
@@ -40,6 +51,15 @@ router.get('/barcode-faq', function (req, res, next) {
     header: 'light',
     pageData: req.pageData,
     barcodeFaq: req.barcodeFaq
+  })
+})
+
+router.get('/faq', function (req, res, next) {
+  res.render('resultsFaq', {
+    title: 'Results FAQ',
+    header: 'light',
+    pageData: req.pageData,
+    resultsFaq: req.resultsFaq
   })
 })
 
