@@ -1,15 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import { DateTime } from 'luxon';
 
-import { CenteredParagraph, H1, OuterContainer, ContentContainer } from './utils';
 import FluMap from './FluMap/';
 import SeasonTimeline from './SeasonTimeline';
 import fluStats from '../data/flu-by-week.json';
-
-const P = styled(CenteredParagraph)`
-  max-width: 32em;
-`;
 
 const SEASON_CUTOFF_MONTH = 9;
 
@@ -40,30 +34,26 @@ export default class CurrentConditions extends React.Component {
     const fluCurrentStatusText = generateCurrentStatusText(fluStats);
 
     return (
-      <OuterContainer>
-        <ContentContainer>
-          <H1>Current Flu Conditions</H1>
+      <>
+        <p>
+          It’s {currentFullMonth} {currentYear}, which means
+          we’re <strong>{fluSeasonProgressText[currentMonth]}</strong> the {seasonStartYear}-
+          {seasonStartYear + 1} flu season.
 
-          <P>
-            It’s {currentFullMonth} {currentYear}, which means
-            we’re <strong>{fluSeasonProgressText[currentMonth]}</strong> the {seasonStartYear}-
-            {seasonStartYear + 1} flu season.
+          This week we’re <strong>{fluCurrentStatusText}</strong>.
+        </p>
 
-            This week we’re <strong>{fluCurrentStatusText}</strong>.
-          </P>
+        <SeasonTimeline currentMonth={currentMonth} />
 
-          <SeasonTimeline currentMonth={currentMonth} />
+        <p>
+          The map below shows confirmed flu cases this week from across Seattle.
+          Hold the left mouse button to drag and pan the map.
+          Hold the right mouse button to rotate and pitch the map.
+          Use the mouse wheel to zoom in and out.
+        </p>
 
-          <P>
-            The map below shows confirmed flu cases this week from across Seattle.
-            Hold the left mouse button to drag and pan the map.
-            Hold the right mouse button to rotate and pitch the map.
-            Use the mouse wheel to zoom in and out.
-          </P>
-
-          <FluMap/>
-        </ContentContainer>
-      </OuterContainer>
+        <FluMap/>
+      </>
     );
   }
 }
