@@ -471,7 +471,6 @@ const FlowTwo = props => {
       {question >= 7 ? (
         <div className='col-12 selectSymptoms'>
           <div className='row'>
-            <div className='col-12'>
               <p>{props.question11}</p>
               <div className='symptom col-4'>
                 
@@ -597,7 +596,6 @@ const FlowTwo = props => {
                 None of the above
                 <br />
               </div>
-            </div>
           </div>
         </div>
       ) : null}
