@@ -63,6 +63,7 @@ router.get('/barcode-faq', function (req, res, next) {
     title: 'Barcode FAQ',
     header: 'light',
     pageData: req.pageData,
+    siteData: req.siteData,
     barcodeFaq: req.barcodeFaq
   })
 })
@@ -72,6 +73,7 @@ router.get('/faq', function (req, res, next) {
     title: 'Results FAQ',
     header: 'light',
     pageData: req.pageData,
+    siteData: req.siteData,
     resultsFaq: req.resultsFaq
   })
 })
