@@ -35,21 +35,4 @@ router.get('/', function (req, res, next) {
   })
 })
 
-router.get('/map', function (req, res, next) {
-  res.render('map', {
-    title: 'Science page map',
-    header: 'light',
-    pageData: req.pageData
-  })
-})
-
-router.get('/tree', function (req, res, next) {
-  res.render('tree', {
-    title: 'Science page tree',
-    header: 'light',
-    pageData: req.pageData,
-    siteData: req.siteData
-  })
-})
-
 module.exports = router

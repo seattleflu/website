@@ -45,8 +45,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/science', scienceRouter)
-app.use('/science/map', scienceRouter)
-app.use('/science/tree', scienceRouter)
 app.use('/current', currentRouter)
 app.use('/faq', faqRouter)
 app.use('/enroll', enrollRouter)
