@@ -290,7 +290,7 @@ const FlowFour = props => {
         <div className='col-12 selectSymptoms'>
           <div className='row'>
             <p>{props.question18}</p>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <label>
                 <input
                   type='checkbox'
@@ -302,7 +302,7 @@ const FlowFour = props => {
               </label>
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test2'
@@ -312,7 +312,7 @@ const FlowFour = props => {
               Headache
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <label>
                 <input
                   type='checkbox'
@@ -324,7 +324,7 @@ const FlowFour = props => {
               </label>
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -334,7 +334,7 @@ const FlowFour = props => {
               Chills or shivering
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -344,7 +344,7 @@ const FlowFour = props => {
               Sweats
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -354,7 +354,7 @@ const FlowFour = props => {
               Sore throat or itchy/scratchy throat
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -364,7 +364,7 @@ const FlowFour = props => {
               Nausea or vomiting
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -374,7 +374,7 @@ const FlowFour = props => {
               Runny or stuffy nose
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -384,7 +384,7 @@ const FlowFour = props => {
               Feeling more tired than usual
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -394,7 +394,7 @@ const FlowFour = props => {
               Muscle or body aches
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -404,7 +404,7 @@ const FlowFour = props => {
               Increased trouble with breathing
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -414,7 +414,7 @@ const FlowFour = props => {
               Diarrhea
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -424,7 +424,7 @@ const FlowFour = props => {
               Ear pain/ear discharge
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -434,7 +434,7 @@ const FlowFour = props => {
               Rash
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -515,7 +515,7 @@ const FlowFour = props => {
         <div classname='col-12 selectSymptoms'>
           <div className='row'>
             <p>{props.question11}</p>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <label>
                 <input
                   type='checkbox'
@@ -527,7 +527,7 @@ const FlowFour = props => {
               </label>
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test2'
@@ -537,7 +537,7 @@ const FlowFour = props => {
               Headache
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <label>
                 <input
                   type='checkbox'
@@ -549,7 +549,7 @@ const FlowFour = props => {
               </label>
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -559,7 +559,7 @@ const FlowFour = props => {
               Chills or shivering
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -569,7 +569,7 @@ const FlowFour = props => {
               Sweats
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -579,7 +579,7 @@ const FlowFour = props => {
               Sore throat or itchy/scratchy throat
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -589,7 +589,7 @@ const FlowFour = props => {
               Nausea or vomiting
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -599,7 +599,7 @@ const FlowFour = props => {
               Runny or stuffy nose
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -609,7 +609,7 @@ const FlowFour = props => {
               Feeling more tired than usual
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -619,7 +619,7 @@ const FlowFour = props => {
               Muscle or body aches
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -629,7 +629,7 @@ const FlowFour = props => {
               Increased trouble with breathing
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -639,7 +639,7 @@ const FlowFour = props => {
               Diarrhea
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -649,7 +649,7 @@ const FlowFour = props => {
               Ear pain/ear discharge
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
@@ -659,7 +659,7 @@ const FlowFour = props => {
               Rash
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
               <input
                 type='checkbox'
                 name='test3'
