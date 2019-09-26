@@ -43,7 +43,6 @@ app.use(cookieParser())
 app.use('/dist', express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', indexRouter)
 app.use('/science', scienceRouter)
 app.use('/current', currentRouter)
 app.use('/faq', faqRouter)
@@ -52,9 +51,8 @@ app.use('/schools', schoolsRouter)
 app.use('/results', resultsRouter)
 app.use('/privacy', privacyRouter)
 app.use('/kiosks', kiosksRouter)
-
-// app.use('/thank-you', thankyouRouter)
 app.use('/thank-you/:thankyouid', thankyouRouter)
+app.use('/', indexRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
