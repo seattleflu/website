@@ -15,6 +15,11 @@ router.use((req, res, next) => {
     .catch(console.error)
 })
 
+var md = require('markdown-it')({
+  html: true
+})
+var markdownItAttrs = require('markdown-it-attrs')
+
 router.use((req, res, next) => {
   page
     .getPageData('science')
@@ -31,6 +36,7 @@ router.get('/', function (req, res, next) {
   res.render('science', {
     title: 'Science',
     header: 'light',
+    md,
     pageData: req.pageData
   })
 })
