@@ -59,21 +59,21 @@ app.use(function (req, res, next) {
   next(createError(404))
 })
 
-// app.use(function (req, res, next) {
-//   res.status(404).send("Sorry can't find that!")
-// })
-
 // error handler
 app.use(function (err, req, res, next) {
+  console.error(err);
   // set locals, only providing error in development
   res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'production' ? err : {}
-  res.status(404).render('404', { title: '404', header: 'light' })
+  res.locals.error = req.app.get('env') === 'development' ? err : {}
   // render the error page
   res.status(err.status || 500)
-  console.error(err.message);
-  
-  res.render('404', { title: 'Page Not Found', header: 'light' })
+  res.render('error', {
+    title: 'Error',
+    header: 'light',
+    pageData: [
+      {fields: {name: "Error"}}
+    ]
+  })
 })
 
 module.exports = app
