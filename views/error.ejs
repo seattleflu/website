@@ -1,10 +1,13 @@
+<% include ./partials/header %>
 
 
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1><%= message %></h1>
-            <h2><%= error.status %></h2>
+            <h1><%= title %></h1>
+            <p>Whoops, something unexpected happened.  Sorry about that.</p>
+            <hr>
+            <p><%= error.status %> <%= message %></p>
             <pre><%= error.stack %></pre>
         </div>
     </div>

@@ -2,6 +2,23 @@ var express = require('express')
 var router = express.Router()
 
 var page = require('../services/page')
+var site = require('../services/site')
+
+router.use((req, res, next) => {
+  site
+    .getSiteData()
+    .then(siteData => {
+      console.log('Site DATA: ' + JSON.stringify(siteData))
+      req.siteData = siteData.items
+      next()
+    })
+    .catch(console.error)
+})
+
+var md = require('markdown-it')({
+  html: true
+})
+var markdownItAttrs = require('markdown-it-attrs')
 
 router.use((req, res, next) => {
   page
@@ -19,23 +36,9 @@ router.get('/', function (req, res, next) {
   res.render('science', {
     title: 'Science',
     header: 'light',
-    pageData: req.pageData
-  })
-})
-
-router.get('/map', function (req, res, next) {
-  res.render('map', {
-    title: 'Science page map',
-    header: 'light',
-    pageData: req.pageData
-  })
-})
-
-router.get('/tree', function (req, res, next) {
-  res.render('tree', {
-    title: 'Science page tree',
-    header: 'light',
-    pageData: req.pageData
+    md,
+    pageData: req.pageData,
+    siteData: req.siteData
   })
 })
 

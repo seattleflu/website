@@ -1,10 +1,9 @@
 var client = require('./contentful').client
 
-async function getScience () {
+async function getSiteData () {
   try {
     const result = await client.getEntries({
-      content_type: 'science',
-      'fields.title': 'Science'
+      content_type: 'websiteSettings'
     })
     return result
   } catch (error) {
@@ -13,5 +12,5 @@ async function getScience () {
 }
 
 module.exports = {
-  getScience
+  getSiteData
 }

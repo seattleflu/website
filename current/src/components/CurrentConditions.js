@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import React from 'react';
 import styled from 'styled-components';
 import { DateTime } from 'luxon';

@@ -11,24 +11,26 @@ const Select = ({
   handleChange
 }) => (
   <div className='form-group row'>
-    <div className='col-8'>
+    <div className='col-lg-8 col-md-6 col-sm-12'>
       <label htmlFor={label}>{text}</label>
-      <p className='inputDescription'>{description}</p>
+    {description != ''? "<p className='inputDescription'>" + description + "</p>" : null}
     </div>
-    <select
-      type={type}
-      className='form-control col-4'
-      id={id}
-      value={value}
-      onChange={handleChange}
-      required
-    >
-      {options.map(o => (
-        <option key={o.value} value={o.value}>
-          {o.label}
-        </option>
-      ))}
-    </select>
+    <div className='col-lg-4 col-md-6 col-sm-12'>
+      <select
+        type={type}
+        className='form-control'
+        id={id}
+        value={value}
+        onChange={handleChange}
+        required
+      >
+        {options.map(o => (
+          <option key={o.value} value={o.value}>
+            {o.label}
+          </option>
+        ))}
+      </select>
+    </div>
   </div>
 )
 Select.propTypes = {

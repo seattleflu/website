@@ -1,29 +1,50 @@
 {
-  "name": "flu-app",
-  "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
     "lint": "eslint",
-    "dev": "NODE_ENV=production nodemon -e js,ejs ./bin/www",
-    "build": "./bin/build"
+    "dev": "nodemon",
+    "build": "webpack --env production"
   },
   "dependencies": {
+    "@babel/runtime": "^7.6.2",
+    "@babel/runtime-corejs3": "^7.6.2",
     "circular-json": "^0.5.9",
     "contentful": "^7.9.1",
     "cookie-parser": "~1.4.3",
+    "core-js": "^3.2.1",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
-    "express": "~4.16.0",
+    "express": "~4.17.1",
+    "hookrouter": "^1.2.3",
     "http-errors": "~1.6.2",
+    "luxon": "^1.17.2",
     "markdown-it": "^10.0.0",
     "markdown-it-attrs": "^3.0.1",
     "morgan": "~1.9.0",
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.19.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-ga": "^2.6.0",
+    "styled-components": "^4.3.2"
   },
-  "devDependencies": {},
-  "cacheDirectories": [
-    "node_modules",
-    "enroll/node_modules"
-  ]
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "html-loader": "^0.5.5",
+    "immutable": "^4.0.0-rc.12",
+    "prop-types": "^15.7.2",
+    "react-map-gl": "^5.0.10",
+    "svg-url-loader": "^3.0.2",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-middleware": "^3.7.1",
+    "webpack-hot-middleware": "^2.25.0"
+  }
 }

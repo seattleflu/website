@@ -6,21 +6,15 @@ This is the website for [seattleflu.org](https://seattleflu.org).
   - [Season two / 2019–20](#season-two--2019%e2%80%9320)
     - [Starting the server](#starting-the-server)
     - [Development](#development)
-      - [Main application](#main-application)
       - [Routes](#routes)
       - [Views](#views)
       - [Services](#services)
       - [Contentful CMS](#contentful-cms)
         - [Content types](#content-types)
         - [Environment variables](#environment-variables)
-        - [Contentful + React](#contentful--react)
-      - [React applications](#react-applications)
-        - [Starting the server](#starting-the-server-1)
-        - [Building JavaScript bundles](#building-javascript-bundles)
-        - [Adding CSS files](#adding-css-files)
-        - [Adding other files (.svg, .png, etc.)](#adding-other-files-svg-png-etc)
-        - [Babel troubleshooting](#babel-troubleshooting)
-        - [Adding new React applications](#adding-new-react-applications)
+      - [Mapbox](#mapbox)
+      - [CSS](#css)
+      - [Adding new React sub-apps](#adding-new-react-sub-apps)
   - [Season one / 2018–19](#season-one--2018%e2%80%9319)
 
 ## Season two / 2019–20
@@ -32,25 +26,20 @@ This version is being developed as a collaboration between the [Bedford Lab](htt
 
 ### Starting the server
 
-Make sure the dependencies are installed by running `npm run install`.
+Make sure the dependencies are installed by running `npm install`.
 
-Then, start the server with `npm run start`.
-The development server is now running at http://localhost:8080
+Then, start the server with `npm start`.
+The development server is now running at <http://localhost:8080>.
 
 
 ### Development
 
-The Seattle Flu Website is built using [Embedded Javascript Templates](https://ejs.co) and [Express](https://expressjs.com).
+A heterogeneous software stack is used.
 
-The main application is the Seattle Flu Study website.
-It comprises multiple React applications that are added via routes and views.
-These applications can be developed in isolation from the main application (i.e. website) by starting the server within each application's top-level directory.
+The web server (`app.js`) uses [Express](https://expressjs.com) for routing (under `routes/`), renders [Embedded Javascript Templates](https://ejs.co) (under `views/`), and serves static files from `public/`.
 
-
-#### Main application
-
-The code for the `express` server lives at [app.js](./app.js).
-`app.js` starts the app, sets up the engine, mounts middleware to the declared routers, loads static files from provided paths, and declares error handling.
+The client-side JS uses React, with separate "apps" under their own directories (`enroll/`, `current/`, …).
+These are transpiled with Webpack + Babel and bootstrapped by EJS templates which contain the app's container element and a `<script>` tag to load the bundle from `/dist/${name}-bundle.js`.
 
 
 #### Routes
@@ -66,16 +55,14 @@ Views live at `views/` as `.ejs` files.
 These files are only loaded in the main application.
 Views that require JavaScript need two things:
 1. A `div` with an `id` that the JavaScript file will use to manipulate the DOM.
-2. A `script` tag of type `text/javascript` that loads the desired JavaScript bundle from the top-level directory.
-    >Recall: Available static files (like JavaScript bundles) are declared by adding their paths in `app.js`.
+2. A `script` tag of type `text/javascript` that loads the desired JavaScript bundle from the `/dist` directory.
 
 
 #### Services
 
-Middleware lives at `services/`.
+Shared services live under `services/`.
 This is where we are currently defining methods for retrieving data from the Contentful SDK.
 These functions can be imported either by routers or within React apps.
-> See: [Contentful + React](#contentful--react)
 
 
 #### Contentful CMS
@@ -102,132 +89,79 @@ The access token and space id are not secrets as the Content Delivery API provid
 This assessment is backed up by [Contentful's official position](https://www.contentfulcommunity.com/t/should-i-keep-access-tokens-secret/457/3).
 
 
-#### React applications
+#### CSS
 
-Smaller React applications live within this repository.
-They are named after the web page they represent (e.g. `enroll`).
-They consist of an `index.html` file under `src/` which is only visible to the React application.
+Global CSS files should be added to `public/stylesheets/` and included with a `<link>` tag in the EJS template under `views/`, e.g.
 
->Recall: The main application instead renders a view of the React application from a bundled JavaScript file.
-
-##### Starting the server
-
-Make sure the dependencies are installed by running `npm run install`.
-
-Then, start the server with `npm run start`.
-The development server is now running at http://localhost:8080
+```html
+<link rel="stylesheet" type="text/css" href="/stylesheets/my-component.css">
+```
 
 
-##### Building JavaScript bundles
+#### Mapbox
 
-Make sure the dependencies are installed by running `npm run install`.
+The website includes two maps found at `/current` and `/science`.
+We produce these maps within React using [react-map-gl](https://uber.github.io/react-map-gl/), a wrapper for [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/api/).
 
-Then, run webpack with `npm run build`.
-The bundled React application now lives at `dist/`.
-
-
-##### Adding CSS files
-
-There are two primary ways to add CSS to your React app.
-
-1. **Import CSS from the bundled files.**
-
-    In this option, create a CSS file in `./dist/css` named after your app, for example:
-
-        cd my-component/dist
-        mkdir css
-        touch css/my-component.css
-        cd ..
-
-    Then, **outside** of the `dist/` directory, add the following code to `index.html` to include a link to the newly created CSS file.
-
-    ```html
-        <link rel="stylesheet" type="text/css" href="/dist/css/my-component.css">
-    ```
-
-    Finally, you must provide the main website `app.js` the path to your new, static CSS file by adding the following line to `app.js`:
-
-    ```js
-        app.use(express.static(path.join(__dirname, 'my-component/dist/css')))
-    ```
-
-2. **Import CSS in your React app (JSX) file.**
-
-    This option requires some Webpack configuration.
-    It is particularly useful if you are importing CSS file from external modules.
-
-    Import the desired CSS file into your React app as normal.
-    Then, run:
-
-        npm install --save-dev css-loader
-
-    Next, add the following code to `./webpack.config.js` under `module.rules`:
-
-    ```js
-            { test: /\.css$/, use: 'css-loader' },
-    ```
+The `<MapboxGL>` component from `react-map-gl` takes a fairly complicated [map style object](https://docs.mapbox.com/mapbox-gl-js/style-spec/) which controls most of the map's appearance.
+We store the map style object in our components' local state so it can be dynamic.
+Because of its deeply nested nature, it would be easy to accidentally write code that shared object references between copies of the state.
+This could lead to subtle in-place mutations which would introduced hard-to-diagnose bugs.
+By using [Immutable](https://immutable-js.github.io/immutable-js/docs/#/) objects, we not only prevent this kind of bug, but we also get handy methods that make deep updates easier.
 
 
-##### Adding other files (.svg, .png, etc.)
-
-By default, `babel-loader` and `html-loader` are already included in the Webpcak config file.
-If you need additional file loaders, search for Webpack file loaders such as [file-loader](https://webpack.js.org/loaders/file-loader/) or [svg-url-loader](https://www.npmjs.com/package/svg-url-loader) to see if they fit your needs.
-Install them following example #2 in [Adding CSS files](#adding-css-files).
-
-
-##### Babel troubleshooting
-
-If your app is throwing an error in the console saying...
-*  `Add @babel/plugin-proposal-class-properties to the 'plugins' section of your Babel config...`, run:
-
-        npm install --save-dev @babel/plugin-proposal-class-properties
-
-    Now add the following line to `./.babelrc`:
-
-        "plugins": ["@babel/plugin-proposal-class-properties"],
-
-* `ReferenceError: regeneratorRuntime is not defined`, then add the following line to the top of the culprit React (JSX) file:
-
-    ```js
-        import "babel-polyfill";
-    ```
-
-
-##### Adding new React sub-applications
+#### Adding new React sub-apps
 
 Adding new React sub-applications to the main website is a fairly involved process with many moving pieces. However, this guide should help you through, step-by-step!
-1. At the top level of this repo, copy `template-react-app/` and name your desired webpage.
+1. Create a new directory tree at the top level of this repo named after the name of the new page.
    For example, if we want our new page on the website to be named `my-component`, we run
 
-        cp -r template-react-app/ my-component
+        mkdir -p my-component/src/
         cd my-component/
 
-2. Inside the newly created `my-component/` directory, open up the `webpack.config.js` file.
-   Near the top of the file, you should see an `output` key that looks like this:
+2. Open up `src/index.js` and add the following code:
 
-        output: {
-            filename: 'js/template-bundle.js'
-        },
+    ```js
+    import React from 'react'
+    import ReactDOM from 'react-dom'
+ 
+    const App = () => {
+      return (
+        <div className='template-react-app'>
+          <p>
+            I am a template React app.
+            <br />
+            Edit me at <code>./src/index.js</code>.
+          </p>
+        </div>
+      )
+    }
+    export default App
+    const wrapper = document.getElementById('target-dom-element')
+    wrapper ? ReactDOM.render(<App />, wrapper) : false
+    ```
 
-    Rename `template-bundle.js` to a uniquely appropriate name for your new web page.
-    Following our `my-component` example, we replace `template-bundle` in the filename with `my-component-bundle`.
-    > Note: it's important to keep the `js/` prefix on your new bundle file name!
-
-3. Open up `src/index.js`.
    This is your main React component (currently named `App`).
    Feel free to import components from external files here and develop with React as normal.
 
    Find the following code near the bottom of your `App` React component:
 
     ```js
-        const wrapper = document.getElementById('target-dom-element')
+    const wrapper = document.getElementById('target-dom-element')
     ```
 
-    Replace the element id `target-dom-element` with the name of your component.
-    This id must match the id you use in the next step, or the JavaScript will not load on the web page.
+   Replace the element id `target-dom-element` with the name of your component.
+   This id must match the id you use in the next step, or the JavaScript will not load on the web page.
 
-4. Move back to the top-level of the repo.
-   Create a new file under the `views/` directory, following the same naming convention we've employed so far.
+3. Move back to the top-level of the repo.
+   Open up `webpack.config.js` and find the `const entrypoints` declaration.
+   Add a new key-value pair to it for your new React app:
+
+    ```js
+    "my-component": ['./my-component/src/index.js', ...devSource],
+    ```
+
+4. Create a new file under the `views/` directory, following the same naming convention we've employed so far.
 
         touch views/my-component.ejs
 
@@ -247,14 +181,14 @@ Adding new React sub-applications to the main website is a fairly involved proce
             </div>
         </div>
 
-        <script type="text/javascript" src="/my-component-bundle.js"></script>
+        <script type="text/javascript" src="/dist/my-component-bundle.js"></script>
 
         <% include ./partials/footer  %>
     ```
 
     There are two parts working together in this code that load your React app.
     1. `<div id="target-dom-element">` is the target element expected by your React app's `src/index.js` file, which you adjusted in the previous step. This is the element in which your app will render.
-    2. The `<script>` tag near the bottom of the file specifies which JavaScript bundle will be loaded from your React app's `dist/js/` directory.
+    2. The `<script>` tag near the bottom of the file specifies which JavaScript bundle will be loaded from the top-level `dist/` directory.
 
 5. Create a new file under `routes/`, following the convention of naming the newly created file after the desired path to your new webpage.
 
@@ -282,12 +216,6 @@ Adding new React sub-applications to the main website is a fairly involved proce
         var myComponentRouter = require('./routes/my-component')
     ```
 
-   Then add a path to the static, bundled JavaScript files.
-
-    ```js
-        app.use(express.static(path.join(__dirname, 'my-component/dist/js')))
-    ```
-
    After that, add a new path to your new webpage with `app.use()`.
 
     ```js
@@ -296,7 +224,6 @@ Adding new React sub-applications to the main website is a fairly involved proce
 
 7. You're done! From the top-level directory, run
 
-        npm run build
         npm start
 
    and then open up <http://localhost:8080/my-component>.

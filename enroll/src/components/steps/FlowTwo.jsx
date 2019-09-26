@@ -18,6 +18,9 @@ const FlowTwo = props => {
     setHowlongValue(event.target.value)
     if (question != 0) {
       setQuestion(0)
+      setconnectedValue()
+      setConditionsValue('')
+      setSymptopmsList([])
     }
     if (event.target.value == 'lessThan72') {
       setQuestion(1)
@@ -75,7 +78,7 @@ const FlowTwo = props => {
     setDeviceValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(4)
-    } else {
+    } else{
       setQuestion(question + 1)
     }
   }
@@ -84,7 +87,7 @@ const FlowTwo = props => {
     event.preventDefault()
     if (question == 0) {
       if (howlongValue == 'lessThan72') {
-        setQuestion(question + 1)
+        setQuestion(1)
       } else if (howlongValue == 'moreThanandlessthan') {
         setQuestion(7)
       } else {
@@ -92,7 +95,9 @@ const FlowTwo = props => {
       }
     }
     if (question == 1) {
-      if (
+      if(symptomsList.length <= 1){
+        props.handleNextError(props.bouncePage11)
+      }else if (
         symptomsList.length <= 2 &&
         (symptomsList.includes('Chills or shivering') ||
           symptomsList.includes('Sweats'))
@@ -112,42 +117,50 @@ const FlowTwo = props => {
     if (question == 2) {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
-      } else {
-        setQuestion(2)
+      } else if (connectedValue == 'yes'){
+        setQuestion(3)
+      }else{
+
       }
     }
     if (question == 3) {
       if (conditionsValue == 'yes') {
         props.handleNextError(props.bouncePage13)
-      } else {
-        // props.handleNext(3)
-        // props.handleNextError(props.fluStudyPage13)
+      } else if (conditionsValue == 'no'){
         props.handleStudy(props.fluStudyPage13)
+      }else{
+
       }
     }
     if (question == 4) {
       if (deviceValue == 'no') {
         setQuestion(question + 1)
-      } else {
+      } else if(deviceValue == 'yes'){
         props.handleNextError(props.bouncePage16)
       }
     }
     if (question == 5) {
       if (deviceValue == 'no') {
         props.handleNextError(props.bouncePage16)
-      } else {
+      } else if(deviceValue == 'yes') {
         setQuestion(question + 1)
+      }else{
+
       }
     }
     if (question == 6) {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage13)
-      } else {
+      } else if(conditionsValue == 'yes'){
         props.handleNextError(props.bouncePage13)
+      }else{
+
       }
     }
     if (question == 7) {
-      if (
+      if(symptomsList.length <= 1){
+        props.handleNextError(props.bouncePage11)
+      }else if (
         symptomsList.length <= 2 &&
         (symptomsList.includes('Chills or shivering') ||
           symptomsList.includes('Sweats'))
@@ -167,16 +180,19 @@ const FlowTwo = props => {
     if (question == 8) {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
-      } else {
+      } else if(connectedValue == 'yes') {
         setQuestion(question + 1)
+      }else{
+
       }
     }
     if (question == 9) {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage13)
-      } else {
-        // props.handleNextError(props.fluStudyPage3)
+      } else if(conditionsValue == 'yes'){
         props.handleNextError(props.bouncePage13)
+      }else{
+
       }
     }
   }
@@ -192,14 +208,16 @@ const FlowTwo = props => {
   }
 
   function addSymptomOne (event) {
-    if (question != 1 && question < 7) {
+    if (question >= 1 && question < 7) {
       setQuestion(1)
       setconnectedValue('')
       setConditionsValue('')
-    } else {
+    } else if(question > 7){
       setQuestion(7)
       setconnectedValue('')
       setConditionsValue('')
+    }else{
+      //setQuestion(1)
     }
     const array = [...symptomsList]
 
@@ -226,37 +244,7 @@ const FlowTwo = props => {
     }
   }
 
-  // function addSymptomTwo (event) {
-  //   if (question != 7) {
-  //     setQuestion(7)
-  //     setconnectedValue('')
-  //     setConditionsValue('')
-  //   }
-  //   const array = [...symptomsList]
-
-  //   var index = array.indexOf(event.target.value)
-  //   var noneOfTheAbove = array.indexOf('None of the above')
-  //   console.log(array.indexOf('None of the above'))
-
-  //   if (noneOfTheAbove == 0) {
-  //     array.splice(array[noneOfTheAbove], 1)
-  //     document.querySelectorAll('input[type=checkbox]').forEach(el => {
-  //       if (el.value == 'None of the above') {
-  //         el.checked = false
-  //       } else {
-  //       }
-  //     })
-  //   }
-
-  //   if (index != -1) {
-  //     array.splice(index, 1)
-  //     setSymptopmsList(array)
-  //   } else {
-  //     setSymptopmsList([...symptomsList, event.target.value])
-  //     console.log(symptomsList)
-  //   }
-  // }
-
+  
   const options = [
     { value: 'none', label: '' },
     { value: 'lessThan72', label: 'Less than 72 hours' },
@@ -289,134 +277,128 @@ const FlowTwo = props => {
       ) : null}
 
       {question >= 1 && question < 7 ? (
-        <div classname='col-12 selectSymptoms'>
+        <div className='col-12 selectSymptoms'>
           <div className='row'>
-            <div className='col-12'>
-              <p>{props.question11}</p>
-              <div className='symptom col-4'>
-                <label>
-                  <input
-                    type='checkbox'
-                    name='test1'
-                    value='Feeling Feverish'
-                    onChange={addSymptomOne}
-                  />
-                  Feeling Feverish
-                </label>
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test2'
-                  value='Headache'
-                  onChange={addSymptomOne}
-                />
-                Headache
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <label>
-                  <input
-                    type='checkbox'
-                    name='test3'
-                    value='Cough'
-                    onChange={addSymptomOne}
-                  />
-                  Cough
-                </label>
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Chills or shivering'
-                  onChange={addSymptomOne}
-                />
-                Chills or shivering
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Sweats'
-                  onChange={addSymptomOne}
-                />
-                Sweats
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Sore throat or itchy/scratchy throat'
-                  onChange={addSymptomOne}
-                />
-                Sore throat or itchy/scratchy throat
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Nausea or vomiting'
-                  onChange={addSymptomOne}
-                />
-                Nausea or vomiting
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Runny or stuffy nose'
-                  onChange={addSymptomOne}
-                />
-                Runny or stuffy nose
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Feeling more tired than usual'
-                  onChange={addSymptomOne}
-                />
-                Feeling more tired than usual
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Muscle or body aches'
-                  onChange={addSymptomOne}
-                />
-                Muscle or body aches
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='Increased trouble with breathing'
-                  onChange={addSymptomOne}
-                />
-                Increased trouble with breathing
-                <br />
-              </div>
-              <div className='symptom col-4'>
-                <input
-                  type='checkbox'
-                  name='test3'
-                  value='None of the above'
-                  onChange={addSymptomRemove}
-                />
-                None of the above
-                <br />
-              </div>
+            <p>{props.question11}</p>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='FeelingFeverish1'
+                value='Feeling Feverish'
+                onChange={addSymptomOne}
+              />
+              Feeling Feverish
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='Headache1'
+                value='Headache'
+                onChange={addSymptomOne}
+              />
+              Headache
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='Cough1'
+                value='Cough'
+                onChange={addSymptomOne}
+              />
+              Cough
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='ChillsOrShivering1'
+                value='Chills or shivering'
+                onChange={addSymptomOne}
+              />
+              Chills or shivering
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='Sweats'
+                value='Sweats'
+                onChange={addSymptomOne}
+              />
+              Sweats
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='SoreThroatOrItchyScratchyThroat1'
+                value='Sore throat or itchy/scratchy throat'
+                onChange={addSymptomOne}
+              />
+              Sore throat or itchy/scratchy throat
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='NauseaOrVomiting1'
+                value='Nausea or vomiting'
+                onChange={addSymptomOne}
+              />
+              Nausea or vomiting
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='RunnyOrStuffyNose1'
+                value='Runny or stuffy nose'
+                onChange={addSymptomOne}
+              />
+              Runny or stuffy nose
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='FeelingMoreTiredThanUsual1'
+                value='Feeling more tired than usual'
+                onChange={addSymptomOne}
+              />
+              Feeling more tired than usual
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='MuscleOrBodyAches1'
+                value='Muscle or body aches'
+                onChange={addSymptomOne}
+              />
+              Muscle or body aches
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='IncreasedTroubleWithBreathing1'
+                value='Increased trouble with breathing'
+                onChange={addSymptomOne}
+              />
+              Increased trouble with breathing
+              <br />
+            </div>
+            <div className='symptom col-md-6 col-lg-4'>
+              <input
+                type='checkbox'
+                name='NoneOfTheAbove1'
+                value='None of the above'
+                onChange={addSymptomRemove}
+              />
+              None of the above
+              <br />
             </div>
           </div>
         </div>
@@ -437,7 +419,7 @@ const FlowTwo = props => {
       {question >= 3 && question < 4 ? (
         <Switch
           text={props.question13}
-          description={props.conditions}
+          description={props.conditions13}
           label='conditions'
           type='select'
           id='conditions'
@@ -475,7 +457,7 @@ const FlowTwo = props => {
       {question >= 6 && question < 7 ? (
         <Switch
           text={props.question13}
-          description={props.conditions}
+          description={props.conditions13}
           label='conditions'
           type='select'
           id='conditions'
@@ -486,26 +468,25 @@ const FlowTwo = props => {
       ) : null}
 
       {question >= 7 ? (
-        <div classname='col-12 selectSymptoms'>
+        <div className='col-12 selectSymptoms'>
           <div className='row'>
-            <div className='col-12'>
               <p>{props.question11}</p>
               <div className='symptom col-4'>
-                <label>
+                
                   <input
                     type='checkbox'
-                    name='test1'
+                    name='FeelingFeverish2'
                     value='Feeling Feverish'
                     onChange={addSymptomOne}
                   />
                   Feeling Feverish
-                </label>
+                
                 <br />
               </div>
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test2'
+                  name='Headache2'
                   value='Headache'
                   onChange={addSymptomOne}
                 />
@@ -513,21 +494,21 @@ const FlowTwo = props => {
                 <br />
               </div>
               <div className='symptom col-4'>
-                <label>
+                
                   <input
                     type='checkbox'
-                    name='test3'
+                    name='Cough2'
                     value='Cough'
                     onChange={addSymptomOne}
                   />
                   Cough
-                </label>
+                
                 <br />
               </div>
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='ChillsOrShivering2'
                   value='Chills or shivering'
                   onChange={addSymptomOne}
                 />
@@ -537,7 +518,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='Sweats2'
                   value='Sweats'
                   onChange={addSymptomOne}
                 />
@@ -547,7 +528,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='SoreThroatOrItchyScratchyThroat2'
                   value='Sore throat or itchy/scratchy throat'
                   onChange={addSymptomOne}
                 />
@@ -557,7 +538,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='NauseaOrVomiting2'
                   value='Nausea or vomiting'
                   onChange={addSymptomOne}
                 />
@@ -567,7 +548,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='RunnyOrStuffyNose2'
                   value='Runny or stuffy nose'
                   onChange={addSymptomOne}
                 />
@@ -577,7 +558,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='FeelingMoreTiredThanUsual2'
                   value='Feeling more tired than usual'
                   onChange={addSymptomOne}
                 />
@@ -587,7 +568,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='MuscleOrBodyAches2'
                   value='Muscle or body aches'
                   onChange={addSymptomOne}
                 />
@@ -597,7 +578,7 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='IncreasedTroubleWithBreathing2'
                   value='Increased trouble with breathing'
                   onChange={addSymptomOne}
                 />
@@ -607,14 +588,13 @@ const FlowTwo = props => {
               <div className='symptom col-4'>
                 <input
                   type='checkbox'
-                  name='test3'
+                  name='NoneOfTheAbove2'
                   value='None of the above'
                   onChange={addSymptomRemove}
                 />
                 None of the above
                 <br />
               </div>
-            </div>
           </div>
         </div>
       ) : null}
@@ -635,7 +615,7 @@ const FlowTwo = props => {
       {question >= 9 ? (
         <Switch
           text={props.question13}
-          description={props.conditions}
+          description={props.conditions13}
           label='conditions'
           type='select'
           id='conditions'
@@ -646,7 +626,7 @@ const FlowTwo = props => {
       ) : null}
 
       <button
-        className='btn btn-primary float-left next'
+        className='btn btn-primary float-right next'
         type='submit'
         onClick={handleNext}
       >

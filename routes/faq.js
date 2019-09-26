@@ -3,6 +3,22 @@ var router = express.Router()
 var faq = require('../services/faq')
 
 var page = require('../services/page')
+var site = require('../services/site')
+var md = require('markdown-it')({
+  html: true
+})
+var markdownItAttrs = require('markdown-it-attrs')
+
+router.use((req, res, next) => {
+  site
+    .getSiteData()
+    .then(siteData => {
+      console.log('Site DATA: ' + JSON.stringify(siteData))
+      req.siteData = siteData.items
+      next()
+    })
+    .catch(console.error)
+})
 
 router.use((req, res, next) => {
   page
@@ -31,7 +47,9 @@ router.get('/', function (req, res, next) {
     title: 'Seattle Flu Study FAQ',
     faqData: req.faqData,
     pageData: req.pageData,
-    header: 'light'
+    siteData: req.siteData,
+    header: 'light',
+    md: md
   })
 })
 
