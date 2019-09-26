@@ -19,6 +19,9 @@ form > .col-12 {
     font-size: 14px !important;
     font-style: italic;
 }
+.inputDescription:empty {
+    display: none;
+}
 .buttonWrapper{
     border:2px solid#0A5CA8;
     display: inline-block;
