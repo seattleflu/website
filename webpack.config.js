@@ -6,6 +6,7 @@
 
 const path = require("path");
 const webpack = require("webpack");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = (env) => {
   const production = env === "production";
@@ -96,6 +97,7 @@ module.exports = (env) => {
       ]
     },
     plugins: [
+      new CleanWebpackPlugin(),
       ...devPlugins,
     ]
   }
