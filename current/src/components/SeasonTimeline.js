@@ -127,7 +127,8 @@ export default class SeasonTimeline extends React.Component {
                   y={-iconDimensions / 2}
                   x={-iconDimensions / 2}
                   width={iconDimensions}
-                  height={iconDimensions} />
+                  height={iconDimensions}
+                  style={{opacity: 0.9}} />
           </Spin>
         </g>
 
