@@ -474,7 +474,7 @@ const FlowTwo = props => {
             <div className='col-12'>
               <p>{props.question11}</p>
               <div className='symptom col-4'>
-                <label>
+                
                   <input
                     type='checkbox'
                     name='FeelingFeverish2'
@@ -482,7 +482,7 @@ const FlowTwo = props => {
                     onChange={addSymptomOne}
                   />
                   Feeling Feverish
-                </label>
+                
                 <br />
               </div>
               <div className='symptom col-4'>
@@ -496,7 +496,7 @@ const FlowTwo = props => {
                 <br />
               </div>
               <div className='symptom col-4'>
-                <label>
+                
                   <input
                     type='checkbox'
                     name='Cough2'
@@ -504,7 +504,7 @@ const FlowTwo = props => {
                     onChange={addSymptomOne}
                   />
                   Cough
-                </label>
+                
                 <br />
               </div>
               <div className='symptom col-4'>

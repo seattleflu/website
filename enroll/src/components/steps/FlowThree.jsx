@@ -277,7 +277,7 @@ const FlowThree = props => {
           <div className='row'>
             <p>{props.question18}</p>
             <div className='symptom col-md-6 col-lg-4'>
-              <label>
+              
                 <input
                   type='checkbox'
                   name='test1'
@@ -285,7 +285,7 @@ const FlowThree = props => {
                   onChange={addSymptomOne}
                 />
                 Feeling Feverish
-              </label>
+              
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
@@ -299,7 +299,7 @@ const FlowThree = props => {
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
-              <label>
+              
                 <input
                   type='checkbox'
                   name='test3'
@@ -307,7 +307,7 @@ const FlowThree = props => {
                   onChange={addSymptomOne}
                 />
                 Cough
-              </label>
+              
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
@@ -472,7 +472,6 @@ const FlowThree = props => {
           <div className='row'>
             <p>{props.question18}</p>
             <div className='symptom col-md-6 col-lg-4'>
-              <label>
                 <input
                   type='checkbox'
                   name='test1'
@@ -480,7 +479,6 @@ const FlowThree = props => {
                   onChange={addSymptomOne}
                 />
                 Feeling Feverish
-              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
@@ -494,7 +492,6 @@ const FlowThree = props => {
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
-              <label>
                 <input
                   type='checkbox'
                   name='test3'
@@ -502,7 +499,6 @@ const FlowThree = props => {
                   onChange={addSymptomOne}
                 />
                 Cough
-              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
