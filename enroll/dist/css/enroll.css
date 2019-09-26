@@ -16,7 +16,8 @@ form > .col-12 {
     padding-left: 0 !important;
 }
 .inputDescription{
-    font-size: 10px;
+    font-size: 14px !important;
+    font-style: italic;
 }
 .buttonWrapper{
     border:2px solid#0A5CA8;
@@ -83,6 +84,9 @@ form > .col-12 {
 .selectSymptoms p{
     font-family: "Roboto Condensed";	
     font-size: 16px;
+}
+.selectSymptoms .row > p {
+    width: 100%;
 }
 .symptom{
     widows: 33% !important;
