@@ -46,10 +46,13 @@ export default class CurrentConditions extends React.Component {
         <SeasonTimeline currentMonth={currentMonth} />
 
         <p>
-          The map below shows confirmed flu cases this week from across Seattle.
-          Hold the left mouse button to drag and pan the map.
+          The map below shows the relative intensity of common respiratory infections this week from across the Seattle region.
+        </p>
+
+        <p>
+          To explore more, hold the left mouse button and move the mouse to drag and pan the map.
           Hold the right mouse button to rotate and pitch the map.
-          Use the mouse wheel to zoom in and out.
+          Use the mouse wheel to zoom in and out to reveal smaller and larger regions.
         </p>
 
         <FluMap/>
