@@ -75,7 +75,7 @@ const FlowTwo = props => {
     setDeviceValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(4)
-    } else {
+    } else{
       setQuestion(question + 1)
     }
   }
@@ -114,38 +114,44 @@ const FlowTwo = props => {
     if (question == 2) {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
-      } else {
+      } else if (connectedValue == 'yes'){
         setQuestion(3)
+      }else{
+
       }
     }
     if (question == 3) {
       if (conditionsValue == 'yes') {
         props.handleNextError(props.bouncePage13)
-      } else {
-        // props.handleNext(3)
-        // props.handleNextError(props.fluStudyPage13)
+      } else if (conditionsValue == 'no'){
         props.handleStudy(props.fluStudyPage13)
+      }else{
+
       }
     }
     if (question == 4) {
       if (deviceValue == 'no') {
         setQuestion(question + 1)
-      } else {
+      } else if(deviceValue == 'yes'){
         props.handleNextError(props.bouncePage16)
       }
     }
     if (question == 5) {
       if (deviceValue == 'no') {
         props.handleNextError(props.bouncePage16)
-      } else {
+      } else if(deviceValue == 'yes') {
         setQuestion(question + 1)
+      }else{
+
       }
     }
     if (question == 6) {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage13)
-      } else {
+      } else if(conditionsValue == 'yes'){
         props.handleNextError(props.bouncePage13)
+      }else{
+
       }
     }
     if (question == 7) {
@@ -171,16 +177,20 @@ const FlowTwo = props => {
     if (question == 8) {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
-      } else {
+      } else if(connectedValue == 'yes') {
         setQuestion(question + 1)
+      }else{
+
       }
     }
     if (question == 9) {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage13)
-      } else {
+      } else if(conditionsValue == 'yes'){
         // props.handleNextError(props.fluStudyPage3)
         props.handleNextError(props.bouncePage13)
+      }else{
+
       }
     }
   }

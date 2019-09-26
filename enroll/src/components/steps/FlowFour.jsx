@@ -109,36 +109,46 @@ const FlowFour = props => {
     if (question == 2) {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
-      } else {
+      } else if (connectedValue == 'yes') {
         setQuestion(2)
+      }else{
+
       }
     }
     if (question == 3) {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage17)
-      } else {
+      } else if (conditionsValue == 'yes'){
         props.handleNextError(props.bouncePage17)
+      }else{
+
       }
     }
     if (question == 4) {
       if (deviceValue == 'no') {
         setQuestion(question + 1)
-      } else {
+      } else if (deviceValue == 'yes'){
         props.handleNextError(props.bouncePage12)
+      }else{
+
       }
     }
     if (question == 5) {
       if (deviceValue == 'no') {
         props.handleNextError(props.bouncePage12)
-      } else {
+      } else if (deviceValue == 'yes'){
         setQuestion(question + 1)
+      }else{
+
       }
     }
     if (question == 6) {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage17)
-      } else {
+      } else if (conditionsValue == 'yes'){
         props.handleNextError(props.bouneePage17)
+      }else{
+
       }
     }
 
@@ -164,15 +174,19 @@ const FlowFour = props => {
     if (question == 8) {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
-      } else {
+      } else if (connectedValue == 'yes'){
         setQuestion(question + 1)
+      }else{
+
       }
     }
     if (question == 9) {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage17)
-      } else {
+      } else if (conditionsValue == 'yes'){
         props.handleNextError(props.bouncePage17)
+      }else{
+        
       }
     }
   }

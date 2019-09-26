@@ -109,36 +109,46 @@ const FlowThree = props => {
     if (question == 2) {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
-      } else {
+      } else if(connectedValue == 'yes'){
         setQuestion(2)
+      }else{
+
       }
     }
     if (question == 3) {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage17)
-      } else {
+      } else if (conditionsValue == 'yes'){
         props.handleNextError(props.bouncePage17)
+      }else{
+
       }
     }
     if (question == 4) {
       if (deviceValue == 'no') {
         setQuestion(question + 1)
-      } else {
+      } else if (deviceValue == 'yes'){
         props.handleNextError(props.bouncePage12)
+      }else{
+
       }
     }
     if (question == 5) {
       if (deviceValue == 'no') {
         props.handleNextError(props.bouncePage12)
-      } else {
+      } else if (deviceValue == 'yes'){
         setQuestion(question + 1)
+      }else{
+
       }
     }
     if (question == 6) {
       if (conditionsValue == 'no') {
         props.handleNextError(props.bouneePage17)
-      } else {
+      } else if (conditionsValue == 'yes'){
         props.handleStudy(props.fluStudyPage17)
+      }else{
+
       }
     }
 
@@ -164,15 +174,19 @@ const FlowThree = props => {
     if (question == 8) {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
-      } else {
+      } else if (connectedValue == 'yes'){
         setQuestion(question + 1)
+      }else{
+
       }
     }
     if (question == 9) {
       if (conditionsValue == 'no') {
         props.handleStudy(props.fluStudyPage17)
-      } else {
+      } else if (conditionsValue == 'yes'){
         props.handleNextError(props.bouncePage17)
+      }else{
+
       }
     }
   }
@@ -223,44 +237,6 @@ const FlowThree = props => {
     }
   }
 
-  // function addSymptomTwo (event) {
-  //   if (question != 7) {
-  //     setQuestion(7)
-  //     setSymptopmsList([])
-  //     setconnectedValue('')
-  //     setConditionsValue('')
-  //   }
-  //   const array = [...symptomsList]
-
-  //   var index = array.indexOf(event.target.value)
-  //   var noneOfTheAbove = array.indexOf('None of the above')
-
-  //   if (noneOfTheAbove == 0) {
-  //     array.splice(array[noneOfTheAbove], 1)
-  //     document.querySelectorAll('input[type=checkbox]').forEach(el => {
-  //       if (el.value == 'None of the above') {
-  //         el.checked = false
-  //       } else {
-  //       }
-  //     })
-  //   }
-
-  //   if (index != -1) {
-  //     array.splice(index, 1)
-  //     setSymptopmsList(array)
-  //   } else {
-  //     setSymptopmsList([...symptomsList, event.target.value])
-  //     console.log(symptomsList)
-  //   }
-
-  //   if (index != -1) {
-  //     array.splice(index, 1)
-  //     setSymptopmsList(array)
-  //   } else {
-  //     setSymptopmsList([array, event.target.value])
-  //     console.log(symptomsList)
-  //   }
-  // }
 
   const options = [
     { value: 'none', label: '' },

@@ -54,15 +54,19 @@ const FlowOne = props => {
     if (question == 2) {
       if (havePhone == 'yes') {
         setQuestion(4)
-      } else {
+      } else if(havePhone == 'no'){
         props.handleNextError(props.bouncePage5)
+      }else{
+
       }
     }
     if (question == 3) {
       if (moreThanThree == 'yes') {
         setQuestion(3)
-      } else {
+      } else if(moreThanThree == 'no'){
         props.handleNextError(props.bouncePage4)
+      }else{
+
       }
     }
     if (question == 4) {
@@ -70,27 +74,30 @@ const FlowOne = props => {
         props.handleStudy(props.fluStudyPage6)
       }else if(under18 == 'yes' != "schools"){
         setQuestion(5)
-      } else {
+      } else if(under18 == 'no'){
         props.handleNextError(props.bouncePage6)
+      }else{
+
       }
     }
     if (question == 5) {
       if (conditions == 'yes') {
         setQuestion(6)
-      } else {
+      } else if(conditions == 'no'){
         console.log("test if clicked" + props.fluStudyPage7)
         props.handleStudy(props.fluStudyPage7)
+      }else{
+
       }
     }
 
     if (question == 6) {
       if (pills == 'no') {
-        // props.handleNext(2)
-        // props.handleNextError(props.bouncepage8)
         props.handleStudy(props.bouncePage8)
-      } else {
-        console.log('YES: ' + props.fluStudyPage8)
+      } else if(pills == 'yes'){
         props.handleStudy(props.fluStudyPage8)
+      }else{
+        
       }
     }
   }
