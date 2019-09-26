@@ -37,7 +37,8 @@ router.get('/', function (req, res, next) {
     title: 'Science',
     header: 'light',
     md,
-    pageData: req.pageData
+    pageData: req.pageData,
+    siteData: req.siteData
   })
 })
 
