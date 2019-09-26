@@ -18,6 +18,9 @@ const FlowThree = props => {
     setHowlongValue(event.target.value)
     if (question != 0) {
       setQuestion(0)
+      setconnectedValue()
+      setConditionsValue('')
+      setSymptopmsList([])
     }
     if (event.target.value == 'lessThan72') {
       setQuestion(1)

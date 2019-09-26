@@ -18,6 +18,9 @@ const FlowFour = props => {
     setHowlongValue(event.target.value)
     if (question != 0) {
       setQuestion(0)
+      setconnectedValue()
+      setConditionsValue('')
+      setSymptopmsList([])
     }
     if (event.target.value == 'lessThan72') {
       setQuestion(1)
@@ -186,7 +189,7 @@ const FlowFour = props => {
       } else if (conditionsValue == 'yes'){
         props.handleNextError(props.bouncePage17)
       }else{
-        
+
       }
     }
   }
@@ -202,7 +205,6 @@ const FlowFour = props => {
   }
   function addSymptomOne (event) {
     if (question > 1 && question < 7) {
-      console.log("test")
       setQuestion(1)
       setconnectedValue('')
       setConditionsValue('')
@@ -238,36 +240,6 @@ const FlowFour = props => {
     }
   }
 
-  // function addSymptomTwo (event) {
-  //   if (question != 7) {
-  //     setQuestion(7)
-  //     setconnectedValue('')
-  //     setConditionsValue('')
-  //   }
-  //   const array = [...symptomsList]
-
-  //   var index = array.indexOf(event.target.value)
-  //   var noneOfTheAbove = array.indexOf('None of the above')
-  //   console.log(array.indexOf('None of the above'))
-
-  //   if (noneOfTheAbove == 0) {
-  //     array.splice(array[noneOfTheAbove], 1)
-  //     document.querySelectorAll('input[type=checkbox]').forEach(el => {
-  //       if (el.value == 'None of the above') {
-  //         el.checked = false
-  //       } else {
-  //       }
-  //     })
-  //   }
-
-  //   if (index != -1) {
-  //     array.splice(index, 1)
-  //     setSymptopmsList(array)
-  //   } else {
-  //     setSymptopmsList([array, event.target.value])
-  //     console.log(symptomsList)
-  //   }
-  // }
 
   const options = [
     { value: 'none', label: '' },

@@ -15,11 +15,6 @@ const FlowOne = props => {
   const [pills, setPillsValue] = useState('')
   const [referrer, setReferrerValue] = useState('')
 
-  // 1 setMoreThanThreeValue
-  // 2 setHavePhoneValue
-  // 3 setunder18Value
-  // 4 setConditionsValue
-  // 5 setPillsValue
 
   useEffect(() => {
     setReferrerValue(props.referrerValue)
@@ -97,7 +92,7 @@ const FlowOne = props => {
       } else if(pills == 'yes'){
         props.handleStudy(props.fluStudyPage8)
       }else{
-        
+
       }
     }
   }
