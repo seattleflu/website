@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import { fromJS as immutable } from "immutable";
 import React from "react";
 import MapboxGL, { FullscreenControl } from "react-map-gl";
