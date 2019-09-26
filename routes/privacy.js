@@ -7,6 +7,19 @@ var md = require('markdown-it')({
 })
 var markdownItAttrs = require('markdown-it-attrs')
 
+var site = require('../services/site')
+
+router.use((req, res, next) => {
+  site
+    .getSiteData()
+    .then(siteData => {
+      console.log('Site DATA: ' + JSON.stringify(siteData))
+      req.siteData = siteData.items
+      next()
+    })
+    .catch(console.error)
+})
+
 router.use((req, res, next) => {
   page
     .getPageData('privacy')
@@ -24,7 +37,8 @@ router.get('/', function (req, res, next) {
     title: 'privacy',
     header: 'light',
     md: md,
-    pageData: req.pageData
+    pageData: req.pageData,
+    siteData: req.siteData
   })
 })
 

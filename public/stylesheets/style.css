@@ -196,7 +196,7 @@ header .logo {
   margin: auto 0;
 }
 .logo img {
-  max-height: 40px;
+  height: 40px;
 }
 header.light .custom-toggler .navbar-toggler-icon {
   background-image: url("/images/nav_hamburger_dark.svg");

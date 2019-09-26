@@ -1,5 +1,5 @@
 
-<% include ./partials/header  {header: header, pageData: req.pageData} %>
+<% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData} %>
 <div class="faq secondary container">
   <h2>FAQ</h2>
   <div class="row">
@@ -33,7 +33,8 @@
           </div>
           <div id="collapse<%= faq.fields.question %>" class="collapse" aria-labelledby="<%= faq.fields.id %>" data-parent="#faq-accordion">
             <div class="card-body">
-              <%= faq.fields.answer %>
+              
+              <%- md.render(faq.fields.answer) %>
             </div>
           </div>
         </div>
