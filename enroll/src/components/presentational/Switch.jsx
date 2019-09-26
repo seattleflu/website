@@ -9,7 +9,7 @@ const options = [
 
 const Input = ({ label, text, type, id, value, description, handleChange }) => (
   <div className='form-group row'>
-    <div className='col-8'>
+    <div className='col-lg-8 col-md-6 col-sm-12'>
       <label htmlFor={label}>{text}</label>
       <p className='inputDescription'>{description}</p>
     </div>
@@ -27,7 +27,7 @@ const Input = ({ label, text, type, id, value, description, handleChange }) => (
         </option>
       ))}
     </select>
-    <div className='col-4'>
+    <div className='col-lg-4 col-md-6 col-sm-12'>
       <div className='buttonWrapper'>
         <button
           type='submit'

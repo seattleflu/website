@@ -16,13 +16,18 @@ form > .col-12 {
     padding-left: 0 !important;
 }
 .inputDescription{
-    font-size: 10px;
+    font-size: 14px !important;
+    font-style: italic;
+}
+.inputDescription:empty {
+    display: none;
 }
 .buttonWrapper{
     border:2px solid#0A5CA8;
     display: inline-block;
     border-radius: 5px;
-    float: right;
+    overflow: hidden;
+    width: 100%;
 }
 .switch{
     padding: 10px;
@@ -30,7 +35,7 @@ form > .col-12 {
     display: inline-block;
     margin: 5px;
     height: 50px;
-    width: 82px;
+    width: 50%;
 }
 .switchYes{
     border-top: 0px solid #0A5CA8;	
@@ -39,7 +44,7 @@ form > .col-12 {
     /* border-top-left-radius: 5px;
     border-bottom-left-radius: 5px; */
     height: 50px;
-    width: 82px;
+    width: 50%;
     background-color:#EAECF0;
 }
 .switchYesActive{
@@ -53,7 +58,7 @@ form > .col-12 {
     /* border-top-right-radius: 5px;
     border-bottom-right-radius: 5px; */
     height: 50px;
-    width: 82px;
+    width: 50%;
     background-color:#EAECF0;
 }
 .switchNoActive{
@@ -76,13 +81,15 @@ form > .col-12 {
 .form-group input{
     box-sizing: border-box;	
     height: 50px;	
-    width: 165px;	
     border: 2px solid #0A5CA8;	
     border-radius: 5px;
 }
 .selectSymptoms p{
     font-family: "Roboto Condensed";	
     font-size: 16px;
+}
+.selectSymptoms .row > p {
+    width: 100%;
 }
 .symptom{
     widows: 33% !important;
@@ -93,7 +100,10 @@ form > .col-12 {
     font-family: "Roboto Condensed";	
     font-size: 14px;
     vertical-align: middle;
-    padding: 0;
+    padding-left: 22px !important;
+    padding-right: 0;
+    padding-bottom: 5px;
+    text-indent: -22px;
 }
 .symptom:nth-child(3n) {
     padding-left: 10px;
@@ -103,7 +113,10 @@ form > .col-12 {
     margin-right: 10px;
     vertical-align: middle;
 }
-
+select.form-control {
+    height: 50px !important;
+    border: 2px solid #0A5CA8 !important;
+}
 .next{
     margin-top: 40px;
     text-transform: uppercase;
@@ -114,4 +127,24 @@ form > .col-12 {
     color: #fff;
     outline: none;
     font-weight: 700;
+}
+
+.studyHeader{
+    margin-bottom: 30px;
+}
+.enrollment h3{
+    color: #4A515F;
+   margin-top: 22px;
+   margin-bottom: 30px;
+}
+
+.enrollment p{
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@media (max-width: 767px) {
+    .buttonWrapper, .form-group input, .form-group select {
+        width: 50%;
+    }
 }

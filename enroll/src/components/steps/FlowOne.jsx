@@ -13,14 +13,15 @@ const FlowOne = props => {
   const [moreThanThree, setMoreThanThreeValue] = useState('')
   const [conditions, setConditionsValue] = useState('')
   const [pills, setPillsValue] = useState('')
+  const [referrer, setReferrerValue] = useState('')
 
-  // 1 setMoreThanThreeValue
-  // 2 setHavePhoneValue
-  // 3 setunder18Value
-  // 4 setConditionsValue
-  // 5 setPillsValue
 
-  useEffect(() => {})
+  useEffect(() => {
+    setReferrerValue(props.referrerValue)
+    if(props.referrerValue == "schools"){
+      setQuestion(2)
+    }
+  }, [])
 
   function handleChange (event) {
     event.preventDefault()
@@ -48,41 +49,50 @@ const FlowOne = props => {
     if (question == 2) {
       if (havePhone == 'yes') {
         setQuestion(4)
-      } else {
+      } else if(havePhone == 'no'){
         props.handleNextError(props.bouncePage5)
+      }else{
+
       }
     }
     if (question == 3) {
       if (moreThanThree == 'yes') {
         setQuestion(3)
-      } else {
+      } else if(moreThanThree == 'no'){
         props.handleNextError(props.bouncePage4)
+      }else{
+
       }
     }
     if (question == 4) {
-      if (under18 == 'yes') {
+      if (under18 == 'yes' && referrer == "schools") {
+        props.handleStudy(props.fluStudyPage6)
+      }else if(under18 == 'yes' != "schools"){
         setQuestion(5)
-      } else {
+      } else if(under18 == 'no'){
         props.handleNextError(props.bouncePage6)
+      }else{
+
       }
     }
     if (question == 5) {
       if (conditions == 'yes') {
         setQuestion(6)
-      } else {
-        // props.handleNextError(props.fluStudyPage7)
+      } else if(conditions == 'no'){
+        console.log("test if clicked" + props.fluStudyPage7)
         props.handleStudy(props.fluStudyPage7)
+      }else{
+
       }
     }
 
     if (question == 6) {
       if (pills == 'no') {
-        // props.handleNext(2)
-        // props.handleNextError(props.bouncepage8)
         props.handleStudy(props.bouncePage8)
-      } else {
-        console.log('YES: ' + props.fluStudyPage8)
+      } else if(pills == 'yes'){
         props.handleStudy(props.fluStudyPage8)
+      }else{
+
       }
     }
   }
@@ -146,9 +156,9 @@ const FlowOne = props => {
   function handleunder18Change (event) {
     event.preventDefault()
     setunder18Value(event.target.value)
-    if (event.target.value == 'yes') {
+    if (event.target.value == 'yes' && referrer != 'schools') {
       setQuestion(question + 1)
-    } else {
+    }else {
       setQuestion(4)
       setConditionsValue('')
       setPillsValue('')
@@ -190,10 +200,10 @@ const FlowOne = props => {
   return (
     <div className='col-12'>
       <h2>Screening Questionnaire</h2>
-      {question >= 0 ? (
+      {question >= 0 && referrer != 'schools' ? (
         <Switch
           text={props.question3}
-          description={props.conditions}
+          description=''
           label='symptoms'
           type='select'
           id='symptomsTest'
@@ -201,7 +211,7 @@ const FlowOne = props => {
           handleChange={handleSymptomsChange}
         />
       ) : null}
-      {question == 1 ? (
+      {question == 1 && referrer != 'schools' ? (
         <Select
           text={props.question9}
           description=''
@@ -254,7 +264,7 @@ const FlowOne = props => {
       {question >= 5 ? (
         <Switch
           text={props.question7}
-          description={props.conditions}
+          description={props.conditions13}
           label='conditions'
           type='select'
           id='conditions'
@@ -277,7 +287,7 @@ const FlowOne = props => {
       ) : null}
 
       <button
-        className='btn btn-primary float-left next'
+        className='btn btn-primary float-right next'
         type='submit'
         onClick={handleChange}
       >

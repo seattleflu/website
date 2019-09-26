@@ -28,9 +28,9 @@ router.use((req, res, next) => {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('enroll', {
-    title: 'Enroll Page',
-    header: 'light',
+  res.render('schools', {
+    title: 'Schools',
+    header: 'dark',
     pageData: req.pageData,
     siteData: req.siteData
   })
