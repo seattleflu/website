@@ -512,7 +512,7 @@ const FlowFour = props => {
       ) : null}
 
       {question >= 7 ? (
-        <div classname='col-12 selectSymptoms'>
+        <div className='col-12 selectSymptoms'>
           <div className='row'>
             <p>{props.question11}</p>
             <div className='symptom col-md-6 col-lg-4'>
