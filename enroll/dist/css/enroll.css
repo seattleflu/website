@@ -23,6 +23,7 @@ form > .col-12 {
     display: inline-block;
     border-radius: 5px;
     float: right;
+    overflow: hidden;
 }
 .switch{
     padding: 10px;
