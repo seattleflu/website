@@ -87,7 +87,9 @@ const FlowThree = props => {
       }
     }
     if (question == 1) {
-      if (
+      if(symptomsList.length <= 1){
+        props.handleNextError(props.bouncePage18)
+      }else if (
         symptomsList.length <= 2 &&
         (symptomsList.includes('Chills or shivering') ||
           symptomsList.includes('Sweats'))
@@ -141,7 +143,9 @@ const FlowThree = props => {
     }
 
     if (question == 7) {
-      if (
+      if(symptomsList.length <= 1){
+        props.handleNextError(props.bouncePage18)
+      }else if (
         symptomsList.length <= 2 &&
         (symptomsList.includes('Chills or shivering') ||
           symptomsList.includes('Sweats'))
@@ -184,7 +188,6 @@ const FlowThree = props => {
   }
   function addSymptomOne (event) {
     if (question > 1 && question < 7) {
-      console.log("test")
       setQuestion(1)
       setconnectedValue('')
       setConditionsValue('')

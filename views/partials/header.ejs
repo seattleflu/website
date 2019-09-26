@@ -57,10 +57,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <header class="<%= header %> navbar navbar-expand-md navbar-dark">
         <div class="container">
           <% if(header === 'light') {%>
-            <a href="/" class="logo"><img src="/images/logo_placeholder_color.png"></a>
+            <a href="/" class="logo"><img src="http:<%= siteData[0].fields.logo.fields.file.url %>"></a>
           <%}%>
           <% if(header === 'dark') {%>
-            <a href="/" class="logo"><img src="/images/logo_placeholder_white.png"></a>
+            <a href="/" class="logo"><img src="http:<%= siteData[0].fields.logoWhite.fields.file.url %>"></a>
           <%}%>
           <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
