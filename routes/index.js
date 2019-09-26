@@ -31,6 +31,9 @@ router.get('/', function (req, res, next) {
   res.render('index', {
     title: 'Seattle Flu Study',
     header: 'dark',
+    nav: 'true',
+    enroll: 'true',
+    logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData
   })

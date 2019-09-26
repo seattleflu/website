@@ -36,6 +36,9 @@ router.get('/', function (req, res, next) {
   res.render('privacy', {
     title: 'privacy',
     header: 'light',
+    nav: 'true',
+    enroll: 'true',
+    logos: 'true',
     md: md,
     pageData: req.pageData,
     siteData: req.siteData

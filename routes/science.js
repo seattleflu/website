@@ -47,6 +47,9 @@ router.get('/tree', function (req, res, next) {
   res.render('tree', {
     title: 'Science page tree',
     header: 'light',
+    nav: 'true',
+    enroll: 'true',
+    logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData
   })
