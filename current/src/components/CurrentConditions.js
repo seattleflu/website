@@ -17,6 +17,10 @@ export default class CurrentConditions extends React.Component {
     const seasonStartYear = currentMonth < SEASON_CUTOFF_MONTH ? currentYear - 1 : currentYear;
 
     const fluSeasonProgressText = {
+      9: 'nearing the start of',
+      10: 'at the start of',
+      11: 'one month into',
+      12: 'about one-third of the way through',
       1: 'about halfway through',
       2: 'about two-thirds of the way through',
       3: 'over two-thirds of the way through',
@@ -25,10 +29,6 @@ export default class CurrentConditions extends React.Component {
       6: 'done with',
       7: 'done with',
       8: 'done with',
-      9: 'nearing the start of',
-      10: 'at the start of',
-      11: 'one month into',
-      12: 'about one-third of the way through',
     };
 
     const fluCurrentStatusText = generateCurrentStatusText(fluStats);
