@@ -30,7 +30,7 @@ router.use((req, res, next) => {
 router.get('/', function (req, res, next) {
   res.render('schools', {
     title: 'Schools',
-    header: 'light',
+    header: 'dark',
     nav: 'false',
     enroll: 'true',
     logos: 'false',
