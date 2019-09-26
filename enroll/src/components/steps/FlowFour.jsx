@@ -157,7 +157,7 @@ const FlowFour = props => {
 
     if (question == 7) {
       if(symptomsList.length <= 1){
-        props.handleNextError(props.bouncePage11)
+        props.handleNextError(props.bouncePage18)
       }else if (
         symptomsList.length <= 2 &&
         (symptomsList.includes('Chills or shivering') ||
@@ -496,7 +496,7 @@ const FlowFour = props => {
       {question >= 7 ? (
         <div className='col-12 selectSymptoms'>
           <div className='row'>
-            <p>{props.question11}</p>
+            <p>{props.question18}</p>
             <div className='symptom col-md-6 col-lg-4'>
                 <input
                   type='checkbox'

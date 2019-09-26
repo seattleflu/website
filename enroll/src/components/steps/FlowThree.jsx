@@ -156,7 +156,9 @@ const FlowThree = props => {
     }
 
     if (question == 7) {
+      
       if(symptomsList.length <= 1){
+        
         props.handleNextError(props.bouncePage18)
       }else if (
         symptomsList.length <= 2 &&
