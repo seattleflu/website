@@ -57,14 +57,6 @@ export default class SeasonTimeline extends React.Component {
     const pinHeight = height - monthHeight - iconDimensions;
     const pinpointRadius = 5;
 
-    const rotateDash = keyframes`
-      from {
-        stroke-dashoffset: 280;
-      }
-      to {
-        stroke-dashoffset: 75;
-    `
-
     const spin = keyframes`
       from {
         transform: rotate(0deg);
@@ -72,30 +64,6 @@ export default class SeasonTimeline extends React.Component {
       to {
         transform: rotate(360deg);
       }
-    `
-
-    const slide = keyframes`
-      from {
-        stroke-dashoffset: 280;
-      }
-      to {
-        stroke-dashoffset: 75;
-        transform: translateX(${monthWidth * currentMonthIndex}px);
-    `
-
-    const Slide = styled.g`
-      display: inline-block;
-      width: 100%;
-      height: ${height}
-      animation: ${slide} 1.2s linear;
-      animation-fill-mode: forwards;
-    `
-
-    const RotateDash = styled.g`
-      display: inline-block;
-      width: 100%;
-      height: ${height}
-      animation: ${rotateDash} 9s linear infinite;
     `
 
     const Spin = styled.g`
@@ -140,47 +108,43 @@ export default class SeasonTimeline extends React.Component {
               </text>
             </g>
           )}
-          <RotateDash>
-            <polygon transform={`translate(${currentMonthIndex * monthWidth}, 0)`}
-                    points={`0, 0
-                            ${monthWidth}, 0
-                            ${monthWidth * 1.25}, ${monthHeight / 2}
-                            ${monthWidth}, ${monthHeight}
-                            0, ${monthHeight}
-                            ${monthWidth * 0.25}, ${monthHeight / 2}`}
-                    strokeWidth="4"
-                    stroke="yellow"
-                    fill="transparent"
-                    strokeLinecap="round"
-                    strokeDasharray="4 6" />
-          </RotateDash>
+          <polygon transform={`translate(${currentMonthIndex * monthWidth}, 0)`}
+                  points={`0, 0
+                          ${monthWidth}, 0
+                          ${monthWidth * 1.25}, ${monthHeight / 2}
+                          ${monthWidth}, ${monthHeight}
+                          0, ${monthHeight}
+                          ${monthWidth * 0.25}, ${monthHeight / 2}`}
+                  strokeWidth="4"
+                  stroke="yellow"
+                  fill="transparent"
+                  strokeLinecap="round"
+                  strokeDasharray="4 6" />
         </g>
 
         <g key="current-month-virus-pin"
-           transform={`translate(${monthWidth * 0.65}, ${pinheadRadius})`}>
-          <Slide>
-              <line x1="0" y1="0"
-                    x2="0" y2={iconDimensions / 2 + pinHeight}
-                    stroke="black" />
-              <circle cx="0"
-                      cy={iconDimensions / 2 + pinHeight + pinpointRadius}
-                      r={pinpointRadius}
-                      fill="transparent"
-                      stroke="black" />
-              <circle cx="0"
-                      cy={-iconDimensions / 2 + pinheadRadius * 0.75}
-                      r={pinheadRadius}
-                      fill="grey"
-                      strokeWidth="2" />
-              <Spin>
-                <image href={fluIcon}
-                      y={-iconDimensions / 2}
-                      x={-iconDimensions / 2}
-                      width={iconDimensions}
-                      height={iconDimensions} />
-              </Spin>
-            </Slide>
-          </g>
+           transform={`translate(${currentMonthIndex * monthWidth + monthWidth * 0.65}, ${pinheadRadius})`}>
+          <line x1="0" y1="0"
+                x2="0" y2={iconDimensions / 2 + pinHeight}
+                stroke="black" />
+          <circle cx="0"
+                  cy={iconDimensions / 2 + pinHeight + pinpointRadius}
+                  r={pinpointRadius}
+                  fill="transparent"
+                  stroke="black" />
+          <circle cx="0"
+                  cy={-iconDimensions / 2 + pinheadRadius * 0.75}
+                  r={pinheadRadius}
+                  fill="grey"
+                  strokeWidth="2" />
+          <Spin>
+            <image href={fluIcon}
+                  y={-iconDimensions / 2}
+                  x={-iconDimensions / 2}
+                  width={iconDimensions}
+                  height={iconDimensions} />
+          </Spin>
+        </g>
 
       </svg>
     );
