@@ -48,7 +48,15 @@ export default class SeasonTimeline extends React.Component {
     const currentMonthIndex = months.findIndex(m => m.month === currentMonth);
 
     const [width, height, margin] = [800, 160, 5];
-    const monthWidth = Math.floor(1/months.length * width);
+
+    // The months are packed chevrons.  First calculate the space for each
+    // month as a rectangle.  Then subtract from that the width of one chevron
+    // outset spread across each month, to make room for the final month's
+    // outset chevron.
+    const chevronOutset = 0.25;
+    const widthPerMonth = Math.floor(1/months.length * width);
+    const monthWidth = widthPerMonth - Math.floor(1/months.length * (widthPerMonth * chevronOutset));
+
     const monthHeight = 70;
 
     const iconDimensions = Math.min(monthWidth, "50");
@@ -91,10 +99,10 @@ export default class SeasonTimeline extends React.Component {
              transform={`translate(${i * monthWidth}, 0)`}>
               <polygon points={`0, 0
                               ${monthWidth},0
-                              ${monthWidth * 1.25}, ${monthHeight / 2}
+                              ${monthWidth * (1 + chevronOutset)}, ${monthHeight / 2}
                               ${monthWidth}, ${monthHeight}
                               0, ${monthHeight}
-                              ${monthWidth * 0.25}, ${monthHeight / 2}`}
+                              ${monthWidth * chevronOutset}, ${monthHeight / 2}`}
                     {...rectAttrs[m.seasonality]}
                     stroke="white" />
 
