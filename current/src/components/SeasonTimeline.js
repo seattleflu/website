@@ -47,15 +47,14 @@ export default class SeasonTimeline extends React.Component {
     const currentMonth = this.props.currentMonth;
     const currentMonthIndex = months.findIndex(m => m.month === currentMonth);
 
-    const [width, height, margin] = [800, 190, 5];
+    const [width, height, margin] = [800, 160, 5];
     const monthWidth = Math.floor(1/months.length * width);
     const monthHeight = 70;
 
     const iconDimensions = Math.min(monthWidth, "50");
     const pinheadRadius = iconDimensions / 1.5;
 
-    const pinHeight = height - monthHeight - iconDimensions;
-    const pinpointRadius = 5;
+    const pinHeight = height - monthHeight - pinheadRadius;
 
     const spin = keyframes`
       from {
@@ -103,40 +102,26 @@ export default class SeasonTimeline extends React.Component {
                     dominantBaseline="middle"
                     x={monthWidth * 0.65}
                     y={monthHeight / 2 + 5}
-                    dy="-3px">
+                    dy="-3px"
+                    style={{fontWeight: i === currentMonthIndex ? "bold" : "normal"}}>
                 {DateTime.fromISO(m.yearMonth).monthShort}
               </text>
             </g>
           )}
-          <polygon transform={`translate(${currentMonthIndex * monthWidth}, 0)`}
-                  points={`0, 0
-                          ${monthWidth}, 0
-                          ${monthWidth * 1.25}, ${monthHeight / 2}
-                          ${monthWidth}, ${monthHeight}
-                          0, ${monthHeight}
-                          ${monthWidth * 0.25}, ${monthHeight / 2}`}
-                  strokeWidth="4"
-                  stroke="yellow"
-                  fill="transparent"
-                  strokeLinecap="round"
-                  strokeDasharray="4 6" />
         </g>
 
         <g key="current-month-virus-pin"
            transform={`translate(${currentMonthIndex * monthWidth + monthWidth * 0.65}, ${pinheadRadius})`}>
-          <line x1="0" y1="0"
-                x2="0" y2={iconDimensions / 2 + pinHeight}
-                stroke="black" />
-          <circle cx="0"
-                  cy={iconDimensions / 2 + pinHeight + pinpointRadius}
-                  r={pinpointRadius}
-                  fill="transparent"
-                  stroke="black" />
-          <circle cx="0"
-                  cy={-iconDimensions / 2 + pinheadRadius * 0.75}
-                  r={pinheadRadius}
-                  fill="grey"
-                  strokeWidth="2" />
+          <path
+            d={`
+              M ${-(pinheadRadius - 5)} 18
+              A ${pinheadRadius} ${pinheadRadius} 220 1 1 ${pinheadRadius - 5} 18
+              L 0 ${pinheadRadius * 2}
+              z
+            `}
+            fill="#1bab4c"
+            strokeWidth="2"
+            strokeLinecap="round" />
           <Spin>
             <image href={fluIcon}
                   y={-iconDimensions / 2}
