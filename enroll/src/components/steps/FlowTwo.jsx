@@ -268,7 +268,6 @@ const FlowTwo = props => {
         <div className='col-12 selectSymptoms'>
           <div className='row'>
             <div className='col-12'>
-            <p>question one</p>
               <p>{props.question11}</p>
               <div className='symptom col-4'>
                 <label>
@@ -466,7 +465,6 @@ const FlowTwo = props => {
         <div className='col-12 selectSymptoms'>
           <div className='row'>
             <div className='col-12'>
-            <p>question SEVEN</p>
               <p>{props.question11}</p>
               <div className='symptom col-4'>
                 <label>
