@@ -197,7 +197,7 @@ const FlowFour = props => {
       setconnectedValue('')
       setConditionsValue('')
     }else{
-      setQuestion(1)
+      //setQuestion(1)
     }
     const array = [...symptomsList]
 
@@ -465,7 +465,7 @@ const FlowFour = props => {
       {question >= 3 && question < 4 ? (
         <Switch
           text={props.question17}
-          description=''
+          description={props.conditions17}
           label='conditions'
           type='select'
           id='conditions'
@@ -503,7 +503,7 @@ const FlowFour = props => {
       {question >= 6 && question < 7 ? (
         <Switch
           text={props.question17}
-          description=''
+          description={props.conditions17}
           label='conditions'
           type='select'
           id='conditions'
@@ -693,7 +693,7 @@ const FlowFour = props => {
       {question >= 9 ? (
         <Switch
           text={props.question17}
-          description=''
+          description={props.conditions17}
           label='conditions'
           type='select'
           id='conditions'

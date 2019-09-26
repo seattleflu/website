@@ -13,7 +13,7 @@ const Select = ({
   <div className='form-group row'>
     <div className='col-8'>
       <label htmlFor={label}>{text}</label>
-      <p className='inputDescription'>{description}</p>
+    {description != ''? "<p className='inputDescription'>" + description + "</p>" : null}
     </div>
     <select
       type={type}

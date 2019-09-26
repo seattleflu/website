@@ -68,6 +68,7 @@ const App = () => {
   const [question13, setQuestion13] = useState('')
   const [bouncePage13, setBouncePage13] = useState('')
   const [fluStudyPage13, setFluStudyPage13] = useState('')
+  const [conditions13, setConditions13] = useState('')
 
   const [question14, setQuestion14] = useState('')
   const [bouncePage14, setBouncePage14] = useState('')
@@ -84,6 +85,7 @@ const App = () => {
   const [question17, setQuestion17] = useState('')
   const [bouncePage17, setBouncePage17] = useState('')
   const [fluStudyPage17, setFluStudyPage17] = useState('')
+  const [conditions17, setConditions17] = useState('')
 
   const [question18, setQuestion18] = useState('')
   const [bouncePage18, setBouncePage18] = useState('')
@@ -244,8 +246,10 @@ const App = () => {
             if (question.fields.fluStudyPage.fields.studyName) {
               setFluStudyPage13(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setConditions13(question.fields.addInformation)
+            }
             setQuestion13(question.fields.question)
-            setConditions(question.fields.addInformation)
             break
           case 14:
             if (question.fields.bouncePage) {
@@ -280,6 +284,9 @@ const App = () => {
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage17(question.fields.fluStudyPage.fields.studyName)
+            }
+            if(question.fields.addInformation){
+              setConditions17(question.fields.fluStudyPage)
             }
             setQuestion17(question.fields.question)
             break
@@ -378,7 +385,7 @@ const App = () => {
             question13={question13}
             bouncePage13={bouncePage13}
             fluStudyPage13={fluStudyPage13}
-            conditions={conditions}
+            conditions13={conditions13}
           />
         ) : null}
         {currentStep == 2 ? (
@@ -408,7 +415,7 @@ const App = () => {
             question16={question16}
             bouncePage16={bouncePage16}
             fluStudyPage16={fluStudyPage16}
-            conditions={conditions}
+            conditions13={conditions13}
           />
         ) : null}
 
@@ -436,7 +443,7 @@ const App = () => {
             question18={question18}
             bouncePage18={bouncePage18}
             fluStudyPage18={fluStudyPage18}
-            conditions={conditions}
+            conditions17={conditions17}
           />
         ) : null}
 
@@ -464,6 +471,7 @@ const App = () => {
             question18={question18}
             bouncePage18={bouncePage18}
             fluStudyPage18={fluStudyPage18}
+            conditions17={conditions17}
           />
         ) : null}
       </form>
