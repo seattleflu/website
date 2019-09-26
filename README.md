@@ -13,14 +13,14 @@ This is the website for [seattleflu.org](https://seattleflu.org).
       - [Contentful CMS](#contentful-cms)
         - [Content types](#content-types)
         - [Environment variables](#environment-variables)
-        - [Contentful + React](#contentful--react)
       - [React applications](#react-applications)
         - [Starting the server](#starting-the-server-1)
         - [Building JavaScript bundles](#building-javascript-bundles)
         - [Adding CSS files](#adding-css-files)
         - [Adding other files (.svg, .png, etc.)](#adding-other-files-svg-png-etc)
         - [Babel troubleshooting](#babel-troubleshooting)
-        - [Adding new React applications](#adding-new-react-applications)
+        - [React + Mapbox](#react--mapbox)
+        - [Adding new React sub-applications](#adding-new-react-sub-applications)
   - [Season one / 2018–19](#season-one--2018%e2%80%9319)
 
 ## Season two / 2019–20
@@ -186,11 +186,24 @@ If your app is throwing an error in the console saying...
 
         "plugins": ["@babel/plugin-proposal-class-properties"],
 
-* `ReferenceError: regeneratorRuntime is not defined`, then add the following line to the top of the culprit React (JSX) file:
+* `ReferenceError: regeneratorRuntime is not defined`, run:
+
+        npm install --save-dev babel-polyfill
+
+    Then add the following line to the top of the culprit React (JSX) file:
 
     ```js
         import "babel-polyfill";
     ```
+
+##### React + Mapbox
+
+The website comprises two maps found at `/current` and at `/science/map`.
+We produce these maps within React using [react-map-gl SDK](https://uber.github.io/react-map-gl/#/), a wrapper for [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/api/).
+
+The `<MapboxGL>` component from `react-map-gl` is a fairly complicated object, and React state changes should always be handled through [the `setState()` request](https://reactjs.org/docs/react-component.html#setstate).
+It would be easy to accidentally write code that mutated the complex `<Mapbox>` map style object and introduced subtle bugs.
+By using [Immutable](https://immutable-js.github.io/immutable-js/docs/#/) objects, we not only prevent map style changes from occurring outside of `setState()`, but we also get handy methods that make deep updates easier.
 
 
 ##### Adding new React sub-applications

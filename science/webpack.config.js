@@ -21,7 +21,8 @@ module.exports = {
             loader: 'html-loader'
           }
         ]
-      }
+      },
+      { test: /\.css$/, use: 'css-loader' },
     ]
   },
   plugins: [
