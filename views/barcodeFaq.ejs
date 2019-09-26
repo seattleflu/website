@@ -1,0 +1,29 @@
+<% include ./partials/header  %>
+
+<div class="faq secondary container">
+  <h2 class="align-center"><%= title %></h2>
+  <div class="row">
+    <div class="faq-questions col-12">
+      <div class="accordion" id="barcode-faq-accordion">
+        <% barcodeFaq.forEach((faq) => { %>
+
+          <div class="card">
+            <div class="faq-heading" id="<%= faq.fields.id %>">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= faq.fields.question %>" aria-expanded="false" aria-controls="collapse<%= faq.fields.question %>">
+                  <h5><%= faq.fields.question %></h5>
+                </button>
+            </div>
+            <div id="collapse<%= faq.fields.question %>" class="collapse" aria-labelledby="<%= faq.fields.id %>" data-parent="#barcode-faq-accordion">
+              <div class="card-body align-center">
+                <%= faq.fields.answer %>
+              </div>
+            </div>
+          </div>
+
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ./partials/footer  %>
