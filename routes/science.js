@@ -31,7 +31,11 @@ router.get('/', function (req, res, next) {
   res.render('science', {
     title: 'Science',
     header: 'light',
-    pageData: req.pageData
+    nav: 'true',
+    enroll: 'true',
+    logos: 'true',
+    pageData: req.pageData,
+    siteData: req.siteData
   })
 })
 
@@ -39,7 +43,11 @@ router.get('/map', function (req, res, next) {
   res.render('map', {
     title: 'Science page map',
     header: 'light',
-    pageData: req.pageData
+    nav: 'true',
+    enroll: 'true',
+    logos: 'true',
+    pageData: req.pageData,
+    siteData: req.siteData
   })
 })
 
