@@ -203,7 +203,7 @@ const FlowOne = props => {
       {question >= 0 && referrer != 'schools' ? (
         <Switch
           text={props.question3}
-          description=''
+          description={props.conditions3}
           label='symptoms'
           type='select'
           id='symptomsTest'
