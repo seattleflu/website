@@ -118,7 +118,7 @@ const FlowTwo = props => {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if (connectedValue == 'yes'){
-        props.handleStudy(props.fluStudyPage3)
+        props.handleStudy(props.fluStudyPage12)
         //setQuestion(3)
       }else{
 
@@ -144,8 +144,8 @@ const FlowTwo = props => {
       if (deviceValue == 'no') {
         props.handleNextError(props.bouncePage16)
       } else if(deviceValue == 'yes') {
-        props.handleStudy(props.fluStudyPage12)
         //setQuestion(question + 1)
+        props.handleStudy(props.fluStudyPage12)
       }else{
 
       }
@@ -183,7 +183,8 @@ const FlowTwo = props => {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if(connectedValue == 'yes') {
-        setQuestion(question + 1)
+        props.handleStudy(props.fluStudyPage12)
+        //setQuestion(question + 1)
       }else{
 
       }
