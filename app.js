@@ -1,4 +1,3 @@
-var createError = require('http-errors')
 var express = require('express')
 var path = require('path')
 var cookieParser = require('cookie-parser')
@@ -14,6 +13,7 @@ var resultsRouter = require('./routes/results')
 var thankyouRouter = require('./routes/thankyou')
 var privacyRouter = require('./routes/privacy')
 var kiosksRouter = require('./routes/kiosks')
+var errorRouter = require('./routes/error')
 
 const production = process.env.NODE_ENV === "production";
 
@@ -53,27 +53,7 @@ app.use('/privacy', privacyRouter)
 app.use('/kiosks', kiosksRouter)
 app.use('/thank-you/:thankyouid', thankyouRouter)
 app.use('/', indexRouter)
+app.use(errorRouter);
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404))
-})
-
-// error handler
-app.use(function (err, req, res, next) {
-  console.error(err);
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
-  // render the error page
-  res.status(err.status || 500)
-  res.render('error', {
-    title: 'Error',
-    header: 'light',
-    pageData: [
-      {fields: {name: "Error"}}
-    ]
-  })
-})
 
 module.exports = app
