@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Markdown from 'react-markdown';
 
-import { LargerParagraph, Feature, UnorderedList, Bold } from '../../styledComponents';
+import { LargerParagraph, Feature, UnorderedList } from '../../styledComponents';
 import ResultsMoreInfo from '../ResultsMoreInfo';
 
 export default function Enterovirus(props) {

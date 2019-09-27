@@ -2,39 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-const theme = {
-  white: "#FFFFFF",
-  black: "#000000",
-  neutral100: "#EDEFEF",
-  neutral200: "#C9CED0",
-  neutral300: "#A6AEB0",
-  neutral400: "#828D91",
-  neutral500: "#707D81",
-  neutral600: "#626D71",
-  neutral700: "#464E51",
-  neutral800: "#2A2F30",
-  neutral900: "#0E1010",
-  primary100: "#C2DEEA",
-  primary200: "#ADD3E3",
-  primary300: "#92C4DA",
-  primary400: "#6EB0CE",
-  primary500: "#3D95BD",
-  primary600: "#2E708E",
-  primary700: "#23546B",
-  primary800: "#1A3F50",
-  primary900: "#142F3C",
-  accent100: "#FDE3B4",
-  accent200: "#FCDA9B",
-  accent300: "#FBCE7A",
-  accent400: "#F9BE4D",
-  accent500: "#F7A812",
-  accent600: "#B97E0E",
-  accent700: "#8B5F0A",
-  accent800: "#684708",
-  accent900: "#4E3506",
-  warning500: "#D81C1C",
-}
-
 export const OuterContainer = styled.div`
   max-width: 1080px;
   margin: 0px auto;
@@ -51,7 +18,6 @@ export const OuterContainer = styled.div`
 export const ContentContainer = styled.div`
   padding: 0px;
   margin: 0px;
-  color: ${theme.neutral800};
 `
 export const CenteredParagraph = styled.p`
   font-size: 18px;
@@ -77,10 +43,8 @@ export const Br = styled.br`
 `
 
 const BaseHeader = styled.div`
-  font-family: "Nunito";
   font-weight: 700;
   text-align: ${props => props.left ? "left" : "center"};
-  color: ${theme.neutral700};
   padding-top: 10px;
   padding-bottom: 5px;
 `
@@ -102,8 +66,9 @@ export const Bold = styled.span`
 
 /* Feature Block */
 export const FeatureContainer = styled.div`
-  color: ${theme.white};
-  background-color: ${theme.primary500};
+  color: #FFFFFF;
+  background-color: #0a5ca8;
+  border-radius: 3px;
   padding: 1em 2em;
   margin: 4em auto;
   font-weight: 400;
@@ -118,9 +83,9 @@ const FeatureButtonContainer = styled.div`
   justify-content: space-around;
 `
 const FeatureButton = styled.a`
-  border: 1px solid ${theme.neutral100};
+  border: 1px solid #EDEFEF;
   background-color: inherit;
-  color: ${theme.neutral100};
+  color: #EDEFEF;
   border-radius: 3px;
   padding: 10px;
   text-transform: uppercase;
@@ -130,12 +95,12 @@ const FeatureButton = styled.a`
   cursor: pointer;
   text-decoration: none;
   &:hover {
-    background-color: ${theme.primary300};
-    color: ${theme.white};
+    background-color: #7cb9f2;
+    color: #0a5ca8;
   }
 `
 const FeatureTitle = styled(H2)`
-  color: ${theme.white};
+  color: #FFFFFF;
   text-align: center;
 `
 const FeatureFlexContainer = styled.div`
@@ -225,10 +190,6 @@ export const EvenTwoColumnFeature = (props) => {
 export const Link = styled.a`
   cursor: pointer;
   text-decoration: none;
-  color: ${theme.accent500};
-  &:hover {
-    color: ${theme.accent300};
-  }
 `
 
 export const UnorderedList = styled.ul`
@@ -250,14 +211,14 @@ export const Input = styled.input`
     font-size: 1.2em;
     &:focus {
         outline: none;
-        border: 2px solid ${theme.accent500}
+        border: 2px solid #1BAB4C
     }
 `
 export const SubmitButton = styled.button`
     width: 20%;
-    border: 1px solid ${theme.neutral100};
+    border: 1px solid #FFFFFF;
     background-color: inherit;
-    color: ${theme.neutral100};
+    color: #FFFFFF;
     border-radius: 3px;
     padding: 5px;
     margin: 0px 15px;
@@ -266,8 +227,8 @@ export const SubmitButton = styled.button`
     text-transform: uppercase;
     cursor: pointer;
     &:hover {
-        background-color: ${theme.primary300};
-        color: ${theme.white};
+        background-color: #7cb9f2;
+        color: #0a5ca8;
     }
 `
 
@@ -293,8 +254,8 @@ export const STab = styled(Tab)`
   text-transform: uppercase;
 
   &.is-selected {
-    border-color: ${theme.primary300};
-    border-bottom: 1px solid white;
+    border-color: #92C4DA;
+    border-bottom: 1px solid #FFFFFF;
   }
   @media (max-width: 735px) {
       padding: 0.5em;
@@ -303,7 +264,7 @@ export const STab = styled(Tab)`
 export const STabPanel = styled(TabPanel)`
   display: none;
   min-height: 40vh;
-  border-top: 1px solid ${theme.primary300};
+  border-top: 1px solid #92C4DA;
   padding: 2em .5em;
   margin-top: -5px;
 
@@ -320,4 +281,5 @@ export const MoreInfo = styled.div`
 export const Banner = styled.div`
   background-color: #F7A812;
   padding: 1em;
+  text-align: center;
 `

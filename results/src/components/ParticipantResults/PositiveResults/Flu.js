@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Markdown from 'react-markdown';
 
-import { LargerParagraph, FeatureH3, EvenTwoColumnFeature, MoreInfo, Link } from '../../styledComponents';
+import { LargerParagraph, FeatureH3, EvenTwoColumnFeature } from '../../styledComponents';
 import ResultsMoreInfo from '../ResultsMoreInfo';
 
 export default function Flu(props) {

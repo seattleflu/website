@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as positiveResults from './PositiveResults';
-import { H3, STabs, STabList, STab, STabPanel } from '../styledComponents';
+import { STabs, STabList, STab, STabPanel } from '../styledComponents';
 
 // Set up tabsRole for react-tabs
 STabList.tabsRole = 'TabList';
@@ -27,9 +27,9 @@ export default function PositiveResult(props) {
 
     return (
         <div>
-            <H3>
+            <h3 className='align-center'>
                 Your research test is positive for: <br/>
-            </H3>
+            </h3>
             <STabs
                 selectedTabClassName='is-selected'
                 selectedTabPanelClassName='is-selected'>

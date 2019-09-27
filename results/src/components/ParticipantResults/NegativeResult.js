@@ -1,14 +1,14 @@
 import React from 'react';
 import * as Markdown from 'react-markdown';
 
-import { H3, LargerParagraph, Feature, UnorderedList, MoreInfo, Link } from '../styledComponents';
+import { LargerParagraph, Feature, UnorderedList, MoreInfo, Link } from '../styledComponents';
 
 export default function NegativeResult(props) {
   const { content } = props;
 
   return (
     <div>
-      <H3>{content.title}</H3>
+      <h3 className='align-center'>{content.title}</h3>
       <LargerParagraph>{content.blockOne}</LargerParagraph>
       <Feature title={content.listOneTitle}>
         <Markdown source={content.listOne} renderers={{list: UnorderedList}} />

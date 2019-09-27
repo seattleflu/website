@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { H1, OuterContainer, ContentContainer } from './styledComponents';
+import { OuterContainer, ContentContainer } from './styledComponents';
 import BarcodeSearchForm from './ParticipantResults/BarcodeSearchForm';
 import SampleNotReceived from './ParticipantResults/SampleNotReceived';
 import SampleProcessing from './ParticipantResults/SampleProcessing';
@@ -77,7 +77,9 @@ export default class ReturnOfResults extends React.Component {
         return (
             <OuterContainer>
                 <ContentContainer>
-                    <H1>Return of Results</H1>
+                    <h1 className="align-center p-4">
+                      Return of Results
+                    </h1>
                     {display}
                 </ContentContainer>
             </OuterContainer>

@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Banner, H2, H3 } from '../styledComponents';
+import { Banner } from '../styledComponents';
 
 export default function UnknownBarcode(props) {
   const content = props.content;
 
   return (
       <Banner>
-          <H2>{content.title}</H2>
-          <H3>{content.paragraphOne}</H3>
+          <h2>{content.title}</h2>
+          <h3>{content.paragraphOne}</h3>
       </Banner>
   )
 }
