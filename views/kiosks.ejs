@@ -295,8 +295,8 @@
                     <%- md.render(pageData[0].fields.content2) %>
                   </div>
                 <div class="study-callout">
-                  <h3>Help us track the flu in Seattle. We need <i>you</i>.</h3>
-                  <a href="/enroll"><button class="green">Join the Study</button></a>
+                    <%- md.render(siteData[0].fields.promoBannerCopy) %>
+                    <a href="<%- siteData[0].fields.promoBannerLink %>"><button class="green"><%- siteData[0].fields.promoBannerCta %></button></a>
                 </div>
               </div>
             </div>
