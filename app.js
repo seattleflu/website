@@ -14,6 +14,7 @@ var resultsRouter = require('./routes/results')
 var thankyouRouter = require('./routes/thankyou')
 var privacyRouter = require('./routes/privacy')
 var kiosksRouter = require('./routes/kiosks')
+var learnmoreRouter = require('./routes/learnmore')
 
 var app = express()
 
@@ -43,6 +44,7 @@ app.use('/schools', schoolsRouter)
 app.use('/results', resultsRouter)
 app.use('/privacy', privacyRouter)
 app.use('/kiosks', kiosksRouter)
+app.use('/learnmore', learnmoreRouter)
 
 // app.use('/thank-you', thankyouRouter)
 app.use('/thank-you/:thankyouid', thankyouRouter)
