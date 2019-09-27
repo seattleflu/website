@@ -15,6 +15,7 @@ var thankyouRouter = require('./routes/thankyou')
 var privacyRouter = require('./routes/privacy')
 var kiosksRouter = require('./routes/kiosks')
 var learnmoreRouter = require('./routes/learnmore')
+var errorRouter = require('./routes/error')
 
 var app = express()
 
@@ -45,6 +46,7 @@ app.use('/results', resultsRouter)
 app.use('/privacy', privacyRouter)
 app.use('/kiosks', kiosksRouter)
 app.use('/learnmore', learnmoreRouter)
+app.use('*', errorRouter)
 
 // app.use('/thank-you', thankyouRouter)
 app.use('/thank-you/:thankyouid', thankyouRouter)
@@ -62,13 +64,12 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'production' ? err : {}
+  res.locals.error = req.app.get('env') === 'development' ? err : {}
+  
   res.status(404).render('404', { title: '404', header: 'light' })
   // render the error page
   res.status(err.status || 500)
   console.error(err.message);
-  
-  res.render('404', { title: 'Page Not Found', header: 'light' })
 })
 
 module.exports = app

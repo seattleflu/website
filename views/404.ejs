@@ -1,10 +1,11 @@
 
-<div class="container">
-          <div class="row">
-              <div class="col-12">
-                <h1><%= title %></h1>
-            </div>
-            </div>
-            </div>
+<% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData} %>
 
-<% include ./partials/footer  %>
+<div class="container">
+    <h1>404</h1>
+    <p>Sorry this page does not exist</p>
+</div>
+
+<script type="text/javascript" src="/science-bundle.js"></script>
+
+<% include ./partials/footer {logos: logos} %>
