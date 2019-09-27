@@ -17,7 +17,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('enroll')
+    .getPageData('school')
     .then(pageData => {
       console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
