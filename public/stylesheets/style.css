@@ -516,7 +516,6 @@ h1.number {
   margin-bottom: 30px;
 }
 #map-right {
-  background-image: url(/images/map_placeholder.png);
   background-position: center;
   background-size: cover;
 }

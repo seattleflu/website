@@ -1,8 +1,14 @@
 var express = require('express')
 var router = express.Router()
+var home = require('../services/index')
 
 var page = require('../services/page')
 var site = require('../services/site')
+
+var md = require('markdown-it')({
+  html: true
+})
+var markdownItAttrs = require('markdown-it-attrs')
 
 router.use((req, res, next) => {
   site
@@ -26,11 +32,23 @@ router.use((req, res, next) => {
     .catch(console.error)
 })
 
+router.use((req, res, next) => {
+  home
+    .getHome()
+    .then(homeData => {
+      req.homeData = homeData.items
+      next()
+    })
+    .catch(console.error)
+})
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', {
     title: 'Seattle Flu Study',
     header: 'dark',
+    md: md,
+    homeData: req.homeData,
     pageData: req.pageData,
     siteData: req.siteData
   })
