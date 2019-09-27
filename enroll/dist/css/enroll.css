@@ -147,4 +147,18 @@ select.form-control {
     .buttonWrapper, .form-group input, .form-group select {
         width: 50%;
     }
+    .enrollWapper .col-md-8 {
+        padding-top: 15px;
+        padding-bottom: 30px;
+        margin-top: 0;
+        margin-bottom: 0;
+        background-color: #ffffff;
+        outline: 30px solid #EAECF0;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .enrollWapper {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 }

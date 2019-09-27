@@ -395,7 +395,7 @@ const FlowThree = props => {
               Increased trouble with breathing
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
                 <input
                   type='checkbox'
                   name='NoneOfTheAbove2'
@@ -586,7 +586,7 @@ const FlowThree = props => {
               Increased trouble with breathing
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
                 <input
                   type='checkbox'
                   name='NoneOfTheAbove2'
