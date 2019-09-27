@@ -89,7 +89,7 @@ button {
 
 
 /*** FORM ELEMENTS ***/
-input[type=text], textarea {
+input[type=text], input[type=tel], textarea {
   border: 2px solid #0A5CA8;
   border-radius: 5px;
   padding: 14px 15px;
@@ -339,7 +339,7 @@ header.dark .nav-item button {
   margin-bottom: 30px;
   padding-right: 30px;
 }
-.secondary input[type=text], .secondary input[type=submit] {
+.secondary input[type=text], .secondary input[type=tel], .secondary input[type=submit] {
   margin-top: 12px;
 }
 .secondary ul {
@@ -685,7 +685,7 @@ h1.number {
 #ty-subscribe {
   margin-bottom: 75px;
 }
-#ty-subscribe input[type=text] {
+#ty-subscribe input[type=text], #ty-subscribe input[type=tel] {
   margin-right: 15px;
 }
 #firstNameInput {
@@ -696,7 +696,7 @@ h1.number {
   clear: both;
   width: 30%;
 }
-#emailInput {
+#emailInput, #phoneInput {
   width: calc(60% + 15px);
 }
 #ty-subscribe input[type=submit] {
@@ -724,7 +724,7 @@ h1.number {
     width: calc(50% - 7.5px);
     margin-right: 0 !important;
   }
-  #emailInput {
+  #emailInput, #phoneInput {
     width: 100%;
   }
 }
