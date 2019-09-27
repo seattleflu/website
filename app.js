@@ -46,10 +46,11 @@ app.use('/results', resultsRouter)
 app.use('/privacy', privacyRouter)
 app.use('/kiosks', kiosksRouter)
 app.use('/learnmore', learnmoreRouter)
+app.use('/thank-you/:thankyouid', thankyouRouter)
 app.use('*', errorRouter)
 
 // app.use('/thank-you', thankyouRouter)
-app.use('/thank-you/:thankyouid', thankyouRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
