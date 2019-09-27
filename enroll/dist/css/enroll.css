@@ -12,6 +12,12 @@
     background-color: #ffffff;
     outline: 30px solid #ffffff;
 }
+.enrollWapper input[type=text], .enrollWapper input[type=tel], .enrollWapper input[type=submit] {
+    margin-top: 12px;
+}
+.enrollWapper #ty-subscribe {
+    margin-bottom: 0;
+}
 form > .col-12 {
     padding-left: 0 !important;
 }
