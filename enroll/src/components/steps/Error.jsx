@@ -33,9 +33,9 @@ const Error = props => {
         <h5 id="signup-error">Sorry, there was an error submitting you form</h5>
         <input type="submit" value="Submit"/>
       </form>) : (null)}
-            <a className='btn btn-primary float-right next' href={urlConsent}>
+            {urlConsent ? (<a className='btn btn-primary float-right next' href={urlConsent}>
         {urlConsentText}
-      </a>
+      </a>):(null)}
     </div>
   )
 }
