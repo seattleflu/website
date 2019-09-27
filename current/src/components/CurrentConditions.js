@@ -71,11 +71,10 @@ export default class CurrentConditions extends React.Component {
  * @return {string} - Text describing this week's status in the flu season.
  */
 const generateCurrentStatusText = (fluStats) => {
-  const currentFluCount = getCurrentFluCount(fluStats);
+  const fluCounts = new Map(fluStats.map(x => [x.encountered_week, x.count]));
 
-  let fluCounts = Object.keys(fluStats)
-                    .map((k) => fluStats[k]["count"])
-                    .sort((a, b) => b - a);
+  const currentWeek = DateTime.local().toFormat("kkkk-'W'WW");
+  const currentFluCount = fluCounts.get(currentWeek);
 
   const superlatives = {
     0: " ",
@@ -85,34 +84,17 @@ const generateCurrentStatusText = (fluStats) => {
     4: "fifth-",
   }
 
-  const weekRank = fluCounts.indexOf(currentFluCount);
+  const rankedCounts = Array.from(fluCounts.values()).sort((a,b) => b - a);
+  const weekRank = rankedCounts.indexOf(currentFluCount);
 
   if (weekRank === -1) {
     return 'not processing flu samples';
   } else if (weekRank < 5) {
     return `experiencing the ${superlatives[weekRank]}highest
         rates of flu we've seen so far this season`;
-  } else if (weekRank / fluCounts.length < 0.75) {
+  } else if (weekRank / rankedCounts.length < 0.75) {
       return 'experiencing an average amount of flu for this season';
   } else {
       return 'not seeing a lot of flu cases';
   }
-}
-
-/**
- * Returns the total number of positive flu cases for this week from the given
- * data.
- *
- * @param {Array} fluStats - An array of objects containing weekly flu data.
- * @return {number} - The number of positive flu cases for this week.
- */
-const getCurrentFluCount = (fluStats) => {
-  let weeklyFluCounts = {};
-
-  fluStats.forEach(i => {
-    let weekNumber = DateTime.fromISO(i.encountered_week).weekNumber;
-    weeklyFluCounts[weekNumber] = i.count;
-  });
-
-  return weeklyFluCounts[DateTime.local().weekNumber];
 }
