@@ -31,6 +31,9 @@ router.get('/', function (req, res, next) {
   res.render('results', {
     title: 'Results Page',
     header: 'light',
+    nav: 'true',
+    enroll: 'true',
+    logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData
   })

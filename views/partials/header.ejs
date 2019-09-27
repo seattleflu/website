@@ -70,14 +70,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="navbar-toggler-icon"></span>
           </button>
 
+          <% if(nav == 'true'){ %>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/faq">FAQ</a></li>
             <li class="nav-item"><a href="/kiosks">Find a Kiosk</a></li>
             <li class="nav-item"><a href="/current">Flu Status</a></li>
             <li class="nav-item"><a href="/science">Science</a></li>
             <li class="nav-item"><a href="/results">Your Results</a></li>
-            <a href="/enroll" class="nav-item"><button>Join the Study</button></a>
           </ul>    
+          <%}%>
+          <% if(enroll == 'true'){ %><ul class="navbar-nav ml-auto"><a href="/enroll" class="nav-item"><button>Join the Study</button></a></ul> <%}%>
         </div>
       </header>
       <div class="mobile-nav collapse navbar-collapse" id="headerNav">

@@ -49,6 +49,9 @@ router.get('/', function (req, res, next) {
     pageData: req.pageData,
     siteData: req.siteData,
     header: 'light',
+    nav: 'true',
+    enroll: 'true',
+    logos: 'true',
     md: md
   })
 })

@@ -36,6 +36,9 @@ router.get('/', function (req, res, next) {
   res.render('science', {
     title: 'Science',
     header: 'light',
+    nav: 'true',
+    enroll: 'true',
+    logos: 'true',
     md,
     pageData: req.pageData,
     siteData: req.siteData

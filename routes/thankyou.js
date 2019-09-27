@@ -57,7 +57,10 @@ router.get('/', function (req, res, next) {
     thankyouData: req.thankyouData,
     pageData: req.pageData,
     siteData: req.siteData,
-    header: 'light'
+    header: 'light',
+    nav: 'true',
+    enroll: 'true',
+    logos: 'true'
   })
 })
 
