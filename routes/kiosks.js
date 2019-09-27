@@ -47,6 +47,9 @@ router.get('/', function (req, res, next) {
   res.render('kiosks', {
     title: 'Kiosks',
     header: 'light',
+    nav: 'true',
+    enroll: 'true',
+    logos: 'true',
     md: md,
     kiosksData: req.kiosksData,
     pageData: req.pageData,
