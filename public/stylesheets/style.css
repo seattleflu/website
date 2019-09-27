@@ -892,3 +892,7 @@ h1.number {
     justify-content: space-between;
   }
 }
+
+.signup-error{
+display: none;
+}
