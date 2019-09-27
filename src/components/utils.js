@@ -39,6 +39,16 @@ export const LeftParagraph = styled.p`
     max-width: 100%;
   }
 `
+export const LargerParagraph = styled.p`
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 1em auto;
+  max-width: 80%;
+  @media (max-width: 735px) {
+    max-width: 95%;
+  }
+`
+
 export const HeroContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -107,7 +117,7 @@ export const Bold = styled.span`
 `
 
 /* Feature Block */
-const FeatureContainer = styled.div`
+export const FeatureContainer = styled.div`
   color: ${props => props.theme.white};
   background-color: ${props => props.theme.primary500};
   padding: 1em 2em;
@@ -172,6 +182,11 @@ const FeatureSidebar = styled.div`
   }
 `;
 
+const FeatureSection = styled.section`
+    flex: 5;
+    margin-left: 2em;
+`
+
 export const Feature = (props) => {
   const children = React.Children.toArray(props.children);
   return (
@@ -199,6 +214,23 @@ export const Feature = (props) => {
       ) : null}
     </FeatureContainer>
   );
+}
+
+export const EvenTwoColumnFeature = (props) => {
+  const children = React.Children.toArray(props.children);
+  return (
+    <FeatureContainer>
+        <FeatureTitle>{props.title}</FeatureTitle>
+        <FeatureFlexContainer>
+            <FeatureSection>
+                {children[0]}
+            </FeatureSection>
+            <FeatureSection>
+                {children[1]}
+            </FeatureSection>
+        </FeatureFlexContainer>
+    </FeatureContainer>
+  )
 }
 
 
@@ -303,3 +335,12 @@ export const Quote = (props) => {
     </QuoteContainer>
   )
 }
+
+export const UnorderedList = styled.ul`
+    margin: auto;
+    width: fit-content;
+    font-size: 20px;
+    @media (max-width: 768px) {
+        width: 75%;
+    }
+`

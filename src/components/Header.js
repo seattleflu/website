@@ -71,7 +71,9 @@ export default class Header extends React.Component {
           </utils.InternalLink>
         </LogoContainer>
         <Spacer/>
+        <HeaderLink to="/current">Current Conditions</HeaderLink>
         <HeaderLink to="/kiosks">Find a Kiosk</HeaderLink>
+        <HeaderLink to="/results">Find My Results</HeaderLink>
         <HeaderLink to="/faq">FAQ</HeaderLink>
       </HeaderContainer>
     )
