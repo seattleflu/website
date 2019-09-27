@@ -68,7 +68,7 @@ const FlowOne = props => {
       if (under18 == 'yes' && referrer == "schools") {
         props.handleStudy(props.fluStudyPage6)
       }else if(under18 == 'yes' && referrer != "schools"){
-        setQuestion(5)
+        setQuestion(6)
       }else{
         props.handleNextError(props.bouncePage6)
       }
@@ -159,7 +159,7 @@ const FlowOne = props => {
     event.preventDefault()
     setunder18Value(event.target.value)
     if (event.target.value == 'yes' && referrer != 'schools') {
-      setQuestion(question + 1)
+      setQuestion(6)
     }else if(event.target.value == 'no'){
       setQuestion(4)
       setConditionsValue('')
@@ -270,7 +270,7 @@ const FlowOne = props => {
         />
       ) : null}
 
-      {question >= 5 ? (
+      {question == 5 ? (
         <Switch
           text={props.question7}
           description={props.conditions13}
