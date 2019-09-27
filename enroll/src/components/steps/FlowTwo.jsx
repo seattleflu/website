@@ -37,7 +37,7 @@ const FlowTwo = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(question + 1)
+      //setQuestion(question + 1)
     } else {
       setConditionsValue('')
       setQuestion(2)
@@ -47,7 +47,7 @@ const FlowTwo = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(question + 1)
+      //setQuestion(question + 1)
     } else {
       setConditionsValue('')
       setQuestion(5)
@@ -57,7 +57,7 @@ const FlowTwo = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(question + 1)
+      //setQuestion(question + 1)
     } else {
       setConditionsValue('')
       setQuestion(8)
@@ -118,7 +118,8 @@ const FlowTwo = props => {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if (connectedValue == 'yes'){
-        setQuestion(3)
+        props.handleStudy(props.fluStudyPage3)
+        //setQuestion(3)
       }else{
 
       }
@@ -143,7 +144,8 @@ const FlowTwo = props => {
       if (deviceValue == 'no') {
         props.handleNextError(props.bouncePage16)
       } else if(deviceValue == 'yes') {
-        setQuestion(question + 1)
+        props.handleStudy(props.fluStudyPage12)
+        //setQuestion(question + 1)
       }else{
 
       }

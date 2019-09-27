@@ -28,6 +28,7 @@ const App = () => {
   const [question3, setQuestion3] = useState('')
   const [bouncePage3, setBouncePage3] = useState('')
   const [fluStudyPage3, setFluStudyPage3] = useState('')
+  const [conditions3, setConditions3] = useState('')
 
   const [question4, setQuestion4] = useState('')
   const [bouncePage4, setBouncePage4] = useState('')
@@ -153,6 +154,9 @@ const App = () => {
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage3(question.fields.fluStudyPage.fields.studyName)
+            }
+            if(question.fields.addInformation){
+              setConditions3(question.fields.addInformation)
             }
             setQuestion3(question.fields.question)
             break
@@ -364,6 +368,7 @@ const App = () => {
             question3={question3}
             bouncePage3={bouncePage3}
             fluStudyPage3={fluStudyPage3}
+            conditions3={conditions3}
             question4={question4}
             bouncePage4={bouncePage4}
             fluStudyPage4={fluStudyPage4}
