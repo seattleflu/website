@@ -412,7 +412,7 @@ button.green:hover {
     margin-top: 50px;
   }
   .study-callout {
-    padding: 30px 15px;
+    padding: 30px;
   }
   .study-callout h3 {
     display: block;
@@ -435,6 +435,11 @@ button.green:hover {
   }
   .home-callout a {
     float: none;
+  }
+}
+@media (max-width: 767px) {
+  .study-callout {
+    padding: 30px 15px;
   }
 }
 
