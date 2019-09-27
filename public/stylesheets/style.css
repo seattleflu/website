@@ -343,7 +343,6 @@ header.dark .nav-item button {
   display: inline-block;
   width: 1em; 
   margin-left: -1em;
-  margin-right: 10px;
   line-height: 25px;
 }
 button.green {
@@ -811,14 +810,18 @@ h1.number {
   margin-top: -108px;
   padding-top: 30px;
 }
-.landing-logos img {
+.landing-logos a {
   margin-right: 75px;
 }
-.landing-logos img:last-child {
+.landing-logos a:last-child {
   margin-right: 0;
 }
 .landing-text {
   padding-top: 60px;
+}
+.landing-text p {
+  font-size: 18px;
+  line-height: 25px;
 }
 .landing-text ul li {
   font-weight: bold;
@@ -826,4 +829,44 @@ h1.number {
 }
 .landing-text button {
   margin-top: 34px;
+}
+@media (max-width: 991px) {
+  .landing-logos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .landing-logos a {
+    margin-bottom: 45px;
+  }
+  .landing-text {
+    padding-top: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .landing-logos {
+    justify-content: space-evenly;
+  }
+  .landing-logos a {
+    margin-right: 0;
+    flex-basis: 50%;
+    text-align: center;
+    margin-bottom: 45px;
+  }
+  .landing-text {
+    padding-top: 0;
+    margin-top: -15px;
+  }
+}
+@media (max-width: 440px) {
+  .landing-logos a {
+    flex-basis: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .landing-logos a:last-child {
+    margin-right: auto;
+  }
+  .landing-logos {
+    justify-content: space-between;
+  }
 }

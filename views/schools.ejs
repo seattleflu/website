@@ -11,21 +11,13 @@
 <div class="container landing-content">
     <div class="row">
         <div class="col-lg-12 landing-logos">
-            <img src="/images/logo_UWMedicine.svg">
-            <img src="/images/logo_FredHutch.svg">
-            <img src="/images/logo_SeattleChildrens.svg">
-            <img src="/images/logo_BrotmanBatyInstitute.svg">
+            <a href="https://www.uwmedicine.org/"><img src="/images/logo_UWMedicine.svg"></a>
+            <a href="https://www.fredhutch.org/"><img src="/images/logo_FredHutch.svg"></a>
+            <a href="https://www.seattlechildrens.org/"><img src="/images/logo_SeattleChildrens.svg"></a>
+            <a href="https://brotmanbaty.org/"><img src="/images/logo_BrotmanBatyInstitute.svg"></a>
         </div>
         <div class="col-lg-8 landing-text secondary">
-            <p>Welcome to the Seattle Flu Study in Schools! Our goal is to understand how the flu and other respiratory viruses affect kids and their families. We hope this study will help prepare us for and prevent future outbreaks.</p>
-            <p>You and your family can help us by joining our study. It’s important to join before anyone in your household gets sick. We will mail you everything you need, so you can participate entirely within your home! Participating families will be asked to:</p>
-            <ul>
-                <li>Answer questions about your household using an  electronic survey</li>
-                <li>Send us swabs of each person’s nose right when you join our study</li>
-                <li>Send us nose swabs again when a person gets sick</li>
-                <li>Take a home test for flu if someone in the family gets sick during flu season</li>
-            </ul>
-            <p>You may be eligible to participate if your household has a Seattle address, contains 3 or more people, and includes a child between 5 and 18 years old. Click on the button below, and find out if your household is eligible to participate in this study, or another arm of the Seattle Flu Study.</p>
+            <%- md.render(pageData[0].fields.content) %>
             <a href="/enroll"><button class="green">Join the Study</button></a>
         </div>
     </div>
