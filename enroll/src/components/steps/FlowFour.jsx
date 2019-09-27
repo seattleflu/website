@@ -261,7 +261,7 @@ const FlowFour = props => {
 
   return (
     <div className='col-12'>
-      <h2>Screening Questionnaire (Under 18)</h2>
+      <h2>Screening Questionnaire</h2>
       {question >= 0 ? (
         <Select
           text={props.question15}
