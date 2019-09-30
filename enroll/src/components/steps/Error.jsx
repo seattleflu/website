@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { getStudy } from '../../services/api'
 const ReactMarkdown = require('react-markdown')
+import axios from 'axios';
 
 //observation url
 //https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation
@@ -17,7 +18,7 @@ const Error = props => {
   const [urlConsentText, setUrlConsentText] = useState('')
 
   useEffect(() => {
-    getStudy(props.studyName).then(studyData => {
+      getStudy(props.studyName).then(studyData => {
       setName(studyData[0].fields.studyName)
       setHeadline(studyData[0].fields.headline)
       setDescription(studyData[0].fields.description)
@@ -26,12 +27,30 @@ const Error = props => {
     })
   }, [])
 
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const user = {
+      name: this.state.name
+      email_address: "bandontest@formativeco.com"
+      first_name: "brandontest"
+      last_name:  "brandontest"
+      website_url: "test url"
+    };
+
+    axios.post(`https://kpwflowb0j.execute-api.us-east-1.amazonaws.com/flu-api/intervention`, { user })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+  }
+
   return (
     <div>
       <h1 className="studyHeader">{headline}</h1>
       <ReactMarkdown source={description} />
       {name != "Swab & Send Study" ?  
-      (<form id="ty-subscribe">
+      (<form id="ty-subscribe" onSubmit={handleSubmit}>
         <input type="text" id="firstNameInput" name="firstName" placeholder="First Name" />
         <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name"/>
         <input type="text" id="emailInput" name="Email" placeholder="Email Address"/>
