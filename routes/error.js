@@ -39,7 +39,7 @@ router.get('/', function (req, res, next) {
     siteData: req.siteData,
     header: 'light',
     nav: 'true',
-    enroll: 'true',
+    enroll: 'false',
     logos: 'true',
     md: md
   })

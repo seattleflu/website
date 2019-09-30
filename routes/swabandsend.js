@@ -22,7 +22,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('media-inquiries')
+    .getPageData('swabandsend')
     .then(pageData => {
       console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
@@ -33,11 +33,11 @@ router.use((req, res, next) => {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('media', {
-    title: 'Media Inquiries',
+  res.render('swabandsend', {
+    title: 'Swab and Send',
     header: 'dark',
     md: md,
-    nav: 'false',
+    nav: 'true',
     enroll: 'false',
     logos: 'false',
     pageData: req.pageData,

@@ -50,7 +50,7 @@ router.get('/', function (req, res, next) {
     md: md,
     homeData: req.homeData,
     nav: 'true',
-    enroll: 'true',
+    enroll: 'false',
     logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData
