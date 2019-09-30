@@ -22,7 +22,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('schools')
+    .getPageData('learnmore')
     .then(pageData => {
       console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
@@ -33,12 +33,12 @@ router.use((req, res, next) => {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('schools', {
-    title: 'Schools',
+  res.render('learnmore', {
+    title: 'Learn More',
     header: 'dark',
     md: md,
     nav: 'false',
-    enroll: 'true',
+    enroll: 'false',
     logos: 'false',
     pageData: req.pageData,
     siteData: req.siteData

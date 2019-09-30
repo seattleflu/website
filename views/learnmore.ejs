@@ -1,0 +1,73 @@
+
+<% include ./partials/header {header: header, pageData: req.pageData, siteData: req.siteData} %>
+<div class="container-full landing-header">
+    <div class="container">
+        <h1><%= pageData[0].fields.name %></h1>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <polygon fill="white" points="0,100 0,0 104,100"/>
+    </svg>
+</div>
+<div class="container landing-content">
+    <div class="row">
+        <div class="col-lg-12 landing-logos">
+            <a href="https://www.uwmedicine.org/"><img src="/images/logo_UWMedicine.svg"></a>
+            <a href="https://www.fredhutch.org/"><img src="/images/logo_FredHutch.svg"></a>
+            <a href="https://www.seattlechildrens.org/"><img src="/images/logo_SeattleChildrens.svg"></a>
+            <a href="https://brotmanbaty.org/"><img src="/images/logo_BrotmanBatyInstitute.svg"></a>
+        </div>
+        <div class="col-lg-8 landing-text secondary">
+            <%- md.render(pageData[0].fields.content) %>
+            <form id="ty-subscribe">
+                <input type="text" id="firstNameInput" name="Email" placeholder="First Name">
+                <input type="text" id="lastNameInput" name="Email" placeholder="Last Name">
+                <input type="text" id="emailInput" name="Email" placeholder="Email Address">
+                <h5 id="signup-error">Sorry, there was an error submitting you form</h5>
+                <input type="submit" value="Submit">
+            </form> 
+            <%- md.render(pageData[0].fields.content2) %>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#ty-subscribe').submit(function (event) {
+            event.preventDefault()
+            var formData = {
+            "email_address": $('#emailInput').val(),
+            "first_name": $('#firstNameInput').val(),
+            "last_name": $('#lastNameInput').val(),
+            "website_url": window.location.href
+            }
+            //console.log(formData)
+            // process the form
+            $.ajax({
+            type: 'POST', 
+            url: 'https://api.fluathome.org', 
+            data: formData, 
+            dataType: 'json', 
+            encode: true
+            })
+            .done(function (data) {
+                console.log(data["statusCode"])
+                if (data["statusCode"]){
+                $("#thank-you").css("display", "block")
+                $("#ty-subscribe").css("display", "none")
+                // $(location).attr('href', '/sfs-thank-you.html')
+                }else{
+                $("#thank-you").css("display", "none")
+                $("#ty-subscribe").css("display", "block")
+                $("#signup-error").css("display", "block")
+                }
+            })
+        })
+        })
+        
+</script>
+
+
+<% include ./partials/footer  {logos: logos} %>
+    
+    
+  

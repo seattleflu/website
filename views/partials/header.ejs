@@ -23,12 +23,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="">
-    <link rel="icon" type="image/png" sizes="32x32" href="">
-    <link rel="icon" type="image/png" sizes="16x16" href="">
-    <link rel="manifest" href="">
-    <link rel="mask-icon" href="" color="#0d1d47">
-    <link rel="shortcut icon" href="">
+    <link rel="apple-touch-icon" sizes="180x180" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="manifest" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="mask-icon" href="http:<%= siteData[0].fields.favicon.fields.file.url %>" color="#0d1d47">
+    <link rel="shortcut icon" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-config" content="">
     <meta name="theme-color" content="#ffffff">
@@ -79,7 +79,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="nav-item"><a href="/results">Your Results</a></li>
           </ul>    
           <%}%>
-          <% if(enroll == 'true'){ %><ul class="navbar-nav ml-auto"><a href="/enroll" class="nav-item"><button>Join the Study</button></a></ul> <%}%>
+          <% if(enroll == 'true'){ %><ul class="navbar-nav join-the-study"><a href="/enroll" class="nav-item"><button>Join the Study</button></a></ul> <%}%>
         </div>
       </header>
       <div class="mobile-nav collapse navbar-collapse" id="headerNav">

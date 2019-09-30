@@ -1,9 +1,9 @@
-<% include ./partials/header  %>
+<% include ./partials/header {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
 
 <div class="secondary container p-5">
   <div class="row p-2">
     <div class="col-12">
-      <h1 class="align-center">Coming Soon: Your Results!</h1>
+      <h1><%= title %></h1>
     </div>
 	</div>
 	<div class="row justify-content-center p-5">
@@ -24,4 +24,4 @@
 	</div>
 </div>
 
-<% include ./partials/footer  %>
+<% include ./partials/footer  {logos: logos}%>

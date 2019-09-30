@@ -37,7 +37,7 @@ const FlowThree = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(question + 1)
+      //setQuestion(question + 1)
     } else {
       setConditionsValue('')
       setQuestion(2)
@@ -47,7 +47,7 @@ const FlowThree = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(question + 1)
+      //setQuestion(question + 1)
     } else {
       setConditionsValue('')
       setQuestion(5)
@@ -57,7 +57,7 @@ const FlowThree = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(9)
+      //setQuestion(9)
     } else {
       setConditionsValue('')
       setQuestion(8)
@@ -113,7 +113,8 @@ const FlowThree = props => {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if(connectedValue == 'yes'){
-        setQuestion(3)
+        props.handleStudy(props.fluStudyPage12)
+        //setQuestion(3)
       }else{
 
       }
@@ -140,7 +141,8 @@ const FlowThree = props => {
       if (deviceValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if (deviceValue == 'yes'){
-        setQuestion(question + 1)
+        props.handleStudy(props.fluStudyPage12)
+        //setQuestion(question + 1)
       }else{
 
       }
@@ -180,7 +182,8 @@ const FlowThree = props => {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if (connectedValue == 'yes'){
-        setQuestion(9)
+        props.handleStudy(props.fluStudyPage12)
+        //setQuestion(9)
       }else{
 
       }
@@ -260,7 +263,7 @@ const FlowThree = props => {
 
   return (
     <div className='col-12'>
-      <h2>Screening Questionnaire (Over 18)</h2>
+      <h2>Screening Questionnaire</h2>
       {question >= 0 ? (
         <Select
           text={props.question15}
@@ -392,7 +395,7 @@ const FlowThree = props => {
               Increased trouble with breathing
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
                 <input
                   type='checkbox'
                   name='NoneOfTheAbove2'
@@ -583,7 +586,7 @@ const FlowThree = props => {
               Increased trouble with breathing
               <br />
             </div>
-            <div className='symptom col-4'>
+            <div className='symptom col-md-6 col-lg-4'>
                 <input
                   type='checkbox'
                   name='NoneOfTheAbove2'

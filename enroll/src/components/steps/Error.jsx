@@ -24,9 +24,18 @@ const Error = props => {
     <div>
       <h1 className="studyHeader">{headline}</h1>
       <ReactMarkdown source={description} />
-            <a className='btn btn-primary float-right next' href={urlConsent}>
+      {name != "Swab & Send Study" ?  
+      (<form id="ty-subscribe">
+        <input type="text" id="firstNameInput" name="firstName" placeholder="First Name" />
+        <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name"/>
+        <input type="text" id="emailInput" name="Email" placeholder="Email Address"/>
+         <input type="tel" id="phoneInput" name="phone" placeholder="Phone Number"/>
+        <h5 id="signup-error">Sorry, there was an error submitting you form</h5>
+        <input type="submit" value="Submit"/>
+      </form>) : (null)}
+            {urlConsent ? (<a className='btn btn-primary float-right next' href={urlConsent}>
         {urlConsentText}
-      </a>
+      </a>):(null)}
     </div>
   )
 }

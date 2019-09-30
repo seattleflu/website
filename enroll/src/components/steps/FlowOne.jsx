@@ -67,12 +67,10 @@ const FlowOne = props => {
     if (question == 4) {
       if (under18 == 'yes' && referrer == "schools") {
         props.handleStudy(props.fluStudyPage6)
-      }else if(under18 == 'yes' != "schools"){
-        setQuestion(5)
-      } else if(under18 == 'no'){
-        props.handleNextError(props.bouncePage6)
+      }else if(under18 == 'yes' && referrer != "schools"){
+        setQuestion(6)
       }else{
-
+        props.handleNextError(props.bouncePage6)
       }
     }
     if (question == 5) {
@@ -133,11 +131,13 @@ const FlowOne = props => {
     setMoreThanThreeValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
-    } else {
+    } else if(event.target.value == 'no'){
       setQuestion(3)
       setunder18Value('')
       setConditionsValue('')
       setPillsValue('')
+    }else{
+      
     }
   }
   function handleHavePhoneChange (event) {
@@ -145,23 +145,28 @@ const FlowOne = props => {
     setHavePhoneValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
-    } else {
+    } else if(event.target.value == 'no'){
       setQuestion(2)
       setMoreThanThreeValue('')
       setunder18Value('')
       setConditionsValue('')
       setPillsValue('')
+    }else{
+      
     }
   }
   function handleunder18Change (event) {
     event.preventDefault()
     setunder18Value(event.target.value)
     if (event.target.value == 'yes' && referrer != 'schools') {
-      setQuestion(question + 1)
-    }else {
+      setQuestion(6)
+    }else if(event.target.value == 'no'){
       setQuestion(4)
       setConditionsValue('')
       setPillsValue('')
+
+      }else{
+      
     }
   }
 
@@ -170,9 +175,11 @@ const FlowOne = props => {
     setConditionsValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
-    } else {
+    } else if(event.target.value == 'no'){
       setQuestion(5)
       setPillsValue('')
+    }else{
+      
     }
   }
   function handlePillsChange (event) {
@@ -180,8 +187,10 @@ const FlowOne = props => {
     setPillsValue(event.target.value)
     if (event.target.value == 'yes') {
       // setQuestion(question + 1)
-    } else {
+    }else if(event.target.value == 'no'){
       setQuestion(6)
+    }else{
+      
     }
   }
 
@@ -203,7 +212,7 @@ const FlowOne = props => {
       {question >= 0 && referrer != 'schools' ? (
         <Switch
           text={props.question3}
-          description=''
+          description={props.conditions3}
           label='symptoms'
           type='select'
           id='symptomsTest'
@@ -261,7 +270,7 @@ const FlowOne = props => {
         />
       ) : null}
 
-      {question >= 5 ? (
+      {question == 5 ? (
         <Switch
           text={props.question7}
           description={props.conditions13}

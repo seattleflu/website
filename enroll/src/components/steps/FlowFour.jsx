@@ -37,7 +37,7 @@ const FlowFour = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(question + 1)
+      //setQuestion(question + 1)
     } else {
       setConditionsValue('')
       setQuestion(2)
@@ -47,7 +47,7 @@ const FlowFour = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(question + 1)
+      //setQuestion(question + 1)
     } else {
       setConditionsValue('')
       setQuestion(5)
@@ -57,7 +57,7 @@ const FlowFour = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
-      setQuestion(question + 1)
+      //setQuestion(question + 1)
     } else {
       setConditionsValue('')
       setQuestion(8)
@@ -113,7 +113,8 @@ const FlowFour = props => {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if (connectedValue == 'yes') {
-        setQuestion(2)
+        //setQuestion(2)
+        props.handleStudy(props.fluStudyPage12)
       }else{
 
       }
@@ -140,7 +141,8 @@ const FlowFour = props => {
       if (deviceValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if (deviceValue == 'yes'){
-        setQuestion(question + 1)
+        //setQuestion(question + 1)
+        props.handleStudy(props.fluStudyPage12)
       }else{
 
       }
@@ -178,7 +180,8 @@ const FlowFour = props => {
       if (connectedValue == 'no') {
         props.handleNextError(props.bouncePage12)
       } else if (connectedValue == 'yes'){
-        setQuestion(question + 1)
+        //setQuestion(question + 1)
+        props.handleStudy(props.fluStudyPage12)
       }else{
 
       }
@@ -258,7 +261,7 @@ const FlowFour = props => {
 
   return (
     <div className='col-12'>
-      <h2>Screening Questionnaire (Under 18)</h2>
+      <h2>Screening Questionnaire</h2>
       {question >= 0 ? (
         <Select
           text={props.question15}
