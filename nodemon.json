@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "watch": [
+    "app.js",
+    "routes/",
+    "services/",
+    "views/",
+    "webpack.config.js"
+  ],
+  "ext": "js"
+}

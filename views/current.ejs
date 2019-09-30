@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
+
+<div class="secondary container">
     <h1><%= title %></h1>
-    
-  </body>
-</html>
+    <div id="current">
+        <!-- React app inserts itself here -->
+    </div>
+</div>
+
+<script type="text/javascript" src="/dist/current-bundle.js"></script>
+
+<% include ./partials/footer  {logos: logos}%>

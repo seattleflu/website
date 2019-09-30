@@ -1,7 +1,100 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PNMW24K');</script>
+<!-- End Google Tag Manager -->
+    <title><%= pageData[0].fields.name %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" >
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i&display=swap" rel="stylesheet">
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="manifest" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="mask-icon" href="http:<%= siteData[0].fields.favicon.fields.file.url %>" color="#0d1d47">
+    <link rel="shortcut icon" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="">
+    <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flu Study | <%= pageData[0].fields.name %></title>
+    <meta property="og:site_name" content="<%= pageData[0].fields.name %>"/>
+    <meta property="og:title" content="<%= pageData[0].fields.name %>" />
+    <meta property="og:url" content="http://sfs.formdev.io/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>" />
+    <meta property="og:type" content="website" />
+    <% if (pageData[0].fields.socialSharingImage) { %>
+    <meta property="og:image" content="https:<%= pageData[0].fields.socialSharingImage.fields.file.url %>" />
+    <% } %>
+    <meta property="og:description" content="<%= pageData[0].fields.metaDescription%>" />
+    <meta itemprop="name" content="<%= pageData[0].fields.name %>"/>
+    <meta itemprop="url" content="http://sfs.formdev.io/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %> %>"/>
+    <meta name="twitter:title" content="<%= pageData[0].fields.name %>"/>
+    <meta name="twitter:url" content="http://sfs.formdev.io/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>>"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="description" content="<%= pageData[0].fields.metaDescription%>" />
+    <% if (pageData[0].fields.socialSharingImage) { %>
+    <meta name="twitter:image" content="https:<%= pageData[0].fields.socialSharingImage.fields.file.url %>" />
+    <% } %>
+  
   </head>
-   <body>
+    <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNMW24K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+      <header class="<%= header %> navbar navbar-expand-md navbar-dark">
+        <div class="container">
+          <% if(header === 'light') {%>
+            <a href="/" class="logo"><img src="http:<%= siteData[0].fields.logo.fields.file.url %>"></a>
+          <%}%>
+          <% if(header === 'dark') {%>
+            <a href="/" class="logo"><img src="http:<%= siteData[0].fields.logoWhite.fields.file.url %>"></a>
+          <%}%>
+          <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <% if(nav == 'true'){ %>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/faq">FAQ</a></li>
+            <li class="nav-item"><a href="/kiosks">Find a Kiosk</a></li>
+            <li class="nav-item"><a href="/current">Current Conditions</a></li>
+            <li class="nav-item"><a href="/science">Science</a></li>
+            <li class="nav-item"><a href="/results">Your Results</a></li>
+          </ul>    
+          <%}%>
+          <% if(enroll == 'true'){ %><ul class="navbar-nav join-the-study"><a href="/enroll" class="nav-item"><button>Join the Study</button></a></ul> <%}%>
+        </div>
+      </header>
+      <div class="mobile-nav collapse navbar-collapse" id="headerNav">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-close-icon"></span>
+          </button>
+
+          <ul>
+            <li class="nav-item"><a href="/faq">FAQ</a></li>
+            <li class="nav-item"><a href="/kiosks">Find a Kiosk</a></li>
+            <li class="nav-item"><a href="/current">Current Conditions</a></li>
+            <li class="nav-item"><a href="/science">Science</a></li>
+            <li class="nav-item"><a href="/results">Your Results</a></li>
+            <a href="/enroll" class="nav-item"><button class="headerbutton green">Join the Study</button></a>
+          </ul>   
+      </div>
+      <div class="overlay"></div>
+      
