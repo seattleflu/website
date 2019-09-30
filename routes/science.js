@@ -32,7 +32,7 @@ router.get('/', function (req, res, next) {
     title: 'Science',
     header: 'light',
     nav: 'true',
-    enroll: 'true',
+    enroll: 'false',
     logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData
@@ -44,7 +44,7 @@ router.get('/map', function (req, res, next) {
     title: 'Science page map',
     header: 'light',
     nav: 'true',
-    enroll: 'true',
+    enroll: 'false',
     logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData
@@ -56,7 +56,7 @@ router.get('/tree', function (req, res, next) {
     title: 'Science page tree',
     header: 'light',
     nav: 'true',
-    enroll: 'true',
+    enroll: 'false',
     logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData
