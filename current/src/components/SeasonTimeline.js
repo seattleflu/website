@@ -2,7 +2,6 @@ import React from 'react';
 import { DateTime } from 'luxon';
 import _ from 'lodash';
 import styled, { keyframes } from 'styled-components';
-import { CenteredParagraph } from './utils';
 
 import fluIcon from '../img/flu-virus-green.svg';
 
@@ -48,23 +47,22 @@ export default class SeasonTimeline extends React.Component {
     const currentMonth = this.props.currentMonth;
     const currentMonthIndex = months.findIndex(m => m.month === currentMonth);
 
-    const [width, height, margin] = [800, 190, 5];
-    const monthWidth = Math.floor(1/months.length * width);
+    const [width, height, margin] = [800, 160, 5];
+
+    // The months are packed chevrons.  First calculate the space for each
+    // month as a rectangle.  Then subtract from that the width of one chevron
+    // outset spread across each month, to make room for the final month's
+    // outset chevron.
+    const chevronOutset = 0.25;
+    const widthPerMonth = Math.floor(1/months.length * width);
+    const monthWidth = widthPerMonth - Math.floor(1/months.length * (widthPerMonth * chevronOutset));
+
     const monthHeight = 70;
 
     const iconDimensions = Math.min(monthWidth, "50");
     const pinheadRadius = iconDimensions / 1.5;
 
-    const pinHeight = height - monthHeight - iconDimensions;
-    const pinpointRadius = 5;
-
-    const rotateDash = keyframes`
-      from {
-        stroke-dashoffset: 280;
-      }
-      to {
-        stroke-dashoffset: 75;
-    `
+    const pinHeight = height - monthHeight - pinheadRadius;
 
     const spin = keyframes`
       from {
@@ -75,116 +73,74 @@ export default class SeasonTimeline extends React.Component {
       }
     `
 
-    const slide = keyframes`
-      from {
-        stroke-dashoffset: 280;
-      }
-      to {
-        stroke-dashoffset: 75;
-        transform: translateX(${monthWidth * currentMonthIndex}px);
-    `
-
-    const Slide = styled.g`
-      display: inline-block;
-      width: 100%;
-      height: ${height}
-      animation: ${slide} 1.2s linear;
-      animation-fill-mode: forwards;
-    `
-
-    const RotateDash = styled.g`
-      display: inline-block;
-      width: 100%;
-      height: ${height}
-      animation: ${rotateDash} 9s linear infinite;
-    `
-
     const Spin = styled.g`
       display: inline-block;
       animation: ${spin} 6s linear infinite;
     `
 
     return (
-      <CenteredParagraph>
-        <svg viewBox={`0 0 ${width + margin * 2} ${height + margin * 2}`}
-             width="100%"
-             height={height + margin * 2}
-             role="img"
-             aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID">
-          <title id="fluSeasonTimelineID">Flu Season Timeline</title>
-          <desc id="fluSeasonTimelineDescID">
-            A timeline detailing the progression of a flu season from July of
-            the season start year to July of the season end year.
-            June, July, and August are considered off-season months.
-            September and May are shoulder months that may or may not have flu.
-            October through April is considered peak flu season.
-          </desc>
-          <g transform={`translate(${margin}, ${height - monthHeight})`}>
-            {months.map((m, i) =>
-            <g key={m.yearMonth}
-               transform={`translate(${i * monthWidth}, 0)`}>
-                <polygon points={`0, 0
-                                ${monthWidth},0
-                                ${monthWidth * 1.25}, ${monthHeight / 2}
-                                ${monthWidth}, ${monthHeight}
-                                0, ${monthHeight}
-                                ${monthWidth * 0.25}, ${monthHeight / 2}`}
-                      {...rectAttrs[m.seasonality]}
-                      stroke="white" />
-
-                <text textAnchor="middle"
-                      dominantBaseline="middle"
-                      x={monthWidth * 0.65}
-                      y={monthHeight / 2 + 5}
-                      dy="-3px">
-                  {DateTime.fromISO(m.yearMonth).monthShort}
-                </text>
-              </g>
-            )}
-            <RotateDash>
-              <polygon transform={`translate(${currentMonthIndex * monthWidth}, 0)`}
-                      points={`0, 0
-                              ${monthWidth}, 0
-                              ${monthWidth * 1.25}, ${monthHeight / 2}
+      <svg viewBox={`0 0 ${width + margin * 2} ${height + margin * 2}`}
+           width="100%"
+           height={height + margin * 2}
+           role="img"
+           aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID"
+           style={{pointerEvents: "none"}}>
+        <title id="fluSeasonTimelineID">Flu Season Timeline</title>
+        <desc id="fluSeasonTimelineDescID">
+          A timeline detailing the progression of a flu season from July of
+          the season start year to July of the season end year.
+          June, July, and August are considered off-season months.
+          September and May are shoulder months that may or may not have flu.
+          October through April is considered peak flu season.
+        </desc>
+        <g transform={`translate(${margin}, ${height - monthHeight})`}>
+          {months.map((m, i) =>
+          <g key={m.yearMonth}
+             transform={`translate(${i * monthWidth}, 0)`}>
+              <polygon points={`0, 0
+                              ${monthWidth},0
+                              ${monthWidth * (1 + chevronOutset)}, ${monthHeight / 2}
                               ${monthWidth}, ${monthHeight}
                               0, ${monthHeight}
-                              ${monthWidth * 0.25}, ${monthHeight / 2}`}
-                      strokeWidth="4"
-                      stroke="yellow"
-                      fill="transparent"
-                      strokeLinecap="round"
-                      strokeDasharray="4 6" />
-            </RotateDash>
-          </g>
+                              ${monthWidth * chevronOutset}, ${monthHeight / 2}`}
+                    {...rectAttrs[m.seasonality]}
+                    stroke="white" />
 
-          <g key="current-month-virus-pin"
-             transform={`translate(${monthWidth * 0.65}, ${pinheadRadius})`}>
-            <Slide>
-                <line x1="0" y1="0"
-                      x2="0" y2={iconDimensions / 2 + pinHeight}
-                      stroke="black" />
-                <circle cx="0"
-                        cy={iconDimensions / 2 + pinHeight + pinpointRadius}
-                        r={pinpointRadius}
-                        fill="transparent"
-                        stroke="black" />
-                <circle cx="0"
-                        cy={-iconDimensions / 2 + pinheadRadius * 0.75}
-                        r={pinheadRadius}
-                        fill="grey"
-                        strokeWidth="2" />
-                <Spin>
-                  <image href={fluIcon}
-                        y={-iconDimensions / 2}
-                        x={-iconDimensions / 2}
-                        width={iconDimensions}
-                        height={iconDimensions} />
-                </Spin>
-              </Slide>
+              <text textAnchor="middle"
+                    dominantBaseline="middle"
+                    x={monthWidth * 0.65}
+                    y={monthHeight / 2 + 5}
+                    dy="-3px"
+                    style={{fontWeight: i === currentMonthIndex ? "bold" : "normal"}}>
+                {DateTime.fromISO(m.yearMonth).monthShort}
+              </text>
             </g>
+          )}
+        </g>
 
-        </svg>
-      </CenteredParagraph>
+        <g key="current-month-virus-pin"
+           transform={`translate(${currentMonthIndex * monthWidth + monthWidth * 0.65}, ${pinheadRadius})`}>
+          <path
+            d={`
+              M ${-(pinheadRadius - 5)} 18
+              A ${pinheadRadius} ${pinheadRadius} 220 1 1 ${pinheadRadius - 5} 18
+              L 0 ${pinheadRadius * 2}
+              z
+            `}
+            fill="#1bab4c"
+            strokeWidth="2"
+            strokeLinecap="round" />
+          <Spin>
+            <image href={fluIcon}
+                  y={-iconDimensions / 2}
+                  x={-iconDimensions / 2}
+                  width={iconDimensions}
+                  height={iconDimensions}
+                  style={{opacity: 0.9}} />
+          </Spin>
+        </g>
+
+      </svg>
     );
   }
 }
