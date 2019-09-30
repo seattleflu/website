@@ -1,6 +1,5 @@
 var express = require('express')
 var router = express.Router()
-var home = require('../services/index')
 
 var page = require('../services/page')
 var site = require('../services/site')
@@ -23,7 +22,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('/')
+    .getPageData('swabandsend')
     .then(pageData => {
       console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
@@ -32,28 +31,17 @@ router.use((req, res, next) => {
     .catch(console.error)
 })
 
-router.use((req, res, next) => {
-  home
-    .getHome()
-    .then(homeData => {
-      req.homeData = homeData.items
-      next()
-    })
-    .catch(console.error)
-})
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', {
-    title: 'Seattle Flu Study',
+  res.render('swabandsend', {
+    title: 'Swab and Send',
     header: 'dark',
+    md: md,
     nav: 'true',
     enroll: 'false',
-    logos: 'true',
-    md: md,
+    logos: 'false',
     pageData: req.pageData,
-    siteData: req.siteData,
-    homeData: req.homeData
+    siteData: req.siteData
   })
 })
 

@@ -37,7 +37,7 @@ router.get('/', function (req, res, next) {
     title: 'Science',
     header: 'light',
     nav: 'true',
-    enroll: 'true',
+    enroll: 'false',
     logos: 'true',
     md,
     pageData: req.pageData,

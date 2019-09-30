@@ -49,7 +49,7 @@ router.use(
       title: 'Error',
       header: 'light',
       nav: 'true',
-      enroll: 'true',
+      enroll: 'false',
       logos: 'false',
       md,
       pageData: req.pageData,

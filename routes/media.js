@@ -38,7 +38,7 @@ router.get('/', function (req, res, next) {
     header: 'dark',
     md: md,
     nav: 'false',
-    enroll: 'true',
+    enroll: 'false',
     logos: 'false',
     pageData: req.pageData,
     siteData: req.siteData
