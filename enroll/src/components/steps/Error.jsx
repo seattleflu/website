@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom'
 import { getStudy } from '../../services/api'
 const ReactMarkdown = require('react-markdown')
 
+//observation url
+//https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation
+
+//intervention
+//https://kpwflowb0j.execute-api.us-east-1.amazonaws.com/flu-api/intervention
+
 const Error = props => {
   const [name, setName] = useState('')
   const [headline, setHeadline] = useState('')
