@@ -31,7 +31,7 @@ export default class CurrentConditions extends React.Component {
       8: 'done with',
     };
 
-    const fluCurrentStatusText = generateCurrentStatusText(fluStats);
+    //const fluCurrentStatusText = generateCurrentStatusText(fluStats);
 
     return (
       <>
@@ -40,11 +40,16 @@ export default class CurrentConditions extends React.Component {
           we’re <strong>{fluSeasonProgressText[currentMonth]}</strong> the {seasonStartYear}–
           {seasonStartYear + 1} flu season.
 
-          This week we’re <strong>{fluCurrentStatusText}</strong>.
+          {/*This week we’re <strong>{fluCurrentStatusText}</strong>.*/}
         </p>
 
         <SeasonTimeline currentMonth={currentMonth} />
 
+        <p>
+          Check back later in the season for a real-time map of flu intensity across the city.
+        </p>
+
+        {/*
         <p>
           The map below shows the relative intensity of common respiratory infections this week from across the Seattle region.
         </p>
@@ -56,6 +61,7 @@ export default class CurrentConditions extends React.Component {
         </p>
 
         <FluMap/>
+        */}
       </>
     );
   }
