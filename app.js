@@ -15,6 +15,7 @@ var thankyouRouter = require('./routes/thankyou')
 var privacyRouter = require('./routes/privacy')
 var kiosksRouter = require('./routes/kiosks')
 var learnmoreRouter = require('./routes/learnmore')
+var mediaRouter = require('./routes/media')
 var errorRouter = require('./routes/error')
 
 var app = express()
@@ -46,6 +47,8 @@ app.use('/results', resultsRouter)
 app.use('/privacy', privacyRouter)
 app.use('/kiosks', kiosksRouter)
 app.use('/learnmore', learnmoreRouter)
+app.use('/media-inquiries', mediaRouter)
+
 app.use('/thank-you/:thankyouid', thankyouRouter)
 app.use('*', errorRouter)
 
