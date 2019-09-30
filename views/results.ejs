@@ -1,27 +1,13 @@
 <% include ./partials/header {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
 
-<div class="secondary container p-5">
-  <div class="row p-2">
-    <div class="col-12">
-      <h1><%= title %></h1>
-    </div>
-	</div>
-	<div class="row justify-content-center p-5">
-		<div class="col-lg-6 col-sm-12 align-center">
-			<h4>
-				In the near future you will be able to input your
-				sample barcode and see the results of your research test.
-			</h4>
+<div class="secondary container">
+    <h1><%= title %></h1>
+    <div class="row">
+        <div class="col-12">
+            <p>In the near future you will be able to input your sample barcode
+            and see the results of your research test.
 		</div>
 	</div>
-	<!-- <div class="row justify-content-center">
-		<div class="col-lg-6 col-sm-12 align-center">
-			<h4>
-				In the meantime, check out the current flu conditions:
-			</h4>
-			<a href="/current" class="btn btn-primary">Current Conditions</a>
-		</div>
-	</div> -->
 </div>
 
 <% include ./partials/footer  {logos: logos}%>

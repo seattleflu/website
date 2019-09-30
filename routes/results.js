@@ -29,7 +29,7 @@ router.use((req, res, next) => {
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('results', {
-    title: 'Results Page',
+    title: 'Your Results (coming soon!)',
     header: 'light',
     nav: 'true',
     enroll: 'true',
