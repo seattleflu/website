@@ -20,6 +20,8 @@ const FlowOne = props => {
     setReferrerValue(props.referrerValue)
     if(props.referrerValue == "schools"){
       setQuestion(2)
+    }else if(props.referrerValue == "households"){
+      setQuestion(2)
     }
   }, [])
 
@@ -77,7 +79,6 @@ const FlowOne = props => {
       if (conditions == 'yes') {
         setQuestion(6)
       } else if(conditions == 'no'){
-        console.log("test if clicked" + props.fluStudyPage7)
         props.handleStudy(props.fluStudyPage7)
       }else{
 
@@ -158,7 +159,7 @@ const FlowOne = props => {
   function handleunder18Change (event) {
     event.preventDefault()
     setunder18Value(event.target.value)
-    if (event.target.value == 'yes' && referrer != 'schools') {
+    if (event.target.value == 'yes' && (referrer != 'schools' && referrer != 'households')) {
       setQuestion(6)
     }else if(event.target.value == 'no'){
       setQuestion(4)
@@ -209,7 +210,7 @@ const FlowOne = props => {
   return (
     <div className='col-12'>
       <h2>Screening Questionnaire</h2>
-      {question >= 0 && referrer != 'schools' ? (
+      {question >= 0 && (referrer != 'schools' && referrer != 'households') ? (
         <Switch
           text={props.question3}
           description={props.conditions3}
@@ -220,7 +221,7 @@ const FlowOne = props => {
           handleChange={handleSymptomsChange}
         />
       ) : null}
-      {question == 1 && referrer != 'schools' ? (
+      {question == 1 && (referrer != 'schools' && referrer != 'households') ? (
         <Select
           text={props.question9}
           description=''

@@ -13,7 +13,6 @@ router.use((req, res, next) => {
   site
     .getSiteData()
     .then(siteData => {
-      console.log('Site DATA: ' + JSON.stringify(siteData))
       req.siteData = siteData.items
       next()
     })
@@ -24,7 +23,6 @@ router.use((req, res, next) => {
   page
     .getPageData('households')
     .then(pageData => {
-      console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
       next()
     })

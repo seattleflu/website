@@ -24,10 +24,8 @@ const FlowTwo = props => {
     }
     if (event.target.value == 'lessThan72') {
       setQuestion(1)
-      console.log(event.target.value)
     } else if (event.target.value == 'moreThanandlessthan') {
       setQuestion(7)
-      console.log(event.target.value)
     } else {
       // props.handleNextError(props.bouncepage10)
     }
@@ -226,7 +224,6 @@ const FlowTwo = props => {
 
     var index = array.indexOf(event.target.value)
     var noneOfTheAbove = array.indexOf('None of the above')
-    console.log(array.indexOf('None of the above'))
 
     if (noneOfTheAbove == 0) {
       array.splice(array[noneOfTheAbove], 1)
@@ -243,7 +240,6 @@ const FlowTwo = props => {
       setSymptopmsList(array)
     } else {
       setSymptopmsList([...symptomsList, event.target.value])
-      console.log(symptomsList)
     }
   }
 
@@ -284,6 +280,7 @@ const FlowTwo = props => {
           <div className='row'>
             <p>{props.question11}</p>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='FeelingFeverish1'
@@ -291,9 +288,11 @@ const FlowTwo = props => {
                 onChange={addSymptomOne}
               />
               Feeling Feverish
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='Headache1'
@@ -301,9 +300,11 @@ const FlowTwo = props => {
                 onChange={addSymptomOne}
               />
               Headache
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='Cough1'
@@ -311,9 +312,11 @@ const FlowTwo = props => {
                 onChange={addSymptomOne}
               />
               Cough
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='ChillsOrShivering1'
@@ -321,9 +324,11 @@ const FlowTwo = props => {
                 onChange={addSymptomOne}
               />
               Chills or shivering
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='Sweats'
@@ -331,9 +336,11 @@ const FlowTwo = props => {
                 onChange={addSymptomOne}
               />
               Sweats
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='SoreThroatOrItchyScratchyThroat1'
@@ -341,9 +348,11 @@ const FlowTwo = props => {
                 onChange={addSymptomOne}
               />
               Sore throat or itchy/scratchy throat
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='NauseaOrVomiting1'
@@ -351,9 +360,11 @@ const FlowTwo = props => {
                 onChange={addSymptomOne}
               />
               Nausea or vomiting
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='RunnyOrStuffyNose1'
@@ -361,9 +372,11 @@ const FlowTwo = props => {
                 onChange={addSymptomOne}
               />
               Runny or stuffy nose
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='FeelingMoreTiredThanUsual1'
@@ -371,29 +384,37 @@ const FlowTwo = props => {
                 onChange={addSymptomOne}
               />
               Feeling more tired than usual
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='MuscleOrBodyAches1'
                 value='Muscle or body aches'
                 onChange={addSymptomOne}
+                
               />
               Muscle or body aches
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='IncreasedTroubleWithBreathing1'
                 value='Increased trouble with breathing'
                 onChange={addSymptomOne}
+                
               />
               Increased trouble with breathing
+              </label>
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
+            <label>
               <input
                 type='checkbox'
                 name='NoneOfTheAbove1'
@@ -401,6 +422,7 @@ const FlowTwo = props => {
                 onChange={addSymptomRemove}
               />
               None of the above
+              </label>
               <br />
             </div>
           </div>
@@ -475,7 +497,7 @@ const FlowTwo = props => {
           <div className='row'>
               <p>{props.question11}</p>
               <div className='symptom col-md-6 col-lg-4'>
-                
+                <label>
                   <input
                     type='checkbox'
                     name='FeelingFeverish2'
@@ -483,10 +505,11 @@ const FlowTwo = props => {
                     onChange={addSymptomOne}
                   />
                   Feeling Feverish
-                
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
+              <label>
                 <input
                   type='checkbox'
                   name='Headache2'
@@ -494,10 +517,11 @@ const FlowTwo = props => {
                   onChange={addSymptomOne}
                 />
                 Headache
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
-                
+                <label>
                   <input
                     type='checkbox'
                     name='Cough2'
@@ -505,10 +529,11 @@ const FlowTwo = props => {
                     onChange={addSymptomOne}
                   />
                   Cough
-                
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
+              <label>
                 <input
                   type='checkbox'
                   name='ChillsOrShivering2'
@@ -516,9 +541,11 @@ const FlowTwo = props => {
                   onChange={addSymptomOne}
                 />
                 Chills or shivering
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
+              <label>
                 <input
                   type='checkbox'
                   name='Sweats2'
@@ -526,9 +553,11 @@ const FlowTwo = props => {
                   onChange={addSymptomOne}
                 />
                 Sweats
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
+              <label>
                 <input
                   type='checkbox'
                   name='SoreThroatOrItchyScratchyThroat2'
@@ -536,9 +565,11 @@ const FlowTwo = props => {
                   onChange={addSymptomOne}
                 />
                 Sore throat or itchy/scratchy throat
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
+              <label>
                 <input
                   type='checkbox'
                   name='NauseaOrVomiting2'
@@ -546,9 +577,11 @@ const FlowTwo = props => {
                   onChange={addSymptomOne}
                 />
                 Nausea or vomiting
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
+              <label>
                 <input
                   type='checkbox'
                   name='RunnyOrStuffyNose2'
@@ -556,9 +589,11 @@ const FlowTwo = props => {
                   onChange={addSymptomOne}
                 />
                 Runny or stuffy nose
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
+              <label>
                 <input
                   type='checkbox'
                   name='FeelingMoreTiredThanUsual2'
@@ -566,9 +601,11 @@ const FlowTwo = props => {
                   onChange={addSymptomOne}
                 />
                 Feeling more tired than usual
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
+              <label>
                 <input
                   type='checkbox'
                   name='MuscleOrBodyAches2'
@@ -576,9 +613,11 @@ const FlowTwo = props => {
                   onChange={addSymptomOne}
                 />
                 Muscle or body aches
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
+              <label>
                 <input
                   type='checkbox'
                   name='IncreasedTroubleWithBreathing2'
@@ -586,9 +625,11 @@ const FlowTwo = props => {
                   onChange={addSymptomOne}
                 />
                 Increased trouble with breathing
+                </label>
                 <br />
               </div>
               <div className='symptom col-md-6 col-lg-4'>
+              <label>
                 <input
                   type='checkbox'
                   name='NoneOfTheAbove2'
@@ -596,6 +637,7 @@ const FlowTwo = props => {
                   onChange={addSymptomRemove}
                 />
                 None of the above
+                </label>
                 <br />
               </div>
           </div>

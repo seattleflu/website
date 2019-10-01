@@ -50,8 +50,6 @@ axios({
           'Content-Type': 'application/x-www-form-urlencoded'
       }
     }).then(function (response) {
-      console.log(response);
-      console.log(response.status);
       if(response.status == "200"){
         setForm("false")
       }
