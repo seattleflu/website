@@ -67,9 +67,9 @@ const FlowOne = props => {
       }
     }
     if (question == 4) {
-      if (under18 == 'yes' && referrer == "schools") {
+      if (under18 == 'yes' && (referrer == "schools" || referrer == "households")) {
         props.handleStudy(props.fluStudyPage6)
-      }else if(under18 == 'yes' && referrer != "schools"){
+      }else if(under18 == 'yes' && (referrer != "schools" && referrer != "households")){
         setQuestion(6)
       }else{
         props.handleNextError(props.bouncePage6)
