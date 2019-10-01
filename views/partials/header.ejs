@@ -23,12 +23,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
-    <link rel="icon" type="image/png" sizes="32x32" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
-    <link rel="icon" type="image/png" sizes="16x16" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
-    <link rel="manifest" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
-    <link rel="mask-icon" href="http:<%= siteData[0].fields.favicon.fields.file.url %>" color="#0d1d47">
-    <link rel="shortcut icon" href="http:<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="manifest" href="<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="mask-icon" href="<%= siteData[0].fields.favicon.fields.file.url %>" color="#0d1d47">
+    <link rel="shortcut icon" href="<%= siteData[0].fields.favicon.fields.file.url %>">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-config" content="">
     <meta name="theme-color" content="#ffffff">
@@ -36,16 +36,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <title>Flu Study | <%= pageData[0].fields.name %></title>
     <meta property="og:site_name" content="<%= pageData[0].fields.name %>"/>
     <meta property="og:title" content="<%= pageData[0].fields.name %>" />
-    <meta property="og:url" content="http://sfs.formdev.io/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>" />
+    <meta property="og:url" content="https://seattleflu.org/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>" />
     <meta property="og:type" content="website" />
     <% if (pageData[0].fields.socialSharingImage) { %>
     <meta property="og:image" content="https:<%= pageData[0].fields.socialSharingImage.fields.file.url %>" />
     <% } %>
     <meta property="og:description" content="<%= pageData[0].fields.metaDescription%>" />
     <meta itemprop="name" content="<%= pageData[0].fields.name %>"/>
-    <meta itemprop="url" content="http://sfs.formdev.io/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %> %>"/>
+    <meta itemprop="url" content="https://seattleflu.org/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %> %>"/>
     <meta name="twitter:title" content="<%= pageData[0].fields.name %>"/>
-    <meta name="twitter:url" content="http://sfs.formdev.io/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>>"/>
+    <meta name="twitter:url" content="https://seattleflu.org/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>>"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="description" content="<%= pageData[0].fields.metaDescription%>" />
     <% if (pageData[0].fields.socialSharingImage) { %>
@@ -61,10 +61,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <header class="<%= header %> navbar navbar-expand-md navbar-dark">
         <div class="container">
           <% if(header === 'light') {%>
-            <a href="/" class="logo"><img src="http:<%= siteData[0].fields.logo.fields.file.url %>"></a>
+            <a href="/" class="logo"><img src="<%= siteData[0].fields.logo.fields.file.url %>"></a>
           <%}%>
           <% if(header === 'dark') {%>
-            <a href="/" class="logo"><img src="http:<%= siteData[0].fields.logoWhite.fields.file.url %>"></a>
+            <a href="/" class="logo"><img src="<%= siteData[0].fields.logoWhite.fields.file.url %>"></a>
           <%}%>
           <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>

@@ -23,6 +23,20 @@ const production = process.env.NODE_ENV === "production";
 
 var app = express()
 
+// In production, trust Heroku as a reverse proxy and Express will use request
+// metadata from the proxy.
+if (production)
+  app.enable("trust proxy");
+
+// Force HTTPS
+app.use(require("heroku-ssl-redirect")());
+
+// Remove www. from domain
+app.use(require("express-naked-redirect")({reverse: true})); // remove www.
+
+// Send files using a compressed content-encoding if possible
+app.use(require("compression")());
+
 // Webpack hot reloading in development.  This works in tandem with the Webpack
 // development config.
 if (!production) {
