@@ -16,7 +16,6 @@ const Main = props => {
 
   useEffect(() => {
     setHomeZip(props.homeZip)
-    // setWorkZip(props.workZip)
   }, [])
   
 
@@ -31,12 +30,6 @@ const Main = props => {
     }
     if (question == 1) {
       setQuestion(question + 1)
-      // if (props.workZip.includes(zipWorkValue)) {
-      //   setQuestion(question + 1)
-      // } else {
-      //   setQuestion(question + 1)
-      //   props.handleNextError(props.bouncePage1)
-      // }
     }
 
     if (question == 2) {
