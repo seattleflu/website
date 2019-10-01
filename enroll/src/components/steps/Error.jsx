@@ -16,8 +16,11 @@ const Error = props => {
   const [description, setDescription] = useState('')
   const [urlConsent, setUrlConsent] = useState('')
   const [urlConsentText, setUrlConsentText] = useState('')
+  const [zip, setZip] = useState('none')
+  const [form, setForm] = useState('true')
 
   useEffect(() => {
+      setZip(props.zip)
       getStudy(props.studyName).then(studyData => {
       setName(studyData[0].fields.studyName)
       setHeadline(studyData[0].fields.headline)
@@ -27,28 +30,43 @@ const Error = props => {
     })
   }, [])
 
-  handleSubmit = event => {
+function handleSubmit (event) {
+  
     event.preventDefault();
+    let url = ''
+    if(name == "Household Intervention Study"){
+      url = "https://api.fluathome.org/intervention"
+    }else if (name == "Household Observation Study"){
+      url = "https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation"
+    }
 
-    const user = {
-      name: this.state.name
-      email_address: "bandontest@formativeco.com"
-      first_name: "brandontest"
-      last_name:  "brandontest"
-      website_url: "test url"
-    };
-
-    axios.post(`https://kpwflowb0j.execute-api.us-east-1.amazonaws.com/flu-api/intervention`, { user })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
+    const data = "email_address=" + event.target.Email.value + "&first_name="+ event.target.firstName.value +"&last_name="+ event.target.lastName.value +"&phone_number=" + event.target.phone.value + "&zip_code=" + zip;
+    
+axios({
+      method: 'post',
+      url: url,
+      data: data,
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }).then(function (response) {
+      console.log(response);
+      console.log(response.status);
+      if(response.status == "200"){
+        setForm("false")
+      }
       })
-  }
+    .catch(function (error) {
+    console.log(error);
+});
+}
 
   return (
     <div>
       <h1 className="studyHeader">{headline}</h1>
       <ReactMarkdown source={description} />
+      {form == "true" ?(
+      <div>  
       {name != "Swab & Send Study" ?  
       (<form id="ty-subscribe" onSubmit={handleSubmit}>
         <input type="text" id="firstNameInput" name="firstName" placeholder="First Name" />
@@ -61,6 +79,8 @@ const Error = props => {
             {urlConsent ? (<a className='btn btn-primary float-right next' href={urlConsent}>
         {urlConsentText}
       </a>):(null)}
+      </div>
+      ):(<div><h3>Thank You, We will contact you soon.</h3></div>)}
     </div>
   )
 }
