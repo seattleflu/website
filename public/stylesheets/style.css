@@ -472,6 +472,14 @@ button.green:hover {
 .nav-item button:hover{
   cursor: pointer;
 }
+.nav-item.active a {
+  color: #0A5CA8 !important;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #0A5CA8;
+}
+.nav-item.active a:hover {
+  text-decoration: none;
+}
 .home-logos {
   margin-top: 165px;
   display: flex;
