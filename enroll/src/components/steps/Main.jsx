@@ -81,6 +81,7 @@ const Main = props => {
   }
   function handleZipChange (event) {
     setZipValue(event.target.value)
+    props.setMainZip(event.target.value)
   }
   function handleZipWorkChange (event) {
     setZipWorkValue(event.target.value)
