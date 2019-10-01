@@ -1,0 +1,16 @@
+<% include ./partials/header %>
+
+<div class="secondary container">
+    <h1><%= pageData[0].fields.name %></h1>
+    <div class="row">
+        <div class="col-12">
+            <p><%= pageData[0].fields.subhead %></p>
+            <div><%- md.render(pageData[0].fields.content) %></div>
+            <hr>
+            <p><%= error.status %> <%= message %></p>
+            <pre><%= error.stack %></pre>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer  %>

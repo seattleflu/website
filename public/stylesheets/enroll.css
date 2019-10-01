@@ -1,0 +1,170 @@
+/* CUSTOM STYLES FOR THE EROLL REACT APP ONLY */
+.enrollWapper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.enrollWapper .col-md-8 {
+    padding-top: 15px;
+    padding-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #0A5CA8;
+    background-color: #ffffff;
+    outline: 30px solid #ffffff;
+}
+.enrollWapper input[type=text], .enrollWapper input[type=tel], .enrollWapper input[type=submit] {
+    margin-top: 12px;
+}
+.enrollWapper #ty-subscribe {
+    margin-bottom: 0;
+}
+form > .col-12 {
+    padding-left: 0 !important;
+}
+.inputDescription{
+    font-size: 14px !important;
+    font-style: italic;
+}
+.inputDescription:empty {
+    display: none;
+}
+.buttonWrapper{
+    border:2px solid#0A5CA8;
+    display: inline-block;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+.switch{
+    padding: 10px;
+    background-color:grey;
+    display: inline-block;
+    margin: 5px;
+    height: 50px;
+    width: 50%;
+}
+.switchYes{
+    border-top: 0px solid #0A5CA8;	
+    border-bottom: 0px solid #0A5CA8;	
+    border-left: 0px solid #0A5CA8;	
+    /* border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; */
+    height: 50px;
+    width: 50%;
+    background-color:#EAECF0;
+}
+.switchYesActive{
+    background-color:#0a5ca8;
+    color:#fff;
+}
+.switchNo{
+    border-top: 0px solid #0A5CA8;
+    border-bottom: 0px solid #0A5CA8;
+    border-right: 0px solid #0A5CA8;	
+    /* border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px; */
+    height: 50px;
+    width: 50%;
+    background-color:#EAECF0;
+}
+.switchNoActive{
+    background-color:#0a5ca8;
+    color:#fff;
+}
+.form-group{
+    margin-top: 20px;
+}
+.form-group select.hidden{
+    display: none;
+}
+
+.form-group label{
+    color: #000000;	
+    font-family: "Roboto Condensed";	
+    font-size: 16px;	
+    
+}
+.form-group input{
+    box-sizing: border-box;	
+    height: 50px;	
+    border: 2px solid #0A5CA8;	
+    border-radius: 5px;
+}
+.selectSymptoms p{
+    font-family: "Roboto Condensed";	
+    font-size: 16px;
+}
+.selectSymptoms .row > p {
+    width: 100%;
+}
+.symptom{
+    widows: 33% !important;
+    display: inline-block !important;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-family: "Roboto Condensed";	
+    font-size: 14px;
+    vertical-align: middle;
+    padding-left: 22px !important;
+    padding-right: 0;
+    padding-bottom: 5px;
+    text-indent: -22px;
+}
+.symptom:nth-child(3n) {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.symptom input{
+    margin-right: 10px;
+    vertical-align: middle;
+}
+select.form-control {
+    height: 50px !important;
+    border: 2px solid #0A5CA8 !important;
+}
+.next{
+    margin-top: 40px;
+    text-transform: uppercase;
+    background-color: #1BAB4C;
+    border-radius: 25px;
+    padding: 9.5px 37px;
+    border: none;
+    color: #fff;
+    outline: none;
+    font-weight: 700;
+}
+
+.studyHeader{
+    margin-bottom: 30px;
+}
+.enrollment h3{
+    color: #4A515F;
+   margin-top: 22px;
+   margin-bottom: 30px;
+}
+
+.enrollment p{
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@media (max-width: 767px) {
+    .buttonWrapper, .form-group input, .form-group select {
+        width: 50%;
+    }
+    .enrollWapper .col-md-8 {
+        padding-top: 15px;
+        padding-bottom: 30px;
+        margin-top: 0;
+        margin-bottom: 0;
+        background-color: #ffffff;
+        outline: 30px solid #EAECF0;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .enrollWapper {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
