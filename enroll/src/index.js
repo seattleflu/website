@@ -16,6 +16,7 @@ import {
 } from './services/api'
 
 const App = () => {
+  const [zip, setZip] = useState('')
   const [currentStep, setCurrentStep] = useState(0)
   const [question1, setQuestion1] = useState('')
   const [bouncePage1, setBouncePage1] = useState('')
@@ -319,6 +320,10 @@ const App = () => {
     })
   }, [])
 
+  function setMainZip(zipCode){
+    setZip(zipCode)
+  }
+
   function handleNext (value) {
     setCurrentStep(value)
     // if (currentStep == 5) {
@@ -341,6 +346,7 @@ const App = () => {
       <form id='enroll-form row'>
         {currentStep == 0 ? (
           <Main
+            setMainZip={setMainZip}
             handleNext={handleNext}
             handleNextError={handleNextError}
             handleStudy={handleStudy}
@@ -482,6 +488,7 @@ const App = () => {
       </form>
       {currentStep == 5 ? (
         <Error
+          zip={zip}
           handleNext={handleNext}
           handleNextError={handleNextError}
           currentStep={currentStep}

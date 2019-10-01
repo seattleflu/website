@@ -9,6 +9,7 @@
   "dependencies": {
     "@babel/runtime": "^7.6.2",
     "@babel/runtime-corejs3": "^7.6.2",
+    "axios": "^0.19.0",
     "circular-json": "^0.5.9",
     "contentful": "^7.9.1",
     "cookie-parser": "~1.4.3",
