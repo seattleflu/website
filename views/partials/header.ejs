@@ -94,7 +94,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="nav-item"><a href="/current">Current Conditions</a></li>
             <li class="nav-item"><a href="/science">Science</a></li>
             <li class="nav-item"><a href="/results">Your Results</a></li>
-            <a href="/enroll" class="nav-item"><button class="headerbutton green">Join the Study</button></a>
+            <% if(enroll == 'true'){ %><a href="/enroll" class="nav-item"><button class="headerbutton green">Join the Study</button></a><%}%>
           </ul>   
       </div>
       <div class="overlay"></div>
