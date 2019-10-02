@@ -336,8 +336,6 @@ header.dark .nav-item button {
 .secondary h3 {
   color: #4A515F;
   margin-top: 22px;
-  margin-bottom: 30px;
-  padding-right: 30px;
 }
 .secondary input[type=text], .secondary input[type=tel], .secondary input[type=submit] {
   margin-top: 12px;
@@ -763,6 +761,10 @@ h1.number {
 .kioskContent{
   margin-bottom: 40px;
   margin-top: 20px;
+}
+.kiosk-sub, .kiosk-sub-mobile {
+  margin-bottom: 30px;
+  padding-right: 30px;
 }
 .gm-style .gm-style-iw-c {
   border-radius: 0 !important;
