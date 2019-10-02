@@ -9,7 +9,7 @@ const Main = props => {
   const [zipWorkValue, setZipWorkValue] = useState ('');
   const [ageValue, setAgeValue] = useState ('');
   const [homeZip, setHomeZip] = useState (props.homeZip);
-  // const [workZip, setWorkZip] = useState(props.workZip)
+  //const [workZip, setWorkZip] = useState(props.workZip)
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -28,15 +28,18 @@ const Main = props => {
         Event ('Enroll Screener', 'Home Zip', zipValue);
         setQuestion (question + 1);
       } else {
+        Event ('Enroll Screener', 'Home Zip', zipValue);
         props.handleNextError (props.bouncePage1);
       }
     }
     if (question == 1) {
+      Event ('Enroll Screener', 'Work Zip', zipWorkValue);
       setQuestion (question + 1);
     }
 
     if (question == 2) {
       if (ageValue >= 18) {
+        Event ('Enroll Screener', 'Work Zip', zipWorkValue);
         props.handleNext (1);
       } else {
         props.handleNextError (props.bouncePage2);
