@@ -39,9 +39,10 @@ const Main = props => {
 
     if (question == 2) {
       if (ageValue >= 18) {
-        Event ('Enroll Screener', 'Work Zip', zipWorkValue);
+        Event ('Enroll Screener', 'Your Age', ageValue);
         props.handleNext (1);
       } else {
+        Event ('Enroll Screener', 'Your Age', ageValue);
         props.handleNextError (props.bouncePage2);
       }
     }

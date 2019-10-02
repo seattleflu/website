@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import Select from '../presentational/Select.jsx'
 import Switch from '../presentational/Switch.jsx'
+import ReactGA from 'react-ga';
+import {Event} from '../../services/ga';
 
 const FlowOne = props => {
   const [question, setQuestion] = useState(0)
@@ -14,6 +16,11 @@ const FlowOne = props => {
   const [conditions, setConditionsValue] = useState('')
   const [pills, setPillsValue] = useState('')
   const [referrer, setReferrerValue] = useState('')
+
+  function initializeReactGA () {
+    ReactGA.initialize ('UA-135203741-3');
+    //ReactGA.pageview(' /enroll')
+  }
 
 
   useEffect(() => {
@@ -29,8 +36,10 @@ const FlowOne = props => {
     event.preventDefault()
     if (question == 0) {
       if (haveFluValue == 'yes') {
+        Event ('Enroll Screener', 'Currently Sick', haveFluValue);
         setQuestion(1)
       } else if (haveFluValue == 'no') {
+        Event ('Enroll Screener', 'Currently Sick', haveFluValue);
         setQuestion(2)
       } else {
         // props.handleNextError()
@@ -50,8 +59,10 @@ const FlowOne = props => {
 
     if (question == 2) {
       if (havePhone == 'yes') {
+        Event ('Enroll Screener', 'Smartphone', havePhone);
         setQuestion(4)
       } else if(havePhone == 'no'){
+        Event ('Enroll Screener', 'Smartphone', havePhone);
         props.handleNextError(props.bouncePage5)
       }else{
 
@@ -59,8 +70,10 @@ const FlowOne = props => {
     }
     if (question == 3) {
       if (moreThanThree == 'yes') {
+        Event ('Enroll Screener', 'HH_3 people', moreThanThree);
         setQuestion(3)
       } else if(moreThanThree == 'no'){
+        Event ('Enroll Screener', 'HH_3 people', moreThanThree);
         props.handleNextError(props.bouncePage5)
       }else{
 
@@ -87,8 +100,10 @@ const FlowOne = props => {
 
     if (question == 6) {
       if (pills == 'no') {
+        Event ('Enroll Screener', 'HH_Baloxavir pills', pills);
         props.handleStudy(props.bouncePage8)
       } else if(pills == 'yes'){
+        Event ('Enroll Screener', 'HH_Baloxavir pills', pills);
         props.handleStudy(props.fluStudyPage8)
       }else{
 

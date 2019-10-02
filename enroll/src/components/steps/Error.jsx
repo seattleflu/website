@@ -34,7 +34,7 @@ function handleSubmit (event) {
       url = "https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation"
     }
 
-    const data = "email_address=" + event.target.Email.value + "&first_name="+ event.target.firstName.value +"&last_name="+ event.target.lastName.value +"&phone_number=" + event.target.phone.value + "&zip_code=" + zip;
+    const data = "email_address=" + event.target.email.value + "&first_name="+ event.target.firstName.value +"&last_name="+ event.target.lastName.value +"&phone_number=" + event.target.phone.value + "&zip_code=" + zip;
     
 axios({
       method: 'post',

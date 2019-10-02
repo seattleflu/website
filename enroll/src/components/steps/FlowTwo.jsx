@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import Select from '../presentational/Select.jsx'
 import Switch from '../presentational/Switch.jsx'
+import ReactGA from 'react-ga';
+import {Event} from '../../services/ga';
 
 const FlowTwo = props => {
   const [question, setQuestion] = useState(0)
@@ -9,8 +11,12 @@ const FlowTwo = props => {
   const [connectedValue, setconnectedValue] = useState('')
   const [conditionsValue, setConditionsValue] = useState('')
   const [symptomsList, setSymptopmsList] = useState([])
-
   const [deviceValue, setDeviceValue] = useState('')
+
+  function initializeReactGA () {
+    ReactGA.initialize ('UA-135203741-3');
+    //ReactGA.pageview(' /enroll')
+  }
 
   useEffect(() => {})
 
@@ -23,10 +29,13 @@ const FlowTwo = props => {
       setSymptopmsList([])
     }
     if (event.target.value == 'lessThan72') {
+      Event ('Enroll Screener', 'Symptom length', event.target.value);
       setQuestion(1)
     } else if (event.target.value == 'moreThanandlessthan') {
+      Event ('Enroll Screener', 'Symptom length', event.target.value);
       setQuestion(7)
     } else {
+      Event ('Enroll Screener', 'Symptom length', event.target.value);
       // props.handleNextError(props.bouncepage10)
     }
   }
