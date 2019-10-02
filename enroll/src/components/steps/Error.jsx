@@ -29,7 +29,7 @@ function handleSubmit (event) {
     event.preventDefault();
     let url = ''
     if(name == "Household Intervention Study"){
-      url = "https://api.fluathome.org/intervention"
+      url = "https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/"
     }else if (name == "Household Observation Study"){
       url = "https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation"
     }
