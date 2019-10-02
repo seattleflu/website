@@ -4,12 +4,6 @@ import { getStudy } from '../../services/api'
 const ReactMarkdown = require('react-markdown')
 import axios from 'axios';
 
-//observation url
-//https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation
-
-//intervention
-//https://kpwflowb0j.execute-api.us-east-1.amazonaws.com/flu-api/intervention
-
 const Error = props => {
   const [name, setName] = useState('')
   const [headline, setHeadline] = useState('')
@@ -35,12 +29,12 @@ function handleSubmit (event) {
     event.preventDefault();
     let url = ''
     if(name == "Household Intervention Study"){
-      url = "https://api.fluathome.org/intervention"
+      url = "https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/"
     }else if (name == "Household Observation Study"){
       url = "https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation"
     }
 
-    const data = "email_address=" + event.target.Email.value + "&first_name="+ event.target.firstName.value +"&last_name="+ event.target.lastName.value +"&phone_number=" + event.target.phone.value + "&zip_code=" + zip;
+    const data = "email_address=" + event.target.email.value + "&first_name="+ event.target.firstName.value +"&last_name="+ event.target.lastName.value +"&phone_number=" + event.target.phone.value + "&zip_code=" + zip;
     
 axios({
       method: 'post',
@@ -50,8 +44,6 @@ axios({
           'Content-Type': 'application/x-www-form-urlencoded'
       }
     }).then(function (response) {
-      console.log(response);
-      console.log(response.status);
       if(response.status == "200"){
         setForm("false")
       }
@@ -71,7 +63,7 @@ axios({
       (<form id="ty-subscribe" onSubmit={handleSubmit}>
         <input type="text" id="firstNameInput" name="firstName" placeholder="First Name" />
         <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name"/>
-        <input type="text" id="emailInput" name="Email" placeholder="Email Address"/>
+        <input type="text" id="emailInput" name="email" placeholder="Email Address"/>
          <input type="tel" id="phoneInput" name="phone" placeholder="Phone Number"/>
         <h5 id="signup-error">Sorry, there was an error submitting you form</h5>
         <input type="submit" value="Submit"/>

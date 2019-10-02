@@ -67,37 +67,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <% if(header === 'dark') {%>
             <a href="/" class="logo"><img src="<%= siteData[0].fields.logoWhite.fields.file.url %>"></a>
           <%}%>
+          <% if(nav == 'true'){ %>
           <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
-
+          <%}%>
           <% if(nav == 'true'){ %>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="/faq">FAQ</a></li>
-            <li class="nav-item"><a href="/kiosks">Find a Kiosk</a></li>
-            <li class="nav-item"><a href="/current">Current Conditions</a></li>
-            <li class="nav-item"><a href="/science">Science</a></li>
-            <li class="nav-item"><a href="/results">Your Results</a></li>
+          <% siteData[0].fields.menuMain.forEach((item) => { %>
+          <li class="nav-item"><a href="<%= "/" + item.fields.urlSegment %>"><%= item.fields.name %></a></li>
+          <% }) %>
           </ul>    
           <%}%>
           <% if(enroll == 'true'){ %><ul class="navbar-nav join-the-study"><a href="/enroll" class="nav-item"><button>Join the Study</button></a></ul> <%}%>
         </div>
       </header>
+      <% if(nav == 'true'){ %>
       <div class="mobile-nav collapse navbar-collapse" id="headerNav">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-close-icon"></span>
           </button>
 
           <ul>
-            <li class="nav-item"><a href="/faq">FAQ</a></li>
-            <li class="nav-item"><a href="/kiosks">Find a Kiosk</a></li>
-            <li class="nav-item"><a href="/current">Current Conditions</a></li>
-            <li class="nav-item"><a href="/science">Science</a></li>
-            <li class="nav-item"><a href="/results">Your Results</a></li>
+          <% siteData[0].fields.menuMain.forEach((item) => { %>
+          <li class="nav-item"><a href="<%= "/" + item.fields.urlSegment %>"><%= item.fields.name %></a></li>
+          <% }) %>
+            
             <% if(enroll == 'true'){ %><a href="/enroll" class="nav-item"><button class="headerbutton green">Join the Study</button></a><%}%>
           </ul>   
       </div>
       <div class="overlay"></div>
+      <%}%>
       
 <script>
 $(document).ready(function() {

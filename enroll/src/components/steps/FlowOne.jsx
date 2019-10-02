@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import Select from '../presentational/Select.jsx'
 import Switch from '../presentational/Switch.jsx'
+import ReactGA from 'react-ga';
+import {Event} from '../../services/ga';
 
 const FlowOne = props => {
   const [question, setQuestion] = useState(0)
@@ -15,10 +17,17 @@ const FlowOne = props => {
   const [pills, setPillsValue] = useState('')
   const [referrer, setReferrerValue] = useState('')
 
+  function initializeReactGA () {
+    ReactGA.initialize ('UA-135203741-3');
+    //ReactGA.pageview(' /enroll')
+  }
+
 
   useEffect(() => {
     setReferrerValue(props.referrerValue)
     if(props.referrerValue == "schools"){
+      setQuestion(2)
+    }else if(props.referrerValue == "households"){
       setQuestion(2)
     }
   }, [])
@@ -27,8 +36,10 @@ const FlowOne = props => {
     event.preventDefault()
     if (question == 0) {
       if (haveFluValue == 'yes') {
+        Event ('Enroll Screener', 'Currently Sick', haveFluValue);
         setQuestion(1)
       } else if (haveFluValue == 'no') {
+        Event ('Enroll Screener', 'Currently Sick', haveFluValue);
         setQuestion(2)
       } else {
         // props.handleNextError()
@@ -48,8 +59,10 @@ const FlowOne = props => {
 
     if (question == 2) {
       if (havePhone == 'yes') {
+        Event ('Enroll Screener', 'Smartphone', havePhone);
         setQuestion(4)
       } else if(havePhone == 'no'){
+        Event ('Enroll Screener', 'Smartphone', havePhone);
         props.handleNextError(props.bouncePage5)
       }else{
 
@@ -57,17 +70,19 @@ const FlowOne = props => {
     }
     if (question == 3) {
       if (moreThanThree == 'yes') {
+        Event ('Enroll Screener', 'HH_3 people', moreThanThree);
         setQuestion(3)
       } else if(moreThanThree == 'no'){
-        props.handleNextError(props.bouncePage4)
+        Event ('Enroll Screener', 'HH_3 people', moreThanThree);
+        props.handleNextError(props.bouncePage5)
       }else{
 
       }
     }
     if (question == 4) {
-      if (under18 == 'yes' && referrer == "schools") {
+      if (under18 == 'yes' && (referrer == "schools" || referrer == "households")) {
         props.handleStudy(props.fluStudyPage6)
-      }else if(under18 == 'yes' && referrer != "schools"){
+      }else if(under18 == 'yes' && (referrer != "schools" && referrer != "households")){
         setQuestion(6)
       }else{
         props.handleNextError(props.bouncePage6)
@@ -77,7 +92,6 @@ const FlowOne = props => {
       if (conditions == 'yes') {
         setQuestion(6)
       } else if(conditions == 'no'){
-        console.log("test if clicked" + props.fluStudyPage7)
         props.handleStudy(props.fluStudyPage7)
       }else{
 
@@ -86,8 +100,10 @@ const FlowOne = props => {
 
     if (question == 6) {
       if (pills == 'no') {
+        Event ('Enroll Screener', 'HH_Baloxavir pills', pills);
         props.handleStudy(props.bouncePage8)
       } else if(pills == 'yes'){
+        Event ('Enroll Screener', 'HH_Baloxavir pills', pills);
         props.handleStudy(props.fluStudyPage8)
       }else{
 
@@ -158,7 +174,7 @@ const FlowOne = props => {
   function handleunder18Change (event) {
     event.preventDefault()
     setunder18Value(event.target.value)
-    if (event.target.value == 'yes' && referrer != 'schools') {
+    if (event.target.value == 'yes' && (referrer != 'schools' && referrer != 'households')) {
       setQuestion(6)
     }else if(event.target.value == 'no'){
       setQuestion(4)
@@ -209,7 +225,7 @@ const FlowOne = props => {
   return (
     <div className='col-12'>
       <h2>Screening Questionnaire</h2>
-      {question >= 0 && referrer != 'schools' ? (
+      {question >= 0 && (referrer != 'schools' && referrer != 'households') ? (
         <Switch
           text={props.question3}
           description={props.conditions3}
@@ -220,7 +236,7 @@ const FlowOne = props => {
           handleChange={handleSymptomsChange}
         />
       ) : null}
-      {question == 1 && referrer != 'schools' ? (
+      {question == 1 && (referrer != 'schools' && referrer != 'households') ? (
         <Select
           text={props.question9}
           description=''

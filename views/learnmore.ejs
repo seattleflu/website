@@ -18,10 +18,10 @@
         </div>
         <div class="col-lg-8 landing-text secondary">
             <%- md.render(pageData[0].fields.content) %>
-            <form id="ty-subscribe">
-                <input type="text" id="firstNameInput" name="Email" placeholder="First Name">
-                <input type="text" id="lastNameInput" name="Email" placeholder="Last Name">
-                <input type="text" id="emailInput" name="Email" placeholder="Email Address">
+            <form id="learn-more">
+                <input type="text" id="firstNameInput" name="firstName" placeholder="First Name">
+                <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name">
+                <input type="text" id="emailInput" name="email" placeholder="Email Address">
                 <h5 id="signup-error">Sorry, there was an error submitting you form</h5>
                 <input type="submit" value="Submit">
             </form> 
@@ -32,7 +32,7 @@
 
 <script>
     $(function () {
-        $('#ty-subscribe').submit(function (event) {
+        $('#learn-more').submit(function (event) {
             event.preventDefault()
             var formData = {
             "email_address": $('#emailInput').val(),
@@ -53,11 +53,10 @@
                 console.log(data["statusCode"])
                 if (data["statusCode"]){
                 $("#thank-you").css("display", "block")
-                $("#ty-subscribe").css("display", "none")
-                // $(location).attr('href', '/sfs-thank-you.html')
+                $("#learn-more").css("display", "none")  
                 }else{
                 $("#thank-you").css("display", "none")
-                $("#ty-subscribe").css("display", "block")
+                $("#learn-more").css("display", "block")
                 $("#signup-error").css("display", "block")
                 }
             })
