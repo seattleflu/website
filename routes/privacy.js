@@ -15,6 +15,18 @@ router.use((req, res, next) => {
     .then(siteData => {
       console.log('Site DATA: ' + JSON.stringify(siteData))
       req.siteData = siteData.items
+      if(pageData.items[0].fields.showMenu != null){
+        var nav = pageData.items[0].fields.showMenu
+        req.nav = nav.toString();
+      }else{
+        req.nav = 'true'
+      }
+      if(pageData.items[0].fields.showJoinTheStudyAfterMenu != null){
+        var enroll = pageData.items[0].fields.showJoinTheStudyAfterMenu
+        req.enroll = enroll.toString();
+      }else{
+        req.nav = 'true'
+      }
       next()
     })
     .catch(console.error)
@@ -36,8 +48,8 @@ router.get('/', function (req, res, next) {
   res.render('privacy', {
     title: 'privacy',
     header: 'light',
-    nav: 'true',
-    enroll: 'false',
+    nav: req.nav,
+    enroll: req.enroll,
     logos: 'true',
     md: md,
     pageData: req.pageData,

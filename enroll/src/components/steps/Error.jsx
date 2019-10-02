@@ -4,12 +4,6 @@ import { getStudy } from '../../services/api'
 const ReactMarkdown = require('react-markdown')
 import axios from 'axios';
 
-//observation url
-//https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation
-
-//intervention
-//https://kpwflowb0j.execute-api.us-east-1.amazonaws.com/flu-api/intervention
-
 const Error = props => {
   const [name, setName] = useState('')
   const [headline, setHeadline] = useState('')
@@ -71,7 +65,7 @@ axios({
       (<form id="ty-subscribe" onSubmit={handleSubmit}>
         <input type="text" id="firstNameInput" name="firstName" placeholder="First Name" />
         <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name"/>
-        <input type="text" id="emailInput" name="Email" placeholder="Email Address"/>
+        <input type="text" id="emailInput" name="email" placeholder="Email Address"/>
          <input type="tel" id="phoneInput" name="phone" placeholder="Phone Number"/>
         <h5 id="signup-error">Sorry, there was an error submitting you form</h5>
         <input type="submit" value="Submit"/>
