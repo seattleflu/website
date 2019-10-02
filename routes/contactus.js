@@ -26,6 +26,18 @@ router.use((req, res, next) => {
     .then(pageData => {
       console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
+      if(pageData.items[0].fields.showMenu != null){
+        var nav = pageData.items[0].fields.showMenu
+        req.nav = nav.toString();
+      }else{
+        req.nav = 'true'
+      }
+      if(pageData.items[0].fields.showJoinTheStudyAfterMenu != null){
+        var enroll = pageData.items[0].fields.showJoinTheStudyAfterMenu
+        req.enroll = enroll.toString();
+      }else{
+        req.enroll = 'true'
+      }
       next()
     })
     .catch(console.error)
@@ -37,8 +49,8 @@ router.get('/', function (req, res, next) {
     title: 'Contact Us',
     header: 'light',
     md: md,
-    nav: 'true',
-    enroll: 'false',
+    nav: req.nav,
+    enroll: req.enroll,
     logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData

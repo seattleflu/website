@@ -29,7 +29,7 @@ router.use((req, res, next) => {
         var enroll = pageData.items[0].fields.showJoinTheStudyAfterMenu
         req.enroll = enroll.toString();
       }else{
-        req.nav = 'true'
+        req.enroll = 'true'
       }
       next()
     })
