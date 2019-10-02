@@ -13,7 +13,6 @@ router.use((req, res, next) => {
   site
     .getSiteData()
     .then(siteData => {
-      console.log('Site DATA: ' + JSON.stringify(siteData))
       req.siteData = siteData.items
       if(pageData.items[0].fields.showMenu != null){
         var nav = pageData.items[0].fields.showMenu
@@ -36,7 +35,6 @@ router.use((req, res, next) => {
   page
     .getPageData('privacy')
     .then(pageData => {
-      console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
       next()
     })

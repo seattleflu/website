@@ -9,7 +9,6 @@ router.use((req, res, next) => {
   site
     .getSiteData()
     .then(siteData => {
-      console.log('Site DATA: ' + JSON.stringify(siteData))
       req.siteData = siteData.items
       next()
     })
@@ -20,7 +19,6 @@ router.use((req, res, next) => {
   page
     .getPageData('thank-you')
     .then(pageData => {
-      console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
         var nav = pageData.items[0].fields.showMenu
@@ -43,7 +41,6 @@ router.use((req, res, next) => {
 
 // router.use(function (req, res, next) {
 //   thankyou.getThankyou().then(function (thankyouData) {
-//     console.log('PAGE DATA: ' + JSON.stringify(thankyouData))
 //     req.thankyouData = thankyouData
 //     next()
 //   })
@@ -51,13 +48,11 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   let requestSegments = req.baseUrl.split('/')
-  console.log(requestSegments)
   var thankyouUrl = requestSegments[2]
 
   thankyou
     .getThankyou(thankyouUrl)
     .then(thankyouData => {
-      console.log('PAGE DATA: ' + JSON.stringify(thankyouData))
       req.thankyouData = thankyouData.items[0]
       next()
     })
