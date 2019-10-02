@@ -249,7 +249,7 @@ const FlowFour = props => {
     { value: 'lessThan72', label: 'Less than 72 hours' },
     {
       value: 'moreThanandlessthan',
-      label: 'More that 72 hours, but less than 7 days'
+      label: 'More than 72 hours, but less than 7 days'
     },
     { value: 'moreThan7', label: '7 Days or more' }
   ]
@@ -283,10 +283,10 @@ const FlowFour = props => {
                 <input
                   type='checkbox'
                   name='test1'
-                  value='Feeling Feverish'
+                  value='Feeling feverish'
                   onChange={addSymptomOne}
                 />
-                Feeling Feverish
+                Feeling feverish
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
@@ -504,10 +504,10 @@ const FlowFour = props => {
                 <input
                   type='checkbox'
                   name='test1'
-                  value='Feeling Feverish'
+                  value='Feeling feverish'
                   onChange={addSymptomOne}
                 />
-                Feeling Feverish
+                Feeling feverish
               <br />
             </div>
             <div className='symptom col-md-6 col-lg-4'>
