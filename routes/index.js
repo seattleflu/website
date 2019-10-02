@@ -25,7 +25,6 @@ router.use ((req, res, next) => {
   page
     .getPageData ('/')
     .then (pageData => {
-      //console.log('PAGE DATA: ' + JSON.stringify(pageData.items[0].fields.showMenu))
       req.pageData = pageData.items;
       if(pageData.items[0].fields.showMenu != null){
         var nav = pageData.items[0].fields.showMenu
