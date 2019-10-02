@@ -23,7 +23,7 @@ router.use ((req, res, next) => {
         var nav = pageData.items[0].fields.showMenu
         req.nav = nav.toString();
       }else{
-        req.nav = 'true'
+        req.enroll = 'true'
       }
       if(pageData.items[0].fields.showJoinTheStudyAfterMenu != null){
         var enroll = pageData.items[0].fields.showJoinTheStudyAfterMenu
