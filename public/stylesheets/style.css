@@ -73,10 +73,35 @@ a, a:hover {
 }
 
 /*** GLOBAL STYLES ***/
+body, html {
+  position: relative;
+  height: 100%;
+}
+.main-container {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 280px; /* height of your footer */
+}
+@media (max-width: 991px) {
+  .main-container {
+    padding-bottom: 330px;
+  }
+}
+@media (max-width: 767px) {
+  .main-container {
+    padding-bottom: 380px;
+  }
+}
+@media (max-width: 361px) {
+  .main-container {
+    padding-bottom: 580px;
+  }
+}
 .align-center {
   text-align: center;
 }
-
 .align-right {
   text-align: right;
  }
@@ -108,6 +133,11 @@ input[type=submit] {
 
 
 /*** FOOTER ***/
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 footer #footer-top {
   background-color: #EAECF0;
   padding: 30px 0;
@@ -382,7 +412,7 @@ button.green:hover {
 }
 .home-callout {
   padding: 50px 75px;
-  margin-top: 85px;
+  margin-top: 75px;
 }
 .study-callout h3, .home-callout h3 {
   margin: 0;
@@ -456,6 +486,7 @@ button.green:hover {
 }
 .home-header p {
   color: #fff;
+  margin-bottom: 0;
 }
 .home-header button {
   margin-top: 30px;
@@ -470,12 +501,17 @@ button.green:hover {
 .nav-item button:hover{
   cursor: pointer;
 }
-.nav-item.active a {
+.nav-item.active a, header.light .nav-item a:hover {
   color: #0A5CA8 !important;
   padding-bottom: 4px;
   border-bottom: 2px solid #0A5CA8;
 }
-.nav-item.active a:hover {
+header.dark .nav-item a:hover {
+  color: #fff !important;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #fff;
+}
+.nav-item a:hover {
   text-decoration: none;
 }
 .home-logos {
@@ -484,7 +520,7 @@ button.green:hover {
   justify-content: space-between;
 }
 .home-logos img {
-  margin-bottom: 45px;
+  margin-bottom: 30px;
   max-height: 40px;
   margin-left: 10px;
   margin-right: 10px;
@@ -520,11 +556,11 @@ h1.number {
 .step:first-child {
   margin-top: 52px;
 }
-.step:last-child {
+.step:nth-child(4) {
   margin-bottom: 0;
 }
 #home-map {
-  margin-top: 45px;
+  margin-top: 75px;
   margin-bottom: 75px;
 }
 #map-left {
@@ -543,7 +579,7 @@ h1.number {
   margin-top: 15px;
   margin-bottom: 18px;
 }
-#flu101-right h3 {
+#flu101-right h4 {
   margin-bottom: 0;
   margin-top: 48px;
 }
@@ -588,7 +624,7 @@ h1.number {
   #flu101-left p {
     margin-bottom: 0;
   }
-  #flu101-right h3 {
+  #flu101-right h4 {
     margin-top: 30px;
      margin-bottom: 30px;
   }
