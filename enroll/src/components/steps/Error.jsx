@@ -14,9 +14,10 @@ const Error = props => {
   const [urlConsentText, setUrlConsentText] = useState('')
   const [zip, setZip] = useState('none')
   const [form, setForm] = useState('true')
+  const [url, seturl] = useState['']
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
-    ReactGA.pageview('/study/' + name)
+    //ReactGA.pageview('/study/' + url)
   }
 
   useEffect(() => {
@@ -28,14 +29,16 @@ const Error = props => {
       setDescription(studyData[0].fields.description)
       setUrlConsent(studyData[0].fields.urlConsent)
       setUrlConsentText(studyData[0].fields.urlButtonText)
+      setUrl(studyData[0].fields.url)
     })
     initializeReactGA ();
+    ReactGA.pageview('/study/' + url)
   }, [])
 
 function handleSubmit (event) {
   
     event.preventDefault();
-    Event ('Enroll Screener', 'Form submit', name);
+    Event ('Enroll Screener', , url);
     let url = ''
     if(name == "Household Intervention Study"){
       url = "https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/"
