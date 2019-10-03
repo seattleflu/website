@@ -25,10 +25,13 @@ const FlowFour = props => {
       setSymptopmsList([])
     }
     if (event.target.value == 'lessThan72') {
+      Event ('Enroll Screener', 'Symptom Length', event.target.value);
       setQuestion(1)
     } else if (event.target.value == 'moreThanandlessthan') {
+      Event ('Enroll Screener', 'Symptom Length', event.target.value);
       setQuestion(7)
     } else {
+      Event ('Enroll Screener', 'Symptom Length', event.target.value);
       // props.handleNextError(1)
     }
   }
@@ -37,8 +40,10 @@ const FlowFour = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       //setQuestion(question + 1)
     } else {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       setConditionsValue('')
       setQuestion(2)
     }
@@ -47,8 +52,10 @@ const FlowFour = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       //setQuestion(question + 1)
     } else {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       setConditionsValue('')
       setQuestion(5)
     }
@@ -57,8 +64,10 @@ const FlowFour = props => {
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       //setQuestion(question + 1)
     } else {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       setConditionsValue('')
       setQuestion(8)
     }
@@ -72,8 +81,10 @@ const FlowFour = props => {
     event.preventDefault()
     setDeviceValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Smartphone', event.target.value);
       setQuestion(4)
     } else {
+      Event ('Enroll Screener', 'Smartphone', event.target.value);
       setQuestion(question + 1)
     }
   }
