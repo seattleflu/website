@@ -43,12 +43,14 @@ const Main = props => {
     }
   }
   function handleZipChange (event) {
-    Event ('Enroll Screener', 'Home Zipe', zipValue);
+    if(zipValue.length >= 5){
+      Event ('Enroll Screener', 'Home Zip', zipValue);
+    }
     setZipValue (event.target.value);
     props.setMainZip (event.target.value);
   }
   function handleZipWorkChange (event) {
-    Event ('Enroll Screener', 'Work Zip', zipWorkValue);
+    //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     setZipWorkValue (event.target.value);
   }
   function handleAgeChange (event) {
