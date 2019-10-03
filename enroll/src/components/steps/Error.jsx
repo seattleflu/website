@@ -16,7 +16,7 @@ const Error = props => {
   const [form, setForm] = useState('true')
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
-    ReactGA.pageview('/study/' + name')
+    ReactGA.pageview('/study/' + name)
   }
 
   useEffect(() => {
