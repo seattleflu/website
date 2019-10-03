@@ -25,36 +25,34 @@ const Main = props => {
     event.preventDefault ();
     if (question == 0) {
       if (props.homeZip.includes (zipValue)) {
-        Event ('Enroll Screener', 'Home Zip', zipValue);
         setQuestion (question + 1);
       } else {
-        Event ('Enroll Screener', 'Home Zip', zipValue);
         props.handleNextError (props.bouncePage1);
       }
     }
     if (question == 1) {
-      Event ('Enroll Screener', 'Work Zip', zipWorkValue);
       setQuestion (question + 1);
     }
 
     if (question == 2) {
       if (ageValue >= 18) {
-        Event ('Enroll Screener', 'Your Age', ageValue);
         props.handleNext (1);
       } else {
-        Event ('Enroll Screener', 'Your Age', ageValue);
         props.handleNextError (props.bouncePage2);
       }
     }
   }
   function handleZipChange (event) {
+    Event ('Enroll Screener', 'Home Zipe', zipValue);
     setZipValue (event.target.value);
     props.setMainZip (event.target.value);
   }
   function handleZipWorkChange (event) {
+    Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     setZipWorkValue (event.target.value);
   }
   function handleAgeChange (event) {
+    Event ('Enroll Screener', 'Your Age', ageValue);
     setAgeValue (event.target.value);
   }
 

@@ -59,10 +59,8 @@ const FlowOne = props => {
 
     if (question == 2) {
       if (havePhone == 'yes') {
-        Event ('Enroll Screener', 'Smartphone', havePhone);
         setQuestion(4)
       } else if(havePhone == 'no'){
-        Event ('Enroll Screener', 'Smartphone', havePhone);
         props.handleNextError(props.bouncePage5)
       }else{
 
@@ -70,10 +68,8 @@ const FlowOne = props => {
     }
     if (question == 3) {
       if (moreThanThree == 'yes') {
-        Event ('Enroll Screener', 'HH_3 people', moreThanThree);
         setQuestion(3)
       } else if(moreThanThree == 'no'){
-        Event ('Enroll Screener', 'HH_3 people', moreThanThree);
         props.handleNextError(props.bouncePage5)
       }else{
 
@@ -100,10 +96,8 @@ const FlowOne = props => {
 
     if (question == 6) {
       if (pills == 'no') {
-        Event ('Enroll Screener', 'HH_Baloxavir pills', pills);
         props.handleStudy(props.bouncePage8)
       } else if(pills == 'yes'){
-        Event ('Enroll Screener', 'HH_Baloxavir pills', pills);
         props.handleStudy(props.fluStudyPage8)
       }else{
 
@@ -133,9 +127,11 @@ const FlowOne = props => {
     }
   }
   function handleWhoChange (event) {
+    Event ('Enroll Screener', 'Participent info', event.target.value);
     setWhoValue(event.target.value)
     setQuestion(1)
     if (event.target.value != 'none') {
+      Event ('Enroll Screener', 'Participent info', event.target.value);
       setQuestion(1)
     } else {
       props.handleNext(5)
@@ -146,8 +142,10 @@ const FlowOne = props => {
     event.preventDefault()
     setMoreThanThreeValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'HH_3 people', event.target.value);
       setQuestion(question + 1)
     } else if(event.target.value == 'no'){
+      Event ('Enroll Screener', 'HH_3 people', event.target.value);
       setQuestion(3)
       setunder18Value('')
       setConditionsValue('')
@@ -160,8 +158,10 @@ const FlowOne = props => {
     event.preventDefault()
     setHavePhoneValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Smartphone', event.target.value);
       setQuestion(question + 1)
     } else if(event.target.value == 'no'){
+      Event ('Enroll Screener', 'Smartphone', event.target.value);
       setQuestion(2)
       setMoreThanThreeValue('')
       setunder18Value('')
@@ -175,8 +175,10 @@ const FlowOne = props => {
     event.preventDefault()
     setunder18Value(event.target.value)
     if (event.target.value == 'yes' && (referrer != 'schools' && referrer != 'households')) {
+      Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
       setQuestion(6)
     }else if(event.target.value == 'no'){
+      Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
       setQuestion(4)
       setConditionsValue('')
       setPillsValue('')
@@ -202,8 +204,10 @@ const FlowOne = props => {
     event.preventDefault()
     setPillsValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'HH_Baloxavir pills', event.target.value);
       // setQuestion(question + 1)
     }else if(event.target.value == 'no'){
+      Event ('Enroll Screener', 'HH_Baloxavir pills', event.target.value);
       setQuestion(6)
     }else{
       
