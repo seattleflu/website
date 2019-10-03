@@ -109,6 +109,7 @@ const FlowOne = props => {
     event.preventDefault()
     setHaveFluValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Currently Sick', event.target.value);
       setQuestion(1)
       setMoreThanThreeValue('')
       setWhoValue('')
@@ -117,6 +118,7 @@ const FlowOne = props => {
       setConditionsValue('')
       setPillsValue('')
     } else if (event.target.value == 'no') {
+      Event ('Enroll Screener', 'Currently Sick', event.target.value);
       setQuestion(2)
       setMoreThanThreeValue('')
       setWhoValue('')
