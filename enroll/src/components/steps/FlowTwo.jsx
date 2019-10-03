@@ -225,6 +225,7 @@ initializeReactGA ();
   }
 
   function addSymptomOne (event) {
+    Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
     if (question >= 1 && question < 7) {
       setQuestion(1)
       setconnectedValue('')

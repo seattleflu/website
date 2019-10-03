@@ -38,7 +38,7 @@ const Error = props => {
 function handleSubmit (event) {
   
     event.preventDefault();
-    Event ('Enroll Screener', , url);
+    Event ('Enroll Screener', 'Study' , url);
     let url = ''
     if(name == "Household Intervention Study"){
       url = "https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/"
