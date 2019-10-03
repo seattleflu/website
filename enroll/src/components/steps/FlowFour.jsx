@@ -12,7 +12,9 @@ const FlowFour = props => {
 
   const [deviceValue, setDeviceValue] = useState('')
 
-  useEffect(() => {})
+  useEffect(() => {
+    initializeReactGA ();
+  }, [])
 
   function handleDuration (event) {
     setHowlongValue(event.target.value)
@@ -109,8 +111,10 @@ const FlowFour = props => {
 
     if (question == 2) {
       if (connectedValue == 'no') {
+        Event ('Enroll Screener', 'Internet Device', connectedValue);
         props.handleNextError(props.bouncePage12)
       } else if (connectedValue == 'yes') {
+        Event ('Enroll Screener', 'Internet Device', connectedValue);
         //setQuestion(2)
         props.handleStudy(props.fluStudyPage12)
       }else{
@@ -128,8 +132,10 @@ const FlowFour = props => {
     }
     if (question == 4) {
       if (deviceValue == 'no') {
+        Event ('Enroll Screener', 'Smartphone', deviceValue);
         setQuestion(question + 1)
       } else if (deviceValue == 'yes'){
+        Event ('Enroll Screener', 'Smartphone', deviceValue);
         props.handleNextError(props.bouncePage12)
       }else{
 
@@ -137,8 +143,10 @@ const FlowFour = props => {
     }
     if (question == 5) {
       if (deviceValue == 'no') {
+        Event ('Enroll Screener', 'Smartphone', deviceValue);
         props.handleNextError(props.bouncePage12)
       } else if (deviceValue == 'yes'){
+        Event ('Enroll Screener', 'Smartphone', deviceValue);
         //setQuestion(question + 1)
         props.handleStudy(props.fluStudyPage12)
       }else{
@@ -176,8 +184,10 @@ const FlowFour = props => {
     }
     if (question == 8) {
       if (connectedValue == 'no') {
+        Event ('Enroll Screener', 'Internet Device', connectedValue);
         props.handleNextError(props.bouncePage12)
       } else if (connectedValue == 'yes'){
+        Event ('Enroll Screener', 'Internet Device', connectedValue);
         //setQuestion(question + 1)
         props.handleStudy(props.fluStudyPage12)
       }else{

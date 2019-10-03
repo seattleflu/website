@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import { getStudy } from '../../services/api'
 const ReactMarkdown = require('react-markdown')
 import axios from 'axios';
+import ReactGA from 'react-ga';
+import {Event} from '../../services/ga';
 
 const Error = props => {
   const [name, setName] = useState('')
@@ -12,8 +14,13 @@ const Error = props => {
   const [urlConsentText, setUrlConsentText] = useState('')
   const [zip, setZip] = useState('none')
   const [form, setForm] = useState('true')
+  function initializeReactGA () {
+    ReactGA.initialize ('UA-135203741-3');
+    ReactGA.pageview('/study/' + name')
+  }
 
   useEffect(() => {
+    
       setZip(props.zip)
       getStudy(props.studyName).then(studyData => {
       setName(studyData[0].fields.studyName)
@@ -22,11 +29,13 @@ const Error = props => {
       setUrlConsent(studyData[0].fields.urlConsent)
       setUrlConsentText(studyData[0].fields.urlButtonText)
     })
+    initializeReactGA ();
   }, [])
 
 function handleSubmit (event) {
   
     event.preventDefault();
+    Event ('Enroll Screener', 'Form submit', name);
     let url = ''
     if(name == "Household Intervention Study"){
       url = "https://api.fluathome.org/intervention"
