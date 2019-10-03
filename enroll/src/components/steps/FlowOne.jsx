@@ -176,7 +176,7 @@ const FlowOne = props => {
   function handleunder18Change (event) {
     event.preventDefault()
     setunder18Value(event.target.value)
-    if (event.target.value == 'yes' && (referrer != 'schools' && referrer != 'households')) {
+    if (event.target.value == 'yes' && referrer != 'schools') {
       Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
       setQuestion(6)
     }else if(event.target.value == 'no'){

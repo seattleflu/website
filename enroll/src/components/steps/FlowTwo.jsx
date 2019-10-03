@@ -29,10 +29,13 @@ initializeReactGA ();
       setSymptopmsList([])
     }
     if (event.target.value == 'lessThan72') {
+      Event ('Enroll Screener', 'Symptom Length', event.target.value);
       setQuestion(1)
     } else if (event.target.value == 'moreThanandlessthan') {
+      Event ('Enroll Screener', 'Symptom Length', event.target.value);
       setQuestion(7)
     } else {
+      Event ('Enroll Screener', 'Symptom Length', event.target.value);
       // props.handleNextError(props.bouncepage10)
     }
   }
@@ -41,8 +44,10 @@ initializeReactGA ();
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       //setQuestion(question + 1)
     } else {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       setConditionsValue('')
       setQuestion(2)
     }
@@ -51,8 +56,10 @@ initializeReactGA ();
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       //setQuestion(question + 1)
     } else {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       setConditionsValue('')
       setQuestion(5)
     }
@@ -61,8 +68,10 @@ initializeReactGA ();
     event.preventDefault()
     setconnectedValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       //setQuestion(question + 1)
     } else {
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       setConditionsValue('')
       setQuestion(8)
     }
@@ -81,8 +90,10 @@ initializeReactGA ();
     event.preventDefault()
     setDeviceValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Smartphone', event.target.value);
       setQuestion(4)
     } else{
+      Event ('Enroll Screener', 'Smartphone', event.target.value);
       setQuestion(question + 1)
     }
   }
@@ -91,13 +102,10 @@ initializeReactGA ();
     event.preventDefault()
     if (question == 0) {
       if (howlongValue == 'lessThan72') {
-        Event ('Enroll Screener', 'Symptom Length', event.target.value);
         setQuestion(1)
       } else if (howlongValue == 'moreThanandlessthan') {
-        Event ('Enroll Screener', 'Symptom Length', event.target.value);
         setQuestion(7)
       } else {
-        Event ('Enroll Screener', 'Symptom Length', event.target.value);
         props.handleNextError(props.bouncePage10)
       }
     }
@@ -123,14 +131,11 @@ initializeReactGA ();
 
     if (question == 2) {
       if (connectedValue == 'no') {
-        Event ('Enroll Screener', 'Internet Device', connectedValue);
         props.handleNextError(props.bouncePage12)
       } else if (connectedValue == 'yes'){
-        Event ('Enroll Screener', 'Internet Device', connectedValue);
         props.handleStudy(props.fluStudyPage12)
         //setQuestion(3)
       }else{
-
       }
     }
     if (question == 3) {
@@ -144,19 +149,15 @@ initializeReactGA ();
     }
     if (question == 4) {
       if (deviceValue == 'no') {
-        Event ('Enroll Screener', 'Smartphone', deviceValue);
         setQuestion(question + 1)
       } else if(deviceValue == 'yes'){
-        Event ('Enroll Screener', 'Smartphone', deviceValue);
         props.handleNextError(props.bouncePage16)
       }
     }
     if (question == 5) {
       if (deviceValue == 'no') {
-        Event ('Enroll Screener', 'Smartphone', deviceValue);
         props.handleNextError(props.bouncePage16)
       } else if(deviceValue == 'yes') {
-        Event ('Enroll Screener', 'Smartphone', deviceValue);
         //setQuestion(question + 1)
         props.handleStudy(props.fluStudyPage12)
       }else{
@@ -194,10 +195,8 @@ initializeReactGA ();
 
     if (question == 8) {
       if (connectedValue == 'no') {
-        Event ('Enroll Screener', 'Internet Device', connectedValue);
         props.handleNextError(props.bouncePage12)
       } else if(connectedValue == 'yes') {
-        Event ('Enroll Screener', 'Internet Device', connectedValue);
         props.handleStudy(props.fluStudyPage12)
         //setQuestion(question + 1)
       }else{
