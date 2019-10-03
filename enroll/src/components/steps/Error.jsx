@@ -14,7 +14,7 @@ const Error = props => {
   const [urlConsentText, setUrlConsentText] = useState('')
   const [zip, setZip] = useState('none')
   const [form, setForm] = useState('true')
-  const [url, seturl] = useState['']
+  const [url, setUrl] = useState('')
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
     //ReactGA.pageview('/study/' + url)
