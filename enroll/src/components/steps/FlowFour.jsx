@@ -233,7 +233,7 @@ const FlowFour = props => {
     })
   }
   function addSymptomOne (event) {
-    Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
+    
     if (question > 1 && question < 7) {
       setQuestion(1)
       setconnectedValue('')
@@ -245,6 +245,7 @@ const FlowFour = props => {
     }else{
       //setQuestion(1)
     }
+    Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
     const array = [...symptomsList]
     var index = array.indexOf(event.target.value)
     var noneOfTheAbove = array.indexOf('None of the above')
