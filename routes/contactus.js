@@ -1,19 +1,19 @@
 var express = require('express')
 var router = express.Router()
-var kiosks = require('../services/kiosks')
 
 var page = require('../services/page')
+var site = require('../services/site')
 
 var md = require('markdown-it')({
   html: true
 })
 var markdownItAttrs = require('markdown-it-attrs')
-var site = require('../services/site')
 
 router.use((req, res, next) => {
   site
     .getSiteData()
     .then(siteData => {
+      console.log('Site DATA: ' + JSON.stringify(siteData))
       req.siteData = siteData.items
       next()
     })
@@ -22,8 +22,9 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('kiosks')
+    .getPageData('contact-us')
     .then(pageData => {
+      console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
         var nav = pageData.items[0].fields.showMenu
@@ -42,26 +43,15 @@ router.use((req, res, next) => {
     .catch(console.error)
 })
 
-router.use((req, res, next) => {
-  kiosks
-    .getKiosks()
-    .then(kiosksData => {
-      req.kiosksData = kiosksData.items
-      next()
-    })
-    .catch(console.error)
-})
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('kiosks', {
-    title: 'Kiosks',
+  res.render('contactus', {
+    title: 'Contact Us',
     header: 'light',
+    md: md,
     nav: req.nav,
     enroll: req.enroll,
     logos: 'true',
-    md: md,
-    kiosksData: req.kiosksData,
     pageData: req.pageData,
     siteData: req.siteData
   })
