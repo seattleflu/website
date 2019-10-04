@@ -18,8 +18,10 @@ const FlowTwo = props => {
     //ReactGA.pageview(' /enroll')
   }
 
-  useEffect(() => {})
-initializeReactGA ();
+  useEffect(() => {
+    initializeReactGA ();
+  }, [])
+
   function handleDuration (event) {
     setHowlongValue(event.target.value)
     if (question != 0) {

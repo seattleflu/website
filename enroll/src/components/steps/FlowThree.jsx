@@ -11,6 +11,12 @@ const FlowThree = props => {
   const [symptomsList, setSymptopmsList] = useState([])
 
   const [deviceValue, setDeviceValue] = useState('')
+  
+  function initializeReactGA () {
+    ReactGA.initialize ('UA-135203741-3');
+    //ReactGA.pageview(' /enroll')
+  }
+
 
   useEffect(() => {
     initializeReactGA ();
