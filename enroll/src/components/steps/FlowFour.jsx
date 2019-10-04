@@ -27,7 +27,7 @@ const FlowFour = props => {
     if (event.target.value == 'lessThan72h') {
       Event ('Enroll Screener', 'Symptom Length', event.target.value);
       setQuestion(1)
-    } else if (event.target.value == 'moreThan7d2hAndLessThan7d') {
+    } else if (event.target.value == 'moreThan72hAndLessThan7d') {
       Event ('Enroll Screener', 'Symptom Length', event.target.value);
       setQuestion(7)
     } else {
@@ -94,7 +94,7 @@ const FlowFour = props => {
     if (question == 0) {
       if (howlongValue == 'lessThan72h') {
         setQuestion(question + 1)
-      } else if (howlongValue == 'moreThan7d2hAndLessThan7d') {
+      } else if (howlongValue == 'moreThan72hAndLessThan7d') {
         setQuestion()
       } else {
         props.handleNextError(props.bouncePage10)
@@ -264,7 +264,7 @@ const FlowFour = props => {
     { value: 'none', label: '' },
     { value: 'lessThan72h', label: 'Less than 72 hours' },
     {
-      value: 'moreThan7d2hAndLessThan7d',
+      value: 'moreThan72hAndLessThan7d',
       label: 'More than 72 hours, but less than 7 days'
     },
     { value: 'moreThan7d', label: '7 Days or more' }
