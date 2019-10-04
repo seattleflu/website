@@ -28,10 +28,10 @@ initializeReactGA ();
       setConditionsValue('')
       setSymptopmsList([])
     }
-    if (event.target.value == 'lessThan72') {
+    if (event.target.value == 'lessThan72h') {
       Event ('Enroll Screener', 'Symptom Length', event.target.value);
       setQuestion(1)
-    } else if (event.target.value == 'moreThanandlessthan') {
+    } else if (event.target.value == 'moreThan7d2hAndLessThan7d') {
       Event ('Enroll Screener', 'Symptom Length', event.target.value);
       setQuestion(7)
     } else {
@@ -101,9 +101,9 @@ initializeReactGA ();
   function handleNext (event) {
     event.preventDefault()
     if (question == 0) {
-      if (howlongValue == 'lessThan72') {
+      if (howlongValue == 'lessThan72h') {
         setQuestion(1)
-      } else if (howlongValue == 'moreThanandlessthan') {
+      } else if (howlongValue == 'moreThan7d2hAndLessThan7d') {
         setQuestion(7)
       } else {
         props.handleNextError(props.bouncePage10)
@@ -263,12 +263,12 @@ initializeReactGA ();
   
   const options = [
     { value: 'none', label: '' },
-    { value: 'lessThan72', label: 'Less than 72 hours' },
+    { value: 'lessThan72hh', label: 'Less than 72 hours' },
     {
-      value: 'moreThanandlessthan',
+      value: 'moreThan7d2hAndLessThan7d',
       label: 'More than 72 hours, but less than 7 days'
     },
-    { value: 'moreThan7', label: '7 Days or more' }
+    { value: 'moreThan7d', label: '7 Days or more' }
   ]
   const optionsYesNo = [
     { value: 'none', label: '' },
