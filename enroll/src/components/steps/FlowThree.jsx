@@ -19,12 +19,6 @@ const FlowThree = props => {
     //ReactGA.pageview(' /enroll')
   }
 
-
-  function initializeReactGA () {
-    ReactGA.initialize ('UA-135203741-3');
-    //ReactGA.pageview(' /enroll')
-  }
-
   useEffect(() => {
     initializeReactGA ();
   }, [])
@@ -240,13 +234,12 @@ const FlowThree = props => {
     })
   }
   function addSymptomOne (event) {
+    Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
     if (question > 1 && question < 7) {
-      Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
       setQuestion(1)
       setconnectedValue('')
       setConditionsValue('')
     } else if(question > 7){
-      Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
       setQuestion(7)
       setconnectedValue('')
       setConditionsValue('')
