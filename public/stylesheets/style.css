@@ -82,11 +82,11 @@ body, html {
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 280px; /* height of your footer */
+  padding-bottom: 265px; /* height of your footer */
 }
 @media (max-width: 991px) {
   .main-container {
-    padding-bottom: 330px;
+    padding-bottom: 295px;
   }
 }
 @media (max-width: 767px) {
