@@ -15,8 +15,10 @@ const Error = props => {
   const [zip, setZip] = useState ('none');
   const [form, setForm] = useState ('true');
   const [url, setUrl] = useState ('');
+  
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
+    ReactGA.pageview (props.studyName);
   }
 
   useEffect (() => {
@@ -30,9 +32,6 @@ const Error = props => {
       setUrl (studyData[0].fields.url);
     });
     initializeReactGA ();
-    let pageView = '/study/' + props.studyName;
-    console.log ('PAGE VIEW: ________' + url);
-    ReactGA.pageview (pageView);
   }, []);
 
   function handleSubmit (event) {
