@@ -246,6 +246,7 @@ const FlowThree = props => {
       setconnectedValue('')
       setConditionsValue('')
     } else if(question > 7){
+      Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
       setQuestion(7)
       setconnectedValue('')
       setConditionsValue('')

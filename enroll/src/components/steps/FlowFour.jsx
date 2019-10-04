@@ -239,10 +239,12 @@ const FlowFour = props => {
   }
   function addSymptomOne (event) {
     if (question > 1 && question < 7) {
+      Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
       setQuestion(1)
       setconnectedValue('')
       setConditionsValue('')
     } else if(question > 7){
+      Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
       setQuestion(7)
       setconnectedValue('')
       setConditionsValue('')
