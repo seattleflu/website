@@ -18,7 +18,7 @@ const Error = props => {
   
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
-    ReactGA.pageview (props.studyName);
+    ReactGA.pageview ("/study/" + props.studyName);
   }
 
   useEffect (() => {
