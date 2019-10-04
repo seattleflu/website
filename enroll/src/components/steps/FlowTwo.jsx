@@ -263,7 +263,7 @@ initializeReactGA ();
   
   const options = [
     { value: 'none', label: '' },
-    { value: 'lessThan72hh', label: 'Less than 72 hours' },
+    { value: 'lessThan72h', label: 'Less than 72 hours' },
     {
       value: 'moreThan72hAndLessThan7d',
       label: 'More than 72 hours, but less than 7 days'
