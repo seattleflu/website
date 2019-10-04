@@ -201,7 +201,7 @@ const App = () => {
             break
           case 8:
             if (question.fields.bouncePage) {
-              setBouncePage8(question.fields.fluStudyPage.fields.studyName)
+              setBouncePage8(question.fields.bouncePage.fields.studyName)
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage8(question.fields.fluStudyPage.fields.studyName)
