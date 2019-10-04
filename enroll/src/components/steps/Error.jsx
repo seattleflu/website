@@ -37,12 +37,12 @@ const Error = props => {
   function handleSubmit (event) {
     event.preventDefault ();
     Event ('Enroll Screener', 'Study', url);
-    let url = '';
+    let apiUrl = '';
     if (name == 'Household Intervention Study') {
-      url =
+      apiUrl =
         'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
     } else if (name == 'Household Observation Study') {
-      url =
+      apiUrl =
         'https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation';
     }
 
@@ -60,7 +60,7 @@ const Error = props => {
 
     axios ({
       method: 'post',
-      url: url,
+      url: apiUrl,
       data: data,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
