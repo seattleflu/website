@@ -44,7 +44,7 @@ const Error = props => {
         'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
     } else if (name == 'Household_Observation') {
       apiUrl =
-        'https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation';
+        'https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation/';
     }else{
       apiUrl =
         'https://api.fluathome.org';
@@ -71,14 +71,17 @@ const Error = props => {
       },
     })
       .then (function (response) {
-        if (response.status == '200') {
+        console.log(response)
+        if (response.data.statusCode == '200') {
           setForm ('false');
-          setError('false');
+          setErrorForm('false');
+        }else{
+          setErrorForm('true');
         }
       })
       .catch (function (error) {
         console.log (error);
-        setError('true');
+        setErrorForm('true');
       });
   }
 
