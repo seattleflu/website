@@ -15,6 +15,7 @@ const Error = props => {
   const [zip, setZip] = useState ('none');
   const [form, setForm] = useState ('true');
   const [url, setUrl] = useState ('');
+  const [errorForm, setErrorForm] = useState('false');
   
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -38,12 +39,15 @@ const Error = props => {
     event.preventDefault ();
     Event ('Enroll Screener', 'Study', url);
     let apiUrl = '';
-    if (name == 'Household Intervention Study') {
+    if (name == 'Household_Intervention') {
       apiUrl =
         'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
-    } else if (name == 'Household Observation Study') {
+    } else if (name == 'Household_Observation') {
       apiUrl =
         'https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation';
+    }else{
+      apiUrl =
+        'https://api.fluathome.org';
     }
 
     const data =
@@ -69,10 +73,12 @@ const Error = props => {
       .then (function (response) {
         if (response.status == '200') {
           setForm ('false');
+          setError('false');
         }
       })
       .catch (function (error) {
         console.log (error);
+        setError('true');
       });
   }
 
@@ -108,9 +114,7 @@ const Error = props => {
                     name="phone"
                     placeholder="Phone Number"
                   />
-                  <h5 id="signup-error">
-                    Sorry, there was an error submitting you form
-                  </h5>
+                 
                   <input type="submit" value="Submit" />
                 </form>
               : null}
@@ -124,6 +128,9 @@ const Error = props => {
               : null}
           </div>
         : <div><h3>Thank You, We will contact you soon.</h3></div>}
+        {errorForm == 'true' ? ( <h5 id="signup-error">
+                    Sorry, there was an error submitting you form
+                  </h5>):(null)}
     </div>
   );
 };

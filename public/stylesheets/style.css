@@ -660,7 +660,7 @@ h1.number {
   display:none;
 }
 #signup-error{
-  display: none;
+  /* display: none; */
 }
 #faq-subscribe input[type=text] {
   width: 100%;
