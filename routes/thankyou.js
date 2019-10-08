@@ -4,6 +4,10 @@ var thankyou = require('../services/thankyou')
 const JSON = require('circular-json')
 var page = require('../services/page')
 var site = require('../services/site')
+var md = require('markdown-it')({
+  html: true
+})
+var markdownItAttrs = require('markdown-it-attrs')
 
 router.use((req, res, next) => {
   site
@@ -68,6 +72,7 @@ router.get('/', function (req, res, next) {
     siteData: req.siteData,
     header: 'light',
     nav: req.nav,
+    md: md,
     enroll: req.enroll,
     logos: 'true'
   })

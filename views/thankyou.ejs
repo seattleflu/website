@@ -1,15 +1,10 @@
 <% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll } %>
 <div class="thank-you secondary container">
   <div class="row">
-    <div class="col-lg-4 col-xs-12">
+    <div class="col-lg-8 col-xs-12 offset-lg-2">
       <h2><%= thankyouData.fields.headline %></h2>
       <h3><%= thankyouData.fields.subheader %></h3>
-      <p><%= thankyouData.fields.dscription %></p>
-      <h4><a href="<%= thankyouData.fields.buttonLink %>" class="cta"><%= thankyouData.fields.buttonLabel %></a></h4>
-    </div>
-    <div class="col-lg-8 col-xs-12">
-      <h4>If you begin to have flu-like symptoms later in the year, we would love to have you come back and take the eligibility survey again.</h4>
-      <p>To stay in touch, input your email here:</p>
+      <p><%- md.render(thankyouData.fields.dscription) %></p>
       <form id="ty-subscribe">
         <input type="text" id="firstNameInput" name="firstName" placeholder="First Name">
         <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name">
