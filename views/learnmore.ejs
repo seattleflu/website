@@ -25,7 +25,7 @@
                 
                 <input type="submit" value="Submit">
             </form> 
-            <h5 id="signup-error">Sorry, there was an error submitting you form</h5>
+            <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
                 <h4 id="thank-you">Thank you! We'll be in touch with more information soon!</h4> 
             <%- md.render(pageData[0].fields.content2) %>
         </div>
@@ -56,11 +56,11 @@
                 if (data["statusCode"] == '200'){
                 $("#thank-you").css("display", "block")
                 $("#learn-more").css("display", "none")  
-                $("#signup-error").css("display", "none")
+                $("#signuperror").css("display", "none")
                 }else{
                 $("#thank-you").css("display", "none")
                 $("#learn-more").css("display", "block")
-                $("#signup-error").css("display", "block")
+                $("#signuperror").css("display", "block")
                 }
             })
         })

@@ -14,7 +14,7 @@
         <input type="text" id="firstNameInput" name="firstName" placeholder="First Name">
         <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name">
         <input type="text" id="emailInput" name="Email" placeholder="Email Address">
-        <h5 id="signup-error">Sorry, there was an error submitting you form</h5>
+        <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
         <input type="submit" value="Submit">
       </form> 
       <h4 id="thank-you">THANK YOU</h4> 
@@ -56,11 +56,12 @@
                       if (data["statusCode"]){
                         $("#thank-you").css("display", "block")
                         $("#ty-subscribe").css("display", "none")
+                        $("#signuperror").css("display", "none")
                         // $(location).attr('href', '/sfs-thank-you.html')
                       }else{
                         $("#thank-you").css("display", "none")
                         $("#ty-subscribe").css("display", "block")
-                        $("#signup-error").css("display", "block")
+                        $("#signuperror").css("display", "block")
                       }
                     })
                 })

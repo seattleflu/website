@@ -659,8 +659,8 @@ h1.number {
 #thank-you{
   display:none;
 }
-#signup-error{
-  /* display: none; */
+#signuperror{
+  display: none;
 }
 #faq-subscribe input[type=text] {
   width: 100%;
