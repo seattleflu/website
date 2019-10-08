@@ -16,6 +16,10 @@ const Error = props => {
   const [form, setForm] = useState ('true');
   const [url, setUrl] = useState ('');
   const [errorForm, setErrorForm] = useState('false');
+  const [firstNameError, setFistNameError] = useState(true)
+  const [lastNameError, setLastNameError] = useState(true)
+  const [emailError, setEmailError] = useState(true)
+  const [phoneError, setPhoneError] = useState(true)
   
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -31,6 +35,7 @@ const Error = props => {
       setUrlConsent (studyData[0].fields.urlConsent);
       setUrlConsentText (studyData[0].fields.urlButtonText);
       setUrl (studyData[0].fields.url);
+      
     });
     initializeReactGA ();
   }, []);
@@ -97,26 +102,34 @@ const Error = props => {
                     type="text"
                     id="firstNameInput"
                     name="firstName"
+                    error={firstNameError}
                     placeholder="First Name"
                   />
+                  {firstNameError ? (<p>This input is required!</p>) : (null)}
                   <input
                     type="text"
                     id="lastNameInput"
                     name="lastName"
+                    error={lastNameError}
                     placeholder="Last Name"
                   />
+                  {lastNameError ? (<p>This input is required!</p>) : (null)}
                   <input
                     type="text"
                     id="emailInput"
                     name="email"
+                    error={emailError}
                     placeholder="Email Address"
                   />
+                  {emailError ? (<p>This input is required!</p>) : (null)}
                   <input
                     type="tel"
                     id="phoneInput"
                     name="phone"
+                    error={phoneError}
                     placeholder="Phone Number"
                   />
+                  {phoneError ? (<p>This input is required!</p>) : (null)}
                  
                   <input type="submit" value="Submit" />
                 </form>
