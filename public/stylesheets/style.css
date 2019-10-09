@@ -959,3 +959,6 @@ display: none;
   margin-top:10px;
   margin-bottom: -34px;
 }
+.error-hide{
+  display:none;
+}
