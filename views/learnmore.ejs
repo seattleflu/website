@@ -19,9 +19,10 @@
         <div class="col-lg-8 landing-text secondary learnmore">
             <%- md.render(pageData[0].fields.content) %>
             <form id="learn-more">
-                <input type="text" id="firstNameInput" name="firstName" placeholder="First Name">
-                <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name">
-                <input type="text" id="emailInput" name="email" placeholder="Email Address">
+                <input type="text" id="firstNameInput" name="firstName" placeholder="First Name (required)">
+                <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name (required)">
+                <input type="text" id="emailInput" name="email" placeholder="Email Address (required)">
+                <input type="text" id="zipInput" name="zipcode" placeholder="Zip Code (required)">
                 <input type="submit" value="Submit">
             </form> 
             <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
@@ -46,6 +47,7 @@
             $("#firstNameInput").removeClass('error-input');
             $("#lastNameInput").removeClass('error-input');
             $("#emailInput").removeClass('error-input');
+            $("#zipInput").removeClass('error-input');
 
             if (formData.first_name.length < 1) {
             $('#emailInput').after('<div class="error">* This field is required</div>');
@@ -60,6 +62,11 @@
             if (formData.email_address.length < 1) {
             $('#emailInput').after('<div class="error">* This field is required</div>');
             $('#emailInput').addClass('error-input');
+            return false;
+            }
+            if (formData.email_address.length < 1) {
+            $('#zipInput').after('<div class="error">* This field is required</div>');
+            $('#zipInput').addClass('error-input');
             return false;
             } else {
             var regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
