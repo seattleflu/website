@@ -741,7 +741,7 @@ h1.number {
 }
 #ty-subscribe input[type=submit] {
   display: block;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 #ty-subscribe input[type=submit]:hover {
   text-decoration: underline;
@@ -943,4 +943,10 @@ h1.number {
 
 .signup-error{
 display: none;
+}
+.error{
+  color:red;
+  display: block;
+  margin-top:10px;
+  margin-bottom: -34px;
 }
