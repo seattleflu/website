@@ -16,7 +16,7 @@
             <a href="https://www.seattlechildrens.org/"><img src="/images/logo_SeattleChildrens.svg"></a>
             <a href="https://brotmanbaty.org/"><img src="/images/logo_BrotmanBatyInstitute.svg"></a>
         </div>
-        <div class="col-lg-8 landing-text secondary">
+        <div class="col-lg-8 landing-text secondary learnmore">
             <%- md.render(pageData[0].fields.content) %>
             <form id="learn-more">
                 <input type="text" id="firstNameInput" name="firstName" placeholder="First Name">
@@ -43,17 +43,23 @@
             }
             
             $(".error").remove();
+            $("#firstNameInput").removeClass('error-input');
+            $("#lastNameInput").removeClass('error-input');
+            $("#emailInput").removeClass('error-input');
 
             if (formData.first_name.length < 1) {
-            $('#firstNameInput').after('<span class="error">This field is required</span>');
+            $('#emailInput').after('<div class="error">* This field is required</div>');
+            $('#firstNameInput').addClass('error-input');
             return false;
             }
             if (formData.last_name.length < 1) {
-            $('#lastNameInput').after('<span class="error">This field is required</span>');
+            $('#emailInput').after('<div class="error">* This field is required</div>');
+            $('#lastNameInput').addClass('error-input');
             return false;
             }
             if (formData.email_address.length < 1) {
-            $('#emailInput').after('<span class="error">This field is required</span>');
+            $('#emailInput').after('<div class="error">* This field is required</div>');
+            $('#emailInput').addClass('error-input');
             return false;
             } else {
             var regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -61,7 +67,8 @@
             var validEmail = regEx.test(formData.email_address);
             console.log(validEmail)
             if (!validEmail) {
-                $('#emailInput').after('<span class="error">Enter a valid email</span>');
+                $('#emailInput').after('<div class="error">* Enter a valid email</div>');
+                $('#emailInput').addClass('error-input');
                 return false;
             }else{
 

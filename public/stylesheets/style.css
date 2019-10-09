@@ -725,7 +725,7 @@ h1.number {
   margin-bottom: 30px;
   margin-top: 50px;
 }
-#ty-subscribe input[type=text], #ty-subscribe input[type=tel] {
+#ty-subscribe input[type=text], #ty-subscribe input[type=tel], #learn-more input[type=text], #learn-more input[type=tel] {
   margin-right: 15px;
 }
 #firstNameInput {
@@ -739,15 +739,25 @@ h1.number {
 #emailInput, #phoneInput {
   width: calc(60% + 15px);
 }
-#ty-subscribe input[type=submit] {
+#ty-subscribe input[type=submit], #learn-more input[type=submit] {
   display: block;
   margin-top: 20px;
 }
-#ty-subscribe input[type=submit]:hover {
+#ty-subscribe input[type=submit]:hover, #learn-more input[type=submit]:hover {
   text-decoration: underline;
 }
 .ty-social a {
   margin-right: 15px;
+}
+.error {
+  float: right;
+  margin-top: 30px;
+  margin-right: 5px;
+  font-size: 12px;
+}
+.error-input {
+  border: 2px solid rgba(255,87,0,1) !important;
+  box-shadow: 0 0 5px rgba(255,87,0,0.5);
 }
 @media (max-width: 991px) {
 .thank-you .col-xs-12:first-child {
@@ -755,6 +765,10 @@ h1.number {
   }
 }
 @media (max-width: 767px) {
+  .error {
+    float: none;
+    margin-top: 10px;
+  }
   #firstNameInput {
     float: left;
     width: calc(50% - 7.5px);
@@ -896,7 +910,7 @@ h1.number {
 .landing-text button {
   margin-top: 34px;
 }
-.landing-text #ty-subscribe {
+.landing-text #ty-subscribe, .landing-text #learn-more {
   margin-top: 36px;
   margin-bottom: 50px;
 }
