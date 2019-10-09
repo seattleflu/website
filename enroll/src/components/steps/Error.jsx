@@ -15,11 +15,26 @@ const Error = props => {
   const [zip, setZip] = useState ('none');
   const [form, setForm] = useState ('true');
   const [url, setUrl] = useState ('');
-  const [errorForm, setErrorForm] = useState('false');
-  
+  const [errorForm, setErrorForm] = useState ('false');
+  const [error, setError] = useState('error-hide')
+  const [firstNameError, setFistNameError] = useState ('false');
+  const [lastNameError, setLastNameError] = useState ('false');
+  const [emailError, setEmailError] = useState ('false');
+  const [phoneError, setPhoneError] = useState ('false');
+
+  const [firstName, setFirstName] = useState ('');
+  const [lastName, setLastName] = useState ('');
+  const [email, setEmail] = useState ('');
+  const [phone, setPhone] = useState ('');
+
+  const [firstNameValid, setFirstNameValid] = useState ('valid');
+  const [lastNameValid, setLastNameValid] = useState ('valid');
+  const [phoneValid, setPhoneValid] = useState ('valid');
+  const [emailValid, setEmailValid] = useState ('valid');
+
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
-    ReactGA.pageview ("/study/" + props.studyName);
+    ReactGA.pageview ('/study/' + props.studyName);
   }
 
   useEffect (() => {
@@ -37,6 +52,7 @@ const Error = props => {
 
   function handleSubmit (event) {
     event.preventDefault ();
+
     Event ('Enroll Screener', 'Study', url);
     let apiUrl = '';
     if (name == 'Household_Intervention') {
@@ -45,45 +61,131 @@ const Error = props => {
     } else if (name == 'Household_Observation') {
       apiUrl =
         'https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation/';
-    }else{
-      apiUrl =
-        'https://api.fluathome.org';
+    } else {
+      apiUrl = 'https://api.fluathome.org';
     }
 
     const data =
       'email_address=' +
-      event.target.email.value +
+      email +
       '&first_name=' +
-      event.target.firstName.value +
+      firstName +
       '&last_name=' +
-      event.target.lastName.value +
+      lastName +
       '&phone_number=' +
-      event.target.phone.value +
+      phone +
       '&zip_code=' +
       zip;
 
-    axios ({
-      method: 'post',
-      url: apiUrl,
-      data: data,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    })
-      .then (function (response) {
-        console.log(response)
-        if (response.data.statusCode == '200') {
-          setForm ('false');
-          setErrorForm('false');
-        }else{
-          setErrorForm('true');
-        }
-      })
-      .catch (function (error) {
-        console.log (error);
-        setErrorForm('true');
-      });
+    if (firstName < 1) {
+      setFirstNameValid ('notValid');
+      setError('error')
+      return false;
+    } else {
+      setFirstNameValid ('valid');
+    }
+
+    if (lastName < 1) {
+      setLastNameValid ('notValid');
+      setError('error')
+      return false;
+    } else {
+      setLastNameValid ('valid');
+    }
+
+    if (phone < 10) {
+      setPhoneValid ('notValid');
+      setError('error')
+      return false;
+    } else {
+      setPhoneValid ('valid');
+    }
+
+    if (email.length < 1) {
+      setEmailValid ('notValid');
+      setError('error')
+      return false;
+    } else {
+      setEmailValid ('valid');
+      console.log ('email is valid ' + email);
+    }
+
+    if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test (
+        email
+      )
+    ) {
+      setEmailValid ('notValid');
+      setError('error')
+      console.log ('email is not valid' + email);
+      setEmail ('');
+      return false;
+    } else {
+      setEmailValid ('valid');
+      console.log ('email is valid ' + email);
+    }
+
+    if((firstName !='') && (lastName != '') && (phone != '') && (email != '')){
+      setError('error-hide')
+      axios ({
+          method: 'post',
+          url: apiUrl,
+          data: data,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        })
+          .then (function (response) {
+            console.log(response)
+            if (response.data.statusCode == '200') {
+              setForm ('false');
+              setErrorForm('false');
+            }else{
+              setErrorForm('true');
+            }
+          })
+          .catch (function (error) {
+            setErrorForm('true');
+          });
+    }else{
+      setError('error')
+      console.log(firstNameValid + lastNameValid + phoneValid + emailValid)
+    }
+
+    // axios ({
+    //       method: 'post',
+    //       url: apiUrl,
+    //       data: data,
+    //       headers: {
+    //         'Content-Type': 'application/x-www-form-urlencoded',
+    //       },
+    //     })
+    //       .then (function (response) {
+    //         console.log(response)
+    //         if (response.data.statusCode == '200') {
+    //           setForm ('false');
+    //           setErrorForm('false');
+    //         }else{
+    //           setErrorForm('true');
+    //         }
+    //       })
+    //       .catch (function (error) {
+    //         setErrorForm('true');
+    //       });
   }
+  function firstnameset(event){
+    setFirstName(event.target.value)
+  }
+  function lastnameset(event){
+    setLastName(event.target.value)
+  }
+  function emailset(event){
+    setEmail(event.target.value)
+  }
+  function phoneset(event){
+    setPhone(event.target.value)
+  }
+
 
   return (
     <div>
@@ -97,27 +199,42 @@ const Error = props => {
                     type="text"
                     id="firstNameInput"
                     name="firstName"
-                    placeholder="First Name"
+                    placeholder="First Name (required)"
+                    className={firstNameValid}
+                    value={firstName}
+                    onChange={firstnameset}
                   />
+                  
                   <input
                     type="text"
                     id="lastNameInput"
                     name="lastName"
-                    placeholder="Last Name"
+                    placeholder="Last Name (required)"
+                    className={lastNameValid}
+                    value={lastName}
+                    onChange={lastnameset}
                   />
+                  
                   <input
                     type="text"
                     id="emailInput"
                     name="email"
-                    placeholder="Email Address"
+                    placeholder="Email Address (required)"
+                    className={emailValid}
+                    value={email}
+                    onChange={emailset}
                   />
+                 
                   <input
                     type="tel"
                     id="phoneInput"
                     name="phone"
-                    placeholder="Phone Number"
+                    placeholder="Phone Number (required)"
+                    className={phoneValid}
+                    value={phone}
+                    onChange={phoneset}
                   />
-                 
+                  <span className={error}>All fields are required</span>
                   <input type="submit" value="Submit" />
                 </form>
               : null}
@@ -131,9 +248,11 @@ const Error = props => {
               : null}
           </div>
         : <div><h3>Thank You, We will contact you soon.</h3></div>}
-        {errorForm == 'true' ? ( <h5 id="signup-error">
-                    Sorry, there was an error submitting you form
-                  </h5>):(null)}
+      {errorForm == 'true'
+        ? <h5 id="signup-error">
+            Sorry, there was an error submitting you form
+          </h5>
+        : null}
     </div>
   );
 };

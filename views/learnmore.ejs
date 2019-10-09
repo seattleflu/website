@@ -19,11 +19,18 @@
         <div class="col-lg-8 landing-text secondary learnmore">
             <%- md.render(pageData[0].fields.content) %>
             <form id="learn-more">
+<<<<<<< HEAD
                 <input type="text" id="firstNameInput" name="firstName" placeholder="First Name (required)">
                 <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name (required)">
                 <input type="text" id="emailInput" name="email" placeholder="Email Address (required)">
                 <input type="text" id="zipInput" name="zipcode" placeholder="Zip Code (required)">
                 <input type="submit" value="Submit">
+=======
+                <input type="text" id="firstNameInput" name="firstName" placeholder="First Name">
+                <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name">
+                <input type="text" id="emailInput" name="email" placeholder="Email Address">
+                <input id="submitBtn" type="submit" value="Submit">
+>>>>>>> origin/dev
             </form> 
             <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
                 <h4 id="thank-you">Thank you! We'll be in touch with more information soon!</h4> 
@@ -44,24 +51,30 @@
             }
             
             $(".error").remove();
+<<<<<<< HEAD
             $("#firstNameInput").removeClass('error-input');
             $("#lastNameInput").removeClass('error-input');
             $("#emailInput").removeClass('error-input');
             $("#zipInput").removeClass('error-input');
+=======
+>>>>>>> origin/dev
 
             if (formData.first_name.length < 1) {
-            $('#emailInput').after('<div class="error">* This field is required</div>');
-            $('#firstNameInput').addClass('error-input');
+            $('#firstNameInput').css("border", "2px solid red")
+            $('#firstNameInput').css("box-shadow", "0 0 5px red")
+            $('#submitBtn').before('<span class="error">All fields are required</span>');
             return false;
             }
             if (formData.last_name.length < 1) {
-            $('#emailInput').after('<div class="error">* This field is required</div>');
-            $('#lastNameInput').addClass('error-input');
+            $('#lastNameInput').css("border", "2px solid red")
+            $('#lastNameInput').css("box-shadow", "0 0 5px red")
+            $('#submitBtn').before('<span class="error">All fields are required</span>');
             return false;
             }
             if (formData.email_address.length < 1) {
-            $('#emailInput').after('<div class="error">* This field is required</div>');
-            $('#emailInput').addClass('error-input');
+            $('#emailInput').css("border", "2px solid red")
+            $('#emailInput').css("box-shadow", "0 0 5px red")
+            $('#submitBtn').before('<span class="error">All fields are required</span>');
             return false;
             }
             if (formData.email_address.length < 1) {
@@ -74,8 +87,9 @@
             var validEmail = regEx.test(formData.email_address);
             console.log(validEmail)
             if (!validEmail) {
-                $('#emailInput').after('<div class="error">* Enter a valid email</div>');
-                $('#emailInput').addClass('error-input');
+                $('#emailInput').css("border", "2px solid red")
+                $('#emailInput').css("box-shadow", "0 0 5px red")
+                $('#submitBtn').before('<span class="error">All fields are required</span>');
                 return false;
             }else{
 

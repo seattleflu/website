@@ -168,3 +168,8 @@ select.form-control {
         padding-bottom: 30px;
     }
 }
+
+input[type=text].notValid{
+    border: 2px solid red;
+    box-shadow: 0 0 5px red;
+}
