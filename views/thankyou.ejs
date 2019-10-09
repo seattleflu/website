@@ -37,24 +37,25 @@
             }
             
             $(".error").remove();
+            $("#firstNameInput").removeClass('error-input');
+            $("#lastNameInput").removeClass('error-input');
+            $("#emailInput").removeClass('error-input');
+            $("#zipInput").removeClass('error-input');
 
             if (formData.first_name.length < 1) {
-            $('#firstNameInput').css("border", "2px solid red")
-            $('#firstNameInput').css("box-shadow", "0 0 5px red")
-            $('#submitBtn').before('<span class="error">All fields are required</span>');
-            return false;
+                $('#firstNameInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">All fields are required</span>');
+                return false;
             }
             if (formData.last_name.length < 1) {
-            $('#lastNameInput').css("border", "2px solid red")
-            $('#lastNameInput').css("box-shadow", "0 0 5px red")
-            $('#submitBtn').before('<span class="error">All fields are required</span>');
-            return false;
+                $('#lastNameInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">All fields are required</span>');
+                return false;
             }
             if (formData.email_address.length < 1) {
-            $('#emailInput').css("border", "2px solid red")
-            $('#emailInput').css("box-shadow", "0 0 5px red")
-            $('#submitBtn').before('<span class="error">All fields are required</span>');
-            return false;
+                $('emailInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">All fields are required</span>');
+                return false;
             } else {
             var regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             console.log(formData.email_address)

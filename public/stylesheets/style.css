@@ -722,8 +722,9 @@ h1.number {
 
 /*** THANK YOU PAGES ***/
 .thank-you h4 {
-  margin-bottom: 30px;
-  margin-top: 50px;
+  margin-bottom: 15px;
+  padding-top: 30px;
+  clear: both;
 }
 #ty-subscribe input[type=text], #ty-subscribe input[type=tel], #learn-more input[type=text], #learn-more input[type=tel] {
   margin-right: 15px;
@@ -736,12 +737,15 @@ h1.number {
   clear: both;
   width: 30%;
 }
-#emailInput, #phoneInput {
+#emailInput, #phoneInput, #zipInput {
   width: calc(60% + 15px);
+  display: block;
 }
 #ty-subscribe input[type=submit], #learn-more input[type=submit] {
-  display: block;
-  margin-top: 40px;
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  float: left;
 }
 #ty-subscribe input[type=submit]:hover, #learn-more input[type=submit]:hover {
   text-decoration: underline;
@@ -749,10 +753,21 @@ h1.number {
 .ty-social a {
   margin-right: 15px;
 }
-
+.error {
+  margin-top: 10px;
+  color: rgba(255,87,0,1);
+  font-size: 14px;
+  display: block;
+  text-align: right;
+  max-width: calc(60% + 10px);
+}
 .error-input {
   border: 2px solid rgba(255,87,0,1) !important;
   box-shadow: 0 0 5px rgba(255,87,0,0.5);
+}
+.disclaimer {
+  clear: both;
+  padding-top: 30px;
 }
 @media (max-width: 991px) {
 .thank-you .col-xs-12:first-child {
@@ -762,7 +777,8 @@ h1.number {
 @media (max-width: 767px) {
   .error {
     float: none;
-    margin-top: 10px;
+    max-width: none;
+    margin-right: 5px;
   }
   #firstNameInput {
     float: left;
@@ -773,12 +789,8 @@ h1.number {
     width: calc(50% - 7.5px);
     margin-right: 0 !important;
   }
-  #emailInput, #phoneInput {
+  #emailInput, #phoneInput, #zipInput {
     width: 100%;
-  }
-  .thank-you h4 {
-    margin-top: 30px;
-    margin-bottom: 15px;
   }
 }
 
@@ -952,13 +964,4 @@ h1.number {
 
 .signup-error{
 display: none;
-}
-.error{
-  color:red;
-  display: block;
-  margin-top:10px;
-  margin-bottom: -34px;
-}
-.error-hide{
-  display:none;
 }
