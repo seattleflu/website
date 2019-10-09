@@ -723,7 +723,7 @@ h1.number {
 /*** THANK YOU PAGES ***/
 .thank-you h4 {
   margin-bottom: 30px;
-  margin-top: 75px;
+  margin-top: 50px;
 }
 #ty-subscribe input[type=text], #ty-subscribe input[type=tel] {
   margin-right: 15px;
@@ -768,7 +768,7 @@ h1.number {
     width: 100%;
   }
   .thank-you h4 {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 15px;
   }
 }
