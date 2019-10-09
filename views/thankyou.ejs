@@ -39,15 +39,18 @@
             $(".error").remove();
 
             if (formData.first_name.length < 1) {
-            $('#firstNameInput').after('<span class="error">This field is required</span>');
+            $('#firstNameInput').css("border", "2px solid red")
+            $('#firstNameInput').css("box-shadow", "0 0 5px red")
             return false;
             }
             if (formData.last_name.length < 1) {
-            $('#lastNameInput').after('<span class="error">This field is required</span>');
+            $('#lastNameInput').css("border", "2px solid red")
+            $('#lastNameInput').css("box-shadow", "0 0 5px red")
             return false;
             }
             if (formData.email_address.length < 1) {
-            $('#emailInput').after('<span class="error">This field is required</span>');
+            $('#emailInput').css("border", "2px solid red")
+            $('#emailInput').css("box-shadow", "0 0 5px red")
             return false;
             } else {
             var regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -55,7 +58,8 @@
             var validEmail = regEx.test(formData.email_address);
             console.log(validEmail)
             if (!validEmail) {
-                $('#emailInput').after('<span class="error">Enter a valid email</span>');
+                $('#emailInput').css("border", "2px solid red")
+                $('#emailInput').css("box-shadow", "0 0 5px red")
                 return false;
             }else{
 
@@ -70,11 +74,11 @@
                 console.log(data["statusCode"])
                 if (data["statusCode"] == '200'){
                 $("#thank-you").css("display", "block")
-                $("#learn-more").css("display", "none")  
+                $("#ty-subscribe").css("display", "none")  
                 $("#signuperror").css("display", "none")
                 }else{
                 $("#thank-you").css("display", "none")
-                $("#learn-more").css("display", "block")
+                $("#ty-subscribe").css("display", "block")
                 $("#signuperror").css("display", "block")
                 }
             })
