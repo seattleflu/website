@@ -53,7 +53,7 @@
                 return false;
             }
             if (formData.email_address.length < 1) {
-                $('emailInput').addClass('error-input');
+                $('#emailInput').addClass('error-input');
                 $('#submitBtn').after('<span class="error">All fields are required</span>');
                 return false;
             } else {
@@ -62,9 +62,8 @@
             var validEmail = regEx.test(formData.email_address);
             console.log(validEmail)
             if (!validEmail) {
-                $('#emailInput').css("border", "2px solid red")
-                $('#emailInput').css("box-shadow", "0 0 5px red")
-                $('#submitBtn').before('<span class="error">All fields are required</span>');
+                $('#emailInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">A valid email is required</span>');
                 return false;
             }else{
 
