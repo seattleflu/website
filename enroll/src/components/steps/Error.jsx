@@ -234,8 +234,8 @@ const Error = props => {
                     value={phone}
                     onChange={phoneset}
                   />
-                  <span className={error}>All fields are required</span>
                   <input type="submit" value="Submit" />
+                  <span className={error}>All fields are required</span>
                 </form>
               : null}
             {urlConsent

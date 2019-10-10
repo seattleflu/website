@@ -170,6 +170,18 @@ select.form-control {
 }
 
 input[type=text].notValid{
-    border: 2px solid red;
-    box-shadow: 0 0 5px red;
+    border: 2px solid rgba(255,87,0,1) !important;
+  box-shadow: 0 0 5px rgba(255,87,0,0.5);
 }
+
+.error-hide{
+    display: none;
+}
+.error {
+    margin-top: 10px;
+    color: rgba(255,87,0,1);
+    font-size: 14px;
+    display: block;
+    text-align: right;
+    max-width: calc(60% + 10px);
+  }
