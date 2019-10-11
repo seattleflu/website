@@ -14,6 +14,10 @@
 }
 .enrollWapper input[type=text], .enrollWapper input[type=tel], .enrollWapper input[type=submit] {
     margin-top: 12px;
+    
+}
+.enrollWapper input[type=submit]{
+    display: block;
 }
 .enrollWapper #ty-subscribe {
     margin-bottom: 0;
@@ -173,3 +177,18 @@ input[type=text].notValid{
     border: 2px solid red;
     box-shadow: 0 0 5px red;
 }
+input[type=tel].notValid{
+    border: 2px solid red;
+    box-shadow: 0 0 5px red;
+}
+
+.isDisabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  .isDisabled > a {
+    color: currentColor;
+    display: inline-block;  /* For IE11/ MS Edge bug */
+    pointer-events: none;
+    text-decoration: none;
+  }

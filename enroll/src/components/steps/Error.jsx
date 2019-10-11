@@ -49,6 +49,11 @@ const Error = props => {
     initializeReactGA ();
   }, []);
 
+  function handleSSsubmit(event){
+    event.preventDefault ();
+    window.location.href = urlConsent;
+  }
+
   function handleSubmit (event) {
     event.preventDefault ();
 
@@ -59,7 +64,7 @@ const Error = props => {
         'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
     } else if (name == 'Household_Observation') {
       apiUrl =
-        'https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation/';
+        'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
     } else {
       apiUrl = 'https://api.fluathome.org';
     }
@@ -90,7 +95,7 @@ const Error = props => {
       setLastNameValid ('valid');
     }
 
-    if (phone < 10) {
+    if (phone.length < 8) {
       setPhoneValid ('notValid');
       return false;
     } else {
@@ -119,7 +124,7 @@ const Error = props => {
       console.log ('email is valid ' + email);
     }
 
-    if((firstName !='') && (lastName != '') && (phone != '') && (email != '')){
+    if((firstName !='') && (lastName != '') && (phone >= 8) && (email != '')){
       axios ({
           method: 'post',
           url: apiUrl,
@@ -185,7 +190,7 @@ const Error = props => {
       <ReactMarkdown source={description} />
       {form == 'true'
         ? <div>
-            {name != 'Swab & Send Study'
+            {name != 'Swab_and_Send'
               ? <form id="ty-subscribe" onSubmit={handleSubmit}>
                   <input
                     type="text"
@@ -229,10 +234,21 @@ const Error = props => {
                   
                   <input type="submit" value="Submit" />
                 </form>
-              : null}
+              : <form id="ss-form" onSubmit={handleSSsubmit}>
+                  <input
+                    type="text"
+                    id="emailInput"
+                    name="email"
+                    placeholder="Email Address (required)"
+                    className={emailValid}
+                    value={email}
+                    onChange={emailset}
+                  />
+                  <input type="submit" value="Submit" />
+                </form>}
             {urlConsent
               ? <a
-                  className="btn btn-primary float-right next"
+                  className="btn btn-primary float-right next isDisabled"
                   href={urlConsent}
                 >
                   {urlConsentText}
