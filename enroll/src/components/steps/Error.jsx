@@ -16,6 +16,7 @@ const Error = props => {
   const [form, setForm] = useState ('true');
   const [url, setUrl] = useState ('');
   const [errorForm, setErrorForm] = useState ('false');
+  const [error, setError] = useState('error-hide')
   const [firstNameError, setFistNameError] = useState ('false');
   const [lastNameError, setLastNameError] = useState ('false');
   const [emailError, setEmailError] = useState ('false');
@@ -83,6 +84,7 @@ const Error = props => {
 
     if (firstName < 1) {
       setFirstNameValid ('notValid');
+      setError('error')
       return false;
     } else {
       setFirstNameValid ('valid');
@@ -90,6 +92,7 @@ const Error = props => {
 
     if (lastName < 1) {
       setLastNameValid ('notValid');
+      setError('error')
       return false;
     } else {
       setLastNameValid ('valid');
@@ -97,6 +100,7 @@ const Error = props => {
 
     if (phone.length < 8) {
       setPhoneValid ('notValid');
+      setError('error')
       return false;
     } else {
       setPhoneValid ('valid');
@@ -104,6 +108,7 @@ const Error = props => {
 
     if (email.length < 1) {
       setEmailValid ('notValid');
+      setError('error')
       return false;
     } else {
       setEmailValid ('valid');
@@ -116,6 +121,7 @@ const Error = props => {
       )
     ) {
       setEmailValid ('notValid');
+      setError('error')
       console.log ('email is not valid' + email);
       setEmail ('');
       return false;
@@ -146,6 +152,7 @@ const Error = props => {
             setErrorForm('true');
           });
     }else{
+      setError('error')
       console.log(firstNameValid + lastNameValid + phoneValid + emailValid)
     }
 
@@ -231,8 +238,8 @@ const Error = props => {
                     value={phone}
                     onChange={phoneset}
                   />
-                  
                   <input type="submit" value="Submit" />
+                  <span className={error}>All fields are required</span>
                 </form>
               : <form id="ss-form" onSubmit={handleSSsubmit}>
                   <input

@@ -16,17 +16,18 @@
             <a href="https://www.seattlechildrens.org/"><img src="/images/logo_SeattleChildrens.svg"></a>
             <a href="https://brotmanbaty.org/"><img src="/images/logo_BrotmanBatyInstitute.svg"></a>
         </div>
-        <div class="col-lg-8 landing-text secondary">
+        <div class="col-lg-8 landing-text secondary learnmore">
             <%- md.render(pageData[0].fields.content) %>
             <form id="learn-more">
-                <input type="text" id="firstNameInput" name="firstName" placeholder="First Name">
-                <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name">
-                <input type="text" id="emailInput" name="email" placeholder="Email Address">
-                <input type="submit" value="Submit">
+                <input type="text" id="firstNameInput" name="firstName" placeholder="First Name (required)">
+                <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name (required)">
+                <input type="text" id="emailInput" name="email" placeholder="Email Address (required)">
+                <input type="text" id="zipInput" name="zipcode" placeholder="Zip Code (required)">
+                <input type="submit" id="submitBtn" value="Submit">
             </form> 
             <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
                 <h4 id="thank-you">Thank you! We'll be in touch with more information soon!</h4> 
-            <%- md.render(pageData[0].fields.content2) %>
+            <div class="disclaimer"><%- md.render(pageData[0].fields.content2) %></div>
         </div>
     </div>
 </div>
@@ -39,36 +40,45 @@
             "email_address": $('#emailInput').val(),
             "first_name": $('#firstNameInput').val(),
             "last_name": $('#lastNameInput').val(),
+            "zip_code": $('#zipInput').val(),
             "website_url": window.location.href
             }
             
             $(".error").remove();
+            $("#firstNameInput").removeClass('error-input');
+            $("#lastNameInput").removeClass('error-input');
+            $("#emailInput").removeClass('error-input');
+            $("#zipInput").removeClass('error-input');
 
             if (formData.first_name.length < 1) {
-            $('#firstNameInput').css("border", "2px solid red")
-            $('#firstNameInput').css("box-shadow", "0 0 5px red")
-            return false;
+                $('#firstNameInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">All fields are required</span>');
+                return false;
             }
             if (formData.last_name.length < 1) {
-            $('#lastNameInput').css("border", "2px solid red")
-            $('#lastNameInput').css("box-shadow", "0 0 5px red")
-            return false;
+                $('#lastNameInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">All fields are required</span>');
+                return false;
             }
             if (formData.email_address.length < 1) {
-            $('#emailInput').css("border", "2px solid red")
-            $('#emailInput').css("box-shadow", "0 0 5px red")
-            // $('#emailInput').after('<span class="error">This field is required</span>');
-            return false;
+                $('#emailInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">All fields are required</span>');
+                return false;
+            }
+            if (formData.zip_code.length < 1) {
+                $('#zipInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">All fields are required</span>');
+                return false;
             } else {
             var regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             console.log(formData.email_address)
             var validEmail = regEx.test(formData.email_address);
             console.log(validEmail)
             if (!validEmail) {
-                $('#emailInput').css("border", "2px solid red")
-                $('#emailInput').css("box-shadow", "0 0 5px red")
+                $('#emailInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">A valid email is required</span>');
                 return false;
-            }else{
+            } else {
 
             $.ajax({
             type: 'POST', 
