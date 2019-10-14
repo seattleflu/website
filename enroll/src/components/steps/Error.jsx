@@ -107,7 +107,7 @@ const Error = props => {
         'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
     } else if (name == 'Household_Observation') {
       apiUrl =
-        'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
+        'https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation';
     } else if (name == 'Swab_and_Send') {
       apiUrl =
         'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send';
