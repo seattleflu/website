@@ -177,8 +177,8 @@ select.form-control {
     }
 }
 input[type=text].notValid{
-    border: 2px solid red;
-    box-shadow: 0 0 5px red;
+    border: 2px solid rgba(255,87,0,1);
+    box-shadow: 0 0 5px rgba(255,87,0,1);
 }
 input[type=tel].notValid{
     border: 2px solid red;
