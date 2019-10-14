@@ -52,8 +52,50 @@ const Error = props => {
 
   function handleSSsubmit(event){
     event.preventDefault ();
-    window.location.href = urlConsent;
-  }
+    
+    if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test (
+        email
+      )
+    ) {
+      setEmailValid ('notValid');
+      setError('error')
+      console.log ('email is not valid' + email);
+      setEmail ('');
+      return false;
+    } else {
+      setEmailValid ('valid');
+      const swabdata =
+      'email_address=' +
+      email +
+      '&zip_code=' +
+      zip;
+
+      axios ({
+          method: 'post',
+          url: 'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send',
+          data: swabdata,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        })
+          .then (function (response) {
+            console.log(response)
+            if (response.status == '200') {
+              setForm ('false');
+              setErrorForm('false');
+              window.location.href = urlConsent;
+            }else{
+              setErrorForm('true');
+            }
+          })
+          .catch (function (error) {
+            setErrorForm('true');
+          });
+      
+    }
+    }
+  
 
   function handleSubmit (event) {
     event.preventDefault ();
@@ -66,6 +108,9 @@ const Error = props => {
     } else if (name == 'Household_Observation') {
       apiUrl =
         'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
+    } else if (name == 'Swab_and_Send') {
+      apiUrl =
+        'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send';
     } else {
       apiUrl = 'https://api.fluathome.org';
     }
@@ -141,7 +186,7 @@ const Error = props => {
         })
           .then (function (response) {
             console.log(response)
-            if (response.data.statusCode == '200') {
+            if (response.status == '200') {
               setForm ('false');
               setErrorForm('false');
             }else{
@@ -253,14 +298,14 @@ const Error = props => {
                   />
                   <input type="submit" value="Submit" />
                 </form>}
-            {urlConsent
+            {/* urlConsent
               ? <a
                   className="btn btn-primary float-right next isDisabled"
                   href={urlConsent}
                 >
                   {urlConsentText}
                 </a>
-              : null}
+              : null */}
           </div>
         : <div><h3>Thank You, We will contact you soon.</h3></div>}
       {errorForm == 'true'
