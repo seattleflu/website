@@ -207,3 +207,9 @@ input[type=tel].notValid{
     text-align: right;
     max-width: calc(60% + 10px);
   } 
+
+  #emailInputSwab{
+      display: inline-block;
+      width: calc(60% + 15px);
+  }
+  .enrollWapper input[type=submit]#submitSwab{display: inline-block; margin-left:15px;}

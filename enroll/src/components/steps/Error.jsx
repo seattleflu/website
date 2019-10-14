@@ -289,14 +289,14 @@ const Error = props => {
               : <form id="ss-form" onSubmit={handleSSsubmit}>
                   <input
                     type="text"
-                    id="emailInput"
+                    id="emailInputSwab"
                     name="email"
                     placeholder="Email Address (required)"
                     className={emailValid}
                     value={email}
                     onChange={emailset}
                   />
-                  <input type="submit" value="Submit" />
+                  <input id="submitSwab" type="submit" value="Submit" />
                 </form>}
             {/* urlConsent
               ? <a
