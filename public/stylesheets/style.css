@@ -973,10 +973,8 @@ display: none;
 }
 @media (max-width: 767px) {
   #ssec-text {
-    order: 2;
   }
   #ssec-img {
-    order: 1;
-    margin-bottom: 30px;
+    margin-top: 15px;
   }
 }
