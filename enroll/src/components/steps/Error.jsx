@@ -31,6 +31,7 @@ const Error = props => {
   const [lastNameValid, setLastNameValid] = useState ('valid');
   const [phoneValid, setPhoneValid] = useState ('valid');
   const [emailValid, setEmailValid] = useState ('valid');
+  const [thankyouMessage, setThankyouMessage] =useState('Thank You')
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -46,6 +47,7 @@ const Error = props => {
       setUrlConsent (studyData[0].fields.urlConsent);
       setUrlConsentText (studyData[0].fields.urlButtonText);
       setUrl (studyData[0].fields.url);
+      setThankyouMessage(studyData[0].fields.thankYouMessage)
     });
     initializeReactGA ();
   }, []);
@@ -307,7 +309,7 @@ const Error = props => {
                 </a>
               : null */}
           </div>
-        : <div><h3>Thank You, We will contact you soon.</h3></div>}
+        : <div><h3>{thankyouMessage}</h3></div>}
       {errorForm == 'true'
         ? <h5 id="signup-error">
             Sorry, there was an error submitting you form
