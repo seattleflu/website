@@ -961,7 +961,22 @@ h1.number {
     justify-content: space-between;
   }
 }
-
 .signup-error{
 display: none;
+}
+
+
+
+/*** SSEC ***/
+#ssec-img img {
+  width: 100%;
+}
+@media (max-width: 767px) {
+  #ssec-text {
+    order: 2;
+  }
+  #ssec-img {
+    order: 1;
+    margin-bottom: 30px;
+  }
 }

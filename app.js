@@ -19,6 +19,7 @@ var householdsRouter = require('./routes/households');
 var contactRouter = require('./routes/contactus');
 var mediaRouter = require('./routes/media');
 var errorRouter = require('./routes/error')
+var ssecRouter = require('./routes/ssec')
 
 const production = process.env.NODE_ENV === "production";
 
@@ -75,6 +76,7 @@ app.use('/households', householdsRouter);
 app.use('/media-inquiries', mediaRouter);
 app.use('/swabandsend', swabandsendRouter);
 app.use('/contact-us', contactRouter);
+app.use('/ssec', ssecRouter);
 app.use('/thank-you/:thankyouid', thankyouRouter)
 app.use('/', indexRouter)
 app.use(errorRouter);
