@@ -869,8 +869,8 @@ h1.number {
 
 /*** ENROLL ***/
 .enroll {
-  background-color: #EAECF0;
-  border-bottom: 1px solid #4A515F;
+  background-color: #0A5CA8;
+  min-height: 600px;
 }
 
 

@@ -159,8 +159,7 @@ select.form-control {
         margin-top: 0;
         margin-bottom: 0;
         background-color: #ffffff;
-        outline: 30px solid #EAECF0;
-        margin-left: 15px;
+        outline: 30px solid #0A5CA8;
         margin-right: 15px;
     }
     .enrollWapper {
@@ -168,7 +167,11 @@ select.form-control {
         padding-bottom: 30px;
     }
 }
-
+@media (max-width: 575px) {
+    .enrollWapper .form-wrap {
+        margin-left: 15px;
+    }
+}
 input[type=text].notValid{
     border: 2px solid rgba(255,87,0,1) !important;
   box-shadow: 0 0 5px rgba(255,87,0,0.5);
