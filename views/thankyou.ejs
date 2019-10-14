@@ -12,7 +12,7 @@
         <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
         <input id="submitBtn" type="submit" value="Submit">
       </form> 
-      <h4 id="thank-you">THANK YOU</h4> 
+      <h4 id="thank-you"><%= thankyouData.fields.ThankYouMessage %></h4> 
       <h4>Additionally, you can help us get the word out about the flu study!</h4>
       <p>Click the links below to share with your networks:</p>
       <div class="ty-social">
@@ -33,6 +33,7 @@
             "email_address": $('#emailInput').val(),
             "first_name": $('#firstNameInput').val(),
             "last_name": $('#lastNameInput').val(),
+            "zip_code": "00000",
             "website_url": window.location.href
             }
             
