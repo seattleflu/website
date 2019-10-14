@@ -26,7 +26,7 @@
                 <input type="submit" id="submitBtn" value="Submit">
             </form> 
             <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
-                <h4 id="thank-you">Thank you! We'll be in touch with more information soon!</h4> 
+                <h4 id="thank-you"><%= pageData[0].fields.ThankYouMessage%></h4> 
             <div class="disclaimer"><%- md.render(pageData[0].fields.content2) %></div>
         </div>
     </div>
