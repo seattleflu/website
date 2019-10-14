@@ -195,3 +195,15 @@ input[type=tel].notValid{
     pointer-events: none;
     text-decoration: none;
   }
+
+  .error-hide{
+    display: none;
+}
+.error {
+    margin-top: 10px;
+    color: rgba(255,87,0,1);
+    font-size: 14px;
+    display: block;
+    text-align: right;
+    max-width: calc(60% + 10px);
+  } 
