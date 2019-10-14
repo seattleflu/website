@@ -50,6 +50,53 @@ const Error = props => {
     initializeReactGA ();
   }, []);
 
+  function handleSSsubmit(event){
+    event.preventDefault ();
+    
+    if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test (
+        email
+      )
+    ) {
+      setEmailValid ('notValid');
+      setError('error')
+      console.log ('email is not valid' + email);
+      setEmail ('');
+      return false;
+    } else {
+      setEmailValid ('valid');
+      const swabdata =
+      'email_address=' +
+      email +
+      '&zip_code=' +
+      zip;
+
+      axios ({
+          method: 'post',
+          url: 'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send',
+          data: swabdata,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        })
+          .then (function (response) {
+            console.log(response)
+            if (response.status == '200') {
+              setForm ('false');
+              setErrorForm('false');
+              window.location.href = urlConsent;
+            }else{
+              setErrorForm('true');
+            }
+          })
+          .catch (function (error) {
+            setErrorForm('true');
+          });
+      
+    }
+    }
+  
+
   function handleSubmit (event) {
     event.preventDefault ();
 
@@ -60,7 +107,10 @@ const Error = props => {
         'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
     } else if (name == 'Household_Observation') {
       apiUrl =
-        'https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation/';
+        'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
+    } else if (name == 'Swab_and_Send') {
+      apiUrl =
+        'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send';
     } else {
       apiUrl = 'https://api.fluathome.org';
     }
@@ -93,7 +143,7 @@ const Error = props => {
       setLastNameValid ('valid');
     }
 
-    if (phone < 10) {
+    if (phone.length < 8) {
       setPhoneValid ('notValid');
       setError('error')
       return false;
@@ -125,8 +175,7 @@ const Error = props => {
       console.log ('email is valid ' + email);
     }
 
-    if((firstName !='') && (lastName != '') && (phone != '') && (email != '')){
-      setError('error-hide')
+    if((firstName !='') && (lastName != '') && (phone >= 8) && (email != '')){
       axios ({
           method: 'post',
           url: apiUrl,
@@ -137,7 +186,7 @@ const Error = props => {
         })
           .then (function (response) {
             console.log(response)
-            if (response.data.statusCode == '200') {
+            if (response.status == '200') {
               setForm ('false');
               setErrorForm('false');
             }else{
@@ -193,7 +242,7 @@ const Error = props => {
       <ReactMarkdown source={description} />
       {form == 'true'
         ? <div>
-            {name != 'Swab & Send Study'
+            {name != 'Swab_and_Send'
               ? <form id="ty-subscribe" onSubmit={handleSubmit}>
                   <input
                     type="text"
@@ -237,15 +286,26 @@ const Error = props => {
                   <input type="submit" value="Submit" />
                   <span className={error}>All fields are required</span>
                 </form>
-              : null}
-            {urlConsent
+              : <form id="ss-form" onSubmit={handleSSsubmit}>
+                  <input
+                    type="text"
+                    id="emailInput"
+                    name="email"
+                    placeholder="Email Address (required)"
+                    className={emailValid}
+                    value={email}
+                    onChange={emailset}
+                  />
+                  <input type="submit" value="Submit" />
+                </form>}
+            {/* urlConsent
               ? <a
-                  className="btn btn-primary float-right next"
+                  className="btn btn-primary float-right next isDisabled"
                   href={urlConsent}
                 >
                   {urlConsentText}
                 </a>
-              : null}
+              : null */}
           </div>
         : <div><h3>Thank You, We will contact you soon.</h3></div>}
       {errorForm == 'true'
