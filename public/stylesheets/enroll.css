@@ -213,3 +213,13 @@ input[type=tel].notValid{
       width: calc(60% + 15px);
   }
   .enrollWapper input[type=submit]#submitSwab{display: inline-block; margin-left:15px;}
+
+  @media (max-width: 575px) {
+    .enrollWapper input[type=submit]#submitSwab{
+        display: block; margin-left:0px;
+    }
+    #emailInputSwab{
+        display: block;
+        width: 100%;
+    }
+}
