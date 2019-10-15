@@ -202,6 +202,23 @@ const Error = props => {
       setValid()
     }
   }
+  function emailsetSingle (event) {
+    if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test (
+        email
+      )
+    ) {
+      setEmailValid ('notValid');
+      setError ('error');
+      setEmail ('');
+      setEmail (event.target.value);
+    } else {
+      setEmail (event.target.value);
+      setEmailValid ('valid');
+      setError ('error-hide');
+      setValidForm('')
+    }
+  }
   function phoneset (event) {
     
     if (/(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/.test(event.target.value)) {
@@ -215,6 +232,7 @@ const Error = props => {
       setPhone (event.target.value);
     }
   }
+   
   function setValid(){
     if(firstNameValid == "valid" && lastNameValid == "valid" && emailValid == "valid" ){
       setValidForm('')
@@ -283,9 +301,9 @@ const Error = props => {
                     placeholder="Email Address (required)"
                     className={emailValid}
                     value={email}
-                    onChange={emailset}
+                    onChange={emailsetSingle}
                   />
-                  <input id="submitSwab" type="submit" value="Submit" />
+                  <input id="submitSwab" type="submit" value="Submit" disabled={validForm}></input>
                 </form>}
             {/* urlConsent
               ? <a
