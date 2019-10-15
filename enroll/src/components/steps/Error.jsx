@@ -16,7 +16,7 @@ const Error = props => {
   const [form, setForm] = useState ('true');
   const [url, setUrl] = useState ('');
   const [errorForm, setErrorForm] = useState ('false');
-  const [error, setError] = useState('error-hide')
+  const [error, setError] = useState ('error-hide');
   const [firstNameError, setFistNameError] = useState ('false');
   const [lastNameError, setLastNameError] = useState ('false');
   const [emailError, setEmailError] = useState ('false');
@@ -31,7 +31,7 @@ const Error = props => {
   const [lastNameValid, setLastNameValid] = useState ('valid');
   const [phoneValid, setPhoneValid] = useState ('valid');
   const [emailValid, setEmailValid] = useState ('valid');
-  const [thankyouMessage, setThankyouMessage] =useState('Thank You')
+  const [thankyouMessage, setThankyouMessage] = useState ('Thank You');
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -47,57 +47,51 @@ const Error = props => {
       setUrlConsent (studyData[0].fields.urlConsent);
       setUrlConsentText (studyData[0].fields.urlButtonText);
       setUrl (studyData[0].fields.url);
-      setThankyouMessage(studyData[0].fields.thankYouMessage)
+      setThankyouMessage (studyData[0].fields.thankYouMessage);
     });
     initializeReactGA ();
   }, []);
 
-  function handleSSsubmit(event){
+  function handleSSsubmit (event) {
     event.preventDefault ();
-    
+
     if (
       !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test (
         email
       )
     ) {
       setEmailValid ('notValid');
-      setError('error')
+      setError ('error');
       console.log ('email is not valid' + email);
       setEmail ('');
       return false;
     } else {
       setEmailValid ('valid');
-      const swabdata =
-      'email_address=' +
-      email +
-      '&zip_code=' +
-      zip;
+      const swabdata = 'email_address=' + email + '&zip_code=' + zip;
 
       axios ({
-          method: 'post',
-          url: 'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send',
-          data: swabdata,
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
+        method: 'post',
+        url: 'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send',
+        data: swabdata,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      })
+        .then (function (response) {
+          console.log (response);
+          if (response.status == '200') {
+            setForm ('false');
+            setErrorForm ('false');
+            window.location.href = urlConsent;
+          } else {
+            setErrorForm ('true');
+          }
         })
-          .then (function (response) {
-            console.log(response)
-            if (response.status == '200') {
-              setForm ('false');
-              setErrorForm('false');
-              window.location.href = urlConsent;
-            }else{
-              setErrorForm('true');
-            }
-          })
-          .catch (function (error) {
-            setErrorForm('true');
-          });
-      
+        .catch (function (error) {
+          setErrorForm ('true');
+        });
     }
-    }
-  
+  }
 
   function handleSubmit (event) {
     event.preventDefault ();
@@ -131,32 +125,32 @@ const Error = props => {
 
     if (firstName < 1) {
       setFirstNameValid ('notValid');
-      setError('error')
-      return false;
+      setError ('error');
+      //return false;
     } else {
       setFirstNameValid ('valid');
     }
 
     if (lastName < 1) {
       setLastNameValid ('notValid');
-      setError('error')
-      return false;
+      setError ('error');
+      //return false;
     } else {
       setLastNameValid ('valid');
     }
 
-    if (phone.length < 8) {
-      setPhoneValid ('notValid');
-      setError('error')
-      return false;
-    } else {
+    if (/(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/.test(phone)) {
       setPhoneValid ('valid');
+      //return false;
+    } else {
+     setPhoneValid ('notValid');
+      setError ('error');
     }
 
     if (email.length < 1) {
       setEmailValid ('notValid');
-      setError('error')
-      return false;
+      setError ('error');
+      //return false;
     } else {
       setEmailValid ('valid');
       console.log ('email is valid ' + email);
@@ -168,39 +162,39 @@ const Error = props => {
       )
     ) {
       setEmailValid ('notValid');
-      setError('error')
+      setError ('error');
       console.log ('email is not valid' + email);
       setEmail ('');
-      return false;
+      //return false;
     } else {
       setEmailValid ('valid');
       console.log ('email is valid ' + email);
     }
 
-    if((firstName !='') && (lastName != '') && (phone >= 8) && (email != '')){
+    if (firstName != '' && lastName != '' && phone >= 8 && email != '') {
       axios ({
-          method: 'post',
-          url: apiUrl,
-          data: data,
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
+        method: 'post',
+        url: apiUrl,
+        data: data,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      })
+        .then (function (response) {
+          console.log (response);
+          if (response.status == '200') {
+            setForm ('false');
+            setErrorForm ('false');
+          } else {
+            setErrorForm ('true');
+          }
         })
-          .then (function (response) {
-            console.log(response)
-            if (response.status == '200') {
-              setForm ('false');
-              setErrorForm('false');
-            }else{
-              setErrorForm('true');
-            }
-          })
-          .catch (function (error) {
-            setErrorForm('true');
-          });
-    }else{
-      setError('error')
-      console.log(firstNameValid + lastNameValid + phoneValid + emailValid)
+        .catch (function (error) {
+          setErrorForm ('true');
+        });
+    } else {
+      setError ('error');
+      console.log (firstNameValid + lastNameValid + phoneValid + emailValid);
     }
 
     // axios ({
@@ -224,19 +218,18 @@ const Error = props => {
     //         setErrorForm('true');
     //       });
   }
-  function firstnameset(event){
-    setFirstName(event.target.value)
+  function firstnameset (event) {
+    setFirstName (event.target.value);
   }
-  function lastnameset(event){
-    setLastName(event.target.value)
+  function lastnameset (event) {
+    setLastName (event.target.value);
   }
-  function emailset(event){
-    setEmail(event.target.value)
+  function emailset (event) {
+    setEmail (event.target.value);
   }
-  function phoneset(event){
-    setPhone(event.target.value)
+  function phoneset (event) {
+    setPhone (event.target.value);
   }
-
 
   return (
     <div>
@@ -255,7 +248,7 @@ const Error = props => {
                     value={firstName}
                     onChange={firstnameset}
                   />
-                  
+
                   <input
                     type="text"
                     id="lastNameInput"
@@ -265,7 +258,7 @@ const Error = props => {
                     value={lastName}
                     onChange={lastnameset}
                   />
-                  
+
                   <input
                     type="text"
                     id="emailInput"
@@ -275,7 +268,7 @@ const Error = props => {
                     value={email}
                     onChange={emailset}
                   />
-                 
+
                   <input
                     type="tel"
                     id="phoneInput"
