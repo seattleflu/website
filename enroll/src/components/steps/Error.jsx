@@ -27,11 +27,13 @@ const Error = props => {
   const [email, setEmail] = useState ('');
   const [phone, setPhone] = useState ('');
 
-  const [firstNameValid, setFirstNameValid] = useState ('valid');
-  const [lastNameValid, setLastNameValid] = useState ('valid');
-  const [phoneValid, setPhoneValid] = useState ('valid');
-  const [emailValid, setEmailValid] = useState ('valid');
+  const [firstNameValid, setFirstNameValid] = useState ('');
+  const [lastNameValid, setLastNameValid] = useState ('');
+  const [phoneValid, setPhoneValid] = useState ('');
+  const [emailValid, setEmailValid] = useState ('');
   const [thankyouMessage, setThankyouMessage] = useState ('Thank You');
+
+  const [validForm, setValidForm] = useState('disabled')
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -39,6 +41,9 @@ const Error = props => {
   }
 
   useEffect (() => {
+    if(firstNameValid == "valid" && lastNameValid == "valid" && phoneValid =="valid" && emailValid == "valid" ){
+      setValidForm('')
+    }
     setZip (props.zip);
     getStudy (props.studyName).then (studyData => {
       setName (studyData[0].fields.studyName);
@@ -95,7 +100,7 @@ const Error = props => {
 
   function handleSubmit (event) {
     event.preventDefault ();
-
+    
     Event ('Enroll Screener', 'Study', url);
     let apiUrl = '';
     if (name == 'Household_Intervention') {
@@ -123,55 +128,8 @@ const Error = props => {
       '&zip_code=' +
       zip;
 
-    if (firstName < 1) {
-      setFirstNameValid ('notValid');
-      setError ('error');
-      //return false;
-    } else {
-      setFirstNameValid ('valid');
-    }
-
-    if (lastName < 1) {
-      setLastNameValid ('notValid');
-      setError ('error');
-      //return false;
-    } else {
-      setLastNameValid ('valid');
-    }
-
-    if (/(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/.test(phone)) {
-      setPhoneValid ('valid');
-      //return false;
-    } else {
-     setPhoneValid ('notValid');
-      setError ('error');
-    }
-
-    if (email.length < 1) {
-      setEmailValid ('notValid');
-      setError ('error');
-      //return false;
-    } else {
-      setEmailValid ('valid');
-      console.log ('email is valid ' + email);
-    }
-
-    if (
-      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test (
-        email
-      )
-    ) {
-      setEmailValid ('notValid');
-      setError ('error');
-      console.log ('email is not valid' + email);
-      setEmail ('');
-      //return false;
-    } else {
-      setEmailValid ('valid');
-      console.log ('email is valid ' + email);
-    }
-
-    if (firstName != '' && lastName != '' && phone >= 8 && email != '') {
+    if (firstNameValid == 'valid' && lastNameValid == 'valid' && phoneValid == 'valid' && emailValid == 'valid') {
+      setError ('false');
       axios ({
         method: 'post',
         url: apiUrl,
@@ -181,7 +139,7 @@ const Error = props => {
         },
       })
         .then (function (response) {
-          console.log (response);
+          console.log ("response: " + response);
           if (response.status == '200') {
             setForm ('false');
             setErrorForm ('false');
@@ -195,41 +153,76 @@ const Error = props => {
     } else {
       return false;
       setError ('error');
-      console.log (firstNameValid + lastNameValid + phoneValid + emailValid);
     }
 
-    // axios ({
-    //       method: 'post',
-    //       url: apiUrl,
-    //       data: data,
-    //       headers: {
-    //         'Content-Type': 'application/x-www-form-urlencoded',
-    //       },
-    //     })
-    //       .then (function (response) {
-    //         console.log(response)
-    //         if (response.data.statusCode == '200') {
-    //           setForm ('false');
-    //           setErrorForm('false');
-    //         }else{
-    //           setErrorForm('true');
-    //         }
-    //       })
-    //       .catch (function (error) {
-    //         setErrorForm('true');
-    //       });
+    
+
   }
   function firstnameset (event) {
-    setFirstName (event.target.value);
+    if (/^([^0-9]*)$/.test(firstName)) {
+      setFirstNameValid ('valid');
+      setFirstName (event.target.value);
+      setError ('false');
+      setValid()
+    } else {
+      setFirstName (event.target.value);
+      setFirstNameValid ('notValid');
+      setError ('error');
+    }
+    
   }
   function lastnameset (event) {
-    setLastName (event.target.value);
+    if (/^([^0-9]*)$/.test(lastName)) {
+      setLastNameValid ('valid');
+      setLastName (event.target.value);
+      setError ('false');
+      setValid()
+    } else {
+      setLastName (event.target.value);
+      setLastNameValid ('notValid');
+      setError ('error');
+    }
+
   }
   function emailset (event) {
-    setEmail (event.target.value);
+    
+    if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test (
+        email
+      )
+    ) {
+      setEmailValid ('notValid');
+      setError ('error');
+      setEmail ('');
+      setEmail (event.target.value);
+    } else {
+      setEmail (event.target.value);
+      setEmailValid ('valid');
+      setError ('false');
+      setValid()
+    }
   }
   function phoneset (event) {
-    setPhone (event.target.value);
+    
+    if (/(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/.test(event.target.value)) {
+      setPhoneValid ('valid');
+      setError ('false');
+      setValid()
+      setPhone (event.target.value);
+    } else {
+      setPhoneValid ('notValid');
+      setError ('error');
+      setPhone (event.target.value);
+    }
+  }
+  function setValid(){
+    if(firstNameValid == "valid" && lastNameValid == "valid" && emailValid == "valid" ){
+      setValidForm('')
+      console.log("valid")
+    }else{
+      setValidForm('disabled')
+      console.log("not valid")
+    }
   }
 
   return (
@@ -279,8 +272,8 @@ const Error = props => {
                     value={phone}
                     onChange={phoneset}
                   />
-                  <input type="submit" value="Submit" />
-                  <span className={error}>All fields are required</span>
+                  <input type="submit" value="Submit" disabled={validForm}></input>
+                  
                 </form>
               : <form id="ss-form" onSubmit={handleSSsubmit}>
                   <input
