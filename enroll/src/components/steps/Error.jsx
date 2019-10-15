@@ -162,7 +162,7 @@ const Error = props => {
     if (/^([^0-9]*)$/.test(firstName)) {
       setFirstNameValid ('valid');
       setFirstName (event.target.value);
-      setError ('false');
+      setError ('error-hide');
       setValid()
     } else {
       setFirstName (event.target.value);
@@ -175,7 +175,7 @@ const Error = props => {
     if (/^([^0-9]*)$/.test(lastName)) {
       setLastNameValid ('valid');
       setLastName (event.target.value);
-      setError ('false');
+      setError ('error-hide');
       setValid()
     } else {
       setLastName (event.target.value);
@@ -198,7 +198,7 @@ const Error = props => {
     } else {
       setEmail (event.target.value);
       setEmailValid ('valid');
-      setError ('false');
+      setError ('error-hide');
       setValid()
     }
   }
@@ -206,7 +206,7 @@ const Error = props => {
     
     if (/(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/.test(event.target.value)) {
       setPhoneValid ('valid');
-      setError ('false');
+      setError ('error-hide');
       setValid()
       setPhone (event.target.value);
     } else {
@@ -273,7 +273,7 @@ const Error = props => {
                     onChange={phoneset}
                   />
                   <input type="submit" value="Submit" disabled={validForm}></input>
-                  
+                  <span className={error}>Invalid entry</span>
                 </form>
               : <form id="ss-form" onSubmit={handleSSsubmit}>
                   <input
