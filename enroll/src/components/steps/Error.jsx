@@ -193,6 +193,7 @@ const Error = props => {
           setErrorForm ('true');
         });
     } else {
+      return false;
       setError ('error');
       console.log (firstNameValid + lastNameValid + phoneValid + emailValid);
     }
