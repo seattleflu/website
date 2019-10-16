@@ -49,6 +49,7 @@
             $("#lastNameInput").removeClass('error-input');
             $("#emailInput").removeClass('error-input');
             $("#zipInput").removeClass('error-input');
+            $("form").children('input[type="submit"]').click();
 
             if (formData.first_name.length < 1) {
                 $('#firstNameInput').addClass('error-input');
