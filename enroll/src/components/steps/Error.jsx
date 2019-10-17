@@ -37,10 +37,10 @@ const Error = props => {
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
+    ReactGA.pageview ('/study/' + props.studyName);
   }
 
   useEffect (() => {
-    initializeReactGA ();
     if(firstNameValid == "valid" && lastNameValid == "valid" && phoneValid =="valid" && emailValid == "valid" ){
       setValidForm('')
     }
@@ -54,14 +54,8 @@ const Error = props => {
       setUrl (studyData[0].fields.url);
       setThankyouMessage (studyData[0].fields.thankYouMessage);
     });
-    
-    if(firstName == '' && lastName == '' && phone =='' && email == '' ){
-      
-    }else{
-    validateForm()
-    }
-    
-  }, [email, firstName, lastName, phone]);
+    initializeReactGA ();
+  }, []);
 
   function handleSSsubmit (event) {
     event.preventDefault ();
@@ -93,7 +87,6 @@ const Error = props => {
           if (response.status == '200') {
             setForm ('false');
             setErrorForm ('false');
-            setError('error-hide')
             window.location.href = urlConsent;
           } else {
             setErrorForm ('true');
@@ -104,10 +97,11 @@ const Error = props => {
         });
     }
   }
-  
 
   function handleSubmit (event) {
     event.preventDefault ();
+    
+    Event ('Enroll Screener', 'Study', url);
     let apiUrl = '';
     let gaName = '';
     if (name == 'Household_Intervention') {
@@ -139,7 +133,7 @@ const Error = props => {
       zip;
 
     if (firstNameValid == 'valid' && lastNameValid == 'valid' && phoneValid == 'valid' && emailValid == 'valid') {
-      setError ('error-hide');
+      setError ('false');
       Event ('Study Form', 'Sign Up', gaName);
       axios ({
         method: 'post',
@@ -154,7 +148,6 @@ const Error = props => {
           if (response.status == '200') {
             setForm ('false');
             setErrorForm ('false');
-            setError('error-hide')
           } else {
             setErrorForm ('true');
           }
@@ -171,63 +164,77 @@ const Error = props => {
 
   }
   function firstnameset (event) {
-      setFirstName (event.target.value);
-    }
-    
-  
-  function lastnameset (event) {
-      setLastName (event.target.value);
-  }
-  function emailset (event) {
-    setEmail (event.target.value); 
-  }
-  function emailsetSingle (event) {
-      setEmail (event.target.value);
-  }
-  function phoneset (event) {
-      setPhone (event.target.value);
-  }
-
-  function validateForm(){
-    if (
-      /[^@]+@[^\.]+\..+/.test (
-        email
-      )
-    ) {
-      setEmailValid ('valid');
-      setError ('error-hide');
-      setValid()
-      console.log('email no error')
-    } else {
-      setEmailValid ('notValid');
-      setError ('error');
-      console.log('email error')
-    }
-
-    if (/[a-zA-Z]/.test(firstName)) {
+    if (/^([^0-9]*)$/.test(firstName)) {
       setFirstNameValid ('valid');
+      setFirstName (event.target.value);
       setError ('error-hide');
       setValid()
     } else {
+      setFirstName (event.target.value);
       setFirstNameValid ('notValid');
       setError ('error');
     }
-
-    if (/[a-zA-Z]/.test(lastName)) {
+    
+  }
+  function lastnameset (event) {
+    if (/^([^0-9]*)$/.test(lastName)) {
       setLastNameValid ('valid');
+      setLastName (event.target.value);
       setError ('error-hide');
       setValid()
     } else {
+      setLastName (event.target.value);
       setLastNameValid ('notValid');
       setError ('error');
     }
+
+  }
+  function emailset (event) {
+    
+    if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test (
+        event.target.value
+      )
+    ) {
+      setEmailValid ('notValid');
+      setError ('error');
+      setEmail ('');
+      setEmail (event.target.value);
+    } else {
+      setEmail (event.target.value);
+      setEmailValid ('valid');
+      setError ('error-hide');
+      setValid()
+    }
+  }
+  function emailsetSingle (event) {
+    if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test (
+        event.target.value
+      )
+    ) {
+      setEmailValid ('notValid');
+      setError ('error');
+      setEmail ('');
+      setEmail (event.target.value);
+    } else {
+      setEmail (event.target.value);
+      setEmailValid ('valid');
+      setError ('error-hide');
+      setValidForm('')
+    }
+  }
+  function phoneset (event) {
+    
     if (/(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/.test(event.target.value)) {
       setPhoneValid ('valid');
       setError ('error-hide');
       setValid()
+      setPhone (event.target.value);
     } else {
       setPhoneValid ('notValid');
       setError ('error');
+      setPhone (event.target.value);
     }
   }
    
