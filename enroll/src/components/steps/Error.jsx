@@ -73,7 +73,7 @@ const Error = props => {
     } else {
       setEmailValid ('valid');
       const swabdata = 'email_address=' + email + '&zip_code=' + zip;
-
+      Event ('Study Form', 'Sign Up', 'Swab & Send');
       axios ({
         method: 'post',
         url: 'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send',
@@ -103,15 +103,19 @@ const Error = props => {
     
     Event ('Enroll Screener', 'Study', url);
     let apiUrl = '';
+    let gaName = '';
     if (name == 'Household_Intervention') {
       apiUrl =
         'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
+      gaName = 'Household Intervention'
     } else if (name == 'Household_Observation') {
-      apiUrl =
+      apiUrl = 
         'https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation';
+      gaName = 'Household Observation'
     } else if (name == 'Swab_and_Send') {
       apiUrl =
         'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send';
+      gaName = 'Swab & Send'
     } else {
       apiUrl = 'https://api.fluathome.org';
     }
@@ -130,6 +134,7 @@ const Error = props => {
 
     if (firstNameValid == 'valid' && lastNameValid == 'valid' && phoneValid == 'valid' && emailValid == 'valid') {
       setError ('false');
+      Event ('Study Form', 'Sign Up', gaName);
       axios ({
         method: 'post',
         url: apiUrl,
