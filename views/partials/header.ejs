@@ -23,15 +23,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= siteData[0].fields.favicon.fields.file.url %>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<%= siteData[0].fields.favicon.fields.file.url %>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<%= siteData[0].fields.favicon.fields.file.url %>">
-    <link rel="manifest" href="<%= siteData[0].fields.favicon.fields.file.url %>">
-    <link rel="mask-icon" href="<%= siteData[0].fields.favicon.fields.file.url %>" color="#0d1d47">
-    <link rel="shortcut icon" href="<%= siteData[0].fields.favicon.fields.file.url %>">
+    <link rel="apple-touch-icon" href="<%= siteData[0].fields.favicon.fields.file.url %>" sizes="180x180">
+    <link rel="icon" type="image/png" href="<%= siteData[0].fields.favicon.fields.file.url %>" sizes="32x32">
+    <link rel="icon" type="image/png" href="<%= siteData[0].fields.favicon.fields.file.url %>" sizes="16x16">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="<%= siteData[0].fields.faviconSvg.fields.file.url %>" color="#095da8">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-config" content="">
-    <meta name="theme-color" content="#ffffff">
+<!--<meta name="msapplication-config" content="">-->
+    <meta name="theme-color" content="#095da8">
+    
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Flu Study | <%= pageData[0].fields.name %></title>
     <meta property="og:site_name" content="<%= pageData[0].fields.name %>"/>
