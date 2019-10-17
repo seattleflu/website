@@ -37,10 +37,10 @@ const Error = props => {
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
-    ReactGA.pageview ('/study/' + props.studyName);
   }
 
   useEffect (() => {
+    initializeReactGA ();
     if(firstNameValid == "valid" && lastNameValid == "valid" && phoneValid =="valid" && emailValid == "valid" ){
       setValidForm('')
     }
@@ -54,7 +54,6 @@ const Error = props => {
       setUrl (studyData[0].fields.url);
       setThankyouMessage (studyData[0].fields.thankYouMessage);
     });
-    initializeReactGA ();
   }, []);
 
   function handleSSsubmit (event) {
@@ -87,6 +86,7 @@ const Error = props => {
           if (response.status == '200') {
             setForm ('false');
             setErrorForm ('false');
+            setError('error-hide')
             window.location.href = urlConsent;
           } else {
             setErrorForm ('true');
@@ -97,11 +97,10 @@ const Error = props => {
         });
     }
   }
+  
 
   function handleSubmit (event) {
     event.preventDefault ();
-    
-    Event ('Enroll Screener', 'Study', url);
     let apiUrl = '';
     let gaName = '';
     if (name == 'Household_Intervention') {
@@ -133,7 +132,7 @@ const Error = props => {
       zip;
 
     if (firstNameValid == 'valid' && lastNameValid == 'valid' && phoneValid == 'valid' && emailValid == 'valid') {
-      setError ('false');
+      setError ('error-hide');
       Event ('Study Form', 'Sign Up', gaName);
       axios ({
         method: 'post',
@@ -148,6 +147,7 @@ const Error = props => {
           if (response.status == '200') {
             setForm ('false');
             setErrorForm ('false');
+            setError('error-hide')
           } else {
             setErrorForm ('true');
           }
