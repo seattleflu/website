@@ -101,7 +101,6 @@ const Error = props => {
   function handleSubmit (event) {
     event.preventDefault ();
     
-    Event ('Enroll Screener', 'Study', url);
     let apiUrl = '';
     let gaName = '';
     if (name == 'Household_Intervention') {
@@ -149,7 +148,7 @@ const Error = props => {
             setForm ('false');
             setErrorForm ('false');
           } else {
-            setErrorForm ('true');
+            //setErrorForm ('true');
           }
         })
         .catch (function (error) {
@@ -157,7 +156,6 @@ const Error = props => {
         });
     } else {
       return false;
-      setError ('error');
     }
 
     
