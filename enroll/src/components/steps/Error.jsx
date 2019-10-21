@@ -5,6 +5,7 @@ const ReactMarkdown = require ('react-markdown');
 import axios from 'axios';
 import ReactGA from 'react-ga';
 import {Event} from '../../services/ga';
+import Cookies from 'js-cookie';
 
 const Error = props => {
   const [name, setName] = useState ('');
@@ -32,8 +33,11 @@ const Error = props => {
   const [phoneValid, setPhoneValid] = useState ('');
   const [emailValid, setEmailValid] = useState ('');
   const [thankyouMessage, setThankyouMessage] = useState ('Thank You');
-
   const [validForm, setValidForm] = useState('disabled')
+
+  const [campaign, setCampaign] = useState('')
+  const [medium, setMedium] = useState('')
+  const [source, setSource] = useState('')
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -41,6 +45,10 @@ const Error = props => {
   }
 
   useEffect (() => {
+    setCampaign(Cookies.get('utm_campaign'))
+    setMedium(Cookies.get('utm_medium'))
+    setSource(Cookies.get('utm_source'))
+
     if(firstNameValid == "valid" && lastNameValid == "valid" && phoneValid =="valid" && emailValid == "valid" ){
       setValidForm('')
     }
@@ -100,6 +108,10 @@ const Error = props => {
 
   function handleSubmit (event) {
     event.preventDefault ();
+    
+    console.log("Campaign: " + campaign)
+    console.log("Medium: " + medium)
+    console.log("Source: " + source)
     
     let apiUrl = '';
     let gaName = '';

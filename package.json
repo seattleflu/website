@@ -22,6 +22,7 @@
     "heroku-ssl-redirect": "0.0.4",
     "hookrouter": "^1.2.3",
     "http-errors": "~1.6.2",
+    "js-cookie": "^2.2.1",
     "lodash": "^4.17.15",
     "luxon": "^1.17.2",
     "markdown-it": "^10.0.0",
