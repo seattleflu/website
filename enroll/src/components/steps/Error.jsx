@@ -81,7 +81,7 @@ const Error = props => {
     } else {
       setEmailValid ('valid');
       const swabdata = 'email_address=' + email + '&zip_code=' + zip + '&utm_campaign=' +
-      camaign +
+      campaign +
       '&utm_medium=' +
       medium +
       '&utm_source=' +
