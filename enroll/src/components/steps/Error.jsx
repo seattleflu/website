@@ -80,7 +80,12 @@ const Error = props => {
       return false;
     } else {
       setEmailValid ('valid');
-      const swabdata = 'email_address=' + email + '&zip_code=' + zip;
+      const swabdata = 'email_address=' + email + '&zip_code=' + zip + '&utm_campaign=' +
+      camaign +
+      '&utm_medium=' +
+      medium +
+      '&utm_source=' +
+      source; 
       Event ('Study Form', 'Sign Up', 'Swab & Send');
       axios ({
         method: 'post',
@@ -141,7 +146,13 @@ const Error = props => {
       '&phone_number=' +
       phone +
       '&zip_code=' +
-      zip;
+      zip +
+      '&utm_campaign=' +
+      camaign +
+      '&utm_medium=' +
+      medium +
+      '&utm_source=' +
+      source;
 
     if (firstNameValid == 'valid' && lastNameValid == 'valid' && phoneValid == 'valid' && emailValid == 'valid') {
       setError ('false');
