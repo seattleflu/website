@@ -61,7 +61,7 @@ const FlowOne = props => {
       if (havePhone == 'yes') {
         setQuestion(4)
       } else if(havePhone == 'no'){
-        props.handleNextError(props.bouncePage5)
+        props.handleNextError(props.bouncePage4)
       }else{
 
       }
