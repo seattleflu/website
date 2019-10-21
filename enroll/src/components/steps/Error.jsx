@@ -148,7 +148,7 @@ const Error = props => {
       '&zip_code=' +
       zip +
       '&utm_campaign=' +
-      camaign +
+      campaign +
       '&utm_medium=' +
       medium +
       '&utm_source=' +
