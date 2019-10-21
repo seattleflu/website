@@ -18,7 +18,10 @@
         </div>
         <div class="col-lg-8 landing-text secondary">
             <%- md.render(pageData[0].fields.content) %>
-            <a href="/enroll"><button class="green">Join the Study</button></a>
+            <a href="/enroll"><button class="green">Join the Study</button></a><br/><br/><br/>
+            <% if(pageData[0].fields.content2){ %>
+            <%- md.render(pageData[0].fields.content2) %>
+            <% } %>
         </div>
     </div>
 </div>
