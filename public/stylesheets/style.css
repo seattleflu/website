@@ -167,7 +167,7 @@ footer ul {
 #footer-menu a {
   font-weight: 700;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 16px;
 }
 footer #copyright-bar {
   background-color: #2D3139;
@@ -248,7 +248,7 @@ header .navbar-nav.join-the-study {
 }
 header .navbar-nav li, .mobile-nav li, footer li {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
 }
 header .navbar-nav li, footer li {
   display: inline-block;
@@ -331,7 +331,7 @@ header.dark .nav-item button {
   top: 20px;
   right: 20px;
 }
-@media (min-width:768px) and (max-width:1199px) {
+@media (min-width:992px) and (max-width:1199px) {
   header .navbar-nav li {
     margin: 8.5px 0 8.5px 20px;
   }
@@ -339,7 +339,7 @@ header.dark .nav-item button {
     margin-left: 20px;
   }
 }
-@media (max-width:767px) {
+@media (max-width:992px) {
   header .logo {
     margin: auto 0;
   }
@@ -351,7 +351,7 @@ header.dark .nav-item button {
     padding-bottom: 15px !important;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .mobile-nav {
     display: none;
   }

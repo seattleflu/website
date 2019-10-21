@@ -60,13 +60,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div class="main-container">
-      <header class="<%= header %> navbar navbar-expand-md navbar-dark">
+      <header class="<%= header %> navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <% if(header === 'light') {%>
-            <a href="/" class="logo"><img src="<%= siteData[0].fields.logo.fields.file.url %>"></a>
+            <a href="/" class="logo"><img src="<%= siteData[0].fields.logo.fields.file.url %>" alt="<%= siteData[0].fields.logo.fields.description %>"></a>
           <%}%>
           <% if(header === 'dark') {%>
-            <a href="/" class="logo"><img src="<%= siteData[0].fields.logoWhite.fields.file.url %>"></a>
+            <a href="/" class="logo"><img src="<%= siteData[0].fields.logoWhite.fields.file.url %>" alt="<%= siteData[0].fields.logoWhite.fields.description %>"></a>
           <%}%>
           <% if(nav == 'true'){ %>
           <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
