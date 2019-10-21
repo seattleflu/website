@@ -155,7 +155,7 @@ const Error = props => {
       source;
 
     if (firstNameValid == 'valid' && lastNameValid == 'valid' && phoneValid == 'valid' && emailValid == 'valid') {
-      setError ('false');
+      setError ('error-hide');
       Event ('Study Form', 'Sign Up', gaName);
       axios ({
         method: 'post',
