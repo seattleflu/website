@@ -34,6 +34,13 @@
 
 <script>
     $(function () {
+        function getCookie(name) {
+        let cookie = {};
+        document.cookie.split(';').forEach(function(el) {
+        let [k,v] = el.split('=');
+        cookie[k.trim()] = v;
+      })
+      return cookie[name];
         $('#learn-more').submit(function (event) {
             event.preventDefault()
             var formData = {
@@ -41,7 +48,10 @@
             "first_name": $('#firstNameInput').val(),
             "last_name": $('#lastNameInput').val(),
             "zip_code": $('#zipInput').val(),
-            "website_url": window.location.href
+            "website_url": window.location.href,
+            "utm_campaign": getCookie('utm_campaign'),
+            "utm_medium": getCookie('utm_medium'),
+            "utm_source": getCookie('utm_source')
             }
             
             $(".error").remove();
