@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Input from '../presentational/Input.jsx';
 import ReactGA from 'react-ga';
 import {Event} from '../../services/ga';
+import Cookies from 'js-cookie';
+
 const Main = props => {
   const [question, setQuestion] = useState (0);
   const [zipValue, setZipValue] = useState ('');
@@ -25,6 +27,7 @@ const Main = props => {
     event.preventDefault ();
     if (question == 0) {
       if (props.homeZip.includes (zipValue)) {
+        Cookies.set('flu_zipcode', zipValue, { expires: 7 })
         setQuestion (question + 1);
       } else {
         Event ('Enroll Screener', 'Home Zip', zipValue);
