@@ -27,14 +27,28 @@
 </div>
 <script>
     $(function () {
+      function getCookie(name) {
+        let cookie = {};
+        document.cookie.split(';').forEach(function(el) {
+        let [k,v] = el.split('=');
+        cookie[k.trim()] = v;
+      })
+      return cookie[name];
+      }
         $('#ty-subscribe').submit(function (event) {
             event.preventDefault()
+            alert( getCookie('_ga') );
+            // utm_medium
+            // utm_source
             var formData = {
             "email_address": $('#emailInput').val(),
             "first_name": $('#firstNameInput').val(),
             "last_name": $('#lastNameInput').val(),
             "zip_code": "00000",
-            "website_url": window.location.href
+            "website_url": window.location.href,
+            "campaign": getCookie('utm_campaign'),
+            "medium": getCookie('utm_medium'),
+            "source": getCookie('utm_source')
             }
             
             $(".error").remove();
