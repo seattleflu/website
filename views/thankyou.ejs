@@ -9,7 +9,6 @@
         <input type="text" id="firstNameInput" name="firstName" placeholder="First Name">
         <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name">
         <input type="text" id="emailInput" name="Email" placeholder="Email Address">
-        <input type="text" id="campaign" name="campaign" placeholder="utm campain">
         <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
         <input id="submitBtn" type="submit" value="Submit">
       </form> 
@@ -28,7 +27,6 @@
 </div>
 <script>
     $(function () {
-      $("campaign").val(getCookie('utm_campaign'));
       function getCookie(name) {
         let cookie = {};
         document.cookie.split(';').forEach(function(el) {
