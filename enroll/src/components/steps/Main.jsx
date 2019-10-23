@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import Input from '../presentational/Input.jsx';
+import Select from '../presentational/Select.jsx'
 import ReactGA from 'react-ga';
 import {Event} from '../../services/ga';
 import Cookies from 'js-cookie';
@@ -11,6 +12,7 @@ const Main = props => {
   const [zipWorkValue, setZipWorkValue] = useState ('');
   const [ageValue, setAgeValue] = useState ('');
   const [homeZip, setHomeZip] = useState (props.homeZip);
+  const [whoValue, setWhoValue] = useState('')
   //const [workZip, setWorkZip] = useState(props.workZip)
 
   function initializeReactGA () {
@@ -43,12 +45,24 @@ const Main = props => {
          Event ('Enroll Screener', 'Home Zip', zipValue);
          Event ('Enroll Screener', 'Work Zip', zipWorkValue);
          Event ('Enroll Screener', 'Age', ageValue);
-        props.handleNext (1);
+         setQuestion (question + 1);
+        //props.handleNext (1);
       } else {
          Event ('Enroll Screener', 'Home Zip', zipValue);
          Event ('Enroll Screener', 'Work Zip', zipWorkValue);
          Event ('Enroll Screener', 'Age', ageValue);
         props.handleNextError (props.bouncePage2);
+      }
+    }
+    if (question == 3) {
+      if (whoValue == 'myself') {
+        props.handleNext(1)
+      } else if (whoValue == 'over18') {
+        props.handleNext(1)
+      } else if (whoValue == 'under18') {
+        props.handleNext(1)
+      } else {
+        // props.handleNextError()
       }
     }
   }
@@ -63,6 +77,24 @@ const Main = props => {
   function handleAgeChange (event) {
     setAgeValue (event.target.value);
   }
+  function handleWhoChange (event) {
+    Event ('Enroll Screener', 'Participent info', event.target.value);
+    setWhoValue(event.target.value)
+    setQuestion(3)
+    if (event.target.value != 'none') {
+      Event ('Enroll Screener', 'Participent info', event.target.value);
+      setQuestion(3)
+    } else {
+      //props.handleNext(5)
+    }
+  }
+
+  const who = [
+    { value: 'none', label: '' },
+    { value: 'myself', label: 'Myself' },
+    { value: 'over18', label: 'Someone in my household over 18' },
+    { value: 'under18', label: 'My child or legal ward under 18' }
+  ]
 
   return (
     <div className="col-12">
@@ -100,6 +132,19 @@ const Main = props => {
             handleChange={handleAgeChange}
           />
         : null}
+      {question >= 3
+        ? <Select
+          text={props.question9}
+          description=''
+          label='whoFor'
+          type='select'
+          id='whoFor'
+          value={whoValue}
+          options={who}
+          handleChange={handleWhoChange}
+        />
+       : null}
+      
       <button
         className="btn btn-primary float-right next"
         type="submit"

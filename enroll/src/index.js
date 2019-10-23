@@ -359,6 +359,9 @@ const App = () => {
             question2={question2}
             bouncePage2={bouncePage2}
             fluStudyPage2={fluStudyPage2}
+            question9={question9}
+            bouncePage9={bouncePage9}
+            fluStudyPage9={fluStudyPage9}
             question19={question19}
             bouncePage19={bouncePage19}
             fluStudyPage19={fluStudyPage19}
