@@ -33,11 +33,12 @@ const Error = props => {
   const [phoneValid, setPhoneValid] = useState ('');
   const [emailValid, setEmailValid] = useState ('');
   const [thankyouMessage, setThankyouMessage] = useState ('Thank You');
-  const [validForm, setValidForm] = useState('disabled')
+  const [validForm, setValidForm] = useState ('disabled');
 
-  const [campaign, setCampaign] = useState('')
-  const [medium, setMedium] = useState('')
-  const [source, setSource] = useState('')
+  const [campaign, setCampaign] = useState ('');
+  const [medium, setMedium] = useState ('');
+  const [source, setSource] = useState ('');
+  const [content, setContent] = useState ('');
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -45,12 +46,18 @@ const Error = props => {
   }
 
   useEffect (() => {
-    setCampaign(Cookies.get('utm_campaign'))
-    setMedium(Cookies.get('utm_medium'))
-    setSource(Cookies.get('utm_source'))
+    setCampaign (Cookies.get ('utm_campaign'));
+    setMedium (Cookies.get ('utm_medium'));
+    setSource (Cookies.get ('utm_source'));
+    setContent (Cookies.get ('utm_content'));
 
-    if(firstNameValid == "valid" && lastNameValid == "valid" && phoneValid =="valid" && emailValid == "valid" ){
-      setValidForm('')
+    if (
+      firstNameValid == 'valid' &&
+      lastNameValid == 'valid' &&
+      phoneValid == 'valid' &&
+      emailValid == 'valid'
+    ) {
+      setValidForm ('');
     }
     setZip (props.zip);
     getStudy (props.studyName).then (studyData => {
@@ -80,12 +87,19 @@ const Error = props => {
       return false;
     } else {
       setEmailValid ('valid');
-      const swabdata = 'email_address=' + email + '&zip_code=' + zip + '&utm_campaign=' +
-      campaign +
-      '&utm_medium=' +
-      medium +
-      '&utm_source=' +
-      source; 
+      const swabdata =
+        'email_address=' +
+        email +
+        '&zip_code=' +
+        zip +
+        '&utm_campaign=' +
+        campaign +
+        '&utm_medium=' +
+        medium +
+        '&utm_source=' +
+        source +
+        '&utm_content=' +
+        content;
       Event ('Study Form', 'Sign Up', 'Swab & Send');
       axios ({
         method: 'post',
@@ -113,25 +127,25 @@ const Error = props => {
 
   function handleSubmit (event) {
     event.preventDefault ();
-    
-    console.log("Campaign: " + campaign)
-    console.log("Medium: " + medium)
-    console.log("Source: " + source)
-    
+
+    console.log ('Campaign: ' + campaign);
+    console.log ('Medium: ' + medium);
+    console.log ('Source: ' + source);
+
     let apiUrl = '';
     let gaName = '';
     if (name == 'Household_Intervention') {
       apiUrl =
         'https://qgxlw82k00.execute-api.us-east-1.amazonaws.com/Intervention/';
-      gaName = 'Household Intervention'
+      gaName = 'Household Intervention';
     } else if (name == 'Household_Observation') {
-      apiUrl = 
+      apiUrl =
         'https://9e876ldgu1.execute-api.us-east-1.amazonaws.com/Observation';
-      gaName = 'Household Observation'
+      gaName = 'Household Observation';
     } else if (name == 'Swab_and_Send') {
       apiUrl =
         'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send';
-      gaName = 'Swab & Send'
+      gaName = 'Swab & Send';
     } else {
       apiUrl = 'https://api.fluathome.org';
     }
@@ -152,9 +166,16 @@ const Error = props => {
       '&utm_medium=' +
       medium +
       '&utm_source=' +
-      source;
+      source +
+      '&utm_content=' +
+      content;
 
-    if (firstNameValid == 'valid' && lastNameValid == 'valid' && phoneValid == 'valid' && emailValid == 'valid') {
+    if (
+      firstNameValid == 'valid' &&
+      lastNameValid == 'valid' &&
+      phoneValid == 'valid' &&
+      emailValid == 'valid'
+    ) {
       setError ('error-hide');
       Event ('Study Form', 'Sign Up', gaName);
       axios ({
@@ -166,7 +187,7 @@ const Error = props => {
         },
       })
         .then (function (response) {
-          console.log ("response: " + response);
+          console.log ('response: ' + response);
           if (response.status == '200') {
             setForm ('false');
             setErrorForm ('false');
@@ -180,38 +201,32 @@ const Error = props => {
     } else {
       return false;
     }
-
-    
-
   }
   function firstnameset (event) {
-    if (/^([^0-9]*)$/.test(firstName)) {
+    if (/^([^0-9]*)$/.test (firstName)) {
       setFirstNameValid ('valid');
       setFirstName (event.target.value);
       setError ('error-hide');
-      setValid()
+      setValid ();
     } else {
       setFirstName (event.target.value);
       setFirstNameValid ('notValid');
       setError ('error');
     }
-    
   }
   function lastnameset (event) {
-    if (/^([^0-9]*)$/.test(lastName)) {
+    if (/^([^0-9]*)$/.test (lastName)) {
       setLastNameValid ('valid');
       setLastName (event.target.value);
       setError ('error-hide');
-      setValid()
+      setValid ();
     } else {
       setLastName (event.target.value);
       setLastNameValid ('notValid');
       setError ('error');
     }
-
   }
   function emailset (event) {
-    
     if (
       !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test (
         event.target.value
@@ -225,7 +240,7 @@ const Error = props => {
       setEmail (event.target.value);
       setEmailValid ('valid');
       setError ('error-hide');
-      setValid()
+      setValid ();
     }
   }
   function emailsetSingle (event) {
@@ -242,15 +257,18 @@ const Error = props => {
       setEmail (event.target.value);
       setEmailValid ('valid');
       setError ('error-hide');
-      setValidForm('')
+      setValidForm ('');
     }
   }
   function phoneset (event) {
-    
-    if (/(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/.test(event.target.value)) {
+    if (
+      /(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/.test (
+        event.target.value
+      )
+    ) {
       setPhoneValid ('valid');
       setError ('error-hide');
-      setValid()
+      setValid ();
       setPhone (event.target.value);
     } else {
       setPhoneValid ('notValid');
@@ -258,14 +276,18 @@ const Error = props => {
       setPhone (event.target.value);
     }
   }
-   
-  function setValid(){
-    if(firstNameValid == "valid" && lastNameValid == "valid" && emailValid == "valid" ){
-      setValidForm('')
-      console.log("valid")
-    }else{
-      setValidForm('disabled')
-      console.log("not valid")
+
+  function setValid () {
+    if (
+      firstNameValid == 'valid' &&
+      lastNameValid == 'valid' &&
+      emailValid == 'valid'
+    ) {
+      setValidForm ('');
+      console.log ('valid');
+    } else {
+      setValidForm ('disabled');
+      console.log ('not valid');
     }
   }
 
@@ -316,7 +338,7 @@ const Error = props => {
                     value={phone}
                     onChange={phoneset}
                   />
-                  <input type="submit" value="Submit" disabled={validForm}></input>
+                  <input type="submit" value="Submit" disabled={validForm} />
                   <span className={error}>Invalid entry</span>
                 </form>
               : <form id="ss-form" onSubmit={handleSSsubmit}>
@@ -329,7 +351,12 @@ const Error = props => {
                     value={email}
                     onChange={emailsetSingle}
                   />
-                  <input id="submitSwab" type="submit" value="Submit" disabled={validForm}></input>
+                  <input
+                    id="submitSwab"
+                    type="submit"
+                    value="Submit"
+                    disabled={validForm}
+                  />
                 </form>}
             {/* urlConsent
               ? <a
