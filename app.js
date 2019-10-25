@@ -16,6 +16,7 @@ var kiosksRouter = require('./routes/kiosks')
 var learnmoreRouter = require('./routes/learnmore');
 var swabandsendRouter = require ('./routes/swabandsend');
 var householdsRouter = require('./routes/households');
+var webmdRouter = require('./routes/webmd');
 var contactRouter = require('./routes/contactus');
 var mediaRouter = require('./routes/media');
 var errorRouter = require('./routes/error')
@@ -73,6 +74,7 @@ app.use('/privacy', privacyRouter)
 app.use('/kiosks', kiosksRouter)
 app.use('/learnmore', learnmoreRouter);
 app.use('/households', householdsRouter);
+app.use('/webmd', webmdRouter);
 app.use('/media-inquiries', mediaRouter);
 app.use('/swabandsend', swabandsendRouter);
 app.use('/contact-us', contactRouter);
