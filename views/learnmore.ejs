@@ -40,7 +40,11 @@
         let [k,v] = el.split('=');
         cookie[k.trim()] = v;
       })
+      if(cookie[name] == undefined){
+        return "null"
+      }else{
       return cookie[name];
+      }
       }
         $('#learn-more').submit(function (event) {
             event.preventDefault()

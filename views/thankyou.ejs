@@ -33,7 +33,11 @@
         let [k,v] = el.split('=');
         cookie[k.trim()] = v;
       })
+      if(cookie[name] == undefined){
+        return "null"
+      }else{
       return cookie[name];
+      }
       }
         $('#ty-subscribe').submit(function (event) {
             event.preventDefault()
