@@ -29,6 +29,8 @@ const FlowOne = props => {
       setQuestion(2)
     }else if(props.referrerValue == "households"){
       setQuestion(2)
+    }else if (props.referrerValue == "webmd"){
+      setQuestion(2)
     }
   }, [])
 
@@ -76,9 +78,9 @@ const FlowOne = props => {
       }
     }
     if (question == 4) {
-      if (under18 == 'yes' && (referrer == "schools" || referrer == "households")) {
+      if (under18 == 'yes' && (referrer == "schools" || referrer == "households" || referrer == "webmd")) {
         props.handleStudy(props.fluStudyPage6)
-      }else if(under18 == 'yes' && (referrer != "schools" && referrer != "households")){
+      }else if(under18 == 'yes' && (referrer != "schools" && referrer != "households" && referrer != "webmd")){
         setQuestion(6)
       }else{
         props.handleNextError(props.bouncePage6)
@@ -231,7 +233,7 @@ const FlowOne = props => {
   return (
     <div className='col-12'>
       <h2>Screening Questionnaire</h2>
-      {question >= 0 && (referrer != 'schools' && referrer != 'households') ? (
+      {question >= 0 && (referrer != 'schools' && referrer != 'households' && referrer != 'webmd') ? (
         <Switch
           text={props.question3}
           description={props.conditions3}
@@ -242,7 +244,7 @@ const FlowOne = props => {
           handleChange={handleSymptomsChange}
         />
       ) : null}
-      {question == 1 && (referrer != 'schools' && referrer != 'households') ? (
+      {question == 1 && (referrer != 'schools' && referrer != 'households' && referrer != 'webmd') ? (
         <Select
           text={props.question9}
           description=''
