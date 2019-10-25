@@ -40,6 +40,15 @@
         let [k,v] = el.split('=');
         cookie[k.trim()] = v;
       })
+      return cookie[name];
+      }
+
+      function getCookieZip(name) {
+        let cookie = {};
+        document.cookie.split(';').forEach(function(el) {
+        let [k,v] = el.split('=');
+        cookie[k.trim()] = v;
+      })
       if(cookie[name] == undefined){
         return "21044"
       }else{
