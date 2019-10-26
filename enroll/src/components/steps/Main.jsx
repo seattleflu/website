@@ -31,6 +31,7 @@ const Main = props => {
         setQuestion (question + 1);
       } else {
         Event ('Enroll Screener', 'Home Zip', zipValue);
+        Cookies.set('flu_zipcode', zipValue, { expires: 7 })
         props.handleNextError (props.bouncePage1);
       }
     }

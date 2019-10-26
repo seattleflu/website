@@ -46,7 +46,7 @@
           let [k,v] = el.split('=');
           cookie[k.trim()] = v;
         })
-        if(cookie[name] == undefined){
+        if(cookie[name] == undefined || cookie[name].length <= 4){
           return "21044"
         }else{
         return cookie[name];
