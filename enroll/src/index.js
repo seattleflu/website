@@ -16,18 +16,23 @@ import {
 } from './services/api'
 
 const App = () => {
+  const [zip, setZip] = useState('')
   const [currentStep, setCurrentStep] = useState(0)
   const [question1, setQuestion1] = useState('')
   const [bouncePage1, setBouncePage1] = useState('')
   const [fluStudyPage1, setFluStudyPage1] = useState('')
+  const [question1Description, setQuestion1Description] = useState('')
+
 
   const [question2, setQuestion2] = useState('')
   const [bouncePage2, setBouncePage2] = useState('')
   const [fluStudyPage2, setFluStudyPage2] = useState('')
+  
 
   const [question3, setQuestion3] = useState('')
   const [bouncePage3, setBouncePage3] = useState('')
   const [fluStudyPage3, setFluStudyPage3] = useState('')
+  const [conditions3, setConditions3] = useState('')
 
   const [question4, setQuestion4] = useState('')
   const [bouncePage4, setBouncePage4] = useState('')
@@ -94,35 +99,29 @@ const App = () => {
   const [question19, setQuestion19] = useState('')
   const [bouncePage19, setBouncePage19] = useState('')
   const [fluStudyPage19, setFluStudyPage19] = useState('')
+  const [question19Description, setQuestion19Description] = useState('')
 
   const [zipCodes, setZipCodes] = useState('')
-
   const [conditions, setConditions] = useState('')
-
   const [studyName, setStudyName] = useState('')
-  // const [conditions, setConditions] = useState('')
-  // const [conditions, setConditions] = useState('')
-
   const [homeZip, setHomeZip] = useState()
-  const [workZip, setWorkZip] = useState()
+  //const [workZip, setWorkZip] = useState()
   const [referrerValue, setReferrer] = useState('')
 
   useEffect(() => {
     var referrer = document.referrer.split("/").pop();
     setReferrer(referrer)
     getThankyou(1).then(thankyouData => {
-      console.log(thankyouData)
     }, [])
 
     getWebSiteSettings().then(settings => {
-      console.log(settings[0].fields.validStudyZipCodes)
       const work = settings[0].fields.validStudyWorkZipCodes
       const home = settings[0].fields.validStudyHomeZipCodes
       const workString = work.replace(' ', '')
       const homeString = home.replace(' ', '')
       const workArray = workString.split(',')
       const homeArray = homeString.split(',')
-      setWorkZip(workArray)
+      // setWorkZip(workArray)
       setHomeZip(homeArray)
     })
 
@@ -136,6 +135,9 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage1(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setQuestion1Description(question.fields.addInformation)
+            }
             setQuestion1(question.fields.question)
             break
           case 2:
@@ -145,6 +147,7 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage2(question.fields.fluStudyPage.fields.studyName)
             }
+            
             setQuestion2(question.fields.question)
             break
           case 3:
@@ -153,6 +156,9 @@ const App = () => {
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage3(question.fields.fluStudyPage.fields.studyName)
+            }
+            if(question.fields.addInformation){
+              setConditions3(question.fields.addInformation)
             }
             setQuestion3(question.fields.question)
             break
@@ -184,7 +190,6 @@ const App = () => {
             setQuestion6(question.fields.question)
             break
           case 7:
-            // console.log("Study page: " + JSON.stringify(question.fields))
             if (question.fields.bouncePage) {
               setBouncePage7(question.fields.bouncePage.fields.url)
             }
@@ -196,7 +201,7 @@ const App = () => {
             break
           case 8:
             if (question.fields.bouncePage) {
-              setBouncePage8(question.fields.bouncePage.fields.url)
+              setBouncePage8(question.fields.bouncePage.fields.studyName)
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage8(question.fields.fluStudyPage.fields.studyName)
@@ -306,14 +311,20 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage19(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setQuestion19Description(question.fields.addInformation)
+            }
             setQuestion19(question.fields.question)
             break
           default:
-          // console.log(question.fields.question)
         }
       })
     })
   }, [])
+
+  function setMainZip(zipCode){
+    setZip(zipCode)
+  }
 
   function handleNext (value) {
     setCurrentStep(value)
@@ -337,6 +348,7 @@ const App = () => {
       <form id='enroll-form row'>
         {currentStep == 0 ? (
           <Main
+            setMainZip={setMainZip}
             handleNext={handleNext}
             handleNextError={handleNextError}
             handleStudy={handleStudy}
@@ -351,7 +363,8 @@ const App = () => {
             bouncePage19={bouncePage19}
             fluStudyPage19={fluStudyPage19}
             homeZip={homeZip}
-            workZip={workZip}
+            question1Description={question1Description}
+            question19Description={question19Description}
           />
         ) : null}
         {currentStep == 1 ? (
@@ -364,6 +377,7 @@ const App = () => {
             question3={question3}
             bouncePage3={bouncePage3}
             fluStudyPage3={fluStudyPage3}
+            conditions3={conditions3}
             question4={question4}
             bouncePage4={bouncePage4}
             fluStudyPage4={fluStudyPage4}
@@ -477,6 +491,7 @@ const App = () => {
       </form>
       {currentStep == 5 ? (
         <Error
+          zip={zip}
           handleNext={handleNext}
           handleNextError={handleNextError}
           currentStep={currentStep}

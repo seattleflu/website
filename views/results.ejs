@@ -1,4 +1,4 @@
-<% include ./partials/header  %>
+<% include ./partials/header {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
 
 <div class="container">
     <div id="results">
@@ -8,4 +8,4 @@
 
 <script type="text/javascript" src="/dist/results-bundle.js"></script>
 
-<% include ./partials/footer  %>
+<% include ./partials/footer  {logos: logos}%>

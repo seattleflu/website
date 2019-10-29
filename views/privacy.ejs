@@ -1,10 +1,10 @@
-<% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData} %>
-<div class="container">
+<% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll } %>
+<div class="secondary container">
           <div class="row">
               <div class="col-12">
-                <h1><%= title %></h1>
+                <h1><%= pageData[0].fields.name %></h1>
                 <h3><%= pageData[0].fields.subhead %></h3>
-                <p><%= pageData[0].fields.content %></p>
+                <p><%- md.render(pageData[0].fields.content) %></p>
                 <div><%- md.render(pageData[0].fields.content) %></div>
                 <div><%- md.render(pageData[0].fields.content2) %></div>
                 
@@ -12,4 +12,4 @@
             </div>
             </div>
 
-<% include ./partials/footer  %>
+<% include ./partials/footer  {logos: logos} %>

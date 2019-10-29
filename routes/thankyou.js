@@ -4,12 +4,15 @@ var thankyou = require('../services/thankyou')
 const JSON = require('circular-json')
 var page = require('../services/page')
 var site = require('../services/site')
+var md = require('markdown-it')({
+  html: true
+})
+var markdownItAttrs = require('markdown-it-attrs')
 
 router.use((req, res, next) => {
   site
     .getSiteData()
     .then(siteData => {
-      console.log('Site DATA: ' + JSON.stringify(siteData))
       req.siteData = siteData.items
       next()
     })
@@ -20,8 +23,21 @@ router.use((req, res, next) => {
   page
     .getPageData('thank-you')
     .then(pageData => {
-      console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
+      if(pageData.items[0].fields.showMenu != null){
+        var nav = pageData.items[0].fields.showMenu
+        req.nav = nav.toString();
+      }else{
+        req.nav = 'true'
+      }
+
+      if(pageData.items[0].fields.showJoinTheStudyAfterMenu != null){
+        var enroll = pageData.items[0].fields.showJoinTheStudyAfterMenu
+        req.enroll = enroll.toString();
+      }else{
+        req.enroll = 'true'
+      }
+
       next()
     })
     .catch(console.error)
@@ -29,7 +45,6 @@ router.use((req, res, next) => {
 
 // router.use(function (req, res, next) {
 //   thankyou.getThankyou().then(function (thankyouData) {
-//     console.log('PAGE DATA: ' + JSON.stringify(thankyouData))
 //     req.thankyouData = thankyouData
 //     next()
 //   })
@@ -37,13 +52,11 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   let requestSegments = req.baseUrl.split('/')
-  console.log(requestSegments)
   var thankyouUrl = requestSegments[2]
 
   thankyou
     .getThankyou(thankyouUrl)
     .then(thankyouData => {
-      console.log('PAGE DATA: ' + JSON.stringify(thankyouData))
       req.thankyouData = thankyouData.items[0]
       next()
     })
@@ -57,7 +70,11 @@ router.get('/', function (req, res, next) {
     thankyouData: req.thankyouData,
     pageData: req.pageData,
     siteData: req.siteData,
-    header: 'light'
+    header: 'light',
+    nav: req.nav,
+    md: md,
+    enroll: req.enroll,
+    logos: 'true'
   })
 })
 

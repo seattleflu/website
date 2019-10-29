@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import Select from '../presentational/Select.jsx'
 import Switch from '../presentational/Switch.jsx'
+import ReactGA from 'react-ga';
+import {Event} from '../../services/ga';
 
 const FlowOne = props => {
   const [question, setQuestion] = useState(0)
@@ -15,10 +17,19 @@ const FlowOne = props => {
   const [pills, setPillsValue] = useState('')
   const [referrer, setReferrerValue] = useState('')
 
+  function initializeReactGA () {
+    ReactGA.initialize ('UA-135203741-3');
+    //ReactGA.pageview(' /enroll')
+  }
+
 
   useEffect(() => {
     setReferrerValue(props.referrerValue)
     if(props.referrerValue == "schools"){
+      setQuestion(2)
+    }else if(props.referrerValue == "households"){
+      setQuestion(2)
+    }else if (props.referrerValue == "webmd"){
       setQuestion(2)
     }
   }, [])
@@ -27,8 +38,10 @@ const FlowOne = props => {
     event.preventDefault()
     if (question == 0) {
       if (haveFluValue == 'yes') {
+        Event ('Enroll Screener', 'Currently Sick', haveFluValue);
         setQuestion(1)
       } else if (haveFluValue == 'no') {
+        Event ('Enroll Screener', 'Currently Sick', haveFluValue);
         setQuestion(2)
       } else {
         // props.handleNextError()
@@ -50,7 +63,7 @@ const FlowOne = props => {
       if (havePhone == 'yes') {
         setQuestion(4)
       } else if(havePhone == 'no'){
-        props.handleNextError(props.bouncePage5)
+        props.handleNextError(props.bouncePage4)
       }else{
 
       }
@@ -59,27 +72,24 @@ const FlowOne = props => {
       if (moreThanThree == 'yes') {
         setQuestion(3)
       } else if(moreThanThree == 'no'){
-        props.handleNextError(props.bouncePage4)
+        props.handleNextError(props.bouncePage5)
       }else{
 
       }
     }
     if (question == 4) {
-      if (under18 == 'yes' && referrer == "schools") {
+      if (under18 == 'yes' && (referrer == "schools" || referrer == "households" || referrer == "webmd")) {
         props.handleStudy(props.fluStudyPage6)
-      }else if(under18 == 'yes' != "schools"){
-        setQuestion(5)
-      } else if(under18 == 'no'){
-        props.handleNextError(props.bouncePage6)
+      }else if(under18 == 'yes' && (referrer != "schools" && referrer != "households" && referrer != "webmd")){
+        setQuestion(6)
       }else{
-
+        props.handleNextError(props.bouncePage6)
       }
     }
     if (question == 5) {
       if (conditions == 'yes') {
         setQuestion(6)
       } else if(conditions == 'no'){
-        console.log("test if clicked" + props.fluStudyPage7)
         props.handleStudy(props.fluStudyPage7)
       }else{
 
@@ -101,6 +111,7 @@ const FlowOne = props => {
     event.preventDefault()
     setHaveFluValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Currently Sick', event.target.value);
       setQuestion(1)
       setMoreThanThreeValue('')
       setWhoValue('')
@@ -109,6 +120,7 @@ const FlowOne = props => {
       setConditionsValue('')
       setPillsValue('')
     } else if (event.target.value == 'no') {
+      Event ('Enroll Screener', 'Currently Sick', event.target.value);
       setQuestion(2)
       setMoreThanThreeValue('')
       setWhoValue('')
@@ -119,9 +131,11 @@ const FlowOne = props => {
     }
   }
   function handleWhoChange (event) {
+    Event ('Enroll Screener', 'Participent info', event.target.value);
     setWhoValue(event.target.value)
     setQuestion(1)
     if (event.target.value != 'none') {
+      Event ('Enroll Screener', 'Participent info', event.target.value);
       setQuestion(1)
     } else {
       props.handleNext(5)
@@ -132,36 +146,49 @@ const FlowOne = props => {
     event.preventDefault()
     setMoreThanThreeValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'HH_3 people', event.target.value);
       setQuestion(question + 1)
-    } else {
+    } else if(event.target.value == 'no'){
+      Event ('Enroll Screener', 'HH_3 people', event.target.value);
       setQuestion(3)
       setunder18Value('')
       setConditionsValue('')
       setPillsValue('')
+    }else{
+      
     }
   }
   function handleHavePhoneChange (event) {
     event.preventDefault()
     setHavePhoneValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'Smartphone', event.target.value);
       setQuestion(question + 1)
-    } else {
+    } else if(event.target.value == 'no'){
+      Event ('Enroll Screener', 'Smartphone', event.target.value);
       setQuestion(2)
       setMoreThanThreeValue('')
       setunder18Value('')
       setConditionsValue('')
       setPillsValue('')
+    }else{
+      
     }
   }
   function handleunder18Change (event) {
     event.preventDefault()
     setunder18Value(event.target.value)
     if (event.target.value == 'yes' && referrer != 'schools') {
-      setQuestion(question + 1)
-    }else {
+      Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
+      setQuestion(6)
+    }else if(event.target.value == 'no'){
+      Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
       setQuestion(4)
       setConditionsValue('')
       setPillsValue('')
+
+      }else{
+      
     }
   }
 
@@ -170,18 +197,24 @@ const FlowOne = props => {
     setConditionsValue(event.target.value)
     if (event.target.value == 'yes') {
       setQuestion(question + 1)
-    } else {
+    } else if(event.target.value == 'no'){
       setQuestion(5)
       setPillsValue('')
+    }else{
+      
     }
   }
   function handlePillsChange (event) {
     event.preventDefault()
     setPillsValue(event.target.value)
     if (event.target.value == 'yes') {
+      Event ('Enroll Screener', 'HH_Baloxavir pills', event.target.value);
       // setQuestion(question + 1)
-    } else {
+    }else if(event.target.value == 'no'){
+      Event ('Enroll Screener', 'HH_Baloxavir pills', event.target.value);
       setQuestion(6)
+    }else{
+      
     }
   }
 
@@ -200,10 +233,10 @@ const FlowOne = props => {
   return (
     <div className='col-12'>
       <h2>Screening Questionnaire</h2>
-      {question >= 0 && referrer != 'schools' ? (
+      {question >= 0 && (referrer != 'schools' && referrer != 'households' && referrer != 'webmd') ? (
         <Switch
           text={props.question3}
-          description=''
+          description={props.conditions3}
           label='symptoms'
           type='select'
           id='symptomsTest'
@@ -211,7 +244,7 @@ const FlowOne = props => {
           handleChange={handleSymptomsChange}
         />
       ) : null}
-      {question == 1 && referrer != 'schools' ? (
+      {question == 1 && (referrer != 'schools' && referrer != 'households' && referrer != 'webmd') ? (
         <Select
           text={props.question9}
           description=''
@@ -261,7 +294,7 @@ const FlowOne = props => {
         />
       ) : null}
 
-      {question >= 5 ? (
+      {question == 5 ? (
         <Switch
           text={props.question7}
           description={props.conditions13}

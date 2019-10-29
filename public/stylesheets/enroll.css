@@ -3,7 +3,7 @@
     padding-top: 50px;
     padding-bottom: 50px;
 }
-.enrollWapper .col-md-8 {
+.enrollWapper .form-wrap {
     padding-top: 15px;
     padding-bottom: 30px;
     margin-top: 30px;
@@ -11,6 +11,16 @@
     border: 1px solid #0A5CA8;
     background-color: #ffffff;
     outline: 30px solid #ffffff;
+}
+.enrollWapper input[type=text], .enrollWapper input[type=tel], .enrollWapper input[type=submit] {
+    margin-top: 12px;
+    
+}
+.enrollWapper input[type=submit]{
+    display: block;
+}
+.enrollWapper #ty-subscribe {
+    margin-bottom: 0;
 }
 form > .col-12 {
     padding-left: 0 !important;
@@ -146,5 +156,70 @@ select.form-control {
 @media (max-width: 767px) {
     .buttonWrapper, .form-group input, .form-group select {
         width: 50%;
+    }
+    .enrollWapper .form-wrap {
+        padding-top: 15px;
+        padding-bottom: 30px;
+        margin-top: 0;
+        margin-bottom: 0;
+        background-color: #ffffff;
+        outline: 30px solid #0A5CA8;
+        margin-right: 15px;
+    }
+    .enrollWapper {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+@media (max-width: 575px) {
+    .enrollWapper .form-wrap {
+        margin-left: 15px;
+    }
+}
+input[type=text].notValid{
+    border: 2px solid rgba(255,87,0,1);
+    box-shadow: 0 0 5px rgba(255,87,0,1);
+}
+input[type=tel].notValid{
+    border: 2px solid rgba(255,87,0,1);
+    box-shadow: 0 0 5px rgba(255,87,0,1);
+}
+
+.isDisabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  .isDisabled > a {
+    color: currentColor;
+    display: inline-block;  /* For IE11/ MS Edge bug */
+    pointer-events: none;
+    text-decoration: none;
+  }
+
+  .error-hide{
+    display: none;
+}
+.error {
+    margin-top: 10px;
+    color: rgba(255,87,0,1);
+    font-size: 14px;
+    display: block;
+    text-align: right;
+    max-width: calc(60% + 10px);
+  } 
+
+  #emailInputSwab{
+      display: inline-block;
+      width: calc(60% + 15px);
+  }
+  .enrollWapper input[type=submit]#submitSwab{display: inline-block; margin-left:15px;}
+
+  @media (max-width: 575px) {
+    .enrollWapper input[type=submit]#submitSwab{
+        display: block; margin-left:0px;
+    }
+    #emailInputSwab{
+        display: block;
+        width: 100%;
     }
 }

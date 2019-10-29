@@ -73,10 +73,35 @@ a, a:hover {
 }
 
 /*** GLOBAL STYLES ***/
+body, html {
+  position: relative;
+  height: 100%;
+}
+.main-container {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 265px; /* height of your footer */
+}
+@media (max-width: 991px) {
+  .main-container {
+    padding-bottom: 295px;
+  }
+}
+@media (max-width: 767px) {
+  .main-container {
+    padding-bottom: 380px;
+  }
+}
+@media (max-width: 361px) {
+  .main-container {
+    padding-bottom: 580px;
+  }
+}
 .align-center {
   text-align: center;
 }
-
 .align-right {
   text-align: right;
  }
@@ -89,7 +114,7 @@ button {
 
 
 /*** FORM ELEMENTS ***/
-input[type=text], textarea {
+input[type=text], input[type=tel], textarea {
   border: 2px solid #0A5CA8;
   border-radius: 5px;
   padding: 14px 15px;
@@ -105,9 +130,17 @@ input[type=submit] {
   outline: none;
   font-weight: 700;
 }
+input[type=submit]:disabled {
+  background-color: grey;
+}
 
 
 /*** FOOTER ***/
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 footer #footer-top {
   background-color: #EAECF0;
   padding: 30px 0;
@@ -129,12 +162,12 @@ footer ul {
   margin-bottom: 40px;
 }
 #footer-menu .logo img{
-  margin-top: 30px;
+  margin-top: 40px;
 }
 #footer-menu a {
   font-weight: 700;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 16px;
 }
 footer #copyright-bar {
   background-color: #2D3139;
@@ -193,7 +226,7 @@ header.dark {
   z-index: 2;
 }
 header .logo {
-  margin: auto 0;
+  margin: 24px 0;
 }
 .logo img {
   height: 40px;
@@ -210,9 +243,12 @@ header.dark .custom-toggler .navbar-toggler-icon {
 header .navbar-nav {
   margin: 25px 0 25px auto;
 }
+header .navbar-nav.join-the-study {
+  margin-left: 0;
+}
 header .navbar-nav li, .mobile-nav li, footer li {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
 }
 header .navbar-nav li, footer li {
   display: inline-block;
@@ -295,7 +331,7 @@ header.dark .nav-item button {
   top: 20px;
   right: 20px;
 }
-@media (min-width:768px) and (max-width:1199px) {
+@media (min-width:992px) and (max-width:1199px) {
   header .navbar-nav li {
     margin: 8.5px 0 8.5px 20px;
   }
@@ -303,12 +339,19 @@ header.dark .nav-item button {
     margin-left: 20px;
   }
 }
-@media (max-width:767px) {
+@media (max-width:992px) {
+  header .logo {
+    margin: auto 0;
+  }
   .navbar-nav {
     display: none;
   }
+  header.navbar {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+  }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .mobile-nav {
     display: none;
   }
@@ -326,10 +369,8 @@ header.dark .nav-item button {
 .secondary h3 {
   color: #4A515F;
   margin-top: 22px;
-  margin-bottom: 30px;
-  padding-right: 30px;
 }
-.secondary input[type=text], .secondary input[type=submit] {
+.secondary input[type=text], .secondary input[type=tel], .secondary input[type=submit] {
   margin-top: 12px;
 }
 .secondary ul {
@@ -343,7 +384,6 @@ header.dark .nav-item button {
   display: inline-block;
   width: 1em; 
   margin-left: -1em;
-  margin-right: 10px;
   line-height: 25px;
 }
 button.green {
@@ -375,7 +415,7 @@ button.green:hover {
 }
 .home-callout {
   padding: 50px 75px;
-  margin-top: 85px;
+  margin-top: 75px;
 }
 .study-callout h3, .home-callout h3 {
   margin: 0;
@@ -403,7 +443,7 @@ button.green:hover {
     margin-top: 50px;
   }
   .study-callout {
-    padding: 30px 15px;
+    padding: 30px;
   }
   .study-callout h3 {
     display: block;
@@ -428,6 +468,11 @@ button.green:hover {
     float: none;
   }
 }
+@media (max-width: 767px) {
+  .study-callout {
+    padding: 30px 15px;
+  }
+}
 
 
 /*** HOME PAGE ***/
@@ -444,6 +489,7 @@ button.green:hover {
 }
 .home-header p {
   color: #fff;
+  margin-bottom: 0;
 }
 .home-header button {
   margin-top: 30px;
@@ -452,11 +498,24 @@ button.green:hover {
   position: absolute;
   bottom: -2px;
   width: 100%;
-  height: 7vh;
+  height: 7vw;
   /* set height to pixels if you want angle to change with screen width */
 }
 .nav-item button:hover{
   cursor: pointer;
+}
+.nav-item.active a, header.light .nav-item a:hover {
+  color: #0A5CA8 !important;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #0A5CA8;
+}
+header.dark .nav-item a:hover {
+  color: #fff !important;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #fff;
+}
+.nav-item a:hover {
+  text-decoration: none;
 }
 .home-logos {
   margin-top: 165px;
@@ -464,7 +523,7 @@ button.green:hover {
   justify-content: space-between;
 }
 .home-logos img {
-  margin-bottom: 45px;
+  margin-bottom: 30px;
   max-height: 40px;
   margin-left: 10px;
   margin-right: 10px;
@@ -500,11 +559,11 @@ h1.number {
 .step:first-child {
   margin-top: 52px;
 }
-.step:last-child {
+.step:nth-child(4) {
   margin-bottom: 0;
 }
 #home-map {
-  margin-top: 45px;
+  margin-top: 75px;
   margin-bottom: 75px;
 }
 #map-left {
@@ -516,7 +575,6 @@ h1.number {
   margin-bottom: 30px;
 }
 #map-right {
-  background-image: url(/images/map_placeholder.png);
   background-position: center;
   background-size: cover;
 }
@@ -524,7 +582,7 @@ h1.number {
   margin-top: 15px;
   margin-bottom: 18px;
 }
-#flu101-right h3 {
+#flu101-right h4 {
   margin-bottom: 0;
   margin-top: 48px;
 }
@@ -569,7 +627,7 @@ h1.number {
   #flu101-left p {
     margin-bottom: 0;
   }
-  #flu101-right h3 {
+  #flu101-right h4 {
     margin-top: 30px;
      margin-bottom: 30px;
   }
@@ -604,7 +662,7 @@ h1.number {
 #thank-you{
   display:none;
 }
-#signup-error{
+#signuperror{
   display: none;
 }
 #faq-subscribe input[type=text] {
@@ -667,12 +725,11 @@ h1.number {
 
 /*** THANK YOU PAGES ***/
 .thank-you h4 {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+  padding-top: 30px;
+  clear: both;
 }
-#ty-subscribe {
-  margin-bottom: 75px;
-}
-#ty-subscribe input[type=text] {
+#ty-subscribe input[type=text], #ty-subscribe input[type=tel], #learn-more input[type=text], #learn-more input[type=tel] {
   margin-right: 15px;
 }
 #firstNameInput {
@@ -683,15 +740,38 @@ h1.number {
   clear: both;
   width: 30%;
 }
-#emailInput {
+#emailInput, #phoneInput, #zipInput {
   width: calc(60% + 15px);
-}
-#ty-subscribe input[type=submit] {
   display: block;
-  margin-top: 20px;
 }
+#ty-subscribe input[type=submit], #learn-more input[type=submit] {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  float: left;
+}
+#ty-subscribe input[type=submit]:hover, #learn-more input[type=submit]:hover {
+  text-decoration: underline;
+}
+
 .ty-social a {
   margin-right: 15px;
+}
+.error {
+  margin-top: 10px;
+  color: rgba(255,87,0,1);
+  font-size: 14px;
+  display: block;
+  text-align: right;
+  max-width: calc(60% + 10px);
+}
+.error-input {
+  border: 2px solid rgba(255,87,0,1) !important;
+  box-shadow: 0 0 5px rgba(255,87,0,0.5);
+}
+.disclaimer {
+  clear: both;
+  padding-top: 30px;
 }
 @media (max-width: 991px) {
 .thank-you .col-xs-12:first-child {
@@ -699,6 +779,11 @@ h1.number {
   }
 }
 @media (max-width: 767px) {
+  .error {
+    float: none;
+    max-width: none;
+    margin-right: 5px;
+  }
   #firstNameInput {
     float: left;
     width: calc(50% - 7.5px);
@@ -708,7 +793,7 @@ h1.number {
     width: calc(50% - 7.5px);
     margin-right: 0 !important;
   }
-  #emailInput {
+  #emailInput, #phoneInput, #zipInput {
     width: 100%;
   }
 }
@@ -739,6 +824,10 @@ h1.number {
 .kioskContent{
   margin-bottom: 40px;
   margin-top: 20px;
+}
+.kiosk-sub, .kiosk-sub-mobile {
+  margin-bottom: 30px;
+  padding-right: 30px;
 }
 .gm-style .gm-style-iw-c {
   border-radius: 0 !important;
@@ -784,8 +873,8 @@ h1.number {
 
 /*** ENROLL ***/
 .enroll {
-  background-color: #EAECF0;
-  border-bottom: 1px solid #4A515F;
+  background-color: #0A5CA8;
+  min-height: 600px;
 }
 
 
@@ -805,21 +894,25 @@ h1.number {
   position: absolute;
   bottom: -2px;
   width: 100%;
-  height: 7vh;
+  height: 7vw;
   /* set height to pixels if you want angle to change with screen width */
 }
 .landing-content {
   margin-top: -108px;
   padding-top: 30px;
 }
-.landing-logos img {
+.landing-logos a {
   margin-right: 75px;
 }
-.landing-logos img:last-child {
+.landing-logos a:last-child {
   margin-right: 0;
 }
 .landing-text {
   padding-top: 60px;
+}
+.landing-text p {
+  font-size: 18px;
+  line-height: 25px;
 }
 .landing-text ul li {
   font-weight: bold;
@@ -827,4 +920,65 @@ h1.number {
 }
 .landing-text button {
   margin-top: 34px;
+}
+.landing-text #ty-subscribe, .landing-text #learn-more {
+  margin-top: 36px;
+  margin-bottom: 50px;
+}
+@media (max-width: 991px) {
+  .landing-logos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .landing-logos a {
+    margin-bottom: 45px;
+  }
+  .landing-text {
+    padding-top: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .landing-logos {
+    justify-content: space-evenly;
+  }
+  .landing-logos a {
+    margin-right: 0;
+    flex-basis: 50%;
+    text-align: center;
+    margin-bottom: 45px;
+  }
+  .landing-text {
+    padding-top: 0;
+    margin-top: -15px;
+  }
+}
+@media (max-width: 440px) {
+  .landing-logos a {
+    flex-basis: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .landing-logos a:last-child {
+    margin-right: auto;
+  }
+  .landing-logos {
+    justify-content: space-between;
+  }
+}
+.signup-error{
+display: none;
+}
+
+
+
+/*** SSEC ***/
+#ssec-img img {
+  width: 100%;
+}
+@media (max-width: 767px) {
+  #ssec-text {
+  }
+  #ssec-img {
+    margin-top: 15px;
+  }
 }

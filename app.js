@@ -1,4 +1,3 @@
-var createError = require('http-errors')
 var express = require('express')
 var path = require('path')
 var cookieParser = require('cookie-parser')
@@ -14,10 +13,32 @@ var resultsRouter = require('./routes/results')
 var thankyouRouter = require('./routes/thankyou')
 var privacyRouter = require('./routes/privacy')
 var kiosksRouter = require('./routes/kiosks')
+var learnmoreRouter = require('./routes/learnmore');
+var swabandsendRouter = require ('./routes/swabandsend');
+var householdsRouter = require('./routes/households');
+var webmdRouter = require('./routes/webmd');
+var contactRouter = require('./routes/contactus');
+var mediaRouter = require('./routes/media');
+var errorRouter = require('./routes/error')
+var ssecRouter = require('./routes/ssec')
 
 const production = process.env.NODE_ENV === "production";
 
 var app = express()
+
+// In production, trust Heroku as a reverse proxy and Express will use request
+// metadata from the proxy.
+if (production)
+  app.enable("trust proxy");
+
+// Force HTTPS
+app.use(require("heroku-ssl-redirect")());
+
+// Remove www. from domain
+app.use(require("express-naked-redirect")({reverse: true})); // remove www.
+
+// Send files using a compressed content-encoding if possible
+app.use(require("compression")());
 
 // Webpack hot reloading in development.  This works in tandem with the Webpack
 // development config.
@@ -51,29 +72,16 @@ app.use('/schools', schoolsRouter)
 app.use('/results', resultsRouter)
 app.use('/privacy', privacyRouter)
 app.use('/kiosks', kiosksRouter)
+app.use('/learnmore', learnmoreRouter);
+app.use('/households', householdsRouter);
+app.use('/webmd', webmdRouter);
+app.use('/media-inquiries', mediaRouter);
+app.use('/swabandsend', swabandsendRouter);
+app.use('/contact-us', contactRouter);
+app.use('/ssec', ssecRouter);
 app.use('/thank-you/:thankyouid', thankyouRouter)
 app.use('/', indexRouter)
+app.use(errorRouter);
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404))
-})
-
-// error handler
-app.use(function (err, req, res, next) {
-  console.error(err);
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
-  // render the error page
-  res.status(err.status || 500)
-  res.render('error', {
-    title: 'Error',
-    header: 'light',
-    pageData: [
-      {fields: {name: "Error"}}
-    ]
-  })
-})
 
 module.exports = app

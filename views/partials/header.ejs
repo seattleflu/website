@@ -23,29 +23,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="">
-    <link rel="icon" type="image/png" sizes="32x32" href="">
-    <link rel="icon" type="image/png" sizes="16x16" href="">
-    <link rel="manifest" href="">
-    <link rel="mask-icon" href="" color="#0d1d47">
-    <link rel="shortcut icon" href="">
+    <link rel="apple-touch-icon" href="<%= siteData[0].fields.favicon.fields.file.url + '?w=180&h=180'%>" sizes="180x180">
+    <link rel="icon" type="image/png" href="<%= siteData[0].fields.favicon.fields.file.url + '?w=32&h=32' %>" sizes="32x32">
+    <link rel="icon" type="image/png" href="<%= siteData[0].fields.favicon.fields.file.url + '?w=16&h=16' %>" sizes="16x16">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="<%= siteData[0].fields.faviconSvg.fields.file.url %>" color="#095da8">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-config" content="">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#095da8">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Flu Study | <%= pageData[0].fields.name %></title>
     <meta property="og:site_name" content="<%= pageData[0].fields.name %>"/>
     <meta property="og:title" content="<%= pageData[0].fields.name %>" />
-    <meta property="og:url" content="http://sfs.formdev.io/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>" />
+    <meta property="og:url" content="https://seattleflu.org/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>" />
     <meta property="og:type" content="website" />
     <% if (pageData[0].fields.socialSharingImage) { %>
     <meta property="og:image" content="https:<%= pageData[0].fields.socialSharingImage.fields.file.url %>" />
     <% } %>
     <meta property="og:description" content="<%= pageData[0].fields.metaDescription%>" />
     <meta itemprop="name" content="<%= pageData[0].fields.name %>"/>
-    <meta itemprop="url" content="http://sfs.formdev.io/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %> %>"/>
+    <meta itemprop="url" content="https://seattleflu.org/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %> %>"/>
     <meta name="twitter:title" content="<%= pageData[0].fields.name %>"/>
-    <meta name="twitter:url" content="http://sfs.formdev.io/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>>"/>
+    <meta name="twitter:url" content="https://seattleflu.org/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>>"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="description" content="<%= pageData[0].fields.metaDescription%>" />
     <% if (pageData[0].fields.socialSharingImage) { %>
@@ -58,41 +59,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNMW24K"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-      <header class="<%= header %> navbar navbar-expand-md navbar-dark">
+<div class="main-container">
+      <header class="<%= header %> navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <% if(header === 'light') {%>
-            <a href="/" class="logo"><img src="http:<%= siteData[0].fields.logo.fields.file.url %>"></a>
+            <a href="/" class="logo"><img src="<%= siteData[0].fields.logo.fields.file.url %>" alt="<%= siteData[0].fields.logo.fields.description %>"></a>
           <%}%>
           <% if(header === 'dark') {%>
-            <a href="/" class="logo"><img src="http:<%= siteData[0].fields.logoWhite.fields.file.url %>"></a>
+            <a href="/" class="logo"><img src="<%= siteData[0].fields.logoWhite.fields.file.url %>" alt="<%= siteData[0].fields.logoWhite.fields.description %>"></a>
           <%}%>
+          <% if(nav == 'true'){ %>
           <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
-
+          <%}%>
+          <% if(nav == 'true'){ %>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="/faq">FAQ</a></li>
-            <li class="nav-item"><a href="/kiosks">Find a Kiosk</a></li>
-            <li class="nav-item"><a href="/current">Flu Status</a></li>
-            <li class="nav-item"><a href="/science">Science</a></li>
-            <li class="nav-item"><a href="/results">Your Results</a></li>
-            <a href="/enroll" class="nav-item"><button>Join the Study</button></a>
+          <% siteData[0].fields.menuMain.forEach((item) => { %>
+          <li class="nav-item"><a href="<%= "/" + item.fields.urlSegment %>"><%= item.fields.name %></a></li>
+          <% }) %>
           </ul>    
+          <%}%>
+          <% if(enroll == 'true'){ %><ul class="navbar-nav join-the-study"><a href="/enroll" class="nav-item"><button>Join the Study</button></a></ul> <%}%>
         </div>
       </header>
+      <% if(nav == 'true'){ %>
       <div class="mobile-nav collapse navbar-collapse" id="headerNav">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-close-icon"></span>
           </button>
 
           <ul>
-            <li class="nav-item"><a href="/faq">FAQ</a></li>
-            <li class="nav-item"><a href="/kiosks">Find a Kiosk</a></li>
-            <li class="nav-item"><a href="/current">Flu Status</a></li>
-            <li class="nav-item"><a href="/science">Science</a></li>
-            <li class="nav-item"><a href="/results">Your Results</a></li>
-            <a href="/enroll" class="nav-item"><button class="headerbutton green">Join the Study</button></a>
+          <% siteData[0].fields.menuMain.forEach((item) => { %>
+          <li class="nav-item"><a href="<%= "/" + item.fields.urlSegment %>"><%= item.fields.name %></a></li>
+          <% }) %>
+            
+            <% if(enroll == 'true'){ %><a href="/enroll" class="nav-item"><button class="headerbutton green">Join the Study</button></a><%}%>
           </ul>   
       </div>
       <div class="overlay"></div>
+      <%}%>
       
+<script>
+$(document).ready(function() {
+  $('.nav-item.active').removeClass('active');
+  $('a[href="' + location.pathname + '"]').closest('.nav-item').addClass('active'); 
+});
+ </script>

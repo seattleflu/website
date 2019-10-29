@@ -18,7 +18,7 @@ export default class FluMap extends React.Component {
         asyncRender={true}
         mapStyle={this.getState("mapStyle")}
         viewState={this.getState("view").toJS()}
-        onViewportChange={this.updateView.bind(this)}
+        onViewportChange={this.onViewportChange.bind(this)}
         onTransitionEnd={this.onTransitionEnd.bind(this)}
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
 
@@ -60,7 +60,14 @@ export default class FluMap extends React.Component {
   // Load all data layers, and then start transitioning through our animation
   // keyframes.
   //
+  _did_mount = null;
+  _mounted = new Promise((resolve, reject) => {
+    this._did_mount = resolve;
+  });
+
   async componentDidMount() {
+    this._did_mount();
+
     await Promise.all(
       dataLayers.map(layer =>
         this.loadDataLayer(layer)
@@ -108,9 +115,18 @@ export default class FluMap extends React.Component {
       this.updateView(next.value);
   }
 
+  // Update our view state on any map-driven viewport change, but only after
+  // we're mounted.  This condition avoids a React error where state is updated
+  // from within a <MapboxGL> render function.
+  async onViewportChange(viewport) {
+    await this._mounted;
+    this.updateView(viewport);
+  }
+
   // After a transition ends, start a new transition to the next keyframe.
   //
-  onTransitionEnd() {
+  async onTransitionEnd() {
+    await this._mounted;
     this.nextKeyframe();
   }
 }
