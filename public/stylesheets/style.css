@@ -729,7 +729,7 @@ h1.number {
   padding-top: 30px;
   clear: both;
 }
-#ty-subscribe input[type=text], #ty-subscribe input[type=tel], #learn-more input[type=text], #learn-more input[type=tel] {
+#ty-subscribe input[type=text], #ty-subscribe input[type=tel], #learn-more input[type=text], #learn-more input[type=tel], #info input[type=tel], #info input[type=text] {
   margin-right: 15px;
 }
 #firstNameInput {
@@ -744,13 +744,13 @@ h1.number {
   width: calc(60% + 15px);
   display: block;
 }
-#ty-subscribe input[type=submit], #learn-more input[type=submit] {
+#ty-subscribe input[type=submit], #learn-more input[type=submit], #info input[type=submit] {
   display: inline-block;
   margin-top: 15px;
   margin-bottom: 15px;
   float: left;
 }
-#ty-subscribe input[type=submit]:hover, #learn-more input[type=submit]:hover {
+#ty-subscribe input[type=submit]:hover, #learn-more input[type=submit]:hover, #info input[type=submit]:hover {
   text-decoration: underline;
 }
 
@@ -921,7 +921,7 @@ h1.number {
 .landing-text button {
   margin-top: 34px;
 }
-.landing-text #ty-subscribe, .landing-text #learn-more {
+.landing-text #ty-subscribe, .landing-text #learn-more, .landing-text #info {
   margin-top: 36px;
   margin-bottom: 50px;
 }
