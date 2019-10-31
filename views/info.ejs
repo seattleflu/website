@@ -60,7 +60,7 @@
         }
       }
 
-        $('#learn-more').submit(function (event) {
+        $('#info').submit(function (event) {
             event.preventDefault()
             var formData = {
             "email_address": $('#emailInput').val(),
@@ -121,11 +121,11 @@
                 console.log(data["statusCode"])
                 if (data["statusCode"] == '200'){
                 $("#thank-you").css("display", "block")
-                $("#learn-more").css("display", "none")  
+                $("#info").css("display", "none")  
                 $("#signuperror").css("display", "none")
                 }else{
                 $("#thank-you").css("display", "none")
-                $("#learn-more").css("display", "block")
+                $("#info").css("display", "block")
                 $("#signuperror").css("display", "block")
                 }
             })
