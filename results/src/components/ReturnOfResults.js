@@ -7,28 +7,41 @@ import SampleProcessing from './ParticipantResults/SampleProcessing';
 import UnknownBarcode from './ParticipantResults/UnknownBarcode';
 import Results from './ParticipantResults/Results';
 
-const contentful = require('../../../services/results');
+const resultService = require('../../../services/results');
 
 export default class ReturnOfResults extends React.Component {
   state = {
     barcode: '',
     status: '',
-    results: [],
+    organisms_present: [],
     sequenced: false,
     content: null
   };
 
+  submitBarcode = (barcode) => {
+    resultService.getBarcodeResults(barcode)
+    .then(response => {
+      if (response) {
+        this.setResult(response)
+      }
+    });
+  }
+
   setResult = (newResults) => {
     // Convert ID3C lineages to generic pathogen names used in the rest of the app
-    if(newResults["results"]){
-      newResults["results"] = newResults["results"].map(lineage => {
-        if(lineage.includes('Influenza')){
-          return 'flu'
+    if(newResults["organisms_present"]){
+      newResults["organisms_present"] = newResults["organisms_present"].map(lineage => {
+        const lineageMap = {
+          "Adenovirus": "adenovirus",
+          "Human_coronavirus": "coronavirus",
+          "Enterovirus": "enterovirus",
+          "Influenza": "flu",
+          "Human_metapenumovirus": "hmpv",
+          "Human_parainfluenza": "parainfluenza",
+          "Rhinovirus": "rhinovirus",
+          "RSV": "rsv"
         }
-        if(lineage.includes('RSV')){
-          return 'rsv'
-        }
-        return lineage
+        return lineageMap[lineage]
       });
     }
 
@@ -42,7 +55,7 @@ export default class ReturnOfResults extends React.Component {
 
   getContentFromContentful(contentType, resultType) {
     return(
-      contentful.getResults(contentType, resultType)
+      resultService.getContentfulResults(contentType, resultType)
       .then(content => {
         return content.items[0].fields
       })
@@ -51,7 +64,7 @@ export default class ReturnOfResults extends React.Component {
   }
 
     render(){
-        const {content, status, results, sequenced, barcode} = this.state;
+        const {content, status, organisms_present, sequenced, barcode} = this.state;
         let display;
 
         switch(status) {
@@ -62,16 +75,16 @@ export default class ReturnOfResults extends React.Component {
                 display = <SampleProcessing content={content}/>;
                 break;
             case 'unknownBarcode':
-                display = <div><UnknownBarcode content={content}/><BarcodeSearchForm submitResult={ this.setResult }/></div>;
+                display = <div><UnknownBarcode content={content}/><BarcodeSearchForm submitBarcode={ this.submitBarcode }/></div>;
                 break;
             case 'complete':
                 display = (
-                  <Results results={results} sequenced={sequenced} barcode={barcode} content={content}
+                  <Results results={organisms_present} sequenced={sequenced} barcode={barcode} content={content}
                     getContent={this.getContentFromContentful}/>
                 )
                 break;
             default:
-                display = <BarcodeSearchForm submitResult={this.setResult}/>;
+                display = <BarcodeSearchForm submitBarcode={this.submitBarcode}/>;
         }
 
         return (
