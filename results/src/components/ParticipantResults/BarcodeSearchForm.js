@@ -1,13 +1,6 @@
 import React from 'react';
 
 import { Feature, Form, Input, SubmitButton } from '../styledComponents';
-import { notReceived,
-         processing,
-         completeNegative,
-         completePositiveFlu,
-         completePositiveMultiple,
-         completeSequenced,
-         wrongBarcode } from './mock-data.js';
 
 export default class BarcodeSearchForm extends React.Component {
     constructor(props) {
