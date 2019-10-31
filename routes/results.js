@@ -75,6 +75,9 @@ router.get('/barcode-faq', function (req, res, next) {
   res.render('barcodeFaq', {
     title: 'Barcode FAQ',
     header: 'light',
+    nav: req.nav,
+    enroll: req.enroll,
+    logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData,
     barcodeFaq: req.barcodeFaq
@@ -85,6 +88,9 @@ router.get('/faq', function (req, res, next) {
   res.render('resultsFaq', {
     title: 'Results FAQ',
     header: 'light',
+    nav: req.nav,
+    enroll: req.enroll,
+    logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData,
     resultsFaq: req.resultsFaq
