@@ -17,7 +17,6 @@
                     <div class="kioskNumber"><%= value %></div>
                     <div class="wrapper">
                       <h5><%= kiosk.fields.locationName %></h5>
-                      <p><%- md.render(kiosk.fields.content) %></p>
                     </div>
                   </div>
                 <% }) %>              
@@ -36,7 +35,7 @@
                     var locationId = 0;
                     kiosksLocations.forEach((kiosks) => {
                       locationId = locationId + 1;
-                      var kioskData = [kiosks.fields.locationName, kiosks.fields.location.lat, kiosks.fields.location.lon, kiosks.fields.details, locationId];
+                      var kioskData = [kiosks.fields.locationName, kiosks.fields.location.lat, kiosks.fields.location.lon, kiosks.fields.content, locationId];
                       locations.push(kioskData);
                     })
                       
@@ -286,7 +285,6 @@
                       <div class="kioskNumber"><%= value %></div>
                       <div class="wrapper">
                         <h5><%= kiosk.fields.locationName %></h5>
-                        <p><%= kiosk.fields.details %></p>
                       </div>
                     </div>
                   <% }) %>              
