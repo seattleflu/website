@@ -17,7 +17,7 @@
                     <div class="kioskNumber"><%= value %></div>
                     <div class="wrapper">
                       <h5><%= kiosk.fields.locationName %></h5>
-                      <p><%= kiosk.fields.details %></p>
+                      <p><%- md.render(kiosk.fields.content) %></p>
                     </div>
                   </div>
                 <% }) %>              
