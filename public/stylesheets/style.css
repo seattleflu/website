@@ -920,6 +920,7 @@ h1.number {
 }
 .landing-text button {
   margin-top: 34px;
+  margin-bottom: 34px;
 }
 .landing-text #ty-subscribe, .landing-text #learn-more, .landing-text #info {
   margin-top: 36px;
