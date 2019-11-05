@@ -14,6 +14,16 @@ router.use((req, res, next) => {
     .getSiteData()
     .then(siteData => {
       req.siteData = siteData.items
+      next()
+    })
+    .catch(console.error)
+})
+
+router.use((req, res, next) => {
+  page
+    .getPageData('privacy')
+    .then(pageData => {
+      req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
         var nav = pageData.items[0].fields.showMenu
         req.nav = nav.toString();
@@ -26,16 +36,6 @@ router.use((req, res, next) => {
       }else{
         req.enroll = 'true'
       }
-      next()
-    })
-    .catch(console.error)
-})
-
-router.use((req, res, next) => {
-  page
-    .getPageData('privacy')
-    .then(pageData => {
-      req.pageData = pageData.items
       next()
     })
     .catch(console.error)
