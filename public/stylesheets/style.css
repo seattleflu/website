@@ -825,6 +825,10 @@ h1.number {
   margin-bottom: 40px;
   margin-top: 20px;
 }
+.map-wrapper {
+  position: sticky;
+  top: 60px;
+}
 .kiosk-sub, .kiosk-sub-mobile {
   margin-bottom: 30px;
   padding-right: 30px;
