@@ -481,7 +481,7 @@ button.green:hover {
   height: 650px;
   background-image: url(/images/BG_Blue.png);
   background-size: cover;
-  top: -108px;
+  top: -112px;
 }
 .home-header h1 {
   color: #fff;
@@ -843,9 +843,10 @@ h1.number {
   right: 0 !important;
 }
 #map {
-  height: 600px;  /* The height is 400 pixels */
   width: 100%;  /* The width is the width of the web page */
   margin-bottom: 75px;
+  height: 65vh;
+  min-height: 400px;
  }
 @media (max-width: 767px) {
   .kiosk-list {
