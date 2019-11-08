@@ -373,10 +373,11 @@ const App = () => {
             handleNextError={handleNextError}
             handleStudy={handleStudy}
             currentStep={currentStep}
-            question3={question3}
-            bouncePage3={bouncePage3}
-            fluStudyPage3={fluStudyPage3}
-            conditions3={conditions3}
+
+            question11={question11}
+            bouncePage11={bouncePage11}
+            fluStudyPage11={fluStudyPage11}
+            
             question4={question4}
             bouncePage4={bouncePage4}
             fluStudyPage4={fluStudyPage4}
@@ -392,17 +393,20 @@ const App = () => {
             question8={question8}
             bouncePage8={bouncePage8}
             fluStudyPage8={fluStudyPage8}
-            question9={question9}
-            bouncePage9={bouncePage9}
-            fluStudyPage9={fluStudyPage9}
-            question11={question11}
-            bouncePage11={bouncePage11}
-            fluStudyPage11={fluStudyPage11}
+
+            question10={question10}
+            bouncePage10={bouncePage10}
+            fluStudyPage10={fluStudyPage10}
+            question12={question12}
+            bouncePage12={bouncePage12}
+            fluStudyPage12={fluStudyPage12}
+            question15={question15}
+            bouncePage15={bouncePage15}
+            fluStudyPage15={fluStudyPage15}
+            question16={question16}
+            bouncePage16={bouncePage16}
+            fluStudyPage16={fluStudyPage16}
             
-            question13={question13}
-            bouncePage13={bouncePage13}
-            fluStudyPage13={fluStudyPage13}
-            conditions13={conditions13}
           />
         ) : null}
         

@@ -223,3 +223,12 @@ input[type=tel].notValid{
         width: 100%;
     }
 }
+
+.noSymptoms{
+    border-bottom: 1px solid #0A5CA8;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+.noSymptoms label {
+    margin-bottom: 6px;
+}

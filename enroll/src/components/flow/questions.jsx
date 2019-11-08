@@ -12,23 +12,13 @@ import {Event} from './../../services/ga';
 
 const Questions = props => {
   const [question, setQuestion] = useState(0)
-  const [haveFluValue, setHaveFluValue] = useState('')
-  const [whoValue, setWhoValue] = useState('')
-
-  const [havePhone, setHavePhoneValue] = useState('')
-  const [under18, setunder18Value] = useState('')
-  const [moreThanThree, setMoreThanThreeValue] = useState('')
-  const [conditions, setConditionsValue] = useState('')
-  const [pills, setPillsValue] = useState('')
   const [referrer, setReferrerValue] = useState('')
-
   const [symptomsList, setSymptopmsList] = useState([])
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
     //ReactGA.pageview(' /enroll')
   }
-
 
   useEffect(() => {
     setReferrerValue(props.referrerValue)
@@ -42,66 +32,29 @@ const Questions = props => {
   function handleChange (event) {
     event.preventDefault()
     if (question == 0) {
-      if (haveFluValue == 'yes') {
-        Event ('Enroll Screener', 'Currently Sick', haveFluValue);
+      if(symptomsList.length == 0 || (symptomsList.length <= 1 && symptomsList.includes('None of the above'))){
         setQuestion(1)
-      } else if (haveFluValue == 'no') {
-        Event ('Enroll Screener', 'Currently Sick', haveFluValue);
-        setQuestion(3)
+      }else if(symptomsList.length == 1){
+        props.handleNextError(props.bouncePage11)
+      }else if (
+        symptomsList.length == 2 &&
+        (symptomsList.includes('Chills or shivering') ||
+          symptomsList.includes('Sweats'))
+      ) {
+        props.handleNextError(props.bouncePage11)
+      } else if (
+        symptomsList.length <= 3 &&
+        symptomsList.includes('Chills or shivering') &&
+        symptomsList.includes('Sweats')
+      ) {
+        setQuestion(2)
       } else {
-        // props.handleNextError()
+        setQuestion(2)
       }
     }
-    if (question == 1) {
-      if (whoValue == 'myself') {
-        props.handleNext(2)
-      } else if (whoValue == 'over18') {
-        props.handleNext(3)
-      } else if (whoValue == 'under18') {
-        props.handleNext(3)
-      } else {
-        // props.handleNextError()
-      }
-    }
 
   }
 
-  function handleSymptomsChange (event) {
-    event.preventDefault()
-    setHaveFluValue(event.target.value)
-    if (event.target.value == 'yes') {
-      Event ('Enroll Screener', 'Currently Sick', event.target.value);
-      setQuestion(1)
-      setMoreThanThreeValue('')
-      setWhoValue('')
-      setHavePhoneValue('')
-      setunder18Value('')
-      setConditionsValue('')
-      setPillsValue('')
-    } else if (event.target.value == 'no') {
-      Event ('Enroll Screener', 'Currently Sick', event.target.value);
-      setQuestion(3)
-      setMoreThanThreeValue('')
-      setWhoValue('')
-      setHavePhoneValue('')
-      setunder18Value('')
-      setConditionsValue('')
-      setPillsValue('')
-    }
-  }
-  function handleWhoChange (event) {
-    Event ('Enroll Screener', 'Participent info', event.target.value);
-    setWhoValue(event.target.value)
-    setQuestion(1)
-    if (event.target.value != 'none') {
-      Event ('Enroll Screener', 'Participent info', event.target.value);
-      setQuestion(1)
-    } else {
-      props.handleNext(5)
-    }
-  }
-
-  
 
   function addSymptomOne (event) {
     Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
@@ -161,22 +114,23 @@ const Questions = props => {
   return (
     <div className='col-12'>
       <h2>Screening Questionnaire</h2>
-      {question >= 0 && (referrer != 'schools' && referrer != 'households') ? (
-        <Switch
-          text={props.question3}
-          description={question == 0 ? props.conditions3 : null}
-          label='symptoms'
-          type='select'
-          id='symptomsTest'
-          value={haveFluValue}
-          handleChange={handleSymptomsChange}
-        />
-      ) : null}
       
-      {question >= 1 && question <+ 2 ? (
+      {question <= 0  && (referrer != 'schools' && referrer != 'households') ? (
         <div className='col-12 selectSymptoms'>
           <div className='row'>
             <p>{props.question11}</p>
+            <div className='symptom noSymptoms col-md-12 col-lg-12'>
+            <label>
+              <input
+                type='checkbox'
+                name='NoneOfTheAbove1'
+                value='None of the above'
+                onChange={addSymptomRemove}
+              />
+              I currently do not have any symptoms
+              </label>
+              <br />
+            </div>
             <div className='symptom col-md-6 col-lg-4'>
             <label>
               <input
@@ -311,25 +265,26 @@ const Questions = props => {
               </label>
               <br />
             </div>
-            <div className='symptom col-md-6 col-lg-4'>
-            <label>
-              <input
-                type='checkbox'
-                name='NoneOfTheAbove1'
-                value='None of the above'
-                onChange={addSymptomRemove}
-              />
-              None of the above
-              </label>
-              <br />
-            </div>
+            
           </div>
         </div>
       ) : null}
       
 
-      {question == 2 ? (<One />):(null)}
-      {question == 3 ? (<Two />) : (null)}
+      {question == 1 ? (<One 
+        question4={props.question4}
+        question5={props.question5}
+        question6={props.question6}
+        question7={props.question7}
+        question8={props.question8}
+      
+      />):(null)}
+      {question == 2 ? (<Two 
+        question10={props.question10}
+        question12={props.question12}
+        question15={props.question15}
+        question16={props.question16}
+      />) : (null)}
       
       
       <button

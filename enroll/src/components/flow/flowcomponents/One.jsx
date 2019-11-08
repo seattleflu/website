@@ -18,16 +18,54 @@ const One = props => {
   }, [])
 
 
-  const who = [
-    { value: 'none', label: '' },
-    { value: 'myself', label: 'Myself' },
-    { value: 'over18', label: 'Someone in my household over 18' },
-    { value: 'under18', label: 'My child or legal ward under 18' }
-  ]
 
   return (
     <div className='col-12'>
-      <p>FLOW ONE</p>
+    <p>FLOW ONE</p>
+      <Switch
+          text={props.question4}
+          description={props.conditions4}
+          label='symptoms'
+          type='select'
+          id='symptomsTest'
+          
+        />
+
+        <Switch
+          text={props.question5}
+          description={props.conditions5}
+          label='symptoms'
+          type='select'
+          id='symptomsTest'
+          
+        />
+
+        <Switch
+          text={props.question6}
+          description={props.conditions6}
+          label='symptoms'
+          type='select'
+          id='symptomsTest'
+          
+        />
+
+        <Switch
+          text={props.question7}
+          description={props.conditions7}
+          label='symptoms'
+          type='select'
+          id='symptomsTest'
+          
+        />
+
+        <Switch
+          text={props.question8}
+          description={props.conditions8}
+          label='symptoms'
+          type='select'
+          id='symptomsTest'
+          
+        />
     </div>
   )
 }
