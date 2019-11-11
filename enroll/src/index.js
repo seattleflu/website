@@ -370,6 +370,7 @@ function setFirstPerson(value){
             question1Description={question1Description}
             question19Description={question19Description}
             setFirstPersonValue={setFirstPersonValue}
+            referrerValue={referrerValue}
           />
         ) : null}
         {currentStep == 1 ? (

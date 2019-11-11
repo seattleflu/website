@@ -44,29 +44,28 @@ const One = props => {
     }
 
     if (oneQuestion == 2) {
-      if (question6 == 'yes') {
+      if (question6 == 'yes' && props.referrerValue == 'schools') {
+        props.handleStudy(props.fluStudyPage7)
+       
+      }  else if (question6 == 'yes' && props.referrerValue != 'schools'){
         setOneQuestion(3)
-      }  else {
+      }else{
         props.handleNextError(props.bouncePage6)
       }
     }
 
     if (oneQuestion == 3) {
-      if (question7 == 'yes') {
-        setOneQuestion(4)
-      }  else {
-        props.handleStudy(props.fluStudyPage7)
-      }
-    }
-
-    if (oneQuestion == 4) {
       if (question8 == 'yes') {
         props.handleStudy(props.bouncePage8)
         //props.handleNextError(props.fluStudyPage8)
+      }else if(question8 == 'yes' && props.referrerValue == 'schools'){
+         props.handleNextError(props.bouncePage8)
       }  else {
         props.handleNextError(props.bouncePage8)
       }
     }
+
+    
 
 
   }
@@ -114,10 +113,12 @@ function question4Value (event) {
   function question6Value (event) {
     event.preventDefault()
     setQuestion6(event.target.value)
-    if (event.target.value == 'yes') {
+    if (event.target.value == 'yes'&& props.referrerValue != 'schools') {
       setActiveButton(true)
       //Event ('Enroll Screener', 'Smartphone', event.target.value);
       setOneQuestion(3)
+    }else if(event.target.value == 'yes' && props.referrerValue == 'schools'){
+      setActiveButton(false)
     }else if(event.target.value == 'no'){
       setActiveButton(false)
       setOneQuestion(2)
@@ -129,32 +130,17 @@ function question4Value (event) {
     }
   }
 
-  function question7Value (event) {
-    event.preventDefault()
-    setQuestion7(event.target.value)
-    if (event.target.value == 'yes') {
-      setActiveButton(true)
-      //Event ('Enroll Screener', 'Smartphone', event.target.value);
-      setOneQuestion(4)
-    }else if(event.target.value == 'no'){
-      setActiveButton(false)
-      setOneQuestion(3)
-      setQuestion8('')
-    } else{
-      //Event ('Enroll Screener', 'Smartphone', event.target.value);
-      setOneQuestion(oneQuestion + 1)
-    }
-  }
+  
   function question8Value (event) {
     event.preventDefault()
     setQuestion8(event.target.value)
     if (event.target.value == 'yes') {
       setActiveButton(false)
       //Event ('Enroll Screener', 'Smartphone', event.target.value);
-      setOneQuestion(4)
+      setOneQuestion(3)
     }else if(event.target.value == 'no'){
       setActiveButton(false)
-      setOneQuestion(4)
+      setOneQuestion(3)
     } else{
       //Event ('Enroll Screener', 'Smartphone', event.target.value);
       //setOneQuestion(oneQuestion + 1)
@@ -208,19 +194,8 @@ const optionsYesNo = [
           handleChange={question6Value}
           
         />):(null)}
+        
         {oneQuestion >= 3 ? (
-        <Switch
-          text={props.question7}
-          description={props.conditions7}
-          label='symptoms'
-          type='select'
-          id='symptomsTest'
-          value={question7}
-          options={optionsYesNo}
-          handleChange={question7Value}
-          
-        />):(null)}
-        {oneQuestion >= 4 ? (
         <Switch
           text={props.question8}
           description={props.conditions8}

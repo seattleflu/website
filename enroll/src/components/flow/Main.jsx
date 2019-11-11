@@ -42,12 +42,15 @@ const Main = props => {
     }
 
     if (question == 2) {
-      if (ageValue >= 18) {
-         //Event ('Enroll Screener', 'Home Zip', zipValue);
+      if (ageValue >= 18 && (props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd')) {
+        props.handleNext(1)
+      }else if(ageValue <= 18 && (props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd')){
+      props.handleNextError (props.bouncePage18);
+    }else if(ageValue >= 18 && (props.referrerValue != 'schools' || props.referrerValue != 'households' || props.referrerValue != 'webmd')){
+      setQuestion (question + 1);
+      //Event ('Enroll Screener', 'Home Zip', zipValue);
          //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
          //Event ('Enroll Screener', 'Age', ageValue);
-         setQuestion (question + 1);
-        //props.handleNext (1);
       } else {
          //Event ('Enroll Screener', 'Home Zip', zipValue);
          //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
@@ -55,6 +58,7 @@ const Main = props => {
         props.handleNextError (props.bouncePage2);
       }
     }
+
     if (question == 3) {
       if (whoValue == 'myself') {
         props.handleNext(1)
@@ -75,8 +79,18 @@ const Main = props => {
     //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     setZipWorkValue (event.target.value);
   }
+
+
   function handleAgeChange (event) {
     setAgeValue (event.target.value);
+    if(props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd'){
+        if(event.taget.value <= 18){
+          props.handleNextError (props.bouncePage18);
+        }else{
+          props.handleNext(1)
+        }
+    }
+    
   }
   function handleWhoChange (event) {
     //Event ('Enroll Screener', 'Participent info', event.target.value);

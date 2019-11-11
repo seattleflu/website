@@ -11,7 +11,7 @@ import {Event} from './../../services/ga';
 
 
 const Questions = props => {
-  const [question, setQuestion] = useState(0)
+  const [mainQuestion, setMainQuestion] = useState(0)
   const [referrer, setReferrerValue] = useState('')
   const [symptomsList, setSymptopmsList] = useState([])
 
@@ -23,17 +23,19 @@ const Questions = props => {
   useEffect(() => {
     setReferrerValue(props.referrerValue)
     if(props.referrerValue == "schools"){
-      setQuestion(2)
+      setMainQuestion(1)
     }else if(props.referrerValue == "households"){
-      setQuestion(2)
+      setMainQuestion(1)
+    }else if(props.referrerValue == "webmd"){
+      setMainQuestion(1)
     }
   }, [])
 
   function handleChange (event) {
     event.preventDefault()
-    if (question == 0) {
+    if (mainQuestion == 0) {
       if(symptomsList.length == 0 || (symptomsList.length <= 1 && symptomsList.includes('None of the above'))){
-        setQuestion(1)
+        setMainQuestion(1)
       }else if(symptomsList.length == 1){
         props.handleNextError(props.bouncePage11)
       }else if (
@@ -47,9 +49,9 @@ const Questions = props => {
         symptomsList.includes('Chills or shivering') &&
         symptomsList.includes('Sweats')
       ) {
-        setQuestion(2)
+        setMainQuestion(2)
       } else {
-        setQuestion(2)
+        setMainQuestion(2)
       }
     }
 
@@ -58,15 +60,15 @@ const Questions = props => {
 
   function addSymptomOne (event) {
     //Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
-    if (question >= 1 && question < 7) {
-      setQuestion(1)
+    if (mainQuestion >= 1 && mainQuestion < 7) {
+      setMainQuestion(1)
       
-    } else if(question > 7){
+    } else if(mainQuestion > 7){
       //Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
-      setQuestion(2)
+      setMainQuestion(2)
       
     }else{
-      //setQuestion(1)
+      //setMainQuestion(1)
     }
     const array = [...symptomsList]
 
@@ -115,7 +117,7 @@ const Questions = props => {
     <div className='col-12'>
       <h2>Screening Questionnaire</h2>
       
-      {question <= 0  && (referrer != 'schools' && referrer != 'households') ? (
+      {mainQuestion <= 0  && (referrer != 'schools' && referrer != 'households') ? (
         <div className='col-12 selectSymptoms'>
           <div className='row'>
             <p>{props.fistPersonValue ? props.question11 : props.question18}</p>
@@ -271,7 +273,8 @@ const Questions = props => {
       ) : null}
       
 
-      {question == 1 ? (<One 
+      {mainQuestion == 1 ? (<One 
+      referrerValue={props.referrerValue}
         handleStudy={props.handleStudy}
         handleNextError={props.handleNextError}
         question4={props.question4}
@@ -291,7 +294,7 @@ const Questions = props => {
         fluStudyPage8={props.fluStudyPage8}
       
       />):(null)}
-      {question == 2 ? (<Two 
+      {mainQuestion == 2 ? (<Two 
         fistPersonValue={props.fistPersonValue}
         handleStudy={props.handleStudy}
         handleNextError={props.handleNextError}
@@ -309,7 +312,7 @@ const Questions = props => {
         fluStudyPage16={props.fluStudyPage16}
       />) : (null)}
       
-      {question == 0 ? (
+      {mainQuestion == 0 ? (
       <button
         className='btn btn-primary float-right next'
         type='submit'
