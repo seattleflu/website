@@ -138,6 +138,10 @@ select.form-control {
     outline: none;
     font-weight: 700;
 }
+.next:disabled{
+    background-color:grey;
+    border-color: grey;
+}
 
 .studyHeader{
     margin-bottom: 30px;

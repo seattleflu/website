@@ -272,21 +272,43 @@ const Questions = props => {
       
 
       {question == 1 ? (<One 
+        handleStudy={props.handleStudy}
+        handleNextError={props.handleNextError}
         question4={props.question4}
+        bouncePage4={props.bouncePage4}
+        fluStudyPage4={props.fluStudyPage4}
         question5={props.question5}
+        bouncePage5={props.bouncePage5}
+        fluStudyPage5={props.fluStudyPage5}
         question6={props.question6}
+        bouncePage6={props.bouncePage6}
+        fluStudyPage6={props.fluStudyPage6}
         question7={props.question7}
+        bouncePage7={props.bouncePage7}
+        fluStudyPage7={props.fluStudyPage7}
         question8={props.question8}
+        bouncePage8={props.bouncePage8}
+        fluStudyPage8={props.fluStudyPage8}
       
       />):(null)}
       {question == 2 ? (<Two 
+        handleStudy={props.handleStudy}
+        handleNextError={props.handleNextError}
         question10={props.question10}
+        bouncePage10={props.bouncePage10}
+        fluStudyPage10={props.fluStudyPage10}
         question12={props.question12}
+        bouncePage={props.bouncePage}
+        fluStudyPage={props.fluStudyPage}
         question15={props.question15}
+        bouncePage15={props.bouncePage15}
+        fluStudyPage15={props.fluStudyPage15}
         question16={props.question16}
+        bouncePage16={props.bouncePage16}
+        fluStudyPage16={props.fluStudyPage16}
       />) : (null)}
       
-      
+      {question == 0 ? (
       <button
         className='btn btn-primary float-right next'
         type='submit'
@@ -294,6 +316,7 @@ const Questions = props => {
       >
         Next
       </button>
+      ) : (null)}
     </div>
   )
 }
