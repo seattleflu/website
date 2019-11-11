@@ -6,6 +6,12 @@ import ReactGA from 'react-ga';
 import {Event} from '../../../services/ga';
 
 const Two = props => {
+  const [twoQuestion, setTwoQuestion] = useState(0)
+  const[activeButton, setActiveButton] = useState(true)
+  const[question10, setQuestion10] = useState('')
+  const[question12, setQuestion12] = useState('')
+  const[question15, setQuestion15] = useState('')
+  const[question16, setQuestion16] = useState('')
   
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -15,6 +21,64 @@ const Two = props => {
   useEffect(() => {
     initializeReactGA ();
   }, [])
+
+  function handleTwoChange (event) {
+    event.preventDefault()
+    
+    if (twoQuestion == 0) {
+      if (question10 == 'moreThan7d') {
+        props.handleNextError(props.bouncePage10)
+      }  else {
+        setTwoQuestion(2)
+      }
+    }
+
+    if (twoQuestion == 1) {
+      if (question12 == 'yes') {
+        //setTwoQuestion(2)
+      }  else {
+        //props.handleNextError(props.bouncePage4)
+      }
+    }
+
+    
+    if (twoQuestion == 2) {
+      if (question16 == 'yes') {
+        props.handleStudy(props.fluStudyPage16)
+      }  else {
+        props.handleNextError(props.bouncePage16)
+      }
+    }
+  }
+
+  function question10Value(event){
+     event.preventDefault()
+    setQuestion10(event.target.value)
+    if (event.target.value == 'moreThan7d') {
+      setQuestion(0)
+      setActiveButton(true)
+    } else {
+      setTwoQuestion(2)
+      setActiveButton(true)
+    }
+  }
+  function question12Value(event){
+     event.preventDefault()
+    
+  }
+  function question15Value(event){
+     event.preventDefault()
+    
+  }
+  function question16Value(event){
+     event.preventDefault()
+    setQuestion16(event.target.value)
+    if (event.target.value == 'yes') {
+      setActiveButton(false)
+    } else {
+      setActiveButton(false)
+    }
+  }
 
   const options = [
     { value: 'none', label: '' },
@@ -26,47 +90,73 @@ const Two = props => {
     { value: 'moreThan7d', label: '7 Days or more' }
   ]
 
+  const optionsYesNo = [
+    { value: 'none', label: '' },
+    { value: 'yes', label: 'yes' },
+    { value: 'no', label: 'no' }
+  ]
+
   return (
     <div className='col-12'>
       <p>FLOW TWO</p>
+      {twoQuestion >= 0 && props.fistPersonValue == true ? (
       <Select
           text={props.question10}
           description=''
           label='symptoms'
           type='select'
           id='symptoms'
-          
           options={options}
+          value={question10}
+          handleChange={question10Value}
           
-        />
-        <Switch
-          text={props.question12}
-          description={props.conditions12}
-          label='symptoms'
-          type='select'
-          id='symptomsTest'
-          
-        />
-
+         />):(null)}
+       {twoQuestion >= 0 && props.fistPersonValue == false ? (
          <Select
           text={props.question15}
           description=''
           label='symptoms'
           type='select'
           id='symptoms'
-          
           options={options}
+          value={question10}
+          handleChange={question10Value}
+        />):(null)}
+         
+         {twoQuestion == 1 ? (
+        <Switch
+          text={props.question12}
+          description={props.conditions12}
+          label='symptoms'
+          type='select'
+          id='symptomsTest'
+          value={question12}
+          options={optionsYesNo}
+          handleChange={question12Value}
           
-        />
-
+        />):(null)}
+        
+        {twoQuestion >= 2 ? (
         <Switch
           text={props.question16}
           description={props.conditions16}
           label='symptoms'
           type='select'
           id='symptomsTest'
+          value={question16}
+          options={optionsYesNo}
+          handleChange={question16Value}
           
-        />
+        />):(null)}
+        <button
+        className='btn btn-primary float-right next'
+        type='submit'
+        onClick={handleTwoChange}
+        disabled={activeButton}
+        
+      >
+        two
+      </button>
     </div>
   )
 }

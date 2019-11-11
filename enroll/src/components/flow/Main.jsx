@@ -13,6 +13,7 @@ const Main = props => {
   const [ageValue, setAgeValue] = useState ('');
   const [homeZip, setHomeZip] = useState (props.homeZip);
   const [whoValue, setWhoValue] = useState('')
+  
   //const [workZip, setWorkZip] = useState(props.workZip)
 
   function initializeReactGA () {
@@ -32,7 +33,7 @@ const Main = props => {
         Cookies.set('flu_zipcode', zipValue, { expires: 7 })
         setQuestion (question + 1);
       } else {
-        Event ('Enroll Screener', 'Home Zip', zipValue);
+        //Event ('Enroll Screener', 'Home Zip', zipValue);
         props.handleNextError (props.bouncePage1);
       }
     }
@@ -42,15 +43,15 @@ const Main = props => {
 
     if (question == 2) {
       if (ageValue >= 18) {
-         Event ('Enroll Screener', 'Home Zip', zipValue);
-         Event ('Enroll Screener', 'Work Zip', zipWorkValue);
-         Event ('Enroll Screener', 'Age', ageValue);
+         //Event ('Enroll Screener', 'Home Zip', zipValue);
+         //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
+         //Event ('Enroll Screener', 'Age', ageValue);
          setQuestion (question + 1);
         //props.handleNext (1);
       } else {
-         Event ('Enroll Screener', 'Home Zip', zipValue);
-         Event ('Enroll Screener', 'Work Zip', zipWorkValue);
-         Event ('Enroll Screener', 'Age', ageValue);
+         //Event ('Enroll Screener', 'Home Zip', zipValue);
+         //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
+         //Event ('Enroll Screener', 'Age', ageValue);
         props.handleNextError (props.bouncePage2);
       }
     }
@@ -78,11 +79,16 @@ const Main = props => {
     setAgeValue (event.target.value);
   }
   function handleWhoChange (event) {
-    Event ('Enroll Screener', 'Participent info', event.target.value);
+    //Event ('Enroll Screener', 'Participent info', event.target.value);
     setWhoValue(event.target.value)
     setQuestion(3)
+    if(event.target.value != 'myself'){
+      props.setFirstPersonValue(false)
+    }else{
+      props.setFirstPersonValue(true)
+    }
     if (event.target.value != 'none') {
-      Event ('Enroll Screener', 'Participent info', event.target.value);
+      //Event ('Enroll Screener', 'Participent info', event.target.value);
       setQuestion(3)
     } else {
       //props.handleNext(5)

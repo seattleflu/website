@@ -57,12 +57,12 @@ const Questions = props => {
 
 
   function addSymptomOne (event) {
-    Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
+    //Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
     if (question >= 1 && question < 7) {
       setQuestion(1)
       
     } else if(question > 7){
-      Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
+      //Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
       setQuestion(2)
       
     }else{
@@ -118,7 +118,7 @@ const Questions = props => {
       {question <= 0  && (referrer != 'schools' && referrer != 'households') ? (
         <div className='col-12 selectSymptoms'>
           <div className='row'>
-            <p>{props.question11}</p>
+            <p>{props.fistPersonValue ? props.question11 : props.question18}</p>
             <div className='symptom noSymptoms col-md-12 col-lg-12'>
             <label>
               <input
@@ -127,7 +127,7 @@ const Questions = props => {
                 value='None of the above'
                 onChange={addSymptomRemove}
               />
-              I currently do not have any symptoms
+              {props.fistPersonValue ? 'I':'They'} currently do not have any symptoms
               </label>
               <br />
             </div>
@@ -292,6 +292,7 @@ const Questions = props => {
       
       />):(null)}
       {question == 2 ? (<Two 
+        fistPersonValue={props.fistPersonValue}
         handleStudy={props.handleStudy}
         handleNextError={props.handleNextError}
         question10={props.question10}

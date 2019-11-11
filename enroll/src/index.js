@@ -13,6 +13,7 @@ import {
 
 const App = () => {
   const [zip, setZip] = useState('')
+  const [fistPersonValue, setFirstPersonValue] = useState(true)
   const [currentStep, setCurrentStep] = useState(0)
   const [question1, setQuestion1] = useState('')
   const [bouncePage1, setBouncePage1] = useState('')
@@ -321,7 +322,11 @@ const App = () => {
   function setMainZip(zipCode){
     setZip(zipCode)
   }
-
+function setFirstPerson(value){
+  if (value != null){
+    setFirstPersonValue(value)
+  }
+}
   function handleNext (value) {
     setCurrentStep(value)
     // if (currentStep == 5) {
@@ -364,6 +369,7 @@ const App = () => {
             homeZip={homeZip}
             question1Description={question1Description}
             question19Description={question19Description}
+            setFirstPersonValue={setFirstPersonValue}
           />
         ) : null}
         {currentStep == 1 ? (
@@ -373,6 +379,7 @@ const App = () => {
             handleNextError={handleNextError}
             handleStudy={handleStudy}
             currentStep={currentStep}
+            fistPersonValue={fistPersonValue}
 
             question11={question11}
             bouncePage11={bouncePage11}
@@ -406,6 +413,9 @@ const App = () => {
             question16={question16}
             bouncePage16={bouncePage16}
             fluStudyPage16={fluStudyPage16}
+            question18={question18}
+            bouncePage18={bouncePage18}
+            fluStudyPage18={fluStudyPage18}
             
           />
         ) : null}
