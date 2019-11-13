@@ -116,9 +116,12 @@ const Questions = props => {
   return (
     <div className='col-12'>
       <h2>Screening Questionnaire</h2>
-      <p class="steps">Step 2 of 3</p>
+      {mainQuestion <= 0 ? <p class="steps">Step 2 of 3</p> : null}
+      {mainQuestion >= 1 ? <p class="steps">Step 3 of 3</p> : null}
       {mainQuestion <= 0  && (referrer != 'schools' && referrer != 'households') ? (
+        
         <div className='col-12 selectSymptoms'>
+        
           <div className='row'>
             <p>{props.fistPersonValue ? props.question11 : props.question18}</p>
             <div className='symptom noSymptoms col-md-12 col-lg-12'>

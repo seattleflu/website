@@ -155,7 +155,7 @@ const optionsYesNo = [
 
   return (
     <div className='col-12'>
-    <p class="steps">Step 3 of 3</p>
+    
     {oneQuestion >= 0 ? (
       <Switch
           text={props.question4}
