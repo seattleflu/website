@@ -59,7 +59,7 @@ const One = props => {
         props.handleStudy(props.bouncePage8)
         //props.handleNextError(props.fluStudyPage8)
       }else if(question8 == 'yes' && props.referrerValue == 'schools'){
-         props.handleNextError(props.bouncePage8)
+        props.handleStudy((props.fluStudyPage8)
       }  else {
         props.handleNextError(props.bouncePage8)
       }
