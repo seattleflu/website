@@ -257,7 +257,7 @@
                             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                             map: map,
                             icon: iconBase,
-                            title: 'test',
+                            title: locations[i][0],
                             label: {color: '#fff', fontSize: '18px', fontWeight: '700', text: number.toString()}
                           });
                           google.maps.event.addListener(marker, 'click', (function(marker, i) {
