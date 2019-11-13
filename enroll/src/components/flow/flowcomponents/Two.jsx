@@ -105,7 +105,7 @@ const Two = props => {
 
   return (
     <div className='col-12'>
-      <p>FLOW TWO</p>
+      <p class="steps">Step 3 of 3</p>
       {twoQuestion >= 0 && props.fistPersonValue == true ? (
       <Select
           text={props.question10}
@@ -162,7 +162,7 @@ const Two = props => {
         disabled={activeButton}
         
       >
-        two
+        NEXT
       </button>
     </div>
   )

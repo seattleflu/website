@@ -236,3 +236,10 @@ input[type=tel].notValid{
 .noSymptoms label {
     margin-bottom: 6px;
 }
+
+.steps{
+    font-size: 16px;
+    color:#0A5CA8;
+    font-family: "Roboto Condensed";	
+    font-weight: 700;
+}
