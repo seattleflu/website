@@ -1,7 +1,6 @@
 var express = require ('express');
 var router = express.Router ();
 var home = require ('../services/index');
-
 var page = require ('../services/page');
 var site = require ('../services/site');
 
