@@ -56,11 +56,11 @@ const Two = props => {
      event.preventDefault()
     setQuestion10(event.target.value)
     if (event.target.value == 'moreThan7d') {
+      setActiveButton(false)
       setQuestion(0)
       setQuestion12('')
         setQuestion15('')
         setQuestion14('')
-      setActiveButton(true)
     } else {
       setQuestion12('')
         setQuestion15('')
@@ -84,6 +84,7 @@ const Two = props => {
       setActiveButton(false)
     } else {
       setActiveButton(false)
+      
     }
   }
 
