@@ -11,7 +11,7 @@ const Two = props => {
   const[question10, setQuestion10] = useState('')
   const[question12, setQuestion12] = useState('')
   const[question15, setQuestion15] = useState('')
-  const[question16, setQuestion16] = useState('')
+  const[question14, setQuestion14] = useState('')
   
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -44,10 +44,10 @@ const Two = props => {
 
     
     if (twoQuestion == 2) {
-      if (question16 == 'yes') {
-        props.handleStudy(props.fluStudyPage16)
+      if (question14 == 'yes') {
+        props.handleStudy(props.fluStudyPage14)
       }  else {
-        props.handleNextError(props.bouncePage16)
+        props.handleNextError(props.bouncePage14)
       }
     }
   }
@@ -59,12 +59,12 @@ const Two = props => {
       setQuestion(0)
       setQuestion12('')
         setQuestion15('')
-        setQuestion16('')
+        setQuestion14('')
       setActiveButton(true)
     } else {
       setQuestion12('')
         setQuestion15('')
-        setQuestion16('')
+        setQuestion14('')
       setTwoQuestion(2)
       setActiveButton(true)
     }
@@ -77,9 +77,9 @@ const Two = props => {
      event.preventDefault()
     
   }
-  function question16Value(event){
+  function question14Value(event){
      event.preventDefault()
-    setQuestion16(event.target.value)
+    setQuestion14(event.target.value)
     if (event.target.value == 'yes') {
       setActiveButton(false)
     } else {
@@ -145,14 +145,14 @@ const Two = props => {
         
         {twoQuestion >= 2 ? (
         <Switch
-          text={props.question16}
-          description={props.conditions16}
+          text={props.question14}
+          description={props.conditions14}
           label='symptoms'
           type='select'
           id='symptomsTest'
-          value={question16}
+          value={question14}
           options={optionsYesNo}
-          handleChange={question16Value}
+          handleChange={question14Value}
           
         />):(null)}
         <button

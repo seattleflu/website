@@ -307,9 +307,9 @@ const Questions = props => {
         question15={props.question15}
         bouncePage15={props.bouncePage15}
         fluStudyPage15={props.fluStudyPage15}
-        question16={props.question16}
-        bouncePage16={props.bouncePage16}
-        fluStudyPage16={props.fluStudyPage16}
+        question14={props.question14}
+        bouncePage14={props.bouncePage14}
+        fluStudyPage14={props.fluStudyPage14}
       />) : (null)}
       
       {mainQuestion == 0 ? (

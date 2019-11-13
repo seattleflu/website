@@ -56,12 +56,10 @@ const One = props => {
 
     if (oneQuestion == 3) {
       if (question8 == 'yes') {
-        props.handleStudy(props.bouncePage8)
+        props.handleStudy(props.fluStudyPage8)
         //props.handleNextError(props.fluStudyPage8)
-      }else if(question8 == 'yes' && props.referrerValue == 'schools'){
-        props.handleStudy((props.fluStudyPage8)
-      }  else {
-        props.handleNextError(props.bouncePage8)
+      }else {
+        props.handleStudy(props.bouncePage8)
       }
     }
 
