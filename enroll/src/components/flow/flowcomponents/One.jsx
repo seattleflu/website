@@ -16,7 +16,7 @@ const One = props => {
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
-    //ReactGA.pageview(' /enroll')
+    ReactGA.pageview(' /enroll')
   }
 
   useEffect(() => {
@@ -74,7 +74,7 @@ function question4Value (event) {
     setQuestion4(event.target.value)
     if (event.target.value == 'yes') {
       setActiveButton(true)
-      //Event ('Enroll Screener', 'Smartphone', event.target.value);
+      Event ('Enroll Screener', 'Smartphone', event.target.value);
       setOneQuestion(1)
     }else if(event.target.value == 'no'){
       setActiveButton(false)
@@ -84,7 +84,7 @@ function question4Value (event) {
       setQuestion7('')
       setQuestion8('')
     } else{
-      //Event ('Enroll Screener', 'Smartphone', event.target.value);
+      Event ('Enroll Screener', 'Smartphone', event.target.value);
       setOneQuestion(oneQuestion + 1)
     }
   }
@@ -103,7 +103,7 @@ function question4Value (event) {
       setQuestion7('')
       setQuestion8('')
     } else{
-      //Event ('Enroll Screener', 'Smartphone', event.target.value);
+      Event ('Enroll Screener', 'HH_3 people', event.target.value);
       setOneQuestion(oneQuestion + 1)
     }
   }
@@ -113,7 +113,7 @@ function question4Value (event) {
     setQuestion6(event.target.value)
     if (event.target.value == 'yes'&& props.referrerValue != 'schools') {
       setActiveButton(true)
-      //Event ('Enroll Screener', 'Smartphone', event.target.value);
+      Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
       setOneQuestion(3)
     }else if(event.target.value == 'yes' && props.referrerValue == 'schools'){
       setActiveButton(false)
@@ -123,7 +123,7 @@ function question4Value (event) {
       setQuestion7('')
       setQuestion8('')
     } else{
-      //Event ('Enroll Screener', 'Smartphone', event.target.value);
+      Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
       setOneQuestion(oneQuestion + 1)
     }
   }
@@ -134,13 +134,13 @@ function question4Value (event) {
     setQuestion8(event.target.value)
     if (event.target.value == 'yes') {
       setActiveButton(false)
-      //Event ('Enroll Screener', 'Smartphone', event.target.value);
+      Event ('Enroll Screener', 'HH_Baloxavir pills', event.target.value);
       setOneQuestion(3)
     }else if(event.target.value == 'no'){
       setActiveButton(false)
       setOneQuestion(3)
     } else{
-      //Event ('Enroll Screener', 'Smartphone', event.target.value);
+      Event ('Enroll Screener', 'HH_Baloxavir pills', event.target.value);
       //setOneQuestion(oneQuestion + 1)
     }
   }

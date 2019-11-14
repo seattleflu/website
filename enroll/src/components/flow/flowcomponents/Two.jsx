@@ -15,7 +15,7 @@ const Two = props => {
   
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
-    //ReactGA.pageview(' /enroll')
+    ReactGA.pageview(' /enroll')
   }
 
   useEffect(() => {
@@ -56,12 +56,14 @@ const Two = props => {
      event.preventDefault()
     setQuestion10(event.target.value)
     if (event.target.value == 'moreThan7d') {
+      Event ('Enroll Screener', 'Symptom length', event.target.value);
       setActiveButton(false)
       setQuestion(0)
       setQuestion12('')
         setQuestion15('')
         setQuestion14('')
     } else {
+      Event ('Enroll Screener', 'Symptom length', event.target.value);
       setQuestion12('')
         setQuestion15('')
         setQuestion14('')
@@ -82,8 +84,10 @@ const Two = props => {
     setQuestion14(event.target.value)
     if (event.target.value == 'yes') {
       setActiveButton(false)
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
     } else {
       setActiveButton(false)
+      Event ('Enroll Screener', 'Internet Device', event.target.value);
       
     }
   }

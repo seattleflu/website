@@ -18,7 +18,7 @@ const Main = props => {
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
-    //ReactGA.pageview(' /enroll')
+    ReactGA.pageview(' /enroll')
   }
 
   useEffect (() => {
@@ -33,7 +33,7 @@ const Main = props => {
         Cookies.set('flu_zipcode', zipValue, { expires: 7 })
         setQuestion (question + 1);
       } else {
-        //Event ('Enroll Screener', 'Home Zip', zipValue);
+        Event ('Enroll Screener', 'Home Zip', zipValue);
         props.handleNextError (props.bouncePage1);
       }
     }
@@ -48,13 +48,13 @@ const Main = props => {
       props.handleNextError (props.bouncePage18);
     }else if(ageValue >= 18 && (props.referrerValue != 'schools' || props.referrerValue != 'households' || props.referrerValue != 'webmd')){
       setQuestion (question + 1);
-      //Event ('Enroll Screener', 'Home Zip', zipValue);
-         //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
-         //Event ('Enroll Screener', 'Age', ageValue);
+        Event ('Enroll Screener', 'Home Zip', zipValue);
+        Event ('Enroll Screener', 'Work Zip', zipWorkValue);
+        Event ('Enroll Screener', 'Age', ageValue);
       } else {
-         //Event ('Enroll Screener', 'Home Zip', zipValue);
-         //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
-         //Event ('Enroll Screener', 'Age', ageValue);
+        Event ('Enroll Screener', 'Home Zip', zipValue);
+        Event ('Enroll Screener', 'Work Zip', zipWorkValue);
+        Event ('Enroll Screener', 'Age', ageValue);
         props.handleNextError (props.bouncePage2);
       }
     }
@@ -76,12 +76,13 @@ const Main = props => {
     props.setMainZip (event.target.value);
   }
   function handleZipWorkChange (event) {
-    //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
+    Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     setZipWorkValue (event.target.value);
   }
 
 
   function handleAgeChange (event) {
+    Event ('Enroll Screener', 'Your Age', event.target.value);
     setAgeValue (event.target.value);
     if(props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd'){
         if(event.taget.value <= 18){
@@ -93,7 +94,7 @@ const Main = props => {
     
   }
   function handleWhoChange (event) {
-    //Event ('Enroll Screener', 'Participent info', event.target.value);
+    Event ('Enroll Screener', 'Participent info', event.target.value);
     setWhoValue(event.target.value)
     setQuestion(3)
     if(event.target.value != 'myself'){
@@ -102,7 +103,7 @@ const Main = props => {
       props.setFirstPersonValue(true)
     }
     if (event.target.value != 'none') {
-      //Event ('Enroll Screener', 'Participent info', event.target.value);
+      Event ('Enroll Screener', 'Participent info', event.target.value);
       setQuestion(3)
     } else {
       //props.handleNext(5)

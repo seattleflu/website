@@ -17,7 +17,7 @@ const Questions = props => {
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
-    //ReactGA.pageview(' /enroll')
+    ReactGA.pageview(' /enroll')
   }
 
   useEffect(() => {
@@ -59,12 +59,12 @@ const Questions = props => {
 
 
   function addSymptomOne (event) {
-    //Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
+    Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
     if (mainQuestion >= 1 && mainQuestion < 7) {
       setMainQuestion(1)
       
     } else if(mainQuestion > 7){
-      //Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
+      Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
       setMainQuestion(2)
       
     }else{
@@ -116,8 +116,8 @@ const Questions = props => {
   return (
     <div className='col-12'>
       <h2>Screening Questionnaire</h2>
-      {mainQuestion <= 0 ? <p class="steps">Step 2 of 3</p> : null}
-      {mainQuestion >= 1 ? <p class="steps">Step 3 of 3</p> : null}
+      {mainQuestion <= 1 ? <p class="steps">Step 2 of 3</p> : null}
+      {mainQuestion >= 2 ? <p class="steps">Step 3 of 3</p> : null}
       {mainQuestion <= 0  && (referrer != 'schools' && referrer != 'households') ? (
         
         <div className='col-12 selectSymptoms'>
