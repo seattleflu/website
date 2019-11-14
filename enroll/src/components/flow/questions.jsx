@@ -95,7 +95,7 @@ const Questions = props => {
 
   function addSymptomRemove (event) {
     setSymptopmsList([event.target.value])
-    Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
+    Event ('Enroll Screener', 'Current Flu Symptoms', 'None');
     document.querySelectorAll('input[type=checkbox]').forEach(el => {
       if (el.value == event.target.value) {
       } else {
