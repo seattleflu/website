@@ -9,9 +9,11 @@
             <img src="/images/tissue_placeholder.png">
         </div>
         <div class="col-md-6">
-            <h1>There’s Nothing Funny About the Flu</h1>
+            <!-- <h1>There’s Nothing Funny About the Flu</h1>
             <h3>But there is something you can do about it</h3>
-            <p>The flu’s no laughing matter. We started the Seattle Flu Study because the flu makes life miserable for thousands of Seattleites every single year. And we want to know how to stop it. If you live in Seattle, please take our survey to see if you qualify for one of our studies. The more participants we have, the faster we can help.</p>
+            <p>The flu’s no laughing matter. We started the Seattle Flu Study because the flu makes life miserable for thousands of Seattleites every single year. And we want to know how to stop it. If you live in Seattle, please take our survey to see if you qualify for one of our studies. The more participants we have, the faster we can help.</p> -->
+            <h1><%= pageData[0].fields.title %></h1>
+            <%- md.render(pageData[0].fields.content) %>
             <a href="/enroll"><button class="green">Take the Survey</button></a>
         </div>
     </div>
