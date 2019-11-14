@@ -1060,3 +1060,34 @@ display: none;
     padding-bottom: 50px;
   }
 }
+
+
+.ads-main{
+  /* border-bottom-right-radius: 300px; */
+  border-radius: 600px/300px;
+  border-top-right-radius:0px;
+  border-top-left-radius:0px;
+  border-bottom-left-radius:0px;
+  background-color: #fff;
+}
+.mainAdsSection{
+  background-color: #095DA8;
+}
+
+header.light .nav-item .adsNav, .mobile-nav li .adsNav{
+  font-size: 14px;
+  color:#1BAB4C;
+}
+
+header.light .nav-item .adsNav::before {
+  content: "";
+  background-image: url(/images/nav-arrow.png);
+  background-size: 20px 12px;
+  display: inline-block;
+  transition: all 0.5s;
+  width: 20px;
+  height: 12px;
+  float: left;
+  margin-top: 6px;
+  margin-right: 5px;
+}
