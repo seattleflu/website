@@ -39,6 +39,7 @@ const Main = props => {
     }
     if (question == 1) {
       setQuestion (question + 1);
+      Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     }
 
     if (question == 2) {
@@ -76,7 +77,7 @@ const Main = props => {
     props.setMainZip (event.target.value);
   }
   function handleZipWorkChange (event) {
-    Event ('Enroll Screener', 'Work Zip', zipWorkValue);
+    //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     setZipWorkValue (event.target.value);
   }
 
