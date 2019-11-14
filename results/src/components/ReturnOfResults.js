@@ -15,8 +15,21 @@ export default class ReturnOfResults extends React.Component {
     status: '',
     organisms_present: [],
     sequenced: false,
-    content: null
+    content: null,
+    defaultContent: {
+      'title': '',
+      'paragraphOne': '',
+      'buttonText': ''
+    }
   };
+
+  componentDidMount() {
+    this.getContentFromContentful('resultType', 'default')
+    .then(defaultContent => {
+      this.setState({ defaultContent: defaultContent })
+    })
+    .catch(console.error)
+  }
 
   submitBarcode = (barcode) => {
     resultService.getBarcodeResults(barcode)
@@ -64,7 +77,7 @@ export default class ReturnOfResults extends React.Component {
   }
 
     render(){
-        const {content, status, organisms_present, sequenced, barcode} = this.state;
+        const {defaultContent, content, status, organisms_present, sequenced, barcode} = this.state;
         let display;
 
         switch(status) {
@@ -75,7 +88,7 @@ export default class ReturnOfResults extends React.Component {
                 display = <SampleProcessing content={content}/>;
                 break;
             case 'unknownBarcode':
-                display = <div><UnknownBarcode content={content}/><BarcodeSearchForm submitBarcode={ this.submitBarcode }/></div>;
+                display = <div><UnknownBarcode content={content}/><BarcodeSearchForm content={defaultContent} submitBarcode={ this.submitBarcode }/></div>;
                 break;
             case 'complete':
                 display = (
@@ -84,19 +97,16 @@ export default class ReturnOfResults extends React.Component {
                 )
                 break;
             default:
-                display = <BarcodeSearchForm submitBarcode={this.submitBarcode}/>;
+                display = <BarcodeSearchForm content={defaultContent} submitBarcode={this.submitBarcode}/>;
         }
 
         return (
             <OuterContainer>
                 <ContentContainer>
-                    <h1 className="align-center p-4">
-                      Return of Results
-                    </h1>
+                    <h1 className="align-center p-4">{defaultContent.title}</h1>
                     {display}
                 </ContentContainer>
             </OuterContainer>
         )
-
     }
 }

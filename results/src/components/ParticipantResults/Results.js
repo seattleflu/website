@@ -30,6 +30,7 @@ export default class Results extends React.Component {
     if(this.state.results.length === 0){
       this.props.getContent('results','negative')
       .then(content => {
+        content["footer"] = this.state.header.parargraphTwo
         this.setState({
           display: (
             <NegativeResult content={content}/>
@@ -41,6 +42,7 @@ export default class Results extends React.Component {
       Promise.all(this.state.results.map(
         pathogen => this.props.getContent('results', pathogen)
       )).then(result => {
+        result = result.map(r => ({...r, footer: this.state.header.paragraphTwo}))
         this.setState({
           display: (
             <PositiveResult results={result} sequence={this.state.sequenced} barcode={this.state.barcode}/>

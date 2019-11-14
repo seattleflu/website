@@ -28,7 +28,7 @@ export default function PositiveResult(props) {
     return (
         <div>
             <h3 className='align-center'>
-                Your research test is positive for: <br/>
+                {props.results[0].title} <br/>
             </h3>
             <STabs
                 selectedTabClassName='is-selected'
