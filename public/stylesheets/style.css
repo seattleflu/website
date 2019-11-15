@@ -193,6 +193,16 @@ footer #copyright-bar {
   #footer-logos img {
     flex-basis: 50%;
   }
+  #footerLogo, #footerMenu {
+    text-align: center;
+  }
+  #footerMenu ul {
+    padding-left: 0;
+  }
+  #footerMenu li {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 
