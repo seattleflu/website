@@ -915,13 +915,15 @@ h1.number {
 .landing-text {
   padding-top: 60px;
 }
-.landing-text p {
+.landing-text p, 
+.landing-text ul li,
+.landing-text ol li {
   font-size: 18px;
   line-height: 25px;
 }
 .landing-text ul li {
-  font-weight: bold;
-  font-size: 18px;
+  /* font-weight: bold; */
+  /* font-size: 18px; */
 }
 .landing-text button {
   margin-top: 34px;
