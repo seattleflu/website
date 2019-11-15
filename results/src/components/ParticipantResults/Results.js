@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Markdown from 'react-markdown';
 
-import { Feature, FeatureH3, Link } from '../styledComponents';
+import { Feature, FeatureH3 } from '../styledComponents';
 import NegativeResult from './NegativeResult';
 import PositiveResult from './PositiveResult';
 
@@ -59,7 +59,7 @@ export default class Results extends React.Component {
       <div>
         <Feature title={header.title}>
           <FeatureH3>
-            <Markdown source={header.paragraphOne} renderers={{paragraph: FeatureH3, link: Link}}/>
+            <Markdown source={header.paragraphOne} renderers={{paragraph: FeatureH3}}/>
           </FeatureH3>
         </Feature>
         {display? display: <p>Loading placeholder</p>}
