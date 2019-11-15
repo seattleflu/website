@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { useRoutes, useRedirect } from 'hookrouter'
-import Input from './components/presentational/Input.jsx'
-import Main from './components/steps/Main.jsx'
-import FlowOne from './components/steps/FlowOne.jsx'
-import FlowTwo from './components/steps/FlowTwo.jsx'
-import FlowThree from './components/steps/FlowThree.jsx'
-import FlowFour from './components/steps/FlowFour.jsx'
-import Error from './components/steps/Error.jsx'
+import Main from './components/flow/Main.jsx'
+import Questions from './components/flow/questions.jsx'
+import Error from './components/flow/Error.jsx'
 import {
   getThankyou,
   getEnrollmentQuestions,
@@ -17,6 +13,7 @@ import {
 
 const App = () => {
   const [zip, setZip] = useState('')
+  const [fistPersonValue, setFirstPersonValue] = useState(true)
   const [currentStep, setCurrentStep] = useState(0)
   const [question1, setQuestion1] = useState('')
   const [bouncePage1, setBouncePage1] = useState('')
@@ -325,7 +322,11 @@ const App = () => {
   function setMainZip(zipCode){
     setZip(zipCode)
   }
-
+function setFirstPerson(value){
+  if (value != null){
+    setFirstPersonValue(value)
+  }
+}
   function handleNext (value) {
     setCurrentStep(value)
     // if (currentStep == 5) {
@@ -359,25 +360,32 @@ const App = () => {
             question2={question2}
             bouncePage2={bouncePage2}
             fluStudyPage2={fluStudyPage2}
+            question9={question9}
+            bouncePage9={bouncePage9}
+            fluStudyPage9={fluStudyPage9}
             question19={question19}
             bouncePage19={bouncePage19}
             fluStudyPage19={fluStudyPage19}
             homeZip={homeZip}
             question1Description={question1Description}
             question19Description={question19Description}
+            setFirstPersonValue={setFirstPersonValue}
+            referrerValue={referrerValue}
           />
         ) : null}
         {currentStep == 1 ? (
-          <FlowOne
+          <Questions
             referrerValue={referrerValue}
             handleNext={handleNext}
             handleNextError={handleNextError}
             handleStudy={handleStudy}
             currentStep={currentStep}
-            question3={question3}
-            bouncePage3={bouncePage3}
-            fluStudyPage3={fluStudyPage3}
-            conditions3={conditions3}
+            fistPersonValue={fistPersonValue}
+
+            question11={question11}
+            bouncePage11={bouncePage11}
+            fluStudyPage11={fluStudyPage11}
+            
             question4={question4}
             bouncePage4={bouncePage4}
             fluStudyPage4={fluStudyPage4}
@@ -393,101 +401,26 @@ const App = () => {
             question8={question8}
             bouncePage8={bouncePage8}
             fluStudyPage8={fluStudyPage8}
-            question9={question9}
-            bouncePage9={bouncePage9}
-            fluStudyPage9={fluStudyPage9}
-            question13={question13}
-            bouncePage13={bouncePage13}
-            fluStudyPage13={fluStudyPage13}
-            conditions13={conditions13}
-          />
-        ) : null}
-        {currentStep == 2 ? (
-          <FlowTwo
-            handleNext={handleNext}
-            handleNextError={handleNextError}
-            handleStudy={handleStudy}
-            currentStep={currentStep}
-            question9={question9}
-            bouncePage9={bouncePage9}
-            fluStudyPage9={fluStudyPage9}
+
             question10={question10}
             bouncePage10={bouncePage10}
             fluStudyPage10={fluStudyPage10}
-            question11={question11}
-            bouncePage11={bouncePage11}
-            fluStudyPage11={fluStudyPage11}
             question12={question12}
             bouncePage12={bouncePage12}
             fluStudyPage12={fluStudyPage12}
-            question13={question13}
-            bouncePage13={bouncePage13}
-            fluStudyPage13={fluStudyPage13}
+            question15={question15}
+            bouncePage15={bouncePage15}
+            fluStudyPage15={fluStudyPage15}
             question14={question14}
             bouncePage14={bouncePage14}
             fluStudyPage14={fluStudyPage14}
-            question16={question16}
-            bouncePage16={bouncePage16}
-            fluStudyPage16={fluStudyPage16}
-            conditions13={conditions13}
-          />
-        ) : null}
-
-        {currentStep == 3 ? (
-          <FlowThree
-            handleNext={handleNext}
-            handleNextError={handleNextError}
-            handleStudy={handleStudy}
-            currentStep={currentStep}
-            question10={question10}
-            bouncePage10={bouncePage10}
-            fluStudyPage10={fluStudyPage10}
-            question15={question15}
-            bouncePage15={bouncePage15}
-            fluStudyPage15={fluStudyPage15}
-            question16={question16}
-            bouncePage16={bouncePage16}
-            fluStudyPage16={fluStudyPage16}
-            question12={question12}
-            bouncePage12={bouncePage12}
-            fluStudyPage12={fluStudyPage12}
-            question17={question17}
-            bouncePage17={bouncePage17}
-            fluStudyPage17={fluStudyPage17}
             question18={question18}
             bouncePage18={bouncePage18}
             fluStudyPage18={fluStudyPage18}
-            conditions17={conditions17}
+            
           />
         ) : null}
-
-        {currentStep == 4 ? (
-          <FlowFour
-            handleNext={handleNext}
-            handleNextError={handleNextError}
-            handleStudy={handleStudy}
-            currentStep={currentStep}
-            question10={question10}
-            bouncePage10={bouncePage10}
-            fluStudyPage10={fluStudyPage10}
-            question15={question15}
-            bouncePage15={bouncePage15}
-            fluStudyPage15={fluStudyPage15}
-            question16={question16}
-            bouncePage16={bouncePage16}
-            fluStudyPage16={fluStudyPage16}
-            question12={question12}
-            bouncePage12={bouncePage12}
-            fluStudyPage12={fluStudyPage12}
-            question17={question17}
-            bouncePage17={bouncePage17}
-            fluStudyPage17={fluStudyPage17}
-            question18={question18}
-            bouncePage18={bouncePage18}
-            fluStudyPage18={fluStudyPage18}
-            conditions17={conditions17}
-          />
-        ) : null}
+        
       </form>
       {currentStep == 5 ? (
         <Error
