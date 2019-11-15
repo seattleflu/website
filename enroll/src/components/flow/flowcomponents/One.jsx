@@ -97,6 +97,7 @@ function question4Value (event) {
        Event ('Enroll Screener', 'HH_3 people', event.target.value);
       setOneQuestion(2)
     }else if(event.target.value == 'no'){
+      Event ('Enroll Screener', 'HH_3 people', event.target.value);
       setActiveButton(false)
       setOneQuestion(1)
       setQuestion6('')
