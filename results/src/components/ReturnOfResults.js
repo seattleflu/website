@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect, createContext } from 'react';
 
 import { getContentfulResults } from '../../../services/results';
-import { OuterContainer, ContentContainer } from './styledComponents';
+import { OuterContainer, ContentContainer, LanguageButton } from './styledComponents';
 import BarcodeSearchForm from './ParticipantResults/BarcodeSearchForm';
 import SampleNotReceived from './ParticipantResults/SampleNotReceived';
 import SampleProcessing from './ParticipantResults/SampleProcessing';
@@ -9,12 +9,12 @@ import UnknownBarcode from './ParticipantResults/UnknownBarcode';
 import Results from './ParticipantResults/Results';
 
 export const resultsContext = createContext()
-
 export default function ReturnOfResults() {
   const [defaultContent, setDefaultContent] = useState({})
   const [results, setResults] = useState({})
   const [content, setContent] = useState(null)
   const [display, setDisplay] = useState(<BarcodeSearchForm/>)
+  const [spanish, setSpanish] = useState(false)
 
   useEffect(() => {
     let isCurrent = true
@@ -26,7 +26,7 @@ export default function ReturnOfResults() {
     })
     .catch(console.error)
     return function cleanup(){ isCurrent = false }
-  }, [])
+  }, [spanish])
 
   useEffect(() => {
     let isCurrent = true
@@ -57,11 +57,11 @@ export default function ReturnOfResults() {
       })
     }
     return function cleanup(){ isCurrent = false }
-  }, [results])
+  }, [spanish, results])
 
   const getContentFromContentful = (contentType, resultType) => {
     return(
-      getContentfulResults(contentType, resultType)
+      getContentfulResults(contentType, spanish ? resultType + '-es' : resultType)
       .then(content => {
         return content.items[0].fields
       })
@@ -73,8 +73,13 @@ export default function ReturnOfResults() {
     <resultsContext.Provider value={{ defaultContent, results, setResults, content, getContentFromContentful }}>
       <OuterContainer>
           <ContentContainer>
-              <h1 className="align-center p-4">{defaultContent.title}</h1>
-              {display}
+            <div className="h-25 align-center pt-3">
+              <h1 className="pt-3">{defaultContent.title}</h1>
+              <LanguageButton className="float-right" onClick={()=> setSpanish(!spanish)}>
+                {spanish ? "English" : "Español"}
+              </LanguageButton>
+            </div>
+            {display}
           </ContentContainer>
       </OuterContainer>
     </resultsContext.Provider>

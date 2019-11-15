@@ -10,6 +10,10 @@ STab.tabsRole = 'Tab';
 STabPanel.tabsRole = 'TabPanel';
 
 function matchResultComponent(content){
+    if (content.id.endsWith('-es')) {
+        const lastIndex = content.id.lastIndexOf('-')
+        content.id = content.id.substring(0, lastIndex)
+    }
     const ResultComponent = positiveResults[content.id];
     return <ResultComponent/>
 }
@@ -19,7 +23,7 @@ export default function PositiveResult() {
     const { resultContent } = useContext(contentContext)
 
     const resultTabs = resultContent.map((content) =>
-        <STab key={content.id}>{content.id}</STab>
+        <STab key={content.id}>{content.tab}</STab>
     );
 
     const resultPanels = resultContent.map((content) =>

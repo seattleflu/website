@@ -33,7 +33,7 @@ export const LargerParagraph = styled.p`
   font-size: 20px;
   line-height: 1.5;
   margin: 1em auto;
-  max-width: 80%;
+  max-width: 90%;
   @media (max-width: 735px) {
     max-width: 95%;
   }
@@ -70,7 +70,7 @@ export const FeatureContainer = styled.div`
   background-color: #0a5ca8;
   border-radius: 3px;
   padding: 1em 2em;
-  margin: 4em auto;
+  margin: 3em auto;
   font-weight: 400;
   @media (max-width: 735px) {
     flex-direction: column;
@@ -251,7 +251,6 @@ export const STab = styled(Tab)`
   cursor: pointer;
   font-size: 20px;
   font-weight: 800;
-  text-transform: uppercase;
 
   &.is-selected {
     border-color: #92C4DA;
@@ -282,4 +281,16 @@ export const Banner = styled.div`
   background-color: #F7A812;
   padding: 1em;
   text-align: center;
+`
+
+export const LanguageButton = styled.button`
+  background-color: #1BAB4C;
+  color: #fff;
+  border: 2px solid #1BAB4C;
+  border-radius: 3px;
+  text-transform: uppercase;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `
