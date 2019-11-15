@@ -1,14 +1,38 @@
-<% include ./partials/header {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
-
-<div class="secondary container">
-    <h1><%= title %></h1>
+<% include ./partials/header {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll } %>
+<div class="container-full landing-header">
+    <div class="container">
+        <h1><%= pageData[0].fields.title %></h1>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <polygon fill="white" points="0,100 0,0 104,100"/>
+    </svg>
+</div>
+<div class="container landing-content">
     <div class="row">
-        <div class="col-12">
-            <p>Resource page</p>
-
+        
+        <div class="col-lg-8 landing-text secondary">
+            <%- //md.render(pageData[0].fields.content) %>
             
+            <% if(pageData[0].fields.content1){ %>
+            <%- md.render(pageData[0].fields.content1) %>
+            <% } %>
+
+
+
+            <% if(pageData[0].fields.ctaCopy){ %>
+                <a href="/enroll"><button class="green"><%= pageData[0].fields.ctaCopy %></button></a>
+            <% } %>
+
+
+
+            <% if(pageData[0].fields.content2){ %>
+            <%- md.render(pageData[0].fields.content2) %>
+            <% } %>
         </div>
     </div>
 </div>
 
-<% include ./partials/footer  {logos: logos}%>
+
+
+
+<% include ./partials/footer  {logos: logos} %>

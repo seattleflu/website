@@ -22,6 +22,8 @@ var contactRouter = require('./routes/contactus');
 var mediaRouter = require('./routes/media');
 var errorRouter = require('./routes/error')
 var ssecRouter = require('./routes/ssec')
+var adsRouter = require('./routes/ads')
+var resourceRouter = require('./routes/resource')
 
 const production = process.env.NODE_ENV === "production";
 
@@ -82,6 +84,8 @@ app.use('/swabandsend', swabandsendRouter);
 app.use('/contact-us', contactRouter);
 app.use('/ssec', ssecRouter);
 app.use('/thank-you/:thankyouid', thankyouRouter)
+app.use('/a/:ad', adsRouter)
+app.use('/resources/:resource', resourceRouter)
 app.use('/', indexRouter)
 app.use(errorRouter);
 
