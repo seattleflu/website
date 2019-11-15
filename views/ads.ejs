@@ -1,11 +1,41 @@
 
-<% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
-<div class="secondary container">
-    <h1><%= title %></h1>
+<% include ./partials/ads-header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
+
+<div class="ads-main container-full">
+<div class="row">
+<div class="ads-copy container">
     <div class="row">
-        <div class="col-12">
-            
-            <p>Ads Page</p>
+        <div class="col-md-6">
+            <img src="/images/tissue_placeholder.png">
+        </div>
+        <div class="col-md-6">
+            <!-- <h1>There’s Nothing Funny About the Flu</h1>
+            <h3>But there is something you can do about it</h3>
+            <p>The flu’s no laughing matter. We started the Seattle Flu Study because the flu makes life miserable for thousands of Seattleites every single year. And we want to know how to stop it. If you live in Seattle, please take our survey to see if you qualify for one of our studies. The more participants we have, the faster we can help.</p> -->
+            <h1><%= pageData[0].fields.title %></h1>
+            <%- md.render(pageData[0].fields.content) %>
+            <a href="/enroll"><button class="green">Take the Survey</button></a>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="container-full ads-form">
+    <div class="container">
+        <div class="row">
+         <% if(pageData[0].fields.emailSignup){ %>
+            <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                <h2>Stay informed. Sign up for email updates on flu season in Seattle.</h2>
+                <form id="adsForm">
+                    <input type="text" id="firstNameInput" name="firstName" placeholder="First Name (required)">
+                    <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name (required)">
+                    <input type="text" id="emailInput" name="email" placeholder="Email Address (required)">
+                    <input type="text" id="zipInput" name="zipcode" placeholder="Zip Code (required)">
+                    <input type="submit" id="submitBtn" value="Submit">
+                </form> 
+                <p>We respect your privacy and will not give your email to any other organization. You can unsubscribe from updates at any time.</p>
+            </div>
+            <% } %>    
         </div>
     </div>
 </div>
