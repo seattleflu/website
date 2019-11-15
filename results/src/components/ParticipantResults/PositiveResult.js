@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, createContext } from 'react';
 
+import { contentContext } from './Results';
 import * as positiveResults from './PositiveResults';
 import { STabs, STabList, STab, STabPanel } from '../styledComponents';
 
@@ -8,27 +9,31 @@ STabList.tabsRole = 'TabList';
 STab.tabsRole = 'Tab';
 STabPanel.tabsRole = 'TabPanel';
 
-function matchResultComponent(result){
-    const ResultComponent = positiveResults[result.id];
-    return <ResultComponent content={result}/>
+function matchResultComponent(content){
+    const ResultComponent = positiveResults[content.id];
+    return <ResultComponent/>
 }
 
-export default function PositiveResult(props) {
+export const positiveResultContext = createContext();
+export default function PositiveResult() {
+    const { resultContent } = useContext(contentContext)
 
-    const resultTabs = props.results.map((result) =>
-        <STab key={result.id}>{result.id}</STab>
+    const resultTabs = resultContent.map((content) =>
+        <STab key={content.id}>{content.id}</STab>
     );
 
-    const resultPanels = props.results.map((result) =>
-        <STabPanel key={result.id}>
-            {matchResultComponent(result)}
-        </STabPanel>
+    const resultPanels = resultContent.map((content) =>
+        <positiveResultContext.Provider key={content.id} value={{ content }}>
+            <STabPanel>
+                {matchResultComponent(content)}
+            </STabPanel>
+        </positiveResultContext.Provider>
     );
 
     return (
         <div>
             <h3 className='align-center'>
-                {props.results[0].title} <br/>
+                {resultContent[0].title} <br/>
             </h3>
             <STabs
                 selectedTabClassName='is-selected'

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Markdown from 'react-markdown';
 
+import { positiveResultContext } from '../PositiveResult';
 import { LargerParagraph, Feature, UnorderedList } from '../../styledComponents';
 import ResultsMoreInfo from '../ResultsMoreInfo';
 
 
-export default function Adenovirus(props) {
-  const { content } = props;
+export default function Adenovirus() {
+  const { content } = useContext(positiveResultContext);
 
   return(
     <div>

@@ -1,69 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import * as Markdown from 'react-markdown';
 
+import { resultsContext } from '../ReturnOfResults';
 import { Feature, FeatureH3 } from '../styledComponents';
 import NegativeResult from './NegativeResult';
 import PositiveResult from './PositiveResult';
 
-export default class Results extends React.Component {
-  state = {
-    barcode: null,
-    sequenced: null,
-    results: null,
-    header: null,
-    display: null
-  }
+export const contentContext = createContext();
 
-  static getDerivedStateFromProps(props, state) {
-    if(props.results !== state.results) {
-      return {
-        barcode: props.barcode,
-        sequenced: props.sequenced,
-        results: props.results,
-        header: props.content
-      }
-    }
-    return null;
-  }
+export default function Results() {
+  const { results, content, getContentFromContentful } = useContext(resultsContext)
+  const { organisms_present } = results
+  const [display, setDisplay] = useState(null)
+  const [resultContent, setResultContent] = useState({})
 
-  componentDidMount() {
-    if(this.state.results.length === 0){
-      this.props.getContent('results','negative')
-      .then(content => {
-        content["footer"] = this.state.header.parargraphTwo
-        this.setState({
-          display: (
-            <NegativeResult content={content}/>
-          )
-        })
+  useEffect(() => {
+    let isCurrent = true
+    if (!organisms_present) {
+      getContentFromContentful('results', 'negative')
+      .then(negativeContent => {
+        negativeContent["footer"] = content.paragraphTwo
+        if (isCurrent) {
+          setResultContent(negativeContent)
+          setDisplay(<NegativeResult />)
+        }
       })
-      .catch(console.error)
     } else {
-      Promise.all(this.state.results.map(
-        pathogen => this.props.getContent('results', pathogen)
-      )).then(result => {
-        result = result.map(r => ({...r, footer: this.state.header.paragraphTwo}))
-        this.setState({
-          display: (
-            <PositiveResult results={result} sequence={this.state.sequenced} barcode={this.state.barcode}/>
-          )
-        })
+      Promise.all(organisms_present.map(
+        pathogen => getContentFromContentful('results', pathogen)
+      )).then(positiveResults => {
+        positiveResults = positiveResults.map(r => ({...r, footer: content.paragraphTwo}))
+        if (isCurrent) {
+          setResultContent(positiveResults)
+          setDisplay(<PositiveResult/>)
+        }
       }).catch(console.error)
     }
-  }
+    return function cleanup() { isCurrent = false }
+  }, [content])
 
-  render() {
-    const { header, display } = this.state;
-
-    return(
-      <div>
-        <Feature title={header.title}>
-          <FeatureH3>
-            <Markdown source={header.paragraphOne} renderers={{paragraph: FeatureH3}}/>
-          </FeatureH3>
-        </Feature>
+  return(
+    <div>
+      <Feature title={content.title}>
+        <Markdown source={content.paragraphOne} renderers={{paragraph: FeatureH3}}/>
+      </Feature>
+      <contentContext.Provider value={{ resultContent }}>
         {display? display: <p>Loading placeholder</p>}
-      </div>
-    )
-  }
+      </contentContext.Provider>
+    </div>
+  )
+
 }

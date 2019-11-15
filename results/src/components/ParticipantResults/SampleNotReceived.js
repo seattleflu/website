@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Markdown from 'react-markdown';
 
+import { resultsContext } from '../ReturnOfResults';
 import { Feature, FeatureH3, Br } from '../styledComponents';
 
-export default function SampleNotReceived(props) {
-  const { content } = props;
+export default function SampleNotReceived() {
+  const { content } = useContext(resultsContext);
 
   return(
     <Feature title={content.title}

@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Markdown from 'react-markdown';
 
+import { positiveResultContext } from '../PositiveResult';
 import { LargerParagraph, FeatureH3, EvenTwoColumnFeature } from '../../styledComponents';
 import ResultsMoreInfo from '../ResultsMoreInfo';
 
-export default function Flu(props) {
-  const { content } = props;
+export default function Flu() {
+  const { content } = useContext(positiveResultContext);
 
   return(
     <div>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { resultsContext } from '../ReturnOfResults';
 import { Banner } from '../styledComponents';
 
-export default function UnknownBarcode(props) {
-  const content = props.content;
+export default function UnknownBarcode() {
+  const { content } = useContext(resultsContext)
 
   return (
       <Banner>

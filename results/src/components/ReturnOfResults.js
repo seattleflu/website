@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Fragment, useState, useEffect, createContext } from 'react';
 
+import { getContentfulResults } from '../../../services/results';
 import { OuterContainer, ContentContainer } from './styledComponents';
 import BarcodeSearchForm from './ParticipantResults/BarcodeSearchForm';
 import SampleNotReceived from './ParticipantResults/SampleNotReceived';
@@ -7,68 +8,60 @@ import SampleProcessing from './ParticipantResults/SampleProcessing';
 import UnknownBarcode from './ParticipantResults/UnknownBarcode';
 import Results from './ParticipantResults/Results';
 
-const resultService = require('../../../services/results');
+export const resultsContext = createContext()
 
-export default class ReturnOfResults extends React.Component {
-  state = {
-    barcode: '',
-    status: '',
-    organisms_present: [],
-    sequenced: false,
-    content: null,
-    defaultContent: {
-      'title': '',
-      'paragraphOne': '',
-      'buttonText': ''
-    }
-  };
+export default function ReturnOfResults() {
+  const [defaultContent, setDefaultContent] = useState({})
+  const [results, setResults] = useState({})
+  const [content, setContent] = useState(null)
+  const [display, setDisplay] = useState(<BarcodeSearchForm/>)
 
-  componentDidMount() {
-    this.getContentFromContentful('resultType', 'default')
+  useEffect(() => {
+    let isCurrent = true
+    getContentFromContentful('resultType', 'default')
     .then(defaultContent => {
-      this.setState({ defaultContent: defaultContent })
-    })
-    .catch(console.error)
-  }
-
-  submitBarcode = (barcode) => {
-    resultService.getBarcodeResults(barcode)
-    .then(response => {
-      if (response) {
-        this.setResult(response)
+      if (isCurrent) {
+        setDefaultContent(defaultContent)
       }
-    });
-  }
-
-  setResult = (newResults) => {
-    // Convert ID3C lineages to generic pathogen names used in the rest of the app
-    if(newResults["organisms_present"]){
-      newResults["organisms_present"] = newResults["organisms_present"].map(lineage => {
-        const lineageMap = {
-          "Adenovirus": "adenovirus",
-          "Human_coronavirus": "coronavirus",
-          "Enterovirus": "enterovirus",
-          "Influenza": "flu",
-          "Human_metapenumovirus": "hmpv",
-          "Human_parainfluenza": "parainfluenza",
-          "Rhinovirus": "rhinovirus",
-          "RSV": "rsv"
-        }
-        return lineageMap[lineage]
-      });
-    }
-
-    this.getContentFromContentful('resultType', newResults['status'])
-    .then(content => {
-      newResults['content'] = content;
-      this.setState(newResults)
     })
     .catch(console.error)
-  }
+    return function cleanup(){ isCurrent = false }
+  }, [])
 
-  getContentFromContentful(contentType, resultType) {
+  useEffect(() => {
+    let isCurrent = true
+    if ("status" in results){
+      getContentFromContentful('resultType', results.status)
+      .then(content => {
+        if (isCurrent) {
+          setContent(content)
+          let display;
+          switch(results.status) {
+              case 'notReceived':
+                  display = <SampleNotReceived />;
+                  break;
+              case 'processing':
+                  display = <SampleProcessing />;
+                  break;
+              case 'unknownBarcode':
+                  display = <Fragment><UnknownBarcode/> <BarcodeSearchForm/></Fragment>;
+                  break;
+              case 'complete':
+                  display = <Results/>
+                  break;
+              default:
+                  display = <BarcodeSearchForm/>;
+          }
+          setDisplay(display)
+        }
+      })
+    }
+    return function cleanup(){ isCurrent = false }
+  }, [results])
+
+  const getContentFromContentful = (contentType, resultType) => {
     return(
-      resultService.getContentfulResults(contentType, resultType)
+      getContentfulResults(contentType, resultType)
       .then(content => {
         return content.items[0].fields
       })
@@ -76,37 +69,15 @@ export default class ReturnOfResults extends React.Component {
     )
   }
 
-    render(){
-        const {defaultContent, content, status, organisms_present, sequenced, barcode} = this.state;
-        let display;
+  return (
+    <resultsContext.Provider value={{ defaultContent, results, setResults, content, getContentFromContentful }}>
+      <OuterContainer>
+          <ContentContainer>
+              <h1 className="align-center p-4">{defaultContent.title}</h1>
+              {display}
+          </ContentContainer>
+      </OuterContainer>
+    </resultsContext.Provider>
+  )
 
-        switch(status) {
-            case 'notReceived':
-                display = <SampleNotReceived content={content}/>;
-                break;
-            case 'processing':
-                display = <SampleProcessing content={content}/>;
-                break;
-            case 'unknownBarcode':
-                display = <div><UnknownBarcode content={content}/><BarcodeSearchForm content={defaultContent} submitBarcode={ this.submitBarcode }/></div>;
-                break;
-            case 'complete':
-                display = (
-                  <Results results={organisms_present} sequenced={sequenced} barcode={barcode} content={content}
-                    getContent={this.getContentFromContentful}/>
-                )
-                break;
-            default:
-                display = <BarcodeSearchForm content={defaultContent} submitBarcode={this.submitBarcode}/>;
-        }
-
-        return (
-            <OuterContainer>
-                <ContentContainer>
-                    <h1 className="align-center p-4">{defaultContent.title}</h1>
-                    {display}
-                </ContentContainer>
-            </OuterContainer>
-        )
-    }
 }

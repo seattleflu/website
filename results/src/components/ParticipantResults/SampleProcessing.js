@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Markdown from 'react-markdown';
 
+import { resultsContext } from '../ReturnOfResults';
 import { Feature, FeatureH3, UnorderedList } from '../styledComponents';
 
-export default function SampleProcessing(props) {
-  const { content } = props;
+export default function SampleProcessing() {
+  const { content } = useContext(resultsContext);
 
   return(
     <div>

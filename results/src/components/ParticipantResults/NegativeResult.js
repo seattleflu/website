@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Markdown from 'react-markdown';
 
+import { contentContext } from './Results';
 import { LargerParagraph, Feature, UnorderedList, MoreInfo, Link } from '../styledComponents';
 
-export default function NegativeResult(props) {
-  const { content } = props;
+export default function NegativeResult() {
+  const { resultContent } = useContext(contentContext);
 
   return (
     <div>
-      <h3 className='align-center'>{content.title}</h3>
-      <LargerParagraph>{content.blockOne}</LargerParagraph>
-      <Feature title={content.listOneTitle}>
-        <Markdown source={content.listOne} renderers={{list: UnorderedList}} />
+      <h3 className='align-center'>{resultContent.title}</h3>
+      <LargerParagraph>{resultContent.blockOne}</LargerParagraph>
+      <Feature title={resultContent.listOneTitle}>
+        <Markdown source={resultContent.listOne} renderers={{list: UnorderedList}} />
       </Feature>
       <MoreInfo>
-        <Markdown source={content.footer} />
+        <Markdown source={resultContent.footer} />
         <hr/>
-        <Markdown source={content.footerLink} renderers={{link: Link}}/>
+        <Markdown source={resultContent.footerLink} renderers={{link: Link}}/>
       </MoreInfo>
     </div>
   )
