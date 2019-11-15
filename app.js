@@ -22,6 +22,7 @@ var contactRouter = require('./routes/contactus');
 var mediaRouter = require('./routes/media');
 var errorRouter = require('./routes/error')
 var ssecRouter = require('./routes/ssec')
+var ssccRouter = require('./routes/sscc')
 var adsRouter = require('./routes/ads')
 var resourceRouter = require('./routes/resource')
 
@@ -83,6 +84,7 @@ app.use('/media-inquiries', mediaRouter);
 app.use('/swabandsend', swabandsendRouter);
 app.use('/contact-us', contactRouter);
 app.use('/ssec', ssecRouter);
+app.use('/sscc', ssecRouter);
 app.use('/thank-you/:thankyouid', thankyouRouter)
 app.use('/a/:ad', adsRouter)
 app.use('/resources/:resource', resourceRouter)
