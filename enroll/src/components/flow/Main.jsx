@@ -43,6 +43,7 @@ const Main = props => {
     }
 
     if (question == 2) {
+      Event ('Enroll Screener', 'Your Age', event.target.value);
       if (ageValue >= 18 && (props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd')) {
         props.handleNext(1)
       }else if(ageValue <= 18 && (props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd')){
@@ -83,7 +84,7 @@ const Main = props => {
 
 
   function handleAgeChange (event) {
-    Event ('Enroll Screener', 'Your Age', event.target.value);
+    
     setAgeValue (event.target.value);
     if(props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd'){
         if(event.taget.value <= 18){

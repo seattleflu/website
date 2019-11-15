@@ -94,7 +94,7 @@ function question4Value (event) {
     setQuestion5(event.target.value)
     if (event.target.value == 'yes') {
       setActiveButton(true)
-      Event ('Enroll Screener', 'Smartphone', event.target.value);
+       Event ('Enroll Screener', 'HH_3 people', event.target.value);
       setOneQuestion(2)
     }else if(event.target.value == 'no'){
       setActiveButton(false)
@@ -119,6 +119,7 @@ function question4Value (event) {
       Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
       setActiveButton(false)
     }else if(event.target.value == 'no'){
+      Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
       setActiveButton(false)
       setOneQuestion(2)
       setQuestion7('')
