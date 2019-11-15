@@ -23,7 +23,7 @@
 <div class="container-full ads-form">
     <div class="container">
         <div class="row">
-        emailSignup
+         <% if(pageData[0].fields.emailSignup){ %>
             <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
                 <h2>Stay informed. Sign up for email updates on flu season in Seattle.</h2>
                 <form id="adsForm">
@@ -35,6 +35,7 @@
                 </form> 
                 <p>We respect your privacy and will not give your email to any other organization. You can unsubscribe from updates at any time.</p>
             </div>
+            <% } %>    
         </div>
     </div>
 </div>
