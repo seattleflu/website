@@ -44,7 +44,7 @@ export default function ReturnOfResults() {
                   display = <SampleProcessing />;
                   break;
               case 'unknownBarcode':
-                  display = <Fragment><UnknownBarcode/> <BarcodeSearchForm/></Fragment>;
+                  display = <Fragment><UnknownBarcode/><BarcodeSearchForm/></Fragment>;
                   break;
               case 'complete':
                   display = <Results/>

@@ -278,8 +278,8 @@ export const MoreInfo = styled.div`
   text-align: center;
 `
 export const Banner = styled.div`
-  background-color: #F7A812;
   padding: 1em;
+  margin: 1em;
   text-align: center;
 `
 
