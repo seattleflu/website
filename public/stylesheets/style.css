@@ -1103,3 +1103,24 @@ header.light .nav-item .adsNav::before {
   margin-top: 6px;
   margin-right: 5px;
 }
+
+
+/*** RESOURCES ***/
+.resources table {
+  margin-bottom: 30px;
+}
+.resources table, .resources td, .resources th {  
+  border: 1px solid #ddd;
+  text-align: left;
+}
+.resources table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.resources th, .resources td {
+  padding: 15px;
+}
+.resources th {
+  background-color: #095DA8;
+  color: white;
+}
