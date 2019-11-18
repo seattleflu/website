@@ -15,7 +15,7 @@
             </div>
             <div id="collapse<%= faq.fields.question %>" class="collapse" aria-labelledby="<%= faq.fields.id %>" data-parent="#barcode-faq-accordion">
               <div class="card-body align-center">
-                <%= faq.fields.answer %>
+                <%- md.render(faq.fields.answer) %>
               </div>
             </div>
           </div>
