@@ -1,10 +1,10 @@
 
 <% include ./partials/ads-header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
 
-<div class="ads-main container-full">
+<div class="advert-main container-full">
     <div class="container">
         <div class="row">
-            <div class="ads-copy container">
+            <div class="advert-copy container">
                 <div class="row">
                     <div class="col-md-5">
                         <img src="<%= pageData[0].fields.image.fields.file.url %>">
@@ -41,13 +41,13 @@
         </g>
     </svg>
 </div>
-<div class="container-full ads-form" id="subscribe">
+<div class="container-full advert-form" id="subscribe">
     <div class="container">
         <div class="row">
          <% if(pageData[0].fields.emailSignup){ %>
             <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
                 <h2>Sign up for email updates!</h2>
-                <form id="adsForm">
+                <form id="advertForm">
                     <input type="text" id="emailInput" name="email" placeholder="Email Address (required)">
                     <input type="text" id="zipInput" name="zipcode" placeholder="Zip Code (required)">
                     <input type="submit" id="submitBtn" value="Submit">
