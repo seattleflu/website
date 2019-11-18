@@ -38,7 +38,7 @@ const Error = props => {
   const [campaign, setCampaign] = useState ('');
   const [medium, setMedium] = useState ('');
   const [source, setSource] = useState ('');
-  const [content, setContent] = useState ('');
+  const [content, setContent] = useState ('not-set');
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -97,7 +97,9 @@ const Error = props => {
         '&utm_medium=' +
         medium +
         '&utm_source=' +
-        source;
+        source +
+        '&utm_content=' +
+      content;
       Event ('Study Form', 'Sign Up', 'Swab & Send');
       axios ({
         method: 'post',
