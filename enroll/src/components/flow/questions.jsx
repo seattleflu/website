@@ -36,6 +36,8 @@ const Questions = props => {
     if (mainQuestion == 0) {
       if(symptomsList.length == 0 || (symptomsList.length <= 1 && symptomsList.includes('None of the above'))){
         setMainQuestion(1)
+      }else if(symptomsList.length == 1 && symptomsList.includes('Cough')){
+        setMainQuestion(2)
       }else if(symptomsList.length == 1){
         props.handleNextError(props.bouncePage11)
       }else if (
