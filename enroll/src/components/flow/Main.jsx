@@ -13,6 +13,7 @@ const Main = props => {
   const [ageValue, setAgeValue] = useState ('');
   const [homeZip, setHomeZip] = useState (props.homeZip);
   const [whoValue, setWhoValue] = useState('')
+  const[activeButton, setActiveButton] = useState(true)
   
   //const [workZip, setWorkZip] = useState(props.workZip)
 
@@ -29,6 +30,7 @@ const Main = props => {
   function handleChange (event) {
     event.preventDefault ();
     if (question == 0) {
+      setActiveButton(true)
       if (props.homeZip.includes (zipValue)) {
         Cookies.set('flu_zipcode', zipValue, { expires: 7 })
         setQuestion (question + 1);
@@ -38,11 +40,13 @@ const Main = props => {
       }
     }
     if (question == 1) {
+      setActiveButton(true)
       setQuestion (question + 1);
       Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     }
 
     if (question == 2) {
+      setActiveButton(true)
       Event ('Enroll Screener', 'Your Age', event.target.value);
       if (ageValue >= 18 && (props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd')) {
         props.handleNext(1)
@@ -74,17 +78,31 @@ const Main = props => {
     }
   }
   function handleZipChange (event) {
+    if (event.target.value.length >=5){
+      setActiveButton(false)
+    }else{
+      setActiveButton(true)
+    }
     setZipValue (event.target.value);
     props.setMainZip (event.target.value);
   }
   function handleZipWorkChange (event) {
+    if (event.target.value.length >=5){
+      setActiveButton(false)
+    }else{
+      setActiveButton(true)
+    }
     //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     setZipWorkValue (event.target.value);
   }
 
 
   function handleAgeChange (event) {
-    
+    if (event.target.value.length >=1){
+      setActiveButton(false)
+    }else{
+      setActiveButton(true)
+    }
     setAgeValue (event.target.value);
     if(props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd'){
         if(event.taget.value <= 18){
@@ -96,6 +114,11 @@ const Main = props => {
     
   }
   function handleWhoChange (event) {
+    if (event.target.value != 'none'){
+      setActiveButton(false)
+    }else{
+      setActiveButton(true)
+    }
     Event ('Enroll Screener', 'Participent info', event.target.value);
     setWhoValue(event.target.value)
     setQuestion(3)
@@ -173,6 +196,7 @@ const Main = props => {
         className="btn btn-primary float-right next"
         type="submit"
         onClick={handleChange}
+        disabled={activeButton}
       >
         Next
       </button>

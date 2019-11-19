@@ -14,6 +14,7 @@ const Questions = props => {
   const [mainQuestion, setMainQuestion] = useState(0)
   const [referrer, setReferrerValue] = useState('')
   const [symptomsList, setSymptopmsList] = useState([])
+  const[activeButton, setActiveButton] = useState(true)
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -61,6 +62,7 @@ const Questions = props => {
 
 
   function addSymptomOne (event) {
+    setActiveButton(false)
     Event ('Enroll Screener', 'Current Flu Symptoms', event.target.value);
     if (mainQuestion >= 1 && mainQuestion < 7) {
       setMainQuestion(1)
@@ -90,31 +92,38 @@ const Questions = props => {
     if (index != -1) {
       array.splice(index, 1)
       setSymptopmsList(array)
+      if(array.length == 0){
+        setActiveButton(true)
+      }
     } else {
       setSymptopmsList([...symptomsList, event.target.value])
     }
   }
 
   function addSymptomRemove (event) {
+    if(symptomsList.includes('None of the above')){
+    setActiveButton(true)
+    }else{
+    setActiveButton(false)
+    }
+     
+     console.log(event.target.value)
     setSymptopmsList([event.target.value])
     Event ('Enroll Screener', 'Current Flu Symptoms', 'None');
     document.querySelectorAll('input[type=checkbox]').forEach(el => {
       if (el.value == event.target.value) {
       } else {
         el.checked = false
+        
       }
     })
   }
-  
 
   const options = [
     { value: 'none', label: '' },
     { value: 'yes', label: 'yes' },
     { value: 'no', label: 'no' }
   ]
-
-  
-  
 
   return (
     <div className='col-12'>
@@ -326,6 +335,7 @@ const Questions = props => {
         className='btn btn-primary float-right next'
         type='submit'
         onClick={handleChange}
+        disabled={activeButton}
       >
         Next
       </button>
