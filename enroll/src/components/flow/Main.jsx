@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import Input from '../presentational/Input.jsx';
-import Select from '../presentational/Select.jsx'
+import Input from './presentational/Input.jsx';
+import Select from './presentational/Select.jsx'
 import ReactGA from 'react-ga';
 import {Event} from '../../services/ga';
 import Cookies from 'js-cookie';
@@ -13,11 +13,13 @@ const Main = props => {
   const [ageValue, setAgeValue] = useState ('');
   const [homeZip, setHomeZip] = useState (props.homeZip);
   const [whoValue, setWhoValue] = useState('')
+  const[activeButton, setActiveButton] = useState(true)
+  
   //const [workZip, setWorkZip] = useState(props.workZip)
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
-    //ReactGA.pageview(' /enroll')
+    ReactGA.pageview(' /enroll')
   }
 
   useEffect (() => {
@@ -28,33 +30,41 @@ const Main = props => {
   function handleChange (event) {
     event.preventDefault ();
     if (question == 0) {
+      setActiveButton(true)
       if (props.homeZip.includes (zipValue)) {
         Cookies.set('flu_zipcode', zipValue, { expires: 7 })
         setQuestion (question + 1);
       } else {
         Event ('Enroll Screener', 'Home Zip', zipValue);
-        Cookies.set('flu_zipcode', zipValue, { expires: 7 })
         props.handleNextError (props.bouncePage1);
       }
     }
     if (question == 1) {
+      setActiveButton(true)
       setQuestion (question + 1);
+      Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     }
 
     if (question == 2) {
-      if (ageValue >= 18) {
-         Event ('Enroll Screener', 'Home Zip', zipValue);
-         Event ('Enroll Screener', 'Work Zip', zipWorkValue);
-         Event ('Enroll Screener', 'Age', ageValue);
-         setQuestion (question + 1);
-        //props.handleNext (1);
+      setActiveButton(true)
+      Event ('Enroll Screener', 'Your Age', event.target.value);
+      if (ageValue >= 18 && (props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd')) {
+        props.handleNext(1)
+      }else if(ageValue <= 18 && (props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd')){
+      props.handleNextError (props.bouncePage18);
+    }else if(ageValue >= 18 && (props.referrerValue != 'schools' || props.referrerValue != 'households' || props.referrerValue != 'webmd')){
+      setQuestion (question + 1);
+        Event ('Enroll Screener', 'Home Zip', zipValue);
+        Event ('Enroll Screener', 'Work Zip', zipWorkValue);
+        Event ('Enroll Screener', 'Age', ageValue);
       } else {
-         Event ('Enroll Screener', 'Home Zip', zipValue);
-         Event ('Enroll Screener', 'Work Zip', zipWorkValue);
-         Event ('Enroll Screener', 'Age', ageValue);
+        Event ('Enroll Screener', 'Home Zip', zipValue);
+        Event ('Enroll Screener', 'Work Zip', zipWorkValue);
+        Event ('Enroll Screener', 'Age', ageValue);
         props.handleNextError (props.bouncePage2);
       }
     }
+
     if (question == 3) {
       if (whoValue == 'myself') {
         props.handleNext(1)
@@ -68,20 +78,55 @@ const Main = props => {
     }
   }
   function handleZipChange (event) {
+    if (event.target.value.length >=5){
+      setActiveButton(false)
+    }else{
+      setActiveButton(true)
+    }
     setZipValue (event.target.value);
     props.setMainZip (event.target.value);
   }
   function handleZipWorkChange (event) {
+    if (event.target.value.length >=5){
+      setActiveButton(false)
+    }else{
+      setActiveButton(true)
+    }
     //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     setZipWorkValue (event.target.value);
   }
+
+
   function handleAgeChange (event) {
+    if (event.target.value.length >=1){
+      setActiveButton(false)
+    }else{
+      setActiveButton(true)
+    }
     setAgeValue (event.target.value);
+    if(props.referrerValue == 'schools' || props.referrerValue == 'households' || props.referrerValue == 'webmd'){
+        if(event.taget.value <= 18){
+          props.handleNextError (props.bouncePage18);
+        }else{
+          props.handleNext(1)
+        }
+    }
+    
   }
   function handleWhoChange (event) {
+    if (event.target.value != 'none'){
+      setActiveButton(false)
+    }else{
+      setActiveButton(true)
+    }
     Event ('Enroll Screener', 'Participent info', event.target.value);
     setWhoValue(event.target.value)
     setQuestion(3)
+    if(event.target.value != 'myself'){
+      props.setFirstPersonValue(false)
+    }else{
+      props.setFirstPersonValue(true)
+    }
     if (event.target.value != 'none') {
       Event ('Enroll Screener', 'Participent info', event.target.value);
       setQuestion(3)
@@ -100,6 +145,7 @@ const Main = props => {
   return (
     <div className="col-12">
       <h2>Screening Questionnaire</h2>
+      <p className="steps">Step 1 of 3</p>
       {question >= 0
         ? <Input
             text={props.question1}
@@ -150,6 +196,7 @@ const Main = props => {
         className="btn btn-primary float-right next"
         type="submit"
         onClick={handleChange}
+        disabled={activeButton}
       >
         Next
       </button>

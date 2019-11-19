@@ -1,47 +1,155 @@
 
 <% include ./partials/ads-header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
 
-<div class="ads-main container-full">
-<div class="row">
-<div class="ads-copy container">
-    <div class="row">
-        <div class="col-md-6">
-            
-            <img src="https:<%= pageData[0].fields.image.fields.file.url %>">
-        </div>
-        <div class="col-md-6">
-            <!-- <h1>There’s Nothing Funny About the Flu</h1>
-            <h3>But there is something you can do about it</h3>
-            <p>The flu’s no laughing matter. We started the Seattle Flu Study because the flu makes life miserable for thousands of Seattleites every single year. And we want to know how to stop it. If you live in Seattle, please take our survey to see if you qualify for one of our studies. The more participants we have, the faster we can help.</p> -->
-            <h1><%= pageData[0].fields.title %></h1>
-            <%- md.render(pageData[0].fields.content) %>
-            
-            <% if(pageData[0].fields.ctaCopy){ %>
-                <a href="/enroll"><button class="green"><%= pageData[0].fields.ctaCopy %></button></a>
-            <% } %>
+<div class="advert-main container-full">
+    <div class="container">
+        <div class="row">
+            <div class="advert-copy container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="<%= pageData[0].fields.image.fields.file.url %>">
+                    </div>
+                    <div class="col-md-7">
+                        <!-- <h1>There’s Nothing Funny About the Flu</h1>
+                        <h3>But there is something you can do about it</h3>
+                        <p>The flu’s no laughing matter. We started the Seattle Flu Study because the flu makes life miserable for thousands of Seattleites every single year. And we want to know how to stop it. If you live in Seattle, please take our survey to see if you qualify for one of our studies. The more participants we have, the faster we can help.</p> -->
+                        <h1><%= pageData[0].fields.title %></h1>
+                        <%- md.render(pageData[0].fields.content) %>
+                        
+                        <!-- <% if(pageData[0].fields.ctaCopy){ %>
+                            <a href="/enroll"><button class="green"><%= pageData[0].fields.ctaCopy %></button></a>
+                        <% } %> -->
+                        <div id="studyChoices">
+                            <div class="study-choice">
+                                <h3>Are you currently feeling sick?</h3>
+                                <a href="/enroll" class="cta">Enroll today!</a>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="study-choice">
+                                <h3>Not sick yet, but want to help?</h3>
+                                <a href="#subscribe" class="cta rotate">Stay Informed</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <svg viewBox="0 0 1440 166" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Curve_Divider_Blue" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path d="M1080,157.5025 C1260,157.5025 1380,105.000833 1440,-0.0025 L1440,166 L0,166 L0,157.5 L1080,157.5025 Z" id="Rectangle" fill="#095DA8"></path>
+        </g>
+    </svg>
 </div>
-</div>
-</div>
-<div class="container-full ads-form">
+<div class="container-full advert-form" id="subscribe">
     <div class="container">
         <div class="row">
          <% if(pageData[0].fields.emailSignup){ %>
             <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-                <h2>Stay informed. Sign up for email updates on flu season in Seattle.</h2>
-                <form id="adsForm">
-                    <input type="text" id="firstNameInput" name="firstName" placeholder="First Name (required)">
-                    <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name (required)">
+                <h2>Sign up for email updates!</h2>
+                <form id="advertForm">
                     <input type="text" id="emailInput" name="email" placeholder="Email Address (required)">
                     <input type="text" id="zipInput" name="zipcode" placeholder="Zip Code (required)">
                     <input type="submit" id="submitBtn" value="Submit">
                 </form> 
+                <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
+                <h4 id="thank-you">Thank you for contacting us.</h4> 
                 <p>We respect your privacy and will not give your email to any other organization. You can unsubscribe from updates at any time.</p>
             </div>
             <% } %>    
         </div>
     </div>
 </div>
+<script>
+window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+            'event': 'new_subscriber',
+            'formLocation': 'ads-page'
+        });
+</script>
+<script>
+    $(function () {
+        function getCookie(name) {
+        let cookie = {};
+        document.cookie.split(';').forEach(function(el) {
+          let [k,v] = el.split('=');
+          cookie[k.trim()] = v;
+        })
+      if(cookie[name] == undefined){
+          return "none"
+        }else{
+        return cookie[name];
+        }
+      }
+
+
+        $('#advertForm').submit(function (event) {
+            event.preventDefault()
+            var formData = {
+            "email_address": $('#emailInput').val(),
+            "zip_code": $('#zipInput').val(),
+            "website_url": window.location.href,
+            "utm_campaign": getCookie('utm_campaign'),
+            "utm_medium": getCookie('utm_medium'),
+            "utm_source": getCookie('utm_source'),
+            "utm_content": getCookie('utm_content'),
+            "form_name": "ads form",
+            "pageUrl": window.location.href,
+            "pageName": "Ads page"
+            }
+
+            $(".error").remove();
+            $("#emailInput").removeClass('error-input');
+            $("#zipInput").removeClass('error-input');
+
+            
+            
+            if (formData.email_address.length < 1) {
+                $('#emailInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">All fields are required</span>');
+                return false;
+            }
+            if (formData.zip_code.length < 1) {
+                $('#zipInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">All fields are required</span>');
+                return false;
+            } else {
+            var regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var validEmail = regEx.test(formData.email_address);
+            console.log(validEmail)
+            if (!validEmail) {
+                $('#emailInput').addClass('error-input');
+                $('#submitBtn').after('<span class="error">A valid email is required</span>');
+                return false;
+            } else {
+
+            $.ajax({
+            type: 'POST', 
+            url: 'https://frss222hx5.execute-api.us-east-1.amazonaws.com/ads', 
+            data: formData, 
+            dataType: 'json', 
+            encode: true
+            })
+            .done(function (data) {
+                console.log("data:" + JSON.stringify(data))
+                console.log(data["statusCode"])
+                if (data["statusCode"] == '200'){
+                $("#thank-you").css("display", "block")
+                $("#advertForm").css("display", "none")  
+                $("#signuperror").css("display", "none")
+                }else{
+                $("#thank-you").css("display", "none")
+                $("#advertForm").css("display", "block")
+                $("#signuperror").css("display", "block")
+                }
+            })
+
+            }
+            }
+
+        })
+        })
+        
+</script>
 
 <% include ./partials/footer  {logos: logos} %>

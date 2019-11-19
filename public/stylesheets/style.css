@@ -50,6 +50,19 @@ a, a:hover {
   height: 15px;
   content: "";
 }
+.cta.rotate:after {
+  background-image: url("/images/cta_arrow.svg");
+  background-size: 24px 15px;
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+  width: 24px;
+  height: 15px;
+  content: "";
+  margin-top: -3px;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
 .cta:hover:after {
   margin-left: 15px;
 }
@@ -73,6 +86,9 @@ a, a:hover {
 }
 
 /*** GLOBAL STYLES ***/
+html {
+    scroll-behavior: smooth;
+}
 body, html {
   position: relative;
   height: 100%;
@@ -95,6 +111,11 @@ body, html {
   }
 }
 @media (max-width: 361px) {
+  .main-container {
+    padding-bottom: 500px;
+  }
+}
+@media (max-width: 325px) {
   .main-container {
     padding-bottom: 580px;
   }
@@ -1003,94 +1024,68 @@ display: none;
 
 
 /*** ADS ***/
-.ads-copy {
-  padding-top: 75px;
-  padding-bottom: 125px;
+.advert-main svg {
+  margin-bottom: -8px;
+  margin-top: -250px;
 }
-.ads-copy img {
-  max-height: 540px;
+.mainAdsSection{
+  background-color: #fff;
+}
+.advert-copy {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.advert-copy img {
   width: 100%;
 }
-.ads-copy h1, .ads-copy h3 {
+.advert-copy h1, .advert-copy h3 {
   margin-bottom: 30px;
 }
-.ads-copy button {
+.advert-copy button {
   margin-top: 30px;
   padding: 13px 30px;
   font-size: 20px;
   border-radius: 30px;
 }
-.ads-form {
+.advert-form {
   background-color: #095DA8;
   padding-top: 75px;
   padding-bottom: 75px;
 }
-.ads-form h2 {
+.advert-form h2 {
   color: #fff;
   margin-bottom: 30px;
 }
-#adsForm input[type=text] {
+#advertForm input[type=text] {
   margin-bottom: 20px;
-  padding: 25px 15px;
+  padding: 15px 13px;
 }
-#adsForm input[type=submit] {
+#advertForm input[type=submit] {
   margin-top: 10px;
   padding: 13px 30px;
   font-size: 20px;
   border-radius: 30px;
-  border: 2px solid #fff;
   margin-bottom: 30px;
+  background-color: #1BAB4C;
 }
-.ads-form p {
+.advert-form p {
   color: #fff;
 }
-#adsForm #firstNameInput, #adsForm #lastNameInput {
+#advertForm #firstNameInput, #advertForm #lastNameInput {
   width: 48%;
 }
-#adsForm #emailInput, #adsForm #zipInput {
+#advertForm #emailInput, #advertForm #zipInput {
   width: 100%;
 }
-#adsForm #lastNameInput {
+#advertForm #lastNameInput {
   float: right;
   clear: none;
-}
-@media (max-width: 767px) {
-  .ads-copy {
-    padding-top: 15px;
-    padding-bottom: 50px;
-  }
-  .ads-copy h1 {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    line-height: 35px;
-  }
-  .ads-copy h3 {
-    margin-bottom: 20px;
-  }
-  .ads-form {
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-}
-
-
-.ads-main{
-  /* border-bottom-right-radius: 300px; */
-  border-radius: 600px/300px;
-  border-top-right-radius:0px;
-  border-top-left-radius:0px;
-  border-bottom-left-radius:0px;
-  background-color: #fff;
-}
-.mainAdsSection{
-  background-color: #095DA8;
 }
 
 header.light .nav-item .adsNav, .mobile-nav li .adsNav{
   font-size: 14px;
   color:#1BAB4C;
 }
-
 header.light .nav-item .adsNav::before {
   content: "";
   background-image: url(/images/nav-arrow.png);
@@ -1104,23 +1099,45 @@ header.light .nav-item .adsNav::before {
   margin-right: 5px;
 }
 
-
-/*** RESOURCES ***/
-.resources table {
-  margin-bottom: 30px;
+#studyChoices {
+  display: flex;
+  justify-content: space-evenly;
 }
-.resources table, .resources td, .resources th {  
-  border: 1px solid #ddd;
-  text-align: left;
+.divider {
+  border-left: 2px solid #CCE7F4;
 }
-.resources table {
-  border-collapse: collapse;
-  width: 100%;
+.study-choice {
+  max-width: 200px;
+  text-align: center;
 }
-.resources th, .resources td {
-  padding: 15px;
+.study-choice h3 {
+  margin-bottom: 20px;
 }
-.resources th {
-  background-color: #095DA8;
-  color: white;
+.study-choice .cta {
+  text-decoration: underline;
+}
+@media (max-width: 767px) {
+  .advert-copy {
+    padding-top: 15px;
+    padding-bottom: 50px;
+  }
+  .advert-copy h1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    line-height: 35px;
+  }
+  .advert-copy h3 {
+    margin-bottom: 20px;
+  }
+  .advert-form {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .advert-form h2 {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .advert-form .container {
+    margin-bottom: 40px;
+  }
 }
