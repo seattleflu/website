@@ -1134,4 +1134,7 @@ header.light .nav-item .adsNav::before {
     font-size: 20px;
     line-height: 30px;
   }
+  .advert-form .container {
+    margin-bottom: 40px;
+  }
 }
