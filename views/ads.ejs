@@ -10,15 +10,13 @@
                         <img src="<%= pageData[0].fields.image.fields.file.url %>">
                     </div>
                     <div class="col-md-7">
-                        <!-- <h1>There’s Nothing Funny About the Flu</h1>
-                        <h3>But there is something you can do about it</h3>
-                        <p>The flu’s no laughing matter. We started the Seattle Flu Study because the flu makes life miserable for thousands of Seattleites every single year. And we want to know how to stop it. If you live in Seattle, please take our survey to see if you qualify for one of our studies. The more participants we have, the faster we can help.</p> -->
+                        
                         <h1><%= pageData[0].fields.title %></h1>
                         <%- md.render(pageData[0].fields.content) %>
                         
-                        <!-- <% if(pageData[0].fields.ctaCopy){ %>
-                            <a href="/enroll"><button class="green"><%= pageData[0].fields.ctaCopy %></button></a>
-                        <% } %> -->
+                        <!-- <% //if(pageData[0].fields.ctaCopy){ %>
+                            <a href="/enroll"><button class="green"><%= //pageData[0].fields.ctaCopy %></button></a>
+                        <% //} %> -->
                         <div id="studyChoices">
                             <div class="study-choice">
                                 <h3>Are you currently feeling sick?</h3>
