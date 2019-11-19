@@ -86,6 +86,9 @@ a, a:hover {
 }
 
 /*** GLOBAL STYLES ***/
+html {
+    scroll-behavior: smooth;
+}
 body, html {
   position: relative;
   height: 100%;
