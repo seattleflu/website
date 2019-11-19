@@ -58,13 +58,7 @@
         </div>
     </div>
 </div>
-<script>
-window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-            'event': 'new_subscriber',
-            'formLocation': 'ads-page'
-        });
-</script>
+
 <script>
     $(function () {
         function getCookie(name) {
@@ -83,6 +77,11 @@ window.dataLayer = window.dataLayer || [];
 
         $('#advertForm').submit(function (event) {
             event.preventDefault()
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+            'event': 'new_subscriber',
+            'formLocation': 'ads-page'
+        });
             var formData = {
             "email_address": $('#emailInput').val(),
             "zip_code": $('#zipInput').val(),
