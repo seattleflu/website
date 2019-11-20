@@ -9,7 +9,7 @@
                     <div class="col-md-5">
                         <img src="<%= pageData[0].fields.image.fields.file.url %>">
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-7" id="advertCopy">
                         
                         <h1><%= pageData[0].fields.title %></h1>
                         <%- md.render(pageData[0].fields.content) %>
@@ -51,7 +51,7 @@
                     <input type="submit" id="submitBtn" value="Submit">
                 </form> 
                 <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
-                <h4 id="thank-you">Thank you for contacting us.</h4> 
+                <h5 id="thank-you"><%= pageData[0].fields.ThankYouMessage %></h5> 
                 <p>We respect your privacy and will not give your email to any other organization. You can unsubscribe from updates at any time.</p>
             </div>
             <% } %>    
