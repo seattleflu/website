@@ -114,7 +114,7 @@ const Two = props => {
       {twoQuestion >= 0 && props.fistPersonValue == true ? (
       <Select
           text={props.question10}
-          description=''
+          description={props.conditions10}
           label='symptoms'
           type='select'
           id='symptoms'
@@ -126,7 +126,7 @@ const Two = props => {
        {twoQuestion >= 0 && props.fistPersonValue == false ? (
          <Select
           text={props.question15}
-          description=''
+          description={props.conditions15}
           label='symptoms'
           type='select'
           id='symptoms'

@@ -9,16 +9,14 @@
                     <div class="col-md-5">
                         <img src="<%= pageData[0].fields.image.fields.file.url %>">
                     </div>
-                    <div class="col-md-7">
-                        <!-- <h1>There’s Nothing Funny About the Flu</h1>
-                        <h3>But there is something you can do about it</h3>
-                        <p>The flu’s no laughing matter. We started the Seattle Flu Study because the flu makes life miserable for thousands of Seattleites every single year. And we want to know how to stop it. If you live in Seattle, please take our survey to see if you qualify for one of our studies. The more participants we have, the faster we can help.</p> -->
+                    <div class="col-md-7" id="advertCopy">
+                        
                         <h1><%= pageData[0].fields.title %></h1>
                         <%- md.render(pageData[0].fields.content) %>
                         
-                        <!-- <% if(pageData[0].fields.ctaCopy){ %>
-                            <a href="/enroll"><button class="green"><%= pageData[0].fields.ctaCopy %></button></a>
-                        <% } %> -->
+                        <!-- <% //if(pageData[0].fields.ctaCopy){ %>
+                            <a href="/enroll"><button class="green"><%= //pageData[0].fields.ctaCopy %></button></a>
+                        <% //} %> -->
                         <div id="studyChoices">
                             <div class="study-choice">
                                 <h3>Are you currently feeling sick?</h3>
@@ -53,20 +51,14 @@
                     <input type="submit" id="submitBtn" value="Submit">
                 </form> 
                 <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
-                <h4 id="thank-you">Thank you for contacting us.</h4> 
+                <h5 id="thank-you"><%= pageData[0].fields.ThankYouMessage %></h5> 
                 <p>We respect your privacy and will not give your email to any other organization. You can unsubscribe from updates at any time.</p>
             </div>
             <% } %>    
         </div>
     </div>
 </div>
-<script>
-window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-            'event': 'new_subscriber',
-            'formLocation': 'ads-page'
-        });
-</script>
+
 <script>
     $(function () {
         function getCookie(name) {
@@ -85,6 +77,11 @@ window.dataLayer = window.dataLayer || [];
 
         $('#advertForm').submit(function (event) {
             event.preventDefault()
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+            'event': 'new_subscriber',
+            'formLocation': 'ads-page'
+        });
             var formData = {
             "email_address": $('#emailInput').val(),
             "zip_code": $('#zipInput').val(),

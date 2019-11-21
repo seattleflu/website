@@ -85,7 +85,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li class="nav-item"><a class="adsNav" href="/">Seattleflu.org</a></li>
           </ul>
           <%}%>
-          <% if(enroll == 'true'){ %><ul class="navbar-nav join-the-study"><a href="/enroll" class="nav-item"><button>Join the Study</button></a></ul> <%}%>
         </div>
       </header>
       <% if(nav == 'true'){ %>
@@ -98,8 +97,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <% siteData[0].fields.menuMain.forEach((item) => { %>
           <li class="nav-item"><a href="<%= "/" + item.fields.urlSegment %>"><%= item.fields.name %></a></li>
           <% }) %>
-            
-            <% if(enroll == 'true'){ %><a href="/enroll" class="nav-item"><button class="headerbutton green">Join the Study</button></a><%}%>
           </ul>   
       </div>
       <div class="overlay"></div>

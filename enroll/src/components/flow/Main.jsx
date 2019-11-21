@@ -150,7 +150,7 @@ const Main = props => {
       {question >= 0
         ? <Input
             text={props.question1}
-            description={props.question1Description}
+            description={props.conditions1}
             label="zip_code"
             type="text"
             id="zipcode-home"
@@ -161,7 +161,7 @@ const Main = props => {
       {question >= 1
         ? <Input
             text={props.question19}
-            description={props.question19Description}
+            description={props.conditions19}
             label="zip_code"
             type="text"
             id="zipcode-work"
@@ -172,7 +172,7 @@ const Main = props => {
       {question >= 2
         ? <Input
             text={props.question2}
-            description=""
+            description={props.conditions2}
             label="age"
             type="text"
             id="zipcode"
@@ -183,7 +183,7 @@ const Main = props => {
       {question >= 3
         ? <Select
           text={props.question9}
-          description=''
+          description={props.conditions9}
           label='whoFor'
           type='select'
           id='whoFor'

@@ -15,17 +15,18 @@ const App = () => {
   const [zip, setZip] = useState('')
   const [fistPersonValue, setFirstPersonValue] = useState(true)
   const [currentStep, setCurrentStep] = useState(0)
+  
   const [question1, setQuestion1] = useState('')
   const [bouncePage1, setBouncePage1] = useState('')
   const [fluStudyPage1, setFluStudyPage1] = useState('')
-  const [question1Description, setQuestion1Description] = useState('')
+  const [conditions1, setConditions1] = useState('')
 
 
   const [question2, setQuestion2] = useState('')
   const [bouncePage2, setBouncePage2] = useState('')
   const [fluStudyPage2, setFluStudyPage2] = useState('')
+  const [conditions2, setConditions2] = useState('')
   
-
   const [question3, setQuestion3] = useState('')
   const [bouncePage3, setBouncePage3] = useState('')
   const [fluStudyPage3, setFluStudyPage3] = useState('')
@@ -34,38 +35,47 @@ const App = () => {
   const [question4, setQuestion4] = useState('')
   const [bouncePage4, setBouncePage4] = useState('')
   const [fluStudyPage4, setFluStudyPage4] = useState('')
+  const [conditions4, setConditions4] = useState('')
 
   const [question5, setQuestion5] = useState('')
   const [bouncePage5, setBouncePage5] = useState('')
   const [fluStudyPage5, setFluStudyPage5] = useState('')
+  const [conditions5, setConditions5] = useState('')
 
   const [question6, setQuestion6] = useState('')
   const [bouncePage6, setBouncePage6] = useState('')
   const [fluStudyPage6, setFluStudyPage6] = useState('')
+  const [conditions6, setConditions6] = useState('')
 
   const [question7, setQuestion7] = useState('')
   const [bouncePage7, setBouncePage7] = useState('')
   const [fluStudyPage7, setFluStudyPage7] = useState('')
+  const [conditions7, setConditions7] = useState('')
 
   const [question8, setQuestion8] = useState('')
   const [bouncePage8, setBouncePage8] = useState('')
   const [fluStudyPage8, setFluStudyPage8] = useState('')
+  const [conditions8, setConditions8] = useState('')
 
   const [question9, setQuestion9] = useState('')
   const [bouncePage9, setBouncePage9] = useState('')
   const [fluStudyPage9, setFluStudyPage9] = useState('')
+  const [conditions9, setConditions9] = useState('')
 
   const [question10, setQuestion10] = useState('')
   const [bouncePage10, setBouncePage10] = useState('')
   const [fluStudyPage10, setFluStudyPage10] = useState('')
+  const [conditions10, setConditions10] = useState('')
 
   const [question11, setQuestion11] = useState('')
   const [bouncePage11, setBouncePage11] = useState('')
   const [fluStudyPage11, setFluStudyPage11] = useState('')
+  const [conditions11, setConditions11] = useState('')
 
   const [question12, setQuestion12] = useState('')
   const [bouncePage12, setBouncePage12] = useState('')
   const [fluStudyPage12, setFluStudyPage12] = useState('')
+  const [conditions12, setConditions12] = useState('')
 
   const [question13, setQuestion13] = useState('')
   const [bouncePage13, setBouncePage13] = useState('')
@@ -75,14 +85,17 @@ const App = () => {
   const [question14, setQuestion14] = useState('')
   const [bouncePage14, setBouncePage14] = useState('')
   const [fluStudyPage14, setFluStudyPage14] = useState('')
+  const [conditions14, setConditions14] = useState('')
 
   const [question15, setQuestion15] = useState('')
   const [bouncePage15, setBouncePage15] = useState('')
   const [fluStudyPage15, setFluStudyPage15] = useState('')
+  const [conditions15, setConditions15] = useState('')
 
   const [question16, setQuestion16] = useState('')
   const [bouncePage16, setBouncePage16] = useState('')
   const [fluStudyPage16, setFluStudyPage16] = useState('')
+  const [conditions16, setConditions16] = useState('')
 
   const [question17, setQuestion17] = useState('')
   const [bouncePage17, setBouncePage17] = useState('')
@@ -92,11 +105,12 @@ const App = () => {
   const [question18, setQuestion18] = useState('')
   const [bouncePage18, setBouncePage18] = useState('')
   const [fluStudyPage18, setFluStudyPage18] = useState('')
+  const [conditions18, setConditions18] = useState('')
 
   const [question19, setQuestion19] = useState('')
   const [bouncePage19, setBouncePage19] = useState('')
   const [fluStudyPage19, setFluStudyPage19] = useState('')
-  const [question19Description, setQuestion19Description] = useState('')
+  const [conditions19, setConditions19] = useState('')
 
   const [zipCodes, setZipCodes] = useState('')
   const [conditions, setConditions] = useState('')
@@ -133,7 +147,7 @@ const App = () => {
               setFluStudyPage1(question.fields.fluStudyPage.fields.studyName)
             }
             if(question.fields.addInformation){
-              setQuestion1Description(question.fields.addInformation)
+              setConditions1(question.fields.addInformation)
             }
             setQuestion1(question.fields.question)
             break
@@ -143,6 +157,9 @@ const App = () => {
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage2(question.fields.fluStudyPage.fields.studyName)
+            }
+            if(question.fields.addInformation){
+              setConditions2(question.fields.addInformation)
             }
             
             setQuestion2(question.fields.question)
@@ -166,6 +183,9 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage4(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setConditions4(question.fields.addInformation)
+            }
             setQuestion4(question.fields.question)
             break
           case 5:
@@ -174,6 +194,9 @@ const App = () => {
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage5(question.fields.fluStudyPage.fields.studyName)
+            }
+            if(question.fields.addInformation){
+              setConditions5(question.fields.addInformation)
             }
             setQuestion5(question.fields.question)
             break
@@ -184,6 +207,9 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage6(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setConditions6(question.fields.addInformation)
+            }
             setQuestion6(question.fields.question)
             break
           case 7:
@@ -192,7 +218,9 @@ const App = () => {
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage7(question.fields.fluStudyPage.fields.studyName)
-              
+            }
+            if(question.fields.addInformation){
+              setConditions7(question.fields.addInformation)
             }
             setQuestion7(question.fields.question)
             break
@@ -203,6 +231,9 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage8(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setConditions8(question.fields.addInformation)
+            }
             setQuestion8(question.fields.question)
             break
           case 9:
@@ -211,6 +242,9 @@ const App = () => {
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage9(question.fields.fluStudyPage.fields.studyName)
+            }
+            if(question.fields.addInformation){
+              setConditions9(question.fields.addInformation)
             }
             setQuestion9(question.fields.question)
             break
@@ -221,6 +255,9 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage10(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setConditions10(question.fields.addInformation)
+            }
             setQuestion10(question.fields.question)
             break
           case 11:
@@ -230,6 +267,9 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage11(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setConditions11(question.fields.addInformation)
+            }
             setQuestion11(question.fields.question)
             break
           case 12:
@@ -238,6 +278,9 @@ const App = () => {
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage12(question.fields.fluStudyPage.fields.studyName)
+            }
+            if(question.fields.addInformation){
+              setConditions12(question.fields.addInformation)
             }
             setQuestion12(question.fields.question)
             break
@@ -260,6 +303,9 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage14(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setConditions14(question.fields.addInformation)
+            }
             setQuestion14(question.fields.question)
             break
           case 15:
@@ -269,6 +315,9 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage15(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setConditions15(question.fields.addInformation)
+            }
             setQuestion15(question.fields.question)
             break
           case 16:
@@ -277,6 +326,9 @@ const App = () => {
             }
             if (question.fields.fluStudyPage) {
               setFluStudyPage16(question.fields.fluStudyPage.fields.studyName)
+            }
+            if(question.fields.addInformation){
+              setConditions16(question.fields.addInformation)
             }
             setQuestion16(question.fields.question)
             break
@@ -299,6 +351,9 @@ const App = () => {
             if (question.fields.fluStudyPage) {
               setFluStudyPage18(question.fields.fluStudyPage.fields.studyName)
             }
+            if(question.fields.addInformation){
+              setConditions18(question.fields.addInformation)
+            }
             setQuestion18(question.fields.question)
             break
           case 19:
@@ -309,7 +364,7 @@ const App = () => {
               setFluStudyPage19(question.fields.fluStudyPage.fields.studyName)
             }
             if(question.fields.addInformation){
-              setQuestion19Description(question.fields.addInformation)
+              setConditions19(question.fields.addInformation)
             }
             setQuestion19(question.fields.question)
             break
@@ -355,20 +410,22 @@ function setFirstPerson(value){
             handleStudy={handleStudy}
             currentStep={currentStep}
             question1={question1}
+            conditions1={conditions1}
             bouncePage1={bouncePage1}
             fluStudyPage1={fluStudyPage1}
             question2={question2}
+            conditions2={conditions2}
             bouncePage2={bouncePage2}
             fluStudyPage2={fluStudyPage2}
             question9={question9}
+            conditions9={conditions9}
             bouncePage9={bouncePage9}
             fluStudyPage9={fluStudyPage9}
             question19={question19}
+            conditions19={conditions19}
             bouncePage19={bouncePage19}
             fluStudyPage19={fluStudyPage19}
             homeZip={homeZip}
-            question1Description={question1Description}
-            question19Description={question19Description}
             setFirstPersonValue={setFirstPersonValue}
             referrerValue={referrerValue}
           />
@@ -383,38 +440,49 @@ function setFirstPerson(value){
             fistPersonValue={fistPersonValue}
 
             question11={question11}
+            conditions11={conditions11}
             bouncePage11={bouncePage11}
             fluStudyPage11={fluStudyPage11}
             
             question4={question4}
+            conditions4={conditions4}
             bouncePage4={bouncePage4}
             fluStudyPage4={fluStudyPage4}
             question5={question5}
+            conditions5={conditions5}
             bouncePage5={bouncePage5}
             fluStudyPage5={fluStudyPage5}
             question6={question6}
+            conditions6={conditions6}
             bouncePage6={bouncePage6}
             fluStudyPage6={fluStudyPage6}
             question7={question7}
+            conditions7={conditions7}
             bouncePage7={bouncePage7}
             fluStudyPage7={fluStudyPage7}
             question8={question8}
+            conditions8={conditions8}
             bouncePage8={bouncePage8}
             fluStudyPage8={fluStudyPage8}
 
             question10={question10}
+            conditions10={conditions10}
             bouncePage10={bouncePage10}
             fluStudyPage10={fluStudyPage10}
             question12={question12}
+            conditions12={conditions12}
             bouncePage12={bouncePage12}
             fluStudyPage12={fluStudyPage12}
             question15={question15}
+            conditions15={conditions15}
             bouncePage15={bouncePage15}
             fluStudyPage15={fluStudyPage15}
             question14={question14}
+            conditions14={conditions14}
             bouncePage14={bouncePage14}
             fluStudyPage14={fluStudyPage14}
             question18={question18}
+            conditions18={conditions18}
             bouncePage18={bouncePage18}
             fluStudyPage18={fluStudyPage18}
             

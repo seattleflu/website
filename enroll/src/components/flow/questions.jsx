@@ -136,7 +136,8 @@ const Questions = props => {
         <div className='col-12 selectSymptoms'>
         
           <div className='row'>
-            <p>{props.fistPersonValue ? props.question11 : props.question18}</p>
+            <label for="symptoms" data-children-count="0">{props.fistPersonValue ? props.question11 : props.question18}</label>
+            <p className='inputDescription'>{props.fistPersonValue ? props.conditions11 : props.conditions18}</p>
             <div className="symptom-wrapper">
               <div className='symptom noSymptoms col-md-12 col-lg-12'>
               <label>
@@ -296,18 +297,23 @@ const Questions = props => {
         handleStudy={props.handleStudy}
         handleNextError={props.handleNextError}
         question4={props.question4}
+        conditions4={props.conditions4}
         bouncePage4={props.bouncePage4}
         fluStudyPage4={props.fluStudyPage4}
         question5={props.question5}
+        conditions5={props.conditions5}
         bouncePage5={props.bouncePage5}
         fluStudyPage5={props.fluStudyPage5}
         question6={props.question6}
+        conditions6={props.conditions6}
         bouncePage6={props.bouncePage6}
         fluStudyPage6={props.fluStudyPage6}
         question7={props.question7}
+        conditions7={props.conditions7}
         bouncePage7={props.bouncePage7}
         fluStudyPage7={props.fluStudyPage7}
         question8={props.question8}
+        conditions8={props.conditions8}
         bouncePage8={props.bouncePage8}
         fluStudyPage8={props.fluStudyPage8}
       
@@ -317,15 +323,19 @@ const Questions = props => {
         handleStudy={props.handleStudy}
         handleNextError={props.handleNextError}
         question10={props.question10}
+        conditions10={props.conditions10}
         bouncePage10={props.bouncePage10}
         fluStudyPage10={props.fluStudyPage10}
         question12={props.question12}
+        conditions12={props.conditions12}
         bouncePage={props.bouncePage}
         fluStudyPage={props.fluStudyPage}
         question15={props.question15}
+        conditions15={props.conditions15}
         bouncePage15={props.bouncePage15}
         fluStudyPage15={props.fluStudyPage15}
         question14={props.question14}
+        conditions14={props.conditions14}
         bouncePage14={props.bouncePage14}
         fluStudyPage14={props.fluStudyPage14}
       />) : (null)}

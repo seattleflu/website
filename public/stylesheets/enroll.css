@@ -22,12 +22,13 @@
 .enrollWapper #ty-subscribe {
     margin-bottom: 0;
 }
-form > .col-12 {
+form > .col-12, form > .col-12 > .col-12 {
     padding-left: 0 !important;
 }
 .inputDescription{
     font-size: 14px !important;
     font-style: italic;
+    margin-bottom: 16px !important;
 }
 .inputDescription:empty {
     display: none;
