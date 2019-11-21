@@ -136,7 +136,7 @@ const Questions = props => {
         <div className='col-12 selectSymptoms'>
         
           <div className='row'>
-            <p>{props.fistPersonValue ? props.question11 : props.question18}</p>
+            <label for="symptoms" data-children-count="0">{props.fistPersonValue ? props.question11 : props.question18}</label>
             <p className='inputDescription'>{props.fistPersonValue ? props.conditions11 : props.conditions18}</p>
             <div className="symptom-wrapper">
               <div className='symptom noSymptoms col-md-12 col-lg-12'>
