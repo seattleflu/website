@@ -30,7 +30,7 @@ const Main = props => {
   function handleChange (event) {
     event.preventDefault ();
     if (question == 0) {
-      setActiveButton(true)
+      //setActiveButton(true)
       if (props.homeZip.includes (zipValue)) {
         Cookies.set('flu_zipcode', zipValue, { expires: 7 })
         setQuestion (question + 1);
@@ -87,11 +87,12 @@ const Main = props => {
     props.setMainZip (event.target.value);
   }
   function handleZipWorkChange (event) {
-    if (event.target.value.length >=5){
-      setActiveButton(false)
-    }else{
-      setActiveButton(true)
-    }
+    setActiveButton(false)
+    // if (event.target.value.length >=5){
+    //   setActiveButton(false)
+    // }else{
+    //   setActiveButton(true)
+    // }
     //Event ('Enroll Screener', 'Work Zip', zipWorkValue);
     setZipWorkValue (event.target.value);
   }
