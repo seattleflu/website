@@ -1039,9 +1039,6 @@ display: none;
 .study-choice h3 {
   margin-bottom: 20px !important;
 }
-.study-choice .cta {
-  text-decoration: underline;
-}
 .advert-main svg {
   margin-bottom: -8px;
   margin-top: -250px;
@@ -1054,8 +1051,8 @@ display: none;
   padding-bottom: 50px;
 }
 #advertCopy {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 45px;
+  padding-right: 45px;
 }
 .advert-copy img {
   width: 100%;
