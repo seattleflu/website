@@ -1054,6 +1054,9 @@ display: none;
   padding-left: 45px;
   padding-right: 45px;
 }
+#advertCopy li {
+  margin-bottom: 8px;
+}
 .advert-copy img {
   width: 100%;
 }
