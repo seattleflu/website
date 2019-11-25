@@ -59,7 +59,7 @@ router.get('/', function (req, res, next) {
     title: 'Resource',
     pageData: req.pageData,
     siteData: req.siteData,
-    header: 'dark',
+    header: 'light',
     logos: 'true',
     nav: req.nav,
     enroll: req.enroll,
