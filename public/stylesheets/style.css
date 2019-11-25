@@ -434,19 +434,22 @@ button.green:hover {
 
 /*** CALLOUTS ***/
 .study-callout, .home-callout {
-  background-image: url(/images/BG_Blue_sm.png);
-  background-size: cover;
+  background-image: url(/images/Rain_Pattern_Tile.svg);
+  background-size: 160px;
 }
 .study-callout h3 i, .home-callout h3 i {
   font-weight: 700;
 }
 .study-callout {
-  text-align: center;
-  padding: 50px 30px;
+  padding: 57px 30px;
 }
 .home-callout {
   padding: 50px 75px;
   margin-top: 75px;
+}
+.home-callout h3 {
+  font-size: 36px;
+  line-height: 42px;
 }
 .study-callout h3, .home-callout h3 {
   margin: 0;
@@ -463,12 +466,19 @@ button.green:hover {
   height: 100%;
   margin-top: auto;
   margin-bottom: auto;
+  font-size: 20px;
+  line-height: 24px;
+}
+.study-callout button.green, .home-callout button.green {
+  padding: 15px 30px;
+  border-radius: 30px;
+  margin-top: -10px;
 }
 .study-callout a, .home-callout a {
   float: right;
 }
 @media (max-width: 1199px) {
-  .study-callout {
+  .study-callout, .home-callout {
     display: block;
     text-align: center;
     margin-top: 50px;
@@ -476,31 +486,26 @@ button.green:hover {
   .study-callout {
     padding: 30px;
   }
-  .study-callout h3 {
+  .study-callout h3, .home-callout h3 {
     display: block;
     padding-bottom: 20px;
     padding-right: 0;
+    text-align: center;
   }
-  .study-callout a {
+  .study-callout a, .home-callout a {
     float: none;
   }
-}
-@media (max-width: 991px) {
-  .home-callout {
-    text-align: center;
-    margin-top: 50px;
-    padding: 30px;
+  .study-callout button.green {
+    margin-bottom: 20px;
   }
   .home-callout h3 {
-    display: block;
-    margin-bottom: 30px;
-  }
-  .home-callout a {
-    float: none;
+    font-size: 24px;
+    line-height: 28px;
+    padding-bottom: 40px;
   }
 }
 @media (max-width: 767px) {
-  .study-callout {
+  .study-callout, .home-callout {
     padding: 30px 15px;
   }
 }
@@ -1267,6 +1272,18 @@ header.light .nav-item .adsNav:after {
 .add-resources li a:hover, .add-resources li a {
   color: #095DA8;
 }
+.all-resources {
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+.all-resources h2 {
+  margin-bottom: 30px;
+}
+@media (min-width: 993px) {
+  .all-resources-text {
+    padding-right: 30px;
+  }
+}
 @media (max-width: 992px) {
   .resource-header {
     margin-bottom: 60px;
@@ -1276,6 +1293,13 @@ header.light .nav-item .adsNav:after {
   }
   .resource-image {
     width: 100%;
+  }
+  .all-resources {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .all-resources .add-resources {
+    margin-top: 50px;
   }
 }
 @media (max-width: 575px) {

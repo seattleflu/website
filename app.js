@@ -25,6 +25,7 @@ var ssecRouter = require('./routes/ssec')
 var ssccRouter = require('./routes/sscc')
 var adsRouter = require('./routes/ads')
 var resourceRouter = require('./routes/resource')
+var resourcesRouter = require('./routes/resources')
 
 const production = process.env.NODE_ENV === "production";
 
@@ -84,10 +85,11 @@ app.use('/media-inquiries', mediaRouter);
 app.use('/swabandsend', swabandsendRouter);
 app.use('/contact-us', contactRouter);
 app.use('/ssec', ssecRouter);
-app.use('/sscc', ssecRouter);
+app.use('/sscc', ssccRouter);
 app.use('/thank-you/:thankyouid', thankyouRouter)
 app.use('/a/:ad', adsRouter)
 app.use('/resources/:resource', resourceRouter)
+app.use('/resources', resourcesRouter);
 app.use('/', indexRouter)
 app.use(errorRouter);
 

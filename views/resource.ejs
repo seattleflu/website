@@ -43,6 +43,11 @@
             <% if(pageData[0].fields.content2){ %>
             <%- md.render(pageData[0].fields.content2) %>
             <% } %>
+
+            <div class="study-callout">
+                <%- md.render(siteData[0].fields.promoBannerCopy) %>
+                <a href="<%- siteData[0].fields.promoBannerLink %>"><button class="green"><%- siteData[0].fields.promoBannerCta %></button></a>
+            </div>
         </div>
         <div class="col-lg-4 add-resources">
             <h3>Additional Resources</h3>
