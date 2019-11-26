@@ -23,27 +23,28 @@
             <p class="published">Published <%= moment(pageData[0].fields.publishDate).format( 'MMMM YYYY') %></p>
         </div>
         <div class="col-lg-8">
-            <% if(pageData[0].fields.image){ %>
-            <img class="resource-image" src="<%= pageData[0].fields.image.fields.file.url %>">
-            <% } %>
-            <%- //md.render(pageData[0].fields.content) %>
-            
-            <% if(pageData[0].fields.content1){ %>
-            <%- md.render(pageData[0].fields.content1) %>
-            <% } %>
+            <div class="resources-text">
+                <% if(pageData[0].fields.image){ %>
+                <img class="resource-image" src="<%= pageData[0].fields.image.fields.file.url %>">
+                <% } %>
+                <%- //md.render(pageData[0].fields.content) %>
+                
+                <% if(pageData[0].fields.content1){ %>
+                <%- md.render(pageData[0].fields.content1) %>
+                <% } %>
 
 
 
-            <% if(pageData[0].fields.ctaCopy){ %>
-                <h4><a href="/enroll" class="cta"><%= pageData[0].fields.ctaCopy %></a></h4>
-            <% } %>
+                <% if(pageData[0].fields.ctaCopy){ %>
+                    <h4><a href="/enroll" class="cta"><%= pageData[0].fields.ctaCopy %></a></h4>
+                <% } %>
 
 
 
-            <% if(pageData[0].fields.content2){ %>
-            <%- md.render(pageData[0].fields.content2) %>
-            <% } %>
-
+                <% if(pageData[0].fields.content2){ %>
+                <%- md.render(pageData[0].fields.content2) %>
+                <% } %>
+            </div>
             <div class="study-callout">
                 <%- md.render(siteData[0].fields.promoBannerCopy) %>
                 <a href="<%- siteData[0].fields.promoBannerLink %>"><button class="green"><%- siteData[0].fields.promoBannerCta %></button></a>
