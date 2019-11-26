@@ -69,7 +69,7 @@ a, a:hover {
 @media (max-width: 767px) {
   h1 {
     font-size: 30px;
-    line-height: 57px;
+    line-height: 35px;
   }
   h2 {
     font-size: 24px;
@@ -434,19 +434,22 @@ button.green:hover {
 
 /*** CALLOUTS ***/
 .study-callout, .home-callout {
-  background-image: url(/images/BG_Blue_sm.png);
-  background-size: cover;
+  background-image: url(/images/Rain_Pattern_Tile.svg);
+  background-size: 160px;
 }
 .study-callout h3 i, .home-callout h3 i {
   font-weight: 700;
 }
 .study-callout {
-  text-align: center;
-  padding: 50px 30px;
+  padding: 57px 30px;
 }
 .home-callout {
   padding: 50px 75px;
   margin-top: 75px;
+}
+.home-callout h3 {
+  font-size: 36px;
+  line-height: 42px;
 }
 .study-callout h3, .home-callout h3 {
   margin: 0;
@@ -463,12 +466,19 @@ button.green:hover {
   height: 100%;
   margin-top: auto;
   margin-bottom: auto;
+  font-size: 20px;
+  line-height: 24px;
+}
+.study-callout button.green, .home-callout button.green {
+  padding: 15px 30px;
+  border-radius: 30px;
+  margin-top: -10px;
 }
 .study-callout a, .home-callout a {
   float: right;
 }
 @media (max-width: 1199px) {
-  .study-callout {
+  .study-callout, .home-callout {
     display: block;
     text-align: center;
     margin-top: 50px;
@@ -476,31 +486,26 @@ button.green:hover {
   .study-callout {
     padding: 30px;
   }
-  .study-callout h3 {
+  .study-callout h3, .home-callout h3 {
     display: block;
     padding-bottom: 20px;
     padding-right: 0;
+    text-align: center;
   }
-  .study-callout a {
+  .study-callout a, .home-callout a {
     float: none;
   }
-}
-@media (max-width: 991px) {
-  .home-callout {
-    text-align: center;
-    margin-top: 50px;
-    padding: 30px;
+  .study-callout button.green {
+    margin-bottom: 20px;
   }
   .home-callout h3 {
-    display: block;
-    margin-bottom: 30px;
-  }
-  .home-callout a {
-    float: none;
+    font-size: 24px;
+    line-height: 28px;
+    padding-bottom: 40px;
   }
 }
 @media (max-width: 767px) {
-  .study-callout {
+  .study-callout, .home-callout {
     padding: 30px 15px;
   }
 }
@@ -1039,9 +1044,6 @@ display: none;
 .study-choice h3 {
   margin-bottom: 20px !important;
 }
-.study-choice .cta {
-  text-decoration: underline;
-}
 .advert-main svg {
   margin-bottom: -8px;
   margin-top: -250px;
@@ -1054,8 +1056,11 @@ display: none;
   padding-bottom: 50px;
 }
 #advertCopy {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+#advertCopy li {
+  margin-bottom: 8px;
 }
 .advert-copy img {
   width: 100%;
@@ -1171,11 +1176,58 @@ header.light .nav-item .adsNav:after {
 
 
 /*** RESOURCES ***/
+.resource-header {
+  background-color: #095DA8;
+  padding-top: 29px;
+  padding-bottom: 22px;
+  margin-bottom: 100px;
+  margin-top: -1px;
+}
+.resource-header svg {
+  position: absolute;
+  margin-top: 20px;
+}
+.resource-header .resource-cta {
+  font-weight: 700;
+  color: #fff;
+}
+.resource-header .resource-cta:before {
+  background-image: url("/images/icon_backArrow_whiteBlueCircle.svg");
+  background-size: 35px 35px;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 35px;
+  height: 35px;
+  content: "";
+}
+.published {
+  font-style: italic;
+  margin-bottom: 0 !important;
+}
+.resources {
+  margin-bottom: 75px;
+}
+.resource-image {
+  width: calc(100% - 30px);
+  margin-top: 30px;
+}
+.resources h1 {
+  margin-bottom: 20px;
+}
+.resources h3 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.resources p, .resources ul {
+  margin-bottom: 20px;
+  color:#4A515F;
+}
 .resources table {
   margin-bottom: 30px;
 }
 .resources table, .resources td, .resources th {  
-  border: 1px solid #ddd;
+  border: none;
   text-align: left;
 }
 .resources table {
@@ -1183,9 +1235,77 @@ header.light .nav-item .adsNav:after {
   width: 100%;
 }
 .resources th, .resources td {
-  padding: 15px;
+  padding: 20px;
+}
+.resources tbody {
+  background-color: #EAECF0;
+  font-weight: 700;
+  color: #4A515F;
 }
 .resources th {
   background-color: #095DA8;
   color: white;
+}
+.resources h4 {
+  margin-bottom: 30px;
+}
+.add-resources ul {
+  padding-left: 30px;
+}
+.add-resources li {
+  list-style: none;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+.add-resources li:before {
+  background-image: url(/images/icon_Resource_Blue.svg);
+  background-size: 25px 31px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 25px;
+  height: 31px;
+  content: "";
+  position: absolute;
+  margin-left: -40px;
+  margin-top: 1px;
+}
+.add-resources li a:hover, .add-resources li a {
+  color: #095DA8;
+}
+.all-resources {
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+.all-resources h2 {
+  margin-bottom: 30px;
+}
+@media (min-width: 993px) {
+  .all-resources-text {
+    padding-right: 30px;
+  }
+}
+@media (max-width: 992px) {
+  .resource-header {
+    margin-bottom: 60px;
+  }
+  .resources {
+    margin-bottom: 50px;
+  }
+  .resource-image {
+    width: 100%;
+  }
+  .all-resources {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .all-resources .add-resources {
+    margin-top: 50px;
+  }
+}
+@media (max-width: 575px) {
+  .resources table {
+    width: auto;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
 }
