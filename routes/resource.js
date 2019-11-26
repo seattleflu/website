@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var page = require('../services/page')
 var site = require('../services/site')
+var moment = require ('moment');
 
 const JSON = require('circular-json')
 var resource = require('../services/resource')
@@ -63,7 +64,8 @@ router.get('/', function (req, res, next) {
     logos: 'true',
     nav: req.nav,
     enroll: req.enroll,
-    md: md
+    md: md,
+    moment: moment
   })
 })
 

@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1><%= pageData[0].fields.title %></h1>
-            <p class="published">Published <%= pageData[0].fields.publishDate %></p>
+            <p class="published">Published <%= moment(pageData[0].fields.publishDate).format( 'MMMM YYYY') %></p>
         </div>
         <div class="col-lg-8">
             <% if(pageData[0].fields.image){ %>
