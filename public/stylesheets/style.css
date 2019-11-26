@@ -1294,6 +1294,13 @@ header.light .nav-item .adsNav:after {
 .resources .study-callout {
   margin-top: 75px;
 }
+.resources-social {
+  padding-top: 20px;
+}
+.resources-social img {
+  margin-right: 15px;
+  vertical-align: bottom;
+}
 @media (min-width: 993px) {
   .all-resources-text {
     padding-right: 30px;
