@@ -126,11 +126,11 @@ const App = () => {
     }, [])
 
     getWebSiteSettings().then(settings => {
-      const work = settings[0].fields.validStudyWorkZipCodes
+      //const work = settings[0].fields.validStudyWorkZipCodes
       const home = settings[0].fields.validStudyHomeZipCodes
-      const workString = work.replace(' ', '')
+      //const workString = work.replace(' ', '')
       const homeString = home.replace(' ', '')
-      const workArray = workString.split(',')
+      //const workArray = workString.split(',')
       const homeArray = homeString.split(',')
       // setWorkZip(workArray)
       setHomeZip(homeArray)
