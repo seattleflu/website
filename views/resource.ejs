@@ -20,30 +20,37 @@
     <div class="row">
         <div class="col-lg-12">
             <h1><%= pageData[0].fields.title %></h1>
-            <p class="published">Published <%= moment(pageData[0].fields.publishDate).format( 'MMMM YYYY') %></p>
+            <p class="published">Published <%= moment(pageData[0].fields.publishDate).format( 'MM/DD/YYYY') %></p>
+            <div class="resources-social">
+                <a class="facebook custom share" id="facebook-url" title="Facebook Share" href="https://www.facebook.com/sharer.php?u=https://seattleflu.org/resources/<%= pageData[0].fields.url %>" target="_blank"><img src="/images/icon_share_facebook.svg"></a>
+                <a class="twitter custom share" id="twitter-url" title="Twitter Share" href="https://twitter.com/share?url=https://seattleflu.org/resources/<%= pageData[0].fields.url %>" target="_blank"><img src="/images/icon_share_twitter.svg"></a>
+                <a class="linkedin custom share" id="linkedin-url" title="Linkedin Share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://seattleflu.org/resources/<%= pageData[0].fields.url %>" target="_blank"><img src="/images/icon_share_linkedin.svg"></a>
+                <a class="email custom " id="email-url" title="Email Share" href="mailto:?subject=Seattleflu.org – <%= pageData[0].fields.title %>&body=Hi, I read this article on Seattleflu.org and thought you would be interested: https://seattleflu.org/resources/<%= pageData[0].fields.url %>"><img src="/images/icon_share_email.svg"></a>
+            </div>
         </div>
         <div class="col-lg-8">
-            <% if(pageData[0].fields.image){ %>
-            <img class="resource-image" src="<%= pageData[0].fields.image.fields.file.url %>">
-            <% } %>
-            <%- //md.render(pageData[0].fields.content) %>
-            
-            <% if(pageData[0].fields.content1){ %>
-            <%- md.render(pageData[0].fields.content1) %>
-            <% } %>
+            <div class="resources-text">
+                <% if(pageData[0].fields.image){ %>
+                <img class="resource-image" src="<%= pageData[0].fields.image.fields.file.url %>">
+                <% } %>
+                <%- //md.render(pageData[0].fields.content) %>
+                
+                <% if(pageData[0].fields.content1){ %>
+                <%- md.render(pageData[0].fields.content1) %>
+                <% } %>
 
 
 
-            <% if(pageData[0].fields.ctaCopy){ %>
-                <h4><a href="/enroll" class="cta"><%= pageData[0].fields.ctaCopy %></a></h4>
-            <% } %>
+                <% if(pageData[0].fields.ctaCopy){ %>
+                    <h4><a href="/enroll" class="cta"><%= pageData[0].fields.ctaCopy %></a></h4>
+                <% } %>
 
 
 
-            <% if(pageData[0].fields.content2){ %>
-            <%- md.render(pageData[0].fields.content2) %>
-            <% } %>
-
+                <% if(pageData[0].fields.content2){ %>
+                <%- md.render(pageData[0].fields.content2) %>
+                <% } %>
+            </div>
             <div class="study-callout">
                 <%- md.render(siteData[0].fields.promoBannerCopy) %>
                 <a href="<%- siteData[0].fields.promoBannerLink %>"><button class="green"><%- siteData[0].fields.promoBannerCta %></button></a>
@@ -56,6 +63,7 @@
                 <li><a href="/"><h4>Facts about the flu</h4></a></li>
                 <li><a href="/"><h4>Preventing the flu</h4></a></li>
             </ul>
+            <h4><a href="/resources" class="cta">View All</a></h4>
         </div>
     </div>
 </div>
