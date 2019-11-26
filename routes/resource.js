@@ -35,7 +35,7 @@ router.get('/', function(req, res, next){
     .getResource(resourceUrl)
     .then(pageData => {
       req.pageData = pageData.items
-      console.log(JSON.stringify(pageData))
+      // console.log(JSON.stringify(pageData.items[0].fields.additionalResources))
       if(pageData.items[0].fields.showMenu != null){
         var nav = pageData.items[0].fields.showMenu
         req.nav = nav.toString();

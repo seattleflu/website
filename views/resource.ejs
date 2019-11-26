@@ -53,16 +53,18 @@
             </div>
             <div class="study-callout">
                 <%- md.render(siteData[0].fields.promoBannerCopy) %>
-                <a href="<%- siteData[0].fields.promoBannerLink %>"><button class="green"><%- siteData[0].fields.promoBannerCta %></button></a>
+                <a href="<% siteData[0].fields.promoBannerLink %>"><button class="green"><%- siteData[0].fields.promoBannerCta %></button></a>
             </div>
         </div>
         <div class="col-lg-4 add-resources">
             <h3>Additional Resources</h3>
+            <%if(pageData[0].fields.additionalResources){ %>
             <ul>
-                <li><a href="/"><h4>Five steps to take if you have the flu</h4></a></li>
-                <li><a href="/"><h4>Facts about the flu</h4></a></li>
-                <li><a href="/"><h4>Preventing the flu</h4></a></li>
+            <% pageData[0].fields.additionalResources.forEach((resource) => { %>
+                <li><a href="/resources/<%= resource.fields.url %>"><h4><%= resource.fields.title %></h4></a></li>
+             <% }) %>
             </ul>
+            <%}%>
             <h4><a href="/resources" class="cta">View All</a></h4>
         </div>
     </div>
