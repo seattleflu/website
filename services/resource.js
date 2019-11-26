@@ -15,7 +15,10 @@ async function getResource (url) {
 async function getResources () {
   try {
     const results = await client.getEntries({
-      content_type: 'resources'
+      content_type: 'resources',
+      order: '-fields.publishDate',
+      limit: 1000,
+      include: 10
     })
     return results
   } catch (error) {
