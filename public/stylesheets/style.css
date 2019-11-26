@@ -1281,12 +1281,18 @@ header.light .nav-item .adsNav:after {
 .add-resources li a:hover, .add-resources li a {
   color: #095DA8;
 }
+.add-resources h3 {
+  margin-bottom: 50px;
+}
 .all-resources {
   margin-top: 75px;
   margin-bottom: 75px;
 }
 .all-resources h2 {
   margin-bottom: 30px;
+}
+.resources .study-callout {
+  margin-top: 75px;
 }
 @media (min-width: 993px) {
   .all-resources-text {
@@ -1309,6 +1315,12 @@ header.light .nav-item .adsNav:after {
   }
   .all-resources .add-resources {
     margin-top: 50px;
+  }
+  .resources .study-callout {
+    margin-top: 50px;
+  }
+  .add-resources h3 {
+    margin-bottom: 38px;
   }
 }
 @media (max-width: 575px) {
