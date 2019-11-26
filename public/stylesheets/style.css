@@ -1235,6 +1235,7 @@ header.light .nav-item .adsNav:after {
 }
 .resources table {
   margin-bottom: 30px;
+  margin-top: 30px;
 }
 .resources table, .resources td, .resources th {  
   border: none;
@@ -1302,8 +1303,8 @@ header.light .nav-item .adsNav:after {
   vertical-align: bottom;
 }
 @media (min-width: 993px) {
-  .all-resources-text {
-    padding-right: 30px;
+  .all-resources .resources-text {
+    padding-right: 30px !important;
   }
 }
 @media (max-width: 992px) {
