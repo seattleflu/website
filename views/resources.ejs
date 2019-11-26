@@ -11,9 +11,10 @@
         </div>
         <div class="col-lg-8 add-resources">
             <ul>
-                <li><a href="/"><h4>Five steps to take if you have the flu</h4></a></li>
-                <li><a href="/"><h4>Facts about the flu</h4></a></li>
-                <li><a href="/"><h4>Preventing the flu</h4></a></li>
+                
+                <% allResources.forEach((resource) => { %>
+                <li><a href="resources/<%= resource.fields.url %>"><h4><%= resource.fields.title %></h4></a></li>
+                <% }) %>
             </ul>
         </div>
         <div class="col-lg-12">

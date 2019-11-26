@@ -12,6 +12,19 @@ async function getResource (url) {
   }
 }
 
+async function getResources () {
+  try {
+    const results = await client.getEntries({
+      content_type: 'resources'
+    })
+    return results
+  } catch (error) {
+    console.log('ERROR: ', error)
+  }
+}
+
+
 module.exports = {
-  getResource
+  getResource,
+  getResources
 }

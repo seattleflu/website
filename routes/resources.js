@@ -3,6 +3,8 @@ var router = express.Router()
 
 var page = require('../services/page')
 var site = require('../services/site')
+var resources = require('../services/resource')
+const JSON = require('circular-json')
 
 var md = require('markdown-it')({
   html: true
@@ -41,6 +43,17 @@ router.use((req, res, next) => {
     .catch(console.error)
 })
 
+router.get('/', function(req, res, next){
+  resources
+    .getResources()
+    .then(allResources => {
+      req.allResources = allResources.items
+      console.log(JSON.stringify(allResources))
+      next()
+    })
+    .catch(console.error)
+})
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('resources', {
@@ -51,7 +64,8 @@ router.get('/', function (req, res, next) {
     enroll: req.enroll,
     logos: 'true',
     pageData: req.pageData,
-    siteData: req.siteData
+    siteData: req.siteData,
+    allResources: req.allResources
   })
 })
 
