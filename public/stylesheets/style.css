@@ -1217,7 +1217,7 @@ header.light .nav-item .adsNav:after {
 }
 .resource-image {
   width: calc(100% - 30px);
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .resources h1 {
   margin-bottom: 20px;
@@ -1297,6 +1297,7 @@ header.light .nav-item .adsNav:after {
 }
 .resources-social {
   padding-top: 20px;
+  margin-bottom: 30px;
 }
 .resources-social img {
   margin-right: 15px;
