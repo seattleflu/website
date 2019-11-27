@@ -3,6 +3,7 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 
+
 var indexRouter = require('./routes/index')
 var faqRouter = require('./routes/faq')
 var scienceRouter = require('./routes/science')
@@ -95,6 +96,7 @@ app.use('/a/:ad', adsRouter)
 app.use('/resources/:resource', resourceRouter)
 app.use('/resources', resourcesRouter);
 app.use('/', indexRouter)
+
 app.use(errorRouter);
 
 
