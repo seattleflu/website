@@ -54,6 +54,13 @@ router.get('/', function(req, res, next){
     .catch(console.error)
 })
 
+router.get('/', function(req,res,next){
+  var baseUrl = req.get('host')
+  var pageUrl = req.baseUrl;
+  req.pageUrl =  baseUrl + pageUrl
+  next()
+})
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('resources', {
@@ -65,7 +72,8 @@ router.get('/', function (req, res, next) {
     logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData,
-    allResources: req.allResources
+    allResources: req.allResources,
+    pageUrl: req.pageUrl
   })
 })
 

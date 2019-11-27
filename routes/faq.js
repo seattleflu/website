@@ -51,6 +51,13 @@ router.use((req, res, next) => {
     .catch(console.error)
 })
 
+router.get('/', function(req,res,next){
+  var baseUrl = req.get('host')
+  var pageUrl = req.baseUrl;
+  req.pageUrl =  baseUrl + pageUrl
+  next()
+})
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('faq', {
@@ -62,7 +69,8 @@ router.get('/', function (req, res, next) {
     nav: req.nav,
     enroll: req.enroll,
     logos: 'true',
-    md: md
+    md: md,
+    pageUrl:req.pageUrl
   })
 })
 
