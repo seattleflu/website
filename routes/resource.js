@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var page = require('../services/page')
 var site = require('../services/site')
+var moment = require ('moment');
 
 const JSON = require('circular-json')
 var resource = require('../services/resource')
@@ -34,7 +35,7 @@ router.get('/', function(req, res, next){
     .getResource(resourceUrl)
     .then(pageData => {
       req.pageData = pageData.items
-      console.log(JSON.stringify(pageData))
+      // console.log(JSON.stringify(pageData.items[0].fields.additionalResources))
       if(pageData.items[0].fields.showMenu != null){
         var nav = pageData.items[0].fields.showMenu
         req.nav = nav.toString();
@@ -52,6 +53,13 @@ router.get('/', function(req, res, next){
     .catch(console.error)
 })
 
+router.get('/', function(req,res,next){
+  var baseUrl = req.get('host')
+  var pageUrl = req.baseUrl;
+  req.pageUrl =  baseUrl + pageUrl
+  next()
+})
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -59,11 +67,13 @@ router.get('/', function (req, res, next) {
     title: 'Resource',
     pageData: req.pageData,
     siteData: req.siteData,
-    header: 'dark',
+    header: 'light',
     logos: 'true',
     nav: req.nav,
     enroll: req.enroll,
-    md: md
+    md: md,
+    moment: moment,
+    pageUrl: req.pageUrl
   })
 })
 

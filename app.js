@@ -3,6 +3,7 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 
+
 var indexRouter = require('./routes/index')
 var faqRouter = require('./routes/faq')
 var scienceRouter = require('./routes/science')
@@ -23,8 +24,11 @@ var mediaRouter = require('./routes/media');
 var errorRouter = require('./routes/error')
 var ssecRouter = require('./routes/ssec')
 var ssccRouter = require('./routes/sscc')
+var stecRouter = require('./routes/stec')
+var stccRouter = require('./routes/stcc')
 var adsRouter = require('./routes/ads')
 var resourceRouter = require('./routes/resource')
+var resourcesRouter = require('./routes/resources')
 
 const production = process.env.NODE_ENV === "production";
 
@@ -84,11 +88,15 @@ app.use('/media-inquiries', mediaRouter);
 app.use('/swabandsend', swabandsendRouter);
 app.use('/contact-us', contactRouter);
 app.use('/ssec', ssecRouter);
-app.use('/sscc', ssecRouter);
+app.use('/sscc', ssccRouter);
+app.use('/stec', stecRouter);
+app.use('/stcc', stccRouter);
 app.use('/thank-you/:thankyouid', thankyouRouter)
 app.use('/a/:ad', adsRouter)
 app.use('/resources/:resource', resourceRouter)
+app.use('/resources', resourcesRouter);
 app.use('/', indexRouter)
+
 app.use(errorRouter);
 
 

@@ -21,7 +21,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('learnmore')
+    .getPageData('stec')
     .then(pageData => {
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
@@ -49,9 +49,9 @@ router.get('/', function(req,res,next){
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('learnmore', {
-    title: 'Learn More',
-    header: 'dark',
+  res.render('stec', {
+    title: 'S&T Enrollment Complete',
+    header: 'light',
     md: md,
     nav: req.nav,
     enroll: req.enroll,

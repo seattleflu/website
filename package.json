@@ -27,6 +27,7 @@
     "luxon": "^1.17.2",
     "markdown-it": "^10.0.0",
     "markdown-it-attrs": "^3.0.1",
+    "moment": "^2.24.0",
     "morgan": "~1.9.0",
     "nodemon": "^1.19.2",
     "react": "^16.9.0",

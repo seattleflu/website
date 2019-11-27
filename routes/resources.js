@@ -3,6 +3,8 @@ var router = express.Router()
 
 var page = require('../services/page')
 var site = require('../services/site')
+var resources = require('../services/resource')
+const JSON = require('circular-json')
 
 var md = require('markdown-it')({
   html: true
@@ -21,7 +23,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('learnmore')
+    .getPageData('resources')
     .then(pageData => {
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
@@ -40,6 +42,18 @@ router.use((req, res, next) => {
     })
     .catch(console.error)
 })
+
+router.get('/', function(req, res, next){
+  resources
+    .getResources()
+    .then(allResources => {
+      req.allResources = allResources.items
+      console.log(JSON.stringify(allResources))
+      next()
+    })
+    .catch(console.error)
+})
+
 router.get('/', function(req,res,next){
   var baseUrl = req.get('host')
   var pageUrl = req.baseUrl;
@@ -49,16 +63,17 @@ router.get('/', function(req,res,next){
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('learnmore', {
-    title: 'Learn More',
-    header: 'dark',
+  res.render('resources', {
+    title: 'Resources',
+    header: 'light',
     md: md,
     nav: req.nav,
     enroll: req.enroll,
-    logos: 'false',
+    logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData,
-    pageUrl:req.pageUrl
+    allResources: req.allResources,
+    pageUrl: req.pageUrl
   })
 })
 

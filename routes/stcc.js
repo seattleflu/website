@@ -21,7 +21,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('learnmore')
+    .getPageData('stcc')
     .then(pageData => {
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
@@ -40,6 +40,7 @@ router.use((req, res, next) => {
     })
     .catch(console.error)
 })
+
 router.get('/', function(req,res,next){
   var baseUrl = req.get('host')
   var pageUrl = req.baseUrl;
@@ -49,9 +50,9 @@ router.get('/', function(req,res,next){
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('learnmore', {
-    title: 'Learn More',
-    header: 'dark',
+  res.render('stcc', {
+    title: 'S&T Complete',
+    header: 'light',
     md: md,
     nav: req.nav,
     enroll: req.enroll,

@@ -1,0 +1,32 @@
+
+<% include ./partials/ads-header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
+
+<div class="container resources all-resources">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2><%= pageData[0].fields.name %></h2>
+        </div>
+        <div class="col-lg-4 resources-text">
+            <%- md.render(pageData[0].fields.content) %>
+        </div>
+        <div class="col-lg-8 add-resources">
+            <ul>
+                
+                <% allResources.forEach((resource) => { %>
+                <li><a href="/resources/<%= resource.fields.url %>"><h4><%= resource.fields.title %></h4></a></li>
+                <% }) %>
+            </ul>
+        </div>
+        <div class="col-lg-12">
+            <div class="home-callout">
+                <%- md.render(siteData[0].fields.promoBannerCopy) %>
+                <a href="<%- siteData[0].fields.promoBannerLink %>"><button class="green"><%- siteData[0].fields.promoBannerCta %></button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer  {logos: logos} %>
+    
+    
+  
