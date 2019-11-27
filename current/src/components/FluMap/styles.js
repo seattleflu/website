@@ -1,12 +1,12 @@
 import { fromJS as immutable, List } from "immutable";
-import MAP_STYLE from "./mapbox-light-v10.json";
+import MAP_STYLE from "./mapbox-dark-v10.json";
 
 
 /**
  * Base map style specification, as an Immutable Map.
  *
- * Currently a local copy of Mapbox Light v10, as downloaded from
- * <https://api.mapbox.com/styles/v1/mapbox/light-v10> with our access token.
+ * Currently a local copy of Mapbox Dark v10, as downloaded from
+ * <https://api.mapbox.com/styles/v1/mapbox/dark-v10> with our access token.
  */
 export const baseMapStyle = immutable(MAP_STYLE);
 
