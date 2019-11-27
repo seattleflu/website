@@ -52,7 +52,7 @@ router.get('/', function (req, res, next) {
     logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData,
-    pageurl:req.pageUrl
+    pageUrl:req.pageUrl
   })
 })
 
