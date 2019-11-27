@@ -35,18 +35,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="shortcut icon" href="/images/favicon/favicon.ico">
     
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Flu Study | <%= pageData[0].fields.name %></title>
-    <meta property="og:site_name" content="<%= pageData[0].fields.name %>"/>
-    <meta property="og:title" content="<%= pageData[0].fields.name %>" />
+    <title>Flu Study | <%= pageData[0].fields.title %></title>
+    <meta property="og:site_name" content="<%= siteData[0].fields.websiteName %>"/>
+    <meta property="og:title" content="<%= pageData[0].fields.title %>" />
     <meta property="og:url" content="https://seattleflu.org/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>" />
     <meta property="og:type" content="website" />
     <% if (pageData[0].fields.socialSharingImage) { %>
     <meta property="og:image" content="https:<%= pageData[0].fields.socialSharingImage.fields.file.url %>" />
     <% } %>
     <meta property="og:description" content="<%= pageData[0].fields.metaDescription%>" />
-    <meta itemprop="name" content="<%= pageData[0].fields.name %>"/>
+    <meta itemprop="name" content="<%= pageData[0].fields.title %>"/>
     <meta itemprop="url" content="https://seattleflu.org/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %> %>"/>
-    <meta name="twitter:title" content="<%= pageData[0].fields.name %>"/>
+    <meta name="twitter:title" content="<%= pageData[0].fields.title %>"/>
     <meta name="twitter:url" content="https://seattleflu.org/<%= pageData[0].fields.urlSegment == '/'? '': pageData[0].fields.urlSegment  %>>"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="description" content="<%= pageData[0].fields.metaDescription%>" />
