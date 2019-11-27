@@ -40,8 +40,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta property="og:title" content="<%= pageData[0].fields.title %>" />
     <meta property="og:url" content="https://<%= pageUrl %>" />
     <meta property="og:type" content="website" />
-    <% if (pageData[0].fields.socialSharingImage) { %>
-    <meta property="og:image" content="https:<%= pageData[0].fields.socialSharingImage.fields.file.url %>" />
+    <% if (pageData[0].fields.image) { %>
+    <meta property="og:image" content="https:<%= pageData[0].fields.image.fields.file.url %>" />
     <% } %>
     <meta property="og:description" content="<%= pageData[0].fields.metaDescription%>" />
     <meta itemprop="name" content="<%= pageData[0].fields.title %>"/>
@@ -51,7 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="description" content="<%= pageData[0].fields.metaDescription%>" />
     <% if (pageData[0].fields.socialSharingImage) { %>
-    <meta name="twitter:image" content="https:<%= pageData[0].fields.socialSharingImage.fields.file.url %>" />
+    <meta name="twitter:image" content="https:<%= pageData[0].fields.image.fields.file.url %>" />
     <% } %>
   
   </head>
