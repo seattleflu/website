@@ -39,6 +39,7 @@ const Error = props => {
   const [medium, setMedium] = useState ('');
   const [source, setSource] = useState ('');
   const [content, setContent] = useState ('');
+  const [hutk, setHutk] = useState('');
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -50,6 +51,7 @@ const Error = props => {
     setMedium (Cookies.get ('utm_medium'));
     setSource (Cookies.get ('utm_source'));
     setContent (Cookies.get ('utm_content'));
+    setHutk (Cookies.get ('hutk'));
 
     if (
       firstNameValid == 'valid' &&
@@ -99,7 +101,9 @@ const Error = props => {
         '&utm_source=' +
         source +
         '&utm_content=' +
-        content;
+        content +
+        '&hutk=' +
+        hutk;
       Event ('Study Form', 'Sign Up', 'Swab & Send');
       axios ({
         method: 'post',
@@ -114,7 +118,8 @@ const Error = props => {
           if (response.status == '200') {
             setForm ('false');
             setErrorForm ('false');
-            window.location.href = urlConsent;
+            console.log("-------b-b-b-b-b-b----------)
+            
           } else {
             setErrorForm ('true');
           }
@@ -147,7 +152,7 @@ const Error = props => {
         'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send';
       gaName = 'Swab & Send';
     } else {
-      apiUrl = 'https://api.fluathome.org';
+      apiUrl = 'https://kpwflowb0j.execute-api.us-east-1.amazonaws.com/flu-api';
     }
 
     const data =
@@ -168,7 +173,9 @@ const Error = props => {
       '&utm_source=' +
       source +
       '&utm_content=' +
-      content;
+      content +
+      '&hutk=' +
+        hutk;
 
     if (
       firstNameValid == 'valid' &&

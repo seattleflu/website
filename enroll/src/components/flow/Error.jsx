@@ -39,6 +39,7 @@ const Error = props => {
   const [medium, setMedium] = useState ('');
   const [source, setSource] = useState ('');
   const [content, setContent] = useState ('not-set');
+  const [hutk, setHutk] = useState('');
 
   function initializeReactGA () {
     ReactGA.initialize ('UA-135203741-3');
@@ -50,6 +51,7 @@ const Error = props => {
     setMedium (Cookies.get ('utm_medium'));
     setSource (Cookies.get ('utm_source'));
     setContent (Cookies.get ('utm_content'));
+    setHutk (Cookies.get ('hubspotutk'));
 
     if (
       firstNameValid == 'valid' &&
@@ -99,7 +101,10 @@ const Error = props => {
         '&utm_source=' +
         source +
         '&utm_content=' +
-      content;
+        content +
+        '&hutk=' +
+        hutk;
+
       Event ('Study Form', 'Sign Up', 'Swab & Send');
       axios ({
         method: 'post',
@@ -114,7 +119,7 @@ const Error = props => {
           if (response.status == '200') {
             setForm ('false');
             setErrorForm ('false');
-            window.location.href = urlConsent;
+            //window.location.href = urlConsent;
           } else {
             setErrorForm ('true');
           }
@@ -168,7 +173,9 @@ const Error = props => {
       '&utm_source=' +
       source +
       '&utm_content=' +
-      content;
+      content +
+      '&hutk=' +
+        hutk;
 
     if (
       firstNameValid == 'valid' &&
