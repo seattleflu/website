@@ -72,7 +72,8 @@
             "utm_medium": getCookie('utm_medium'),
             "utm_source": getCookie('utm_source'),
             "utm_content": getCookie('utm_content'),
-            "form_name": "learn-more"
+            "form_name": "learn-more",
+            "hutk": getCookie('hubspotutk')
             }
             
             $(".error").remove();
@@ -113,7 +114,7 @@
 
             $.ajax({
             type: 'POST', 
-            url: 'https://api.fluathome.org', 
+            url: 'https://kpwflowb0j.execute-api.us-east-1.amazonaws.com/flu-api', 
             data: formData, 
             dataType: 'json', 
             encode: true
