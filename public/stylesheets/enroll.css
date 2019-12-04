@@ -245,16 +245,3 @@ input[type=tel].notValid{
     font-family: "Roboto Condensed";	
     font-weight: 700;
 }
-
-#eligibilityMaintenance, #eligibilityMaintenance h1 {
-    color: #fff !important;
-    text-align:  center;
-}
-#eligibilityMaintenance {
-    padding-top: 100px;
-}
-@media (max-width: 767px) {
-    #eligibilityMaintenance {
-        padding-top: 0px;
-    }
-}

@@ -924,6 +924,18 @@ h1.number {
   background-color: #0A5CA8;
   min-height: 600px;
 }
+#eligibilityMaintenance, #eligibilityMaintenance h1 {
+  color: #fff !important;
+  text-align:  center;
+}
+#eligibilityMaintenance {
+  padding-top: 100px;
+}
+@media (max-width: 767px) {
+  #eligibilityMaintenance {
+      padding-top: 0px;
+  }
+}
 
 
 /*** LANDING PAGES ***/
