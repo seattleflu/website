@@ -146,6 +146,7 @@ const Main = props => {
   return (
     <div className="col-12">
       <h2>Screening Questionnaire</h2>
+      <p className="intro">Thanks for your interest in the Seattle Flu Study. We just have a few questions to ask to see which part of our research is the best fit for you right now. Ready? Let’s go!</p>
       <p className="steps">Step 1 of 3</p>
       {question >= 0
         ? <Input

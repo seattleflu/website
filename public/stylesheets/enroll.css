@@ -245,3 +245,11 @@ input[type=tel].notValid{
     font-family: "Roboto Condensed";	
     font-weight: 700;
 }
+
+.intro{
+	
+	color: #2D3139;
+	font-family: "Roboto Condensed";
+	font-size: 18px;
+	line-height: 21px;
+}
