@@ -931,9 +931,39 @@ h1.number {
 #eligibilityMaintenance {
   padding-top: 100px;
 }
+#enrollMessage h2, #enrollMessage {
+  color: #fff;
+}
+#enrollMessage {
+  padding-left: 65px;
+  padding-right: 65px;
+  margin-bottom: 14px;
+}
+@media (max-width: 1199px) {
+  #enrollMessage {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media (max-width: 991px) {
+  #enrollMessage {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
 @media (max-width: 767px) {
   #eligibilityMaintenance {
       padding-top: 0px;
+  }
+  #enrollMessage {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+@media (max-width: 575px) {
+  #enrollMessage {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 
