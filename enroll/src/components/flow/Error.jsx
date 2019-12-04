@@ -119,7 +119,7 @@ const Error = props => {
           if (response.status == '200') {
             setForm ('false');
             setErrorForm ('false');
-            //window.location.href = urlConsent;
+            window.location.href = urlConsent;
           } else {
             setErrorForm ('true');
           }
