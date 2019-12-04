@@ -1,74 +1,105 @@
-import { fromJS as immutable } from "immutable";
+import { fromJS as immutable, Map, Set } from "immutable";
+import geometry from "./geometry";
 
-// XXX TODO: For prototyping, these GeoJSONs are sourced from our
-// seattleflu/seattle-geojson repository.  I'm ~80% sure they should ultimately
-// come from static files generated out of ID3C, with real data embedded in
-// each features's properties.
-//   -trs, 8 July 2019
-//
-const baseUrl = "https://raw.githubusercontent.com/seattleflu/seattle-geojson/master/seattle_geojsons";
-const neighborhoodUrl = `${baseUrl}/2016_seattle_neighborhoods.geojson`;
-const craUrl          = `${baseUrl}/2016_seattle_cra.geojson`;
-const tractUrl        = `${baseUrl}/2016_seattle_censusTracts.geojson`;
+const MODEL_API = "https://incidence-mapper.seattleflu.org";
 
-// XXX TODO: For prototyping, shape height is currently a transformation of the
-// land area of the shape.  It needs to be replaced by a real data selection
-// from the GeoJSON properties, or sourced from externally-joined data!
-//   -trs, 8 July 2019
-//
-const extrusionHeight = ["*", 1000000000, ["/", 1, ["get", "ALAND"]]];
-const extrusionStyle = {
-  // See the Mapbox Style Specification for details on data expressions.
-  // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions
-  "fill-extrusion-base": 0,
-  "fill-extrusion-height": extrusionHeight,
-  "fill-extrusion-opacity": 0.6,
-  "fill-extrusion-color": [
-    "step",
-    extrusionHeight,
-          "#FEB24C",
-    200,  "#FD8D3C",
-    400,  "#FC4E2A",
-    800,  "#E31A1C",
-    1600, "#BD0026"
-  ]
-};
+/* XXX TODO: Switch to a combined layer of Seattle neighborhoods + PUMAs
+ * (potentially reduced to ZIPs within our study area).  Mike has been
+ * calling this tentatively "region".
+ */
+export async function neighborhoods() {
+  const geojson = geometry.seattleNeighborhoods;
 
-// XXX TODO: The min/max zoom levels likely want some tweaking.
-//   -trs, 8 July 2019
-//
-// The FluMap component loads the data for each layer at render time and adds
-// it to the map as it arrives.
-export const dataLayers = immutable([
-  {
-    id: "neighborhood",
-    type: "fill-extrusion",
-    source: {
-      type: "geojson",
-      data: neighborhoodUrl
+  // Gosh I'd love to just use SQL.
+  const groupByFields = [
+    "residence_neighborhood_district_name",
+    "pathogen",
+    "encountered_week",
+  ];
+
+  const params = {
+    model_type: "inla_latent",  // FROM clause
+    pathogen: ["flu_positive"], // WHERE condition
+    observed: groupByFields,    // GROUP BY clause
+    spatial_domain: "seattle_geojson_neighborhood_district_name",
+  };
+
+  // SELECT column list
+  const selectFields = Set([
+    "modeled_intensity_mode",
+  ]);
+
+  const model =
+    (await fetchModel(params))
+      .update(rescaleField("modeled_intensity_mode"))
+      .reduce(
+        (groups, row) =>
+          groups.setIn(
+            groupByFields.map(k => row.get(k)),
+            row.filter((v,k) => selectFields.has(k))),
+        Map());
+
+  console.debug("Fetched model data:", model.toJS());
+
+  return geojson
+    .updateIn(["features"], features =>
+      features.map(feature =>
+        feature.updateIn(["properties"], properties =>
+          properties.merge(model.get(properties.get("NEIGHBO"))))));
+}
+
+
+/**
+ * Fetches a model from IDM's API.
+ *
+ * @param {Object} params An object of model parameters specifying the
+ *   model to fetch.  Refer to documentation at
+ *   <http://incidence-mapper.seattleflu.org/v1/ui>.
+ *
+ * @returns {Promise} A promise which resolves to the model results.
+ */
+async function fetchModel(params) {
+  const config = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
     },
-    paint: extrusionStyle,
-    maxzoom: 9.5
-  },
-  {
-    id: "cra",
-    type: "fill-extrusion",
-    source: {
-      type: "geojson",
-      data: craUrl
-    },
-    paint: extrusionStyle,
-    minzoom: 9.5,
-    maxzoom: 12
-  },
-  {
-    id: "tract",
-    type: "fill-extrusion",
-    source: {
-      type: "geojson",
-      data: tractUrl
-    },
-    paint: extrusionStyle,
-    minzoom: 12
-  }
-]);
+    body: JSON.stringify(params)
+  };
+
+  const response = await fetch(`${MODEL_API}/v1/query`, config);
+  return immutable(await response.json());
+}
+
+
+/**
+ * Rescale a single field in a List of Maps to the range [0,1].
+ *
+ * Given a field name, returns a function which takes a Immutable.List of
+ * Immutable.Maps and performs min-max normalization/rescaling as described at
+ * <https://en.wikipedia.org/wiki/Feature_scaling#Rescaling_(min-max_normalization)>.
+ *
+ * Values are rounded to 6 decimal places.  Nulls are preserved as-is.
+ *
+ * @param {string} field
+ * @returns {function}
+ */
+function rescaleField(field) {
+  return table => {
+    const values = table
+      .map(row => row.get(field))
+      .filter(v => v != null);
+
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+
+    const round = (number, places) => Number(number.toFixed(places));
+
+    const rescale = (value) =>
+      value != null
+        ? round((value - min) / (max - min), 6)
+        : value;
+
+    return table.map(row => row.set(field, rescale(row.get(field))));
+  };
+}

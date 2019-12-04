@@ -1,11 +1,11 @@
 import { fromJS as immutable } from "immutable";
 import React from "react";
-import MapboxGL, { FullscreenControl } from "react-map-gl";
+import MapboxGL, { FullscreenControl, Layer, Source } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { dataLayers } from "./data";
+import { neighborhoods } from "./data";
 import { generateKeyframes } from "./keyframes";
-import { baseMapStyle, mergeMapStyle } from "./styles";
+import { baseMap, extrusion } from "./styles";
 
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoidHJ2cmIiLCJhIjoiY2pyM3p4aTlmMWMwbjRibzlia3MyMjZhYiJ9.JCLCk3g-GiVOcKiNWGjOXA";
 
@@ -21,6 +21,15 @@ export default class FluMap extends React.Component {
         onViewportChange={this.onViewportChange.bind(this)}
         onTransitionEnd={this.onTransitionEnd.bind(this)}
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
+
+        {
+          this.getState("dataLayer") &&
+            <Source type="geojson" data={this.getState("dataLayer")}>
+              <Layer beforeId="waterway-label"
+                  type="fill-extrusion"
+                  paint={extrusion(this.props.date)} />
+            </Source>
+        }
 
         <div style={{position: "absolute", top: "1em", right: "1em"}}>
           <FullscreenControl/>
@@ -40,7 +49,8 @@ export default class FluMap extends React.Component {
 
   state = {
     store: immutable({
-      mapStyle: baseMapStyle,
+      mapStyle: baseMap,
+      dataLayer: null,
       view: this.keyframes.next().value
     })
   };
@@ -68,47 +78,25 @@ export default class FluMap extends React.Component {
   async componentDidMount() {
     this._did_mount();
 
-    await Promise.all(
-      dataLayers.map(layer =>
-        this.loadDataLayer(layer)
-          .catch(() => { console.error("Unable to load data for layer:", layer) })));
+    try {
+      const dataLayer = await neighborhoods();
+      console.debug("Fetched data layer:", dataLayer.toJS());
+
+      this.newState(s => s.set("dataLayer", dataLayer));
+    }
+    catch(err) {
+      console.error(`Unable to load data layer:`, err);
+      return;
+    }
 
     this.nextKeyframe();
-  }
-
-  // Load a data layer and add it to the map when it comes in.
-  //
-  async loadDataLayer(layer) {
-    // Our data layers put a URL in the .source.data field.  We'll fetch that
-    // and then inline the resulting GeoJSON as a new source.
-    //
-    const sourceUrl = layer.getIn(["source", "data"]);
-    const sourceId  = `${layer.get("id")}-source`;
-
-    const response = await fetch(sourceUrl);
-    const geojson = await response.json();
-
-    // Convert layer w/ source url to a source + layer style spec
-    //
-    const newStyle = immutable({
-      sources: {
-        [sourceId]: layer.get("source").set("data", geojson)
-      },
-      layers: [
-        layer.set("source", sourceId)
-      ]
-    });
-
-    // Add new source + layer style to the map
-    //
-    this.newState(state =>
-      state.update("mapStyle", mapStyle =>
-        mergeMapStyle(mapStyle, newStyle)));
   }
 
   // Advance to the next keyframe, if any.
   //
   nextKeyframe() {
+    // XXX TODO: does JS support passing values through to generators (a la
+    // python) as an option for fixing the missed ticks fast-forward issue?
     const next = this.keyframes.next();
 
     if (!next.done && next.value)
