@@ -17,6 +17,7 @@
                     <div class="kioskNumber"><%= value %></div>
                     <div class="wrapper">
                       <h5><%= kiosk.fields.locationName %></h5>
+                      <p class="boldAdress"><%= kiosk.fields.listedAddress %></p>
                       <%- md.render(kiosk.fields.content) %>
                     </div>
                   </div>
@@ -38,7 +39,7 @@
                       
                       kiosksLocations.forEach((kiosks) => {
                         locationId = locationId + 1;
-                        var kioskData = [kiosks.fields.locationName, kiosks.fields.location.lat, kiosks.fields.location.lon, kiosks.fields.content, locationId];
+                        var kioskData = [kiosks.fields.locationName, kiosks.fields.location.lat, kiosks.fields.location.lon, kiosks.fields.content, locationId, kiosks.fields.listedAddress];
                         locations.push(kioskData);
                       })
                         
@@ -264,6 +265,7 @@
                           return function() {
                             infowindow.setContent('<div id="content" style="font-family:Roboto Condensed, Arial, sans-serif">'+
                                             '<h5>' + locations[i][0] + '</h5>'+
+                                            '<p class="boldAdress">' + locations[i][5]+ '</p>'+
                                             '<p>' +  locations[i][3] + '</p>' +
                                             '<h4><a href="https://www.google.com/maps/dir//' + locations[i][1] + '+' + locations[i][2] + '/@' + locations[i][1] + ',' + locations[i][2] + ',15z" target="_blank" class="cta">Click For Directions</a></h4>'+
                                             '</div>');

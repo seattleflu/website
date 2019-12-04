@@ -1339,3 +1339,10 @@ header.light .nav-item .adsNav:after {
     margin-right: -15px;
   }
 }
+
+.boldAdress{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-bottom:5px;
+}

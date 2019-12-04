@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 var kiosks = require('../services/kiosks')
+const JSON = require('circular-json')
 
 var page = require('../services/page')
 
@@ -47,6 +48,7 @@ router.use((req, res, next) => {
     .getKiosks()
     .then(kiosksData => {
       req.kiosksData = kiosksData.items
+      console.log(JSON.stringify(kiosksData.items))
       next()
     })
     .catch(console.error)
