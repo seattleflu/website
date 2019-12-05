@@ -3,7 +3,7 @@ import React from "react";
 import MapboxGL, { FullscreenControl, Layer, Source } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { neighborhoods } from "./data";
+import { dataSource } from "./data";
 import { generateKeyframes } from "./keyframes";
 import { baseMap, extrusion } from "./styles";
 
@@ -23,8 +23,8 @@ export default class FluMap extends React.Component {
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
 
         {
-          this.getState("dataLayer") &&
-            <Source type="geojson" data={this.getState("dataLayer")}>
+          this.getState("dataSource") &&
+            <Source type="geojson" data={this.getState("dataSource")}>
               <Layer beforeId="waterway-label"
                   type="fill-extrusion"
                   paint={extrusion(this.props.date)} />
@@ -50,7 +50,7 @@ export default class FluMap extends React.Component {
   state = {
     store: immutable({
       mapStyle: baseMap,
-      dataLayer: null,
+      dataSource: null,
       view: this.keyframes.next().value
     })
   };
@@ -79,13 +79,13 @@ export default class FluMap extends React.Component {
     this._did_mount();
 
     try {
-      const dataLayer = await neighborhoods();
-      console.debug("Fetched data layer:", dataLayer.toJS());
+      const geojson = await dataSource();
+      console.debug("Fetched data source:", geojson.toJS());
 
-      this.newState(s => s.set("dataLayer", dataLayer));
+      this.newState(s => s.set("dataSource", geojson));
     }
     catch(err) {
-      console.error(`Unable to load data layer:`, err);
+      console.error(`Unable to load data source:`, err);
       return;
     }
 

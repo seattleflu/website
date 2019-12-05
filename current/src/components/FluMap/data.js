@@ -7,7 +7,7 @@ const MODEL_API = "https://incidence-mapper.seattleflu.org";
  * (potentially reduced to ZIPs within our study area).  Mike has been
  * calling this tentatively "region".
  */
-export async function neighborhoods() {
+export async function dataSource() {
   const geojson = geometry.seattleNeighborhoods;
 
   // Gosh I'd love to just use SQL.
