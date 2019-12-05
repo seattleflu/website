@@ -15,6 +15,10 @@ const App = () => {
   const [zip, setZip] = useState('')
   const [fistPersonValue, setFirstPersonValue] = useState(true)
   const [currentStep, setCurrentStep] = useState(0)
+  const [introOne, setIntroOne] = useState('')
+  const [introTwo, setIntroTwo] = useState('')
+  const [introThree, setIntroThree] = useState('')
+  const [introFour, setIntroFour] = useState('')
   
   const [question1, setQuestion1] = useState('')
   const [bouncePage1, setBouncePage1] = useState('')
@@ -126,6 +130,8 @@ const App = () => {
     }, [])
 
     getWebSiteSettings().then(settings => {
+      //setIntros
+      
       //const work = settings[0].fields.validStudyWorkZipCodes
       const home = settings[0].fields.validStudyHomeZipCodes
       //const workString = work.replace(' ', '')
@@ -134,6 +140,10 @@ const App = () => {
       const homeArray = homeString.split(',')
       // setWorkZip(workArray)
       setHomeZip(homeArray)
+      setIntroOne(settings[0].fields.introCopyOne)
+      setIntroTwo(settings[0].fields.introCopyTwo)
+      setIntroThree(settings[0].fields.introCopyThree)
+      setIntroFour(settings[0].fields.introCopyFour)
     })
 
     getEnrollmentQuestions().then(questions => {
@@ -428,6 +438,7 @@ function setFirstPerson(value){
             homeZip={homeZip}
             setFirstPersonValue={setFirstPersonValue}
             referrerValue={referrerValue}
+            introOne={introOne}
           />
         ) : null}
         {currentStep == 1 ? (
@@ -438,6 +449,9 @@ function setFirstPerson(value){
             handleStudy={handleStudy}
             currentStep={currentStep}
             fistPersonValue={fistPersonValue}
+            introTwo={introTwo}
+            introThree={introThree}
+            introFour={introFour}
 
             question11={question11}
             conditions11={conditions11}

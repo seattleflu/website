@@ -127,7 +127,11 @@ const Questions = props => {
 
   return (
     <div className='col-12'>
+      
       <h2>Screening Questionnaire</h2>
+      {mainQuestion == 0 ? <p className="intro">{props.introTwo}</p> : null}
+      {mainQuestion == 1 ? <p className="intro">{props.introThree}</p> : null}
+      {mainQuestion == 2 ? <p className="intro">{props.introFour}</p> : null}
       {mainQuestion == 0 ? <p className="steps">Step 2 of 3</p> : null}
       {mainQuestion == 1 ? <p className="steps">Step 3 of 3</p> : null}
       {mainQuestion == 2 ? <p className="steps">Step 3 of 3</p> : null}
