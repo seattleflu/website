@@ -73,8 +73,8 @@ export default function ReturnOfResults() {
     <resultsContext.Provider value={{ defaultContent, results, setResults, content, getContentFromContentful }}>
       <OuterContainer>
           <ContentContainer>
-            <div className="h-25 align-center pt-3">
-              <h1 className="pt-3">{defaultContent.title}</h1>
+            <div className="h-25 align-center pt-md-3">
+              <h1 className="pt-md-3">{defaultContent.title}</h1>
               {/* <LanguageButton className="float-right" onClick={()=> setSpanish(!spanish)}>
                 {spanish ? "English" : "Español"}
               </LanguageButton> */}

@@ -1,13 +1,14 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 export const OuterContainer = styled.div`
   max-width: 1080px;
   margin: 0px auto;
   flex: 1 0 auto;
-  @media (max-width: 735px) {
-    max-width: 90vw;
+  @media (max-width: 767px) {
+    max-width: 100%;
+    margin: 1em 0;
   }
   @media (max-width: 500px) {
     width: 100%;
@@ -25,8 +26,9 @@ export const CenteredParagraph = styled.p`
   line-height: 1.4;
   margin: 1.5em auto;
   max-width: 80%;
-  @media (max-width: 735px) {
+  @media (max-width: 767px) {
     max-width: 100%;
+    font-size: 16px;
   }
 `
 export const LargerParagraph = styled.p`
@@ -34,35 +36,22 @@ export const LargerParagraph = styled.p`
   line-height: 1.5;
   margin: 1em auto;
   max-width: 90%;
-  @media (max-width: 735px) {
+  text-align: justify;
+  @media (max-width: 767px) {
     max-width: 95%;
+    font-size: 18px;
   }
 `
 export const Br = styled.br`
   line-height: 3;
-`
-
-const BaseHeader = styled.div`
-  font-weight: 700;
-  text-align: ${props => props.left ? "left" : "center"};
-  padding-top: 10px;
-  padding-bottom: 5px;
-`
-export const H1 = styled(BaseHeader)`
-  font-size: 56px;
-  @media (max-width: 500px) {
-    font-size: 40px;
+  @media (max-width: 767px) {
+    line-height: 0.5;
   }
 `
-export const H2 = styled(BaseHeader)`
-  font-size: 32px;
-`
-export const H3 = styled(BaseHeader)`
-  font-size: 24px;
-`
-export const Bold = styled.span`
-  font-weight: 700;
-`
+export const H2 = styled.h2``
+
+export const H3 = styled.h3``
+
 
 /* Feature Block */
 export const FeatureContainer = styled.div`
@@ -72,9 +61,10 @@ export const FeatureContainer = styled.div`
   padding: 1em 2em;
   margin: 3em auto;
   font-weight: 400;
-  @media (max-width: 735px) {
+  @media (max-width: 767px) {
     flex-direction: column;
     padding: 2em 2em;
+    margin: 1em auto;
   }
 `
 const FeatureButtonContainer = styled.div`
@@ -107,12 +97,12 @@ const FeatureFlexContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin: 2em 0;
   line-height: 1.7rem;
-  @media (max-width: 735px) {
+  @media (max-width: 767px) {
     flex-direction: column;
     line-height: 1.4rem;
+    margin: .5em 0;
   }
 `
 const FeatureMainText = styled.div`
@@ -126,17 +116,21 @@ const FeatureSidebar = styled.div`
   text-align: left;
   font-size: 0.9rem;
   line-height: 22px;
-  @media (max-width: 735px) {
+  @media (max-width: 767px) {
     margin-top: 2em;
   }
 `;
 
 const FeatureSection = styled.section`
-    flex: 5;
-    margin-left: 2em;
+  flex: 5;
+  margin-left: 2em;
+  @media (max-width: 767px) {
+    margin-left: 0;
+  }
 `
 
 export const FeatureH3 = styled(H3)`
+  text-align: center;
   color: inherit;
 `
 
@@ -193,11 +187,12 @@ export const Link = styled.a`
 `
 
 export const UnorderedList = styled.ul`
-    margin: auto;
+    margin: 2em auto;
     width: fit-content;
     font-size: 20px;
-    @media (max-width: 768px) {
-        width: 75%;
+    @media (max-width: 767px) {
+      font-size: 18px;
+      margin: .5em auto;
     }
 `
 export const Form = styled.form`
@@ -230,6 +225,9 @@ export const SubmitButton = styled.button`
         background-color: #7cb9f2;
         color: #0a5ca8;
     }
+    @media (max-width: 767px) {
+      width: auto;
+    }
 `
 
 export const STabs = styled(Tabs)`
@@ -241,6 +239,13 @@ export const STabList = styled(TabList)`
   display: flex;
   justify-content: center;
   margin: 0;
+  @media (max-width: 767px) {
+    display: block;
+    text-align: center;
+    padding: .25em;
+    overflow-y: scroll;
+    white-space: nowrap;
+  }
 `
 export const STab = styled(Tab)`
   border: 1px solid transparent;
@@ -256,8 +261,8 @@ export const STab = styled(Tab)`
     border-color: #92C4DA;
     border-bottom: 1px solid #FFFFFF;
   }
-  @media (max-width: 735px) {
-      padding: 0.5em;
+  @media (max-width: 767px) {
+    display: inline-block;
   }
 `
 export const STabPanel = styled(TabPanel)`
@@ -276,6 +281,10 @@ export const MoreInfo = styled.div`
   padding-bottom: 1.5em;
   font-size: 16px;
   text-align: center;
+  @media (max-width: 767px) {
+    padding-bottom: 0;
+    margin: 2em 0 0 0;
+  }
 `
 export const Banner = styled.div`
   padding: 1em;

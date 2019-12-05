@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import * as Markdown from 'react-markdown';
 
 import { resultsContext } from '../ReturnOfResults';
-import { Feature, FeatureH3, UnorderedList } from '../styledComponents';
+import { Feature, FeatureH3, UnorderedList, Br } from '../styledComponents';
 
 export default function SampleProcessing() {
   const { content } = useContext(resultsContext);
@@ -16,9 +16,9 @@ export default function SampleProcessing() {
           {content.paragraphOne}
         </FeatureH3>
       </Feature>
-      <Feature>
+      <div>
         <Markdown source={content.paragraphTwo} renderers={{ list: UnorderedList }}/>
-      </Feature>
+      </div>
     </div>
   )
 }

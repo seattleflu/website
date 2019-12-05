@@ -2,7 +2,7 @@ import React, { useContext, createContext } from 'react';
 
 import { contentContext } from './Results';
 import * as positiveResults from './PositiveResults';
-import { STabs, STabList, STab, STabPanel } from '../styledComponents';
+import { STabs, STabList, STab, STabPanel, Br } from '../styledComponents';
 
 // Set up tabsRole for react-tabs
 STabList.tabsRole = 'TabList';
@@ -37,7 +37,7 @@ export default function PositiveResult() {
     return (
         <div>
             <h3 className='align-center'>
-                {resultContent[0].title} <br/>
+                {resultContent[0].title} <Br/>
             </h3>
             <STabs
                 selectedTabClassName='is-selected'

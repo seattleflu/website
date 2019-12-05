@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import * as Markdown from 'react-markdown';
 
 import { positiveResultContext } from '../PositiveResult';
-import { LargerParagraph, CenteredParagraph, Feature, UnorderedList } from '../../styledComponents';
+import { LargerParagraph, CenteredParagraph, Feature, UnorderedList, Br } from '../../styledComponents';
 import ResultsMoreInfo from '../ResultsMoreInfo';
 
 export default function Coronavirus() {
@@ -23,7 +23,7 @@ export default function Coronavirus() {
       </Feature>
 
       <Markdown source={content.blockThree} renderers={{ paragraph: CenteredParagraph }}/>
-      <br/>
+      <Br/>
       <ResultsMoreInfo content={content} />
     </div>
   )
