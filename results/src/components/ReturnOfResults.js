@@ -75,9 +75,9 @@ export default function ReturnOfResults() {
           <ContentContainer>
             <div className="h-25 align-center pt-3">
               <h1 className="pt-3">{defaultContent.title}</h1>
-              <LanguageButton className="float-right" onClick={()=> setSpanish(!spanish)}>
+              {/* <LanguageButton className="float-right" onClick={()=> setSpanish(!spanish)}>
                 {spanish ? "English" : "Español"}
-              </LanguageButton>
+              </LanguageButton> */}
             </div>
             {display}
           </ContentContainer>
