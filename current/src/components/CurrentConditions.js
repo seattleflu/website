@@ -1,5 +1,5 @@
 import React from 'react';
-import { DateTime } from 'luxon';
+import { DateTime, Duration } from 'luxon';
 
 import FluMap from './FluMap/';
 import SeasonTimeline from './SeasonTimeline';
@@ -9,8 +9,23 @@ const SEASON_CUTOFF_MONTH = 9;
 
 
 export default class CurrentConditions extends React.Component {
+  state = {
+    currentDate: DateTime.local(),
+  };
+
+  componentDidMount() {
+    const location = new URL(document.location);
+    const week = location.searchParams.get("week");
+
+    if (week)
+      this.setState(s => ({...s, currentDate: DateTime.fromISO(week)}));
+  }
+
   render() {
-    const currentDate = DateTime.local();
+    const thisWeek = DateTime.local().toFormat("kkkk-'W'WW");
+
+    const currentDate = this.state.currentDate;
+    const currentWeek = currentDate.toFormat("kkkk-'W'WW");
     const currentMonth = currentDate.month;
     const currentFullMonth = currentDate.monthLong;
     const currentYear = currentDate.year;
@@ -36,17 +51,23 @@ export default class CurrentConditions extends React.Component {
     return (
       <>
         <p>
-          It’s {currentFullMonth} {currentYear}, which means
-          we’re <strong>{fluSeasonProgressText[currentMonth]}</strong> the {seasonStartYear}–
-          {seasonStartYear + 1} flu season.
+          {thisWeek === currentWeek
+            ? `It’s ${currentFullMonth} ${currentYear}, which means we’re `
+            : `In ${currentFullMonth} ${currentYear} we ${currentWeek < thisWeek ? "were" : "will be"} `}
+
+          <strong>{fluSeasonProgressText[currentMonth]}</strong> the {seasonStartYear}–{seasonStartYear + 1} flu season.
 
           {/*This week we’re <strong>{fluCurrentStatusText}</strong>.*/}
         </p>
 
-        <SeasonTimeline currentMonth={currentMonth} />
+        <SeasonTimeline date={currentDate} />
 
         <p>
-          The map below shows the relative intensity of common respiratory infections this week from across the Seattle region.
+          The map below shows the relative intensity of flu infections
+          {thisWeek === currentWeek
+            ? ` this week (${currentWeek}) `
+            : ` the week of ${currentWeek} `}
+          from across the Seattle region.
         </p>
 
         <p>
