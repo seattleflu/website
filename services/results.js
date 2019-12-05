@@ -1,4 +1,5 @@
 const axios = require('axios')
+const urljoin = require('url-join')
 
 var client = require('./contentful').client
 
@@ -22,7 +23,7 @@ async function getBarcodeResults(barcode){
     try {
         const response = await axios({
             method: 'get',
-            url: new URL(apiUrl, baseUrl),
+            url: urljoin(baseUrl, apiUrl),
             auth: {
                 username: username,
                 password: password
