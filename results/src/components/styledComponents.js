@@ -56,7 +56,8 @@ export const H4 = styled.h4``
 /* Feature Block */
 export const FeatureContainer = styled.div`
   color: #FFFFFF;
-  background-color: #0a5ca8;
+  background-image: url(/images/BG_Blue_sm.png);
+  background-size: cover;
   border-radius: 3px;
   padding: 1em 2em;
   margin: 3em auto;
