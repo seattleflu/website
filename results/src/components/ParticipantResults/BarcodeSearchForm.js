@@ -25,7 +25,7 @@ export default function BarcodeSearchForm() {
                   "Human_coronavirus": "coronavirus",
                   "Enterovirus": "enterovirus",
                   "Influenza": "flu",
-                  "Human_metapenumovirus": "hmpv",
+                  "Human_metapneumovirus": "hmpv",
                   "Human_parainfluenza": "parainfluenza",
                   "Rhinovirus": "rhinovirus",
                   "RSV": "rsv"
