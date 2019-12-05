@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, createContext } from 'react';
 
-import { getContentfulResults } from '../../../services/results';
+import { getContentfulResults, getBarcodeFaqs } from '../../../services/results';
 import { OuterContainer, ContentContainer, LanguageButton } from './styledComponents';
 import BarcodeSearchForm from './ParticipantResults/BarcodeSearchForm';
 import SampleNotReceived from './ParticipantResults/SampleNotReceived';
@@ -11,6 +11,7 @@ import Results from './ParticipantResults/Results';
 export const resultsContext = createContext()
 export default function ReturnOfResults() {
   const [defaultContent, setDefaultContent] = useState({})
+  const [barcodeFaqs, setBarcodeFaqs] = useState([])
   const [results, setResults] = useState({})
   const [content, setContent] = useState(null)
   const [display, setDisplay] = useState(<BarcodeSearchForm/>)
@@ -22,6 +23,13 @@ export default function ReturnOfResults() {
     .then(defaultContent => {
       if (isCurrent) {
         setDefaultContent(defaultContent)
+      }
+    })
+    .catch(console.error)
+    getBarcodeFaqs(spanish ? 'barcodeFaqs-es' : 'barcodeFaqs')
+    .then(barcodeFaqs => {
+      if (isCurrent) {
+        setBarcodeFaqs(barcodeFaqs.items)
       }
     })
     .catch(console.error)
@@ -70,7 +78,7 @@ export default function ReturnOfResults() {
   }
 
   return (
-    <resultsContext.Provider value={{ defaultContent, results, setResults, content, getContentFromContentful }}>
+    <resultsContext.Provider value={{ defaultContent, barcodeFaqs, results, setResults, content, getContentFromContentful }}>
       <OuterContainer>
           <ContentContainer>
             <div className="h-25 align-center pt-md-3">

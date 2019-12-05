@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Fragment } from 'react';
 
 import { getBarcodeResults } from '../../../../services/results';
 import { resultsContext } from '../ReturnOfResults';
-import { Feature, Form, Input, SubmitButton } from '../styledComponents';
+import { Feature, FeatureButton, Form, Input, SubmitButton, BarcodeFaq} from '../styledComponents';
 
 export default function BarcodeSearchForm() {
     const [barcode, setBarcode] = useState("")
-    const { setResults, defaultContent } = useContext(resultsContext)
+    const { setResults, defaultContent, barcodeFaqs } = useContext(resultsContext)
 
     const handleChange = (event) => {
         setBarcode(event.target.value)
@@ -40,14 +40,20 @@ export default function BarcodeSearchForm() {
     }
 
     return (
-        <Feature title = {defaultContent.paragraphOne}
-            buttonLink= {defaultContent.buttonLink}
-            buttonText= {defaultContent.buttonText}>
+      <Fragment>
+        <Feature title = {defaultContent.paragraphOne}>
             <Form onSubmit={handleSubmit}>
                 <Input required type="text" value={barcode} onChange={handleChange} />
                 <SubmitButton type="submit">{defaultContent.paragraphTwo}</SubmitButton>
             </Form>
         </Feature>
+        <div className="row">
+          <ul className="list-group col-12">
+            {barcodeFaqs.map( faq => <BarcodeFaq key={faq.fields.id} faq={faq}/>)}
+          </ul>
+        </div>
+
+      </Fragment>
     )
 
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import * as Markdown from 'react-markdown';
 
 export const OuterContainer = styled.div`
   max-width: 1080px;
@@ -49,9 +50,8 @@ export const Br = styled.br`
   }
 `
 export const H2 = styled.h2``
-
 export const H3 = styled.h3``
-
+export const H4 = styled.h4``
 
 /* Feature Block */
 export const FeatureContainer = styled.div`
@@ -303,3 +303,22 @@ export const LanguageButton = styled.button`
     text-decoration: underline;
   }
 `
+
+export const BarcodeFaq = (props) => {
+  const { faq } = props;
+
+  const BarcodeAnswer = styled(CenteredParagraph)`
+    max-width: 100%;
+    @media (max-width: 767px) {
+      text-align: justify;
+    }
+  `
+  return (
+    <li className="list-group-item border-0">
+      <div className="align-center border-0">
+        <Markdown source={faq.fields.question} renderers={{ paragraph: H4 }}/>
+      </div>
+      <Markdown source={faq.fields.answer} renderers={{ paragraph: BarcodeAnswer }}/>
+    </li>
+  )
+}

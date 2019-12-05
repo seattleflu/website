@@ -36,7 +36,20 @@ async function getBarcodeResults(barcode){
     }
 }
 
+async function getBarcodeFaqs (barcodeFaqType) {
+    try {
+      const result = await client.getEntries({
+        content_type: barcodeFaqType,
+        order: 'fields.id',
+      })
+      return result
+    } catch (error) {
+      console.log('ERROR: ', error)
+    }
+  }
+
 module.exports = {
     getContentfulResults,
-    getBarcodeResults
+    getBarcodeResults,
+    getBarcodeFaqs
 }

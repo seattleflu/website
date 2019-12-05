@@ -6,7 +6,6 @@ var md = require('markdown-it')({
 
 var page = require('../services/page')
 var site = require('../services/site')
-var barcodeFaq = require('../services/barcodeFaq')
 
 router.use((req, res, next) => {
   site
@@ -40,16 +39,6 @@ router.use((req, res, next) => {
     .catch(console.error)
 })
 
-router.use((req, res, next) => {
-  barcodeFaq
-    .getBarcodeFaq()
-    .then(barcodeFaq => {
-      req.barcodeFaq = barcodeFaq.items
-      next()
-    })
-    .catch(console.error)
-})
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('results', {
@@ -61,20 +50,6 @@ router.get('/', function (req, res, next) {
     md: md,
     pageData: req.pageData,
     siteData: req.siteData
-  })
-})
-
-router.get('/barcode-faq', function (req, res, next) {
-  res.render('barcodeFaq', {
-    title: 'Barcode FAQ',
-    header: 'light',
-    nav: req.nav,
-    enroll: req.enroll,
-    logos: 'true',
-    md: md,
-    pageData: req.pageData,
-    siteData: req.siteData,
-    barcodeFaq: req.barcodeFaq
   })
 })
 
