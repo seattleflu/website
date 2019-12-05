@@ -12,7 +12,7 @@ export async function neighborhoods() {
 
   // Gosh I'd love to just use SQL.
   const groupByFields = [
-    "residence_neighborhood_district_name",
+    "residence_regional_name",
     "pathogen",
     "encountered_week",
   ];
@@ -21,7 +21,7 @@ export async function neighborhoods() {
     model_type: "inla_latent",  // FROM clause
     pathogen: ["flu_positive"], // WHERE condition
     observed: groupByFields,    // GROUP BY clause
-    spatial_domain: "seattle_geojson_neighborhood_district_name",
+    spatial_domain: "sfs_domain_geojson_regional_name",
   };
 
   // SELECT column list
@@ -41,11 +41,16 @@ export async function neighborhoods() {
 
   console.debug("Fetched model data:", model.toJS());
 
+  // The model returns "residence_regional_name" which is mapped from
+  // neighborhood name.
+  const modelForFeature = feature =>
+    model.get(`Seattle--${feature.getIn(["properties", "NEIGHBO"])}`);
+
   return geojson
     .updateIn(["features"], features =>
       features.map(feature =>
         feature.updateIn(["properties"], properties =>
-          properties.merge(model.get(properties.get("NEIGHBO"))))));
+          properties.merge(modelForFeature(feature)))));
 }
 
 
