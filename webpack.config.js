@@ -99,6 +99,11 @@ module.exports = (env) => {
     plugins: [
       new CleanWebpackPlugin(),
       ...devPlugins,
+      new webpack.DefinePlugin({
+        "process.env.ID3C_URL": JSON.stringify(process.env.ID3C_URL),
+        "process.env.ID3C_ROR_USERNAME": JSON.stringify(process.env.ID3C_ROR_USERNAME),
+        "process.env.ID3C_ROR_PASSWORD": JSON.stringify(process.env.ID3C_ROR_PASSWORD)
+      })
     ]
   }
 };

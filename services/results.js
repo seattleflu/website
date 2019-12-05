@@ -15,11 +15,10 @@ async function getContentfulResults(contentType, resultType){
 }
 
 async function getBarcodeResults(barcode){
-    // TODO: replace url, username, password values
-    const baseUrl = 'http://localhost:5000'
+    const baseUrl = process.env.ID3C_URL
     const apiUrl = `/v1/shipping/return-results/${barcode}`
-    const username = 'test'
-    const password = '123'
+    const username = process.env.ID3C_ROR_USERNAME
+    const password = process.env.ID3C_ROR_PASSWORD
     try {
         const response = await axios({
             method: 'get',
