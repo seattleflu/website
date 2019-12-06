@@ -8,7 +8,7 @@ const introKeyframes = immutable([
   {
     latitude: 47.609722,
     longitude: -122.333056,
-    zoom: 9.5,
+    zoom: 8,
     bearing: 0,
     pitch: 0
   },
@@ -16,7 +16,7 @@ const introKeyframes = immutable([
   // Zoom in closer, moving straight down
   {
     zoom: 10,
-    transitionDuration: 2 * 1000
+    transitionDuration: 10 * 1000
   },
 
   // Keep zooming in while sweeping out into Elliott Bay and leveling off
