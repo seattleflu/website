@@ -2,6 +2,7 @@ import React from 'react';
 import { DateTime, Duration } from 'luxon';
 
 import FluMap from './FluMap/';
+import { ColorRamp } from './FluMap/styles';
 import SeasonTimeline from './SeasonTimeline';
 import fluStats from '../data/flu-by-week.json';
 
@@ -77,6 +78,7 @@ export default class CurrentConditions extends React.Component {
         </p>
 
         <FluMap date={currentDate} />
+        <ColorRamp />
       </>
     );
   }
