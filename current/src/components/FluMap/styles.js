@@ -1,6 +1,6 @@
 import { fromJS as immutable } from "immutable";
 import { flatten } from "lodash";
-import VIRIDIS from "./viridis.json";
+import INFERNO from "./inferno.json";
 import MAP_STYLE from "./mapbox-dark-v10.json";
 
 
@@ -57,7 +57,7 @@ export function extrusion(date) {
       ["linear"],
       ["coalesce", modeledIntensity, -1],
       -1.00, "#999999",
-      ...flatten(VIRIDIS)
+      ...flatten(INFERNO)
     ],
     "fill-extrusion-color-transition": transition,
   };
