@@ -51,7 +51,7 @@ export function extrusion(date) {
       11, ["*", 2000, ["coalesce", modeledIntensity, 0]]
     ],
     "fill-extrusion-height-transition": transition,
-    "fill-extrusion-opacity": 0.8,
+    "fill-extrusion-opacity": 1,
     "fill-extrusion-color": [
       "interpolate-hcl",
       ["linear"],
