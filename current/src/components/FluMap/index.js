@@ -20,6 +20,7 @@ export default class FluMap extends React.Component {
         viewState={this.getState("view").toJS()}
         onViewportChange={this.onViewportChange.bind(this)}
         onTransitionEnd={this.onTransitionEnd.bind(this)}
+        getCursor={this.getCursor.bind(this)}
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
 
         {
@@ -51,20 +52,19 @@ export default class FluMap extends React.Component {
     store: immutable({
       mapStyle: baseMap,
       dataSource: null,
-      view: this.keyframes.next().value
+      view: this.keyframes.next().value,
+      interaction: {},
     })
   };
 
   getState(key) {
-    return this.state.store.get(key);
+    return typeof key === "string"
+      ? this.state.store.get(key)
+      : this.state.store.getIn(key);
   }
 
   newState(update) {
     this.setState(state => ({store: update(state.store)}));
-  }
-
-  updateView(view) {
-    this.newState(s => s.mergeDeep(immutable({view})));
   }
 
   // Load all data layers, and then start transitioning through our animation
@@ -100,15 +100,17 @@ export default class FluMap extends React.Component {
     const next = this.keyframes.next();
 
     if (!next.done && next.value)
-      this.updateView(next.value);
+      this.newState(s => s.mergeDeep(immutable({view: next.value})));
   }
 
   // Update our view state on any map-driven viewport change, but only after
   // we're mounted.  This condition avoids a React error where state is updated
   // from within a <MapboxGL> render function.
-  async onViewportChange(viewport) {
+  async onViewportChange(view, interaction) {
     await this._mounted;
-    this.updateView(viewport);
+    this.newState(s =>
+      s.mergeDeep(immutable({view}))
+       .merge(immutable({interaction})));
   }
 
   // After a transition ends, start a new transition to the next keyframe.
@@ -116,5 +118,21 @@ export default class FluMap extends React.Component {
   async onTransitionEnd() {
     await this._mounted;
     this.nextKeyframe();
+  }
+
+  getCursor({isDragging, isHovering}) {
+    const isRotating = this.getState(["interaction", "isRotating"]);
+
+    if (isHovering) {
+      return "pointer";
+    }
+    else if (isDragging) {
+      return isRotating
+        ? "ew-resize"
+        : "grabbing";
+    }
+    else {
+      return "grab";
+    }
   }
 }
