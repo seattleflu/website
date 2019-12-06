@@ -95,8 +95,6 @@ export default class FluMap extends React.Component {
   // Advance to the next keyframe, if any.
   //
   nextKeyframe() {
-    // XXX TODO: does JS support passing values through to generators (a la
-    // python) as an option for fixing the missed ticks fast-forward issue?
     const next = this.keyframes.next();
 
     if (!next.done && next.value)

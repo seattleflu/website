@@ -21,29 +21,18 @@ const introKeyframes = immutable([
 
   // Keep zooming in while sweeping out into Elliott Bay and leveling off
   {
+    latitude: 47.588449,
+    longitude: -122.354726,
     zoom: 11.179573,
-    bearing: 54.205104,
-    pitch: 60,
+    bearing: 59,
+    pitch: 55,
     transitionDuration: 5 * 1000
   }
 ]);
-
-// After our intro animation, spin completely around Seattle every 60 seconds
-// (360° / 60s = 6°/s).  Spin will stop when manual interaction interrupts the
-// transition.
-//
-const spinKeyframes = Range(1, Infinity).map(tick => {
-  const startingBearing = introKeyframes.getIn([-1, "bearing"]);
-  return {
-    bearing: (startingBearing + (360 / 60 * tick)) % 360,
-    transitionDuration: 1 * 1000
-  };
-});
 
 // A generator function which returns successive keyframes first from a finite
 // set and then from an infinite set of 1s keyframes spinning around Seattle.
 //
 export function* generateKeyframes() {
   yield* introKeyframes;
-  yield* spinKeyframes;
 }
