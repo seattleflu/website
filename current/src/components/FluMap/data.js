@@ -3,12 +3,8 @@ import geometry from "./geometry";
 
 const MODEL_API = "https://incidence-mapper.seattleflu.org";
 
-/* XXX TODO: Switch to a combined layer of Seattle neighborhoods + PUMAs
- * (potentially reduced to ZIPs within our study area).  Mike has been
- * calling this tentatively "region".
- */
 export async function dataSource() {
-  const geojson = geometry.seattleNeighborhoods;
+  const geojson = geometry.studyArea;
 
   // Gosh I'd love to just use SQL.
   const groupByFields = [
@@ -41,10 +37,8 @@ export async function dataSource() {
 
   console.debug("Fetched model data:", model.toJS());
 
-  // The model returns "residence_regional_name" which is mapped from
-  // neighborhood name.
   const modelForFeature = feature =>
-    model.get(`Seattle--${feature.getIn(["properties", "NEIGHBO"])}`);
+    model.get(feature.getIn(["properties", "regional_name"]));
 
   return geojson
     .updateIn(["features"], features =>
