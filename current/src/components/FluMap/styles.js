@@ -76,7 +76,7 @@ export function ColorRamp() {
         barHeight = 20,
         missingDataWidth = 20,
         textHeight = 20,
-        xSpacing = 20,
+        xSpacing = 30,
         ySpacing = 5;
 
   const innerWidth = barWidth + xSpacing + missingDataWidth;
@@ -120,7 +120,7 @@ export function ColorRamp() {
                 />
           <g transform={`translate(0, ${barHeight + ySpacing})`}>
             <text {...textStyles} textAnchor="start">minimal</text>
-            <text {...textStyles} textAnchor="middle" x={barWidth * 1/3}>little</text>
+            <text {...textStyles} textAnchor="middle" x={barWidth * 1/3}>low</text>
             <text {...textStyles} textAnchor="middle" x={barWidth * 2/3}>moderate</text>
             <text {...textStyles} textAnchor="end" x={barWidth}>high</text>
           </g>

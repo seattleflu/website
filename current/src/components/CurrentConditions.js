@@ -64,12 +64,18 @@ export default class CurrentConditions extends React.Component {
         <SeasonTimeline date={currentDate} />
 
         <p>
-          The map below shows the relative intensity of flu infections
+          The map below shows flu circulation for
           {thisWeek === currentWeek
             ? ` this week (${currentWeek}) `
             : ` the week of ${currentWeek} `}
-          from across the Seattle region.
+          across the Seattle region.
+          Flu circulation level is determined by comparing flu positive and flu negative specimens collected by the study and represents a near real-time view of flu circulation.
         </p>
+
+        <ColorRamp />
+        <FluMap date={currentDate} />
+
+        <p />
 
         <p>
           To explore more, hold the left mouse button and move the mouse to drag and pan the map.
@@ -77,8 +83,6 @@ export default class CurrentConditions extends React.Component {
           Use the mouse wheel to zoom in and out to reveal smaller and larger regions.
         </p>
 
-        <FluMap date={currentDate} />
-        <ColorRamp />
       </>
     );
   }
