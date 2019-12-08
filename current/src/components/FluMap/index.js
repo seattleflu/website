@@ -2,6 +2,7 @@ import { fromJS as immutable } from "immutable";
 import React from "react";
 import MapboxGL, { FullscreenControl, Layer, Source } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { Waypoint } from 'react-waypoint';
 
 import { dataSource } from "./data";
 import { generateKeyframes } from "./keyframes";
@@ -12,30 +13,35 @@ const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoidHJ2cmIiLCJhIjoiY2pyM3p4aTlmMWMwbjRibzli
 export default class FluMap extends React.Component {
   render() {
     return (
-      <MapboxGL
-        width="100%"
-        height="600px"
-        asyncRender={true}
-        mapStyle={this.getState("mapStyle")}
-        viewState={this.getState("view").toJS()}
-        onViewportChange={this.onViewportChange.bind(this)}
-        onTransitionEnd={this.onTransitionEnd.bind(this)}
-        getCursor={this.getCursor.bind(this)}
-        mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
+      <div>
+        <MapboxGL
+          width="100%"
+          height="600px"
+          asyncRender={true}
+          mapStyle={this.getState("mapStyle")}
+          viewState={this.getState("view").toJS()}
+          onViewportChange={this.onViewportChange.bind(this)}
+          onTransitionEnd={this.onTransitionEnd.bind(this)}
+          getCursor={this.getCursor.bind(this)}
+          mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
 
-        {
-          this.getState("dataSource") &&
-            <Source type="geojson" data={this.getState("dataSource")}>
-              <Layer beforeId="waterway-label"
-                  type="fill-extrusion"
-                  paint={extrusion(this.props.date)} />
-            </Source>
-        }
+          {
+            this.getState("dataSource") &&
+              <Source type="geojson" data={this.getState("dataSource")}>
+                <Layer beforeId="waterway-label"
+                    type="fill-extrusion"
+                    paint={extrusion(this.props.date)} />
+              </Source>
+          }
 
-        <div style={{position: "absolute", top: "1em", right: "1em"}}>
-          <FullscreenControl/>
-        </div>
-      </MapboxGL>
+          <div style={{position: "absolute", top: "1em", right: "1em"}}>
+            <FullscreenControl/>
+          </div>
+        </MapboxGL>
+        <Waypoint
+          onEnter={this.nextKeyframe.bind(this)}
+        />        
+      </div>
     );
   }
 
@@ -88,8 +94,6 @@ export default class FluMap extends React.Component {
       console.error(`Unable to load data source:`, err);
       return;
     }
-
-    this.nextKeyframe();
   }
 
   // Advance to the next keyframe, if any.

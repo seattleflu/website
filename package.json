@@ -36,6 +36,7 @@
     "react-ga": "^2.6.0",
     "react-hubspot": "^1.0.4",
     "react-markdown": "^4.2.2",
+    "react-waypoint": "^9.0.2",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
