@@ -34,13 +34,10 @@ export default class FluMap extends React.Component {
               </Source>
           }
 
-          <div style={{position: "absolute", top: "1em", right: "1em"}}>
-            <FullscreenControl/>
-          </div>
         </MapboxGL>
         <Waypoint
           onEnter={this.nextKeyframe.bind(this)}
-        />        
+        />
       </div>
     );
   }
