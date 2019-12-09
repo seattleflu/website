@@ -95,7 +95,7 @@ export function ColorRamp() {
   const outerHeight = innerHeight + margin * 2;
 
   const textStyles = {
-    fontSize: 14,
+    fontSize: 16,
     dominantBaseline: "hanging",
   };
 
