@@ -94,6 +94,7 @@ module.exports = (env) => {
         },
         { test: /\.css$/, use: 'css-loader' },
         { test: /\.svg$/, use: 'svg-url-loader' },
+        { test: /\.geojson$/, use: 'json-loader' },
       ]
     },
     plugins: [

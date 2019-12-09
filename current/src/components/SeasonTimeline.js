@@ -44,7 +44,7 @@ export default class SeasonTimeline extends React.Component {
       }
     };
 
-    const currentMonth = this.props.currentMonth;
+    const currentMonth = this.props.date.month;
     const currentMonthIndex = months.findIndex(m => m.month === currentMonth);
 
     const [width, height, margin] = [800, 160, 5];
