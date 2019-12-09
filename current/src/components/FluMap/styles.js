@@ -1,11 +1,19 @@
 import React from "react";
 import { fromJS as immutable } from "immutable";
 import { flatten } from "lodash";
-import inferno from "./inferno.json";
+import heatmap from "./heatmap.json";
 import mapboxDark from "./mapbox-dark-v10.json";
 
-const missingDataColor = "#999999";
+const missingDataColor = "#777777";
 
+/**
+ * Mapping of "intensity" to color encoded in heatmap.json
+ * "Intensity" comes from seattleflu/incidence-mapper and will have consistent scale
+ * 0.00 to 0.06: minimal
+ * 0.06 to 0.12: low
+ * 0.12 to 0.18: moderate
+ * 0.18 and above: high
+ */
 
 /**
  * Base map style specification, as an Immutable Map.
@@ -24,16 +32,16 @@ export const baseMap = immutable(mapboxDark);
  * @returns {Object}
  */
 export function extrusion(date) {
-  /* The modeled_intensity_mode is rescaled to [0,1].  Base and height are in
-   * meters.
+  /* The modeled_intensity_mean is directly taken from model. Mean should be more
+   * stable than mode. Base and height are in meters.
    *
    * See the Mapbox Style Specification for details on data expressions.
    * https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions
    */
 
-  // Fetches properties.flu_positive.$week.modeled_intensity_mode
+  // Fetches properties.flu_positive.$week.modeled_intensity_mean
   const modeledIntensity = [
-    "get", "modeled_intensity_mode",
+    "get", "modeled_intensity_mean",
       ["get", date.toFormat("kkkk-'W'WW"),
         ["get", "flu_positive"]
   ]];
@@ -49,9 +57,11 @@ export function extrusion(date) {
       "interpolate",
       ["exponential", 2],
       ["zoom"],
-       7, ["*", 6000, ["coalesce", modeledIntensity, 0]],
-       9, ["*", 4000, ["coalesce", modeledIntensity, 0]],
-      11, ["*", 2000, ["coalesce", modeledIntensity, 0]]
+       7, ["*", 24000, ["coalesce", modeledIntensity, 0]],
+       8, ["*", 21000, ["coalesce", modeledIntensity, 0]],
+       9, ["*", 18000, ["coalesce", modeledIntensity, 0]],
+      10, ["*", 15000, ["coalesce", modeledIntensity, 0]],
+      11, ["*", 12000, ["coalesce", modeledIntensity, 0]]
     ],
     "fill-extrusion-height-transition": transition,
     "fill-extrusion-opacity": 1,
@@ -59,8 +69,7 @@ export function extrusion(date) {
       "interpolate-hcl",
       ["linear"],
       ["coalesce", modeledIntensity, -1],
-      -1.00, missingDataColor,
-      ...flatten(inferno)
+      ...flatten(heatmap)
     ],
     "fill-extrusion-color-transition": transition,
   };
@@ -90,6 +99,13 @@ export function ColorRamp() {
     dominantBaseline: "hanging",
   };
 
+  const colorRamp = [];
+  heatmap.forEach(([value, color]) => {
+    if (value <= 0.2) {
+      colorRamp.push([5.0 * value, color]);
+    }
+  });
+
   return (
     <svg viewBox={`0 0 ${outerWidth} ${outerHeight}`}
          width="100%"
@@ -97,7 +113,7 @@ export function ColorRamp() {
          style={{pointerEvents: "none"}}>
       <defs>
         <linearGradient id="colorRamp">
-          {inferno.map(([offset, color]) =>
+          {colorRamp.map(([offset, color]) =>
             <stop offset={offset} stopColor={color} key={offset} />)}
         </linearGradient>
       </defs>

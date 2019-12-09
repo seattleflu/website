@@ -22,12 +22,11 @@ export async function dataSource() {
 
   // SELECT column list
   const selectFields = Set([
-    "modeled_intensity_mode",
+    "modeled_intensity_mean",
   ]);
 
   const model =
     (await fetchModel(params))
-      .update(rescaleField("modeled_intensity_mode"))
       .reduce(
         (groups, row) =>
           groups.setIn(
@@ -68,37 +67,4 @@ async function fetchModel(params) {
 
   const response = await fetch(`${MODEL_API}/v1/query`, config);
   return immutable(await response.json());
-}
-
-
-/**
- * Rescale a single field in a List of Maps to the range [0,1].
- *
- * Given a field name, returns a function which takes a Immutable.List of
- * Immutable.Maps and performs min-max normalization/rescaling as described at
- * <https://en.wikipedia.org/wiki/Feature_scaling#Rescaling_(min-max_normalization)>.
- *
- * Values are rounded to 6 decimal places.  Nulls are preserved as-is.
- *
- * @param {string} field
- * @returns {function}
- */
-function rescaleField(field) {
-  return table => {
-    const values = table
-      .map(row => row.get(field))
-      .filter(v => v != null);
-
-    const min = Math.min(...values);
-    const max = Math.max(...values);
-
-    const round = (number, places) => Number(number.toFixed(places));
-
-    const rescale = (value) =>
-      value != null
-        ? round((value - min) / (max - min), 6)
-        : value;
-
-    return table.map(row => row.set(field, rescale(row.get(field))));
-  };
 }
