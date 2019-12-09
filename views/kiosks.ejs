@@ -10,7 +10,7 @@
                 <% var value = 0; %>
                 <% kiosksData.forEach((kiosk) => { %>
                   <%value = value + 1%>
-                   
+
                   <div class="kiosk-item">
                     <div class="kioskNumber"><%= value %></div>
                     <img src="/images/map_icon.svg">
@@ -21,7 +21,7 @@
                       <%- md.render(kiosk.fields.content) %>
                     </div>
                   </div>
-                <% }) %>              
+                <% }) %>
                 </div>
                 <div class="kiosk-text">
                   <%- md.render(pageData[0].fields.content2) %>
@@ -31,19 +31,19 @@
                 <div class="map-wrapper">
                   <div id="map"></div>
                   <script>
-                  
+
                       function initMap() {
                       var kiosksLocations = <%- JSON.stringify(kiosksData) %>;
                       var locations = [];
                       var locationId = 0;
-                      
+
                       kiosksLocations.forEach((kiosks) => {
                         locationId = locationId + 1;
                         var kioskData = [kiosks.fields.locationName, kiosks.fields.location.lat, kiosks.fields.location.lon, kiosks.fields.content, locationId, kiosks.fields.listedAddress];
                         locations.push(kioskData);
                       })
-                        
-                        var uluru = {lat: 47.603845, lng: -122.334532};
+
+                        var uluru = {lat: 47.625, lng: -122.335};
                         var map = new google.maps.Map(
                             document.getElementById('map'), {
                               zoom: 12,
@@ -245,14 +245,14 @@
                                       }
                                     ]
                                     });
-                        
+
                         var infowindow = new google.maps.InfoWindow();
 
                         var marker, i;
                         var iconBase = '/images/map_icon.svg';
-                        
 
-                        for (i = 0; i < locations.length; i++) {  
+
+                        for (i = 0; i < locations.length; i++) {
                           var number = locations[i][4]
                           marker = new google.maps.Marker({
                             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -274,8 +274,8 @@
                         })(marker, i));
                         }
 
-                        
-                          
+
+
                       }
                   </script>
                   <h3 class="kiosk-sub-mobile"><%= pageData[0].fields.subhead %></h3>
@@ -283,7 +283,7 @@
                     <% var value = 0; %>
                     <% kiosksData.forEach((kiosk) => { %>
                       <%value = value + 1%>
-                      
+
                       <div class="kiosk-item">
                         <div class="kioskNumber"><%= value %></div>
                         <img src="/images/map_icon.svg">
@@ -293,7 +293,7 @@
                           <%- md.render(kiosk.fields.content) %>
                         </div>
                       </div>
-                    <% }) %>              
+                    <% }) %>
                     </div>
                     <div class="kiosk-text-mobile">
                       <%- md.render(pageData[0].fields.content2) %>
