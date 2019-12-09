@@ -22,7 +22,7 @@ export async function dataSource() {
 
   // SELECT column list
   const selectFields = Set([
-    "modeled_intensity_mean",
+    "modeled_intensity_mode",
   ]);
 
   const model =

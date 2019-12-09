@@ -32,16 +32,16 @@ export const baseMap = immutable(mapboxDark);
  * @returns {Object}
  */
 export function extrusion(date) {
-  /* The modeled_intensity_mean is directly taken from model. Mean should be more
-   * stable than mode. Base and height are in meters.
+  /* The modeled_intensity_mode is directly taken from model. Mode should be the
+   * most stable estimate. Base and height are in meters.
    *
    * See the Mapbox Style Specification for details on data expressions.
    * https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions
    */
 
-  // Fetches properties.flu_positive.$week.modeled_intensity_mean
+  // Fetches properties.flu_positive.$week.modeled_intensity_mode
   const modeledIntensity = [
-    "get", "modeled_intensity_mean",
+    "get", "modeled_intensity_mode",
       ["get", date.toFormat("kkkk-'W'WW"),
         ["get", "flu_positive"]
   ]];
