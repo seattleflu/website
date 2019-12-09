@@ -80,7 +80,6 @@ export default class CurrentConditions extends React.Component {
         <p>
           To explore more, hold the left mouse button and move the mouse to drag and pan the map.
           Hold the right mouse button to rotate and pitch the map.
-          Use the mouse wheel to zoom in and out to reveal smaller and larger regions.
         </p>
 
       </>

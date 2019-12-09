@@ -22,7 +22,7 @@ const introKeyframes = immutable([
   // Keep zooming in while sweeping out into Elliott Bay and leveling off
   {
     latitude: 47.53,
-    longitude: -122.25,
+    longitude: -122.30,
     zoom: 9,
     bearing: 59,
     pitch: 55,

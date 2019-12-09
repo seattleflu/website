@@ -16,13 +16,16 @@ export default class FluMap extends React.Component {
       <div>
         <MapboxGL
           width="100%"
-          height="600px"
+          height="520px"
           asyncRender={true}
           mapStyle={this.getState("mapStyle")}
           viewState={this.getState("view").toJS()}
           onViewportChange={this.onViewportChange.bind(this)}
           onTransitionEnd={this.onTransitionEnd.bind(this)}
           getCursor={this.getCursor.bind(this)}
+          scrollZoom={false}
+          doubleClickZoom={false}
+          touchRotate={true}
           mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
 
           {
