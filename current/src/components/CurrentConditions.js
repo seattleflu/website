@@ -104,7 +104,7 @@ export default class CurrentConditions extends React.Component {
               <span style={{"color": "#eee", "fontSize": 18}}>Moderate</span>
             </div>
           </div>
-          <div class="col-md-4" id="exampleLow">
+          <div className="col-md-4" id="exampleLow">
             <a href="/current?week=2019-W10">
               <img alt="example_map_high" width="100%" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_high.png"/>
             </a>
