@@ -82,6 +82,20 @@ export default class CurrentConditions extends React.Component {
           Hold the right mouse button to rotate and pitch the map.
         </p>
 
+        <p>
+          These are examples of flu circulation during January and March 2019, when there was low circulation and high circulation respectively.
+          Click on either picture to be taken to a full screen view.
+        </p>
+
+        <div width="100%" style={{display: "flex", justifyContent: "space-around", flexWrap: "wrap"}}>
+          <a href="/current?week=2019-W01">
+            <img alt="example_map_low" width="480" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_low.png"/>
+          </a>
+          <a href="/current?week=2019-W09">
+            <img alt="example_map_high" width="480" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_high.png"/>
+          </a>
+        </div>
+
       </>
     );
   }
