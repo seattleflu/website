@@ -87,18 +87,18 @@ export default class CurrentConditions extends React.Component {
           Click on any picture to be taken to a full screen view.
         </p>
 
-        <div class="row" id="examples">
-          <div class="col-md-4" id="exampleLow">
+        <div className="row" id="examples">
+          <div className="col-md-4" id="exampleLow">
             <a href="/current?week=2019-W01">
               <img alt="example_map_low" width="100%" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_low.png"/>
             </a>
           </div>
-          <div class="col-md-4" id="exampleLow">
+          <div className="col-md-4" id="exampleLow">
             <a href="/current?week=2019-W05">
               <img alt="example_map_medium" width="100%" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_medium.png"/>
             </a>
           </div>
-          <div class="col-md-4" id="exampleLow">
+          <div className="col-md-4" id="exampleLow">
             <a href="/current?week=2019-W09">
               <img alt="example_map_high" width="100%" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_high.png"/>
             </a>
