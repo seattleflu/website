@@ -76,7 +76,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <% if(nav == 'true'){ %>
           <ul class="navbar-nav ml-auto">
           <% siteData[0].fields.menuMain.forEach((item) => { %>
-          <li class="nav-item"><a href="<%= "/" + item.fields.urlSegment %>"><%= item.fields.name %></a></li>
+          <li id="<%= item.fields.name %>" class="nav-item"><a href="<%= "/" + item.fields.urlSegment %>"><%= item.fields.name %></a></li>
           <% }) %>
           </ul>    
           <%}%>
