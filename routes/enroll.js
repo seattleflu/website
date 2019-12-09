@@ -13,7 +13,6 @@ router.use ((req, res, next) => {
     .getSiteData ()
     .then (siteData => {
       req.siteData = siteData.items;
-      console.log(siteData.items)
       next ();
     })
     .catch (console.error);
