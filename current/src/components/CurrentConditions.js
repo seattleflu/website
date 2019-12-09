@@ -83,7 +83,7 @@ export default class CurrentConditions extends React.Component {
         </p>
 
         <p>
-          These are examples of flu circulation during January and March 2019, when there was low, medium and high circulation respectively.
+          These are examples of flu circulation during January and March 2019, when there was low, moderate, and high circulation respectively.
           Click on any picture to be taken to a full screen view.
         </p>
 
