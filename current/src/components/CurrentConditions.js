@@ -83,7 +83,7 @@ export default class CurrentConditions extends React.Component {
         </p>
 
         <p>
-          These are examples of flu circulation during January and March 2019, when there was low, moderate, and high circulation respectively.
+          These are examples of flu circulation from January to March 2019, when there were periods of low, moderate and high circulation.
           Click on any picture to be taken to a full screen view.
         </p>
 
@@ -92,16 +92,25 @@ export default class CurrentConditions extends React.Component {
             <a href="/current?week=2019-W01">
               <img alt="example_map_low" width="100%" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_low.png"/>
             </a>
+            <div style={{"position": "absolute", "top": "12px", "right": "20px"}}>
+              <span style={{"color": "#eee", "fontSize": 18}}>Low</span>
+            </div>
           </div>
           <div className="col-md-4" id="exampleLow">
             <a href="/current?week=2019-W05">
               <img alt="example_map_medium" width="100%" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_medium.png"/>
             </a>
+            <div style={{"position": "absolute", "top": "12px", "right": "20px"}}>
+              <span style={{"color": "#eee", "fontSize": 18}}>Moderate</span>
+            </div>
           </div>
-          <div className="col-md-4" id="exampleLow">
-            <a href="/current?week=2019-W09">
+          <div class="col-md-4" id="exampleLow">
+            <a href="/current?week=2019-W10">
               <img alt="example_map_high" width="100%" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_high.png"/>
             </a>
+            <div style={{"position": "absolute", "top": "12px", "right": "20px"}}>
+              <span style={{"color": "#eee", "fontSize": 18}}>High</span>
+            </div>
           </div>
         </div>
 
