@@ -83,17 +83,26 @@ export default class CurrentConditions extends React.Component {
         </p>
 
         <p>
-          These are examples of flu circulation during January and March 2019, when there was low circulation and high circulation respectively.
-          Click on either picture to be taken to a full screen view.
+          These are examples of flu circulation during January and March 2019, when there was low, medium and high circulation respectively.
+          Click on any picture to be taken to a full screen view.
         </p>
 
-        <div width="100%" style={{display: "flex", justifyContent: "space-around", flexWrap: "wrap"}}>
-          <a href="/current?week=2019-W01">
-            <img alt="example_map_low" width="480" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_low.png"/>
-          </a>
-          <a href="/current?week=2019-W09">
-            <img alt="example_map_high" width="480" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_high.png"/>
-          </a>
+        <div class="row" id="examples">
+          <div class="col-md-4" id="exampleLow">
+            <a href="/current?week=2019-W01">
+              <img alt="example_map_low" width="100%" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_low.png"/>
+            </a>
+          </div>
+          <div class="col-md-4" id="exampleLow">
+            <a href="/current?week=2019-W05">
+              <img alt="example_map_medium" width="100%" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_medium.png"/>
+            </a>
+          </div>
+          <div class="col-md-4" id="exampleLow">
+            <a href="/current?week=2019-W09">
+              <img alt="example_map_high" width="100%" style={{marginTop: "15px", marginBottom: "15px"}} src="/images/example_map_high.png"/>
+            </a>
+          </div>
         </div>
 
       </>

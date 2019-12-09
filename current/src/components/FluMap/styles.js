@@ -80,7 +80,7 @@ export function extrusion(date) {
  * Color ramp legend.
  */
 export function ColorRamp() {
-  const margin = 10,
+  const margin = 15,
         barWidth = 400,
         barHeight = 20,
         missingDataWidth = 20,
