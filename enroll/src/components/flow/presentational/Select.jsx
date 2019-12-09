@@ -23,6 +23,7 @@ const Select = ({
         id={id}
         value={value}
         onChange={handleChange}
+        ref={input => input && input.focus()}
         required
       >
         {options.map(o => (

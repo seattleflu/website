@@ -19,6 +19,7 @@ const Input = ({ label, text, type, id, value, description, handleChange }) => (
       id={id}
       value={value}
       onChange={handleChange}
+      ref={input => input && input.focus()}
       required
     >
       {options.map(o => (
