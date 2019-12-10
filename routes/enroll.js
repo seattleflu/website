@@ -47,9 +47,25 @@ router.get('/', function(req,res,next){
   next()
 })
 
+router.get('/', function(req,res,next){
+  var ua = req.get('User-Agent');
+  console.log(ua)
+  var msie = ua.indexOf('MSIE'); // IE 10 or older
+  var trident = ua.indexOf('Trident/'); //IE 11
+  
+  if(msie > 0 || trident > 0){
+       req.ie = true
+    }else{
+      req.ie = false
+    }
+
+  next()
+})
+
 /* GET home page. */
 router.get ('/', function (req, res, next) {
   res.render ('enroll', {
+    ie:req.ie,
     title: 'Enroll Page',
     header: 'light',
     nav: req.nav,
