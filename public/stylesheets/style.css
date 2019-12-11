@@ -578,7 +578,7 @@ header.dark .nav-item a:hover {
   margin-left: 0;
 }
 .home-content {
-  margin-top: -68px;
+  margin-top: -50px;
   margin-bottom: 75px;
 }
 #help-left p {
@@ -689,15 +689,18 @@ h1.number {
   .home-logos img:first-child {
     margin-left: 10px;
   }
+  .home-header {
+    padding-bottom: 50px;
+  }
+  .home-content {
+    margin-top: -68px;
+  }
 }
 @media (max-width: 440px) {
   .home-logos img {
     flex-basis: 35%;
     margin-left: 0;
     margin-right: 0;
-  }
-  .home-header {
-    height: 800px;
   }
 }
 
