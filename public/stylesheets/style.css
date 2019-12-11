@@ -924,7 +924,7 @@ h1.number {
   background-color: #0A5CA8;
   min-height: 600px;
 }
-#eligibilityMaintenance, #eligibilityMaintenance h1 {
+#eligibilityMaintenance, #eligibilityMaintenance h1, #eligibilityMaintenance h3 {
   color: #fff !important;
   text-align:  center;
 }
