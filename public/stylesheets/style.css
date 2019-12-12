@@ -542,7 +542,7 @@ button.green:hover {
 }
 #homeSVG svg {
   position: absolute;
-  bottom: -15px;
+  bottom: -25px;
   width: calc(100% + 1px);
   z-index: 0;
   left: 0;
@@ -551,7 +551,7 @@ button.green:hover {
 @media (max-width: 1440px) {
   #homeSVG svg {
     max-height: 180px;
-    bottom: -10px;
+    bottom: -15px;
   }
 }
 @media (max-width: 1199px) {
@@ -562,12 +562,31 @@ button.green:hover {
 @media (max-width: 992px) {
   #homeSVG svg {
     max-height: 125px;
+    bottom: -12px;
   }
 }
 @media (max-width: 767px) {
   #homeSVG svg {
     max-height: 100px;
-    bottom: -2px;
+    bottom: -10px;
+  }
+}
+@media (max-width: 560px) {
+  #homeSVG svg {
+    max-height: 80px;
+    bottom: -7px;
+  }
+}
+@media (max-width: 440px) {
+  #homeSVG svg {
+    max-height: 60px;
+    bottom: -5px
+  }
+}
+@media (max-width: 310px) {
+  #homeSVG svg {
+    max-height: 50px;
+    bottom: -4px
   }
 }
 .nav-item button:hover{
