@@ -540,7 +540,7 @@ button.green:hover {
 .home-header button {
   margin-top: 30px;
 }
-.home-header svg {
+#homeSVG {
   position: absolute;
   bottom: -2px;
   width: 100%;
