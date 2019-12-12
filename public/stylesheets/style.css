@@ -551,6 +551,7 @@ button.green:hover {
   z-index: 0;
   left: 0;
   max-height: 200px;
+  border-top: 10px solid white;
 }
 @media (max-width: 1440px) {
   #homeSVG svg {
