@@ -546,6 +546,7 @@ button.green:hover {
   -o-transform: scaleY(-1);
   transform: scaleY(-1);
   z-index: 0;
+  left: 0;
 }
 .nav-item button:hover{
   cursor: pointer;
