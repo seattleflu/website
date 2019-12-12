@@ -550,12 +550,13 @@ button.green:hover {
 }
 @media (max-width: 1440px) {
   #homeSVG svg {
+    max-height: 220px;
     bottom: -35px;
   }
 }
 @media (max-width: 1199px) {
   #homeSVG svg {
-    max-height: 200px;
+    max-height: 180px;
     bottom: -25px;
   }
 }
@@ -567,7 +568,7 @@ button.green:hover {
 }
 @media (max-width: 767px) {
   #homeSVG svg {
-    max-height: 110px;
+    max-height: 105px;
     bottom: -16px;
   }
 }
@@ -579,12 +580,12 @@ button.green:hover {
 }
 @media (max-width: 440px) {
   #homeSVG svg {
-    bottom: -8px
+    max-height: 60px;
   }
 }
 @media (max-width: 310px) {
   #homeSVG svg {
-    max-height: 50px;
+    max-height: 40px;
     bottom: -6px
   }
 }
