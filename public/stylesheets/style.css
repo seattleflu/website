@@ -545,7 +545,7 @@ button.green:hover {
   -moz-transform: scaleY(-1);
   -o-transform: scaleY(-1);
   transform: scaleY(-1);
-  /* set height to pixels if you want angle to change with screen width */
+  z-index: 0;
 }
 .nav-item button:hover{
   cursor: pointer;
