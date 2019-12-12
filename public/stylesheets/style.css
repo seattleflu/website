@@ -115,9 +115,6 @@ button {
 button {
   cursor: pointer;
 }
-img[src*=".svg"] {
-  width: 100%; 
-}
 @media (max-width: 991px) {
   .main-container {
     padding-bottom: 295px;
