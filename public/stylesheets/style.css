@@ -100,6 +100,24 @@ body, html {
   position: relative;
   /* padding-bottom: 265px;  */
 }
+.align-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+ }
+button {
+  outline: none !important;
+}
+.clearfix {
+  clear: both;
+}
+button {
+  cursor: pointer;
+}
+img[src*=".svg"] {
+  width: 100%; 
+}
 @media (max-width: 991px) {
   .main-container {
     padding-bottom: 295px;
@@ -119,21 +137,6 @@ body, html {
   .main-container {
     padding-bottom: 580px;
   }
-}
-.align-center {
-  text-align: center;
-}
-.align-right {
-  text-align: right;
- }
-button {
-  outline: none !important;
-}
-.clearfix {
-  clear: both;
-}
-button {
-  cursor: pointer;
 }
 
 
