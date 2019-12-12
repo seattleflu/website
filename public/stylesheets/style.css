@@ -438,7 +438,7 @@ button.green:hover {
 /*** CALLOUTS ***/
 .study-callout, .home-callout {
   background-image: url(/images/Rain_Pattern_Tile.svg);
-  background-size: 140px;
+  background-size: 140px 140px;
 }
 .study-callout h3 i, .home-callout h3 i {
   font-weight: 700;
@@ -551,7 +551,6 @@ button.green:hover {
   z-index: 0;
   left: 0;
   max-height: 200px;
-  border-top: 10px solid white;
 }
 @media (max-width: 1440px) {
   #homeSVG svg {
@@ -884,6 +883,8 @@ h1.number {
   margin-right: 15px;
   margin-bottom: auto;
   margin-top: -8px;
+  height: 40px;
+  width: auto;
 }
 .kioskNumber {
   /* content: '1'; */
