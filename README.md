@@ -21,7 +21,7 @@ This is the website for [seattleflu.org](https://seattleflu.org), developed as a
 Make sure the dependencies are installed by running `npm install`.
 
 Then, start the server with `npm start`.
-The development server is now running at <http://localhost:8080>.
+The development server is now running at <http://localhost:3000>.
 
 
 ## Development
