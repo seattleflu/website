@@ -1,31 +1,47 @@
 import { fromJS as immutable } from "immutable";
 import React from "react";
-import MapboxGL, { FullscreenControl } from "react-map-gl";
+import MapboxGL, { FullscreenControl, Layer, Source } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { Waypoint } from 'react-waypoint';
 
-import { dataLayers } from "./data";
+import { dataSource } from "./data";
 import { generateKeyframes } from "./keyframes";
-import { baseMapStyle, mergeMapStyle } from "./styles";
+import { baseMap, extrusion } from "./styles";
 
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoidHJ2cmIiLCJhIjoiY2pyM3p4aTlmMWMwbjRibzlia3MyMjZhYiJ9.JCLCk3g-GiVOcKiNWGjOXA";
 
 export default class FluMap extends React.Component {
   render() {
     return (
-      <MapboxGL
-        width="100%"
-        height="600px"
-        asyncRender={true}
-        mapStyle={this.getState("mapStyle")}
-        viewState={this.getState("view").toJS()}
-        onViewportChange={this.onViewportChange.bind(this)}
-        onTransitionEnd={this.onTransitionEnd.bind(this)}
-        mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
+      <div>
+        <MapboxGL
+          width="100%"
+          height="520px"
+          asyncRender={true}
+          mapStyle={this.getState("mapStyle")}
+          viewState={this.getState("view").toJS()}
+          onViewportChange={this.onViewportChange.bind(this)}
+          onTransitionEnd={this.onTransitionEnd.bind(this)}
+          getCursor={this.getCursor.bind(this)}
+          scrollZoom={false}
+          doubleClickZoom={false}
+          touchRotate={true}
+          mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
 
-        <div style={{position: "absolute", top: "1em", right: "1em"}}>
-          <FullscreenControl/>
-        </div>
-      </MapboxGL>
+          {
+            this.getState("dataSource") &&
+              <Source type="geojson" data={this.getState("dataSource")}>
+                <Layer beforeId="waterway-label"
+                    type="fill-extrusion"
+                    paint={extrusion(this.props.date)} />
+              </Source>
+          }
+
+        </MapboxGL>
+        <Waypoint
+          onEnter={this.nextKeyframe.bind(this)}
+        />
+      </div>
     );
   }
 
@@ -40,21 +56,21 @@ export default class FluMap extends React.Component {
 
   state = {
     store: immutable({
-      mapStyle: baseMapStyle,
-      view: this.keyframes.next().value
+      mapStyle: baseMap,
+      dataSource: null,
+      view: this.keyframes.next().value,
+      interaction: {},
     })
   };
 
   getState(key) {
-    return this.state.store.get(key);
+    return typeof key === "string"
+      ? this.state.store.get(key)
+      : this.state.store.getIn(key);
   }
 
   newState(update) {
     this.setState(state => ({store: update(state.store)}));
-  }
-
-  updateView(view) {
-    this.newState(s => s.mergeDeep(immutable({view})));
   }
 
   // Load all data layers, and then start transitioning through our animation
@@ -68,42 +84,16 @@ export default class FluMap extends React.Component {
   async componentDidMount() {
     this._did_mount();
 
-    await Promise.all(
-      dataLayers.map(layer =>
-        this.loadDataLayer(layer)
-          .catch(() => { console.error("Unable to load data for layer:", layer) })));
+    try {
+      const geojson = await dataSource();
+      console.debug("Fetched data source:", geojson.toJS());
 
-    this.nextKeyframe();
-  }
-
-  // Load a data layer and add it to the map when it comes in.
-  //
-  async loadDataLayer(layer) {
-    // Our data layers put a URL in the .source.data field.  We'll fetch that
-    // and then inline the resulting GeoJSON as a new source.
-    //
-    const sourceUrl = layer.getIn(["source", "data"]);
-    const sourceId  = `${layer.get("id")}-source`;
-
-    const response = await fetch(sourceUrl);
-    const geojson = await response.json();
-
-    // Convert layer w/ source url to a source + layer style spec
-    //
-    const newStyle = immutable({
-      sources: {
-        [sourceId]: layer.get("source").set("data", geojson)
-      },
-      layers: [
-        layer.set("source", sourceId)
-      ]
-    });
-
-    // Add new source + layer style to the map
-    //
-    this.newState(state =>
-      state.update("mapStyle", mapStyle =>
-        mergeMapStyle(mapStyle, newStyle)));
+      this.newState(s => s.set("dataSource", geojson));
+    }
+    catch(err) {
+      console.error(`Unable to load data source:`, err);
+      return;
+    }
   }
 
   // Advance to the next keyframe, if any.
@@ -112,15 +102,17 @@ export default class FluMap extends React.Component {
     const next = this.keyframes.next();
 
     if (!next.done && next.value)
-      this.updateView(next.value);
+      this.newState(s => s.mergeDeep(immutable({view: next.value})));
   }
 
   // Update our view state on any map-driven viewport change, but only after
   // we're mounted.  This condition avoids a React error where state is updated
   // from within a <MapboxGL> render function.
-  async onViewportChange(viewport) {
+  async onViewportChange(view, interaction) {
     await this._mounted;
-    this.updateView(viewport);
+    this.newState(s =>
+      s.mergeDeep(immutable({view}))
+       .merge(immutable({interaction})));
   }
 
   // After a transition ends, start a new transition to the next keyframe.
@@ -128,5 +120,21 @@ export default class FluMap extends React.Component {
   async onTransitionEnd() {
     await this._mounted;
     this.nextKeyframe();
+  }
+
+  getCursor({isDragging, isHovering}) {
+    const isRotating = this.getState(["interaction", "isRotating"]);
+
+    if (isHovering) {
+      return "pointer";
+    }
+    else if (isDragging) {
+      return isRotating
+        ? "ew-resize"
+        : "grabbing";
+    }
+    else {
+      return "grab";
+    }
   }
 }

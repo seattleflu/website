@@ -1,5 +1,8 @@
 var express = require('express')
 var router = express.Router()
+var md = require('markdown-it')({
+  html: true
+})
 
 var page = require('../services/page')
 var site = require('../services/site')
@@ -50,6 +53,7 @@ router.get('/', function (req, res, next) {
     nav: req.nav,
     enroll: req.enroll,
     logos: 'true',
+    md: md,
     pageData: req.pageData,
     siteData: req.siteData,
     pageUrl:req.pageUrl

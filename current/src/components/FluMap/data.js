@@ -1,74 +1,70 @@
-import { fromJS as immutable } from "immutable";
+import { fromJS as immutable, Map, Set } from "immutable";
+import geometry from "./geometry";
 
-// XXX TODO: For prototyping, these GeoJSONs are sourced from our
-// seattleflu/seattle-geojson repository.  I'm ~80% sure they should ultimately
-// come from static files generated out of ID3C, with real data embedded in
-// each features's properties.
-//   -trs, 8 July 2019
-//
-const baseUrl = "https://raw.githubusercontent.com/seattleflu/seattle-geojson/master/seattle_geojsons";
-const neighborhoodUrl = `${baseUrl}/2016_seattle_neighborhoods.geojson`;
-const craUrl          = `${baseUrl}/2016_seattle_cra.geojson`;
-const tractUrl        = `${baseUrl}/2016_seattle_censusTracts.geojson`;
+const MODEL_API = "https://incidence-mapper.seattleflu.org";
 
-// XXX TODO: For prototyping, shape height is currently a transformation of the
-// land area of the shape.  It needs to be replaced by a real data selection
-// from the GeoJSON properties, or sourced from externally-joined data!
-//   -trs, 8 July 2019
-//
-const extrusionHeight = ["*", 1000000000, ["/", 1, ["get", "ALAND"]]];
-const extrusionStyle = {
-  // See the Mapbox Style Specification for details on data expressions.
-  // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions
-  "fill-extrusion-base": 0,
-  "fill-extrusion-height": extrusionHeight,
-  "fill-extrusion-opacity": 0.6,
-  "fill-extrusion-color": [
-    "step",
-    extrusionHeight,
-          "#FEB24C",
-    200,  "#FD8D3C",
-    400,  "#FC4E2A",
-    800,  "#E31A1C",
-    1600, "#BD0026"
-  ]
-};
+export async function dataSource() {
+  const geojson = geometry.studyArea;
 
-// XXX TODO: The min/max zoom levels likely want some tweaking.
-//   -trs, 8 July 2019
-//
-// The FluMap component loads the data for each layer at render time and adds
-// it to the map as it arrives.
-export const dataLayers = immutable([
-  {
-    id: "neighborhood",
-    type: "fill-extrusion",
-    source: {
-      type: "geojson",
-      data: neighborhoodUrl
+  // Gosh I'd love to just use SQL.
+  const groupByFields = [
+    "residence_regional_name",
+    "pathogen",
+    "encountered_week",
+  ];
+
+  const params = {
+    model_type: "inla_latent",  // FROM clause
+    pathogen: ["flu_positive"], // WHERE condition
+    observed: groupByFields,    // GROUP BY clause
+    spatial_domain: "sfs_domain_geojson_regional_name",
+  };
+
+  // SELECT column list
+  const selectFields = Set([
+    "modeled_intensity_mode",
+  ]);
+
+  const model =
+    (await fetchModel(params))
+      .reduce(
+        (groups, row) =>
+          groups.setIn(
+            groupByFields.map(k => row.get(k)),
+            row.filter((v,k) => selectFields.has(k))),
+        Map());
+
+  console.debug("Fetched model data:", model.toJS());
+
+  const modelForFeature = feature =>
+    model.get(feature.getIn(["properties", "regional_name"]));
+
+  return geojson
+    .updateIn(["features"], features =>
+      features.map(feature =>
+        feature.updateIn(["properties"], properties =>
+          properties.merge(modelForFeature(feature)))));
+}
+
+
+/**
+ * Fetches a model from IDM's API.
+ *
+ * @param {Object} params An object of model parameters specifying the
+ *   model to fetch.  Refer to documentation at
+ *   <http://incidence-mapper.seattleflu.org/v1/ui>.
+ *
+ * @returns {Promise} A promise which resolves to the model results.
+ */
+async function fetchModel(params) {
+  const config = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
     },
-    paint: extrusionStyle,
-    maxzoom: 9.5
-  },
-  {
-    id: "cra",
-    type: "fill-extrusion",
-    source: {
-      type: "geojson",
-      data: craUrl
-    },
-    paint: extrusionStyle,
-    minzoom: 9.5,
-    maxzoom: 12
-  },
-  {
-    id: "tract",
-    type: "fill-extrusion",
-    source: {
-      type: "geojson",
-      data: tractUrl
-    },
-    paint: extrusionStyle,
-    minzoom: 12
-  }
-]);
+    body: JSON.stringify(params)
+  };
+
+  const response = await fetch(`${MODEL_API}/v1/query`, config);
+  return immutable(await response.json());
+}

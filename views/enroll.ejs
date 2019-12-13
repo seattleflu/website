@@ -2,6 +2,15 @@
 <% include ./partials/header {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
 <div class="enroll container-full">
     <div class="container enrollWapper">
+        <% if (ie) { %>
+        <div class="row">
+            <div class="col-lg-8 col-md-10 col-sm-12 offset-lg-2 offset-md-1">
+                <div id="eligibilityMaintenance">
+                    <h3>Due to technical limitations of Internet Explorer software, the app's functionality is reduced. This site works best using Chrome, Firefox, Safari or Opera.</h3>
+                </div>
+            </div>
+        </div>
+        <% }else{ %>
         <div class="row">
             <% if (siteData[0].fields.showScreeningQuestionaire) { %>
             <div class="col-lg-8 col-md-10 col-sm-12 offset-lg-2 offset-md-1">
@@ -22,6 +31,9 @@
             </div>
            <% } %>
         </div>
+         <% } %>
+        
+       
     </div>
 </div>
 <script type="text/javascript" src="/dist/enroll-bundle.js"></script>

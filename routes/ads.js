@@ -37,6 +37,7 @@ router.get('/', function(req, res, next){
       if(pageData.items[0].fields.showJoinTheStudyAfterMenu != null){
         var enroll = pageData.items[0].fields.showJoinTheStudyAfterMenu
         req.enroll = enroll.toString();
+        console.log(req.enroll)
       }else{
         req.enroll = 'true'
       }

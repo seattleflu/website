@@ -98,7 +98,22 @@ body, html {
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 265px; /* height of your footer */
+  /* padding-bottom: 265px;  */
+}
+.align-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+ }
+button {
+  outline: none !important;
+}
+.clearfix {
+  clear: both;
+}
+button {
+  cursor: pointer;
 }
 @media (max-width: 991px) {
   .main-container {
@@ -119,18 +134,6 @@ body, html {
   .main-container {
     padding-bottom: 580px;
   }
-}
-.align-center {
-  text-align: center;
-}
-.align-right {
-  text-align: right;
- }
-button {
-  outline: none !important;
-}
-.clearfix {
-  clear: both;
 }
 
 
@@ -435,7 +438,7 @@ button.green:hover {
 /*** CALLOUTS ***/
 .study-callout, .home-callout {
   background-image: url(/images/Rain_Pattern_Tile.svg);
-  background-size: 140px;
+  background-size: 140px 140px;
 }
 .study-callout h3 i, .home-callout h3 i {
   font-weight: 700;
@@ -521,10 +524,10 @@ button.green:hover {
 /*** HOME PAGE ***/
 .home-header {
   position: relative;
-  height: 650px;
   background-image: url(/images/BG_Blue.png);
   background-size: cover;
   top: -112px;
+  padding-bottom: 80px;
 }
 .home-header h1 {
   color: #fff;
@@ -537,12 +540,55 @@ button.green:hover {
 .home-header button {
   margin-top: 30px;
 }
-.home-header svg {
+#homeSVG svg {
   position: absolute;
-  bottom: -2px;
-  width: 100%;
-  height: 7vw;
-  /* set height to pixels if you want angle to change with screen width */
+  bottom: -45px;
+  width: calc(100% + 1px);
+  z-index: 0;
+  left: 0;
+  max-height: 240px;
+}
+@media (max-width: 1440px) {
+  #homeSVG svg {
+    max-height: 220px;
+    bottom: -35px;
+  }
+}
+@media (max-width: 1199px) {
+  #homeSVG svg {
+    max-height: 180px;
+    bottom: -25px;
+  }
+}
+@media (max-width: 992px) {
+  #homeSVG svg {
+    max-height: 140px;
+    bottom: -18px;
+  }
+}
+@media (max-width: 767px) {
+  #homeSVG svg {
+    max-height: 105px;
+    bottom: -16px;
+  }
+}
+@media (max-width: 560px) {
+  #homeSVG svg {
+    max-height: 80px;
+    bottom: -12px;
+  }
+}
+@media (max-width: 440px) {
+  #homeSVG svg {
+    max-height: 60px;
+    bottom: -10px;
+  }
+}
+@media (max-width: 310px) {
+  #homeSVG svg {
+    max-height: 45px;
+    bottom: -6px
+  }
 }
 .nav-item button:hover{
   cursor: pointer;
@@ -575,7 +621,7 @@ header.dark .nav-item a:hover {
   margin-left: 0;
 }
 .home-content {
-  margin-top: -68px;
+  margin-top: -50px;
   margin-bottom: 75px;
 }
 #help-left p {
@@ -676,9 +722,6 @@ h1.number {
   }
 }
 @media (max-width: 767px) {
-  .home-header {
-    height: 750px;
-  }
   .home-logos {
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -689,15 +732,18 @@ h1.number {
   .home-logos img:first-child {
     margin-left: 10px;
   }
+  .home-header {
+    padding-bottom: 50px;
+  }
+  .home-content {
+    margin-top: -68px;
+  }
 }
 @media (max-width: 440px) {
   .home-logos img {
     flex-basis: 35%;
     margin-left: 0;
     margin-right: 0;
-  }
-  .home-header {
-    height: 800px;
   }
 }
 
@@ -851,6 +897,8 @@ h1.number {
   margin-right: 15px;
   margin-bottom: auto;
   margin-top: -8px;
+  height: 40px;
+  width: auto;
 }
 .kioskNumber {
   /* content: '1'; */
@@ -924,7 +972,7 @@ h1.number {
   background-color: #0A5CA8;
   min-height: 600px;
 }
-#eligibilityMaintenance, #eligibilityMaintenance h1 {
+#eligibilityMaintenance, #eligibilityMaintenance h1, #eligibilityMaintenance h3 {
   color: #fff !important;
   text-align:  center;
 }
@@ -971,10 +1019,10 @@ h1.number {
 /*** LANDING PAGES ***/
 .landing-header {
   position: relative;
-  height: 325px;
   background-image: url(/images/BG_Blue.png);
   background-size: cover;
   top: -112px;
+  padding-bottom: 70px;
 }
 .landing-header h1 {
   color: #fff;
@@ -984,7 +1032,6 @@ h1.number {
   position: absolute;
   bottom: -2px;
   width: 100%;
-  height: 7vw;
   /* set height to pixels if you want angle to change with screen width */
 }
 .landing-content {
@@ -1043,6 +1090,9 @@ h1.number {
   .landing-text {
     padding-top: 0;
     margin-top: -15px;
+  }
+  .landing-header {
+    padding-bottom: 40px;
   }
 }
 @media (max-width: 440px) {
