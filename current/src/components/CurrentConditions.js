@@ -1,5 +1,5 @@
 import React from 'react';
-import { DateTime, Duration } from 'luxon';
+import { DateTime } from 'luxon';
 
 import FluMap from './FluMap/';
 import { ColorRamp } from './FluMap/styles';
@@ -7,7 +7,7 @@ import SeasonTimeline from './SeasonTimeline';
 import fluStats from '../data/flu-by-week.json';
 
 const SEASON_CUTOFF_MONTH = 9;
-
+const FLU_SEASON_START_DATE = DateTime.local(2019, 11, 18);
 
 export default class CurrentConditions extends React.Component {
   state = {
@@ -30,22 +30,11 @@ export default class CurrentConditions extends React.Component {
     const currentMonth = currentDate.month;
     const currentFullMonth = currentDate.monthLong;
     const currentYear = currentDate.year;
+    const currentDay = currentDate.day;
     const seasonStartYear = currentMonth < SEASON_CUTOFF_MONTH ? currentYear - 1 : currentYear;
-
-    const fluSeasonProgressText = {
-      9: 'nearing the start of',
-      10: 'at the start of',
-      11: 'one month into',
-      12: 'about one-third of the way through',
-      1: 'about halfway through',
-      2: 'about two-thirds of the way through',
-      3: 'over two-thirds of the way through',
-      4: 'nearing the end of',
-      5: 'finishing up',
-      6: 'done with',
-      7: 'done with',
-      8: 'done with',
-    };
+    const sinceSeasonStart = currentDate.diff(FLU_SEASON_START_DATE, ['months', 'weeks']).toObject();
+    const monthsSinceSeasonStart = (sinceSeasonStart.months);
+    const weeksSinceSeasonStart = Math.round(sinceSeasonStart.weeks);
 
     //const fluCurrentStatusText = generateCurrentStatusText(fluStats);
 
@@ -57,10 +46,13 @@ export default class CurrentConditions extends React.Component {
 
         <p>
           {thisWeek === currentWeek
-            ? `It’s ${currentFullMonth} ${currentYear}, which means we’re `
-            : `In ${currentFullMonth} ${currentYear} we ${currentWeek < thisWeek ? "were" : "will be"} `}
+            ? `It’s ${currentFullMonth} ${currentDay}, ${currentYear}, which means we’re `
+            : `On ${currentFullMonth} ${currentDay}, ${currentYear}, we ${currentWeek < thisWeek ? "were" : "will be"} `}
 
-          <strong>{fluSeasonProgressText[currentMonth]}</strong> the {seasonStartYear}–{seasonStartYear + 1} flu season.
+          {monthsSinceSeasonStart > 0 && <strong>{monthsSinceSeasonStart} {monthsSinceSeasonStart > 1 ? "months" : "month"} </strong>}
+          {(monthsSinceSeasonStart > 0 && weeksSinceSeasonStart > 0) && <strong>and </strong>}
+          {weeksSinceSeasonStart > 0 && <strong>{weeksSinceSeasonStart} {weeksSinceSeasonStart > 1 ? "weeks": "week"} </strong>}
+          into the {seasonStartYear}–{seasonStartYear + 1} flu season.
 
           {/*This week we’re <strong>{fluCurrentStatusText}</strong>.*/}
         </p>
