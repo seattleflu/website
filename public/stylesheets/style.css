@@ -411,6 +411,9 @@ header.dark .nav-item button {
   list-style: none;
   padding-left: 30px;
 }
+.secondary ul li {
+  padding-bottom: 16px;
+}
 .secondary ul li::before {
   content: "\2022";
   color:#0A5CA8;
@@ -1119,9 +1122,23 @@ display: none;
 
 
 
-/*** SSEC ***/
+/*** SSEC/STEC/SSCC/STCC ***/
 #ssec-img img {
   width: 100%;
+}
+#ssec-text h2, #ssec-text h4 {
+  margin-bottom: 30px;
+}
+#STCC #ssec-text img {
+  max-height: 80px;
+  padding-right: 40px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+@media (max-width: 1199px) {
+  #STCC #ssec-text img {
+    padding-right: 30px;
+  }
 }
 @media (max-width: 767px) {
   #ssec-text {
