@@ -5,47 +5,25 @@ import styled, { keyframes } from 'styled-components';
 
 import fluIcon from '../img/flu-virus-green.svg';
 
-const Seasonality = {
-  OFF_SEASON: 1,
-  SHOULDER_SEASON: 2,
-  PEAK_SEASON: 3
-};
-
 export default class SeasonTimeline extends React.Component {
+  state = {
+    currentDate: this.props.date,
+    weeks: generateWeeks(this.props.date)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.date !== prevProps.date && !this.state.weeks.includes(this.props.date)) {
+      this.setState({
+        currentDate: this.props.date,
+        weeks: generateWeeks(this.props.date, this.props.date < this.state.currentDate)
+      });
+    }
+  }
+
   render() {
-    let months = [
-      {month: 7, seasonality: Seasonality.OFF_SEASON},
-      {month: 8, seasonality: Seasonality.OFF_SEASON},
-      {month: 9, seasonality: Seasonality.SHOULDER_SEASON},
-      {month: 10, seasonality: Seasonality.PEAK_SEASON},
-      {month: 11, seasonality: Seasonality.PEAK_SEASON},
-      {month: 12, seasonality: Seasonality.PEAK_SEASON},
-      {month: 1, seasonality: Seasonality.PEAK_SEASON},
-      {month: 2, seasonality: Seasonality.PEAK_SEASON},
-      {month: 3, seasonality: Seasonality.PEAK_SEASON},
-      {month: 4, seasonality: Seasonality.PEAK_SEASON},
-      {month: 5, seasonality: Seasonality.SHOULDER_SEASON},
-      {month: 6, seasonality: Seasonality.OFF_SEASON},
-      {month: 7, seasonality: Seasonality.OFF_SEASON}
-    ];
-
-    const yearMonths = generateYearMonths();
-    months.forEach((m, i) => m["yearMonth"] = yearMonths[i]);
-
-    const rectAttrs = {
-      [Seasonality.OFF_SEASON]: {
-        fill: "hsl(214, 17%, 75%)"
-      },
-      [Seasonality.SHOULDER_SEASON]: {
-        fill: "hsl(202, 55%, 61%)"
-      },
-      [Seasonality.PEAK_SEASON]: {
-        fill: "hsl(189, 94%, 47%)"
-      }
-    };
-
-    const currentMonth = this.props.date.month;
-    const currentMonthIndex = months.findIndex(m => m.month === currentMonth);
+    const weeks = this.state.weeks.map(w => ({"month": w.month, "weekNumber": w.weekNumber, "week": w.toFormat("kkkk-'W'WW")}));
+    const currentWeek = this.state.currentDate.toFormat("kkkk-'W'WW")
+    const currentWeekIndex = weeks.findIndex(w => w.week === currentWeek);
 
     const [width, height, margin] = [800, 160, 5];
 
@@ -54,15 +32,15 @@ export default class SeasonTimeline extends React.Component {
     // outset spread across each month, to make room for the final month's
     // outset chevron.
     const chevronOutset = 0.25;
-    const widthPerMonth = Math.floor(1/months.length * width);
-    const monthWidth = widthPerMonth - Math.floor(1/months.length * (widthPerMonth * chevronOutset));
+    const widthPerWeek = Math.floor(1/weeks.length * width);
+    const weekWidth = widthPerWeek - Math.floor(1/weeks.length * (widthPerWeek * chevronOutset));
 
-    const monthHeight = 70;
+    const weekHeight = 70;
 
-    const iconDimensions = Math.min(monthWidth, "50");
+    const iconDimensions = Math.min(weekWidth, "50");
     const pinheadRadius = iconDimensions / 1.5;
 
-    const pinHeight = height - monthHeight - pinheadRadius;
+    const pinHeight = height - weekHeight - pinheadRadius;
 
     const spin = keyframes`
       from {
@@ -87,39 +65,36 @@ export default class SeasonTimeline extends React.Component {
            style={{pointerEvents: "none"}}>
         <title id="fluSeasonTimelineID">Flu Season Timeline</title>
         <desc id="fluSeasonTimelineDescID">
-          A timeline detailing the progression of a flu season from July of
-          the season start year to July of the season end year.
-          June, July, and August are considered off-season months.
-          September and May are shoulder months that may or may not have flu.
-          October through April is considered peak flu season.
+          A timeline detailing flu circulation from approximately six
+          months ago to the current week.
         </desc>
-        <g transform={`translate(${margin}, ${height - monthHeight})`}>
-          {months.map((m, i) =>
-          <g key={m.yearMonth}
-             transform={`translate(${i * monthWidth}, 0)`}>
+        <g transform={`translate(${margin}, ${height - weekHeight})`}>
+          {weeks.map((w, i) =>
+          <g key={w.week}
+             transform={`translate(${i * weekWidth}, 0)`}>
               <polygon points={`0, 0
-                              ${monthWidth},0
-                              ${monthWidth * (1 + chevronOutset)}, ${monthHeight / 2}
-                              ${monthWidth}, ${monthHeight}
-                              0, ${monthHeight}
-                              ${monthWidth * chevronOutset}, ${monthHeight / 2}`}
-                    {...rectAttrs[m.seasonality]}
+                              ${weekWidth},0
+                              ${weekWidth * (1 + chevronOutset)}, ${weekHeight / 2}
+                              ${weekWidth}, ${weekHeight}
+                              0, ${weekHeight}
+                              ${weekWidth * chevronOutset}, ${weekHeight / 2}`}
+                    fill = "hsl(214, 17%, 75%)"
                     stroke="white" />
 
               <text textAnchor="middle"
                     dominantBaseline="middle"
-                    x={monthWidth * 0.65}
-                    y={monthHeight / 2 + 5}
+                    x={weekWidth * 0.65}
+                    y={weekHeight / 2 + 5}
                     dy="-3px"
-                    style={{fontWeight: i === currentMonthIndex ? "bold" : "normal"}}>
-                {DateTime.fromISO(m.yearMonth).monthShort}
+                    style={{fontWeight: i === currentWeekIndex ? "bold" : "normal"}}>
+                {w.weekNumber}
               </text>
             </g>
           )}
         </g>
 
-        <g key="current-month-virus-pin"
-           transform={`translate(${currentMonthIndex * monthWidth + monthWidth * 0.65}, ${pinheadRadius})`}>
+        <g key="current-week-virus-pin"
+           transform={`translate(${currentWeekIndex * weekWidth + weekWidth * 0.65}, ${pinheadRadius})`}>
           <path
             d={`
               M ${-(pinheadRadius - 5)} 18
@@ -148,21 +123,20 @@ export default class SeasonTimeline extends React.Component {
 
 /**
  * This helper function is primarily used for generating unique keys when there
- * are repeating months in an object.
+ * are repeating weeks in an object.
  *
- * @return {Array} An array of strings in "YYYY-MM" format starting with the
- *  July of the season start year to July of the season end year.
+ * @param {DateTime} currentDate - A DateTime object representing the currentDate
+ * selected within the app.
+ * @param {Boolean} startWithCurrentDate - A boolean flag to determine whether to
+ * return the array starting with the currentDate. Default is false, which sets the
+ * start date to 26 weeks ago.
+ * @return {Array} An array of DateTime objects that represent the weeks over a
+ * period of 26 weeks.
  */
-function generateYearMonths() {
-  const today = DateTime.local();
-  const startMonth = 7; // Timeline starts with the July before the current season
+function generateWeeks(currentDate, startWithCurrentDate = false) {
+  // Default is to set start date to 6 months ago
+  const startDateTime = startWithCurrentDate ? currentDate : currentDate.minus({ months: 6 });
 
-  const start = DateTime.fromObject({
-    year: today.year - (today.month < startMonth ? 1 : 0),
-    month: startMonth
-  });
-
-  return _.range(13)
-          .map(i => start.plus({ months: i }))
-          .map(m => m.toFormat("yyyy-MM"));
+  return _.range(27)
+          .map(i => startDateTime.plus({ weeks: i }));
 }
