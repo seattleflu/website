@@ -52,6 +52,10 @@ export default class CurrentConditions extends React.Component {
     return (
       <>
         <p>
+          <i>During flu season, everyone should take precautions to prevent the spread of flu. To learn more, visit the Seattle Flu Study <a href="/resources">resources page</a>.</i>
+        </p>
+
+        <p>
           {thisWeek === currentWeek
             ? `It’s ${currentFullMonth} ${currentYear}, which means we’re `
             : `In ${currentFullMonth} ${currentYear} we ${currentWeek < thisWeek ? "were" : "will be"} `}
@@ -64,12 +68,13 @@ export default class CurrentConditions extends React.Component {
         <SeasonTimeline date={currentDate} />
 
         <p>
-          The map below shows flu circulation for
+          The map below shows an estimate for flu circulation for
           {thisWeek === currentWeek
             ? ` this week (${currentWeek}) `
             : ` the week of ${currentWeek} `}
           across the Seattle region.
-          Flu circulation level is determined by comparing flu positive and flu negative specimens collected by the study and represents a near real-time view of flu circulation.
+          Flu circulation level is determined by comparing flu positive and flu negative specimens collected by the Seattle Flu Study from local hospitals, clinics and community sites.
+          Color intensity levels presented on the map are relative to Seattle Flu Study data collection, with "high" circulation matched to peak flu during the 2018-19 season.
         </p>
 
         <ColorRamp />
@@ -113,6 +118,11 @@ export default class CurrentConditions extends React.Component {
             </div>
           </div>
         </div>
+
+        <p>
+          The map uses Seattle Flu Study's data. National, state and local organizations have different data and scales for reporting flu levels.
+          Other detailed flu reporting can be found at the <a href="https://www.cdc.gov/flu/weekly/">CDC</a> and <a href="https://www.kingcounty.gov/depts/health/communicable-diseases/disease-control/influenza.aspx">Public Health – Seattle & King County</a>.
+        </p>
 
       </>
     );

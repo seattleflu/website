@@ -590,6 +590,11 @@ button.green:hover {
     bottom: -6px
   }
 }
+@media (min-width: 1700px) {
+  #homeSVG svg {
+    max-height: none;
+  }
+}
 .nav-item button:hover{
   cursor: pointer;
 }

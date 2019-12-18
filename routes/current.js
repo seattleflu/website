@@ -46,7 +46,7 @@ router.get('/', function(req,res,next){
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('current', {
-    title: 'Current Conditions',
+    title: 'Current Flu Conditions',
     header: 'light',
     nav: req.nav,
     enroll: req.enroll,
