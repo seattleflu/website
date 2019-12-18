@@ -1123,7 +1123,7 @@ display: none;
 
 
 /*** SSEC/STEC/SSCC/STCC ***/
-#ssec-img img {
+#ssec-img img, #stcc-img img {
   width: 100%;
 }
 #ssec-text h2, #ssec-text h4 {
@@ -1135,16 +1135,34 @@ display: none;
   margin-top: 14px;
   margin-bottom: 14px;
 }
+#stcc-img-mobile {
+  display: none;
+}
 @media (max-width: 1199px) {
   #STCC #ssec-text img {
     padding-right: 30px;
   }
 }
-@media (max-width: 767px) {
-  #ssec-text {
+@media (max-width: 992px) {
+  #STCC #ssec-text img {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
+}
+@media (max-width: 767px) {
   #ssec-img {
     margin-top: 15px;
+  }
+  #stcc-img-mobile {
+    display: block;
+  }
+  #stcc-img-mobile img {
+    max-width: 100%;
+    max-height: none !important;
+  }
+  #stcc-img {
+    display: none;
   }
 }
 
