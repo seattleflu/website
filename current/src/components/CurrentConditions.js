@@ -33,7 +33,7 @@ export default class CurrentConditions extends React.Component {
     const currentDay = currentDate.day;
     const seasonStartYear = currentMonth < SEASON_CUTOFF_MONTH ? currentYear - 1 : currentYear;
     const sinceSeasonStart = currentDate.diff(FLU_SEASON_START_DATE, ['months', 'weeks']).toObject();
-    const monthsSinceSeasonStart = (sinceSeasonStart.months);
+    const monthsSinceSeasonStart = sinceSeasonStart.months;
     const weeksSinceSeasonStart = Math.round(sinceSeasonStart.weeks);
 
     //const fluCurrentStatusText = generateCurrentStatusText(fluStats);
