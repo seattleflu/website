@@ -94,7 +94,7 @@ const Two = props => {
 
   const options = [
     { value: 'none', label: '' },
-    { value: 'lessThan72h', label: 'Less than 72 hours' },
+    { value: 'lessThan7d', label: 'Less than 7 Days' },
     
     { value: 'moreThan7d', label: '7 Days or more' }
   ]
