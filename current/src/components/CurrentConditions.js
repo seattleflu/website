@@ -12,7 +12,7 @@ import fluStats from '../data/flu-by-week.json';
 
 export default class CurrentConditions extends React.Component {
   state = {
-    currentDate: DateTime.local(),
+    displayDate: DateTime.local(),
     store: immutable({
       dataSource: null
     })
@@ -23,7 +23,7 @@ export default class CurrentConditions extends React.Component {
     const week = location.searchParams.get("week");
 
     if (week)
-      this.setState(s => ({...s, currentDate: DateTime.fromISO(week)}));
+      this.setState(s => ({...s, displayDate: DateTime.fromISO(week)}));
 
     try {
       const geojson = await dataSource();
@@ -37,11 +37,15 @@ export default class CurrentConditions extends React.Component {
     }
   }
 
+  updateCurrentDate = (newDate) => {
+    this.setState({ displayDate: newDate });
+  }
+
   render() {
     const thisWeek = DateTime.local().toFormat("kkkk-'W'WW");
 
-    const currentDate = this.state.currentDate;
-    const currentWeek = currentDate.toFormat("kkkk-'W'WW");
+    const { displayDate } = this.state;
+    const currentWeek = displayDate.toFormat("kkkk-'W'WW");
 
     //const fluCurrentStatusText = generateCurrentStatusText(fluStats);
 
@@ -51,7 +55,7 @@ export default class CurrentConditions extends React.Component {
           <i>During flu season, everyone should take precautions to prevent the spread of flu. To learn more, visit the Seattle Flu Study <a href="/resources">resources page</a>.</i>
         </p>
 
-        <SeasonTimeline dataSource={this.state.store.get("dataSource")} date={currentDate} />
+        <SeasonTimeline dataSource={this.state.store.get("dataSource")} date={displayDate} updateCurrentDate={this.updateCurrentDate}/>
 
         <p>
           The map below shows an estimate for flu circulation for
@@ -64,7 +68,7 @@ export default class CurrentConditions extends React.Component {
         </p>
 
         <ColorRamp />
-        <FluMap dataSource={this.state.store.get("dataSource")} date={currentDate} />
+        <FluMap dataSource={this.state.store.get("dataSource")} date={displayDate} />
 
         <p />
 

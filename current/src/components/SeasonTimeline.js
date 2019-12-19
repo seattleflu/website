@@ -7,23 +7,30 @@ import fluIcon from '../img/flu-virus-green.svg';
 
 export default class SeasonTimeline extends React.Component {
   state = {
-    currentDate: this.props.date,
-    weeks: generateWeeks(this.props.date)
+    currentDate: DateTime.local(),
+    currentWeeks: generateWeeks(DateTime.local()),
+    displayDate: this.props.date,
+    displayWeeks: generateWeeks(this.props.date)
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.date !== prevProps.date && !this.state.weeks.includes(this.props.date)) {
-      this.setState({
-        currentDate: this.props.date,
-        weeks: generateWeeks(this.props.date, this.props.date < this.state.currentDate)
-      });
+    if (this.props.date !== prevProps.date) {
+      if (this.state.displayWeeks.includes(this.props.date)) {
+        this.setState({ displayDate: this.props.date })
+      }
+      else {
+        this.setState({
+          displayDate: this.props.date,
+          displayWeeks: generateWeeks(this.props.date, this.props.date < this.state.currentDate)
+        });
+      }
     }
   }
 
   render() {
-    const weeks = this.state.weeks.map(w => ({"month": w.month, "weekNumber": w.weekNumber, "week": w.toFormat("kkkk-'W'WW")}));
-    const currentWeek = this.state.currentDate.toFormat("kkkk-'W'WW")
-    const currentWeekIndex = weeks.findIndex(w => w.week === currentWeek);
+    const weeks = this.state.displayWeeks;
+    const currentWeek = this.state.displayDate.toFormat("kkkk-'W'WW")
+    const currentWeekIndex = weeks.findIndex(w => w.toFormat("kkkk-'W'WW") === currentWeek);
 
     const [width, height, margin] = [800, 160, 5];
 
@@ -61,8 +68,7 @@ export default class SeasonTimeline extends React.Component {
            width="100%"
            height={height + margin * 2}
            role="img"
-           aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID"
-           style={{pointerEvents: "none"}}>
+           aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID">
         <title id="fluSeasonTimelineID">Flu Season Timeline</title>
         <desc id="fluSeasonTimelineDescID">
           A timeline detailing flu circulation from approximately six
@@ -70,8 +76,10 @@ export default class SeasonTimeline extends React.Component {
         </desc>
         <g transform={`translate(${margin}, ${height - weekHeight})`}>
           {weeks.map((w, i) =>
-          <g key={w.week}
-             transform={`translate(${i * weekWidth}, 0)`}>
+          <g key={w.toFormat("kkkk-'W'WW")}
+             transform={`translate(${i * weekWidth}, 0)`}
+             style={{ pointerEvents: "bounding-box", cursor: "pointer" }}
+             onClick={() => this.props.updateCurrentDate(w)}>
               <polygon points={`0, 0
                               ${weekWidth},0
                               ${weekWidth * (1 + chevronOutset)}, ${weekHeight / 2}
