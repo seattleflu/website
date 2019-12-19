@@ -4,9 +4,12 @@
     <div class="row">
         <div class="col-md-6" id="ssec-text">
             <h2><%= pageData[0].fields.subhead %></h2>
+            <div class="col-md-6" id="stcc-img-mobile">
+                <%- md.render(pageData[0].fields.content2) %>
+            </div>
             <p><%- md.render(pageData[0].fields.content) %></p>
         </div>
-        <div class="col-md-6" id="ssec-img">
+        <div class="col-md-6" id="stcc-img">
             <%- md.render(pageData[0].fields.content2) %>
         </div>
     </div>
