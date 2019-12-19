@@ -44,7 +44,7 @@ export default class SeasonTimeline extends React.Component {
 
     const weekHeight = 70;
 
-    const iconDimensions = Math.min(weekWidth, "50");
+    const iconDimensions = Math.min((weekWidth+20), "50");
     const pinheadRadius = iconDimensions / 1.5;
 
     const pinHeight = height - weekHeight - pinheadRadius;
@@ -68,7 +68,8 @@ export default class SeasonTimeline extends React.Component {
            width="100%"
            height={height + margin * 2}
            role="img"
-           aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID">
+           aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID"
+           style={{ overflow: "visible" }}>
         <title id="fluSeasonTimelineID">Flu Season Timeline</title>
         <desc id="fluSeasonTimelineDescID">
           A timeline detailing flu circulation from approximately six
