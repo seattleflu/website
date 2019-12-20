@@ -62,7 +62,7 @@ export default class SeasonTimeline extends React.Component {
     const currentWeek = this.state.displayDate.toFormat("kkkk-'W'WW")
     const currentWeekIndex = weeks.findIndex(w => w.toFormat("kkkk-'W'WW") === currentWeek);
 
-    const [width, height, margin] = [800, 160, 5];
+    const [width, height, margin] = [800, 200, 5];
 
     // The months are packed chevrons.  First calculate the space for each
     // month as a rectangle.  Then subtract from that the width of one chevron
@@ -103,31 +103,52 @@ export default class SeasonTimeline extends React.Component {
           A timeline detailing flu circulation from approximately six
           months ago to the current week.
         </desc>
-        <g transform={`translate(${margin}, ${height - weekHeight})`}>
-          {weeks.map((w, i) =>
-          <g key={w.toFormat("kkkk-'W'WW")}
-             transform={`translate(${i * weekWidth}, 0)`}
-             style={{ pointerEvents: "bounding-box", cursor: "pointer" }}
-             onClick={() => this.props.updateCurrentDate(w)}>
-              <polygon points={`0, 0
-                              ${weekWidth},0
-                              ${weekWidth * (1 + chevronOutset)}, ${weekHeight / 2}
-                              ${weekWidth}, ${weekHeight}
-                              0, ${weekHeight}
-                              ${weekWidth * chevronOutset}, ${weekHeight / 2}`}
-                    fill={(fluIntensityByWeek && colorMap) ? colorMap[fluIntensityByWeek[w.toFormat("kkkk-'W'WW")]] : missingDataColor}
-                    stroke="white" />
+        <g transform={`translate(${margin}, ${height - weekHeight - 40})`}>
+          {weeks.map((w, i) => {
+            let displayMonth = true;
+            // Only display a month label for the first week within the month
+            if (i !== 0 && w.month === weeks[i-1].month) {
+              displayMonth = false;
+            }
+            return (
+              <g key={w.toFormat("kkkk-'W'WW")}
+               transform={`translate(${i * weekWidth}, 0)`}
+               style={{ pointerEvents: "bounding-box", cursor: "pointer" }}
+               onClick={() => this.props.updateCurrentDate(w)}>
+                <polygon points={`0, 0
+                                ${weekWidth},0
+                                ${weekWidth * (1 + chevronOutset)}, ${weekHeight / 2}
+                                ${weekWidth}, ${weekHeight}
+                                0, ${weekHeight}
+                                ${weekWidth * chevronOutset}, ${weekHeight / 2}`}
+                      fill={(fluIntensityByWeek && colorMap) ? colorMap[fluIntensityByWeek[w.toFormat("kkkk-'W'WW")]] : missingDataColor}
+                      stroke="white" />
 
-              <text textAnchor="middle"
-                    dominantBaseline="middle"
-                    x={weekWidth * 0.65}
-                    y={weekHeight / 2 + 5}
-                    dy="-3px"
-                    style={{fontWeight: i === currentWeekIndex ? "bold" : "normal"}}>
-                {w.weekNumber}
-              </text>
-            </g>
-          )}
+                <text textAnchor="middle"
+                      dominantBaseline="middle"
+                      x={weekWidth * 0.65}
+                      y={weekHeight / 2 + 5}
+                      dy="-3px"
+                      style={{fontWeight: i === currentWeekIndex ? "bold" : "normal"}}>
+                  {w.weekNumber}
+                </text>
+
+                {displayMonth &&
+                  <g transform={`translate(0, ${height - weekHeight * 1.85})`}>
+                    <line x1={weekWidth * 0.65} y1="0" x2={weekWidth * 0.65} y2={weekHeight / 2.5} style={{stroke: "black", strokeWidth: 2}}/>
+                    <text textAnchor="middle"
+                          dominantBaseline="middle"
+                          x={weekWidth * 0.65}
+                          y={weekHeight / 2 + 5}
+                          dy="-3px"
+                          style={{fontWeight: w.month === this.state.displayDate.month ? "bold" : "normal"}}>
+                      {w.monthShort}
+                    </text>
+                  </g>
+                }
+              </g>
+            )
+          })}
         </g>
 
         <g key="current-week-virus-pin"
