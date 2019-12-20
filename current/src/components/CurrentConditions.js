@@ -80,6 +80,11 @@ export default class CurrentConditions extends React.Component {
         </p>
 
         <p>
+          The map uses Seattle Flu Study's data. National, state and local organizations have different data and scales for reporting flu levels.
+          Other detailed flu reporting can be found at the <a href="https://www.cdc.gov/flu/weekly/">CDC</a> and <a href="https://www.kingcounty.gov/depts/health/communicable-diseases/disease-control/influenza.aspx">Public Health – Seattle & King County</a>.
+        </p>
+
+        <p>
           These are examples of flu circulation from January to March 2019, when there were periods of low, moderate and high circulation.
           Click on any picture to be taken to a full screen view.
         </p>
@@ -110,11 +115,6 @@ export default class CurrentConditions extends React.Component {
             </div>
           </div>
         </div>
-
-        <p>
-          The map uses Seattle Flu Study's data. National, state and local organizations have different data and scales for reporting flu levels.
-          Other detailed flu reporting can be found at the <a href="https://www.cdc.gov/flu/weekly/">CDC</a> and <a href="https://www.kingcounty.gov/depts/health/communicable-diseases/disease-control/influenza.aspx">Public Health – Seattle & King County</a>.
-        </p>
 
       </>
     );
