@@ -4,6 +4,8 @@ import _ from 'lodash';
 import styled, { keyframes } from 'styled-components';
 
 import fluIcon from '../img/flu-virus-green.svg';
+import heatmap from './FluMap/heatmap.json';
+import { missingDataColor } from './FluMap/styles';
 
 export default class SeasonTimeline extends React.Component {
   state = {
@@ -27,7 +29,35 @@ export default class SeasonTimeline extends React.Component {
     }
   }
 
+  parseDataSource = () => {
+    const features = this.props.dataSource.toJS().features;
+    const fluIntensities = features.map(f => f.properties.flu_positive)
+    let fluIntensityByWeek = {};
+
+    // Aggregate all intensities by week
+    fluIntensities.forEach(region => {
+      Object.keys(region).forEach(week => {
+        fluIntensityByWeek[week] = (fluIntensityByWeek[week] || []).concat([region[week].modeled_intensity_mode]);
+      });
+    });
+
+    // Calculate the average intensity for each week
+    Object.keys(fluIntensityByWeek).forEach(week => {
+      fluIntensityByWeek[week] = parseFloat(_.mean(fluIntensityByWeek[week]).toFixed(3));
+      if (fluIntensityByWeek[week] > 0.2) fluIntensityByWeek[week] = 0.2;
+    });
+
+    return fluIntensityByWeek
+  }
+
   render() {
+    let fluIntensityByWeek;
+    let colorMap;
+    if (this.props.dataSource) {
+      fluIntensityByWeek = this.parseDataSource();
+      colorMap = Object.assign(...heatmap.map(([intensity, color]) => ({[intensity]: color})))
+    }
+
     const weeks = this.state.displayWeeks;
     const currentWeek = this.state.displayDate.toFormat("kkkk-'W'WW")
     const currentWeekIndex = weeks.findIndex(w => w.toFormat("kkkk-'W'WW") === currentWeek);
@@ -46,8 +76,6 @@ export default class SeasonTimeline extends React.Component {
 
     const iconDimensions = Math.min((weekWidth+20), "50");
     const pinheadRadius = iconDimensions / 1.5;
-
-    const pinHeight = height - weekHeight - pinheadRadius;
 
     const spin = keyframes`
       from {
@@ -87,7 +115,7 @@ export default class SeasonTimeline extends React.Component {
                               ${weekWidth}, ${weekHeight}
                               0, ${weekHeight}
                               ${weekWidth * chevronOutset}, ${weekHeight / 2}`}
-                    fill = "hsl(214, 17%, 75%)"
+                    fill={(fluIntensityByWeek && colorMap) ? colorMap[fluIntensityByWeek[w.toFormat("kkkk-'W'WW")]] : missingDataColor}
                     stroke="white" />
 
               <text textAnchor="middle"
