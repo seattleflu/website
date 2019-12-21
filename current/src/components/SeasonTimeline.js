@@ -52,16 +52,20 @@ export default class SeasonTimeline extends React.Component {
   }
 
   render() {
+    const weeks = this.state.displayWeeks;
+    const currentWeek = this.state.currentDate.toFormat("kkkk-'W'WW");
+    const displayWeek = this.state.displayDate.toFormat("kkkk-'W'WW");
+
     let fluIntensityByWeek;
     let colorMap;
+    let currentFluIntensity;
     if (this.props.dataSource) {
       fluIntensityByWeek = this.parseDataSource();
       colorMap = Object.assign(...heatmap.map(([intensity, color]) => ({[intensity]: color})))
+      currentFluIntensity = getFluIntensityLanguage(fluIntensityByWeek, displayWeek)
     }
 
-    const weeks = this.state.displayWeeks;
-    const currentWeek = this.state.displayDate.toFormat("kkkk-'W'WW")
-    const currentWeekIndex = weeks.findIndex(w => w.toFormat("kkkk-'W'WW") === currentWeek);
+    const displayWeekIndex = weeks.findIndex(w => w.toFormat("kkkk-'W'WW") === displayWeek);
 
     const [width, height, margin] = [800, 200, 5];
 
@@ -93,88 +97,97 @@ export default class SeasonTimeline extends React.Component {
     `
 
     return (
-      <svg viewBox={`0 0 ${width + margin * 2} ${height + margin * 2}`}
-           width="100%"
-           height={height + margin * 2}
-           role="img"
-           aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID"
-           style={{ overflow: "visible" }}>
-        <title id="fluSeasonTimelineID">Flu Season Timeline</title>
-        <desc id="fluSeasonTimelineDescID">
-          A timeline detailing flu circulation from approximately six
-          months ago to the current week.
-        </desc>
-        <g transform={`translate(${margin}, ${height - weekHeight - 40})`}>
-          {weeks.map((w, i) => {
-            let displayMonth = true;
-            // Only display a month label for the first week within the month
-            if (i !== 0 && w.month === weeks[i-1].month) {
-              displayMonth = false;
-            }
-            return (
-              <g key={w.toFormat("kkkk-'W'WW")}
-               transform={`translate(${i * weekWidth}, 0)`}
-               style={{ pointerEvents: "bounding-box", cursor: "pointer" }}
-               onClick={() => this.props.updateCurrentDate(w)}>
-                <polygon points={`0, 0
-                                ${weekWidth},0
-                                ${weekWidth * (1 + chevronOutset)}, ${weekHeight / 2}
-                                ${weekWidth}, ${weekHeight}
-                                0, ${weekHeight}
-                                ${weekWidth * chevronOutset}, ${weekHeight / 2}`}
-                      fill={(fluIntensityByWeek && colorMap) ? colorMap[fluIntensityByWeek[w.toFormat("kkkk-'W'WW")]] : missingDataColor}
-                      stroke="white" />
+      <>
+        <p style={{ textAlign: "center" }}>
+          In the
+          {currentWeek === displayWeek
+            ? ` current week (${displayWeek}), `
+            : ` week of ${displayWeek}, `}
+          overall flu circulation is estimated to be <b>{currentFluIntensity}</b>.
+        </p>
+        <svg viewBox={`0 0 ${width + margin * 2} ${height + margin * 2}`}
+             width="100%"
+             height={height + margin * 2}
+             role="img"
+             aria-labelledby="fluSeasonTimelineID fluSeasonTimelineDescID"
+             style={{ overflow: "visible" }}>
+          <title id="fluSeasonTimelineID">Flu Season Timeline</title>
+          <desc id="fluSeasonTimelineDescID">
+            A timeline detailing flu circulation from approximately six
+            months ago to the current week.
+          </desc>
+          <g transform={`translate(${margin}, ${height - weekHeight - 40})`}>
+            {weeks.map((w, i) => {
+              let displayMonth = true;
+              // Only display a month label for the first week within the month
+              if (i !== 0 && w.month === weeks[i-1].month) {
+                displayMonth = false;
+              }
+              return (
+                <g key={w.toFormat("kkkk-'W'WW")}
+                 transform={`translate(${i * weekWidth}, 0)`}
+                 style={{ pointerEvents: "bounding-box", cursor: "pointer" }}
+                 onClick={() => this.props.updateCurrentDate(w)}>
+                  <polygon points={`0, 0
+                                  ${weekWidth},0
+                                  ${weekWidth * (1 + chevronOutset)}, ${weekHeight / 2}
+                                  ${weekWidth}, ${weekHeight}
+                                  0, ${weekHeight}
+                                  ${weekWidth * chevronOutset}, ${weekHeight / 2}`}
+                        fill={(fluIntensityByWeek && colorMap) ? colorMap[fluIntensityByWeek[w.toFormat("kkkk-'W'WW")]] : missingDataColor}
+                        stroke="white" />
 
-                <text textAnchor="middle"
-                      dominantBaseline="middle"
-                      x={weekWidth * 0.65}
-                      y={weekHeight / 2 + 5}
-                      dy="-3px"
-                      style={{fontWeight: i === currentWeekIndex ? "bold" : "normal"}}>
-                  {w.weekNumber}
-                </text>
+                  <text textAnchor="middle"
+                        dominantBaseline="middle"
+                        x={weekWidth * 0.65}
+                        y={weekHeight / 2 + 5}
+                        dy="-3px"
+                        style={{fontWeight: i === displayWeekIndex ? "bold" : "normal"}}>
+                    {w.weekNumber}
+                  </text>
 
-                {displayMonth &&
-                  <g transform={`translate(0, ${height - weekHeight * 1.85})`}>
-                    <line x1={weekWidth * 0.65} y1="0" x2={weekWidth * 0.65} y2={weekHeight / 2.5} style={{stroke: "black", strokeWidth: 2}}/>
-                    <text textAnchor="middle"
-                          dominantBaseline="middle"
-                          x={weekWidth * 0.65}
-                          y={weekHeight / 2 + 5}
-                          dy="-3px"
-                          style={{fontWeight: w.month === this.state.displayDate.month ? "bold" : "normal"}}>
-                      {w.monthShort}
-                    </text>
-                  </g>
-                }
-              </g>
-            )
-          })}
-        </g>
+                  {displayMonth &&
+                    <g transform={`translate(0, ${height - weekHeight * 1.85})`}>
+                      <line x1={weekWidth * 0.65} y1="0" x2={weekWidth * 0.65} y2={weekHeight / 2.5} style={{stroke: "black", strokeWidth: 2}}/>
+                      <text textAnchor="middle"
+                            dominantBaseline="middle"
+                            x={weekWidth * 0.65}
+                            y={weekHeight / 2 + 5}
+                            dy="-3px"
+                            style={{fontWeight: w.month === this.state.displayDate.month ? "bold" : "normal"}}>
+                        {w.monthShort}
+                      </text>
+                    </g>
+                  }
+                </g>
+              )
+            })}
+          </g>
 
-        <g key="current-week-virus-pin"
-           transform={`translate(${currentWeekIndex * weekWidth + weekWidth * 0.65}, ${pinheadRadius})`}>
-          <path
-            d={`
-              M ${-(pinheadRadius - 5)} 18
-              A ${pinheadRadius} ${pinheadRadius} 220 1 1 ${pinheadRadius - 5} 18
-              L 0 ${pinheadRadius * 2}
-              z
-            `}
-            fill="#1bab4c"
-            strokeWidth="2"
-            strokeLinecap="round" />
-          <Spin>
-            <image href={fluIcon}
-                  y={-iconDimensions / 2}
-                  x={-iconDimensions / 2}
-                  width={iconDimensions}
-                  height={iconDimensions}
-                  style={{opacity: 0.9}} />
-          </Spin>
-        </g>
+          <g key="current-week-virus-pin"
+             transform={`translate(${displayWeekIndex * weekWidth + weekWidth * 0.65}, ${pinheadRadius})`}>
+            <path
+              d={`
+                M ${-(pinheadRadius - 5)} 18
+                A ${pinheadRadius} ${pinheadRadius} 220 1 1 ${pinheadRadius - 5} 18
+                L 0 ${pinheadRadius * 2}
+                z
+              `}
+              fill="#1bab4c"
+              strokeWidth="2"
+              strokeLinecap="round" />
+            <Spin>
+              <image href={fluIcon}
+                    y={-iconDimensions / 2}
+                    x={-iconDimensions / 2}
+                    width={iconDimensions}
+                    height={iconDimensions}
+                    style={{opacity: 0.9}} />
+            </Spin>
+          </g>
 
-      </svg>
+        </svg>
+      </>
     );
   }
 }
@@ -198,4 +211,35 @@ function generateWeeks(currentDate, startWithCurrentDate = false) {
 
   return _.range(27)
           .map(i => startDateTime.plus({ weeks: i }));
+}
+
+/**
+ * This helper function is use to determine the appropriate language describing the
+ * flu circulation of a given week. The language is borrowed from the ColorRamp legend.
+ *
+ * @param {Object} fluIntensityByWeek - An object that holds the average flu intensity within
+ * the general Seattle area for each week.
+ * @param {String} displayWeek - A string representing the current week displayed in the format
+ * of 2019-W01
+ * @return {String} A string describing the flu circulation levels (minimal, low, moderate, high)
+ */
+function getFluIntensityLanguage(fluIntensityByWeek, displayWeek) {
+  let currentFluIntensity = fluIntensityByWeek[displayWeek];
+
+  if (currentFluIntensity === undefined) return 'unknown';
+
+  if (currentFluIntensity < 0.06) {
+    currentFluIntensity = 'minimal';
+  }
+  else if (currentFluIntensity < 0.12) {
+    currentFluIntensity = 'low';
+  }
+  else if (currentFluIntensity < 0.18) {
+    currentFluIntensity = 'moderate';
+  }
+  else {
+    currentFluIntensity = 'high';
+  }
+
+  return currentFluIntensity
 }
