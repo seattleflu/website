@@ -18,12 +18,13 @@ export default class SeasonTimeline extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.date !== prevProps.date) {
       if (this.state.displayWeeks.includes(this.props.date)) {
-        this.setState({ displayDate: this.props.date })
+        this.setState({ displayDate: this.props.date });
       }
       else {
+        const startWithCurrentDate = this.props.date < this.state.currentDate && this.props.date.weekNumber !== this.state.currentDate.weekNumber;
         this.setState({
           displayDate: this.props.date,
-          displayWeeks: generateWeeks(this.props.date, this.props.date < this.state.currentDate)
+          displayWeeks: generateWeeks(this.props.date, startWithCurrentDate)
         });
       }
     }
@@ -193,7 +194,7 @@ export default class SeasonTimeline extends React.Component {
  */
 function generateWeeks(currentDate, startWithCurrentDate = false) {
   // Default is to set start date to 6 months ago
-  const startDateTime = startWithCurrentDate ? currentDate : currentDate.minus({ months: 6 });
+  const startDateTime = startWithCurrentDate ? currentDate : currentDate.minus({ weeks: 26 });
 
   return _.range(27)
           .map(i => startDateTime.plus({ weeks: i }));
