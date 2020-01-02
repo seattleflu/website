@@ -622,6 +622,8 @@ header.dark .nav-item a:hover {
 .home-logos img {
   margin-bottom: 30px;
   max-height: 40px;
+  height: 100%;
+  width: 100%;
   margin-left: 10px;
   margin-right: 10px;
 }
