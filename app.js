@@ -15,6 +15,7 @@ var thankyouRouter = require('./routes/thankyou')
 var privacyRouter = require('./routes/privacy')
 var kiosksRouter = require('./routes/kiosks')
 var learnmoreRouter = require('./routes/learnmore');
+var tySSSTRouter = require('./routes/thank-you-ss-st');
 var swabandsendRouter = require ('./routes/swabandsend');
 var householdsRouter = require('./routes/households');
 var webmdRouter = require('./routes/webmd');
@@ -81,6 +82,7 @@ app.use('/results', resultsRouter)
 app.use('/privacy', privacyRouter)
 app.use('/kiosks', kiosksRouter)
 app.use('/learnmore', learnmoreRouter);
+app.use('/thank-you-ss-st', tySSSTRouter);
 app.use('/households', householdsRouter);
 app.use('/webmd', webmdRouter);
 app.use('/info', infoRouter);
