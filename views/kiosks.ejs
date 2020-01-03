@@ -280,7 +280,7 @@
                   <h3 class="kiosk-sub-mobile"><%= pageData[0].fields.subhead %></h3>
                   <div class="kiosk-list-mobile">
                     <% var value = 0; %>
-                    <% kiosksData.forEach((kiosk) => { %>
+                    <% kiosksData.forEach(function(kiosk) { %>
                       <%value = value + 1%>
 
                       <div class="kiosk-item">
