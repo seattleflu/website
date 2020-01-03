@@ -36,7 +36,7 @@
                       var locations = [];
                       var locationId = 0;
 
-                      kiosksLocations.forEach((kiosks) => {
+                      kiosksLocations.forEach(function(kiosks) {
                         locationId = locationId + 1;
                         var kioskData = [kiosks.fields.locationName, kiosks.fields.location.lat, kiosks.fields.location.lon, kiosks.fields.content, locationId, kiosks.fields.listedAddress];
                         locations.push(kioskData);
@@ -248,7 +248,7 @@
                         var infowindow = new google.maps.InfoWindow();
 
                         var marker, i;
-                        var iconBase = '/images/map_icon.svg';
+                        var iconBase = '/images/map_icon_ie.png';
 
 
                         for (i = 0; i < locations.length; i++) {
@@ -280,7 +280,7 @@
                   <h3 class="kiosk-sub-mobile"><%= pageData[0].fields.subhead %></h3>
                   <div class="kiosk-list-mobile">
                     <% var value = 0; %>
-                    <% kiosksData.forEach((kiosk) => { %>
+                    <% kiosksData.forEach(function(kiosk) { %>
                       <%value = value + 1%>
 
                       <div class="kiosk-item">
