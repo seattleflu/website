@@ -177,7 +177,7 @@ const Main = props => {
             description={props.conditions2}
             label="age"
             type="text"
-            id="zipcode"
+            id="age"
             value={ageValue}
             handleChange={handleAgeChange}
           />
