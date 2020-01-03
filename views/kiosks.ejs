@@ -36,7 +36,7 @@
                       var locations = [];
                       var locationId = 0;
 
-                      kiosksLocations.forEach((kiosks) => {
+                      kiosksLocations.forEach(function(kiosks) {
                         locationId = locationId + 1;
                         var kioskData = [kiosks.fields.locationName, kiosks.fields.location.lat, kiosks.fields.location.lon, kiosks.fields.content, locationId, kiosks.fields.listedAddress];
                         locations.push(kioskData);
