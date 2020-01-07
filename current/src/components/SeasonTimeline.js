@@ -148,10 +148,10 @@ export default class SeasonTimeline extends React.Component {
 
                   <text textAnchor="middle"
                         dominantBaseline="middle"
-                        x={weekWidth * 0.65}
+                        x={weekWidth * 0.7}
                         y={weekHeight / 2 + 5}
                         dy="-3px"
-                        style={{fontWeight: i === displayWeekIndex ? "bold" : "normal"}}>
+                        style={{fill: "white", fontWeight: i === displayWeekIndex ? "bold" : "normal"}}>
                     {w.weekNumber}
                   </text>
 
@@ -162,8 +162,7 @@ export default class SeasonTimeline extends React.Component {
                             dominantBaseline="middle"
                             x={weekWidth * offset}
                             y={weekHeight / 3 + 10}
-                            dy="-3px"
-                            style={{fontWeight: w.month === this.state.displayDate.month ? "bold" : "normal"}}>
+                            dy="-3px">
                         {weeks[i+1].monthShort}
                       </text>
                     </g>
