@@ -598,6 +598,11 @@ button.green:hover {
     max-height: none;
   }
 }
+@media (min-width: 1650px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  #homeSVG svg {
+    display: none;
+  }
+}
 .nav-item button:hover{
   cursor: pointer;
 }
