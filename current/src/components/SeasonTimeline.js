@@ -1,5 +1,5 @@
 import React from 'react';
-import { DateTime } from 'luxon';
+import { DateTime, Interval } from 'luxon';
 import _ from 'lodash';
 import styled, { keyframes } from 'styled-components';
 
@@ -118,10 +118,19 @@ export default class SeasonTimeline extends React.Component {
           </desc>
           <g transform={`translate(${margin}, ${height - weekHeight - 40})`}>
             {weeks.map((w, i) => {
-              let displayMonth = true;
+              let displayMonth = false;
+              let offset = 0;
               // Only display a month label for the first week within the month
-              if (i !== 0 && w.month === weeks[i-1].month) {
-                displayMonth = false;
+              // The month label should be displayed in the week during which
+              // the first of the month occurs.
+              if (weeks[i+1]) {
+                if (i !== 0 && w.month !== weeks[i+1].month) {
+                  displayMonth = true;
+                  // Compute offset, ie how far into this week was the 1st of
+                  // the month?
+                  const nextMonth = DateTime.local(weeks[i+1].year, weeks[i+1].month, 1)
+                  offset = Interval.fromDateTimes(w, nextMonth).length('weeks', true)
+                }
               }
               return (
                 <g key={w.toFormat("kkkk-'W'WW")}
@@ -148,14 +157,14 @@ export default class SeasonTimeline extends React.Component {
 
                   {displayMonth &&
                     <g transform={`translate(0, ${height - weekHeight * 1.85})`}>
-                      <line x1={weekWidth * 0.65} y1="0" x2={weekWidth * 0.65} y2={weekHeight / 2.5} style={{stroke: "black", strokeWidth: 2}}/>
+                      <line x1={weekWidth * offset} y1="1" x2={weekWidth * offset} y2={weekHeight / 3 - 1} style={{stroke: "black", strokeWidth: 2}}/>
                       <text textAnchor="middle"
                             dominantBaseline="middle"
-                            x={weekWidth * 0.65}
-                            y={weekHeight / 2 + 5}
+                            x={weekWidth * offset}
+                            y={weekHeight / 3 + 10}
                             dy="-3px"
                             style={{fontWeight: w.month === this.state.displayDate.month ? "bold" : "normal"}}>
-                        {w.monthShort}
+                        {weeks[i+1].monthShort}
                       </text>
                     </g>
                   }
