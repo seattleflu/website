@@ -4,7 +4,7 @@ import { flatten } from "lodash";
 import heatmap from "./heatmap.json";
 import mapboxDark from "./mapbox-dark-v10.json";
 
-const missingDataColor = "#777777";
+export const missingDataColor = "#777777";
 
 /**
  * Mapping of "intensity" to color encoded in heatmap.json
