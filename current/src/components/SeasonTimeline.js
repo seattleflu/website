@@ -173,7 +173,7 @@ export default class SeasonTimeline extends React.Component {
           </g>
 
           <g key="current-week-virus-pin"
-             transform={`translate(${displayWeekIndex * weekWidth + weekWidth * 0.65}, ${pinheadRadius})`}>
+             transform={`translate(${displayWeekIndex * weekWidth + weekWidth * 0.85}, ${pinheadRadius})`}>
             <path
               d={`
                 M ${-(pinheadRadius - 5)} 18
@@ -236,13 +236,13 @@ function getFluIntensityLanguage(fluIntensityByWeek, displayWeek) {
 
   if (currentFluIntensity === undefined) return 'unknown';
 
-  if (currentFluIntensity < 0.06) {
+  if (currentFluIntensity < 0.025) {
     currentFluIntensity = 'minimal';
   }
-  else if (currentFluIntensity < 0.12) {
+  else if (currentFluIntensity < 0.075) {
     currentFluIntensity = 'low';
   }
-  else if (currentFluIntensity < 0.18) {
+  else if (currentFluIntensity < 0.125) {
     currentFluIntensity = 'moderate';
   }
   else {

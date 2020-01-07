@@ -9,10 +9,10 @@ export const missingDataColor = "#777777";
 /**
  * Mapping of "intensity" to color encoded in heatmap.json
  * "Intensity" comes from seattleflu/incidence-mapper and will have consistent scale
- * 0.00 to 0.06: minimal
- * 0.06 to 0.12: low
- * 0.12 to 0.18: moderate
- * 0.18 and above: high
+ * between 0.000 and 0.025: minimal
+ * between 0.025 and 0.075: low
+ * between 0.075 and 0.125: moderate
+ * above 0.125: high
  */
 
 /**
@@ -101,8 +101,8 @@ export function ColorRamp() {
 
   const colorRamp = [];
   heatmap.forEach(([value, color]) => {
-    if (value <= 0.2) {
-      colorRamp.push([5.0 * value, color]);
+    if (value <= 0.15) {
+      colorRamp.push([6.66 * value, color]); // 0.15*6.66 = 1.0
     }
   });
 
