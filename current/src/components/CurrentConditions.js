@@ -1,40 +1,51 @@
 import React from 'react';
 import { DateTime } from 'luxon';
+import { fromJS as immutable } from 'immutable';
 
 import FluMap from './FluMap/';
 import { ColorRamp } from './FluMap/styles';
+import { dataSource } from './FluMap/data';
 import SeasonTimeline from './SeasonTimeline';
 import fluStats from '../data/flu-by-week.json';
 
-const SEASON_CUTOFF_MONTH = 9;
-const FLU_SEASON_START_DATE = DateTime.local(2019, 11, 18);
+
 
 export default class CurrentConditions extends React.Component {
   state = {
-    currentDate: DateTime.local(),
+    displayDate: DateTime.local(),
+    store: immutable({
+      dataSource: null
+    })
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const location = new URL(document.location);
     const week = location.searchParams.get("week");
 
     if (week)
-      this.setState(s => ({...s, currentDate: DateTime.fromISO(week)}));
+      this.setState(s => ({...s, displayDate: DateTime.fromISO(week)}));
+
+    try {
+      const geojson = await dataSource();
+      console.debug("Fetched data source:", geojson.toJS());
+
+      this.setState(state => ({store: state.store.set("dataSource", geojson)}));
+    }
+    catch(err) {
+      console.error(`Unable to load data source:`, err);
+      return;
+    }
+  }
+
+  updateCurrentDate = (newDate) => {
+    this.setState({ displayDate: newDate });
   }
 
   render() {
     const thisWeek = DateTime.local().toFormat("kkkk-'W'WW");
 
-    const currentDate = this.state.currentDate;
-    const currentWeek = currentDate.toFormat("kkkk-'W'WW");
-    const currentMonth = currentDate.month;
-    const currentFullMonth = currentDate.monthLong;
-    const currentYear = currentDate.year;
-    const currentDay = currentDate.day;
-    const seasonStartYear = currentMonth < SEASON_CUTOFF_MONTH ? currentYear - 1 : currentYear;
-    const sinceSeasonStart = currentDate.diff(FLU_SEASON_START_DATE, ['months', 'weeks']).toObject();
-    const monthsSinceSeasonStart = sinceSeasonStart.months;
-    const weeksSinceSeasonStart = Math.round(sinceSeasonStart.weeks);
+    const { displayDate } = this.state;
+    const currentWeek = displayDate.toFormat("kkkk-'W'WW");
 
     //const fluCurrentStatusText = generateCurrentStatusText(fluStats);
 
@@ -44,20 +55,7 @@ export default class CurrentConditions extends React.Component {
           <i>During flu season, everyone should take precautions to prevent the spread of flu. To learn more, visit the Seattle Flu Study <a href="/resources">resources page</a>.</i>
         </p>
 
-        <p>
-          {thisWeek === currentWeek
-            ? `It’s ${currentFullMonth} ${currentDay}, ${currentYear}, which means we’re `
-            : `On ${currentFullMonth} ${currentDay}, ${currentYear}, we ${currentWeek < thisWeek ? "were" : "will be"} `}
-
-          {monthsSinceSeasonStart > 0 && <strong>{monthsSinceSeasonStart} {monthsSinceSeasonStart > 1 ? "months" : "month"} </strong>}
-          {(monthsSinceSeasonStart > 0 && weeksSinceSeasonStart > 0) && <strong>and </strong>}
-          {weeksSinceSeasonStart > 0 && <strong>{weeksSinceSeasonStart} {weeksSinceSeasonStart > 1 ? "weeks": "week"} </strong>}
-          into the {seasonStartYear}–{seasonStartYear + 1} flu season.
-
-          {/*This week we’re <strong>{fluCurrentStatusText}</strong>.*/}
-        </p>
-
-        <SeasonTimeline date={currentDate} />
+        <SeasonTimeline dataSource={this.state.store.get("dataSource")} date={displayDate} updateCurrentDate={this.updateCurrentDate}/>
 
         <p>
           The map below shows an estimate for flu circulation for
@@ -70,7 +68,7 @@ export default class CurrentConditions extends React.Component {
         </p>
 
         <ColorRamp />
-        <FluMap date={currentDate} />
+        <FluMap dataSource={this.state.store.get("dataSource")} date={displayDate} />
 
         <p />
 

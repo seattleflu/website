@@ -4,7 +4,6 @@ import MapboxGL, { FullscreenControl, Layer, Source } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Waypoint } from 'react-waypoint';
 
-import { dataSource } from "./data";
 import { generateKeyframes } from "./keyframes";
 import { baseMap, extrusion } from "./styles";
 
@@ -29,8 +28,8 @@ export default class FluMap extends React.Component {
           mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}>
 
           {
-            this.getState("dataSource") &&
-              <Source type="geojson" data={this.getState("dataSource")}>
+            this.props.dataSource &&
+              <Source type="geojson" data={this.props.dataSource}>
                 <Layer beforeId="waterway-label"
                     type="fill-extrusion"
                     paint={extrusion(this.props.date)} />
@@ -81,18 +80,9 @@ export default class FluMap extends React.Component {
     this._did_mount = resolve;
   });
 
-  async componentDidMount() {
-    this._did_mount();
-
-    try {
-      const geojson = await dataSource();
-      console.debug("Fetched data source:", geojson.toJS());
-
-      this.newState(s => s.set("dataSource", geojson));
-    }
-    catch(err) {
-      console.error(`Unable to load data source:`, err);
-      return;
+  componentDidUpdate(prevProps) {
+    if (this.props.dataSource != prevProps.dataSource) {
+      this._did_mount();
     }
   }
 
