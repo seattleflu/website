@@ -48,7 +48,8 @@ const One = props => {
         props.handleStudy(props.fluStudyPage7)
        
       }  else if (question6 == 'yes' && props.referrerValue != 'schools'){
-        setOneQuestion(3)
+        // setOneQuestion(3)
+        props.handleStudy(props.fluStudyPage7)
       }else{
         props.handleNextError(props.bouncePage6)
       }
@@ -115,7 +116,11 @@ function question4Value (event) {
     if (event.target.value == 'yes'&& props.referrerValue != 'schools') {
       setActiveButton(true)
       Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
-      setOneQuestion(3)
+      // setOneQuestion(3)
+      setActiveButton(false)
+      setOneQuestion(2)
+      setQuestion7('')
+      setQuestion8('')
     }else if(event.target.value == 'yes' && props.referrerValue == 'schools'){
       Event ('Enroll Screener', 'HH_People 18 & under', event.target.value);
       setActiveButton(false)
