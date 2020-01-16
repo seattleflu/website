@@ -36,7 +36,11 @@ const Questions = props => {
     event.preventDefault()
     if (mainQuestion == 0) {
       if(symptomsList.length == 0 || (symptomsList.length <= 1 && symptomsList.includes('None of the above'))){
-        setMainQuestion(1)
+        if(props.householdStudies){
+          setMainQuestion(1)
+        }else{
+          props.handleNextError(props.bouncePage11)
+        }
       }else if(symptomsList.length == 1 && symptomsList.includes('Cough')){
         setMainQuestion(2)
       }else if(symptomsList.length == 1){

@@ -445,6 +445,8 @@ function setFirstPerson(value){
             setFirstPersonValue={setFirstPersonValue}
             referrerValue={referrerValue}
             introOne={introOne}
+            householdStudies={householdStudies}
+            hhIntervention={hhIntervention}
           />
         ) : null}
         {currentStep == 1 ? (

@@ -123,17 +123,17 @@ const Main = props => {
     Event ('Enroll Screener', 'Participent info', event.target.value);
     setWhoValue(event.target.value)
     setQuestion(3)
-    if(event.target.value != 'myself'){
-      props.setFirstPersonValue(false)
-    }else{
-      props.setFirstPersonValue(true)
-    }
-    if (event.target.value != 'none') {
-      Event ('Enroll Screener', 'Participent info', event.target.value);
-      setQuestion(3)
-    } else {
-      //props.handleNext(5)
-    }
+      if(event.target.value != 'myself'){
+        props.setFirstPersonValue(false)
+      }else{
+        props.setFirstPersonValue(true)
+      }
+      if (event.target.value != 'none') {
+        Event ('Enroll Screener', 'Participent info', event.target.value);
+        setQuestion(3)
+      } else {
+        //props.handleNext(5)
+      }
   }
 
   const who = [
