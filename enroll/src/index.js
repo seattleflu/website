@@ -19,6 +19,10 @@ const App = () => {
   const [introTwo, setIntroTwo] = useState('')
   const [introThree, setIntroThree] = useState('')
   const [introFour, setIntroFour] = useState('')
+
+  const [householdStudies, sethouseholdStudies] = useState('')
+  const [hhIntervention, sethhIntervention] = useState('')
+
   
   const [question1, setQuestion1] = useState('')
   const [bouncePage1, setBouncePage1] = useState('')
@@ -144,6 +148,8 @@ const App = () => {
       setIntroTwo(settings[0].fields.introCopyTwo)
       setIntroThree(settings[0].fields.introCopyThree)
       setIntroFour(settings[0].fields.introCopyFour)
+      sethouseholdStudies(settings[0].fields.householdStudies)
+      sethhIntervention(settings[0].fields.hhIntervention)
     })
 
     getEnrollmentQuestions().then(questions => {
@@ -499,6 +505,8 @@ function setFirstPerson(value){
             conditions18={conditions18}
             bouncePage18={bouncePage18}
             fluStudyPage18={fluStudyPage18}
+            householdStudies={householdStudies}
+            hhIntervention={hhIntervention}
             
           />
         ) : null}
