@@ -320,7 +320,8 @@ const Questions = props => {
         conditions8={props.conditions8}
         bouncePage8={props.bouncePage8}
         fluStudyPage8={props.fluStudyPage8}
-      
+        hhIntervention={props.hhIntervention}
+        householdStudies={props.householdStudies}
       />):(null)}
       {mainQuestion == 2 ? (<Two 
         fistPersonValue={props.fistPersonValue}
@@ -342,6 +343,8 @@ const Questions = props => {
         conditions14={props.conditions14}
         bouncePage14={props.bouncePage14}
         fluStudyPage14={props.fluStudyPage14}
+        hhIntervention={props.hhIntervention}
+        householdStudies={props.householdStudies}
       />) : (null)}
       
       {mainQuestion == 0 ? (
