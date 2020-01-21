@@ -142,8 +142,7 @@ const Questions = props => {
       {mainQuestion <= 0  && (referrer != 'schools' && referrer != 'households') ? (
         
         <div className='col-12 selectSymptoms'>
-        
-          <div className='row'>
+          
             <label for="symptoms" data-children-count="0">{props.fistPersonValue ? props.question11 : props.question18}</label>
             <p className='inputDescription'>{props.fistPersonValue ? props.conditions11 : props.conditions18}</p>
             <div className="symptom-wrapper">
@@ -295,7 +294,6 @@ const Questions = props => {
               </div>
             </div>
             
-          </div>
         </div>
       ) : null}
       
