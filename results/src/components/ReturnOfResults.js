@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect, createContext } from 'react';
+import * as Markdown from 'react-markdown';
 
 import { getContentfulResults, getBarcodeFaqs } from '../../../services/results';
-import { OuterContainer, ContentContainer, LanguageButton } from './styledComponents';
+import { OuterContainer, ContentContainer, LanguageButton, H2, CenteredParagraph} from './styledComponents';
 import BarcodeSearchForm from './ParticipantResults/BarcodeSearchForm';
 import SampleNotReceived from './ParticipantResults/SampleNotReceived';
 import SampleProcessing from './ParticipantResults/SampleProcessing';
@@ -82,7 +83,7 @@ export default function ReturnOfResults() {
       <OuterContainer>
           <ContentContainer>
             <div className="h-25 align-center pt-md-3">
-              <h1 className="pt-md-3">{defaultContent.title}</h1>
+              <Markdown source={defaultContent.title} renderers={{H2: H2, paragraph: CenteredParagraph}}/>
               <LanguageButton className="float-right" onClick={()=> setSpanish(!spanish)}>
                 {spanish ? "English" : "Español"}
               </LanguageButton>
