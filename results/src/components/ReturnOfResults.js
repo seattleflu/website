@@ -46,18 +46,18 @@ export default function ReturnOfResults() {
           setContent(content)
           let display;
           switch(results.status) {
-              case 'notReceived':
-                  display = <SampleNotReceived />;
-                  break;
-              case 'processing':
-                  display = <SampleProcessing />;
-                  break;
-              case 'unknownBarcode':
-                  display = <Fragment><UnknownBarcode/><BarcodeSearchForm/></Fragment>;
-                  break;
-              case 'complete':
-                  display = <Results/>
-                  break;
+              // case 'notReceived':
+              //     display = <SampleNotReceived />;
+              //     break;
+              // case 'processing':
+              //     display = <SampleProcessing />;
+              //     break;
+              // case 'unknownBarcode':
+              //     display = <Fragment><UnknownBarcode/><BarcodeSearchForm/></Fragment>;
+              //     break;
+              // case 'complete':
+              //     display = <Results/>
+              //     break;
               default:
                   display = <BarcodeSearchForm/>;
           }
