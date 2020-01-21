@@ -47,7 +47,7 @@ export default function BarcodeSearchForm() {
                 <SubmitButton type="submit">{defaultContent.paragraphTwo}</SubmitButton>
             </Form>
         </Feature> */}
-        <div className="row">
+        <div className="row mt-5">
           <ul className="list-group col-12">
             {barcodeFaqs.map( faq => <BarcodeFaq key={faq.fields.id} faq={faq}/>)}
           </ul>
