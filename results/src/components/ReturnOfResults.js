@@ -46,18 +46,18 @@ export default function ReturnOfResults() {
           setContent(content)
           let display;
           switch(results.status) {
-              case 'notReceived':
-                  display = <SampleNotReceived />;
-                  break;
-              case 'processing':
-                  display = <SampleProcessing />;
-                  break;
-              case 'unknownBarcode':
-                  display = <Fragment><UnknownBarcode/><BarcodeSearchForm/></Fragment>;
-                  break;
-              case 'complete':
-                  display = <Results/>
-                  break;
+              // case 'notReceived':
+              //     display = <SampleNotReceived />;
+              //     break;
+              // case 'processing':
+              //     display = <SampleProcessing />;
+              //     break;
+              // case 'unknownBarcode':
+              //     display = <Fragment><UnknownBarcode/><BarcodeSearchForm/></Fragment>;
+              //     break;
+              // case 'complete':
+              //     display = <Results/>
+              //     break;
               default:
                   display = <BarcodeSearchForm/>;
           }
@@ -84,9 +84,9 @@ export default function ReturnOfResults() {
           <ContentContainer>
             <div className="h-25 align-center pt-md-3">
               <Markdown source={defaultContent.title} renderers={{H2: H2, paragraph: CenteredParagraph}}/>
-              <LanguageButton className="float-right" onClick={()=> setSpanish(!spanish)}>
+              {/* <LanguageButton className="float-right" onClick={()=> setSpanish(!spanish)}>
                 {spanish ? "English" : "Español"}
-              </LanguageButton>
+              </LanguageButton> */}
             </div>
             {display}
           </ContentContainer>
