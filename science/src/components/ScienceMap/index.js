@@ -62,9 +62,11 @@ export default class ScienceMap extends React.Component {
 
           <Fieldset id="siteCategory-filters">
             <legend>Site type</legend>
-            {this.FilterButton("clinical", "siteCategory")}
+            {this.FilterButton("clinic", "siteCategory")}
             <br />
             {this.FilterButton("community", "siteCategory")}
+            <br />
+            {this.FilterButton("hospital", "siteCategory")}
           </Fieldset>
         </Nav>
 
