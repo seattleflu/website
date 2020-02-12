@@ -44,7 +44,11 @@ const Questions = props => {
       }else if(symptomsList.length == 1 && symptomsList.includes('Cough')){
         setMainQuestion(2)
       }else if(symptomsList.length == 1){
-        props.handleNextError(props.bouncePage11)
+        if(props.asymptomatic){
+            props.handleStudy(props.fluStudyPage2)
+          }else{
+            props.handleNextError(props.bouncePage11)
+        }
       }else if (
         symptomsList.length == 2 &&
         (symptomsList.includes('Chills or shivering') ||
