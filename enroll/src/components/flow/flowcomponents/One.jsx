@@ -31,7 +31,11 @@ const One = props => {
       if (question4 == 'yes') {
         setOneQuestion(1)
       }  else {
-        props.handleNextError(props.bouncePage4)
+        if(props.asymptomatic){
+          props.handleStudy(props.fluStudyPage2)
+        }else{
+          props.handleNextError(props.bouncePage4)
+        }
       }
     }
 
@@ -39,7 +43,12 @@ const One = props => {
       if (question5 == 'yes') {
         setOneQuestion(2)
       }  else {
-        props.handleNextError(props.bouncePage5)
+          if(props.asymptomatic){
+            props.handleStudy(props.fluStudyPage2)
+          }else{
+            props.handleNextError(props.bouncePage5)
+          }
+        
       }
     }
 
@@ -55,7 +64,11 @@ const One = props => {
         }
         
       }else{
-        props.handleNextError(props.bouncePage6)
+         if(props.asymptomatic){
+            props.handleStudy(props.fluStudyPage2)
+          }else{
+            props.handleNextError(props.bouncePage6)
+          }
       }
     }
 
@@ -64,7 +77,8 @@ const One = props => {
         props.handleStudy(props.fluStudyPage8)
         //props.handleNextError(props.fluStudyPage8)
       }else {
-        props.handleStudy(props.bouncePage8)
+            props.handleStudy(props.bouncePage8)
+          
       }
     }
 

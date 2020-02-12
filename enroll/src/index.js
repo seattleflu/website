@@ -19,7 +19,7 @@ const App = () => {
   const [introTwo, setIntroTwo] = useState('')
   const [introThree, setIntroThree] = useState('')
   const [introFour, setIntroFour] = useState('')
-
+  const [asymptomatic, setAsymptomatic] = useState('')
   const [householdStudies, sethouseholdStudies] = useState('')
   const [hhIntervention, sethhIntervention] = useState('')
 
@@ -148,6 +148,7 @@ const App = () => {
       setIntroTwo(settings[0].fields.introCopyTwo)
       setIntroThree(settings[0].fields.introCopyThree)
       setIntroFour(settings[0].fields.introCopyFour)
+      setAsymptomatic(settings[0].fields.asymptomatic_SS)
       sethouseholdStudies(settings[0].fields.householdStudies)
       sethhIntervention(settings[0].fields.hhIntervention)
     })
@@ -445,6 +446,7 @@ function setFirstPerson(value){
             setFirstPersonValue={setFirstPersonValue}
             referrerValue={referrerValue}
             introOne={introOne}
+            asymptomatic={asymptomatic}
             householdStudies={householdStudies}
             hhIntervention={hhIntervention}
           />
@@ -460,7 +462,7 @@ function setFirstPerson(value){
             introTwo={introTwo}
             introThree={introThree}
             introFour={introFour}
-
+            fluStudyPage2={fluStudyPage2}
             question11={question11}
             conditions11={conditions11}
             bouncePage11={bouncePage11}
@@ -507,6 +509,7 @@ function setFirstPerson(value){
             conditions18={conditions18}
             bouncePage18={bouncePage18}
             fluStudyPage18={fluStudyPage18}
+            asymptomatic={asymptomatic}
             householdStudies={householdStudies}
             hhIntervention={hhIntervention}
             

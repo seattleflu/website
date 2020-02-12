@@ -302,6 +302,7 @@ const Questions = props => {
       referrerValue={props.referrerValue}
         handleStudy={props.handleStudy}
         handleNextError={props.handleNextError}
+        fluStudyPage2={props.fluStudyPage2}
         question4={props.question4}
         conditions4={props.conditions4}
         bouncePage4={props.bouncePage4}
@@ -324,6 +325,7 @@ const Questions = props => {
         fluStudyPage8={props.fluStudyPage8}
         hhIntervention={props.hhIntervention}
         householdStudies={props.householdStudies}
+        asymptomatic={props.asymptomatic}
       />):(null)}
       {mainQuestion == 2 ? (<Two 
         fistPersonValue={props.fistPersonValue}
