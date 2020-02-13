@@ -303,6 +303,15 @@ const Error = props => {
       console.log ('not valid');
     }
   }
+  function setWhatForm(name){
+    if(name == 'Swab_and_Send'){
+      return false
+    }else if(name == "Asymptomatic_Swab_and_Send_Study"){
+      return false
+    }else{
+      return true
+    }
+  }
 
   return (
     <div>
@@ -310,7 +319,7 @@ const Error = props => {
       <ReactMarkdown source={description} />
       {form == 'true'
         ? <div>
-            {name != 'Swab_and_Send'
+            {setWhatForm(name)
               ? <form id="ty-subscribe" onSubmit={handleSubmit}>
                   <input
                     type="text"
