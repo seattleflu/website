@@ -107,7 +107,11 @@ const Error = props => {
         '&hutk=' +
         hutk;
 
-      Event ('Study Form', 'Sign Up', 'Swab & Send');
+      if (name == "Swab_and_Send"){
+        Event ('Study Form', 'Sign Up', 'Swab & Send');
+      }else{
+        Event ('Study Form', 'Sign Up', 'Swab & Send Asymptomatic');
+      }
       axios ({
         method: 'post',
         url: 'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send',
