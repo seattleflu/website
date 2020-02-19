@@ -189,7 +189,9 @@ const Error = props => {
       '&utm_content=' +
       content +
       '&hutk=' +
-        hutk;
+        hutk + 
+      '&name=' +
+      name;
 
     if (
       firstNameValid == 'valid' &&
