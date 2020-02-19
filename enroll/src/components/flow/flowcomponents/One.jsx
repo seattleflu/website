@@ -21,6 +21,7 @@ const One = props => {
 
   useEffect(() => {
     initializeReactGA ();
+    console.log("NAME: " + props.fluStudyPage2)
   }, [activeButton])
 
 
@@ -32,6 +33,7 @@ const One = props => {
         setOneQuestion(1)
       }  else {
         if(props.asymptomatic){
+          console.log("LOG OUT NAME" + props.fluStudyPage2)
           props.handleStudy(props.fluStudyPage2)
         }else{
           props.handleNextError(props.bouncePage4)

@@ -412,7 +412,13 @@ function setFirstPerson(value){
     window.location.replace('/thank-you/' + url)
   }
   function handleStudy (url) {
-    setStudyName(url)
+    
+    if(asymptomatic){
+      setStudyName('Asymptomatic_Swab_and_Send_Study') 
+    }else{
+      setStudyName(url)
+    }
+    
     setCurrentStep(5)
   }
 
