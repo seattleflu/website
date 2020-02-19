@@ -160,7 +160,7 @@ const Error = props => {
     }else if (name == 'Asymptomatic_Swab_and_Send_Study') {
       apiUrl =
         'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send';
-      gaName = 'Swab & Send';
+      gaName = 'Swab & Send Asymptomatic';
     }else if (name == 'Swab_and_Send_or_Self_Test') {
       apiUrl =
         'https://dnyz0i0eq4.execute-api.us-east-1.amazonaws.com/swab_and_send';
