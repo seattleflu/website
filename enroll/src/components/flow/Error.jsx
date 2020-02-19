@@ -105,7 +105,9 @@ const Error = props => {
         '&utm_content=' +
         content +
         '&hutk=' +
-        hutk;
+        hutk + 
+        '&name=' +
+        name;
 
       if (name == "Swab_and_Send"){
         Event ('Study Form', 'Sign Up', 'Swab & Send');
@@ -189,9 +191,7 @@ const Error = props => {
       '&utm_content=' +
       content +
       '&hutk=' +
-        hutk + 
-      '&name=' +
-      name;
+        hutk;
 
     if (
       firstNameValid == 'valid' &&
