@@ -44,7 +44,11 @@ const Questions = props => {
       }else if(symptomsList.length == 1 && symptomsList.includes('Cough')){
         setMainQuestion(2)
       }else if(symptomsList.length == 1){
-        props.handleNextError(props.bouncePage11)
+        if(props.asymptomatic){
+            props.handleStudy(props.fluStudyPage2)
+          }else{
+            props.handleNextError(props.bouncePage11)
+        }
       }else if (
         symptomsList.length == 2 &&
         (symptomsList.includes('Chills or shivering') ||
@@ -302,6 +306,7 @@ const Questions = props => {
       referrerValue={props.referrerValue}
         handleStudy={props.handleStudy}
         handleNextError={props.handleNextError}
+        fluStudyPage2={props.fluStudyPage2}
         question4={props.question4}
         conditions4={props.conditions4}
         bouncePage4={props.bouncePage4}
@@ -324,6 +329,7 @@ const Questions = props => {
         fluStudyPage8={props.fluStudyPage8}
         hhIntervention={props.hhIntervention}
         householdStudies={props.householdStudies}
+        asymptomatic={props.asymptomatic}
       />):(null)}
       {mainQuestion == 2 ? (<Two 
         fistPersonValue={props.fistPersonValue}
