@@ -25,6 +25,8 @@ var mediaRouter = require('./routes/media');
 var errorRouter = require('./routes/error')
 var ssecRouter = require('./routes/ssec')
 var ssccRouter = require('./routes/sscc')
+var asecRouter = require('./routes/asec')
+var asccRouter = require('./routes/ascc')
 var stecRouter = require('./routes/stec')
 var stccRouter = require('./routes/stcc')
 var adsRouter = require('./routes/ads')
@@ -91,6 +93,8 @@ app.use('/swabandsend', swabandsendRouter);
 app.use('/contact-us', contactRouter);
 app.use('/ssec', ssecRouter);
 app.use('/sscc', ssccRouter);
+app.use('/asec', asecRouter);
+app.use('/ascc', asccRouter);
 app.use('/stec', stecRouter);
 app.use('/stcc', stccRouter);
 app.use('/thank-you/:thankyouid', thankyouRouter)
