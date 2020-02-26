@@ -27,7 +27,6 @@ const Two = props => {
     
     if (twoQuestion == 0) {
       if (question10 == 'moreThan7d') {
-        
         props.handleNextError(props.bouncePage10)
       }  else {
         setTwoQuestion(2)
