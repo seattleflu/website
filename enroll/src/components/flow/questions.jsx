@@ -45,7 +45,7 @@ const Questions = props => {
         setMainQuestion(2)
       }else if(symptomsList.length == 1){
         if(props.asymptomatic){
-            props.handleStudy(props.fluStudyPage2)
+            props.handleStudy(props.fluStudyPage11)
           }else{
             props.handleNextError(props.bouncePage11)
         }

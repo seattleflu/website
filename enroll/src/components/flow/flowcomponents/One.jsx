@@ -34,7 +34,7 @@ const One = props => {
       }  else {
         if(props.asymptomatic){
           console.log("LOG OUT NAME" + props.fluStudyPage2)
-          props.handleStudy(props.fluStudyPage2)
+          props.handleStudy(props.fluStudyPage4)
         }else{
           props.handleNextError(props.bouncePage4)
         }
@@ -46,7 +46,7 @@ const One = props => {
         setOneQuestion(2)
       }  else {
           if(props.asymptomatic){
-            props.handleStudy(props.fluStudyPage2)
+            props.handleStudy(props.fluStudyPage5)
           }else{
             props.handleNextError(props.bouncePage5)
           }
@@ -67,7 +67,7 @@ const One = props => {
         
       }else{
          if(props.asymptomatic){
-            props.handleStudy(props.fluStudyPage2)
+            props.handleStudy(props.fluStudyPage6)
           }else{
             props.handleNextError(props.bouncePage6)
           }

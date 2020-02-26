@@ -413,12 +413,6 @@ function setFirstPerson(value){
   }
   function handleStudy (url) {
     
-    // if(asymptomatic){
-    //   setStudyName('Swab_and_Send')
-      
-    // }else{
-    //   setStudyName('Asymptomatic_Swab_and_Send_Study') 
-    // }
     setStudyName(url)
     setCurrentStep(5)
   }
