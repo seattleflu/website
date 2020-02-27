@@ -3,7 +3,8 @@ var client = require('./contentful').client
 async function getHome () {
   try {
     const result = await client.getEntries({
-      content_type: 'homepage'
+      content_type: 'homepage',
+      'fields.name': 'Home (Launch)'
     })
     return result
   } catch (error) {
