@@ -154,7 +154,7 @@ const Main = props => {
             text={props.question1}
             description={props.conditions1}
             label="zip_code"
-            type="text"
+            type="number"
             id="zipcode-home"
             value={zipValue}
             handleChange={handleZipChange}
@@ -165,7 +165,7 @@ const Main = props => {
             text={props.question19}
             description={props.conditions19}
             label="zip_code"
-            type="text"
+            type="number"
             id="zipcode-work"
             value={zipWorkValue}
             handleChange={handleZipWorkChange}
@@ -176,7 +176,7 @@ const Main = props => {
             text={props.question2}
             description={props.conditions2}
             label="age"
-            type="text"
+            type="number"
             id="age"
             value={ageValue}
             handleChange={handleAgeChange}
