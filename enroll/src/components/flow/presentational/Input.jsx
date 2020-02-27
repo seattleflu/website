@@ -9,6 +9,7 @@ const Input = ({ label, text, type, id, value, description, handleChange }) => (
     <div className='col-lg-4 col-md-6 col-sm-12'>
       <input
         type={type}
+        inputmode={inputmode}
         className='form-control'
         id={id}
         value={value}
