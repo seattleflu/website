@@ -531,7 +531,6 @@ button.green:hover {
 /*** HOME PAGE ***/
 .home-header {
   position: relative;
-  background-image: url(/images/BG_Blue.png);
   background-size: cover;
   top: -112px;
   padding-bottom: 80px;

@@ -1,6 +1,6 @@
 
 <% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
-<div class="container-full home-header">
+<div class="container-full home-header" style="background-image: url(<%- homeData[0].fields.headerBg.fields.file.url + '?fm=jpg&fl=progressive' %>);">
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-lg-9" style="z-index: 1;">
