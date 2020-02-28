@@ -1,4 +1,5 @@
 var express = require('express')
+
 var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
@@ -32,6 +33,7 @@ var stccRouter = require('./routes/stcc')
 var adsRouter = require('./routes/ads')
 var resourceRouter = require('./routes/resource')
 var resourcesRouter = require('./routes/resources')
+var updatesRouter = require('./routes/updates')
 
 const production = process.env.NODE_ENV === "production";
 
@@ -101,6 +103,8 @@ app.use('/thank-you/:thankyouid', thankyouRouter)
 app.use('/a/:ad', adsRouter)
 app.use('/resources/:resource', resourceRouter)
 app.use('/resources', resourcesRouter);
+app.use('/updates', updatesRouter);
+
 app.use('/', indexRouter)
 
 app.use(errorRouter);
