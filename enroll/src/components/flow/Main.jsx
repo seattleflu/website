@@ -147,7 +147,6 @@ const Main = props => {
     <div className="col-12">
       <h2>Screening Questionnaire</h2>
      <p className="intro">{props.introOne}</p>
-      formConfirm
       <p className="steps">Step 1 of 3</p>
       {question >= 0
         ? <Input
