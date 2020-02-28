@@ -147,7 +147,7 @@ const Main = props => {
     <div className="col-12">
       <h2>Screening Questionnaire</h2>
      <p className="intro">{props.introOne}</p>
-      
+      formConfirm
       <p className="steps">Step 1 of 3</p>
       {question >= 0
         ? <Input
@@ -161,6 +161,7 @@ const Main = props => {
             handleChange={handleZipChange}
           />
         : null}
+      {question >= 1 ? <img src="https://bm.adentifi.com/pixel/conv/ppt=6158;g=lp_study_screener_starts;gid=22964;ord=[uniqueid]" height="0" width="0" border="0"  /> : ''}
       {question >= 1
         ? <Input
             text={props.question19}
