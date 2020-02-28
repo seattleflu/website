@@ -67,7 +67,7 @@ router.use(
       nav: req.nav,
       enroll: req.enroll,
       logos: 'false',
-      md,
+      md: md,
       pageData: req.pageData,
       siteData: req.siteData,
       pageUrl:req.pageUrl

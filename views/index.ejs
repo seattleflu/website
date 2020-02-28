@@ -34,67 +34,75 @@
     </svg> -->
 </div>
 <div class="container home-content">
-  <div class="row flu-101">
-      <div class="col-lg-6" id="flu101-left">
-        <%- md.render(homeData[0].fields.section3Main) %>
-        <a href="<%= homeData[0].fields.section3Url %>" class="cta"><%= homeData[0].fields.section3Cta %></a>
+  <div class="row">
+    <div class="col-lg-8 col-md-6" id="help-right">
+      <h2>Here's how it works:</h2>
+      <div class="step clearfix">
+        <h1 class="number float-left">1</h1>
+        <div>
+            <%- md.render(homeData[0].fields.section11) %>
+        </div>
       </div>
-      <div class="col-lg-6" id="flu101-right">
-        <h4><%- homeData[0].fields.section3CallOut %></h4>
-        <a href="/faq" class="cta">Visit the FAQ</a>
+
+      <div class="step clearfix">
+          <h1 class="number float-left">2</h1>
+          <div>
+              <%- md.render(homeData[0].fields.section12) %>
+          </div>
+      </div>
+
+      <div class="step clearfix">
+          <h1 class="number float-left">3</h1>
+          <div>
+            <%- md.render(homeData[0].fields.section13) %>
+          </div>
+      </div>
+
+      <div class="step clearfix">
+          <h1 class="number float-left">4</h1>
+          <div>
+            <%- md.render(homeData[0].fields.section14) %>
+          </div>
+      </div>
+      <h4><a href="<%= homeData[0].fields.section1Link %>" class="cta"><%= homeData[0].fields.section1Cta %></a></h4>
+    </div>
+    <div class="col-lg-4 col-md-6" id="help-left">
+      <img src="/images/people.svg">
+      <div class="help-bg" style="background-image: url(/images/curve.svg">
+        <%- md.render(homeData[0].fields.section1Main) %>
       </div>
     </div>
-
-  <div class="row no-gutters" id="home-map">
-    <div class="col-md-12 col-lg-6" id="map-left">
+  </div>
+</div>
+<div class="container-full" id="home-map">
+  <div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-6 large" id="map-left">
       <%- md.render(homeData[0].fields.section2Main) %>
       <% if(homeData[0].fields.section2Url){ %>
-      <a href="<%= homeData[0].fields.section2Url %>" class="cta"><%= homeData[0].fields.section2Cta %></a>
+      <h4><a href="<%= homeData[0].fields.section2Url %>" class="cta"><%= homeData[0].fields.section2Cta %></a></h4>
       <%} else {%>
       <h4>Coming Soon! Help us track the flu.</h4>
       <%}%>
     </div>
-    <div class="col-md-12 col-lg-6" id="map-right" style="background-image: url(<%- homeData[0].fields.section2Image.fields.file.url %>);">
+    <div class="col-md-12 col-lg-6" id="map-right">
+      <img src="<%- homeData[0].fields.section2Image.fields.file.url %>">
+    </div>
+  </div>
+</div>
+</div>
+<div class="container home-content-2">
+  <div class="row flu-101">
+    <div class="col-lg-5 offset-lg-1" id="flu101-left">
+      <img src="<%- homeData[0].fields.section3Image.fields.file.url %>">
+    </div>
+    <div class="col-lg-6 large" id="flu101-right">
+      <%- md.render(homeData[0].fields.section3Main) %>
+      <h4><a href="<%= homeData[0].fields.section3Url %>" class="cta"><%= homeData[0].fields.section3Cta %></a></h4>
     </div>
   </div>
 
-  <div class="row">
-      <div class="col-lg-4" id="help-left">
-        <%- md.render(homeData[0].fields.section1Main) %>
-        <a href="<%= homeData[0].fields.section1Link %>" class="cta"><%= homeData[0].fields.section1Cta %></a>
-      </div>
-      <div class="col-lg-8" id="help-right">
-        <div class="step clearfix">
-          <h1 class="number float-left">1</h1>
-          <div>
-              <%- md.render(homeData[0].fields.section11) %>
-          </div>
-        </div>
-  
-        <div class="step clearfix">
-            <h1 class="number float-left">2</h1>
-            <div>
-                <%- md.render(homeData[0].fields.section12) %>
-            </div>
-        </div>
-  
-        <div class="step clearfix">
-            <h1 class="number float-left">3</h1>
-            <div>
-              <%- md.render(homeData[0].fields.section13) %>
-            </div>
-        </div>
-  
-        <div class="step clearfix">
-            <h1 class="number float-left">4</h1>
-            <div>
-              <%- md.render(homeData[0].fields.section14) %>
-            </div>
-        </div>
-  
-        <a href="<%= homeData[0].fields.section1Link %>" class="cta"><%= homeData[0].fields.section1Cta %></a>
-      </div>
-    </div>
+
   <div class="row">
     <div class="col-lg-12">
       <div class="home-callout">

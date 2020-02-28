@@ -4,7 +4,7 @@ async function getHome () {
   try {
     const result = await client.getEntries({
       content_type: 'homepage',
-      'fields.name': 'Home (Launch)'
+      'fields.name': 'Home (New)'
     })
     return result
   } catch (error) {

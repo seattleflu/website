@@ -4,6 +4,11 @@ var router = express.Router()
 var page = require('../services/page')
 var site = require('../services/site')
 
+var md = require('markdown-it')({
+  html: true
+})
+var markdownItAttrs = require('markdown-it-attrs')
+
 router.use((req, res, next) => {
   site
     .getSiteData()
@@ -51,6 +56,7 @@ router.get('/', function (req, res, next) {
     nav: req.nav,
     enroll: req.enroll,
     logos: 'true',
+    md: md,
     pageData: req.pageData,
     siteData: req.siteData,
     pageUrl:req.pageUrl

@@ -57,7 +57,7 @@ router.get('/', function (req, res, next) {
     nav: req.nav,
     enroll: req.enroll,
     logos: 'true',
-    md,
+    md: md,
     pageData: req.pageData,
     siteData: req.siteData,
     pageUrl:req.pageUrl
