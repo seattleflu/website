@@ -67,7 +67,7 @@
       <h4><a href="<%= homeData[0].fields.section1Link %>" class="cta"><%= homeData[0].fields.section1Cta %></a></h4>
     </div>
     <div class="col-lg-4 col-md-6" id="help-left">
-      <img src="/images/people.svg">
+      <img src="/images/people.svg" alt="Participants volunteering">
       <div class="help-bg" style="background-image: url(/images/curve.svg">
         <%- md.render(homeData[0].fields.section1Main) %>
       </div>
@@ -86,7 +86,7 @@
       <%}%>
     </div>
     <div class="col-md-12 col-lg-6" id="map-right">
-      <img src="<%- homeData[0].fields.section2Image.fields.file.url %>">
+      <img src="<%- homeData[0].fields.section2Image.fields.file.url + '?fm=jpg&fl=progressive&w=690&h=304&fit=fill' %>" alt="<%- homeData[0].fields.section2Image.fields.description %>">
     </div>
   </div>
 </div>
@@ -94,7 +94,7 @@
 <div class="container home-content-2">
   <div class="row flu-101">
     <div class="col-lg-5 offset-lg-1" id="flu101-left">
-      <img src="<%- homeData[0].fields.section3Image.fields.file.url %>">
+      <img src="<%- homeData[0].fields.section3Image.fields.file.url + '?fm=jpg&fl=progressive&w=660&h=400&fit=fill' %>" alt="<%- homeData[0].fields.section3Image.fields.description %>">
     </div>
     <div class="col-lg-6 large" id="flu101-right">
       <%- md.render(homeData[0].fields.section3Main) %>
