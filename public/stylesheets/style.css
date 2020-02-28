@@ -281,7 +281,7 @@ header.dark .custom-toggler .navbar-toggler-icon {
 header .navbar-nav {
   margin: 25px 0 25px auto;
 }
-header .navbar-nav.join-the-study {
+header .navbar-nav.join-the-study, header .navbar-nav .join-the-study {
   margin-left: 0;
 }
 header .navbar-nav li, .mobile-nav li, footer li {
