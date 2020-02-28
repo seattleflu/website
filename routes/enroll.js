@@ -74,7 +74,7 @@ router.get ('/', function (req, res, next) {
     pageData: req.pageData,
     siteData: req.siteData,
     pageUrl:req.pageUrl,
-     md: md
+    md: md
   });
 });
 
