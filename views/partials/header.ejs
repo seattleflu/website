@@ -11,6 +11,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <title><%= pageData[0].fields.name %></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" >
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/menu.css' />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i&display=swap" rel="stylesheet">
 
     <script
@@ -20,6 +21,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/menu.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,9 +78,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a href="/" class="logo"><img src="<%= siteData[0].fields.logoWhite.fields.file.url %>" alt="<%= siteData[0].fields.logoWhite.fields.description %>"></a>
           <%}%>
           <% if(nav == 'true'){ %>
-          <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+            <div class="right-menu">
+              <span class="toggle-button" id="toggle-button">
+                  <div class="menu-bar menu-bar-top"></div>
+                  <div class="menu-bar menu-bar-middle"></div>
+                  <div class="menu-bar menu-bar-bottom"></div>
+              </span>
+              <div class="menu-wrap" id="menu-wrap">
+                  <div class="menu-sidebar">
+                      
+                      <div class="menu-main-menu-container">
+                          <ul id="menu-main-menu" class="menu">
+                            <% siteData[0].fields.menuMain.forEach((item) => { %>
+                            <li id="<%= item.fields.name %>" class="menu-item"><a href="<%= "/" + item.fields.urlSegment %>"><%= item.fields.name %></a></li>
+                            <% }) %>
+                            </ul>
+                            <% if(enroll == 'true'){ %>
+                              <ul style="margin:0; padding: 0; list-style: none;">
+                              <li class="join-the-study"><a href="/enroll" class="nav-item"><button>Join the Study</button></a></li></ul>
+                            <%}%>  
+                      </div>         
+                  </div>
+              </div>
+          </div>
+  
           <%}%>
           <% if(nav == 'true'){ %>
           <ul class="navbar-nav ml-auto">
@@ -91,12 +114,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           "><li class="join-the-study"><a href="/enroll" class="nav-item"><button>Join the Study</button></a></li></ul> <%}%>
         </div>
       </header>
-      <% if(nav == 'true'){ %>
+   <!--<% if(nav == 'true'){ %>
       <div class="mobile-nav collapse navbar-collapse" id="headerNav">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-close-icon"></span>
           </button>
-
           <ul>
           <% siteData[0].fields.menuMain.forEach((item) => { %>
           <li class="nav-item"><a href="<%= "/" + item.fields.urlSegment %>"><%= item.fields.name %></a></li>
@@ -106,7 +128,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </ul>   
       </div>
       <div class="overlay"></div>
-      <%}%>
+      <%}%>-->
       
 <script>
 $(document).ready(function() {

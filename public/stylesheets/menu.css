@@ -1,0 +1,308 @@
+.menu-item a:hover, .menu-item a {
+	text-decoration: none;
+}
+#menu-main-menu {
+    margin-bottom: 0;
+}
+.menu-item {
+	list-style: none;
+}
+* {
+	box-sizing: border-box;
+}
+
+::selection {
+	background-color: #ebebf2;
+	color: #83828d;
+}
+
+/* ==================================== */
+/*		  	  Navigaton Menu
+/* ==================================== */
+.mobile-menu {
+    height: 45px;
+}
+.left-menu .menu-wrap {
+    left: 0;
+    margin-left: -100%;
+}
+.right-menu .menu-wrap {
+    right: 0;
+    margin-right: -100%;
+}
+.menu-wrap {
+	background-color: #fff;
+	position: fixed;
+    top: 0;
+	height: 100%;
+	width: 410px;
+	font-size: 1em;
+	font-weight: 700;
+	overflow: auto;
+	transition: 0.5s;
+	transition-timing-function: cubic-bezier(0.75, 0, 0.25, 1);
+	z-index: 9;
+}
+.menu-show {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+	/*box-shadow: 0px 2px 10px 1px #000;*/
+	z-index: 100;
+}
+.menu-sidebar {
+	margin: 50px 0 80px 0px;
+	position: relative;
+	top: 70px;
+}
+.menu-sidebar li {
+	padding: 18px 80px 0;
+	text-align: left;
+}
+.menu-sidebar li > a {
+	color: #4A515F;
+	position: relative;
+	font-weight: 700;
+	left: -50px;
+	opacity: 0;
+	transition: 0.5s;
+	transition-delay: 0.1s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.25, 1);
+    font-size: 16px;
+	line-height: 24px;
+	font-family: sans-serif;
+}
+.menu-sidebar li > a:hover {
+    color: #4A515F;
+}
+.menu-sidebar li > a.test {
+	opacity: 1;
+}
+.menu-sidebar li > a::after {
+	content: '';
+	display: block;
+	height: 0.15em;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	left: 50%;
+	transform: translate(-50%);
+	background-image: linear-gradient(to right, transparent 50.3%, #0a5ca8 50.3%);
+	transition: background-position 0.25s;
+	transition-timing-function: cubic-bezier(0.75, 0, 0.25, 1);
+	background-size: 200% auto;
+}
+.menu-sidebar li > a:hover::after {
+	background-position: -100% 0;
+}
+.menu-sidebar .menu-item-has-children {
+	position: relative;
+}
+.menu-sidebar .menu-item-has-children .sub-menu {
+	display: none;
+}
+/*.sidebar-menu-arrow::after {
+	content: "\f107";
+	font-family: 'FontAwesome';
+	padding: 10px;
+	color: #FFFA3B;
+	position: relative;
+}
+.sidebar-menu-arrow:hover::after {
+	cursor: pointer;
+	color: #fff;
+}
+.sidebar-menu-arrow:active::after {
+	top: 2px;
+}*/
+
+/*Hamburger Button*/
+.left-menu .toggle-button {
+	left: 15px;
+	right: auto;
+}
+.right-menu .toggle-button {
+	left: auto;
+	right: 15px;
+}
+.toggle-wrap-relative {
+    position: relative;
+}
+.toggle-button {
+	position: absolute;
+    width: 44px;
+    height:45px;
+	top: 22px;
+	/*padding: 4px;*/
+	transition: 0.25s;
+    z-index: 1500000000;
+    /*margin-left: 15px;
+    margin-right: 15px;*/
+}
+
+@media (max-width: 768px) {
+	.menu-sidebar li {
+		padding: 18px 50px 0;
+	}
+}
+@media (max-width: 440px) {
+    .menu-sidebar li {
+		padding: 18px 30px 0;
+	}
+	.menu-wrap {
+		width: 300px;
+	}
+	.right-menu .menu-wrap {
+		margin-right: -200%;
+	}
+	.left-menu .menu-wrap {
+		margin-left: -200%;
+	}
+}
+
+.toggle-button:hover {
+	cursor: pointer;
+}
+.toggle-button .menu-bar {
+	position: absolute;
+	border-radius: 2px;
+	width: 80%;
+	transition: 0.5s;
+}
+.toggle-button .menu-bar-top {
+	border: 2px solid #fff;
+	border-bottom: none;
+	top: 0;
+	border-radius: 0px;
+	transition: 0.5s;
+	transition-timing-function: cubic-bezier(0.75, 0, 0.25, 1);
+}
+.toggle-button .menu-bar-middle {
+	height: 2px;
+	background-color: #fff;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	top: 4px;
+	border-radius: 0px;
+	transition: 0.5s;
+	transition-timing-function: cubic-bezier(0.75, 0, 0.25, 1);
+}
+.toggle-button .menu-bar-bottom {
+	border: 2px solid #fff;
+	border-top: none;
+	top: 16px;
+	border-radius: 0px;
+	transition: 0.5s;
+	transition-timing-function: cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.button-open {
+    top: 5px;
+    left: 15px;
+}
+.button-open .menu-bar-top {
+	border-color: #49505F;
+	transform: translateY(8px) rotate(45deg);
+	transition: 0.5s;
+	transition-timing-function: cubic-bezier(0.75, 0, 0.25, 1);
+}
+.button-open .menu-bar-middle {
+	background-color: #49505F;
+	transform: rotate(-45deg);
+	transition: 0.5s;
+	transition-timing-function: cubic-bezier(0.75, 0, 0.25, 1);
+	opacity: 1;
+}
+.button-open .menu-bar-bottom {
+	border-color: transparent;
+	transform: translateY(10px);
+	transition: 0.5s;
+	transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1);
+}
+
+/* Text Block */
+.wrapper {
+	width: 40%;
+	margin: 100px auto 0;
+	color: #83828d;
+}
+.wrapper .text {
+	padding: 30px;
+}
+.wrapper .text .heading {
+	margin-bottom: 40px;
+	font-size: 2em;
+}
+.wrapper .text p {
+	line-height: 1.6em;
+}
+.wrapper .text .buttons {
+	margin-top: 40px;
+}
+
+/* Buttons */
+.wrapper .buttons .button {
+	display: inline-block;
+	margin-right: 20px;
+	padding: 20px 25px;
+	border-radius: 2em;
+	background-color: #70ce64;
+	color: #fff;
+	font-size: 0.9em;
+	font-weight: 700;
+	transition: background-color 0.3s;
+}
+.wrapper .buttons .button-secondary {
+	background-color: #ff6746;
+}
+.wrapper .buttons .button-primary:hover {
+	background-color: #84d07a;
+}
+.wrapper .buttons .button-secondary:hover {
+	background-color: #ff7d60;
+}
+
+/*Active state for the buttons*/
+.wrapper .buttons .button-primary:active {
+	background-color: #70ce64;
+	color: #70ce64;
+}
+.wrapper .buttons .button-secondary:active {
+	background-color: #ff6746;
+	color: #70ce64;
+}
+#menu-item-186 {
+	color: #ffffff !important;
+}
+
+li.current-menu-item,
+li.current-menu-item a {
+	color: #00a7ce;
+}
+
+/*Icons*/
+.wrapper .buttons .button span {
+	position: relative;
+	display: inline-block;
+	padding-right: 20px;
+}
+.wrapper .buttons .button span::after {
+	position: absolute;
+	font-family: 'FontAwesome';
+	right: -3px;
+	font-size: 14px;
+	top: 0;
+	transition: top 0.3s, right 0.3s;
+}
+.wrapper .buttons .button-primary span::after {
+	content: '\f019';
+}
+.wrapper .buttons .button-secondary span::after {
+	content: '\f178';
+}
+/*Slight icons animation*/
+.wrapper .buttons .button-primary:hover span::after {
+	top: 4px;
+}
+.wrapper .buttons .button-secondary:hover span::after {
+	right: -6px;
+}
