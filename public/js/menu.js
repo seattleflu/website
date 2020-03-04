@@ -4,6 +4,7 @@ function menuActive () {
     console.log ('menu clicked');
     if ($ ('#toggle-button').hasClass ('button-open')) {
       $ ('.toggle-wrap').fadeOut(250);
+      $ ('.overlay').toggleClass ('show');
       $ ('.overlay').fadeOut (500);
       $ ('.toggle-wrap').addClass ('toggle-wrap-relative');
       $ ('.menu-sidebar li > a.test').removeClass ('test');
@@ -13,6 +14,7 @@ function menuActive () {
 
     } else {
       $ ('.toggle-wrap').hide();
+      $ ('.overlay').toggleClass ('show');
       $ ('.overlay').fadeIn (250);
       $ ('.menu-sidebar li > a').each (function (index) {
         $ (this).delay (50 * index).queue (function () {

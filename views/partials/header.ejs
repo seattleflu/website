@@ -79,7 +79,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <%}%>
           <% if(nav == 'true'){ %>
             <div class="right-menu">
-              <span class="toggle-button" id="toggle-button">
+              <span class="toggle-button <% if(header === 'light') {%>light<%}%>" id="toggle-button">
                   <div class="menu-bar menu-bar-top"></div>
                   <div class="menu-bar menu-bar-middle"></div>
                   <div class="menu-bar menu-bar-bottom"></div>
@@ -127,8 +127,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <% if(enroll == 'true'){ %><a href="/enroll" class="nav-item"><button class="headerbutton green">Join the Study</button></a><%}%>
           </ul>   
       </div>
-      <div class="overlay"></div>
       <%}%>-->
+      <div class="overlay"></div>
       
 <script>
 $(document).ready(function() {

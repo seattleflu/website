@@ -194,6 +194,18 @@
 	transition: 0.5s;
 	transition-timing-function: cubic-bezier(0.75, 0, 0.25, 1);
 }
+.toggle-button.light .menu-bar-top {
+	border: 2px solid #4A515F;
+	border-bottom: none;
+}
+.toggle-button.light .menu-bar-middle {
+	border: 2px solid #4A515F;
+	border-bottom: none;
+}
+.toggle-button.light .menu-bar-bottom {
+	border: 2px solid #4A515F;
+	border-bottom: none;
+}
 
 .button-open {
     top: 5px;
@@ -213,7 +225,7 @@
 	opacity: 1;
 }
 .button-open .menu-bar-bottom {
-	border-color: transparent;
+	border-color: transparent !important;
 	transform: translateY(10px);
 	transition: 0.5s;
 	transition-timing-function: cubic-bezier(0.9, 0, 0.1, 1);

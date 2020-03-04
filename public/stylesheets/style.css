@@ -245,7 +245,7 @@ footer #copyright-bar {
   visibility: hidden;
   transition: visibility 0s, opacity 0.5s linear;
 }
-.show + .overlay {
+.overlay.show {
   visibility: visible;
   opacity: 1;
 }
@@ -257,14 +257,13 @@ footer #copyright-bar {
 header.light {
   background-color: #fff;
   border-bottom: 2px solid #eaecf0;
-  z-index: 2;
 }
 header.dark {
   background-color: transparent;
-  z-index: 2;
 }
 header .logo {
   margin: 24px 0;
+  z-index: 2;
 }
 .logo img {
   height: 40px;
