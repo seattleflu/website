@@ -11,13 +11,13 @@ async function getContentfulResults(contentType, resultType){
         })
         return result
     } catch (error) {
-        console.log('ERROR: ', error)
+        console.log('ERROR in getContentfulResults(): ', error)
     }
 }
 
 async function getBarcodeResults(barcode){
     const baseUrl = process.env.ID3C_URL
-    const apiUrl = `/v1/shipping/return-results/${barcode}`
+    const apiUrl = `/v2/shipping/return-results/${barcode}`
     const username = process.env.ID3C_ROR_USERNAME
     const password = process.env.ID3C_ROR_PASSWORD
     try {
@@ -32,7 +32,7 @@ async function getBarcodeResults(barcode){
         })
         return response.data
     } catch (error) {
-        console.log('ERROR: ', error)
+        console.log('ERROR in getBarcodeResults(): ', error)
     }
 }
 
@@ -44,7 +44,7 @@ async function getBarcodeFaqs (barcodeFaqType) {
       })
       return result
     } catch (error) {
-      console.log('ERROR: ', error)
+      console.log('ERROR in getBarcodeFaqs(): ', error)
     }
   }
 
