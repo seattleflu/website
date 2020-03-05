@@ -396,6 +396,9 @@ header.dark .nav-item button {
   .right-menu, .right-menu .toggle-button {
     display: none !important;
   }
+  .navbar-nav {
+    z-index: 2;
+  }
   .mobile-nav {
     display: none;
   }

@@ -145,11 +145,14 @@
 	}
 }
 @media (max-width: 440px) {
+	.menu-sidebar {
+		top: 40px;
+	}
     .menu-sidebar li {
 		padding: 18px 30px 0;
 	}
 	.menu-wrap {
-		width: 300px;
+		width: 280px;
 	}
 	.right-menu .menu-wrap {
 		margin-right: -200%;
