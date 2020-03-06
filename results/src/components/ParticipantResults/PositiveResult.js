@@ -19,7 +19,7 @@ function matchResultComponent(content){
 }
 
 export const positiveResultContext = createContext();
-export default function PositiveResult() {
+export function PositiveResult() {
     const { resultContent } = useContext(contentContext)
 
     const resultTabs = resultContent.map((content) =>
