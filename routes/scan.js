@@ -21,7 +21,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('SCAN')
+    .getPageData('scan')
     .then(pageData => {
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
@@ -49,7 +49,7 @@ router.get('/', function(req,res,next){
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('SCAN', {
+  res.render('scan', {
     title: 'SCAN',
     header: 'dark',
     md: md,
