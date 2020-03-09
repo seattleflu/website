@@ -785,9 +785,6 @@ h1.number {
   .home-logos img {
     max-height: 30px;
   }
-  .home-logos img:first-child {
-    margin-left: 10px;
-  }
   .home-header {
     padding-bottom: 50px;
   }

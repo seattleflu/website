@@ -3,8 +3,7 @@
 <div class="secondary container ssec">
     <div class="row">
         <div class="col-md-6" id="ssec-text">
-            <h2><%= pageData[0].fields.subhead %></h2>
-            <p><%- md.render(pageData[0].fields.content) %></p>
+            <%- md.render(pageData[0].fields.content1) %>
         </div>
         <div class="col-md-6" id="ssec-img">
             <%- md.render(pageData[0].fields.content2) %>

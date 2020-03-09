@@ -30,6 +30,7 @@ var asecRouter = require('./routes/asec')
 var asccRouter = require('./routes/ascc')
 var stecRouter = require('./routes/stec')
 var stccRouter = require('./routes/stcc')
+var scanRouter = require('./routes/scan')
 var adsRouter = require('./routes/ads')
 var resourceRouter = require('./routes/resource')
 var resourcesRouter = require('./routes/resources')
@@ -99,6 +100,7 @@ app.use('/asec', asecRouter);
 app.use('/ascc', asccRouter);
 app.use('/stec', stecRouter);
 app.use('/stcc', stccRouter);
+app.use('/scan', scanRouter);
 app.use('/thank-you/:thankyouid', thankyouRouter)
 app.use('/a/:ad', adsRouter)
 app.use('/resources/:resource', resourceRouter)
