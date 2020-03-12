@@ -22,9 +22,6 @@
         </div>
         <div class="col-lg-8 landing-text secondary learnmore">
             <%- md.render(pageData[0].fields.content) %>
-            <% if(pageData[0].fields.content2) { %>
-            <%- md.render(pageData[0].fields.content2) %>
-            <% } %>
             <form id="learn-more">
                 <input type="text" id="firstNameInput" name="firstName" placeholder="First Name (required)">
                 <input type="text" id="lastNameInput" name="lastName" placeholder="Last Name (required)">
@@ -33,7 +30,11 @@
                 <input type="submit" id="submitBtn" value="Submit">
             </form> 
             <h5 id="signuperror">Sorry, there was an error submitting you form</h5>
-                <h4 id="thank-you"><%= pageData[0].fields.ThankYouMessage%></h4> 
+            <h4 id="thank-you"><%= pageData[0].fields.ThankYouMessage%></h4> 
+            <div style="clear:both;"></div>
+            <% if(pageData[0].fields.content2) { %>
+                <%- md.render(pageData[0].fields.content2) %>
+            <% } %>
         </div>
     </div>
 </div>
