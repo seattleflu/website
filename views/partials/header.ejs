@@ -72,10 +72,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <header class="<%= header %> navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <% if(header === 'light') {%>
-            <a href="/" class="logo"><img src="<%= siteData[0].fields.logo.fields.file.url %>" alt="<%= siteData[0].fields.logo.fields.description %>"></a>
+            <div class="logo"><img src="<%= siteData[0].fields.logo.fields.file.url %>" alt="<%= siteData[0].fields.logo.fields.description %>"></div>
           <%}%>
           <% if(header === 'dark') {%>
-            <a href="/" class="logo"><img src="<%= siteData[0].fields.logoWhite.fields.file.url %>" alt="<%= siteData[0].fields.logoWhite.fields.description %>"></a>
+            <div class="logo"><img src="<%= siteData[0].fields.logoWhite.fields.file.url %>" alt="<%= siteData[0].fields.logoWhite.fields.description %>"></div>
           <%}%>
           <% if(nav == 'true'){ %>
             <div class="right-menu">

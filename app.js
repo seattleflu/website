@@ -107,9 +107,13 @@ app.use('/resources/:resource', resourceRouter)
 app.use('/resources', resourcesRouter);
 app.use('/updates', updatesRouter);
 
-app.use('/', indexRouter)
+// app.use('/', indexRouter)
+app.get('/', function (req, res) {
+  res.redirect(301, '/scan')
+})
 
 app.use(errorRouter);
+
 
 
 module.exports = app
