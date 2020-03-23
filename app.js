@@ -98,7 +98,7 @@ app.use ('/contact-us', contactRouter);
 // app.use('/ascc', asccRouter);
 // app.use('/stec', stecRouter);
 // app.use('/stcc', stccRouter);
-// app.use('/scan', scanRouter);
+app.use('/scan', scanRouter);
 // app.use('/thank-you/:thankyouid', thankyouRouter)
 // app.use('/a/:ad', adsRouter)
 // app.use('/resources/:resource', resourceRouter)
@@ -106,7 +106,7 @@ app.use ('/contact-us', contactRouter);
 // app.use('/updates', updatesRouter);
 
 // app.use('/', indexRouter)
-app.get ('/', function (req, res) {
+app.all ('*', function (req, res) {
   res.redirect (301, '/scan');
 });
 
