@@ -76,39 +76,36 @@ app.use (cookieParser ());
 app.use ('/dist', express.static (path.join (__dirname, 'dist')));
 app.use (express.static (path.join (__dirname, 'public')));
 
-// app.use('/science', scienceRouter)
-// app.use('/current', currentRouter)
-// app.use('/faq', faqRouter)
-// app.use('/enroll', enrollRouter)
-// app.use('/schools', schoolsRouter)
-// app.use('/results', resultsRouter)
-app.use ('/privacy', privacyRouter);
-// app.use('/kiosks', kiosksRouter)
-// app.use('/learnmore', learnmoreRouter);
-// app.use('/thank-you-ss-st', tySSSTRouter);
-// app.use('/households', householdsRouter);
-// app.use('/webmd', webmdRouter);
-// app.use('/info', infoRouter);
-// app.use('/media-inquiries', mediaRouter);
-// app.use('/swabandsend', swabandsendRouter);
-app.use ('/contact-us', contactRouter);
-// app.use('/ssec', ssecRouter);
-// app.use('/sscc', ssccRouter);
-// app.use('/asec', asecRouter);
-// app.use('/ascc', asccRouter);
-// app.use('/stec', stecRouter);
-// app.use('/stcc', stccRouter);
-app.use('/scan', scanRouter);
-// app.use('/thank-you/:thankyouid', thankyouRouter)
-// app.use('/a/:ad', adsRouter)
-// app.use('/resources/:resource', resourceRouter)
-// app.use('/resources', resourcesRouter);
-// app.use('/updates', updatesRouter);
+app.use('/', indexRouter);
 
-// app.use('/', indexRouter)
-app.all ('*', function (req, res) {
-  res.redirect (301, '/scan');
-});
+app.use('/science', scienceRouter)
+app.use('/current', currentRouter)
+app.use('/faq', faqRouter)
+app.use('/enroll', enrollRouter)
+app.use('/schools', schoolsRouter)
+app.use('/results', resultsRouter)
+app.use('/privacy', privacyRouter);
+app.use('/kiosks', kiosksRouter)
+app.use('/learnmore', learnmoreRouter);
+app.use('/thank-you-ss-st', tySSSTRouter);
+app.use('/households', householdsRouter);
+app.use('/webmd', webmdRouter);
+app.use('/info', infoRouter);
+app.use('/media-inquiries', mediaRouter);
+app.use('/swabandsend', swabandsendRouter);
+app.use('/contact-us', contactRouter);
+app.use('/ssec', ssecRouter);
+app.use('/sscc', ssccRouter);
+app.use('/asec', asecRouter);
+app.use('/ascc', asccRouter);
+app.use('/stec', stecRouter);
+app.use('/stcc', stccRouter);
+app.use('/scan', scanRouter);
+app.use('/thank-you/:thankyouid', thankyouRouter)
+app.use('/a/:ad', adsRouter)
+app.use('/resources/:resource', resourceRouter)
+app.use('/resources', resourcesRouter);
+app.use('/updates', updatesRouter);
 
 app.use (errorRouter);
 
