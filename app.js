@@ -77,7 +77,7 @@ app.use (cookieParser ());
 app.use ('/dist', express.static (path.join (__dirname, 'dist')));
 app.use (express.static (path.join (__dirname, 'public')));
 
- app.use('/', indexRouter);
+// app.use('/', indexRouter);
 
 app.use('/science', scienceRouter)
 app.use('/current', currentRouter)
@@ -108,11 +108,12 @@ app.use('/a/:ad', adsRouter)
 app.use('/resources/:resource', resourceRouter)
 app.use('/resources', resourcesRouter);
 app.use('/updates', updatesRouter);
-
-app.use (errorRouter);
 app.use ('/', function (req, res) {
   res.redirect (301, '/welcome');
 });
+
+app.use (errorRouter);
+
 
 
 module.exports = app;
