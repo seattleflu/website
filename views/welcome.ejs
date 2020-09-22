@@ -1,0 +1,30 @@
+
+<% include ./partials/header {header: header, pageData: req.pageData, siteData: req.siteData} %>
+<div class="container-full landing-header">
+    <div class="container">
+        <h1><%= pageData[0].fields.name %></h1>
+    </div>
+    <div id="homeSVG">
+        <svg viewBox="0 0 1440 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Curve_Divider_White" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <path d="M1080,157.502628 C1260,157.502628 1380,105.001752 1440,0 L1439.6621,200 L0,200 L0,157.500128 L1080,157.502628 Z" id="Rectangle" fill="#FFFFFF"></path>
+            </g>
+        </svg>
+    </div>
+  
+</div>
+<div class="container landing-content">
+    <div class="row">
+        <div class="col-lg-12 landing-logos">
+            <a href="https://www.uwmedicine.org/"><img src="/images/logo_UWMedicine.svg"></a>
+            <a href="https://www.fredhutch.org/"><img src="/images/logo_FredHutch.svg"></a>
+            <a href="https://www.seattlechildrens.org/"><img src="/images/logo_SeattleChildrens.svg"></a>
+            <a href="https://brotmanbaty.org/"><img src="/images/logo_BrotmanBatyInstitute.svg"></a>
+        </div>
+        <div class="col-lg-8 landing-text secondary">
+            <%- md.render(pageData[0].fields.content) %>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer  {logos: logos} %>
