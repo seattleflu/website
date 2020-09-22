@@ -9,6 +9,13 @@ var md = require('markdown-it')({
 })
 var markdownItAttrs = require('markdown-it-attrs')
 
+md.use(markdownItAttrs, {
+    // optional, these are default options
+    leftDelimiter: '{',
+    rightDelimiter: '}',
+    allowedAttributes: [] // empty array = all attributes are allowed
+  })
+  
 router.use((req, res, next) => {
   site
     .getSiteData()
