@@ -86,18 +86,18 @@ app.use (express.static (path.join (__dirname, 'public')));
 // app.use('/enroll', enrollRouter)
 // app.use('/schools', schoolsRouter)
 // app.use('/results', resultsRouter)
-app.use('/privacy', privacyRouter);
+app.use ('/privacy', privacyRouter);
 // app.use('/kiosks', kiosksRouter)
 // app.use('/learnmore', learnmoreRouter);
 // app.use('/thank-you-ss-st', tySSSTRouter);
-app.use('/households', householdsRouter);
-app.use('/welcome', welcomeRouter);
-app.use('/uw', uwRouter);
+app.use ('/households', householdsRouter);
+app.use ('/welcome', welcomeRouter);
+app.use ('/uw', uwRouter);
 // app.use('/webmd', webmdRouter);
 // app.use('/info', infoRouter);
 // app.use('/media-inquiries', mediaRouter);
 // app.use('/swabandsend', swabandsendRouter);
-app.use('/contact-us', contactRouter);
+app.use ('/contact-us', contactRouter);
 // app.use('/ssec', ssecRouter);
 // app.use('/sscc', ssccRouter);
 // app.use('/asec', asecRouter);
@@ -111,11 +111,9 @@ app.use('/contact-us', contactRouter);
 // app.use('/resources', resourcesRouter);
 // app.use('/updates', updatesRouter);
 app.use ('/', function (req, res) {
-  res.redirect (301, '/welcome');
+  res.redirect (302, '/welcome');
 });
 
 app.use (errorRouter);
-
-
 
 module.exports = app;
