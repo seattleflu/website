@@ -1,11 +1,20 @@
 var express = require('express')
 var router = express.Router()
-var md = require('markdown-it')({
-  html: true
-})
 
 var page = require('../services/page')
 var site = require('../services/site')
+
+var md = require('markdown-it')({
+  html: true
+})
+var markdownItAttrs = require('markdown-it-attrs')
+
+md.use(markdownItAttrs, {
+  // optional, these are default options
+  leftDelimiter: '{',
+  rightDelimiter: '}',
+  allowedAttributes: [] // empty array = all attributes are allowed
+})
 
 router.use((req, res, next) => {
   site
@@ -48,11 +57,11 @@ router.get('/', function(req,res,next){
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('results', {
-    title: 'Your Results (coming soon!)',
-    header: 'light',
+    title: 'Your Results',
+    header: 'dark',
     nav: req.nav,
     enroll: req.enroll,
-    logos: 'true',
+    logos: 'false',
     md: md,
     pageData: req.pageData,
     siteData: req.siteData,
