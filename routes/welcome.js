@@ -10,12 +10,12 @@ var md = require('markdown-it')({
 var markdownItAttrs = require('markdown-it-attrs')
 
 md.use(markdownItAttrs, {
-  // optional, these are default options
-  leftDelimiter: '{',
-  rightDelimiter: '}',
-  allowedAttributes: [] // empty array = all attributes are allowed
-})
-
+    // optional, these are default options
+    leftDelimiter: '{',
+    rightDelimiter: '}',
+    allowedAttributes: [] // empty array = all attributes are allowed
+  })
+  
 router.use((req, res, next) => {
   site
     .getSiteData()
@@ -28,7 +28,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('households')
+    .getPageData('welcome')
     .then(pageData => {
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
@@ -56,8 +56,8 @@ router.get('/', function(req,res,next){
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('households', {
-    title: 'households',
+  res.render('welcome', {
+    title: 'welcome',
     header: 'dark',
     md: md,
     nav: req.nav,

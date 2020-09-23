@@ -18,6 +18,8 @@ var learnmoreRouter = require ('./routes/learnmore');
 var tySSSTRouter = require ('./routes/thank-you-ss-st');
 var swabandsendRouter = require ('./routes/swabandsend');
 var householdsRouter = require ('./routes/households');
+var welcomeRouter = require ('./routes/welcome');
+var uwRouter = require ('./routes/uw');
 var webmdRouter = require ('./routes/webmd');
 var infoRouter = require ('./routes/info');
 var contactRouter = require ('./routes/contactus');
@@ -76,6 +78,8 @@ app.use (cookieParser ());
 app.use ('/dist', express.static (path.join (__dirname, 'dist')));
 app.use (express.static (path.join (__dirname, 'public')));
 
+// app.use('/', indexRouter);
+
 // app.use('/science', scienceRouter)
 // app.use('/current', currentRouter)
 // app.use('/faq', faqRouter)
@@ -86,7 +90,9 @@ app.use ('/privacy', privacyRouter);
 // app.use('/kiosks', kiosksRouter)
 // app.use('/learnmore', learnmoreRouter);
 // app.use('/thank-you-ss-st', tySSSTRouter);
-// app.use('/households', householdsRouter);
+app.use ('/households', householdsRouter);
+app.use ('/welcome', welcomeRouter);
+app.use ('/uw', uwRouter);
 // app.use('/webmd', webmdRouter);
 // app.use('/info', infoRouter);
 // app.use('/media-inquiries', mediaRouter);
@@ -98,16 +104,14 @@ app.use ('/contact-us', contactRouter);
 // app.use('/ascc', asccRouter);
 // app.use('/stec', stecRouter);
 // app.use('/stcc', stccRouter);
-app.use('/scan', scanRouter);
+// app.use('/scan', scanRouter);
 // app.use('/thank-you/:thankyouid', thankyouRouter)
 // app.use('/a/:ad', adsRouter)
 // app.use('/resources/:resource', resourceRouter)
 // app.use('/resources', resourcesRouter);
 // app.use('/updates', updatesRouter);
-
-// app.use('/', indexRouter)
-app.all ('*', function (req, res) {
-  res.redirect (301, '/scan');
+app.use ('/', function (req, res) {
+  res.redirect (302, '/welcome');
 });
 
 app.use (errorRouter);

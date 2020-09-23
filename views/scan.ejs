@@ -1,6 +1,13 @@
 
 <% include ./partials/header {header: header, pageData: req.pageData, siteData: req.siteData} %>
-<p>test</p>
+<script>
+    // Bust any previously-cached 301 Moved Permanently redirect from / and /uw → /scan.
+    Promise.all([
+      fetch("/", {cache: "reload"}),
+      fetch("/uw", {cache: "reload"})
+    ])
+    .then(() => window.location = "/")
+  </script>
 <div class="container-full landing-header">
     <div class="container">
         <h1><%= pageData[0].fields.name %></h1>
