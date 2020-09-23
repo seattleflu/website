@@ -85,7 +85,7 @@ app.use (express.static (path.join (__dirname, 'public')));
 // app.use('/faq', faqRouter)
 // app.use('/enroll', enrollRouter)
 // app.use('/schools', schoolsRouter)
-// app.use('/results', resultsRouter)
+app.use('/results', resultsRouter)
 app.use ('/privacy', privacyRouter);
 // app.use('/kiosks', kiosksRouter)
 // app.use('/learnmore', learnmoreRouter);
