@@ -76,10 +76,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <header class="<%= header %> navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <% if(header === 'light') {%>
-            <div class="logo"><a href="/"><img src="<%= siteData[0].fields.logo.fields.file.url %>" alt="<%= siteData[0].fields.logo.fields.description %>"></a></div>
+            <div class="logo"><div class="first-logo dark"><a href="/"><img src="<%= siteData[0].fields.logo.fields.file.url %>" alt="<%= siteData[0].fields.logo.fields.description %>"></a></div><a href="https://brotmanbaty.org/" target="_blank" rel="noopener"><img src="/images/logo_BrotmanBatyInstitute.svg" alt="Brotman Baty Institute"></a></div>
           <%}%>
           <% if(header === 'dark') {%>
-            <div class="logo"><a href="/"><img src="<%= siteData[0].fields.logoWhite.fields.file.url %>" alt="<%= siteData[0].fields.logoWhite.fields.description %>"></a></div>
+            <div class="logo"><div class="first-logo"><a href="/"><img src="<%= siteData[0].fields.logoWhite.fields.file.url %>" alt="<%= siteData[0].fields.logoWhite.fields.description %>"></a></div><a href="https://brotmanbaty.org/" target="_blank" rel="noopener"><img src="/images/Logo_BrotmanBaty_Reverse.svg" alt="Brotman Baty Institute"></a></div>
           <%}%>
           <% if(nav == 'true'){ %>
             <div class="right-menu">
