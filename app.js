@@ -36,6 +36,7 @@ var adsRouter = require ('./routes/ads');
 var resourceRouter = require ('./routes/resource');
 var resourcesRouter = require ('./routes/resources');
 var updatesRouter = require ('./routes/updates');
+var appleRouter = require('./routes/apple')
 
 const production = process.env.NODE_ENV === 'production';
 
@@ -110,6 +111,10 @@ app.use ('/contact-us', contactRouter);
 // app.use('/resources/:resource', resourceRouter)
 // app.use('/resources', resourcesRouter);
 // app.use('/updates', updatesRouter);
+app.use('/applerespiratorystudy', appleRouter);
+app.use ('/apple', function (req, res) {
+  res.redirect (302, '/applerespiratorystudy');
+});
 app.use ('/', function (req, res) {
   res.redirect (302, '/welcome');
 });
