@@ -119,26 +119,6 @@ button {
   font-size: 18px;
   line-height: 25px;
 }
-@media (max-width: 991px) {
-  .main-container {
-    padding-bottom: 295px;
-  }
-}
-@media (max-width: 767px) {
-  .main-container {
-    padding-bottom: 440px;
-  }
-}
-@media (max-width: 361px) {
-  .main-container {
-    padding-bottom: 500px;
-  }
-}
-@media (max-width: 325px) {
-  .main-container {
-    padding-bottom: 580px;
-  }
-}
 
 
 /*** FORM ELEMENTS ***/
@@ -189,7 +169,7 @@ footer ul {
   margin-top: 40px;
   margin-bottom: 40px;
 }
-#footer-menu .logo img{
+#footerLogo {
   margin-top: 40px;
 }
 #footer-menu a {
@@ -235,6 +215,17 @@ footer #copyright-bar {
 
 
 /*** HEADER ***/
+.first-logo {
+  padding-right: 25px;
+  margin-right: 25px;
+  border-right: 1px solid rgba(255,255,255,0.5);
+}
+.first-logo.dark {
+  border-right: 1px solid rgba(0,0,0,0.3);
+}
+.first-logo {
+  display: inline-block;
+}
 .overlay {
   position: absolute;
   height: 100vh;
@@ -266,7 +257,7 @@ header .logo {
   z-index: 2;
 }
 .logo img {
-  height: 40px;
+  height: 30px;
 }
 header.light .custom-toggler .navbar-toggler-icon {
   background-image: url("/images/nav_hamburger_dark.svg");
@@ -391,6 +382,9 @@ header.dark .nav-item button {
     padding-top: 15px !important;
     padding-bottom: 15px !important;
   }
+  .navbar .first-logo {
+    margin-left: 15px;
+  }
 }
 @media (min-width: 992px) {
   .right-menu, .right-menu .toggle-button {
@@ -404,6 +398,11 @@ header.dark .nav-item button {
   }
   .overlay {
     display: none;
+  }
+}
+@media (max-width: 575px) {
+  .navbar .first-logo {
+    margin-left: 0;
   }
 }
 
@@ -1095,10 +1094,10 @@ h1.number {
 }
 .landing-content {
   margin-top: -108px;
-  padding-top: 30px;
+  padding-top: 50px;
 }
 .landing-logos a {
-  margin-right: 75px;
+  margin-right: 35px;
 }
 .landing-logos a:last-child {
   margin-right: 0;
@@ -1130,7 +1129,7 @@ h1.number {
     flex-wrap: wrap;
   }
   .landing-logos a {
-    margin-bottom: 45px;
+    margin-bottom: 30px;
   }
   .landing-text {
     padding-top: 15px;
@@ -1138,33 +1137,22 @@ h1.number {
 }
 @media (max-width: 767px) {
   .landing-logos {
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin-bottom: 15px;
   }
   .landing-logos a {
-    margin-right: 0;
-    flex-basis: 50%;
-    text-align: center;
-    margin-bottom: 45px;
+    margin-bottom: 30px;
   }
   .landing-text {
     padding-top: 0;
-    margin-top: -15px;
   }
   .landing-header {
     padding-bottom: 40px;
   }
 }
-@media (max-width: 440px) {
-  .landing-logos a {
-    flex-basis: 40%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .landing-logos a:last-child {
-    margin-right: auto;
-  }
-  .landing-logos {
-    justify-content: space-between;
+@media (max-width: 574px) {
+  .landing-header h1 {
+    max-width: 250px;
   }
 }
 .signup-error{

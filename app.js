@@ -93,6 +93,11 @@ app.use ('/privacy', privacyRouter);
 // app.use('/thank-you-ss-st', tySSSTRouter);
 app.use ('/households', householdsRouter);
 app.use ('/welcome', welcomeRouter);
+
+app.use ('/uw/start', function (req, res) {
+  res.redirect (302, 'https://backoffice.seattleflu.org/husky-musher');
+});
+
 app.use ('/uw', uwRouter);
 // app.use('/webmd', webmdRouter);
 // app.use('/info', infoRouter);
