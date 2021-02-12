@@ -4,7 +4,7 @@
     "start": "node ./bin/www",
     "lint": "eslint",
     "dev": "nodemon",
-    "build": "webpack --env development"
+    "build": "webpack --env production"
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
