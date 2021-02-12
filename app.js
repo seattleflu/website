@@ -79,11 +79,11 @@ app.use (cookieParser ());
 app.use ('/dist', express.static (path.join (__dirname, 'dist')));
 app.use (express.static (path.join (__dirname, 'public')));
 
-// app.use('/', indexRouter);
+app.use('/', indexRouter);
 
 // app.use('/science', scienceRouter)
 // app.use('/current', currentRouter)
-// app.use('/faq', faqRouter)
+app.use('/faq', faqRouter)
 // app.use('/enroll', enrollRouter)
 // app.use('/schools', schoolsRouter)
 app.use('/results', resultsRouter)
@@ -120,9 +120,9 @@ app.use('/applerespiratorystudy', appleRouter);
 app.use ('/apple', function (req, res) {
   res.redirect (302, '/applerespiratorystudy');
 });
-app.use ('/', function (req, res) {
-  res.redirect (302, '/welcome');
-});
+// app.use ('/', function (req, res) {
+//   res.redirect (302, '/welcome');
+// });
 
 app.use (errorRouter);
 
