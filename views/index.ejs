@@ -4,15 +4,15 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-lg-9" style="z-index: 1;">
+          <h1><%= homeData[0].fields.headline %></h1>
+          <p><%= homeData[0].fields.featuredCopy %></p>
+          <a href="<%= homeData[0].fields.heroButtonLink %>"><button class="green"><%= homeData[0].fields.heroButtonCta %></button></a>
           <div class="home-logos">
             <img src="/images/logo_UWMedicine_white.svg" alt="UW Medicine">
             <img src="/images/logo_FredHutch_white.svg" alt="Fred Hutch">
             <img src="/images/logo_SeattleChildrens_white.svg" alt="Seattle Childrens">
             <img src="/images/logo_BrotmanBatyInstitute_white.svg" alt="Brotman Baty Institute">
           </div>
-          <h1><%= homeData[0].fields.headline %></h1>
-          <p><%= homeData[0].fields.featuredCopy %></p>
-          <a href="<%= homeData[0].fields.heroButtonLink %>"><button class="green"><%= homeData[0].fields.heroButtonCta %></button></a>
         </div>
         <div id="homeSVG">
           <svg viewBox="0 0 1440 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -35,7 +35,23 @@
 </div>
 <div class="container home-content">
   <div class="row">
-    <div class="col-lg-8 col-md-6" id="help-right">
+    <div class="col-lg-12">
+      <h2>Study Modules</h2>
+      <% if(homeData[0].fields.studyModules) { %>
+        <div class="study-modules">
+          <% homeData[0].fields.studyModules.forEach((study) => { %>
+            <div class="study-module">
+              <% if(study.fields.studyIcon) { %>
+                <img src="<% study.fields.studyIcon.file.fields.url %>">
+              <% } %>
+              <h3><% study.fields.studyName %></h3>
+              <p><% study.fields.studyDescription %></p>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+    <!-- <div class="col-lg-8 col-md-6" id="help-right">
       <h2>Here's how it works:</h2>
       <div class="step clearfix">
         <h1 class="number float-left">1</h1>
@@ -71,10 +87,10 @@
       <div class="help-bg" style="background-image: url(/images/curve.svg">
         <%- md.render(homeData[0].fields.section1Main) %>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
-<div class="container-full" id="home-map">
+<!--<div class="container-full" id="home-map">
   <div class="container">
   <div class="row">
     <div class="col-md-12 col-lg-6 large" id="map-left">
@@ -90,7 +106,7 @@
     </div>
   </div>
 </div>
-</div>
+</div>-->
 <div class="container home-content-2">
   <div class="row flu-101">
     <div class="col-lg-5 offset-lg-1" id="flu101-left">
