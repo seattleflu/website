@@ -11,7 +11,6 @@
             <img src="/images/logo_UWMedicine_white.svg" alt="UW Medicine">
             <img src="/images/logo_FredHutch_white.svg" alt="Fred Hutch">
             <img src="/images/logo_SeattleChildrens_white.svg" alt="Seattle Childrens">
-            <img src="/images/logo_BrotmanBatyInstitute_white.svg" alt="Brotman Baty Institute">
           </div>
         </div>
         <div id="homeSVG">
@@ -34,23 +33,26 @@
     </svg> -->
 </div>
 <div class="container home-content">
-  <div class="row">
-    <div class="col-lg-12">
-      <h2>Study Modules</h2>
-      <% if(homeData[0].fields.studyModules) { %>
-        <div class="study-modules">
-          <% homeData[0].fields.studyModules.forEach((study) => { %>
+  <div class="row study-modules">
+    <% if(homeData[0].fields.studyModules) { %>
+      <div class="col-lg-12">
+        <h2>Study Modules</h2>
+      </div>
+        <% homeData[0].fields.studyModules.forEach((study) => { %>
+          <div class="col-lg-6">
             <div class="study-module">
               <% if(study.fields.studyIcon) { %>
-                <img src="<% study.fields.studyIcon.file.fields.url %>">
+                <div class="study-module-icon" style="background-image: url(<%= study.fields.studyIcon.fields.file.url %>);"></div>
               <% } %>
-              <h3><% study.fields.studyName %></h3>
-              <p><% study.fields.studyDescription %></p>
+              <h3><%= study.fields.studyName %></h3>
+              <p><%= study.fields.studyDescription %></p>
+              <% if(study.fields.page) { %>
+                <a href="<%- study.fields.page.fields.urlSegment %>" class="cta"></a>
+              <% } %>
             </div>
-          <% }) %>
-        </div>
-      <% } %>
-    </div>
+          </div>
+        <% }) %>
+    <% } %>
     <!-- <div class="col-lg-8 col-md-6" id="help-right">
       <h2>Here's how it works:</h2>
       <div class="step clearfix">

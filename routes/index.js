@@ -55,6 +55,7 @@ router.use ((req, res, next) => {
     .getHome ()
     .then (homeData => {
       req.homeData = homeData.items;
+      console.log(homeData.items)
       next ();
     })
     .catch (console.error);

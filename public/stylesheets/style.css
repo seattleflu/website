@@ -542,6 +542,7 @@ button.green:hover {
   background-size: cover;
   top: -112px;
   padding-bottom: 80px;
+  padding-top: 165px;
 }
 .home-header h1 {
   color: #fff;
@@ -631,17 +632,16 @@ header.dark .nav-item a:hover {
   text-decoration: none;
 }
 .home-logos {
-  margin-top: 165px;
+  margin-top: 56px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
 }
 .home-logos img {
   margin-bottom: 30px;
-  max-height: 40px;
+  max-height: 25px;
   height: 100%;
-  width: 100%;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 .home-logos img:first-child {
   margin-left: 0;
@@ -653,6 +653,40 @@ header.dark .nav-item a:hover {
 .home-content-2 {
   margin-bottom: 75px;
 }
+/*** study modules ***/
+
+.study-module {
+  border: 1px solid #F0F0F0;
+  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.2);
+  padding: 40px;
+  height: 100%;
+  position: relative;
+}
+.study-module p {
+  font-size: 18px;
+  margin-bottom: 60px;
+}
+.study-module .cta {
+  margin-top: 36px;
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+.study-module-icon {
+  border-radius: 100%;
+  border: 0.5px solid #B3B3B3;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+.study-modules h2 {
+  margin-bottom: 40px;
+}
+.study-modules .col-lg-6 {
+  margin-bottom: 30px;
+}
+/*** study modules end ***/
 #help-left p {
   margin-top: 15px;
   margin-bottom: 30px;
@@ -781,9 +815,6 @@ h1.number {
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
-  .home-logos img {
-    max-height: 30px;
-  }
   .home-header {
     padding-bottom: 50px;
   }
@@ -793,12 +824,14 @@ h1.number {
   .help-bg {
     background-size: contain;
   }
+  .home-logos img {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 @media (max-width: 440px) {
   .home-logos img {
     flex-basis: 35%;
-    margin-left: 0;
-    margin-right: 0;
   }
   .help-bg {
     background-size: 75% auto;
