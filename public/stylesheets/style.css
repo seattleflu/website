@@ -683,7 +683,7 @@ header.dark .nav-item a:hover {
 .study-modules h2 {
   margin-bottom: 40px;
 }
-.study-modules .col-lg-6 {
+.study-modules .col-lg-6, .study-modules .col-lg-4 {
   margin-bottom: 30px;
 }
 /*** study modules end ***/
