@@ -39,7 +39,11 @@
         <h2>Study Modules</h2>
       </div>
         <% homeData[0].fields.studyModules.forEach((study) => { %>
-          <div class="col-lg-6">
+          <% if(homeData[0].fields.studyModules.length > 3) { %>
+            <div class="col-lg-6">
+          <% } else { %>
+            <div class="col-lg-4">
+          <% } %>
             <div class="study-module">
               <% if(study.fields.studyIcon) { %>
                 <div class="study-module-icon" style="background-image: url(<%= study.fields.studyIcon.fields.file.url %>);"></div>
