@@ -66,6 +66,20 @@ a, a:hover {
 .cta:hover:after {
   margin-left: 15px;
 }
+.dropdown {
+  font-weight: 700;
+}
+.dropdown:after {
+  background-image: url("/images/dropdown_arrow_green.svg");
+  background-size: 17px 9.5px;
+  display: inline-block;
+  width: 17px;
+  height: 9.5px;
+  margin-left: 10px;
+  vertical-align: middle;
+  content: "";
+  transition: all 0.5s;
+}
 @media (max-width: 767px) {
   h1 {
     font-size: 30px;
@@ -118,6 +132,9 @@ button {
 .large, .large p {
   font-size: 18px;
   line-height: 25px;
+}
+.blue {
+  color: #0A5CA8 !important;
 }
 
 
@@ -1565,4 +1582,50 @@ header.light .nav-item .adsNav:after {
   line-height: 24px;
   font-weight: 700;
   margin-bottom:5px;
+}
+
+
+
+/*** RESEARCH ***/
+.research h3 {
+  margin-top: 60px;
+}
+.research-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.research-wrapper img {
+  margin-right: 20px;
+}
+.research-wrapper h4 {
+  margin-bottom: 0;
+}
+.research-docs a.blue {
+  transition: all 0.5s;
+}
+.research-docs .dropdown {
+  float: right;
+}
+.research-docs .dropdown[aria-expanded="false"]:before {
+  content: 'See More';
+  transition: all 0.5s;
+}
+.research-docs .dropdown[aria-expanded="true"]:before {
+  content: 'See Less';
+  transition: all 0.5s;
+}
+.research-docs .dropdown[aria-expanded="true"]:after {
+  transform: rotate(180deg);
+  transition: all 0.5s;
+}
+@media (max-width: 992px) {
+  .research-docs {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 767px) {
+  .research h3 {
+    margin-top: 30px;
+  }
 }

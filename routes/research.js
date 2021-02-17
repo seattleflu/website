@@ -1,8 +1,9 @@
 var express = require ('express');
 var router = express.Router ();
-var home = require ('../services/index');
+var research = require ('../services/research');
 var page = require ('../services/page');
 var site = require ('../services/site');
+var category = require('../services/researchcategory');
 
 var md = require ('markdown-it') ({
   html: true,
@@ -28,9 +29,10 @@ router.use ((req, res, next) => {
 
 router.use ((req, res, next) => {
   page
-    .getPageData ('/')
+    .getPageData ('research')
     .then (pageData => {
       req.pageData = pageData.items;
+      console.log(pageData.items)
       if (pageData.items[0].fields.showMenu != null) {
         var nav = pageData.items[0].fields.showMenu;
         req.nav = nav.toString ();
@@ -51,10 +53,21 @@ router.use ((req, res, next) => {
 });
 
 router.use ((req, res, next) => {
-  home
-    .getHome ()
-    .then (homeData => {
-      req.homeData = homeData.items;
+  research
+    .getResearch ()
+    .then (researchData => {
+      req.researchData = researchData.items;
+      console.log(researchData.items)
+      next ();
+    })
+    .catch (console.error);
+});
+
+router.use ((req, res, next) => {
+  category
+    .getResearchCat ()
+    .then (researchCatData => {
+      req.researchCatData = researchCatData.items;
       next ();
     })
     .catch (console.error);
@@ -71,16 +84,17 @@ router.get('/', function(req,res,next){
 
 /* GET home page. */
 router.get ('/', function (req, res, next) {
-  res.render ('index', {
-    title: 'Seattle Flu Study',
-    header: 'dark',
+  res.render ('research', {
+    title: 'Seattle Flu Study - Research',
+    header: 'light',
     nav: req.nav,
     enroll: req.enroll,
     logos: 'true',
     md: md,
     pageData: req.pageData,
     siteData: req.siteData,
-    homeData: req.homeData,
+    researchData: req.researchData,
+    researchCatData: req.researchCatData,
     pageUrl: req.pageUrl
   });
 });

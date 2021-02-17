@@ -1,38 +1,66 @@
 
 <% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
-<div class="faq secondary container">
-  <h2>FAQ</h2>
-  <div class="row">
-    <div class="col-lg-4 col-xs-12">
-    <p><%- md.render(pageData[0].fields.content) %></p>
-    </div>
-
-
-    <div class="faq-questions col-lg-8 col-xs-12">
-      <div class="accordion" id="faq-accordion">
-        
-        
-        
-        <% faqData.forEach((faq) => { %>
-            
-            <div class="card">
-          <div class="faq-heading" id="<%= faq.fields.id %>">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= faq.fields.question %>" aria-expanded="false" aria-controls="collapse<%= faq.fields.question %>">
-                <h5><%= faq.fields.question %></h5>
-              </button>
-          </div>
-          <div id="collapse<%= faq.fields.question %>" class="collapse" aria-labelledby="<%= faq.fields.id %>" data-parent="#faq-accordion">
-            <div class="card-body">
-              
-              <%- md.render(faq.fields.answer) %>
-            </div>
-          </div>
+<div class="container secondary research">
+    <div class="row">
+        <div class="col-lg-9 col-xs-12">
+            <h2><%= pageData[0].fields.name %></h2>
+            <%- md.render(pageData[0].fields.content) %>
         </div>
-            
-        <% }) %>
-      </div>
     </div>
-  </div>
+    <% var categories = researchCatData.length %>
+    <% researchCatData.forEach((category) => { %>
+        <h3 class="blue"><%= category.fields.categoryName %></h3>
+        <div class="row">
+            <div class="col-lg-4 col-xs-12">
+                <%- md.render(category.fields.categoryDescription) %>
+            </div>
+
+
+            <div class="research-docs offset-lg-1 col-lg-7 col-xs-12">
+                <% var count = 0 %>
+                <% researchData.forEach((research) => { %>
+                    <% if(research.fields.researchCategory == category.fields.categoryName) { %>
+                        <% if(research.fields.researchCategory != 'Collaborate With Us') { %>
+                            <% if(count < 3) { %>
+                                <a class="blue" href="<%= research.fields.articleLink %>">
+                                    <div class="research-wrapper">
+                                        <img src="/images/document_icon.svg">
+                                        <h4><%= research.fields.articleTitle %></h4>
+                                    </div>
+                                </a>
+                            <% } else if(count == 3) { %>
+                                <div class="collapse" id="<%= category.fields.categoryName %>">
+                                    <a class="blue" href="<%= research.fields.articleLink %>">
+                                        <div class="research-wrapper">
+                                            <img src="/images/document_icon.svg">
+                                            <h4><%= research.fields.articleTitle %></h4>
+                                        </div>
+                                    </a>
+                            <% } else { %>
+                                    <a class="blue" href="<%= research.fields.articleLink %>">
+                                        <div class="research-wrapper">
+                                            <img src="/images/document_icon.svg">
+                                            <h4><%= research.fields.articleTitle %></h4>
+                                        </div>
+                                    </a>
+                            <% } %>
+                        <% } else { %>
+                            <a class="blue" href="<%= research.fields.articleLink %>">
+                                <div class="research-wrapper">
+                                    <h4><%= research.fields.articleTitle %></h4>
+                                </div>
+                            </a>
+                        <% } %>
+                        <% count = count + 1 %>
+                    <% } %>
+                <% }) %>              
+                <% if(count > 3) { %>
+                    </div>
+                    <a class="dropdown" data-toggle="collapse" href="#<%= category.fields.categoryName %>" role="button" aria-expanded="false" aria-controls="<%= category.fields.categoryName %>"></a>
+                <% } %>
+            </div>
+        </div>
+    <% }) %>
 </div>
 <% include ./partials/footer  {logos: logos} %>
 
