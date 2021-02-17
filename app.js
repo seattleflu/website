@@ -100,6 +100,10 @@ app.use ('/uw/start', function (req, res) {
   res.redirect (302, 'https://backoffice.seattleflu.org/husky-musher');
 });
 
+app.use ('/scanpublichealth', function (req, res) {
+  res.redirect (302, 'https://scanpublichealth.org/');
+});
+
 app.use ('/uw', uwRouter);
 // app.use('/webmd', webmdRouter);
 // app.use('/info', infoRouter);
