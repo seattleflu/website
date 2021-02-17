@@ -22,7 +22,7 @@
                     <% if(research.fields.researchCategory == category.fields.categoryName) { %>
                         <% if(research.fields.researchCategory != 'Collaborate With Us') { %>
                             <% if(count < 3) { %>
-                                <a class="blue" href="<%= research.fields.articleLink %>">
+                                <a class="blue" href="<%= research.fields.articleLink %>" target="_blank">
                                     <div class="research-wrapper">
                                         <img src="/images/document_icon.svg">
                                         <h4><%= research.fields.articleTitle %></h4>
@@ -30,14 +30,14 @@
                                 </a>
                             <% } else if(count == 3) { %>
                                 <div class="collapse" id="<%= category.fields.categoryName %>">
-                                    <a class="blue" href="<%= research.fields.articleLink %>">
+                                    <a class="blue" href="<%= research.fields.articleLink %>" target="_blank">
                                         <div class="research-wrapper">
                                             <img src="/images/document_icon.svg">
                                             <h4><%= research.fields.articleTitle %></h4>
                                         </div>
                                     </a>
                             <% } else { %>
-                                    <a class="blue" href="<%= research.fields.articleLink %>">
+                                    <a class="blue" href="<%= research.fields.articleLink %>" target="_blank">
                                         <div class="research-wrapper">
                                             <img src="/images/document_icon.svg">
                                             <h4><%= research.fields.articleTitle %></h4>
