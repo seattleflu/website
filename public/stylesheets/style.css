@@ -600,7 +600,7 @@ button.green:hover {
 }
 @media (max-width: 767px) {
   #homeSVG svg {
-    max-height: 105px;
+    max-height: 107px;
     bottom: -16px;
   }
 }
@@ -1628,4 +1628,11 @@ header.light .nav-item .adsNav:after {
   .research h3 {
     margin-top: 30px;
   }
+}
+
+
+
+/*** APPLE STUDY PAGES ***/
+.apple-faq {
+  margin-bottom: -125px;
 }

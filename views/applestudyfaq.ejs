@@ -1,0 +1,51 @@
+
+<% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
+<div class="container-full landing-header apple-faq">
+    <div class="container">
+        <h1><%= pageData[0].fields.name %></h1>
+    </div>
+    <div id="homeSVG">
+        <svg viewBox="0 0 1440 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Curve_Divider_White" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <path d="M1080,157.502628 C1260,157.502628 1380,105.001752 1440,0 L1439.6621,200 L0,200 L0,157.500128 L1080,157.502628 Z" id="Rectangle" fill="#FFFFFF"></path>
+            </g>
+        </svg>
+    </div>
+  
+</div>
+
+<div class="faq secondary container">
+  <div class="row">
+    <div class="col-lg-4 col-xs-12">
+    <%- md.render(pageData[0].fields.content) %>
+    </div>
+
+
+    <div class="faq-questions col-lg-8 col-xs-12">
+      <div class="accordion" id="faq-accordion">
+        
+        
+        
+        <% faqData.forEach((faq) => { %>
+            
+            <div class="card">
+          <div class="faq-heading" id="<%= faq.fields.id %>">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= faq.fields.questions %>" aria-expanded="false" aria-controls="collapse<%= faq.fields.questions %>">
+                <h5><%= faq.fields.questions %></h5>
+              </button>
+          </div>
+          <div id="collapse<%= faq.fields.questions %>" class="collapse" aria-labelledby="<%= faq.fields.id %>" data-parent="#faq-accordion">
+            <div class="card-body">
+              
+              <%- md.render(faq.fields.answer) %>
+            </div>
+          </div>
+        </div>
+            
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+<% include ./partials/footer  {logos: logos} %>
+
