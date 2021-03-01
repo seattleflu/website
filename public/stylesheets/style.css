@@ -1636,3 +1636,31 @@ header.light .nav-item .adsNav:after {
 .apple-faq {
   margin-bottom: -125px;
 }
+.header-icon {
+  position: absolute;
+  z-index: 1;
+  right: 30px;
+  top: 100px;
+}
+.header-icon img {
+  width: 155px;
+  height: auto;
+}
+@media (max-width: 767px) {
+  .apple-landing-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-icon {
+    padding-top: 132px;
+    position: unset;
+  }
+  .header-icon img {
+    width: 52px;
+    margin-left: 15px;
+  }
+  .apple-landing-logos {
+    justify-content: left;
+  }
+}

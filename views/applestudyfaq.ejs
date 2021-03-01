@@ -1,8 +1,11 @@
 
 <% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
-<div class="container-full landing-header apple-faq">
+<div class="container-full landing-header apple-faq apple-landing-header">
     <div class="container">
         <h1><%= pageData[0].fields.name %></h1>
+        <div class="header-icon">
+            <img src="/images/AppleRespiratoryStudyIcon.png">
+        </div>
     </div>
     <div id="homeSVG">
         <svg viewBox="0 0 1440 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
