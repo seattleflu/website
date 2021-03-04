@@ -11,12 +11,13 @@
     <% researchCatData.forEach((category) => { %>
         <h3 class="blue"><%= category.fields.categoryName %></h3>
         <div class="row">
-            <div class="col-lg-4 col-xs-12">
-                <%- md.render(category.fields.categoryDescription) %>
-            </div>
+            <% if(category.fields.categoryDescription) { %>
+                <div class="col-lg-4 col-xs-12">
+                    <%- md.render(category.fields.categoryDescription) %>
+                </div>
+            <% } %>
 
-
-            <div class="research-docs offset-lg-1 col-lg-7 col-xs-12">
+            <div class="research-docs <% if(category.fields.categoryDescription) { %> offset-lg-1 col-lg-7 <% } else { %> col-lg-10 <% } %>col-xs-12">
                 <% var count = 0 %>
                 <% researchData.forEach((research) => { %>
                     <% if(research.fields.researchCategory == category.fields.categoryName) { %>
