@@ -35,7 +35,7 @@
   <div class="row study-modules">
     <% if(homeData[0].fields.studyModules) { %>
       <div class="col-lg-12">
-        <h2>Study Modules</h2>
+        <%- md.render(homeData[0].fields.section1Main) %><br />
       </div>
         <% homeData[0].fields.studyModules.forEach((study) => { %>
           <% if(homeData[0].fields.studyModules.length > 3) { %>

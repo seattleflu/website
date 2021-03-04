@@ -667,6 +667,9 @@ header.dark .nav-item a:hover {
   margin-top: -50px;
   margin-bottom: 60px;
 }
+.home-content h1, .home-content h2 {
+  margin-bottom: 20px;
+}
 .home-content-2 {
   margin-bottom: 75px;
 }
@@ -696,9 +699,6 @@ header.dark .nav-item a:hover {
   width: 40px;
   height: 40px;
   margin-bottom: 10px;
-}
-.study-modules h2 {
-  margin-bottom: 40px;
 }
 .study-modules .col-lg-6, .study-modules .col-lg-4 {
   margin-bottom: 30px;
