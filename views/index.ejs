@@ -6,7 +6,6 @@
         <div class="col-sm-12 col-lg-9" style="z-index: 1;">
           <h1><%= homeData[0].fields.headline %></h1>
           <p><%= homeData[0].fields.featuredCopy %></p>
-          <a href="<%= homeData[0].fields.heroButtonLink %>"><button class="green"><%= homeData[0].fields.heroButtonCta %></button></a>
           <div class="home-logos">
             <img src="/images/logo_UWMedicine_white.svg" alt="UW Medicine">
             <img src="/images/logo_FredHutch_white.svg" alt="Fred Hutch">
@@ -57,62 +56,9 @@
           </div>
         <% }) %>
     <% } %>
-    <!-- <div class="col-lg-8 col-md-6" id="help-right">
-      <h2>Here's how it works:</h2>
-      <div class="step clearfix">
-        <h1 class="number float-left">1</h1>
-        <div>
-            <%- md.render(homeData[0].fields.section11) %>
-        </div>
-      </div>
-
-      <div class="step clearfix">
-          <h1 class="number float-left">2</h1>
-          <div>
-              <%- md.render(homeData[0].fields.section12) %>
-          </div>
-      </div>
-
-      <div class="step clearfix">
-          <h1 class="number float-left">3</h1>
-          <div>
-            <%- md.render(homeData[0].fields.section13) %>
-          </div>
-      </div>
-
-      <div class="step clearfix">
-          <h1 class="number float-left">4</h1>
-          <div>
-            <%- md.render(homeData[0].fields.section14) %>
-          </div>
-      </div>
-      <h4><a href="<%= homeData[0].fields.section1Link %>" class="cta"><%= homeData[0].fields.section1Cta %></a></h4>
-    </div>
-    <div class="col-lg-4 col-md-6" id="help-left">
-      <img src="/images/people.svg" alt="Participants volunteering">
-      <div class="help-bg" style="background-image: url(/images/curve.svg">
-        <%- md.render(homeData[0].fields.section1Main) %>
-      </div>
-    </div> -->
+    
   </div>
 </div>
-<!--<div class="container-full" id="home-map">
-  <div class="container">
-  <div class="row">
-    <div class="col-md-12 col-lg-6 large" id="map-left">
-      <%- md.render(homeData[0].fields.section2Main) %>
-      <% if(homeData[0].fields.section2Url){ %>
-      <h4><a href="<%= homeData[0].fields.section2Url %>" class="cta"><%= homeData[0].fields.section2Cta %></a></h4>
-      <%} else {%>
-      <h4>Coming Soon! Help us track the flu.</h4>
-      <%}%>
-    </div>
-    <div class="col-md-12 col-lg-6" id="map-right">
-      <img src="<%- homeData[0].fields.section2Image.fields.file.url + '?fm=jpg&fl=progressive&w=690&h=304&fit=fill' %>" alt="<%- homeData[0].fields.section2Image.fields.description %>">
-    </div>
-  </div>
-</div>
-</div>-->
 <div class="container home-content-2">
   <div class="row flu-101">
     <div class="col-lg-5 offset-lg-1" id="flu101-left">
@@ -124,7 +70,7 @@
     </div>
   </div>
 
-
+<% if(siteData[0].fields.promoBannerCopy) { %>
   <div class="row">
     <div class="col-lg-12">
       <div class="home-callout">
@@ -133,6 +79,7 @@
       </div>
     </div>
   </div>
+<% } %>
 </div>
 
 <% include ./partials/footer  {logos: logos} %>
