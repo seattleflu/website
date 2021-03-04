@@ -1664,3 +1664,8 @@ header.light .nav-item .adsNav:after {
     justify-content: left;
   }
 }
+
+
+.about h1 {
+  margin-bottom: 22px;
+}
