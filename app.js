@@ -125,11 +125,13 @@ app.use ('/about', aboutRouter);
 // app.use('/resources/:resource', resourceRouter)
 // app.use('/resources', resourcesRouter);
 // app.use('/updates', updatesRouter);
-app.use('/applerespiratorystudy', appleRouter);
-app.use('/applerespiratorystudy/support', appleFaqRouter);
-app.use ('/apple', function (req, res) {
-  res.redirect (302, '/applerespiratorystudy');
-});
+
+// app.use('/applerespiratorystudy', appleRouter);
+// app.use('/applerespiratorystudy/support', appleFaqRouter);
+// app.use ('/apple', function (req, res) {
+//  res.redirect (302, '/applerespiratorystudy');
+// });
+
 // app.use ('/', function (req, res) {
 //   res.redirect (302, '/welcome');
 // });
