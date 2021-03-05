@@ -1,20 +1,12 @@
 var express = require('express')
 var router = express.Router()
-var faq = require('../services/faq')
-
+var faq = require('../services/applestudyfaq')
 var page = require('../services/page')
 var site = require('../services/site')
 var md = require('markdown-it')({
   html: true
 })
 var markdownItAttrs = require('markdown-it-attrs')
-
-md.use(markdownItAttrs, {
-  // optional, these are default options
-  leftDelimiter: '{',
-  rightDelimiter: '}',
-  allowedAttributes: []  // empty array = all attributes are allowed
-});
 
 router.use((req, res, next) => {
   site
@@ -28,7 +20,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('faq')
+    .getPageData('applerespiratorystudy/support')
     .then(pageData => {
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
@@ -50,7 +42,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   faq
-    .getFaq()
+    .getAppleFaq()
     .then(faqData => {
       req.faqData = faqData.items
       next()
@@ -67,15 +59,15 @@ router.get('/', function(req,res,next){
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('faq', {
-    title: 'Seattle Flu Study FAQ',
+  res.render('applestudyfaq', {
+    title: 'Apple Respiratory Study FAQ',
+    header: 'dark',
     faqData: req.faqData,
     pageData: req.pageData,
     siteData: req.siteData,
-    header: 'light',
     nav: req.nav,
     enroll: req.enroll,
-    logos: 'true',
+    logos: 'false',
     md: md,
     pageUrl:req.pageUrl
   })

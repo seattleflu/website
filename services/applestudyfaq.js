@@ -1,10 +1,10 @@
 var client = require('./contentful').client
 
-async function getHome () {
+async function getAppleFaq () {
   try {
     const result = await client.getEntries({
-      content_type: 'homepage',
-      'fields.name': 'Home (Dev)',
+      content_type: 'appleStudyFaq',
+      order: 'fields.id',
       include: 10
     })
     return result
@@ -14,5 +14,5 @@ async function getHome () {
 }
 
 module.exports = {
-  getHome 
+  getAppleFaq
 }

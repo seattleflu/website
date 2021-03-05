@@ -1,11 +1,9 @@
 var client = require('./contentful').client
 
-async function getHome () {
+async function getServices () {
   try {
     const result = await client.getEntries({
-      content_type: 'homepage',
-      'fields.name': 'Home (Dev)',
-      include: 10
+      content_type: 'services'
     })
     return result
   } catch (error) {
@@ -14,5 +12,5 @@ async function getHome () {
 }
 
 module.exports = {
-  getHome 
+  getServices
 }

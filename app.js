@@ -23,6 +23,7 @@ var uwRouter = require ('./routes/uw');
 var webmdRouter = require ('./routes/webmd');
 var infoRouter = require ('./routes/info');
 var contactRouter = require ('./routes/contactus');
+var aboutRouter = require ('./routes/about');
 var mediaRouter = require ('./routes/media');
 var errorRouter = require ('./routes/error');
 var ssecRouter = require ('./routes/ssec');
@@ -37,6 +38,8 @@ var resourceRouter = require ('./routes/resource');
 var resourcesRouter = require ('./routes/resources');
 var updatesRouter = require ('./routes/updates');
 var appleRouter = require('./routes/apple')
+var appleFaqRouter = require('./routes/applestudyfaq')
+var researchRouter = require ('./routes/research');
 
 const production = process.env.NODE_ENV === 'production';
 
@@ -93,9 +96,14 @@ app.use ('/privacy', privacyRouter);
 // app.use('/thank-you-ss-st', tySSSTRouter);
 app.use ('/households', householdsRouter);
 app.use ('/welcome', welcomeRouter);
+app.use ('/research', researchRouter);
 
 app.use ('/uw/start', function (req, res) {
   res.redirect (302, 'https://backoffice.seattleflu.org/husky-musher');
+});
+
+app.use ('/scanpublichealth', function (req, res) {
+  res.redirect (302, 'https://scanpublichealth.org/');
 });
 
 app.use ('/uw', uwRouter);
@@ -104,6 +112,7 @@ app.use ('/uw', uwRouter);
 // app.use('/media-inquiries', mediaRouter);
 // app.use('/swabandsend', swabandsendRouter);
 app.use ('/contact-us', contactRouter);
+app.use ('/about', aboutRouter);
 // app.use('/ssec', ssecRouter);
 // app.use('/sscc', ssccRouter);
 // app.use('/asec', asecRouter);
@@ -117,6 +126,7 @@ app.use ('/contact-us', contactRouter);
 // app.use('/resources', resourcesRouter);
 // app.use('/updates', updatesRouter);
 app.use('/applerespiratorystudy', appleRouter);
+app.use('/applerespiratorystudy/support', appleFaqRouter);
 app.use ('/apple', function (req, res) {
   res.redirect (302, '/applerespiratorystudy');
 });

@@ -66,6 +66,20 @@ a, a:hover {
 .cta:hover:after {
   margin-left: 15px;
 }
+.dropdown {
+  font-weight: 700;
+}
+.dropdown:after {
+  background-image: url("/images/dropdown_arrow_green.svg");
+  background-size: 17px 9.5px;
+  display: inline-block;
+  width: 17px;
+  height: 9.5px;
+  margin-left: 10px;
+  vertical-align: middle;
+  content: "";
+  transition: all 0.5s;
+}
 @media (max-width: 767px) {
   h1 {
     font-size: 30px;
@@ -118,6 +132,9 @@ button {
 .large, .large p {
   font-size: 18px;
   line-height: 25px;
+}
+.blue {
+  color: #0A5CA8 !important;
 }
 
 
@@ -542,6 +559,7 @@ button.green:hover {
   background-size: cover;
   top: -112px;
   padding-bottom: 80px;
+  padding-top: 165px;
 }
 .home-header h1 {
   color: #fff;
@@ -582,7 +600,7 @@ button.green:hover {
 }
 @media (max-width: 767px) {
   #homeSVG svg {
-    max-height: 105px;
+    max-height: 107px;
     bottom: -16px;
   }
 }
@@ -631,28 +649,61 @@ header.dark .nav-item a:hover {
   text-decoration: none;
 }
 .home-logos {
-  margin-top: 165px;
+  margin-top: 56px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
 }
 .home-logos img {
   margin-bottom: 30px;
-  max-height: 40px;
+  max-height: 25px;
   height: 100%;
-  width: 100%;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 .home-logos img:first-child {
   margin-left: 0;
 }
 .home-content {
   margin-top: -50px;
-  margin-bottom: 95px;
+  margin-bottom: 60px;
+}
+.home-content h1, .home-content h2 {
+  margin-bottom: 20px;
 }
 .home-content-2 {
   margin-bottom: 75px;
 }
+/*** study modules ***/
+
+.study-module {
+  border: 1px solid #F0F0F0;
+  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.2);
+  padding: 40px;
+  height: 100%;
+  position: relative;
+}
+.study-module p {
+  font-size: 18px;
+  margin-bottom: 60px;
+}
+.study-module .cta {
+  margin-top: 36px;
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+.study-module-icon {
+  border-radius: 100%;
+  border: 0.5px solid #B3B3B3;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+.study-modules .col-lg-6, .study-modules .col-lg-4 {
+  margin-bottom: 30px;
+}
+/*** study modules end ***/
 #help-left p {
   margin-top: 15px;
   margin-bottom: 30px;
@@ -781,9 +832,6 @@ h1.number {
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
-  .home-logos img {
-    max-height: 30px;
-  }
   .home-header {
     padding-bottom: 50px;
   }
@@ -793,12 +841,14 @@ h1.number {
   .help-bg {
     background-size: contain;
   }
+  .home-logos img {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 @media (max-width: 440px) {
   .home-logos img {
     flex-basis: 35%;
-    margin-left: 0;
-    margin-right: 0;
   }
   .help-bg {
     background-size: 75% auto;
@@ -1532,4 +1582,90 @@ header.light .nav-item .adsNav:after {
   line-height: 24px;
   font-weight: 700;
   margin-bottom:5px;
+}
+
+
+
+/*** RESEARCH ***/
+.research h3 {
+  margin-top: 60px;
+}
+.research-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.research-wrapper img {
+  margin-right: 20px;
+}
+.research-wrapper h4 {
+  margin-bottom: 0;
+}
+.research-docs a.blue {
+  transition: all 0.5s;
+}
+.research-docs .dropdown {
+  float: right;
+}
+.research-docs .dropdown[aria-expanded="false"]:before {
+  content: 'See More';
+  transition: all 0.5s;
+}
+.research-docs .dropdown[aria-expanded="true"]:before {
+  content: 'See Less';
+  transition: all 0.5s;
+}
+.research-docs .dropdown[aria-expanded="true"]:after {
+  transform: rotate(180deg);
+  transition: all 0.5s;
+}
+@media (max-width: 992px) {
+  .research-docs {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 767px) {
+  .research h3 {
+    margin-top: 30px;
+  }
+}
+
+
+
+/*** APPLE STUDY PAGES ***/
+.apple-faq {
+  margin-bottom: -125px;
+}
+.header-icon {
+  position: absolute;
+  z-index: 1;
+  right: 30px;
+  top: 100px;
+}
+.header-icon img {
+  width: 155px;
+  height: auto;
+}
+@media (max-width: 767px) {
+  .apple-landing-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-icon {
+    padding-top: 132px;
+    position: unset;
+  }
+  .header-icon img {
+    width: 52px;
+    margin-left: 15px;
+  }
+  .apple-landing-logos {
+    justify-content: left;
+  }
+}
+
+
+.about h1 {
+  margin-bottom: 22px;
 }

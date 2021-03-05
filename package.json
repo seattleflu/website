@@ -1,15 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
     "lint": "eslint",
     "dev": "nodemon",
-    "build": "webpack --env production"
+    "build": "webpack --env development",
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
     "@babel/runtime-corejs3": "^7.11.2",
     "axios": "^0.21.1",
+    "caniuse-lite": "^1.0.30001192",
     "circular-json": "^0.5.9",
     "compression": "^1.7.4",
     "contentful": "^7.14.6",

@@ -1,8 +1,11 @@
 
 <% include ./partials/header {header: header, pageData: req.pageData, siteData: req.siteData} %>
-<div class="container-full landing-header">
+<div class="container-full landing-header apple-landing-header">
     <div class="container">
         <h1><%= pageData[0].fields.name %></h1>
+        <div class="header-icon">
+            <img src="/images/AppleRespiratoryStudyIcon.png">
+        </div>
     </div>
     <div id="homeSVG">
         <svg viewBox="0 0 1440 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -15,10 +18,10 @@
 </div>
 <div class="container landing-content">
     <div class="row">
-        <div class="col-lg-12 landing-logos">
+        <div class="col-lg-12 apple-landing-logos landing-logos">
             <a href="https://www.uwmedicine.org/" target="_blank"><img src="/images/logo_UWMedicine.svg"></a>
             <a href="https://www.fredhutch.org/" target="_blank"><img src="/images/logo_FredHutch.svg"></a>
-            <a href="https://www.seattlechildrens.org/" target="_blank"><img src="/images/logo_SeattleChildrens.svg"></a>
+            <!--<a href="https://www.seattlechildrens.org/" target="_blank"><img src="/images/logo_SeattleChildrens.svg"></a>-->
             <!--<a href="https://brotmanbaty.org/" target="_blank"><img src="/images/logo_BrotmanBatyInstitute.svg"></a> -->
         </div>
         <div class="col-lg-8 landing-text secondary">
