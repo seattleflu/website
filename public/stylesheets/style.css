@@ -275,6 +275,7 @@ header .logo {
 }
 .logo img {
   height: 30px;
+  width: 120px;
 }
 header.light .custom-toggler .navbar-toggler-icon {
   background-image: url("/images/nav_hamburger_dark.svg");
