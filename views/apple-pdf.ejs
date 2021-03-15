@@ -1,0 +1,11 @@
+<div id="adobe-dc-view"></div>
+<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script type="text/javascript">
+	document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
+		var adobeDCView = new AdobeDC.View({clientId: "<%= siteData[0].fields.pdfEmbedApiKey %>", divId: "adobe-dc-view"});
+		adobeDCView.previewFile({
+			content:{location: {url: "<%= siteData[0].fields.appleStudyPdf.fields.file.url %>"}},
+			metaData:{fileName: <% if(siteData[0].fields.appleStudyPdf.fields.description) { %>"<%= siteData[0].fields.appleStudyPdf.fields.description %>"<% } else { %>"Apple Study PDF"<% } %>}
+		}, {showAnnotationTools: false, dockPageControls: false});
+	});
+</script>

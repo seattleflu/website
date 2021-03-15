@@ -37,8 +37,9 @@ var adsRouter = require ('./routes/ads');
 var resourceRouter = require ('./routes/resource');
 var resourcesRouter = require ('./routes/resources');
 var updatesRouter = require ('./routes/updates');
-var appleRouter = require('./routes/apple')
-var appleFaqRouter = require('./routes/applestudyfaq')
+var appleRouter = require('./routes/apple');
+var appleFaqRouter = require('./routes/applestudyfaq');
+var applePdfRouter = require('./routes/apple-pdf');
 var researchRouter = require ('./routes/research');
 
 const production = process.env.NODE_ENV === 'production';
@@ -127,6 +128,7 @@ app.use ('/about', aboutRouter);
 // app.use('/updates', updatesRouter);
 
 // app.use('/applerespiratorystudy', appleRouter);
+app.use('/applerespiratorystudy/support/watch', applePdfRouter);
 // app.use('/applerespiratorystudy/support', appleFaqRouter);
 // app.use ('/apple', function (req, res) {
 //  res.redirect (302, '/applerespiratorystudy');
