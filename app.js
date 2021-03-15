@@ -121,7 +121,7 @@ app.use ('/about', aboutRouter);
 // app.use('/stec', stecRouter);
 // app.use('/stcc', stccRouter);
 // app.use('/scan', scanRouter);
-// app.use('/thank-you/:thankyouid', thankyouRouter)
+ app.use('/:thankyouid', thankyouRouter)
 // app.use('/a/:ad', adsRouter)
 // app.use('/resources/:resource', resourceRouter)
 // app.use('/resources', resourcesRouter);
