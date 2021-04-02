@@ -77,7 +77,7 @@ router.get('/', function (req, res, next) {
     thankyouData: req.thankyouData,
     pageData: req.pageData,
     siteData: req.siteData,
-    header: 'light',
+    header: 'dark',
     nav: req.nav,
     md: md,
     enroll: req.enroll,
