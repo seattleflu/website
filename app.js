@@ -76,6 +76,19 @@ if (!production) {
 app.set ('views', path.join (__dirname, 'views'));
 app.set ('view engine', 'ejs');
 
+var env = process.env.NODE_ENV || 'development';
+
+if (env === 'development' || env === 'stg') {
+  app.use(function (req, res, next) {
+    if ('/robots.txt' === req.url) {
+      res.type('text/plain');
+      res.send('User-agent: *\nDisallow: /');
+    } else {
+      next();
+    }
+  });
+}
+
 app.use (logger ('dev'));
 app.use (express.json ());
 app.use (express.urlencoded ({extended: false}));
