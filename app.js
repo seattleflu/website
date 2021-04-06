@@ -127,8 +127,8 @@ app.use ('/about', aboutRouter);
 // app.use('/updates', updatesRouter);
 
 app.use('/applerespiratorystudy', appleRouter);
-app.use('/applerespiratorystudy/support/watch', applePdfRouter);
-app.use('/applerespiratorystudy/support', appleFaqRouter);
+// app.use('/applerespiratorystudy/support/watch', applePdfRouter);
+// app.use('/applerespiratorystudy/support', appleFaqRouter);
 app.use ('/apple', function (req, res) {
   res.redirect (302, '/applerespiratorystudy');
 });
