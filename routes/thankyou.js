@@ -52,7 +52,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   let requestSegments = req.baseUrl.split('/')
-  var thankyouUrl = requestSegments[2]
+  var thankyouUrl = requestSegments[1]
 
   thankyou
     .getThankyou(thankyouUrl)
