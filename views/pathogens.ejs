@@ -1,0 +1,57 @@
+<% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
+
+<div class="secondary container">
+    <div class="row">
+        <div class="col-12">
+            <h1><%= pageData[0].fields.name %></h1>
+            <h3><%= pageData[0].fields.subhead %></h3>
+            <div><%- md.render(pageData[0].fields.content) %></div>
+
+            <!-- start of embed of Observable notebook -->
+            <div id="observablehq-chart"></div>
+            <div id="observablehq-caption"></div>
+
+            <script type="module">
+              import {Runtime, Inspector, Library} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+              import notebook from "https://api.observablehq.com/@tsibley/pathogen-prevalence.js?v=3";
+
+              const chart = document.querySelector("#observablehq-chart");
+              const caption = document.querySelector("#observablehq-caption");
+
+              const library = new Library();
+              const runtime = new Runtime(library);
+
+              const main = new Runtime().module(notebook, name => {
+                if (name === "viewof chart") return new Inspector(chart);
+                if (name === "caption") return new Inspector(caption);
+              });
+
+              /* "width" defaults to the window's clientWidth, which is wider
+               * than our body content container.  Redefine "width" as a
+               * generator that yields the chart element's clientWidth (if
+               * changed) whenever a resize is observed.
+               *
+               * Based on:
+               *   <https://github.com/observablehq/examples/blob/main/custom-fluid-width/index.html>
+               *   <https://github.com/observablehq/examples/blob/main/custom-fluid-width-and-height/index.html>
+               */
+              main.redefine("width", library.Generators.observe(notify => {
+                let value = notify(chart.getBoundingClientRect().width); // initial value
+                const observer = new ResizeObserver(([entry]) => {
+                  const newValue = entry.contentRect.width;
+                  if (newValue !== value) {
+                    notify(value = newValue);
+                  }
+                });
+                observer.observe(chart);
+                return () => observer.disconnect();
+              }));
+            </script>
+            <!-- end embed -->
+
+            <div><%- md.render(pageData[0].fields.content2) %></div>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer  {logos: logos}%>

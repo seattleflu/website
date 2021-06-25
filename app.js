@@ -41,6 +41,7 @@ var appleRouter = require('./routes/apple');
 var appleFaqRouter = require('./routes/applestudyfaq');
 var applePdfRouter = require('./routes/apple-pdf');
 var researchRouter = require ('./routes/research');
+var pathogensRouter = require ('./routes/pathogens');
 
 const production = process.env.NODE_ENV === 'production';
 
@@ -98,6 +99,7 @@ app.use ('/privacy', privacyRouter);
 app.use ('/households', householdsRouter);
 app.use ('/welcome', welcomeRouter);
 app.use ('/research', researchRouter);
+app.use ('/pathogens', pathogensRouter);
 
 app.use ('/uw/start', function (req, res) {
   res.redirect (302, 'https://backoffice.seattleflu.org/husky-musher');
