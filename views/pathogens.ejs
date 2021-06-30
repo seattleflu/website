@@ -8,6 +8,7 @@
             <div><%- md.render(pageData[0].fields.content) %></div>
 
             <!-- start of embed of Observable notebook -->
+            <div id="observablehq-description"></div>
             <div id="observablehq-chart"></div>
             <div id="observablehq-caption"></div>
 
@@ -15,6 +16,7 @@
               import {Runtime, Inspector, Library} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
               import notebook from "https://api.observablehq.com/@tsibley/pathogen-prevalence.js?v=3";
 
+              const description = document.querySelector("#observablehq-description");
               const chart = document.querySelector("#observablehq-chart");
               const caption = document.querySelector("#observablehq-caption");
 
@@ -22,6 +24,7 @@
               const runtime = new Runtime(library);
 
               const main = new Runtime().module(notebook, name => {
+                if (name === "description") return new Inspector(description);
                 if (name === "viewof chart") return new Inspector(chart);
                 if (name === "caption") return new Inspector(caption);
               });
