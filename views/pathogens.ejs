@@ -8,45 +8,57 @@
             <div><%- md.render(pageData[0].fields.content) %></div>
 
             <!-- start of embed of Observable notebook -->
-            <div id="observablehq-description"></div>
-            <div id="observablehq-chart"></div>
-            <div id="observablehq-caption"></div>
+            <div id="prevalenceDescription"></div>
+            <div id="viewof prevalenceChart"></div>
+            <div id="prevalenceCaption"></div>
+
+            <div id="specimensDescription"></div>
+            <div id="viewof specimensChart"></div>
+            <div id="specimensCaption"></div>
+
+            <div id="ruler"></div>
 
             <script type="module">
               import {Runtime, Inspector, Library} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-              import notebook from "https://api.observablehq.com/@brotmanbatyinstitute/pathogen-prevalence.js?v=3";
+              import notebook from "https://api.observablehq.com/@brotmanbatyinstitute/seattle-flu-study-charts.js?v=3";
 
-              const description = document.querySelector("#observablehq-description");
-              const chart = document.querySelector("#observablehq-chart");
-              const caption = document.querySelector("#observablehq-caption");
+              const embeddedCells = new Set([
+                "prevalenceDescription",
+                "viewof prevalenceChart",
+                "prevalenceCaption",
+                "specimensDescription",
+                "viewof specimensChart",
+                "specimensCaption",
+              ]);
 
               const library = new Library();
               const runtime = new Runtime(library);
 
               const main = new Runtime().module(notebook, name => {
-                if (name === "description") return new Inspector(description);
-                if (name === "viewof chart") return new Inspector(chart);
-                if (name === "caption") return new Inspector(caption);
+                if (embeddedCells.has(name))
+                  return new Inspector(document.getElementById(name));
               });
 
               /* "width" defaults to the window's clientWidth, which is wider
                * than our body content container.  Redefine "width" as a
-               * generator that yields the chart element's clientWidth (if
+               * generator that yields the ruler element's clientWidth (if
                * changed) whenever a resize is observed.
                *
                * Based on:
                *   <https://github.com/observablehq/examples/blob/main/custom-fluid-width/index.html>
                *   <https://github.com/observablehq/examples/blob/main/custom-fluid-width-and-height/index.html>
                */
+              const ruler = document.querySelector("#ruler");
+
               main.redefine("width", library.Generators.observe(notify => {
-                let value = notify(chart.getBoundingClientRect().width); // initial value
+                let value = notify(ruler.getBoundingClientRect().width); // initial value
                 const observer = new ResizeObserver(([entry]) => {
                   const newValue = entry.contentRect.width;
                   if (newValue !== value) {
                     notify(value = newValue);
                   }
                 });
-                observer.observe(chart);
+                observer.observe(ruler);
                 return () => observer.disconnect();
               }));
             </script>
