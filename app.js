@@ -122,7 +122,7 @@ app.use ('/scanpublichealth', function (req, res) {
 });
 
 app.use ('/uw', uwRouter);
-app.use ('/symptoms-survey', symptomsRouter);
+app.use ('/symptom-survey', symptomsRouter);
 // app.use('/webmd', webmdRouter);
 // app.use('/info', infoRouter);
 // app.use('/media-inquiries', mediaRouter);
