@@ -20,6 +20,7 @@ var swabandsendRouter = require ('./routes/swabandsend');
 var householdsRouter = require ('./routes/households');
 var welcomeRouter = require ('./routes/welcome');
 var uwRouter = require ('./routes/uw');
+var symptomsRouter = require ('./routes/symptoms-survey');
 var webmdRouter = require ('./routes/webmd');
 var infoRouter = require ('./routes/info');
 var contactRouter = require ('./routes/contactus');
@@ -77,6 +78,19 @@ if (!production) {
 app.set ('views', path.join (__dirname, 'views'));
 app.set ('view engine', 'ejs');
 
+var env = process.env.NODE_ENV || 'development';
+
+if (env === 'development' || env === 'stg') {
+  app.use(function (req, res, next) {
+    if ('/robots.txt' === req.url) {
+      res.type('text/plain');
+      res.send('User-agent: *\nDisallow: /');
+    } else {
+      next();
+    }
+  });
+}
+
 app.use (logger ('dev'));
 app.use (express.json ());
 app.use (express.urlencoded ({extended: false}));
@@ -110,6 +124,7 @@ app.use ('/scanpublichealth', function (req, res) {
 });
 
 app.use ('/uw', uwRouter);
+app.use ('/symptoms-survey', symptomsRouter);
 // app.use('/webmd', webmdRouter);
 // app.use('/info', infoRouter);
 // app.use('/media-inquiries', mediaRouter);
@@ -140,6 +155,10 @@ app.use('/:thankyouid', thankyouRouter)
 //   res.redirect (302, '/welcome');
 // });
 
-app.use (errorRouter);
+app.use(errorRouter);
+
+
+
+
 
 module.exports = app;

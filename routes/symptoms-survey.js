@@ -1,14 +1,21 @@
 var express = require('express')
 var router = express.Router()
-var thankyou = require('../services/thankyou')
-const JSON = require('circular-json')
+
 var page = require('../services/page')
 var site = require('../services/site')
+
 var md = require('markdown-it')({
   html: true
 })
 var markdownItAttrs = require('markdown-it-attrs')
 
+md.use(markdownItAttrs, {
+    // optional, these are default options
+    leftDelimiter: '{',
+    rightDelimiter: '}',
+    allowedAttributes: [] // empty array = all attributes are allowed
+  })
+  
 router.use((req, res, next) => {
   site
     .getSiteData()
@@ -21,7 +28,7 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('thank-you')
+    .getPageData('symptoms-survey')
     .then(pageData => {
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
@@ -30,40 +37,16 @@ router.use((req, res, next) => {
       }else{
         req.nav = 'true'
       }
-
       if(pageData.items[0].fields.showJoinTheStudyAfterMenu != null){
         var enroll = pageData.items[0].fields.showJoinTheStudyAfterMenu
         req.enroll = enroll.toString();
       }else{
         req.enroll = 'true'
       }
-
       next()
     })
     .catch(console.error)
 })
-
-// router.use(function (req, res, next) {
-//   thankyou.getThankyou().then(function (thankyouData) {
-//     req.thankyouData = thankyouData
-//     next()
-//   }
-// })
-
-router.use((req, res, next) => {
-  let requestSegments = req.baseUrl.split('/')
-  var thankyouUrl = requestSegments[1]
-
-  thankyou
-    .getThankyou(thankyouUrl)
-    .then(thankyouData => {
-
-      req.thankyouData = thankyouData.items[0]
-      next()
-    })
-    .catch(console.error)
-})
-
 router.get('/', function(req,res,next){
   var baseUrl = req.get('host')
   var pageUrl = req.baseUrl;
@@ -73,16 +56,15 @@ router.get('/', function(req,res,next){
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('thankyou', {
-    title: 'Thank You',
-    thankyouData: req.thankyouData,
+  res.render('uw', {
+    title: 'Symptoms Survey',
+    header: 'dark',
+    md: md,
+    nav: req.nav,
+    enroll: req.enroll,
+    logos: 'false',
     pageData: req.pageData,
     siteData: req.siteData,
-    header: 'dark',
-    nav: req.nav,
-    md: md,
-    enroll: req.enroll,
-    logos: 'true',
     pageUrl:req.pageUrl
   })
 })
