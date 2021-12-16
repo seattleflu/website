@@ -21,6 +21,7 @@ var householdsRouter = require ('./routes/households');
 var welcomeRouter = require ('./routes/welcome');
 var uwRouter = require ('./routes/uw');
 var symptomsRouter = require ('./routes/symptoms-survey');
+var immunityRouter = require ('./routes/immunity');
 var webmdRouter = require ('./routes/webmd');
 var infoRouter = require ('./routes/info');
 var contactRouter = require ('./routes/contactus');
@@ -123,6 +124,7 @@ app.use ('/scanpublichealth', function (req, res) {
 
 app.use ('/uw', uwRouter);
 app.use ('/symptoms-survey', symptomsRouter);
+app.use ('/immunity-research-study', immunityRouter);
 // app.use('/webmd', webmdRouter);
 // app.use('/info', infoRouter);
 // app.use('/media-inquiries', mediaRouter);
