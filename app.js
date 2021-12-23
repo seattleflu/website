@@ -124,7 +124,7 @@ app.use ('/scanpublichealth', function (req, res) {
 
 app.use ('/uw', uwRouter);
 app.use ('/symptoms-survey', symptomsRouter);
-app.use ('/immunity-research-study', immunityRouter);
+app.use ('/airs', immunityRouter);
 // app.use('/webmd', webmdRouter);
 // app.use('/info', infoRouter);
 // app.use('/media-inquiries', mediaRouter);
