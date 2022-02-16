@@ -57,7 +57,7 @@ router.get('/', function(req,res,next){
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('uw', {
-    title: 'Immunity Research Study',
+    title: 'Antibody and Immunity Research Study',
     header: 'dark',
     md: md,
     nav: req.nav,
