@@ -6,6 +6,7 @@ var logger = require ('morgan');
 
 var indexRouter = require ('./routes/index');
 var faqRouter = require ('./routes/faq');
+var dataRouter = require ('./routes/data-updates');
 var scienceRouter = require ('./routes/science');
 var currentRouter = require ('./routes/current');
 var enrollRouter = require ('./routes/enroll');
@@ -104,6 +105,7 @@ app.use('/', indexRouter);
 // app.use('/science', scienceRouter)
 // app.use('/current', currentRouter)
 app.use('/faq', faqRouter)
+app.use('/data-updates', dataRouter)
 // app.use('/enroll', enrollRouter)
 // app.use('/schools', schoolsRouter)
 app.use('/results', resultsRouter)

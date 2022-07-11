@@ -9,17 +9,11 @@ var md = require('markdown-it')({
 })
 var markdownItAttrs = require('markdown-it-attrs')
 
-md.use(markdownItAttrs, {
-    // optional, these are default options
-    leftDelimiter: '{',
-    rightDelimiter: '}',
-    allowedAttributes: [] // empty array = all attributes are allowed
-  })
-  
 router.use((req, res, next) => {
   site
     .getSiteData()
     .then(siteData => {
+      console.log('Site DATA: ' + JSON.stringify(siteData))
       req.siteData = siteData.items
       next()
     })
@@ -28,8 +22,9 @@ router.use((req, res, next) => {
 
 router.use((req, res, next) => {
   page
-    .getPageData('airs')
+    .getPageData('data-updates')
     .then(pageData => {
+      console.log('PAGE DATA: ' + JSON.stringify(pageData))
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
         var nav = pageData.items[0].fields.showMenu
@@ -47,6 +42,7 @@ router.use((req, res, next) => {
     })
     .catch(console.error)
 })
+
 router.get('/', function(req,res,next){
   var baseUrl = req.get('host')
   var pageUrl = req.baseUrl;
@@ -56,13 +52,13 @@ router.get('/', function(req,res,next){
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('immunity', {
-    title: 'Antibody and Immunity Research Study',
-    header: 'dark',
+  res.render('data-updates', {
+    title: 'Data Updates',
+    header: 'light',
     md: md,
     nav: req.nav,
     enroll: req.enroll,
-    logos: 'false',
+    logos: 'true',
     pageData: req.pageData,
     siteData: req.siteData,
     pageUrl:req.pageUrl
