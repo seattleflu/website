@@ -6,6 +6,16 @@
     "dev": "nodemon",
     "build": "webpack --env production"
   },
+  "development": {
+    "accessToken": "khzGbzJg6rnFLJNw6wlkEw_jCNzdza1ZEJAOeyK3Z5o",
+    "space": "mw94neez9vid",
+    "host": "cdn.contentful.com"
+  },
+  "production": {
+    "accessToken": "khzGbzJg6rnFLJNw6wlkEw_jCNzdza1ZEJAOeyK3Z5o",
+    "space": "mw94neez9vid",
+    "host": "cdn.contentful.com"
+  },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
     "@babel/runtime-corejs3": "^7.11.2",
