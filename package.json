@@ -7,12 +7,12 @@
     "build": "webpack --env production"
   },
   "development": {
-    "accessToken": "khzGbzJg6rnFLJNw6wlkEw_jCNzdza1ZEJAOeyK3Z5o",
+    "accessToken": "OzpJ8zbBPkh0ypL3EIwJSZpIV2BAiHJERFUk4mjzsrc",
     "space": "mw94neez9vid",
     "host": "cdn.contentful.com"
   },
   "production": {
-    "accessToken": "khzGbzJg6rnFLJNw6wlkEw_jCNzdza1ZEJAOeyK3Z5o",
+    "accessToken": "OzpJ8zbBPkh0ypL3EIwJSZpIV2BAiHJERFUk4mjzsrc",
     "space": "mw94neez9vid",
     "host": "cdn.contentful.com"
   },
