@@ -27,6 +27,8 @@ var webmdRouter = require ('./routes/webmd');
 var infoRouter = require ('./routes/info');
 var contactRouter = require ('./routes/contactus');
 var aboutRouter = require ('./routes/about');
+var historyRouter = require ('./routes/history');
+var historyScandashboardsRouter = require ('./routes/historyScandashboards');
 var mediaRouter = require ('./routes/media');
 var errorRouter = require ('./routes/error');
 var ssecRouter = require ('./routes/ssec');
@@ -44,6 +46,7 @@ var appleRouter = require('./routes/apple');
 var appleFaqRouter = require('./routes/applestudyfaq');
 var applePdfRouter = require('./routes/apple-pdf');
 var researchRouter = require ('./routes/research');
+var publicationsRouter = require ('./routes/publications');
 var pathogensRouter = require ('./routes/pathogens');
 
 const production = process.env.NODE_ENV === 'production';
@@ -116,6 +119,7 @@ app.use ('/privacy', privacyRouter);
 app.use ('/households', householdsRouter);
 app.use ('/welcome', welcomeRouter);
 app.use ('/research', researchRouter);
+app.use ('/publications', publicationsRouter);
 app.use ('/pathogens', pathogensRouter);
 
 app.use ('/uw/start', function (req, res) {
@@ -135,6 +139,8 @@ app.use ('/airs', immunityRouter);
 // app.use('/swabandsend', swabandsendRouter);
 app.use ('/contact-us', contactRouter);
 app.use ('/about', aboutRouter);
+app.use ('/history', historyRouter);
+app.use ('/history/scandashboards', historyScandashboardsRouter);
 // app.use('/ssec', ssecRouter);
 // app.use('/sscc', ssccRouter);
 // app.use('/asec', asecRouter);
@@ -144,7 +150,7 @@ app.use ('/about', aboutRouter);
 // app.use('/scan', scanRouter);
 // app.use('/a/:ad', adsRouter)
 // app.use('/resources/:resource', resourceRouter)
-// app.use('/resources', resourcesRouter);
+app.use('/resources', resourcesRouter);
 // app.use('/updates', updatesRouter);
 
 app.use('/applerespiratorystudy', appleRouter);
