@@ -8,9 +8,9 @@ var contentful = require('contentful')
 //  }
 
 var config = {
- accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "3WjCDnhn0P6Xlm2-V5grdDPpBCRgpGcMfq7IM-7wld8",
+ accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "OzpJ8zbBPkh0ypL3EIwJSZpIV2BAiHJERFUk4mjzsrc",
  space: process.env.CONTENTFUL_SPACE || "mw94neez9vid",
- host: "preview.contentful.com",
+ host: "cdn.contentful.com",
  insecure: false
 }
 
