@@ -1,9 +1,9 @@
 var contentful = require('contentful')
 
  var config = {
-   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "nNdyqY7yYFAht1SeM-V644PMhHAr2-OxoQM3cAkv1xs",
+   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "BgyukT7O55hreFWQux8hmwkXmdn2ytl5SQk64P4U0Cw",
    space: process.env.CONTENTFUL_SPACE || "mw94neez9vid",
-   host: "https://preview.contentful.com",
+   host: "preview.contentful.com",
    insecure: false
  }
 
