@@ -21,7 +21,7 @@ var markdownItAttrs = require('markdown-it-attrs')
 
 router.use((req, res, next) => {
   page
-    .getPageData('forecasts')
+    .getPageData('sars-cov-2-forecasts')
     .then(pageData => {
       req.pageData = pageData.items
       if(pageData.items[0].fields.showMenu != null){
