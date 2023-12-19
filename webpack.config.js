@@ -33,6 +33,7 @@ module.exports = (env) => {
     current: ['./current/src/index.js', ...devSource],
     enroll: ['./enroll/src/index.js', ...devSource],
     results: ['./results/src/index.js', ...devSource],
+    'sars-cov-2-forecasts': ['./sarscov2Forecasts/src/index.js', ...devSource],
     science: ['./science/src/index.js', ...devSource],
   };
 

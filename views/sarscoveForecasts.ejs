@@ -1,0 +1,16 @@
+<% include ./partials/header  {header: header, pageData: req.pageData, siteData: req.siteData, nav: nav, enroll: enroll} %>
+
+<div class="secondary container">
+    <div class="row">
+        <div class="col-12">
+            <h1><%= pageData[0].fields.name %></h1>
+            <h3><%= pageData[0].fields.subhead %></h3>
+            <div><%- md.render(pageData[0].fields.content) %></div>
+            <div><%- md.render(pageData[0].fields.content2) %></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/dist/sars-cov-2-forecasts-bundle.js"></script>
+
+<% include ./partials/footer  {logos: logos}%>
